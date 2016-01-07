@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Admin | Add Property</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/sb-admin.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body >
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">SB Admin</a>
+            </div>
+            <!-- Top Menu Items -->
+            <ul class="nav navbar-right top-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
+                    <ul class="dropdown-menu message-dropdown">
+                        <li class="message-preview">
+                            <a href="#">
+                                <div class="media">
+                                    <span class="pull-left">
+                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
+                                    </span>
+                                    <div class="media-body">
+                                        <h5 class="media-heading"><strong>John Smith</strong>
+                                        </h5>
+                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="message-preview">
+                            <a href="#">
+                                <div class="media">
+                                    <span class="pull-left">
+                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
+                                    </span>
+                                    <div class="media-body">
+                                        <h5 class="media-heading"><strong>John Smith</strong>
+                                        </h5>
+                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="message-preview">
+                            <a href="#">
+                                <div class="media">
+                                    <span class="pull-left">
+                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
+                                    </span>
+                                    <div class="media-body">
+                                        <h5 class="media-heading"><strong>John Smith</strong>
+                                        </h5>
+                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="message-footer">
+                            <a href="#">Read All New Messages</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b class="caret"></b></a>
+                    <ul class="dropdown-menu alert-dropdown">
+                        <li>
+                            <a href="#">Alert Name <span class="label label-default">Alert Badge</span></a>
+                        </li>
+                        <li>
+                            <a href="#">Alert Name <span class="label label-primary">Alert Badge</span></a>
+                        </li>
+                        <li>
+                            <a href="#">Alert Name <span class="label label-success">Alert Badge</span></a>
+                        </li>
+                        <li>
+                            <a href="#">Alert Name <span class="label label-info">Alert Badge</span></a>
+                        </li>
+                        <li>
+                            <a href="#">Alert Name <span class="label label-warning">Alert Badge</span></a>
+                        </li>
+                        <li>
+                            <a href="#">Alert Name <span class="label label-danger">Alert Badge</span></a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">View All</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li>
+                        <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
+                    </li>
+                    <li>
+                        <a href="tables.html"><i class="fa fa-fw fa-table"></i> Tables</a>
+                    </li>
+                    <li class="active">
+                        <a href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a>
+                    </li>
+                    <li>
+                        <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
+                    </li>
+                    <li>
+                        <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo" class="collapse">
+                            <li>
+                                <a href="#">Dropdown Item</a>
+                            </li>
+                            <li>
+                                <a href="#">Dropdown Item</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Blank Page</a>
+                    </li>
+                    <li>
+                        <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> RTL Dashboard</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+
+        <div id="page-wrapper">
+
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Add Property
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li>
+                                <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
+                            </li>
+                            <li class="active">
+                                <i class="fa fa-edit"></i> Add Property
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- /.row -->
+				
+                <div class="row">
+                    <div class="col-lg-6">
+						<div class="row">
+							<div class="col-lg-12">
+								<center class="breadcrumb"><strong>--- Property Info ---</strong></center>
+							</div>
+						</div>
+						<div>
+                        <form role="form" id="form_id" method="post" action="Controller/AddProperty.php" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input class="form-control" type="text" name="PropertyName" placeholder="Enter property name">
+                                <p class="help-block"></p>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Street</label>
+                                <input class="form-control" placeholder="Enter street" type="text" name="Street">
+                            </div>
+
+                            <div class="form-group">
+                                <label>City</label>
+								<input class="form-control" placeholder="Enter city" type="text" name="City">
+                            </div>
+
+							<div class="form-group">
+                                <label>State</label>
+								<select name="State" class="form-control">
+									<option value="">------------Select State------------</option>
+									<option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+									<option value="Andhra Pradesh">Andhra Pradesh</option>
+									<option value="Arunachal Pradesh">Arunachal Pradesh</option>
+									<option value="Assam">Assam</option>
+									<option value="Bihar">Bihar</option>
+									<option value="Chandigarh">Chandigarh</option>
+									<option value="Chhattisgarh">Chhattisgarh</option>
+									<option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
+									<option value="Daman and Diu">Daman and Diu</option>
+									<option value="Delhi">Delhi</option>
+									<option value="Goa">Goa</option>
+									<option value="Gujarat">Gujarat</option>
+									<option value="Haryana">Haryana</option>
+									<option value="Himachal Pradesh">Himachal Pradesh</option>
+									<option value="Jammu and Kashmir">Jammu and Kashmir</option>
+									<option value="Jharkhand">Jharkhand</option>
+									<option value="Karnataka">Karnataka</option>
+									<option value="Kerala">Kerala</option>
+									<option value="Lakshadweep">Lakshadweep</option>
+									<option value="Madhya Pradesh">Madhya Pradesh</option>
+									<option value="Maharashtra">Maharashtra</option>
+									<option value="Manipur">Manipur</option>
+									<option value="Meghalaya">Meghalaya</option>
+									<option value="Mizoram">Mizoram</option>
+									<option value="Nagaland">Nagaland</option>
+									<option value="Orissa">Orissa</option>
+									<option value="Pondicherry">Pondicherry</option>
+									<option value="Punjab">Punjab</option>
+									<option value="Rajasthan">Rajasthan</option>
+									<option value="Sikkim">Sikkim</option>
+									<option value="Tamil Nadu">Tamil Nadu</option>
+									<option value="Telangana">Telangana</option>
+									<option value="Tripura">Tripura</option>
+									<option value="Uttaranchal">Uttaranchal</option>
+									<option value="Uttar Pradesh">Uttar Pradesh</option>
+									<option value="West Bengal">West Bengal</option>
+								</select>
+                            </div>
+							
+                            <div class="form-group">
+                                <label>PIN Code</label>
+								<input class="form-control" placeholder="Enter PIN" type="text" name="PostalCode">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Tel/Mobile No.</label>
+                                <input class="form-control" placeholder="Enter Tel/Mobile No." type="tel" name="Phone">
+                            </div>
+							
+							 <div class="form-group">
+                                <label>Upload Images</label>
+                                <input class="form-control" type="file" name="propertyImages[]" multiple>
+                            </div>
+
+							<div class="form-group">
+                                <label>Map Location</label>
+                                <textarea class="form-control" name="location_map" placeholder="Enter location string for Google map"></textarea>
+                            </div>
+							
+							<div class="form-group">
+                                <label>Description</label>
+                                <textarea class="form-control" name="description" placeholder="Enter property description (This will appear on website)"></textarea>
+                            </div>
+							
+							<div class="form-group">
+                                <label>Accommodation Type</label>
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="AccomodationType[]" value="1 BHK" checked>1 BHK
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="AccomodationType[]" value="2 BHK">2 BHK
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="AccomodationType[]" value="3 BHK">3 BHK
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Bedrooms</label>
+								<input class="form-control" placeholder="Enter bedrooms" type="text" name="Bedrooms">
+                            </div>
+							
+							<div class="form-group">
+                                <label>Bathrooms</label>
+								<input class="form-control" placeholder="Enter Bathrooms" type="text" name="Bathrooms">
+                            </div>
+							
+							<div class="form-group">
+                                <label>Pool</label>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="Pool" id="optionsRadios1" value="Yes">Yes
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="Pool" id="optionsRadios2" value="No">No
+                                    </label>
+                                </div>
+							</div>
+							
+							<div class="form-group">
+                                <label>Meals</label>
+								<input class="form-control" placeholder="Enter Meals" type="text" name="Meals">
+                            </div>
+							
+							<div class="form-group">
+                                <label>EntertainMent</label>
+								<input class="form-control" placeholder="Enter EntertainMent" type="text" name="EntertainMent">
+                            </div>
+							
+							<div class="form-group">
+                                <label>OtherAmenities</label>
+								<input class="form-control" placeholder="Enter other amenities" type="text" name="OtherAmenities">
+                            </div>
+							
+							<div class="form-group">
+                                <label>Theme</label>
+								<input class="form-control" placeholder="Enter theme" type="text" name="Theme">
+                            </div>
+							
+							<div class="form-group">
+                                <label>Attractions</label>
+								<input class="form-control" placeholder="Enter attractions" type="text" name="Attractions">
+                            </div>
+							
+							<div class="form-group">
+                                <label>Leisure Activities</label>
+								<input class="form-control" placeholder="Enter leisure activities" type="text" name="LeisureActivities">
+                            </div>
+							
+							<div class="form-group">
+                                <label>General</label>
+								<input class="form-control" placeholder="Enter general info" type="text" name="General">
+                            </div>
+							
+                            <button type="submit" class="btn btn-success">Save and Continue</button>
+                            
+                        </form>
+						</div>
+
+                    </div>
+                    <!--<div class="col-lg-6">
+                        <h1>Disabled Form States</h1>
+
+                        <form role="form">
+
+                            <fieldset disabled>
+
+                                <div class="form-group">
+                                    <label for="disabledSelect">Disabled input</label>
+                                    <input class="form-control" id="disabledInput" type="text" placeholder="Disabled input" disabled>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="disabledSelect">Disabled select menu</label>
+                                    <select id="disabledSelect" class="form-control">
+                                        <option>Disabled select</option>
+                                    </select>
+                                </div>
+
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox">Disabled Checkbox
+                                    </label>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">Disabled Button</button>
+
+                            </fieldset>
+
+                        </form>
+
+                        <h1>Form Validation</h1>
+
+                        <form role="form">
+
+                            <div class="form-group has-success">
+                                <label class="control-label" for="inputSuccess">Input with success</label>
+                                <input type="text" class="form-control" id="inputSuccess">
+                            </div>
+
+                            <div class="form-group has-warning">
+                                <label class="control-label" for="inputWarning">Input with warning</label>
+                                <input type="text" class="form-control" id="inputWarning">
+                            </div>
+
+                            <div class="form-group has-error">
+                                <label class="control-label" for="inputError">Input with error</label>
+                                <input type="text" class="form-control" id="inputError">
+                            </div>
+
+                        </form>
+
+                        <h1>Input Groups</h1>
+
+                        <form role="form">
+
+                            <div class="form-group input-group">
+                                <span class="input-group-addon">@</span>
+                                <input type="text" class="form-control" placeholder="Username">
+                            </div>
+
+                            <div class="form-group input-group">
+                                <input type="text" class="form-control">
+                                <span class="input-group-addon">.00</span>
+                            </div>
+
+                            <div class="form-group input-group">
+                                <span class="input-group-addon"><i class="fa fa-eur"></i></span>
+                                <input type="text" class="form-control" placeholder="Font Awesome Icon">
+                            </div>
+
+                            <div class="form-group input-group">
+                                <span class="input-group-addon">$</span>
+                                <input type="text" class="form-control">
+                                <span class="input-group-addon">.00</span>
+                            </div>
+
+                            <div class="form-group input-group">
+                                <input type="text" class="form-control">
+                                <span class="input-group-btn"><button class="btn btn-default" type="button"><i class="fa fa-search"></i></button></span>
+                            </div>
+
+                        </form>
+
+                        <p>For complete documentation, please visit <a href="http://getbootstrap.com/css/#forms">Bootstrap's Form Documentation</a>.</p>
+
+                    </div>-->
+                </div>
+                <!-- /.row -->
+
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/angular.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+	/*var app = angular.module('propertyApp', []);
+	app.controller('addProperty', function($scope, $http) 
+	{
+		$scope.formData = {};
+		$scope.processForm = function()
+		{
+			$http.post("http://localhost:8081/propertybooking/Admin/Controller/AddProperty.php",$scope.formData)
+			.then(function (response)
+			{
+				alert("success..!!!");
+				//$scope.names = response.data.roomavAilableInfo;
+			});
+			//alert(JSON.stringify($scope.formData));
+		}
+	});*/
+	
+	</script>
+</body>
+
+</html>
