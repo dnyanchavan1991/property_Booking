@@ -1,3 +1,4 @@
+
 <?php
 class AccomodationType extends CI_Controller {
 	public function __construct() {
@@ -11,8 +12,9 @@ class AccomodationType extends CI_Controller {
 		}
 		public function getAccomodationType(){
 			$this->load->model ( 'PropertyModel' );
-			$propertyId=$$this->session->userdata ( 'propertyId' );
+			$propertyId=$this->session->userdata ( 'propertyId' );
 			$accomodationTypeList = $this->PropertyModel->getAccomodationType ( $propertyId );
-			
+			echo json_encode($accomodationTypeList);
 		}
 	}
+	
