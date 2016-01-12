@@ -50,10 +50,10 @@ class PropertyModel extends CI_Model {
 		$roomTable = 'room';
 		$accomodationTable = 'accomodationtype';
 		$this->load->database ();
-		$this->db->select ( 'distinct(roomAccomodationTypeId),acc.accomodationTypeName' );
+		$this->db->select ( 'distinct(room.AccomodationTypeId),acc.accomodationTypeName' );
 		$this->db->from ( "$roomTable room" );
 		$this->db->join ( "$accomodationTable acc", "acc.AccomodationTypeId=room.AccomodationTypeId" );
-		$query = $this->db->get_where ( 'property' ,array('PropertyId' =>$propertyId));
-		return $query;
+		$query = $this->db->get_where ( 'property' ,array('room.PropertyId' =>$propertyId));
+		return $query->result();
 	}
 }
