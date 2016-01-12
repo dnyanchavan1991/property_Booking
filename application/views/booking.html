@@ -10,8 +10,12 @@
 	content="Classic Hotel Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript">
+	
+	
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } 
+
+
 </script>
 <!-- //for-mobile-apps -->
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css"
@@ -43,7 +47,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </script>
 <!-- start-smoth-scrolling -->
 </head>
-<body ng-app="propertyBookingApp" ng-controller="bookingController1">
+<body ng-app="propertyBookingApp" ng-controller="bookingController">
 	<!-- banner -->
 	<div class="banner page-head">
 		<div class="container">
@@ -110,24 +114,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</ul>
 				</div>
 				<div class="col-md-9 reservation-right">
-					<form>
+					<form  method="post" action="RoomAvailability">
 						<h4>How many members?</h4>
-						<div class="dropdown-button" ng-init="getAccomodationType()">
-							<select class="dropdown" tabindex="10"
-								data-settings='{"wrapperClass":"flat"}'
-								>
-								<option ng-repeat="c in names">{{c.name}}</option>
-
-							</select>
-						</div>
+						<div class="dropdown-button"></div>
 						<h4>Rooms</h4>
 						<div class="dropdown-button">
-							<select class="dropdown" tabindex="10"
-								data-settings='{"wrapperClass":"flat"}'>
-								<option value="1">Single Room</option>
-								<option value="2">Double Room</option>
-								<option value="3">Suite</option>
-								<option value="4">Special Deluxe Room</option>
+							<select class="dropdown" ng-model="drpdpwnvalue">
+								<option value="select">select</option>
+								<option ng:repeat="AccomodationType in names"
+									value="{{AccomodationType.AccomodationTypeId}}">{{AccomodationType.accomodationTypeName}}</option>
+
 							</select>
 						</div>
 						<h4>When would you like to come?</h4>
