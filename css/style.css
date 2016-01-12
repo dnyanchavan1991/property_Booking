@@ -1,9 +1,4 @@
-/*--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
---*/
+
 html, body{
 	margin:0;
 	font-size: 100%;
@@ -519,7 +514,7 @@ background:#000;
 /*-- drop-down --*/
 .droop{
 float:left;
-width:55%;
+width:25%;
 }
 .radio-btns {
   float: left;
@@ -2280,7 +2275,7 @@ font-weight:bold;
 /*-- responsive media queries --*/
 @media (max-width: 1024px){
 	.logo a {
-	  font-size: 36px;
+	  font-size: 30px;
 	  }
 	.header-nav .glyphicon-home {
 	  font-size: 25px;
