@@ -1,5 +1,5 @@
 <?php
-// snehal's comment
+
 /*
  * CodeIgniter
  *
