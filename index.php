@@ -1,14 +1,5 @@
 <?php
-<<<<<<< .mine
-// This is Snehal's comment
-/* *
-||||||| .r8
-/**
-=======
-
-
-/**
->>>>>>> .r9
+/*
  * CodeIgniter
  *
  * An open source application development framework for PHP
