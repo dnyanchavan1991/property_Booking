@@ -13,13 +13,14 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
+	<link rel="stylesheet" href="css/bootstrapValidator.css"/>
     <!-- Custom CSS -->
     <link href="css/sb-admin.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
+	<link rel="stylesheet" href="css/jquery-ui.min.css" />
+	<link rel="stylesheet" href="css/jquery-ui.theme.min.css" />
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -218,32 +219,52 @@
 								<center class="breadcrumb"><strong>--- Property Owner Info ---</strong></center>
 							</div>
 						</div>
-                        <form role="form">
+                        <form role="form" id="form_id" class="form-horizontal" data-bv-feedbackicons-valid="glyphicon glyphicon-ok"
+							data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
+							data-bv-feedbackicons-validating="glyphicon glyphicon-refresh"
+							method="post" action="Controller/AddPropertyOwnerInfo.php">
 
                             <div class="form-group">
-                                <label>Name</label>
-                                <input class="form-control" type="text" name="name" placeholder="Enter name">
-                                <p class="help-block"></p>
+                                <label class="control-label col-md-3" for="name">Name</label>
+								<div class="col-md-9">
+									<input class="form-control" type="text" name="name" placeholder="Enter name"
+									pattern="^[a-zA-Z ]*$" data-bv-trigger="blur" data-bv-regexp-message="The name is not valid"
+									required data-bv-notempty-message="The owner name is required">
+									<p class="help-block"></p>
+								</div>
                             </div>
 
                             <div class="form-group">
-                                <label>Email</label>
-                                <input class="form-control" placeholder="Enter email" type="email" name="email">
+                                <label class="control-label col-md-3" for="email">Email</label>
+                                <div class="col-md-9">
+									<input class="form-control" placeholder="Enter email" type="email" name="email"
+									required data-bv-notempty-message="The email address is required" >
+								</div>
                             </div>
 
                             <div class="form-group">
-                                <label>Address</label>
-								<textarea class="form-control" placeholder="Enter address" name="City"></textarea>
+                                <label class="control-label col-md-3" for="address">Address</label>
+								<div class="col-md-9">
+									<textarea class="form-control" placeholder="Enter address" name="address"
+									required data-bv-notempty-message="The address is required" ></textarea>
+								</div>
                             </div>
 
 							<div class="form-group">
-                                <label>Registration Date</label>
-								<input class="form-control" placeholder="Enter registration date" type="text" name="registred_date">
+                                <label class="control-label col-md-3" for="registred_date">Registration Date</label>
+								<div class="col-md-9">
+									<input class="form-control" id="Dateid" placeholder="Enter registration date" type="text" name="registred_date" 
+									readonly>
+								</div>
                             </div>
 
                             <div class="form-group">
-                                <label>Tel/Mobile No.</label>
-                                <input class="form-control" placeholder="Enter Tel/Mobile No." type="tel" name="phone">
+                                <label class="control-label col-md-3" for="phone">Tel/Mobile No.</label>
+                                <div class="col-md-9">
+									<input class="form-control" placeholder="Enter Tel/Mobile No." type="text" name="phone"
+									pattern="^[0-9]{10,12}" data-bv-trigger="blur" data-bv-regexp-message="The phone number is not valid" 
+									 value="" data-bv-notempty="true" data-bv-notempty-message="The phone number is required">
+								</div>
                             </div>
 
 							<!--<div class="form-group">
@@ -331,9 +352,11 @@
                                     <option>5</option>
                                 </select>
                             </div>-->
-
-                            <button type="submit" class="btn btn-success">Save</button>
-                            
+							<div class="form-group">
+								<div class="col-md-12 col-md-offset-3">
+									<button type="submit" class="btn btn-success">Save</button>
+								</div>
+                            </div>
                         </form>
 
                     </div>
@@ -438,10 +461,32 @@
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
-
+	<script type="text/javascript" src="js/jquery-ui.min.js"></script>
     <!-- Bootstrap Core JavaScript -->
+	<script type="text/javascript" src="js/bootstrapValidator.js"></script>
     <script src="js/bootstrap.min.js"></script>
-
+	<script type="text/javascript">
+	$(document).ready(function () 
+	{
+        var currentDate = new Date();
+		var day = currentDate.getDate();
+		var month = currentDate.getMonth() + 1;
+		var year = currentDate.getFullYear();
+		currentDate = day+'/'+month+'/'+year;
+		$('#Dateid').val(currentDate);
+		$('#Dateid').datepicker
+		({
+			dateFormat: 'dd/mm/yy',
+			changeMonth: true,
+			changeYear: true,
+			yearRange: '1900:2150',
+			maxDate: new Date(),
+			inline: true
+		});  
+        
+		$('#form_id').bootstrapValidator();
+    });
+	</script>
 </body>
 
 </html>

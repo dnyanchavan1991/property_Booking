@@ -1,15 +1,15 @@
 <?php
 include_once("SQL/SQLFile.php");
 include_once("SQL/DbConnection.php");
-//echo "reached";
-//echo $postdata = file_get_contents("php://input");
-$PropertyName = $con->real_escape_string($_POST['PropertyName']);
-$Street = $con->real_escape_string($_POST['Street']);
-$City = $con->real_escape_string($_POST['City']);
-$State = $con->real_escape_string($_POST['State']);
-$PostalCode = $con->real_escape_string($_POST['PostalCode']);
-$Phone = $con->real_escape_string($_POST['Phone']);
-//$propertyImages = $_POST['propertyImages'];
+/*--retrieve values--*/
+$PropertyName = $_POST['PropertyName'];
+$Street = $_POST['Street'];
+$City = $_POST['City'];
+$State = $_POST['State'];
+$PostalCode = $_POST['PostalCode'];
+$Phone = $_POST['Phone'];
+$StarRate = $_POST['StarRate'];
+$fdata_mainImg=$_FILES['mainImage'];
 $fdata=$_FILES['propertyImages'];
 if(is_array($fdata['name']))
 {
@@ -17,36 +17,32 @@ if(is_array($fdata['name']))
 	$temp="";
 	$path = "../Property gallery/$PropertyName/";
 	mkdir($path);
+	/*--upload main img--*/
+	$exetention = explode(".", $fdata_mainImg["name"]);
+	$mainImg = "mainImage.".end($exetention);
+	move_uploaded_file($fdata_mainImg["tmp_name"], $path.$mainImg);
+	/*--upload gallery imgs--*/
 	for($i=0 ; $i<count($fdata['name']) ; $i++)
 	{
 		$temp = $fdata['tmp_name'][$i];
 		$files = $fdata['name'][$i];
 		move_uploaded_file($temp,$path.$files);
 	}
-	//echo $files;
 }
-$path = $con->real_escape_string($path);
-$location_map = $con->real_escape_string($_POST['location_map']);
-$description = $con->real_escape_string($_POST['description']);
-//$AccomodationType = $_POST['AccomodationType'];
-$accomodationType ="";
-foreach($_POST['AccomodationType'] as $check)
-{
-    $accomodationType.=$check.",";
-}
-$accomodationType = trim($accomodationType,",");
+$path = "Admin/Property gallery/$PropertyName/";
+$location_map = $_POST['location_map'];
+$description = $_POST['description'];
+$Bedrooms = $_POST['Bedrooms'];
+$Bathrooms = $_POST['Bathrooms'];
+$Pool = $_POST['Pool'];
+$Meals = $_POST['Meals'];
+$EntertainMent = $_POST['EntertainMent'];
+$OtherAmenities = $_POST['OtherAmenities'];
+$Theme = $_POST['Theme'];
+$Attractions = $_POST['Attractions'];
+$LeisureActivities = $_POST['LeisureActivities'];
+$General = $_POST['General'];
 
-$Bedrooms = $con->real_escape_string($_POST['Bedrooms']);
-$Bathrooms = $con->real_escape_string($_POST['Bathrooms']);
-$Pool = $con->real_escape_string($_POST['Pool']);
-$Meals = $con->real_escape_string($_POST['Meals']);
-$EntertainMent = $con->real_escape_string($_POST['EntertainMent']);
-$OtherAmenities = $con->real_escape_string($_POST['OtherAmenities']);
-$Theme = $con->real_escape_string($_POST['Theme']);
-$Attractions = $con->real_escape_string($_POST['Attractions']);
-$LeisureActivities = $con->real_escape_string($_POST['LeisureActivities']);
-$General = $con->real_escape_string($_POST['General']);
-//$lastPropertyId = insertProperty($postdata);
 $postdata = array(
 					'PropertyName' => $PropertyName,
 					'Street' => $Street,
@@ -54,10 +50,10 @@ $postdata = array(
 					'State' => $State,
 					'PostalCode' => $PostalCode,
 					'Phone' => $Phone,
+					'StarRate' => $StarRate,
 					'propertyImages' => $path,
 					'location_map' => $location_map,
 					'description' => $description,
-					'AccomodationType' => $accomodationType,
 					'Bedrooms' => $Bedrooms,
 					'Bathrooms' => $Bathrooms,
 					'Pool' => $Pool,
@@ -67,8 +63,12 @@ $postdata = array(
 					'Theme' => $Theme,
 					'Attractions' => $Attractions,
 					'LeisureActivities' => $LeisureActivities,
-					'General' => $General,
+					'General' => $General
 				);
 $postdata = json_encode($postdata);
+/*--call to insert function--*/
 $lastPropertyId = insertProperty($postdata,$con);
+$con->close();
+echo "<script>alert('Property added successfully')</script>";
+echo "<meta http-equiv='refresh' content='0;url=AddPropertyOwnerInfo.html'>";
 ?>
