@@ -5,7 +5,8 @@ include_once("SQL/DbConnection.php");
 $PropertyOwnerName = $_POST['name'];
 $PropertyOwnerEmail = $_POST['email'];
 $PropertyOwnerAddress = $_POST['address'];
-$PropertyOwnerRegistred_date = date("Y-m-d h:ia", strtotime($_POST['registred_date']));
+$input_date = str_replace('/', '-', $_POST['registred_date']);
+$PropertyOwnerRegistred_date = date("Y-m-d", strtotime($input_date));
 $PropertyOwnerPhone = $_POST['phone'];
 
 $data = array(

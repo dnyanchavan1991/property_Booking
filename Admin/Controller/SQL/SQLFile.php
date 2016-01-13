@@ -125,7 +125,7 @@ function propertyList($con)
 			$city = $city;
 			$ownerName = $owner_name;
 			$ownerPhone = $owner_phone;
-			$propertyRegistrationDate = date("d/m/Y h:i A", strtotime($reg_date));
+			$propertyRegistrationDate = date("d/m/Y", strtotime($reg_date));
 			$posts = array('PropertyId'=> $PropertyId, 'PropertyName'=> $PropertyName, 'city'=> $city, 'ownerName'=> $ownerName, 'ownerPhone'=> $ownerPhone, 'propertyRegistrationDate'=> $propertyRegistrationDate); 
 			array_push($response,$posts);
 		}
