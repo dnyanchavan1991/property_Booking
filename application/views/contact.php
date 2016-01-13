@@ -82,12 +82,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="banner page-head">
 		<div class="container">
 			<div class="header-nav">
-				<div class="logo">
-					<h1>
-						<a href="index.html"><span class="glyphicon glyphicon-home"
-							aria-hidden="true"></span>Classic Hotel</a>
-					</h1>
-				</div>
+				
 				<div class="navigation">
 					<span class="menu"><img src="images/menu.png" alt="" /></span>
 					<nav class="cl-effect-11" id="cl-effect-11">
@@ -96,8 +91,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<li><a href="about.html" data-hover="ABOUT">ABOUT</a></li>
 							<li><a href="typography.html" data-hover="SERVICES">SERVICES</a></li>
 							<li><a href="booking.html" data-hover="BOOKING">BOOKING</a></li>
-							<li><a class="active" href="contact.html"
-								data-hover="CONTACT">CONTACT</a></li>
+							<li><a class="active" href="contact.html" data-hover="CONTACT">CONTACT</a></li>
+							<li><a href="login.html" data-hover="LOGIN">LOGIN</a></li>
 						</ul>
 					</nav>
 					<!-- script for menu -->
@@ -325,8 +320,8 @@ echo'</li>';
 	<div class="copy-right">
 		<div class="container">
 			<p>
-				&copy; 2015 Classic Hotel. All Rights Reserved | Design by <a
-					href="http://w3layouts.com/"> W3layouts</a>
+				&copy; 2015 All Rights Reserved | Design by <a
+					href="http://www.agilesoftsol.com/">Agile Technologies</a>
 			</p>
 		</div>
 	</div>
