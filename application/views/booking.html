@@ -33,7 +33,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="text/javascript" src="js/easing.js"></script>
 <script type="text/javascript" src="js/angular.min.js"></script>
 
-<script type="text/javascript" src="js/controller/bookingController.js"></script>
+<script type="text/javascript" src="js/controller/accomodationController.js"></script>
 
 <script type="text/javascript">
 	jQuery(document).ready(function($) {
@@ -47,12 +47,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </script>
 <!-- start-smoth-scrolling -->
 </head>
-<body ng-app="propertyBookingApp" ng-controller="bookingController">
+<body ng-app="accomodationApp" >
 	<!-- banner -->
 	<div class="banner page-head">
 		<div class="container">
 			<div class="header-nav">
-				
+				<div class="logo">
+					<h1>
+						<a href="index.html"><span class="glyphicon glyphicon-home"
+							aria-hidden="true"></span>Classic Hotel</a>
+					</h1>
+				</div>
 				<div class="navigation">
 					<span class="menu"><img src="images/menu.png" alt="" /></span>
 					<nav class="cl-effect-11" id="cl-effect-11">
@@ -109,11 +114,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</ul>
 				</div>
 				<div class="col-md-9 reservation-right">
-					<form  method="post" action="RoomAvailability">
+					<form  name="formData"  ng-controller="roomAvailabilityController" ng-submit="getRoomAvalabilityCount()">
 						<h4>How many members?</h4>
 						<div class="dropdown-button"></div>
 						<h4>Rooms</h4>
-						<div class="dropdown-button">
+						<div class="dropdown-button"  ng-controller="accomodationController">
 							<select class="dropdown" ng-model="drpdpwnvalue">
 								<option value="select">select</option>
 								<option ng:repeat="AccomodationType in names"
@@ -123,18 +128,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div>
 						<h4>When would you like to come?</h4>
 						<div class="book-pag">
+							
 							<div class="book-pag-frm">
-								<label>Select Date :</label> <input class="date" id="datepicker"
+								<label>Check In :</label> <input class="date" id="checkin" name="checkin" 
 									type="text" value="Date" onfocus="this.value = '';"
 									onblur="if (this.value == '') {this.value = '';}" required="">
 							</div>
 							<div class="book-pag-frm">
-								<label>Check In :</label> <input class="date" id="datepicker1"
-									type="text" value="Date" onfocus="this.value = '';"
-									onblur="if (this.value == '') {this.value = '';}" required="">
-							</div>
-							<div class="book-pag-frm">
-								<label>Check Out:</label> <input class="date" id="datepicker2"
+								<label>Check Out:</label> <input class="date" id="checkout" name="checkout" 
 									type="text" value="Date" onfocus="this.value = '';"
 									onblur="if (this.value == '') {this.value = '';}" required="">
 							</div>
@@ -153,14 +154,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<textarea onfocus="this.value = '' ;"
 							onblur="if (this.value == '') {this.value = 'Message...';}"
 							required=""> Message... </textarea>
-						<button class="btn1 btn-1 btn-1e">RESERVE NOW</button>
+						<button type="submit" "btn1 btn-1 btn-1e">RESERVE NOW</button>
 					</form>
 					<!--strat-date-piker-->
 
 					<script src="js/jquery-ui.js"></script>
 					<script>
 						$(function() {
-							$("#datepicker,#datepicker1,#datepicker2")
+							$("#datepicker,#checkin,#checkout")
 									.datepicker();
 						});
 					</script>
@@ -218,8 +219,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="copy-right">
 		<div class="container">
 			<p>
-				&copy; 2015 All Rights Reserved | Design by <a
-					href="http://www.agilesoftsol.com/">Agile Technologies</a>
+				&copy; 2015 Classic Hotel. All Rights Reserved | Design by <a
+					href="http://w3layouts.com/"> W3layouts</a>
 			</p>
 		</div>
 	</div>
