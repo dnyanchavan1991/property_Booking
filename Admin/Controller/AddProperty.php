@@ -70,5 +70,5 @@ $postdata = json_encode($postdata);
 $lastPropertyId = insertProperty($postdata,$con);
 $con->close();
 echo "<script>alert('Property added successfully')</script>";
-echo "<meta http-equiv='refresh' content='0;url=AddPropertyOwnerInfo.html'>";
+echo "<meta http-equiv='refresh' content='0;url=../AddPropertyOwnerInfo.html'>";
 ?>

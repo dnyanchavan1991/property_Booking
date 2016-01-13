@@ -56,7 +56,7 @@ function insertProperty($postdata ,$con)
 		VALUES (?,?,?,?,?,?,?,?,?,?,?)"))
 	{
 		//echo "prepared stmt";
-		$res1 = $insert2->bind_param("issssssssss" , $newRecordId,$Bedrooms,$Bathrooms,$Pool,$Meals,$EntertainMent,$OtherAmenities,$Theme,$Attractions,$LeisureActivities,$General);
+		$res1 = $insert2->bind_param("issssssssss" , $_SESSION['lastPropertyId'],$Bedrooms,$Bathrooms,$Pool,$Meals,$EntertainMent,$OtherAmenities,$Theme,$Attractions,$LeisureActivities,$General);
 		if(!$res1)
 		{
 			echo "bind error2".htmlspecialchars($insert2->error);
@@ -105,11 +105,12 @@ function addPropertyOwnerInfo($data, $con)
 	{
 		echo "error while inserting new property owner info".$con->error;
 	}
+	$_SESSION['lastPropertyId'] = null;
 }
 /*-- insert property owner info function END --*/
 function propertyList($con)
 {
-	echo "list";
+	//echo "list";
 	$response = array();
 	$posts = array();
 	$query = "select P.PropertyId,P.PropertyName,P.City,PO.name,PO.phone,PO.registred_date FROM property P inner join property_info PI inner join ad_property_owner_info PO ON P.PropertyId = PI.PropertyId AND PI.PropertyId = PO.PropertyId";
@@ -136,5 +137,5 @@ function propertyList($con)
 		echo "error while selecting list of properties".$con->error;
 	}
 }
-session_destroy();
+//session_destroy();
 ?>
