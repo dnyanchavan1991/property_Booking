@@ -25,27 +25,21 @@ class RoomAvailability extends CI_Controller {
 	public function checkRoomAvailabilty() {
 		$this->load->model ( 'PropertyModel' );
 		
-		/*
-		 * $checkin = $request->checkin;
-		 * $checkin = str_replace ( '/', '-', $checkin );
-		 * $checkout = $request->checkout;
-		 * $checkout = str_replace ( '/', '-', $checkout );
-		 * $MysqlCheckin = date ( 'Y-m-d', strtotime ( $checkin ) );
-		 * $MysqlCheckout = date ( 'Y-m-d', strtotime ( $checkout ) );
-		 */
+	
 		$roomAvailableInfo = $this->PropertyModel->checkRoomAvailabilty ( $this->session->userdata ( 'checkIn' ), $this->session->userdata ( 'checkOut' ) );
-		/*
-		 * while ( $row = mysql_fetch_array ( $roomAvailableInfo, MYSQL_ASSOC ) ) {
-		 * if (! isset ( $propertyInfo [$row ['propertyId']] ['AccomodationTypeName'] )) {
-		 * $propertyInfo [$row ['propertyId']] ['AccomodationTypeName'] = array ();
-		 * }
-		 * $propertyInfo [$row ['propertyId']] ['AccomodationTypeName'] [] = $row ['AccomodationTypeName'];
-		 * $propertyInfo [$row ['propertyId']] ['roomidCount'] [] = $row ['roomidCount'];
-		 * $propertyInfo [$row ['propertyId']] ['ImagePath'] = $row ['ImagePath'];
-		 * $propertyInfo [$row ['propertyId']] ['propertyName'] = $row ['propertyName'];
-		 * }
-		 */
-		foreach ( $roomAvailableInfo as $q => $data ) {
+		foreach ( $roomAvailableInfo as $row ) {
+			if (! isset ( $propertyInfo [$row ['propertyId']] ['AccomodationTypeName'] )) {
+				$propertyInfo [$row ['propertyId']] ['AccomodationTypeName'] = array ();
+			}
+			$propertyInfo [$row ['propertyId']] ['AccomodationTypeName'] [] = $row ['AccomodationTypeName'];
+			$propertyInfo [$row ['propertyId']] ['roomidCount'] [] = $row ['roomidCount'];
+			$propertyInfo [$row ['propertyId']] ['ImagePath'] = $row ['ImagePath'];
+			$propertyInfo [$row ['propertyId']] ['propertyName'] = $row ['propertyName'];
+			$propertyInfo [$row ['propertyId']] ['propertyAddress'] = $row ['propertyAddress'];
+			$propertyInfo [$row ['propertyId']] ['basePrice'] = $row ['priceBase'];
+		}
+		
+		foreach ( $propertyInfo as $q => $data ) {
 			$responce ['roomavAilableInfo'] [] = ( object ) array (
 					"propertyId" => $q,
 					"propertyName" => $data ['propertyName'],
