@@ -24,20 +24,9 @@ class PropertyModel extends CI_Model {
 				"room.AccomodationTypeId" 
 		) );
 		$roomAvailableInfo = $this->db->get ();
-		
-		foreach ( $roomAvailableInfo->result_array () as $row ) {
-			if (! isset ( $propertyInfo [$row ['propertyId']] ['AccomodationTypeName'] )) {
-				$propertyInfo [$row ['propertyId']] ['AccomodationTypeName'] = array ();
-			}
-			$propertyInfo [$row ['propertyId']] ['AccomodationTypeName'] [] = $row ['AccomodationTypeName'];
-			$propertyInfo [$row ['propertyId']] ['roomidCount'] [] = $row ['roomidCount'];
-			$propertyInfo [$row ['propertyId']] ['ImagePath'] = $row ['ImagePath'];
-			$propertyInfo [$row ['propertyId']] ['propertyName'] = $row ['propertyName'];
-			$propertyInfo [$row ['propertyId']] ['propertyAddress'] = $row ['propertyAddress'];
-			$propertyInfo [$row ['propertyId']] ['basePrice'] = $row ['priceBase'];
-		}
-		
-		return $propertyInfo;
+		$roomAvailableInfoResult=$roomAvailableInfo->result_array () ;
+	
+		return $roomAvailableInfoResult;
 			
 	}
 	public function getPropertyDetail($propertyId) {
