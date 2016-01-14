@@ -45,4 +45,20 @@ class PropertyModel extends CI_Model {
 		$query = $this->db->get_where ( 'property' ,array('room.PropertyId' =>$propertyId));
 		return $query->result();
 	}
+	public function insertVisitorData ($visitorData){
+		$visitorTable='visitors_info';
+		$this->load->database ();
+		$query=$this->db->insert($visitorTable,$visitorData);
+	}
+	public function getVisitorCount (){
+		$visitorTable='visitors_info';
+		$this->load->database ();
+		$query=$this->db->select ( 'COUNT(*)as count' );
+		$this->db->from ("$visitorTable");
+		$this->db->where('date_visited',date('Y-m-d'));
+		$query=$this->db->get();
+		return $query->row()->count;
+		
+	
+	}
 }
