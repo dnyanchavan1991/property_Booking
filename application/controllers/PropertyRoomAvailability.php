@@ -13,14 +13,25 @@ class PropertyRoomAvailability extends CI_Controller {
 	}
 	public function getRoomAvailabilityCount(){
 		
-			echo 'sd';	
-			$checkin = $_POST ['checkIn'];
+		$postdata = file_get_contents("php://input");
+		$post= json_decode($postdata);
+			$checkin = $post->checkin;
 			$checkin = str_replace ( '/', '-', $checkin );
-			$checkout = $_POST ['checkOut'];
+			$checkout = $post->checkout;
 			$checkout = str_replace ( '/', '-', $checkout );
 			$checkin = date ( 'Y-m-d', strtotime ( $checkin ) );
 			$checkout = date ( 'Y-m-d', strtotime ( $checkout ) );
-			
-		
+			$accomodation=$post->accomodation;
+			$confirmArray=array(
+				'accomodationTypeId'=>$accomodation,
+			'checkin'=>$checkin,
+			'checkout'=>$checkout,
+			'propertyId'=>$this->session->userdata ( 'propertyId' )
+			);
+			$this->load->model('PropertyModel');
+			$availabilityofRoomCount= $this->PropertyModel->getRoomAvailabilityCount( $confirmArray );
+		//echo(	$availabilityofRoomCount);//echo json_encode($availabilityofRoomCount);
+			$response=array('count'=>$availabilityofRoomCount);
+			echo json_encode($response);
 	}
 }
