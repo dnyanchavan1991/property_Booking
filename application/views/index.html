@@ -547,7 +547,41 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- smooth scrolling -->
 	<script type="text/javascript">
 		$(document).ready(function() {
-		/*
+	
+			var response = '';
+			$.ajax({ type: "GET",   
+			         url: "http://ipinfo.io/json",   
+			         async: false,
+			         success : function(text)
+			         { //alert($.parseJSON(text));
+			             response = text;
+			             $.ajax({ type: "post",   
+					         url: "VisitorInfo/insertVisitorData",  
+					         datatype:'json',
+					         data:response,
+					         async: false,
+					         success : function(text)
+					         
+					         { 
+					         }
+					        
+					         });
+					         }
+					
+			});
+			
+			$.ajax({ 
+				type: "post",   
+			    url: "VisitorInfo/getVisitorCount",  
+		         
+		         async: false,
+		         success : function(response)
+		         { alert(response.count);
+		            // response = text;
+		         }
+			});
+			
+			/*
 			var defaults = {
 			containerID: 'toTop', // fading element id
 			containerHoverID: 'toTopHover', // fading element hover id
