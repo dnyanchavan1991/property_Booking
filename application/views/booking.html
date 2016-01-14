@@ -114,12 +114,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</ul>
 				</div>
 				<div class="col-md-9 reservation-right">
-					<form  name="formData"  ng-controller="roomAvailabilityController" ng-submit="getRoomAvalabilityCount()">
+					<form  name="formData"  ng-controller="roomAvailabilityController" ng-submit="getRoomAvalabilityCount()" >
 						<h4>How many members?</h4>
 						<div class="dropdown-button"></div>
 						<h4>Rooms</h4>
 						<div class="dropdown-button"  ng-controller="accomodationController">
-							<select class="dropdown" ng-model="drpdpwnvalue">
+							<select class="dropdown" ng-model="form.accomodation" name="accomodation" id="accomodation">
 								<option value="select">select</option>
 								<option ng:repeat="AccomodationType in names"
 									value="{{AccomodationType.AccomodationTypeId}}">{{AccomodationType.accomodationTypeName}}</option>
@@ -132,10 +132,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="book-pag-frm">
 								<label>Check In :</label> <input class="date" id="checkin" name="checkin" 
 									type="text" value="Date" onfocus="this.value = '';"
-									onblur="if (this.value == '') {this.value = '';}" required="">
+									onblur="if (this.value == '') {this.value = '';}" required="" ng-model='form.checkin'>
 							</div>
 							<div class="book-pag-frm">
-								<label>Check Out:</label> <input class="date" id="checkout" name="checkout" 
+								<label>Check Out:</label> <input class="date" id="checkout" name="checkout" ng-model='form.checkout' 
 									type="text" value="Date" onfocus="this.value = '';"
 									onblur="if (this.value == '') {this.value = '';}" required="">
 							</div>
@@ -154,7 +154,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<textarea onfocus="this.value = '' ;"
 							onblur="if (this.value == '') {this.value = 'Message...';}"
 							required=""> Message... </textarea>
-						<button type="submit" "btn1 btn-1 btn-1e">RESERVE NOW</button>
+						<button type="submit" >RESERVE NOW</button>
 					</form>
 					<!--strat-date-piker-->
 
