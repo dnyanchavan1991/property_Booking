@@ -61,4 +61,35 @@ class PropertyModel extends CI_Model {
 		
 	
 	}
+	public function getRoomAvailabilityCount($confirmArray) {
+		$this->load->database ();
+	
+		$reservationTable = 'reservation';
+		$accomodationTable = 'accomodationtype';
+		$propertyTable = 'property';
+		$roomTable = 'room';
+		$checkIn=$confirmArray['checkin'];
+		$checkOut=$confirmArray['checkout'];
+	
+		$this->db->select ( "COUNT(distinct(room.roomid))as count");
+		$this->db->from ( "$roomTable room" );
+		$this->db->join ( "$reservationTable res", "res.RoomId=room.RoomId", "left" );
+		$this->db->join ( "$propertyTable property", "property.PropertyId=room.PropertyId" );
+		$this->db->join ( "$accomodationTable acc", "acc.AccomodationTypeId=room.AccomodationTypeId" );
+		$this->db->where ( "res.RoomId", NULL );
+		$this->db->where("room.accomodationTypeId",$confirmArray['accomodationTypeId']);
+		$where = "checkout >= '$checkOut' AND checkin >='$checkIn'";
+		$this->db->or_where ( $where );
+		$where = "checkout <= '$checkOut' AND checkout <='$checkOut'";
+		$this->db->or_where ( $where );
+		
+		$this->db->group_by ( array (
+				"property.PropertyId",
+				"room.AccomodationTypeId"
+		) );
+		$availabilityofRoomCount = $this->db->get ();
+		$roomAvailableCount=$availabilityofRoomCount->row()->count;
+		return 	$roomAvailableCount;
+			
+	}
 }
