@@ -1,5 +1,5 @@
 <?php
-//include_once("DbConnection.php");
+include_once("DbConnection.php");
 session_start();
 /*-- insert property info function--*/
 function insertProperty($postdata ,$con)
@@ -136,6 +136,77 @@ function propertyList($con)
 	{
 		echo "error while selecting list of properties".$con->error;
 	}
+}
+
+if($_GET['singleProperty'] == 'id')
+{
+	//echo "query";
+	//echo "id in session".$_SESSION['propertyDetailId']."</br>";
+	$localId = $_SESSION['propertyDetailId'];
+	$sessionID = json_decode($localId,true);
+	$sessionID = 27;
+	//echo "decoded id ".$sessionID;
+	$response = array();
+	$arr = array();
+	$selectProperty = "SELECT P.PropertyName,P.Street,P.City,P.PostalCode,P.Phone,P.StarRate,P.State,P.ImagePath,P.location_map,P.description,
+			PI.Bedrooms,PI.Bathrooms,PI.Pool,PI.Meals,PI.EntertainMent,PI.OtherAmenities,PI.Theme,PI.Attractions,PI.LeisureActivities,PI.General,
+			PO.name,PO.phone,PO.email,PO.address,PO.registred_date 
+			FROM property P inner join property_info PI inner join ad_property_owner_info PO ON P.PropertyId = PI.PropertyId AND PI.PropertyId = PO.PropertyId
+			WHERE P.PropertyId = ?";
+	if($getProperty = $con->prepare($selectProperty))
+	{
+		$bindId = $getProperty->bind_param("i" , $sessionID);
+		if(!$bindId)
+		{
+			echo "bind error".htmlspecialchars($getProperty->error);
+		}
+		else
+		{
+			$getProperty->execute();
+			$getProperty->bind_result($PropertyName,$Street,$City,$PostalCode,$Phone,$StarRate,$State,$ImagePath,$location_map,$description,
+				$Bedrooms,$Bathrooms,$Pool,$Meals,$EntertainMent,$OtherAmenities,$Theme,$Attractions,$LeisureActivities,$General,
+				$name,$ownerPhone,$email,$address,$registred_date);
+			while($getProperty->fetch())
+			{
+				$propertyRegistrationDate = date("d/m/Y", strtotime($registred_date));
+				$arr = array(
+								'PropertyName'=> $PropertyName,
+								'Street'=> $Street,
+								'City'=> $City, 
+								'PostalCode'=> $PostalCode, 
+								'Phone'=> $Phone,
+								'StarRate'=> $StarRate,
+								'State'=> $State,
+								'ImagePath'=> $ImagePath,
+								'location_map'=> $location_map,
+								'description'=> $description,
+								'Bedrooms'=> $Bedrooms,
+								'Bathrooms'=> $Bathrooms,
+								'Pool'=> $Pool,
+								'Meals'=> $Meals,
+								'EntertainMent'=> $EntertainMent,
+								'OtherAmenities'=> $OtherAmenities,
+								'Theme'=> $Theme,
+								'Attractions'=> $Attractions,
+								'LeisureActivities'=> $LeisureActivities,
+								'General'=> $General,
+								'name'=> $name,
+								'ownerPhone'=> $ownerPhone,
+								'email'=> $email,
+								'address'=> $address,
+								'propertyRegistrationDate'=> $propertyRegistrationDate
+							); 
+				array_push($response,$arr);
+			}
+			echo json_encode($response);
+		}
+		$getProperty->close();
+	}
+	else
+	{
+		echo "error while selecting a properties".$con->error;
+	}
+	$_SESSION['propertyDetailId'] = null;
 }
 //session_destroy();
 ?>
