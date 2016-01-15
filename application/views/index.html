@@ -1,6 +1,4 @@
-</-+
--+
-D014141OCTYPE html>
+ 
 <html>
 <head>
 <title>Classic Hotel a Hotel Category Flat Bootstrap Responsive Website Template | Home :: w3layouts</title>
@@ -29,6 +27,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!-- start-smoth-scrolling -->
 		<script type="text/javascript" src="js/move-top.js"></script>
 		<script type="text/javascript" src="js/easing.js"></script>
+		<script type="text/javascript" src="js/angular.min.js"></script>
+		<script type="text/javascript" src="js/controller/landingPageController.js"></script>
 		<script type="text/javascript">
 			jQuery(document).ready(function($) {
 				
@@ -40,7 +40,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</script>
 	<!-- start-smoth-scrolling -->
 </head>
-<body>
+<body ng-app="landingPageApp" ng-controller="landingPageCntrl">
 <!-- banner -->
 <div class="banner">
 	<div class="container">
@@ -104,7 +104,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										});
 										});
 			</script>
-			<div  id="top" class="callbacks_container">
+		<div  id="top" class="callbacks_container">
 				<ul class="rslides" id="slider3">
 					<li>
 						<div class="banner-text">
@@ -132,26 +132,32 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="droop-down">
 			 	<div class="droop">
 					<div class="sort-by">
-						<select class="sel">
-							<option value="Select">CHOOSE ACCOMODATION</option>
-							<option value="">BUNGLOW</option>
-							<option value="">ROW HOUSE</option>
-							<option value="">APARTMENT</option>
-							<option value="">VILLA</option>    
+						<select class="sel" ng-model="selectAccomodationType" 
+							ng-init="selectAccomodationType=accomodationType[0]" 
+							ng-options="option as option for option in accomodationType | orderBy:option">
+													    
 						</select>
 					</div>
 				</div></div>
 				
 				
-				<div class="book-pag-frm">
-								<label>Check In :</label>
-								<input class="date" name="checkIn" id="checkIn" type="text" value="Date" style="width:60%;"onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required="">
+							<div class="book-pag-frm">
+								<!-- <label>Check In :</label> -->
+								<input class="date" name="checkIn" id="checkIn" ng-model="checkInDate" ng-init="checkInDate= 'CheckIn Date'" type="text"  style="width:60%;"onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required >
 							</div>
 							<div class="book-pag-frm">
-								<label>Check Out:</label>
-								<input class="date" name="checkOut"  id="checkOut" type="text" value="Date" style="width:60%;" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required="">
+							<!-- 	<label>Check Out:</label> -->
+								<input class="date" name="checkOut"  id="checkOut" type="text" ng-model="checkOutDate" ng-init="checkOutDate= 'CheckOut Date'" style="width:60%;" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required="">
 							</div>
-							
+					<div class="book-pag-frm">
+							<select class="sel" ng-model="selectGuestHeadCount" 
+								ng-init="selectGuestHeadCount=guestHeadCount[0] " 
+								ng-options="option as option for option in guestHeadCount "
+								
+								>
+													    
+						</select>
+					</div>	
 						<div class="search">
 						
 							<input type="submit"  name="submit" value="search">
@@ -180,9 +186,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div>
 					</div>
 					<div class="services-bottom-grd-right">
-						<h4>dolorem eum fugia</h4>
-						<p>To take a trivial example, which of us ever undertakes laborious 
-						physical exercise, except to obtain.</p>
+						<h4>Quick Property Search</h4>
+						<p>Provide your travel destination, tentative travel dates and total travelers...sit back.... and choose from 
+						our best deals for you</p>
 					</div>
 					<div class="clearfix"> </div>
 				</div>
@@ -195,9 +201,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div>
 					</div>
 					<div class="services-bottom-grd-right">
-						<h4>dolorem eum fugia</h4>
-						<p>To take a trivial example, which of us ever undertakes laborious 
-						physical exercise, except to obtain.</p>
+						<h4>Notification</h4>
+						<p>On every property enquiry and booking, we keep both Customer and Property owner informed with
+						real time SMS feature. An Email is always accompanied by the SMS.</p>
 					</div>
 					<div class="clearfix"> </div>
 				</div>
@@ -210,9 +216,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div>
 					</div>
 					<div class="services-bottom-grd-right">
-						<h4>dolorem eum fugia</h4>
-						<p>To take a trivial example, which of us ever undertakes laborious 
-						physical exercise, except to obtain.</p>
+						<h4>Secured Payment</h4>
+						<p>We are 100% secure when it is related to payment. We have tied up with the best payment gateway, <a href="http://www.payumoney.com">payUMoney.com</a> 
+						</p>
 					</div>
 					<div class="clearfix"> </div>
 				</div>
@@ -225,9 +231,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div>
 					</div>
 					<div class="services-bottom-grd-right">
-						<h4>dolorem eum fugia</h4>
-						<p>To take a trivial example, which of us ever undertakes laborious 
-						physical exercise, except to obtain.</p>
+						<h4>Locate on Google MAP</h4>
+						<p>We provide excellent feature of locating any property on google map, which will give you real feel of the location and distance of the property from the Travel origin place.
+						</p>
 					</div>
 					<div class="clearfix"> </div>
 				</div>
@@ -240,110 +246,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div>
 					</div>
 					<div class="services-bottom-grd-right">
-						<h4>dolorem eum fugia</h4>
-						<p>To take a trivial example, which of us ever undertakes laborious 
-						physical exercise, except to obtain.</p>
+						<h4>Reviews</h4>
+						<p>We trust on "Self Experience is the Best Experience".... <br/>Visit properties and provide your reviews to help future travelers book their properties conveniently.</p>
 					</div>
 					<div class="clearfix"> </div>
 				</div>
-				<div class="col-md-4 services-bottom-grid">
-					<div class="services-bottom-grd-left wel-grid btm-gre">
-						<div class="time-service">
-							<figure class="icon">
-								<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
-							</figure>
-						</div>
-					</div>
-					<div class="services-bottom-grd-right">
-						<h4>dolorem eum fugia</h4>
-						<p>To take a trivial example, which of us ever undertakes laborious 
-						physical exercise, except to obtain.</p>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
+				 
 				<div class="clearfix"> </div>
 		</div>
 	</div>
 </div>
-<!-- //services -->
-<!-- banner-pos -->
-<!--<div class="banner-pos">
-	<div class="container">
-		<div class="banner-pos-grids">
-			<div class="ban-pos-gridone">
-				<h3>Featured Hotel</h3>
-				<div class="ban-pos-info l-grids">
-					<figure class="effect-bubba">
-							<img src="images/4.jpg" alt=""/>
-							<figcaption>
-								<h4>CLASSIC HOTEL</h4>
-								<p>In officiis debitis aut rerum tincidunt labore dolore magna</p>																
-							</figcaption>			
-					</figure>
-				</div>
-			</div>
-			<div class="ban-pos-gridtwo l-grids">
-				<div class="ban-pos-info l-grids">
-					<figure class="effect-bubba">
-							<img src="images/6.jpg" alt=""/>
-							<figcaption>
-								<h4>CLASSIC HOTEL</h4>
-								<p>In sit amet sapien eros Integerore et dolore magna aliqua. In sit tincidunt magna aliqua rerum tincidunt</p>														
-							</figcaption>			
-					</figure>
-				</div>
-			</div>
-			<div class="ban-pos-gridthree l-grids">
-				<div class="ban-pos-info l-grids">
-					<figure class="effect-bubba">
-							<img src="images/5.jpg" alt=""/>
-							<figcaption>
-								<h4>CLASSIC HOTEL</h4>
-								<p>In sit amet sapien eros Integerore et dolore magna aliqua. In sit tincidunt magna aliqua rerum tincidunt</p>																
-							</figcaption>			
-					</figure>
-				</div>
-			</div>
-			<div class="clearfix"></div>
-		</div>
-	</div>
-</div>
-<!-- //banner-pos -->
--->
-<!-- welcome -->
-<div class="welcome">
-	<div class="container">
-		<h2 class="tittle-one">WELCOME</h2>
-		<div class="welcome-grids">
-			<div class="col-md-4 welcome-left">
-				<ul>
-					<li><a href="#">Lorem Ipsum is not simply random text.</a></li>
-					<li><a href="#">There are many variations of passages.</a></li>
-					<li><a href="#">The standard chunk of Lorem Ipsum.</a></li>
-				</ul>
-			</div>
-			<div class="col-md-4 welcome-middle">
-				<ul>
-					<li><a href="#">Lorem Ipsum is not simply random text.</a></li>
-					<li><a href="#">There are many variations of passages.</a></li>
-					<li><a href="#">The standard chunk of Lorem Ipsum.</a></li>
-				</ul>
-			</div>
-			<div class="col-md-4 welcome-right">
-				<ul>
-					<li><a href="#">Lorem Ipsum is not simply random text.</a></li>
-					<li><a href="#">There are many variations of passages.</a></li>
-					<li><a href="#">The standard chunk of Lorem Ipsum.</a></li>
-				</ul>
-			</div>
-			<div class="clearfix"></div>
-		</div>
-		<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium 
-		doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore 
-		veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-	</div>
-</div>
-<!-- //welcome -->
+  
 <!-- facilities -->
 <div class="facilities">
 	<div class="container">
@@ -507,18 +420,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="col-md-3 ftr_navi ftr">
 					 <h3>FACILITIES</h3>
 					 <ul>
-						 <li><a href="#">Double bedrooms</a></li>
-						 <li><a href="#">Single bedrooms</a></li>
-						 <li><a href="#">Royal facilities</a></li>						
-						 <li><a href="#">Connected rooms</a></li>
+						 <li><a href="#">Quick Property Search</a></li>
+						 <li><a href="#">Online Payment</a></li>
+						 <li><a href="#">Reviews</a></li>						
+						 <li><a href="#">Google Map</a></li>
 					 </ul>
 			</div>
 			<div class="col-md-3 ftr_navi ftr">
 				<h3>GET IN TOUCH</h3>
 				<ul>
-					<li>Ola-ola street jump,</li>
-					<li>260-14 City, Country</li>
-					<li>+62 000-0000-00</li>
+					<li>Address 1</li>
+					<li>Address 2</li>
+					<li>Contact Number</li>
 				</ul>
 			</div>
 			<div class="col-md-3 ftr-logo">
