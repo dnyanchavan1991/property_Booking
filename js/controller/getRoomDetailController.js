@@ -1,5 +1,5 @@
-var app = angular.module('getRoomDetailApp', []);
-app.controller(
+	angular.module('getRoomDetailApp', [])
+			.controller(
 				'getRoomDetailController',
 				function($scope, $http) {
 				
