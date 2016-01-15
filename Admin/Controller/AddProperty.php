@@ -29,7 +29,7 @@ if(is_array($fdata['name']))
 		move_uploaded_file($temp,$path.$files);
 	}
 }
-$path = "Admin/Property gallery/$PropertyName/";
+$path = "Admin/Property gallery/$PropertyName";
 $location_map = $_POST['location_map'];
 $description = $_POST['description'];
 $Bedrooms = $_POST['Bedrooms'];

@@ -140,12 +140,9 @@ function propertyList($con)
 
 if($_GET['singleProperty'] == 'id')
 {
-	//echo "query";
-	//echo "id in session".$_SESSION['propertyDetailId']."</br>";
 	$localId = $_SESSION['propertyDetailId'];
-	$sessionID = json_decode($localId,true);
-	$sessionID = 27;
-	//echo "decoded id ".$sessionID;
+	$sessionID = json_decode($localId);
+	$sessionID = $sessionID[0]->id;
 	$response = array();
 	$arr = array();
 	$selectProperty = "SELECT P.PropertyName,P.Street,P.City,P.PostalCode,P.Phone,P.StarRate,P.State,P.ImagePath,P.location_map,P.description,
@@ -169,6 +166,15 @@ if($_GET['singleProperty'] == 'id')
 			while($getProperty->fetch())
 			{
 				$propertyRegistrationDate = date("d/m/Y", strtotime($registred_date));
+				$files = "C:/xampp/htdocs/SVN_propertybooking/branches/dev/".$ImagePath."*.{jpeg,png,gif}";
+				$thumbs = glob($files, GLOB_BRACE);
+				$imgArr = array();
+				foreach($thumbs as $thumb)
+				{
+					echo  $thumb;
+					array_push($imgArr,$thumb);
+				}
+				//print_r($imgArr);
 				$arr = array(
 								'PropertyName'=> $PropertyName,
 								'Street'=> $Street,
@@ -177,7 +183,7 @@ if($_GET['singleProperty'] == 'id')
 								'Phone'=> $Phone,
 								'StarRate'=> $StarRate,
 								'State'=> $State,
-								'ImagePath'=> $ImagePath,
+								'ImagePath'=> $imgArr,
 								'location_map'=> $location_map,
 								'description'=> $description,
 								'Bedrooms'=> $Bedrooms,
@@ -206,7 +212,7 @@ if($_GET['singleProperty'] == 'id')
 	{
 		echo "error while selecting a properties".$con->error;
 	}
-	$_SESSION['propertyDetailId'] = null;
+	//$_SESSION['propertyDetailId'] = null;
 }
 //session_destroy();
 ?>

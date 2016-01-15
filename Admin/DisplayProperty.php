@@ -295,18 +295,15 @@ require_once('Controller/SQL/SQLFile.php');
 		
 		$("#viewId").click(function(){
 			json = JSON.stringify(checkedRows);
-			alert("view "+json);
 			$.ajax({
 				type: "post",
 				url:"Controller/SessionStorage.php",
 				dataType: "json",
 				data:{id: json},
 				success: function(d){
-					alert("success");
 					window.location='DisplayPropertyIndetail.html';
 				}
 			});
-			//window.location='DisplayPropertyIndetail.html?id='+json;
 		});
 		$("#editId").click(function(){
 			json = JSON.stringify(checkedRows);

@@ -262,7 +262,7 @@
 					<div class="col-lg-12">
 						<label class="control-label col-md-3" for="PropertyName">Star Rate</label>
 							<div class="col-md-9">
-								Star Rate Star Rate Star Rate Star Rate Star Rate Star Rate
+								{{list.StarRate}}
 							</div>&nbsp;
 					</div>
 				</div>
@@ -271,7 +271,7 @@
 					<div class="col-lg-12">
 						<label class="control-label col-md-3" for="PropertyName">Map Location</label>
 							<div class="col-md-9">
-								Map Location Map Location Map Location Map LocationMap Location
+								{{list.location_map}}
 							</div>&nbsp;
 					</div>
 				</div>
@@ -280,7 +280,7 @@
 					<div class="col-lg-12">
 						<label class="control-label col-md-3" for="PropertyName">Description</label>
 							<div class="col-md-9">
-								Description Description DescriptionDescriptionDescription Description
+								{{list.description}}
 							</div>&nbsp;
 					</div>
 				</div>
@@ -289,7 +289,7 @@
 					<div class="col-lg-12">
 						<label class="control-label col-md-3" for="PropertyName">Bedrooms</label>
 							<div class="col-md-9">
-								Bedrooms Bedrooms Bedrooms Bedrooms Bedrooms Bedrooms
+								{{list.Bedrooms}}
 							</div>&nbsp;
 					</div>
 				</div>
@@ -298,7 +298,7 @@
 					<div class="col-lg-12">
 						<label class="control-label col-md-3" for="PropertyName">Bathrooms</label>
 							<div class="col-md-9">
-								Bathrooms Bathrooms Bathrooms BathroomsBathrooms 
+								{{list.Bathrooms}}
 							</div>&nbsp;
 					</div>
 				</div>
@@ -307,7 +307,7 @@
 					<div class="col-lg-12">
 						<label class="control-label col-md-3" for="PropertyName">Pool</label>
 							<div class="col-md-9">
-								Pool PoolPool Pool Pool PoolPoolPoolPool Pool Pool 
+								{{list.Pool}}
 							</div>&nbsp;
 					</div>
 				</div>
@@ -316,7 +316,7 @@
 					<div class="col-lg-12">
 						<label class="control-label col-md-3" for="PropertyName">Meals</label>
 							<div class="col-md-9">
-								MealsMealsMealsMeals Meals Meals Meals Meals Meals Meals 
+								{{list.Meals}}
 							</div>&nbsp;
 					</div>
 				</div>
@@ -325,7 +325,7 @@
 					<div class="col-lg-12">
 						<label class="control-label col-md-3" for="PropertyName">EntertainMent</label>
 							<div class="col-md-9">
-								EntertainMent EntertainMent EntertainMent EntertainMent EntertainMent
+								{{list.EntertainMent}}
 							</div>&nbsp;
 					</div>
 				</div>
@@ -334,7 +334,7 @@
 					<div class="col-lg-12">
 						<label class="control-label col-md-3" for="PropertyName">OtherAmenities</label>
 							<div class="col-md-9">
-								OtherAmenities OtherAmenities OtherAmenities OtherAmenities OtherAmenities OtherAmenities
+								{{list.OtherAmenities}}
 							</div>&nbsp;
 					</div>
 				</div>
@@ -343,7 +343,7 @@
 					<div class="col-lg-12">
 						<label class="control-label col-md-3" for="PropertyName">Theme</label>
 							<div class="col-md-9">
-								Theme Theme ThemeTheme Theme Theme Theme Theme Theme ThemeTheme
+								{{list.Theme}}
 							</div>&nbsp;
 					</div>
 				</div>
@@ -352,7 +352,7 @@
 					<div class="col-lg-12">
 						<label class="control-label col-md-3" for="PropertyName">Attractions</label>
 							<div class="col-md-9">
-								Attractions Attractions Attractions AttractionsAttractions Attractions Attractions 
+								{{list.Attractions}}
 							</div>&nbsp;
 					</div>
 				</div>
@@ -361,7 +361,7 @@
 					<div class="col-lg-12">
 						<label class="control-label col-md-3" for="PropertyName">Leisure Activities</label>
 							<div class="col-md-9">
-								Leisure Activities Leisure Activities Leisure Activities Leisure Activities Leisure Activities
+								{{list.LeisureActivities}}
 							</div>&nbsp;
 					</div>
 				</div>
@@ -370,7 +370,7 @@
 					<div class="col-lg-12">
 						<label class="control-label col-md-3" for="PropertyName">General</label>
 							<div class="col-md-9">
-								General General General General General 
+								{{list.General}}
 							</div>&nbsp;
 					</div>
 				</div>
@@ -381,8 +381,12 @@
                             <div class="panel-heading">
                                 <h3 class="panel-title"><i class="glyphicon glyphicon-camera"></i> Uploaded Images</h3>
                             </div>
-                            <div class="panel-body">
+                            <div class="panel-body" >
 								<div class="col-md-6">
+								    <img id="subImg" src="Property gallery/agile properties/i2.jpg" class="img-responsive img-rounded" 
+									title="sub image">&nbsp;
+								</div>
+								<!--<div class="col-md-6">
 								    <img id="subImg" src="Property gallery/agile properties/i2.jpg" class="img-responsive img-rounded" 
 									title="sub image">&nbsp;
 								</div>
@@ -393,11 +397,7 @@
 								<div class="col-md-6">
 								    <img id="subImg" src="Property gallery/agile properties/i2.jpg" class="img-responsive img-rounded" 
 									title="sub image">&nbsp;
-								</div>
-								<div class="col-md-6">
-								    <img id="subImg" src="Property gallery/agile properties/i2.jpg" class="img-responsive img-rounded" 
-									title="sub image">&nbsp;
-								</div>
+								</div>-->
                             </div>
                         </div>
                     </div>
@@ -413,7 +413,7 @@
 					<div class="col-lg-12">
 						<label class="control-label col-md-3" for="PropertyName">Name</label>
 							<div class="col-md-9">
-								Pool PoolPool Pool Pool PoolPoolPoolPool Pool Pool 
+								{{list.name}}
 							</div>&nbsp;
 					</div>
 				</div>
@@ -422,7 +422,7 @@
 					<div class="col-lg-12">
 						<label class="control-label col-md-3" for="PropertyName">Email ID</label>
 							<div class="col-md-9">
-								Pool PoolPool Pool Pool PoolPoolPoolPool Pool Pool 
+								{{list.email}}
 							</div>&nbsp;
 					</div>
 				</div>
@@ -431,7 +431,7 @@
 					<div class="col-lg-12">
 						<label class="control-label col-md-3" for="PropertyName">Address</label>
 							<div class="col-md-9">
-								Pool PoolPool Pool Pool PoolPoolPoolPool Pool Pool 
+								{{list.address}}
 							</div>&nbsp;
 					</div>
 				</div>
@@ -440,7 +440,7 @@
 					<div class="col-lg-12">
 						<label class="control-label col-md-3" for="PropertyName">Registration Date</label>
 							<div class="col-md-9">
-								Pool PoolPool Pool Pool PoolPoolPoolPool Pool Pool 
+								{{list.propertyRegistrationDate}}
 							</div>&nbsp;
 					</div>
 				</div>
@@ -449,7 +449,7 @@
 					<div class="col-lg-12">
 						<label class="control-label col-md-3" for="PropertyName">Tel/Mobile No.</label>
 							<div class="col-md-9">
-								Pool PoolPool Pool Pool PoolPoolPoolPool Pool Pool 
+								{{list.ownerPhone}}
 							</div>&nbsp;
 					</div>
 				</div>
@@ -473,16 +473,14 @@
     <script src="js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 	var app = angular.module('propertyIndetail', []);
+	
 	app.controller('displayDetails', function($scope, $http){
-		/*$http.get("http://localhost:8081/angularJs Web service 2/studInfo.php")
-		.then(function (response) {$scope.names = response.data;});*/
-		$http({
+	 	$http({
 			method: 'GET',
 			url:'Controller/SQL/SQLFile.php',
 			params: {singleProperty : 'id'}
 		}).success(function (response){
-			console.log(response);
-			$scope.list = response;
+			$scope.list = response[0];
 		});
 	});
 	</script>
