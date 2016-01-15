@@ -45,22 +45,6 @@ class PropertyModel extends CI_Model {
 		$query = $this->db->get_where ( 'property' ,array('room.PropertyId' =>$propertyId));
 		return $query->result();
 	}
-	public function insertVisitorData ($visitorData){
-		$visitorTable='visitors_info';
-		$this->load->database ();
-		$query=$this->db->insert($visitorTable,$visitorData);
-	}
-	public function getVisitorCount (){
-		$visitorTable='visitors_info';
-		$this->load->database ();
-		$query=$this->db->select ( 'COUNT(*)as count' );
-		$this->db->from ("$visitorTable");
-		$this->db->where('date_visited',date('Y-m-d'));
-		$query=$this->db->get();
-		return $query->row()->count;
-		
-	
-	}
 	public function getRoomAvailabilityCount($confirmArray) {
 		$this->load->database ();
 	
@@ -92,4 +76,22 @@ class PropertyModel extends CI_Model {
 		return 	$roomAvailableCount;
 			
 	}
+	public  function getlastMinDeal(){
+		$currentDate=date('Y-m-d');
+		$this->load->database ();
+		$propertyTable = 'property';
+		$auditRentTable = 'audit_rent';
+		$this->db->select ( "property.propertyName as name,auditRent.description as des,property.imagepath");
+		$this->db->from ( "$propertyTable property" );
+		$this->db->join ( "$auditRentTable auditRent", "auditRent.PropertyId=property.PropertyId" );
+		$where = "start_date<= '$currentDate' AND end_date <='$currentDate'";
+		$this->db->where ($where);
+		$this->db->order_by('id','desc');
+		$query=$this->db->get();
+		$lastMinDealData=$query->result();
+		return  $lastMinDealData;
+		
+		
+	}
+	
 }
