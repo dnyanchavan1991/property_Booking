@@ -76,6 +76,23 @@ class PropertyModel extends CI_Model {
 		return 	$roomAvailableCount;
 			
 	}
+		public function insertVisitorData ($visitorData){
+		$visitorTable='visitors_info';
+		$this->load->database ();
+		$query=$this->db->insert($visitorTable,$visitorData);
+	}
+	public function getVisitorCount (){
+		$visitorTable='visitors_info';
+		$this->load->database ();
+		$query=$this->db->select ( 'COUNT(*)as count' );
+		$this->db->from ("$visitorTable");
+		$this->db->where('date_visited',date('Y-m-d'));
+		$query=$this->db->get();
+		return $query->row()->count;
+	
+	
+	}
+	
 	public  function getlastMinDeal(){
 		$currentDate=date('Y-m-d');
 		$this->load->database ();
@@ -90,8 +107,8 @@ class PropertyModel extends CI_Model {
 		$query=$this->db->get();
 		$lastMinDealData=$query->result();
 		return  $lastMinDealData;
-		
-		
+	
+	
 	}
 	
 }
