@@ -14,8 +14,8 @@ class PropertyModel extends CI_Model {
 		$this->db->join ( "$reservationTable res", "res.RoomId=room.RoomId", "left" );
 		$this->db->join ( "$propertyTable property", "property.PropertyId=room.PropertyId" );
 		$this->db->join ( "$accomodationTable acc", "acc.AccomodationTypeId=room.AccomodationTypeId" );
-		$this->db->where ( "res.RoomId", NULL );
-		$where = "checkout >= '$checkout' AND checkin >='$checkin'";
+		 $this->db->where ( "res.RoomId", NULL );
+		 $where = "checkout >= '$checkout' AND checkin >='$checkin'";
 		$this->db->or_where ( $where );
 		$where = "checkout <= '$checkout' AND checkout <='$checkout'";
 		$this->db->or_where ( $where );
@@ -76,7 +76,8 @@ class PropertyModel extends CI_Model {
 		return 	$roomAvailableCount;
 			
 	}
-		public function insertVisitorData ($visitorData){
+	public function insertVisitorData ($visitorData)
+	{
 		$visitorTable='visitors_info';
 		$this->load->database ();
 		$query=$this->db->insert($visitorTable,$visitorData);
@@ -84,7 +85,7 @@ class PropertyModel extends CI_Model {
 	public function getVisitorCount (){
 		$visitorTable='visitors_info';
 		$this->load->database ();
-		$query=$this->db->select ( 'COUNT(*)as count' );
+		$query=$this->db->select ( 'count(distinct visitor_ip) as count' );
 		$this->db->from ("$visitorTable");
 		$this->db->where('date_visited',date('Y-m-d'));
 		$query=$this->db->get();

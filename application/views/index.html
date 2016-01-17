@@ -396,6 +396,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 					<div class="clearfix"> </div>
 			</div>
+			<div>
+			Today's Unique Visitors : <span id="visitCount"></span>
+			</div>
 				<script src="js/jquery.chocolat.js"></script>
 			
 			<!--light-box-files -->
@@ -479,17 +482,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					         datatype:'json',
 					         data:response,
 					         async: false,
-					         success : function(text)
-					         
-					         { 
-					         }
+					         success : function(text)					         
+						         { 
+						           	$.ajax({ 
+										type: "post",   
+									    url: "VisitorInfo/getVisitorCount",  		         
+								         async: false,
+								         success : function(response)
+								         { 								        	
+								        	var parseResp = $.parseJSON(response);
+								        	$("#visitCount").html(parseResp.count);
+								            
+								         }
+									});
+						         }
 					        
 					         });
 					         }
 					
 			});
 			
-			$.ajax({ 
+			/*$.ajax({ 
 				type: "post",   
 			    url: "VisitorInfo/getVisitorCount",  
 		         
@@ -498,7 +511,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		         { alert(response.count);
 		            // response = text;
 		         }
-			});
+			});*/
 			
 			/*
 			var defaults = {
