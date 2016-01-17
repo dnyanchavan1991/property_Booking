@@ -132,7 +132,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<li><a href="#tab2">Gallery</a></li>
 					<li><a href="#tab3">Map</a></li>
 					<li><a href="#tab4">Book</a></li>
-					<li><a href="#tab5">Contact</a></li>
+					<li><a href="#tab5">Owner's Info</a></li>
+					<li><a href="#tab6">How to Reach</a></li>
+					
 				</ul>
 
 				<div class="tab-content">
@@ -146,7 +148,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div id="tab2" class="tab">
 							<div class="flexslider">
 						<ul class="slides">	
-					<?php		$files = glob($imagePath."/*.*");
+					<?php		$files = glob($imagePath."*.*");
 
   for ($i=1; $i<count($files); $i++)
 
@@ -185,14 +187,29 @@ echo'</li>';
 					</div>
 
 					<div id="tab4" class="tab">
-						<p>Tab #4 content goes here!</p>
-						<p>Donec pulvinar neque sed semper lacinia. Curabitur lacinia
-							ullamcorper nibh; quis imperdiet velit eleifend ac. Donec blandit
-							mauris eget aliquet lacinia! Donec pulvinar massa interdum risus
-							ornare mollis. In hac habitasse platea dictumst. Ut euismod
-							tempus hendrerit. Morbi ut adipiscing nisi. Etiam rutrum sodales
-							gravida! Aliquam tellus orci, iaculis vel.</p>
+						<p>Book This Property </p>
+						<p> Prices - Per night : INR 1000/- Extra Person : INR 300/-
+						 Star Date - < Calendar picker > <br/></p>
 					</div>
+					<div id="tab5" class="tab">
+						<p>Owner's Information</p>
+						<p>Name : ....... </br/>
+						Mobile No : ....... </br/>
+						Landline No  : ...... <br/>
+						Additional Landline No : ...... <br/>
+						Address : ...... <br/> ...... <br/>..... <br/>
+						Language speaks :  <br/>
+						Marathi - Yes <br/> Hindi - Yes <br/> English - No <br/>
+						
+						</p>
+					</div>
+					<div id="tab6" class="tab">
+						This is HOW TO REACH section <br/>
+						Reach by Air : Nearest airport will be ..... <br/>
+						Reach by Train : Nearest train station is ..... <br/>
+						Reach by Bus : ..... <br/>
+					</div>
+					
 				</div>
 			</div>
 			</div>
@@ -245,7 +262,7 @@ echo'</li>';
 			</div>-->
 			<div class="paragraph">
 				<p>
-					<b>{{names.propertyDescription}}</b>
+					<b>  vishwanath</b>
 				</p>
 			</div>
 			<!-- <div class="contact-form">
