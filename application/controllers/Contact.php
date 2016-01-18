@@ -30,8 +30,8 @@ class Contact extends CI_Controller {
      'protocol' => 'smtp',
      'smtp_host' => 'smtp.gmail.com',
      'smtp_port' => 465,
-     'smtp_user' => 'shrutikharge@gmail.com', // change it to yours
-     'smtp_pass' => 'operatingsystem', // change it to yours
+     'smtp_user' => '', // change it to yours
+     'smtp_pass' => '', // change it to yours
      'mailtype' => 'html',
      'charset' => 'iso-8859-1',
      'wordwrap' => TRUE
