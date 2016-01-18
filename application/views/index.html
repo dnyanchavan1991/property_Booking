@@ -129,46 +129,46 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 		
 	<div class="banner-bottom">
+	   <div class="row">  
+		   	<div class="book-pag-frm">
+				<input type = "text" id="inpDestination" name="inpDestination" ng-model="inputDestination" ng-init="inputDestination='Where do you want to go?'" style="width:70%;"/> 
+			</div>
 			<div class="droop-down">
 			 	<div class="droop">
 					<div class="sort-by">
 						<select class="sel" ng-model="selectAccomodationType" 
 							ng-init="selectAccomodationType=accomodationType[0]" 
-							ng-options="option as option for option in accomodationType | orderBy:option">
+							ng-options="option as option for option in accomodationType | orderBy:option" style="width:70%;">
 													    
 						</select>
 					</div>
-				</div></div>
-				
-				
-							<div class="book-pag-frm">
-								<!-- <label>Check In :</label> -->
-								<input class="date" name="checkIn" id="checkIn" ng-model="checkInDate" ng-init="checkInDate= 'CheckIn Date'" type="text"  style="width:60%;"onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required >
-							</div>
-							<div class="book-pag-frm">
-							<!-- 	<label>Check Out:</label> -->
-								<input class="date" name="checkOut"  id="checkOut" type="text" ng-model="checkOutDate" ng-init="checkOutDate= 'CheckOut Date'" style="width:60%;" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required="">
-							</div>
-					<div class="book-pag-frm">
-							<select class="sel" ng-model="selectGuestHeadCount" 
-								ng-init="selectGuestHeadCount=guestHeadCount[0] " 
-								ng-options="option as option for option in guestHeadCount "						
-								>													    
-						</select>
-						<input type = "text" id="inpDestination" name="inpDestination" ng-model="inputDestination" ng-init="inputDestination='Where do you want to go?'" /> 
-					</div>	
-						<div class="search">
-						
-							<input type="submit"  name="submit" value="search">
-						
-						<!--strat-date-piker-->
-					
-				
-					<!--//End-date-piker-->
 				</div>
-				<div class="clearfix"></div>
 			</div>
-		</form></div>
+			<div class="book-pag-frm">
+						<select class="sel" ng-model="selectGuestHeadCount" 
+							ng-init="selectGuestHeadCount=guestHeadCount[0] " 
+							ng-options="option as option for option in guestHeadCount "						
+							>													    
+					</select>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+			<div class="row">	
+				<div class="book-pag-frm">
+					<input class="date" name="checkIn" id="checkIn" ng-model="checkInDate" ng-init="checkInDate= 'CheckIn Date'" type="text"  style="width:60%;"onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required >
+				</div>
+				<div class="book-pag-frm">
+					<input class="date" name="checkOut"  id="checkOut" type="text" ng-model="checkOutDate" ng-init="checkOutDate= 'CheckOut Date'" style="width:60%;" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required="">
+				</div>
+				<div class="search">
+					<input type="submit"  name="submit" value="search">
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+	</form>
+	<!--</div>-->
 </div>
 <!-- //banner -->
 <!-- services -->
@@ -441,7 +441,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</ul>
 			</div>
 			<div class="col-md-3 ftr-logo">
-				<a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Classic Hotel</a>
+				
 				<ul>
 					<li><a href="#" class="f1"> </a></li>
 					<li><a href="#" class="f2"> </a></li>
