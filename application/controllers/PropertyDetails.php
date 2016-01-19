@@ -11,16 +11,16 @@ class PropertyDetails extends CI_Controller {
 			$this->session->set_userdata ( 'propertyId', $_POST ['propertyId'] );
 		}
 		$this->getRoomDetail();
-		//$this->load->view ( 'contact.html' );
+		
 	}
 	public function getRoomDetail() {
 		$this->load->model ( 'PropertyModel' );
-		//$response = new stdClass ();
+		$roomDetailInfo = $this->PropertyModel->getroomRentDetail ( $this->session->userdata ( 'propertyId' ) );
 		$propertyDetailInfo = $this->PropertyModel->getPropertyDetail ( $this->session->userdata ( 'propertyId' ) );
 		$data['PropertyName']=$propertyDetailInfo->row()->PropertyName;
 		$data['PropertyDescription']=$propertyDetailInfo->row()->Description;
 		$data['imagePath']=$propertyDetailInfo->row()->ImagePath;
-		
+		$data['rentresult']=$roomDetailInfo;
 		$this->load->view ( 'contact',$data );
 	}
 }

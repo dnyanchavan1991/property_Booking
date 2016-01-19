@@ -5,6 +5,7 @@ class Contact extends CI_Controller {
 		$this->load->view ( 'contact.html' );
 	}
 	public function  Contact_to_customer($propertyId){
+		$this->load->model('PropertyModel');
 		$postdata = file_get_contents("php://input");
 		$post= json_decode($postdata);
 		$checkin = $post->checkIn;
@@ -24,27 +25,29 @@ class Contact extends CI_Controller {
 		'checkIn'=>$checkin,
 		'checkOut'=>$checkout,
 		'full_name'=>$full_name,
-				'contact'=>$contactInfo
+		'contact'=>$contactInfo
 		);
-		  $config = Array(
-     'protocol' => 'smtp',
-     'smtp_host' => 'smtp.gmail.com',
-     'smtp_port' => 465,
-     'smtp_user' => '', // change it to yours
-     'smtp_pass' => '', // change it to yours
-     'mailtype' => 'html',
-     'charset' => 'iso-8859-1',
-     'wordwrap' => TRUE
-  );
-		  $this->load->library('email', $config);
-		  $this->email->from('shrutikharge@gmail.com');
-		  $this->email->to("shrutikharge@gmail.com");
-		 // $this->email->cc("testcc@domainname.com");
-		  $this->email->subject("This is test subject line");
-		  $this->email->message("Mail sent test message...");
-		   
-		  $data['message'] = "Sorry Unable to send email...";
-		  $this->email->send();
+		$messageContentQuery=$this->PropertyModel->getmessageContent('Enq');
+		$messageContent=$messageContentQuery->row()->message_content;
+	
+		if($post->phone==null){
+			
+			$propertyOwnerInfo=$this->PropertyModel->getOwnerDetail($propertyId);
+			$recepient=$propertyOwnerInfo->row()->email.','.$contactInfo;
+			$subject=$messageContent.'for'.$propertyOwnerInfo->row()->propertyName;
+			
+			$message = $messageContent.'for'.$propertyOwnerInfo->row()->propertyName.'from'.$checkin.'to'.$checkout;
+		$header = 'MIME-Version: 1.0' . "\r\n";
+		$header .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+		$header .= "From:vilasgalave14@gmail.com \r\n";
+		//echo $recepient.'<br>'.$subject.'<br>'.$message.'<br>'.$header;
+		if( mail ($recepient,$subject,$message,$header)){
+			echo 'message sent';
+		}
+		else{
+			echo 'message  not sent';
+		}
+		}
 	}
 	
 }
