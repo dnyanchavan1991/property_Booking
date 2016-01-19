@@ -111,5 +111,37 @@ class PropertyModel extends CI_Model {
 	
 	
 	}
-	
+	public  function getOwnerDetail($propertyId){
+		$ownerInfoTable='ad_property_owner_info';
+		$propertyTable='property';
+		$this->load->database ();
+		$this->db->select ( "name,phone,email,propertyName");
+		$this->db->from (" $ownerInfoTable  owner" );
+		$this->db->join ( "$propertyTable property", "owner.PropertyId=property.PropertyId" );
+		$this->db->where ('owner.propertyId',$propertyId);
+	   $query=$this->db->get();
+	   return  $query;
+	}
+	public function  getmessageContent($messageType){
+		$templateMessageTable='ad_msg_template_table';
+		$this->load->database ();
+		$this->db->select ( "template_content as message_content");
+		$this->db->from ( "$templateMessageTable" );
+		$this->db->where ('type',$messageType);
+		$query=$this->db->get();
+		return  $query;
+	}
+	public  function  getroomRentDetail($propertyId){
+		$roomTable='room';
+		$accomodationTable='accomodationtype';
+		$this->load->database ();
+		$this->db->select ( "pricebase,priceperadult,priceperchild,accomodationTypeName");
+		$this->db->from ( "$roomTable room" );
+		$this->db->join ( "$accomodationTable acc", "acc.AccomodationTypeId=room.AccomodationTypeId");
+		
+		$this->db->where ( "propertyId", $propertyId );
+		$query=$this->db->get();
+		return  $query->result();
+		
+	}
 }
