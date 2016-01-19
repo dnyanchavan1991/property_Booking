@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,13 +12,14 @@
     <title>Admin | Display Property</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-	<link href="assets/css/bootstrap-table.css" rel="stylesheet">
+    <link href="<?php echo base_url() ?>assets/css/bootstrap.min.css" rel="stylesheet">
+
     <!-- Custom CSS -->
-    <link href="assets/css/sb-admin.css" rel="stylesheet">
+    <link href="<?php echo base_url() ?>assets/css/sb-admin.css" rel="stylesheet">
+    <link href="<?php echo base_url() ?>assets/css/style.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo base_url() ?>assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -30,7 +30,7 @@
 
 </head>
 
-<body>
+<body ng-app="propertyIndetail">
 
     <div id="wrapper">
 
@@ -44,7 +44,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="Admin">Property Booking Admin</a>
+                <a class="navbar-brand" href="<?php echo base_url() ?>Admin">Property Booking Admin</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -151,12 +151,12 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="Admin"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                        <a href="<?php echo base_url() ?>Admin"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                     <!--<li>
                         <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="tables.html"><i class="fa fa-fw fa-table"></i> Tables</a>
                     </li>
                     <li>
@@ -165,17 +165,17 @@
                     <li>
                         <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
                     </li>
-                    <li>
+                    <li class="active">
                         <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
                     </li>-->
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Property <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
                             <li>
-                                <a href="AddProperty">Add</a>
+                                <a href="<?php echo base_url() ?>AddProperty">Add</a>
                             </li>
                             <li>
-                                <a href="DisplayProperty">Display</a>
+                                <a href="<?php echo base_url() ?>DisplayProperty">Display</a>
                             </li>
                         </ul>
                     </li>
@@ -192,54 +192,270 @@
 
         <div id="page-wrapper">
 
-            <div class="container-fluid">
+            <div class="container-fluid" ng-controller="displayDetails">
 
                 <!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Property Display
+                            Property Details
                         </h1>
                         <ol class="breadcrumb">
                             <li>
-                                <i class="fa fa-dashboard"></i>  <a href="Admin">Dashboard</a>
+                                <i class="fa fa-dashboard"></i>  <a href="<?php echo base_url() ?>Admin">Dashboard</a>
                             </li>
                             <li class="active">
-                                <i class="fa fa-table"></i> Property Display
+                                <i class="fa fa-wrench"></i> Property Details
                             </li>
                         </ol>
                     </div>
                 </div>
-                <!-- /.row -->
-
+				
                 <div class="row">
-                    <div class="col-lg-6">
-                        <h3>List</h3>
-                        <div class="table-responsive">
-							<button id="viewId" class="btn btn-info" >View</button>
-							<button id="editId" class="btn btn-info" >Edit</button>
-							<button id="deleteId" class="btn btn-info" >Delete</button>
-							
-                            <table data-toggle="table" id="table-style" class="table table-bordered table-hover table-striped"
-							data-url="assets/json/Properties.json"  data-show-refresh="true" data-show-columns="true" 
-							data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="PropertyId" 
-							data-sort-order="desc" data-single-select="true" data-click-to-select="true" data-maintain-selected="true">
-                                <thead>
-                                    <tr>
-                                        <th data-field="state" data-checkbox="true"></th>
-										<th data-field="PropertyId" >Property ID</th>
-										<th data-field="PropertyName" data-sortable="true">Property Name</th>
-										<th data-field="City" data-sortable="true">City Name</th>
-										<th data-field="name" data-sortable="true">Property Owner Name</th>
-										<th data-field="phone" data-sortable="true">Owner Phone</th>
-										<th data-field="registred_date" data-sortable="true">Registration Date</th>
-									</tr>
-                                </thead>
-                            </table>
+					<div class="col-lg-12">
+						<div class="col-md-6 image-container" id="mainImgContainer">
+							<img id="mainImg" src="<?php echo base_url() ?>Property gallery/agile properties/i1.jpg" class="img-responsive img-rounded" 
+							title="main image">
 						</div>
+						<div class="col-md-6" id="mainRight">
+							<h3 class="page-header">
+								{{list.PropertyName}}
+							</h3>
+							<center class="breadcrumb"><strong>--- Property Info ---</strong></center>
+							<div class="row">
+								<label class="control-label col-md-3" for="PropertyName">Street</label>
+								<div class="col-md-9">
+									{{list.Street}}
+								</div>
+							</div>
+							<div class="row">
+								<label class="control-label col-md-3" for="PropertyName">City</label>
+								<div class="col-md-9">
+									{{list.City}}
+								</div>
+							</div>
+							<div class="row">
+								<label class="control-label col-md-3" for="PropertyName">State</label>
+								<div class="col-md-9">
+									{{list.State}}
+								</div>
+							</div>
+							<div class="row">
+								<label class="control-label col-md-3" for="PropertyName">PIN Code</label>
+								<div class="col-md-9">
+									{{list.PostalCode}}
+								</div>
+							</div>
+							<div class="row">
+								<label class="control-label col-md-3" for="PropertyName">Tel/Mobile No.</label>
+								<div class="col-md-9">
+									{{list.Phone}}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<br>
+				
+				<div class="row">
+					<div class="col-lg-12">
+						<label class="control-label col-md-3" for="PropertyName">Star Rate</label>
+							<div class="col-md-9">
+								{{list.StarRate}}
+							</div>&nbsp;
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-lg-12">
+						<label class="control-label col-md-3" for="PropertyName">Map Location</label>
+							<div class="col-md-9">
+								{{list.location_map}}
+							</div>&nbsp;
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-lg-12">
+						<label class="control-label col-md-3" for="PropertyName">Description</label>
+							<div class="col-md-9">
+								{{list.description}}
+							</div>&nbsp;
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-lg-12">
+						<label class="control-label col-md-3" for="PropertyName">Bedrooms</label>
+							<div class="col-md-9">
+								{{list.Bedrooms}}
+							</div>&nbsp;
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-lg-12">
+						<label class="control-label col-md-3" for="PropertyName">Bathrooms</label>
+							<div class="col-md-9">
+								{{list.Bathrooms}}
+							</div>&nbsp;
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-lg-12">
+						<label class="control-label col-md-3" for="PropertyName">Pool</label>
+							<div class="col-md-9">
+								{{list.Pool}}
+							</div>&nbsp;
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-lg-12">
+						<label class="control-label col-md-3" for="PropertyName">Meals</label>
+							<div class="col-md-9">
+								{{list.Meals}}
+							</div>&nbsp;
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-lg-12">
+						<label class="control-label col-md-3" for="PropertyName">EntertainMent</label>
+							<div class="col-md-9">
+								{{list.EntertainMent}}
+							</div>&nbsp;
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-lg-12">
+						<label class="control-label col-md-3" for="PropertyName">OtherAmenities</label>
+							<div class="col-md-9">
+								{{list.OtherAmenities}}
+							</div>&nbsp;
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-lg-12">
+						<label class="control-label col-md-3" for="PropertyName">Theme</label>
+							<div class="col-md-9">
+								{{list.Theme}}
+							</div>&nbsp;
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-lg-12">
+						<label class="control-label col-md-3" for="PropertyName">Attractions</label>
+							<div class="col-md-9">
+								{{list.Attractions}}
+							</div>&nbsp;
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-lg-12">
+						<label class="control-label col-md-3" for="PropertyName">Leisure Activities</label>
+							<div class="col-md-9">
+								{{list.LeisureActivities}}
+							</div>&nbsp;
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-lg-12">
+						<label class="control-label col-md-3" for="PropertyName">General</label>
+							<div class="col-md-9">
+								{{list.General}}
+							</div>&nbsp;
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-lg-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"><i class="glyphicon glyphicon-camera"></i> Uploaded Images</h3>
+                            </div>
+                            <div class="panel-body" >
+								<div class="col-md-6">
+								    <img id="subImg" src="<?php echo base_url() ?>Property gallery/agile properties/i2.jpg" class="img-responsive img-rounded" 
+									title="sub image">&nbsp;
+								</div>
+								<!--<div class="col-md-6">
+								    <img id="subImg" src="Property gallery/agile properties/i2.jpg" class="img-responsive img-rounded" 
+									title="sub image">&nbsp;
+								</div>
+								<div class="col-md-6">
+								    <img id="subImg" src="Property gallery/agile properties/i2.jpg" class="img-responsive img-rounded" 
+									title="sub image">&nbsp;
+								</div>
+								<div class="col-md-6">
+								    <img id="subImg" src="Property gallery/agile properties/i2.jpg" class="img-responsive img-rounded" 
+									title="sub image">&nbsp;
+								</div>-->
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <!-- /.row -->
+				</div>
+						
+				<div class="row">
+					<div class="col-lg-12">
+						<center class="breadcrumb"><strong>--- Property Owner Info ---</strong></center>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-lg-12">
+						<label class="control-label col-md-3" for="PropertyName">Name</label>
+							<div class="col-md-9">
+								{{list.name}}
+							</div>&nbsp;
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-lg-12">
+						<label class="control-label col-md-3" for="PropertyName">Email ID</label>
+							<div class="col-md-9">
+								{{list.email}}
+							</div>&nbsp;
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-lg-12">
+						<label class="control-label col-md-3" for="PropertyName">Address</label>
+							<div class="col-md-9">
+								{{list.address}}
+							</div>&nbsp;
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-lg-12">
+						<label class="control-label col-md-3" for="PropertyName">Registration Date</label>
+							<div class="col-md-9">
+								{{list.registred_date}}
+							</div>&nbsp;
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-lg-12">
+						<label class="control-label col-md-3" for="PropertyName">Tel/Mobile No.</label>
+							<div class="col-md-9">
+								{{list.phone}}
+							</div>&nbsp;
+					</div>
+				</div>
+				<!--<div class="page-header" style="border:1px solid black;height:300px;margin-top:10%;">
+					jhyj
+				</div>-->
             </div>
             <!-- /.container-fluid -->
 
@@ -250,62 +466,22 @@
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-    <script src="assets/js/jquery.js"></script>
+    <script src="<?php echo base_url() ?>assets/js/jquery.js"></script>
+    <script src="<?php echo base_url() ?>assets/js/angular.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="assets/js/bootstrap.min.js"></script>
-	<script src="assets/js/bootstrap-table.js"></script>
+    <script src="<?php echo base_url() ?>assets/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
-	$(document).ready(function()
-	{
-		$("#viewId").hide();
-		$("#editId").hide();
-		$("#deleteId").hide();
-		var json;
-		var checkedRows = [];
-		$('#table-style').on('check.bs.table', function (e, row) {
-			$.each(checkedRows, function(index, value) {
-				checkedRows.splice(index,1);
-			});
-			checkedRows.push({id: row.PropertyId});
-			$("#viewId").show();
-			$("#editId").show();
-			$("#deleteId").show();
-		});
-		$('#table-style').on('uncheck.bs.table', function (e, row) {
-			$.each(checkedRows, function(index, value) {
-				checkedRows.splice(index,1);
-				$("#viewId").hide();
-				$("#editId").hide();
-				$("#deleteId").hide();
-			});
-		});
-		
-		$("#viewId").click(function(){
-
-			json = JSON.stringify(checkedRows);
-					alert(json);
-			$.ajax({
-				type: "post",
-				url:"PropertyIndetail/SessionStorage",
-				dataType: "json",
-				data:{id: json},
-				success: function(d){
-					alert(d);
-					window.location='PropertyIndetail/loadIndetailView';
-				}
-			});
-		});
-		$("#editId").click(function(){
-			json = JSON.stringify(checkedRows);
-			alert("edit "+json);
-		});
-		$("#deleteId").click(function(){
-			json = JSON.stringify(checkedRows);
-			alert("delete "+json);
+	var app = angular.module('propertyIndetail', []);
+	
+	app.controller('displayDetails', function($scope, $http){
+	 	$http({
+			method: 'GET',
+			url:'singleProperty'
+		}).success(function (response){
+			$scope.list = response[0];
 		});
 	});
-	
 	</script>
 </body>
 
