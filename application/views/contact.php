@@ -180,16 +180,14 @@ echo'</li>';
 </div>
 					</div>
 
-					  <div id="tab3" class="tab">
-
-						<iframe style="width: 100%;height:200%;"
-							src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63718.72916803739!2d102.31975295000002!3d3.489618449999993!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31ceba2007355f81%3A0xd2ff1ad6a3ca801!2sMentakab%2C+Pahang%2C+Malaysia!5e0!3m2!1sen!2sin!4v1439535856431"></iframe>
-					</div>
-
+					
 					<div id="tab4" class="tab">
-						<p>Book This Property </p>
-						<p> Prices - Per night : INR 1000/- Extra Person : INR 300/-
-						 Star Date - < Calendar picker > <br/></p>
+					<?php foreach($rentresult as $row){
+						$row=(array)$row;
+						echo'<p><b>Accomodation Type:-'.$row['accomodationTypeName'].
+						'<br><b>Base Price:-'.$row['pricebase'].
+						'</p><br><br>';
+					}?>
 					</div>
 					<div id="tab5" class="tab">
 						<p>Owner's Information</p>
