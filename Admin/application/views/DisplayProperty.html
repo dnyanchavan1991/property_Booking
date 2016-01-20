@@ -227,10 +227,10 @@
                                 <thead>
                                     <tr>
                                         <th data-field="state" data-checkbox="true"></th>
-										<th data-field="PropertyId" >Property ID</th>
-										<th data-field="PropertyName" data-sortable="true">Property Name</th>
-										<th data-field="City" data-sortable="true">City Name</th>
-										<th data-field="name" data-sortable="true">Property Owner Name</th>
+										<th data-field="property_id" >Property ID</th>
+										<th data-field="property_name" data-sortable="true">Property Name</th>
+										<th data-field="city" data-sortable="true">City Name</th>
+										<th data-field="owner_name" data-sortable="true">Property Owner Name</th>
 										<th data-field="phone" data-sortable="true">Owner Phone</th>
 										<th data-field="registred_date" data-sortable="true">Registration Date</th>
 									</tr>
@@ -284,14 +284,12 @@
 		$("#viewId").click(function(){
 
 			json = JSON.stringify(checkedRows);
-					alert(json);
 			$.ajax({
 				type: "post",
 				url:"PropertyIndetail/SessionStorage",
 				dataType: "json",
 				data:{id: json},
 				success: function(d){
-					alert(d);
 					window.location='PropertyIndetail/loadIndetailView';
 				}
 			});
@@ -299,10 +297,29 @@
 		$("#editId").click(function(){
 			json = JSON.stringify(checkedRows);
 			alert("edit "+json);
+			
 		});
 		$("#deleteId").click(function(){
 			json = JSON.stringify(checkedRows);
 			alert("delete "+json);
+			if(confirm("Are you sure?"))
+			{
+				alert("yse");
+				/*$.ajax({
+					type: "post",
+					url:"DeleteProperty/DeleteFun",
+					dataType: "json",
+					data:{id: json},
+					success: function(d){
+						//window.location='PropertyIndetail/loadIndetailView';
+					}
+				});*/
+			}
+			else
+			{
+				alert("no");
+			}
+			
 		});
 	});
 	

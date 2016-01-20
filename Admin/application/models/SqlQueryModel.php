@@ -8,10 +8,10 @@ class SqlQueryModel extends CI_Model{
 	}
 	public function propertyList()
 	{
-		$this->db->select ("P.PropertyId,P.PropertyName,P.City,PO.name,PO.phone,PO.registred_date");
+		$this->db->select ("P.property_id,P.property_name,P.city,PO.owner_name,PO.phone,PO.registred_date");
 		$this->db->from ("property P");
-		$this->db->join ( "property_info PI", "P.PropertyId = PI.PropertyId", "inner" );
-		$this->db->join ( "ad_property_owner_info PO", "PI.PropertyId = PO.PropertyId", "inner" );
+		$this->db->join ( "property_info PI", "P.property_id = PI.property_id", "inner" );
+		$this->db->join ( "property_owner_info PO", "PI.property_id = PO.property_id", "inner" );
 		$getList = $this->db->get();
 		return $getList->result();
 	}
@@ -20,7 +20,7 @@ class SqlQueryModel extends CI_Model{
 		$this->db->insert('property', $postdata1);
 		$lastId = $this->db->insert_id();
 		
-		$lastId1 = array('PropertyId' => $lastId);
+		$lastId1 = array('property_id' => $lastId);
 		$reault_array = array_merge($lastId1,$postdata2);
 		
 		$this->db->insert('property_info', $reault_array);
@@ -33,7 +33,7 @@ class SqlQueryModel extends CI_Model{
 	}*/
 	public function insertPropertyOwner_info($data)
 	{
-		return $this->db->insert('ad_property_owner_info', $data);
+		return $this->db->insert('property_owner_info', $data);
 	}
 	
 	public function getSingleProperty($id)

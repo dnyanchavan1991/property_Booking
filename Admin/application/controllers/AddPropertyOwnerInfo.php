@@ -17,11 +17,13 @@ class AddPropertyOwnerInfo extends CI_Controller {
 		$input_date = str_replace('/', '-', $_POST['registred_date']);
 		$PropertyOwnerRegistred_date = date("Y-m-d", strtotime($input_date));
 		$PropertyOwnerPhone = $_POST['phone'];
+		$alternative_phone = $_POST['alternative_phone'];
 
 		$data = array(
-						'PropertyId' => $_SESSION['lastPropertyId'],
-						'name' => $PropertyOwnerName,
+						'property_id' => $_SESSION['lastPropertyId'],
+						'owner_name' => $PropertyOwnerName,
 						'phone' => $PropertyOwnerPhone,
+						'alternative_phone' => $alternative_phone,
 						'email' => $PropertyOwnerEmail,
 						'address' => $PropertyOwnerAddress,
 						'registred_date' => $PropertyOwnerRegistred_date

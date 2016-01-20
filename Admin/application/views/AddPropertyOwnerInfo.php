@@ -222,7 +222,7 @@
                         <form role="form" id="form_id" class="form-horizontal" data-bv-feedbackicons-valid="glyphicon glyphicon-ok"
 							data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
 							data-bv-feedbackicons-validating="glyphicon glyphicon-refresh"
-							method="post" action="<?php echo base_url();?>index.php/AddPropertyOwnerInfo/getPropertyOwnerInfo">
+							method="post" action="<?php echo base_url();?>AddPropertyOwnerInfo/getPropertyOwnerInfo">
 
                             <div class="form-group">
                                 <label class="control-label col-md-3" for="name">Name</label>
@@ -254,7 +254,7 @@
                                 <label class="control-label col-md-3" for="registred_date">Registration Date</label>
 								<div class="col-md-9">
 									<input class="form-control" id="Dateid" placeholder="Enter registration date" type="text" name="registred_date" 
-									readonly>
+									readonly data-bv-notempty="true" data-bv-notempty-message="Registration date is required">
 								</div>
                             </div>
 
@@ -262,11 +262,20 @@
                                 <label class="control-label col-md-3" for="phone">Tel/Mobile No.</label>
                                 <div class="col-md-9">
 									<input class="form-control" placeholder="Enter Tel/Mobile No." type="text" name="phone"
-									pattern="^[0-9]{10,12}" data-bv-trigger="blur" data-bv-regexp-message="The phone number is not valid" 
+									pattern="^\d{10}$" data-bv-trigger="blur" data-bv-regexp-message="The phone number is not valid" 
 									 value="" data-bv-notempty="true" data-bv-notempty-message="The phone number is required">
 								</div>
                             </div>
 
+							<div class="form-group">
+                                <label class="control-label col-md-3" for="phone">Alternative Tel/Mobile No.</label>
+                                <div class="col-md-9">
+									<input class="form-control" placeholder="Enter Tel/Mobile No." type="text" name="alternative_phone"
+									pattern="^\d{10}$" data-bv-trigger="blur" data-bv-regexp-message="The phone number is not valid" 
+									 value="">
+								</div>
+                            </div>
+							
 							<div class="form-group">
 								<div class="col-md-12 col-md-offset-3">
 									<button type="submit" class="btn btn-success">Save</button>

@@ -13,12 +13,24 @@ class AddProperty extends CI_Controller {
 	}
 	public function getPropertyInfo()
 	{
+		$property_type = $_POST['property_type'];
+		$shiftarray = array();
+		//$shift=$_POST['selectShift'];
+
+		if ($property_type)
+		{
+			foreach ($property_type as $value)
+			{
+				array_push($shiftarray,$value);
+			}
+		}
+		$property_type = implode(",",$shiftarray);
 		$PropertyName = $_POST['PropertyName'];
 		$Street = $_POST['Street'];
 		$City = $_POST['City'];
 		$State = $_POST['State'];
 		$PostalCode = $_POST['PostalCode'];
-		$Phone = $_POST['Phone'];
+		//$Phone = $_POST['Phone'];
 		$StarRate = $_POST['StarRate'];
 		$fdata_mainImg=$_FILES['mainImage'];
 		$fdata=$_FILES['propertyImages'];
@@ -43,43 +55,57 @@ class AddProperty extends CI_Controller {
 		$path = "Admin/Property gallery/$PropertyName";
 		$location_map = $_POST['location_map'];
 		$description = $_POST['description'];
+		$how_to_reach = $_POST['how_to_reach'];
 		
 		$Bedrooms = $_POST['Bedrooms'];
 		$Bathrooms = $_POST['Bathrooms'];
-		$Pool = $_POST['Pool'];
 		$Meals = $_POST['Meals'];
+		$Pool = $_POST['Pool'];
+		$internet_access = $_POST['internet_access'];
+		$smoking_allowd = $_POST['smoking_allowd'];
+		$television_access = $_POST['television_access'];
+		$pet_friendly = $_POST['pet_friendly'];
+		$air_condition = $_POST['air_condition'];
 		$EntertainMent = $_POST['EntertainMent'];
 		$OtherAmenities = $_POST['OtherAmenities'];
 		$Theme = $_POST['Theme'];
 		$Attractions = $_POST['Attractions'];
 		$LeisureActivities = $_POST['LeisureActivities'];
 		$General = $_POST['General'];
+		$payment_facility = $_POST['payment_facility'];
 
 		$postdata1 = array(
-							'PropertyName' => $PropertyName,
-							'Street' => $Street,
-							'City' => $City,
-							'PostalCode' => $PostalCode,
-							'Phone' => $Phone,
-							'StarRate' => $StarRate,
-							'State' => $State,
-							'ImagePath' => $path,
+							'property_type' => $property_type,
+							'property_name' => $PropertyName,
+							'street' => $Street,
+							'city' => $City,
+							'postal_code' => $PostalCode,
+							'star_rate' => $StarRate,
+							'state' => $State,
+							'image_path' => $path,
 							'location_map' => $location_map,
-							'description' => $description
+							'description' => $description,
+							'how_to_reach' => $how_to_reach
 						);
 		//$id = $this->SqlQueryModel->insertProperty($postdata1);		
 		//
 		$postdata2 = array(				
-							'Bedrooms' => $Bedrooms,
-							'Bathrooms' => $Bathrooms,
-							'Pool' => $Pool,
-							'Meals' => $Meals,
-							'EntertainMent' => $EntertainMent,
-							'OtherAmenities' => $OtherAmenities,
-							'Theme' => $Theme,
-							'Attractions' => $Attractions,
-							'LeisureActivities' => $LeisureActivities,
-							'General' => $General
+							'bedrooms' => $Bedrooms,
+							'bathrooms' => $Bathrooms,
+							'pool' => $Pool,
+							'meals' => $Meals,
+							'internet_access' => $internet_access,
+							'smoking_allowd' => $smoking_allowd,
+							'television_access' => $television_access,
+							'pet_friendly' => $pet_friendly,
+							'air_condition' => $air_condition,
+							'entertainment' => $EntertainMent,
+							'other_amenities' => $OtherAmenities,
+							'theme' => $Theme,
+							'attractions' => $Attractions,
+							'leisureActivities' => $LeisureActivities,
+							'general' => $General,
+							'payment_facility' => $payment_facility
 						);
 		$id = $this->SqlQueryModel->insertProperty($postdata1,$postdata2);	
 		echo "last insert id ".$id;

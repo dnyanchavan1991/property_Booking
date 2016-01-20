@@ -226,6 +226,18 @@
 							data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
 							data-bv-feedbackicons-validating="glyphicon glyphicon-refresh">
                             <div class="form-group">
+                                <label class="control-label col-md-3" for="PropertyName">Type</label>
+								<div class="col-md-9">
+									<select name="property_type[]" class="form-control" multiple required data-bv-notempty-message="Please select the property type">
+										<option value="">------------Select Property Type------------</option>
+										<option value="Bungalow">Bungalow</option>
+										<option value="Villa">Villa</option>
+										<option value="Row House">Row House</option>
+									</select>
+								</div>
+                            </div>
+
+							<div class="form-group">
                                 <label class="control-label col-md-3" for="PropertyName">Name</label>
 								<div class="col-md-9">
 									<input class="form-control" type="text" name="PropertyName" placeholder="Enter property name" 
@@ -297,28 +309,38 @@
                             <div class="form-group">
                                 <label class="control-label col-md-3" for="State">PIN Code</label>
 								<div class="col-md-9">
-									<input class="form-control" placeholder="Enter PIN" type="number" name="PostalCode"
-									required data-bv-notempty-message="The PIN code is required">
+									<input class="form-control" placeholder="Enter PIN" type="text" name="PostalCode" 
+									pattern="^\d{6}$" data-bv-trigger="blur" data-bv-regexp-message="The PIN code is not valid" 
+									data-bv-notempty="true" data-bv-notempty-message="The PIN code is required">
 								</div>
                             </div>
 
-                            <div class="form-group">
+                            <!--<div class="form-group">
                                 <label class="control-label col-md-3" for="Phone">Tel/Mobile No.</label>
 								<div class="col-md-9">
 									<input class="form-control" placeholder="Enter Tel/Mobile No." type="text" name="Phone" 
-									 pattern="^[0-9]{10,12}" data-bv-trigger="blur" data-bv-regexp-message="The phone number is not valid" 
+									 pattern="^\d{10}$" data-bv-trigger="blur" data-bv-regexp-message="The phone number is not valid" 
 									 value="" data-bv-notempty="true" data-bv-notempty-message="The phone number is required">
 								</div>
-                            </div>
+                            </div>-->
 							
-							<div class="form-group">
+							<!--<div class="form-group">
                                 <label class="control-label col-md-3" for="StarRate">Star Rate</label>
 								<div class="col-md-9">
-									<input class="form-control" placeholder="Enter star rate" type="range" name="StarRate" min="1" max="6" step="1"
-									oninput="outputUpdate(value)" value="0">
+									<!--<input class="form-control" placeholder="Enter star rate" type="range" name="StarRate" min="1" max="6" step="1"
+									oninput="outputUpdate(value)" value="">
+									<input id="switcher" class="form-control" placeholder="Enter star rate" type="range" name="StarRate" min="1" max="6" step="1" value="1">
 									<output for="StarRate" id="rating"></output>
 								</div>
-                            </div>
+                            </div>-->
+							
+							<div class="form-group">
+								 <label class="control-label col-md-3" for="StarRate">Star Rate</label>
+									<div class="col-md-9">
+										<input id="switcher" class="form-control" placeholder="Enter star rate" type="range" name="StarRate" min="1" max="6" step="1" value="1">
+										<output for="StarRate" id="rating"></output>
+									</div>
+							 </div>
 							
 							<div class="form-group">
                                 <label class="control-label file col-md-3" for="mainImage">Upload Main Image</label>
@@ -352,16 +374,55 @@
                             </div>
 							
 							<div class="form-group">
+                                <label class="control-label col-md-3" for="description">How To Reach</label>
+								<div class="col-md-9">
+									<textarea class="form-control" name="how_to_reach" placeholder="Enter info how to reach"
+									required data-bv-notempty-message="Please enter info how to reach"></textarea>
+								</div>
+                            </div>
+							
+							<div class="form-group">
                                 <label class="control-label col-md-3" for="Bedrooms">Bedrooms</label>
 								<div class="col-md-9">
-									<input class="form-control" placeholder="Enter bedrooms" type="text" name="Bedrooms">
+									<select name="Bedrooms" class="form-control" required data-bv-notempty-message="Please select the number of bedrooms">
+										<option value="">------------Select number of bedrooms------------</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+										<option value="6">6</option>
+										<option value="7">7</option>
+										<option value="8">8</option>
+										<option value="9">9</option>
+										<option value="10">10</option>
+									</select>	
 								</div>
                             </div>
 							
 							<div class="form-group">
                                 <label class="control-label col-md-3" for="Bathrooms">Bathrooms</label>
 								<div class="col-md-9">
-									<input class="form-control" placeholder="Enter Bathrooms" type="text" name="Bathrooms">
+									<select name="Bathrooms" class="form-control" required data-bv-notempty-message="Please select the number of bathrooms">
+										<option value="">------------Select number of bathrooms------------</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+										<option value="6">6</option>
+										<option value="7">7</option>
+										<option value="8">8</option>
+										<option value="9">9</option>
+										<option value="10">10</option>
+									</select>
+								</div>
+                            </div>
+							
+							<div class="form-group">
+                                <label class="control-label col-md-3" for="Meals">Meals</label>
+								<div class="col-md-9">
+									<input class="form-control" placeholder="Enter Meals" type="text" name="Meals">
 								</div>
                             </div>
 							
@@ -376,11 +437,54 @@
 							</div>
 							
 							<div class="form-group">
-                                <label class="control-label col-md-3" for="Meals">Meals</label>
-								<div class="col-md-9">
-									<input class="form-control" placeholder="Enter Meals" type="text" name="Meals">
-								</div>
-                            </div>
+                                <label class="control-label col-md-3" for="Pool">Internet / WIFI</label>
+                                <div class="radio col-md-9">
+                                    <label>
+                                        <input type="radio" name="internet_access" id="optionsRadios1" value="Yes">Yes
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="internet_access" id="optionsRadios2" value="No" checked>No
+                                    </label>
+                                </div>
+							</div>
+							
+							<div class="form-group">
+                                <label class="control-label col-md-3" for="Pool">Smoking Allowed</label>
+                                <div class="radio col-md-9">
+                                    <label>
+                                        <input type="radio" name="smoking_allowd" id="optionsRadios1" value="Yes">Yes
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="smoking_allowd" id="optionsRadios2" value="No" checked>No
+                                    </label>
+                                </div>
+							</div>
+							
+							<div class="form-group">
+                                <label class="control-label col-md-3" for="Pool">Cable TV</label>
+                                <div class="radio col-md-9">
+                                    <label>
+                                        <input type="radio" name="television_access" id="optionsRadios1" value="Yes">Yes
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="television_access" id="optionsRadios2" value="No" checked>No
+                                    </label>
+                                </div>
+							</div>
+							
+							<div class="form-group">
+                                <label class="control-label col-md-3" for="Pool">Pet friendly</label>
+                                <div class="radio col-md-9">
+                                    <label>
+                                        <input type="radio" name="pet_friendly" id="optionsRadios1" value="Yes">Yes
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="pet_friendly" id="optionsRadios2" value="No" checked>No
+                                    </label>
+                                </div>
+							</div>
+							
+							<div class="form-group">
+                                <label class="control-label col-md-3" for="Pool">Air Conditioning</label>
+                                <div class="radio col-md-9">
+                                    <label>
+                                        <input type="radio" name="air_condition" id="optionsRadios1" value="Yes">Yes
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="air_condition" id="optionsRadios2" value="No" checked>No
+                                    </label>
+                                </div>
+							</div>
 							
 							<div class="form-group">
                                 <label class="control-label col-md-3" for="EntertainMent">EntertainMent</label>
@@ -423,6 +527,16 @@
 									<input class="form-control" placeholder="Enter general info" type="text" name="General">
 								</div>
                             </div>
+							
+							<div class="form-group">
+                                <label class="control-label col-md-3" for="Pool">Payment Facility</label>
+                                <div class="radio col-md-9">
+                                    <label>
+                                        <input type="radio" name="payment_facility" id="optionsRadios1" value="Yes">Yes
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="payment_facility" id="optionsRadios2" value="No" checked>No
+                                    </label>
+                                </div>
+							</div>
 							
 							<div class="form-group">
 								<div class="col-md-12 col-md-offset-3">
@@ -471,9 +585,18 @@
 	$(document).ready(function() {
         $('#form_id').bootstrapValidator();
     });
-	function outputUpdate(vol) {
+	/*function outputUpdate(vol) {
 		document.querySelector('#rating').value = vol;
-	}
+	}*/
+	
+	$("#switcher").on("input", function() {
+		//console.log("test");
+		document.getElementById('rating').value = $("#switcher").val();
+	});
+
+	/*var outputUpdate = function() {
+		
+	}*/
 	</script>
 </body>
 
