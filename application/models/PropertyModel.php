@@ -9,19 +9,19 @@ class PropertyModel extends CI_Model {
 		$propertyTable = 'property';
 		$roomTable = 'room';
 		
-		$this->db->select ( "room.propertyId,property.propertyName,room.roomid,COUNT(distinct(room.roomid))as roomidCount,acc.AccomodationTypeName,property.ImagePath,concat(property.street,',',property.City,',',property.State,',',property.postalCode)as propertyAddress,room.priceBase" );
+		$this->db->select ( "room.property_id as propertyId,property.property_name as property,room.room_id,COUNT(distinct(room.room_id))as roomidCount,acc.accomodation_type_name as Accomodation,property.image_path as imagePath ,concat(property.street,',',property.city,',',property.state,',',property.postal_code)as propertyAddress,room.base_price as basePrice" );
 		$this->db->from ( "$roomTable room" );
-		$this->db->join ( "$reservationTable res", "res.RoomId=room.RoomId", "left" );
-		$this->db->join ( "$propertyTable property", "property.PropertyId=room.PropertyId" );
-		$this->db->join ( "$accomodationTable acc", "acc.AccomodationTypeId=room.AccomodationTypeId" );
-		 $this->db->where ( "res.RoomId", NULL );
-		 $where = "checkout >= '$checkout' AND checkin >='$checkin'";
+		$this->db->join ( "$reservationTable res", "res.room_id=room.room_id", "left" );
+		$this->db->join ( "$propertyTable property", "property.property_id=room.property_id" );
+		$this->db->join ( "$accomodationTable acc", "acc.accomodation_type_id=room.accomodation_type_id" );
+		 $this->db->where ( "res.room_id", NULL );
+		 $where = "check_out >= '$checkout' AND check_in >='$checkin'";
 		$this->db->or_where ( $where );
-		$where = "checkout <= '$checkout' AND checkout <='$checkout'";
+		$where = "check_out <= '$checkout' AND check_out <='$checkout'";
 		$this->db->or_where ( $where );
 		$this->db->group_by ( array (
-				"property.PropertyId",
-				"room.AccomodationTypeId" 
+				"property.property_id",
+				"room.accomodation_type_id" 
 		) );
 		$roomAvailableInfo = $this->db->get ();
 		$roomAvailableInfoResult=$roomAvailableInfo->result_array () ;
@@ -29,22 +29,27 @@ class PropertyModel extends CI_Model {
 		return $roomAvailableInfoResult;
 			
 	}
+	/*checkRoomAvailabilty ends here*/
+	
+	/*this function gets property detail on click on particular property of search.html*/
 	public function getPropertyDetail($propertyId) {
 		$this->load->database ();
-		$this->db->select ( 'PropertyName,Description,ImagePath' );
-		$query = $this->db->get_where ( 'property' ,array('PropertyId' =>$propertyId));
+		$this->db->select ( 'property_name as propertyName,description,image_path as imagePath,how_to_reach as Direction' );
+		$query = $this->db->get_where ( 'property' ,array('property_id' =>$propertyId));
 		return $query;
 	}
+	/*this function gives accomodation type as abhk/2 bhk*/
 	public function getAccomodationType($propertyId) {
 		$roomTable = 'room';
 		$accomodationTable = 'accomodationtype';
 		$this->load->database ();
-		$this->db->select ( 'distinct(room.AccomodationTypeId),acc.accomodationTypeName' );
+		$this->db->select ( 'distinct(room.accomodation_type_id)as accomodationTypeId,acc.accomodation_type_name as accomodationTypeName' );
 		$this->db->from ( "$roomTable room" );
-		$this->db->join ( "$accomodationTable acc", "acc.AccomodationTypeId=room.AccomodationTypeId" );
-		$query = $this->db->get_where ( 'property' ,array('room.PropertyId' =>$propertyId));
+		$this->db->join ( "$accomodationTable acc", "acc.accomodation_type_id=room.accomodation_type_id" );
+		$query = $this->db->get_where ( 'property' ,array('room.property_id' =>$propertyId));
 		return $query->result();
 	}
+	/*this function gives rooms available for particular is ,for it's particular accomodation type*/
 	public function getRoomAvailabilityCount($confirmArray) {
 		$this->load->database ();
 	
@@ -55,21 +60,21 @@ class PropertyModel extends CI_Model {
 		$checkIn=$confirmArray['checkin'];
 		$checkOut=$confirmArray['checkout'];
 	
-		$this->db->select ( "COUNT(distinct(room.roomid))as count");
+		$this->db->select ( "COUNT(distinct(room.room_id))as count");
 		$this->db->from ( "$roomTable room" );
-		$this->db->join ( "$reservationTable res", "res.RoomId=room.RoomId", "left" );
-		$this->db->join ( "$propertyTable property", "property.PropertyId=room.PropertyId" );
-		$this->db->join ( "$accomodationTable acc", "acc.AccomodationTypeId=room.AccomodationTypeId" );
-		$this->db->where ( "res.RoomId", NULL );
-		$this->db->where("room.accomodationTypeId",$confirmArray['accomodationTypeId']);
-		$where = "checkout >= '$checkOut' AND checkin >='$checkIn'";
+		$this->db->join ( "$reservationTable res", "res.room_id=room.room_id", "left" );
+		$this->db->join ( "$propertyTable property", "property.property_id=room.property_id" );
+		$this->db->join ( "$accomodationTable acc", "acc.accomodation_type_id=room.accomodation_type_id" );
+		$this->db->where ( "res.room_id", NULL );
+		$this->db->where("room.accomodation_type_id",$confirmArray['accomodationTypeId']);
+		$where = "check_out >= '$checkOut' AND check_in >='$checkIn'";
 		$this->db->or_where ( $where );
-		$where = "checkout <= '$checkOut' AND checkout <='$checkOut'";
+		$where = "check_out <= '$checkOut' AND check_out <='$checkOut'";
 		$this->db->or_where ( $where );
 		
 		$this->db->group_by ( array (
-				"property.PropertyId",
-				"room.AccomodationTypeId"
+				"property.property_id",
+				"room.accomodation_type_id"
 		) );
 		$availabilityofRoomCount = $this->db->get ();
 		$roomAvailableCount=$availabilityofRoomCount->row()->count;
@@ -93,37 +98,39 @@ class PropertyModel extends CI_Model {
 	
 	
 	}
-	
+	/*this function gives last minute deal data*/
 	public  function getlastMinDeal(){
 		$currentDate=date('Y-m-d');
 		$this->load->database ();
 		$propertyTable = 'property';
 		$auditRentTable = 'audit_rent';
-		$this->db->select ( "property.propertyName as name,auditRent.description as des,property.imagepath");
+		$this->db->select ( "property.property_name as name,auditRent.rent_description as des,property.image_pathas imagePath");
 		$this->db->from ( "$propertyTable property" );
-		$this->db->join ( "$auditRentTable auditRent", "auditRent.PropertyId=property.PropertyId" );
+		$this->db->join ( "$auditRentTable auditRent", "auditRent.property_id=property.property_id" );
 		$where = "start_date<= '$currentDate' AND end_date <='$currentDate'";
 		$this->db->where ($where);
-		$this->db->order_by('id','desc');
+		$this->db->order_by('rent_id','desc');
 		$query=$this->db->get();
 		$lastMinDealData=$query->result();
 		return  $lastMinDealData;
 	
 	
 	}
+	/*this function gives owner detail particular to proprty */
 	public  function getOwnerDetail($propertyId){
-		$ownerInfoTable='ad_property_owner_info';
+		$ownerInfoTable='property_owner_info';
 		$propertyTable='property';
 		$this->load->database ();
-		$this->db->select ( "name,phone,email,propertyName");
+		$this->db->select ( "owner_name as name,phone,email,property_name as propertyName");
 		$this->db->from (" $ownerInfoTable  owner" );
-		$this->db->join ( "$propertyTable property", "owner.PropertyId=property.PropertyId" );
-		$this->db->where ('owner.propertyId',$propertyId);
+		$this->db->join ( "$propertyTable property", "owner.property_id=property.property_id" );
+		$this->db->where ('owner.property_id',$propertyId);
 	   $query=$this->db->get();
 	   return  $query;
 	}
+	/*this function gives message content from db depending upon message type*/
 	public function  getmessageContent($messageType){
-		$templateMessageTable='ad_msg_template_table';
+		$templateMessageTable='msg_template_table';
 		$this->load->database ();
 		$this->db->select ( "template_content as message_content");
 		$this->db->from ( "$templateMessageTable" );
@@ -131,15 +138,16 @@ class PropertyModel extends CI_Model {
 		$query=$this->db->get();
 		return  $query;
 	}
+	/*this function gives room reant per property per accomodation Type*/
 	public  function  getroomRentDetail($propertyId){
 		$roomTable='room';
 		$accomodationTable='accomodationtype';
 		$this->load->database ();
-		$this->db->select ( "pricebase,priceperadult,priceperchild,accomodationTypeName");
+		$this->db->select ( "base_price as basePrice,price_per_adult as adultPrice,price_per_child as childPrice,accomodation_type_name as accomodation,room_capacity as capacity");
 		$this->db->from ( "$roomTable room" );
-		$this->db->join ( "$accomodationTable acc", "acc.AccomodationTypeId=room.AccomodationTypeId");
+		$this->db->join ( "$accomodationTable acc", "acc.accomodation_type_id=room.accomodation_type_id");
 		
-		$this->db->where ( "propertyId", $propertyId );
+		$this->db->where ( "property_id", $propertyId );
 		$query=$this->db->get();
 		return  $query->result();
 		
