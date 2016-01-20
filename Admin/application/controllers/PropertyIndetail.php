@@ -24,6 +24,7 @@ class PropertyIndetail extends CI_Controller {
 		$sessionID = json_decode($localId);
 		$sessionID = $sessionID[0]->id;
 		$response =$this->SqlQueryModel->getSingleProperty($sessionID);
+		//echo $image_path=$response->row()->image_path;
 		$response = json_encode($response);
 		echo $response;
 		//$this->load->view('DisplayPropertyIndetail');

@@ -267,7 +267,7 @@
 			$.each(checkedRows, function(index, value) {
 				checkedRows.splice(index,1);
 			});
-			checkedRows.push({id: row.PropertyId});
+			checkedRows.push({id: row.property_id});
 			$("#viewId").show();
 			$("#editId").show();
 			$("#deleteId").show();
@@ -284,6 +284,7 @@
 		$("#viewId").click(function(){
 
 			json = JSON.stringify(checkedRows);
+			alert(json);
 			$.ajax({
 				type: "post",
 				url:"PropertyIndetail/SessionStorage",
@@ -304,7 +305,7 @@
 			alert("delete "+json);
 			if(confirm("Are you sure?"))
 			{
-				alert("yse");
+				alert("yse no action till..");
 				/*$.ajax({
 					type: "post",
 					url:"DeleteProperty/DeleteFun",

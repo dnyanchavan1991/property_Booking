@@ -254,7 +254,7 @@
                                 <label class="control-label col-md-3" for="registred_date">Registration Date</label>
 								<div class="col-md-9">
 									<input class="form-control" id="Dateid" placeholder="Enter registration date" type="text" name="registred_date" 
-									readonly data-bv-notempty="true" data-bv-notempty-message="Registration date is required">
+									 data-bv-notempty="true" data-bv-notempty-message="Registration date is required">
 								</div>
                             </div>
 

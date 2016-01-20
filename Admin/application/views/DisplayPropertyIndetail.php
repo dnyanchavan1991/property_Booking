@@ -219,39 +219,39 @@
 						</div>
 						<div class="col-md-6" id="mainRight">
 							<h3 class="page-header">
-								{{list.PropertyName}}
+								{{list.property_name}}
 							</h3>
 							<center class="breadcrumb"><strong>--- Property Info ---</strong></center>
 							<div class="row">
 								<label class="control-label col-md-3" for="PropertyName">Street</label>
 								<div class="col-md-9">
-									{{list.Street}}
+									{{list.street}}
 								</div>
 							</div>
 							<div class="row">
 								<label class="control-label col-md-3" for="PropertyName">City</label>
 								<div class="col-md-9">
-									{{list.City}}
+									{{list.city}}
 								</div>
 							</div>
 							<div class="row">
 								<label class="control-label col-md-3" for="PropertyName">State</label>
 								<div class="col-md-9">
-									{{list.State}}
+									{{list.state}}
 								</div>
 							</div>
 							<div class="row">
 								<label class="control-label col-md-3" for="PropertyName">PIN Code</label>
 								<div class="col-md-9">
-									{{list.PostalCode}}
+									{{list.postal_code}}
 								</div>
 							</div>
-							<div class="row">
+							<!--<div class="row">
 								<label class="control-label col-md-3" for="PropertyName">Tel/Mobile No.</label>
 								<div class="col-md-9">
 									{{list.Phone}}
 								</div>
-							</div>
+							</div>-->
 						</div>
 					</div>
 				</div>
@@ -262,7 +262,7 @@
 					<div class="col-lg-12">
 						<label class="control-label col-md-3" for="PropertyName">Star Rate</label>
 							<div class="col-md-9">
-								{{list.StarRate}}
+								{{list.star_rate}}
 							</div>&nbsp;
 					</div>
 				</div>
@@ -289,7 +289,7 @@
 					<div class="col-lg-12">
 						<label class="control-label col-md-3" for="PropertyName">Bedrooms</label>
 							<div class="col-md-9">
-								{{list.Bedrooms}}
+								{{list.bedrooms}}
 							</div>&nbsp;
 					</div>
 				</div>
@@ -298,7 +298,7 @@
 					<div class="col-lg-12">
 						<label class="control-label col-md-3" for="PropertyName">Bathrooms</label>
 							<div class="col-md-9">
-								{{list.Bathrooms}}
+								{{list.bathrooms}}
 							</div>&nbsp;
 					</div>
 				</div>
@@ -307,7 +307,7 @@
 					<div class="col-lg-12">
 						<label class="control-label col-md-3" for="PropertyName">Pool</label>
 							<div class="col-md-9">
-								{{list.Pool}}
+								{{list.pool}}
 							</div>&nbsp;
 					</div>
 				</div>
@@ -316,7 +316,7 @@
 					<div class="col-lg-12">
 						<label class="control-label col-md-3" for="PropertyName">Meals</label>
 							<div class="col-md-9">
-								{{list.Meals}}
+								{{list.meals}}
 							</div>&nbsp;
 					</div>
 				</div>
@@ -325,7 +325,7 @@
 					<div class="col-lg-12">
 						<label class="control-label col-md-3" for="PropertyName">EntertainMent</label>
 							<div class="col-md-9">
-								{{list.EntertainMent}}
+								{{list.entertainment}}
 							</div>&nbsp;
 					</div>
 				</div>
@@ -334,7 +334,7 @@
 					<div class="col-lg-12">
 						<label class="control-label col-md-3" for="PropertyName">OtherAmenities</label>
 							<div class="col-md-9">
-								{{list.OtherAmenities}}
+								{{list.other_amenities}}
 							</div>&nbsp;
 					</div>
 				</div>
@@ -343,7 +343,7 @@
 					<div class="col-lg-12">
 						<label class="control-label col-md-3" for="PropertyName">Theme</label>
 							<div class="col-md-9">
-								{{list.Theme}}
+								{{list.theme}}
 							</div>&nbsp;
 					</div>
 				</div>
@@ -352,7 +352,7 @@
 					<div class="col-lg-12">
 						<label class="control-label col-md-3" for="PropertyName">Attractions</label>
 							<div class="col-md-9">
-								{{list.Attractions}}
+								{{list.attractions}}
 							</div>&nbsp;
 					</div>
 				</div>
@@ -361,7 +361,7 @@
 					<div class="col-lg-12">
 						<label class="control-label col-md-3" for="PropertyName">Leisure Activities</label>
 							<div class="col-md-9">
-								{{list.LeisureActivities}}
+								{{list.leisureActivities}}
 							</div>&nbsp;
 					</div>
 				</div>
@@ -370,7 +370,7 @@
 					<div class="col-lg-12">
 						<label class="control-label col-md-3" for="PropertyName">General</label>
 							<div class="col-md-9">
-								{{list.General}}
+								{{list.general}}
 							</div>&nbsp;
 					</div>
 				</div>
@@ -413,7 +413,7 @@
 					<div class="col-lg-12">
 						<label class="control-label col-md-3" for="PropertyName">Name</label>
 							<div class="col-md-9">
-								{{list.name}}
+								{{list.owner_name}}
 							</div>&nbsp;
 					</div>
 				</div>
@@ -450,6 +450,15 @@
 						<label class="control-label col-md-3" for="PropertyName">Tel/Mobile No.</label>
 							<div class="col-md-9">
 								{{list.phone}}
+							</div>&nbsp;
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-lg-12">
+						<label class="control-label col-md-3" for="PropertyName">Alternative Tel/Mobile No.</label>
+							<div class="col-md-9">
+								{{list.alternative_phone}}
 							</div>&nbsp;
 					</div>
 				</div>

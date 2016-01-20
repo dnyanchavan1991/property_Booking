@@ -26,11 +26,7 @@ class SqlQueryModel extends CI_Model{
 		$this->db->insert('property_info', $reault_array);
 		return $lastId;
 	}
-	/*public function insertProperty_info($postdata2)
-	{
-		$this->db->insert('property_info', $postdata2);
-		return $this->db->insert_id();
-	}*/
+	
 	public function insertPropertyOwner_info($data)
 	{
 		return $this->db->insert('property_owner_info', $data);
@@ -38,13 +34,15 @@ class SqlQueryModel extends CI_Model{
 	
 	public function getSingleProperty($id)
 	{
-		$this->db->select ("P.PropertyName,P.Street,P.City,P.PostalCode,P.Phone,P.StarRate,P.State,P.ImagePath,P.location_map,P.description,
-			PI.Bedrooms,PI.Bathrooms,PI.Pool,PI.Meals,PI.EntertainMent,PI.OtherAmenities,PI.Theme,PI.Attractions,PI.LeisureActivities,PI.General,
-			PO.name,PO.phone,PO.email,PO.address,PO.registred_date");
+		$this->db->select ("P.property_type,P.property_name,P.street,P.city,P.postal_code,P.star_rate,P.state,P.image_path,
+			P.location_map,P.description,P.how_to_reach,
+			PI.bedrooms,PI.bathrooms,PI.pool,PI.meals,PI.internet_access,PI.smoking_allowd,PI.television_access,PI.pet_friendly,PI.air_condition,
+            PI.entertainment,PI.other_amenities,PI.theme,PI.attractions,PI.leisureActivities,PI.general,PI.payment_facility,
+			PO.owner_name,PO.phone,PO.alternative_phone,PO.email,PO.address,PO.registred_date");
 		$this->db->from ("property P");
-		$this->db->join ( "property_info PI", "P.PropertyId = PI.PropertyId", "inner" );
-		$this->db->join ( "ad_property_owner_info PO", "PI.PropertyId = PO.PropertyId", "inner" );
-		$this->db->where("P.PropertyId",$id);
+		$this->db->join ( "property_info PI", "P.property_id = PI.property_id", "inner" );
+		$this->db->join ( "property_owner_info PO", "PI.property_id = PO.property_id", "inner" );
+		$this->db->where("P.property_id",$id);
 		$getList = $this->db->get();
 		return $getList->result();
 	}
