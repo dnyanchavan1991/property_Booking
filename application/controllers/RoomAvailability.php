@@ -31,12 +31,12 @@ class RoomAvailability extends CI_Controller {
 			if (! isset ( $propertyInfo [$row ['propertyId']] ['AccomodationTypeName'] )) {
 				$propertyInfo [$row ['propertyId']] ['AccomodationTypeName'] = array ();
 			}
-			$propertyInfo [$row ['propertyId']] ['AccomodationTypeName'] [] = $row ['AccomodationTypeName'];
+			$propertyInfo [$row ['propertyId']] ['AccomodationTypeName'] [] = $row ['Accomodation'];
 			$propertyInfo [$row ['propertyId']] ['roomidCount'] [] = $row ['roomidCount'];
-			$propertyInfo [$row ['propertyId']] ['ImagePath'] = $row ['ImagePath'];
-			$propertyInfo [$row ['propertyId']] ['propertyName'] = $row ['propertyName'];
+			$propertyInfo [$row ['propertyId']] ['ImagePath'] = $row ['imagePath'];
+			$propertyInfo [$row ['propertyId']] ['propertyName'] = $row ['property'];
 			$propertyInfo [$row ['propertyId']] ['propertyAddress'] = $row ['propertyAddress'];
-			$propertyInfo [$row ['propertyId']] ['basePrice'] = $row ['priceBase'];
+			$propertyInfo [$row ['propertyId']] ['basePrice'] = $row ['basePrice'];
 		}
 		
 		foreach ( $propertyInfo as $q => $data ) {

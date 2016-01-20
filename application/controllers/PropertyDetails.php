@@ -17,9 +17,10 @@ class PropertyDetails extends CI_Controller {
 		$this->load->model ( 'PropertyModel' );
 		$roomDetailInfo = $this->PropertyModel->getroomRentDetail ( $this->session->userdata ( 'propertyId' ) );
 		$propertyDetailInfo = $this->PropertyModel->getPropertyDetail ( $this->session->userdata ( 'propertyId' ) );
-		$data['PropertyName']=$propertyDetailInfo->row()->PropertyName;
-		$data['PropertyDescription']=$propertyDetailInfo->row()->Description;
-		$data['imagePath']=$propertyDetailInfo->row()->ImagePath;
+		$data['propertyName']=$propertyDetailInfo->row()->propertyName;
+		$data['propertyDescription']=$propertyDetailInfo->row()->description;
+		$data['imagePath']=$propertyDetailInfo->row()->imagePath;
+		$data['way_to_reach']=$propertyDetailInfo->row()->Direction;
 		$data['rentresult']=$roomDetailInfo;
 		$this->load->view ( 'contact',$data );
 	}
