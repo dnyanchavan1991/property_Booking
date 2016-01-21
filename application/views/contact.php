@@ -123,16 +123,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="contact">
 		<div class="container">
 			<h2 class="tittle-one">
-				<?php echo $PropertyName;  ?>
+				<?php echo $propertyName;  ?>
 			</h2>
 			<div class="col-md-8 single-gd-lt">
 			<div class="tabs">
 				<ul class="tab-links">
 					<li class="active"><a href="#tab1">Description</a></li>
 					<li><a href="#tab2">Gallery</a></li>
-					<li><a href="#tab3">Map</a></li>
-					<li><a href="#tab4">Book</a></li>
-					<li><a href="#tab5">Owner's Info</a></li>
+					<li><a href="#tab4">Charges</a></li>
+					
 					<li><a href="#tab6">How to Reach</a></li>
 					
 				</ul>
@@ -141,7 +140,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div id="tab1" class="tab active">
 
 						<p>
-							<?php echo $PropertyDescription;  ?>
+							<?php echo $propertyDescription;  ?>
 						</p>
 					</div>
 
@@ -184,28 +183,17 @@ echo'</li>';
 					<div id="tab4" class="tab">
 					<?php foreach($rentresult as $row){
 						$row=(array)$row;
-						echo'<p><b>Accomodation Type:-'.$row['accomodationTypeName'].
-						'<br><b>Base Price:-'.$row['pricebase'].
+						echo'<p><b>Accomodation Type:-</b>'.$row['accomodation'].
+						'<br><b>Base Price:-</b>'.$row['basePrice'].
+						'<br><b>Price per child:-</b>'.$row['childPrice'].
+						'<br><b>Price per Adult:-</b>'.$row['adultPrice'].
+						'<br><b>Room capacity:-</b>'.$row['capacity'].
 						'</p><br><br>';
 					}?>
 					</div>
-					<div id="tab5" class="tab">
-						<p>Owner's Information</p>
-						<p>Name : ....... </br/>
-						Mobile No : ....... </br/>
-						Landline No  : ...... <br/>
-						Additional Landline No : ...... <br/>
-						Address : ...... <br/> ...... <br/>..... <br/>
-						Language speaks :  <br/>
-						Marathi - Yes <br/> Hindi - Yes <br/> English - No <br/>
-						
-						</p>
-					</div>
+					
 					<div id="tab6" class="tab">
-						This is HOW TO REACH section <br/>
-						Reach by Air : Nearest airport will be ..... <br/>
-						Reach by Train : Nearest train station is ..... <br/>
-						Reach by Bus : ..... <br/>
+						<?php echo $way_to_reach; ?>
 					</div>
 					
 				</div>
