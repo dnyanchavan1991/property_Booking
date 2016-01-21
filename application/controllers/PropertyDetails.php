@@ -5,6 +5,8 @@ class PropertyDetails extends CI_Controller {
 		session_cache_limiter ( 'private, must-revalidate' );
 		session_cache_expire ( 60 );
 		$this->load->library ( 'session' );
+		
+		
 	}
 	public function index() {
 		if (isset ( $_POST ['propertyId'] )) {
