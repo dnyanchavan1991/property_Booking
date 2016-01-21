@@ -52,7 +52,7 @@ class AddProperty extends CI_Controller {
 				move_uploaded_file($temp,$path.$files);
 			}
 		}
-		$path = "Admin/Property gallery/$PropertyName";
+		$path = "Property gallery/$PropertyName/";
 		$location_map = $_POST['location_map'];
 		$description = $_POST['description'];
 		$how_to_reach = $_POST['how_to_reach'];

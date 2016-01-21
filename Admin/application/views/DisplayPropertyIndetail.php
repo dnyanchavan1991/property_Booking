@@ -214,7 +214,7 @@
                 <div class="row">
 					<div class="col-lg-12">
 						<div class="col-md-6 image-container" id="mainImgContainer">
-							<img id="mainImg" src="<?php echo base_url() ?>Property gallery/agile properties/i1.jpg" class="img-responsive img-rounded" 
+							<img id="mainImg" ng-src="<?php echo base_url() ?>{{list.main_img_path}}" class="img-responsive img-rounded" 
 							title="main image">
 						</div>
 						<div class="col-md-6" id="mainRight">
@@ -223,11 +223,19 @@
 							</h3>
 							<center class="breadcrumb"><strong>--- Property Info ---</strong></center>
 							<div class="row">
+								<label class="control-label col-md-3" for="PropertyName">Property Type</label>
+								<div class="col-md-9">
+									{{list.property_type}}
+								</div>
+							</div>
+							
+							<div class="row">
 								<label class="control-label col-md-3" for="PropertyName">Street</label>
 								<div class="col-md-9">
 									{{list.street}}
 								</div>
 							</div>
+							
 							<div class="row">
 								<label class="control-label col-md-3" for="PropertyName">City</label>
 								<div class="col-md-9">
@@ -287,6 +295,15 @@
 				
 				<div class="row">
 					<div class="col-lg-12">
+						<label class="control-label col-md-3" for="PropertyName">How To Reach</label>
+							<div class="col-md-9">
+								{{list.how_to_reach}}
+							</div>&nbsp;
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-lg-12">
 						<label class="control-label col-md-3" for="PropertyName">Bedrooms</label>
 							<div class="col-md-9">
 								{{list.bedrooms}}
@@ -308,6 +325,51 @@
 						<label class="control-label col-md-3" for="PropertyName">Pool</label>
 							<div class="col-md-9">
 								{{list.pool}}
+							</div>&nbsp;
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-lg-12">
+						<label class="control-label col-md-3" for="PropertyName">Internet / WIFI</label>
+							<div class="col-md-9">
+								{{list.internet_access}}
+							</div>&nbsp;
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-lg-12">
+						<label class="control-label col-md-3" for="PropertyName">Smoking Allowed</label>
+							<div class="col-md-9">
+								{{list.smoking_allowd}}
+							</div>&nbsp;
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-lg-12">
+						<label class="control-label col-md-3" for="PropertyName">Cable TV</label>
+							<div class="col-md-9">
+								{{list.television_access}}
+							</div>&nbsp;
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-lg-12">
+						<label class="control-label col-md-3" for="PropertyName">Pet friendly</label>
+							<div class="col-md-9">
+								{{list.pet_friendly}}
+							</div>&nbsp;
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-lg-12">
+						<label class="control-label col-md-3" for="PropertyName">Air Conditioning</label>
+							<div class="col-md-9">
+								{{list.air_condition}}
 							</div>&nbsp;
 					</div>
 				</div>
@@ -376,15 +438,24 @@
 				</div>
 				
 				<div class="row">
+					<div class="col-lg-12">
+						<label class="control-label col-md-3" for="PropertyName">Payment Facility</label>
+							<div class="col-md-9">
+								{{list.payment_facility}}
+							</div>&nbsp;
+					</div>
+				</div>
+				
+				<div class="row">
 					<div class="col-lg-4">
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h3 class="panel-title"><i class="glyphicon glyphicon-camera"></i> Uploaded Images</h3>
                             </div>
-                            <div class="panel-body" >
-								<div class="col-md-6">
-								    <img id="subImg" src="<?php echo base_url() ?>Property gallery/agile properties/i2.jpg" class="img-responsive img-rounded" 
-									title="sub image">&nbsp;
+                            <div class="panel-body">
+								<div class="col-md-6" ng-repeat="x in list.images">
+								    <img id="subImg" ng-src="<?php echo base_url() ?>{{x}}" class="img-responsive img-rounded" 
+									title="sub image" height="150" width="250">&nbsp;
 								</div>
 								<!--<div class="col-md-6">
 								    <img id="subImg" src="Property gallery/agile properties/i2.jpg" class="img-responsive img-rounded" 
@@ -488,7 +559,8 @@
 			method: 'GET',
 			url:'singleProperty'
 		}).success(function (response){
-			$scope.list = response[0];
+			alert(response);
+			$scope.list = response;
 		});
 	});
 	</script>

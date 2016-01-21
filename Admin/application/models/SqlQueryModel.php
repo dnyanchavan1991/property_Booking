@@ -34,17 +34,20 @@ class SqlQueryModel extends CI_Model{
 	
 	public function getSingleProperty($id)
 	{
-		$this->db->select ("P.property_type,P.property_name,P.street,P.city,P.postal_code,P.star_rate,P.state,P.image_path,
-			P.location_map,P.description,P.how_to_reach,
-			PI.bedrooms,PI.bathrooms,PI.pool,PI.meals,PI.internet_access,PI.smoking_allowd,PI.television_access,PI.pet_friendly,PI.air_condition,
-            PI.entertainment,PI.other_amenities,PI.theme,PI.attractions,PI.leisureActivities,PI.general,PI.payment_facility,
-			PO.owner_name,PO.phone,PO.alternative_phone,PO.email,PO.address,PO.registred_date");
-		$this->db->from ("property P");
-		$this->db->join ( "property_info PI", "P.property_id = PI.property_id", "inner" );
-		$this->db->join ( "property_owner_info PO", "PI.property_id = PO.property_id", "inner" );
-		$this->db->where("P.property_id",$id);
-		$getList = $this->db->get();
-		return $getList->result();
+		$getList = $this->db->query("SELECT P.property_type,P.property_name,P.street,P.city,P.postal_code,P.star_rate,P.state,
+									P.image_path,P.location_map,P.description,P.how_to_reach,PI.bedrooms,PI.bathrooms,PI.pool,
+									PI.meals,PI.internet_access,PI.smoking_allowd,PI.television_access,PI.pet_friendly,PI.air_condition,
+									PI.entertainment,PI.other_amenities,PI.theme,PI.attractions,PI.leisureActivities,PI.general,PI.payment_facility,
+									PO.owner_name,PO.phone,PO.alternative_phone,PO.email,PO.address,PO.registred_date 
+									FROM property P INNER JOIN property_info PI INNER JOIN property_owner_info PO ON P.property_id = PI.property_id 
+									AND PI.property_id = PO.property_id
+									WHERE P.property_id = $id");
+		/*$this->db->from ("");
+		$this->db->join ( "", "", "inner" );
+		$this->db->join ( "", "", "inner" );
+		$this->db->where("",);
+		$getList = $this->db->get();*/
+		return $getList->result_array();
 	}
 }
 ?>

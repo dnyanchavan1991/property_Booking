@@ -24,9 +24,98 @@ class PropertyIndetail extends CI_Controller {
 		$sessionID = json_decode($localId);
 		$sessionID = $sessionID[0]->id;
 		$response =$this->SqlQueryModel->getSingleProperty($sessionID);
-		//echo $image_path=$response->row()->image_path;
-		$response = json_encode($response);
-		echo $response;
+		$img_array = array();
+		foreach($response as $row)
+		{
+			$property_type = $row['property_type'];
+			$property_name = $row['property_name'];
+			$street = $row['street'];
+			$city = $row['city'];
+			$postal_code = $row['postal_code'];
+			$star_rate = $row['star_rate'];
+			$state = $row['state'];
+			/*- directory path -*/
+			$image_path = $row['image_path'];
+			//echo $directory_path = site_url('Property gallery').$image_path;
+			/*--get all images in directory--*/
+			$map = directory_map($image_path);
+			//print_r($map);
+			foreach ($map as $result)
+			{
+				$get_result = $image_path.$result;
+				array_push($img_array,$get_result);
+			}
+			/*- main image path -*/
+			$matches = preg_grep("/mainImage/", $img_array);
+			$matches = implode($matches);
+			$main_img_path = $matches;
+			
+			$location_map = $row['location_map'];
+			$description = $row['description'];
+			$how_to_reach = $row['how_to_reach'];
+			$bedrooms = $row['bedrooms'];
+			$bathrooms = $row['bathrooms'];
+			$pool = $row['pool'];
+			$meals = $row['meals'];
+			$internet_access = $row['internet_access'];
+			$smoking_allowd = $row['smoking_allowd'];
+			$television_access = $row['television_access'];
+			$pet_friendly = $row['pet_friendly'];
+			$air_condition = $row['air_condition'];
+			$entertainment = $row['entertainment'];
+			$other_amenities = $row['other_amenities'];
+			$theme = $row['theme'];
+			$attractions = $row['attractions'];
+			$leisureActivities = $row['leisureActivities'];
+			$general = $row['general'];
+			$payment_facility = $row['payment_facility'];
+			$owner_name = $row['owner_name'];
+			$phone = $row['phone'];
+			$alternative_phone = $row['alternative_phone'];
+			$email = $row['email'];
+			$address = $row['address'];
+			$registred_date = $row['registred_date'];
+			
+		}
+		$response_data = array(
+								'property_type'=>$property_type,
+								'property_name'=>$property_name,
+								'street'=>$street,
+								'city'=>$city,
+								'postal_code'=>$postal_code,
+								'star_rate'=>$star_rate,
+								'state'=>$state,
+								'main_img_path'=>$main_img_path,
+								'images'=>$img_array,
+								'location_map'=>$location_map,
+								'description'=>$description,
+								'how_to_reach'=>$how_to_reach,
+								'bedrooms'=>$bedrooms,
+								'bathrooms'=>$bathrooms,
+								'pool'=>$pool,
+								'meals'=>$meals,
+								'internet_access'=>$internet_access,
+								'attractions'=>$attractions,
+								'smoking_allowd'=>$smoking_allowd,
+								'television_access'=>$television_access,
+								'pet_friendly'=>$pet_friendly,
+								'air_condition'=>$air_condition,
+								'entertainment'=>$entertainment,
+								'other_amenities'=>$other_amenities,
+								'theme'=>$theme,
+								'leisureActivities'=>$leisureActivities,
+								'general'=>$general,
+								'payment_facility'=>$payment_facility,
+								'owner_name'=>$owner_name,
+								'phone'=>$phone,
+								'alternative_phone'=>$alternative_phone,
+								'email'=>$email,
+								'address'=>$address,
+								'registred_date'=>$registred_date
+							);
+		//echo $image_path=$response['image_path'];
+		$data = json_encode($response_data);
+		echo $data;
 		//$this->load->view('DisplayPropertyIndetail');
 	}
 	
