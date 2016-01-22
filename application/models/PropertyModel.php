@@ -154,4 +154,5 @@ class PropertyModel extends CI_Model {
 		return  $query->result();
 		
 	}
+
 }
