@@ -559,7 +559,6 @@
 			method: 'GET',
 			url:'singleProperty'
 		}).success(function (response){
-			alert(response);
 			$scope.list = response;
 		});
 	});

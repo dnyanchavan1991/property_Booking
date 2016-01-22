@@ -30,7 +30,6 @@ class AddProperty extends CI_Controller {
 		$City = $_POST['City'];
 		$State = $_POST['State'];
 		$PostalCode = $_POST['PostalCode'];
-		//$Phone = $_POST['Phone'];
 		$StarRate = $_POST['StarRate'];
 		$fdata_mainImg=$_FILES['mainImage'];
 		$fdata=$_FILES['propertyImages'];
@@ -58,24 +57,96 @@ class AddProperty extends CI_Controller {
 		$how_to_reach = $_POST['how_to_reach'];
 		
 		$Bedrooms = $_POST['Bedrooms'];
+		$beds = $_POST['beds'];
 		$Bathrooms = $_POST['Bathrooms'];
+		$accommodates = $_POST['accommodates'];
 		$Meals = $_POST['Meals'];
-		$Pool = $_POST['Pool'];
-		$internet_access = $_POST['internet_access'];
-		$smoking_allowd = $_POST['smoking_allowd'];
-		$television_access = $_POST['television_access'];
-		$pet_friendly = $_POST['pet_friendly'];
-		$air_condition = $_POST['air_condition'];
+		
+		$Pool = $this->input->post('Pool');
+		if($Pool == FALSE)
+		{
+			$Pool = '';
+		}
+		
+		$internet_access = $this->input->post('internet_access');
+		if($internet_access == FALSE)
+		{
+			$internet_access = '';
+		}
+		
+		$smoking_allowd = $this->input->post('smoking_allowd');
+		if($smoking_allowd == FALSE)
+		{
+			$smoking_allowd = '';
+		}
+		
+		$television_access = $this->input->post('television_access');
+		if($television_access == FALSE)
+		{
+			$television_access = '';
+		}
+		
+		$pet_friendly = $this->input->post('pet_friendly');
+		if($pet_friendly == FALSE)
+		{
+			$pet_friendly = '';
+		}
+		
+		$air_condition = $this->input->post('air_condition');
+		if($air_condition == FALSE)
+		{
+			$air_condition = '';
+		}
+		
+		$payment_facility = $this->input->post('payment_facility');
+		if($payment_facility == FALSE)
+		{
+			$payment_facility = '';
+		}
+		
+		$in_house_kitchen = $this->input->post('in_house_kitchen');
+		if($in_house_kitchen == FALSE)
+		{
+			$in_house_kitchen = '';
+		}
+		
+		$restaurant = $this->input->post('restaurant');
+		if($restaurant == FALSE)
+		{
+			$restaurant = '';
+		}
+		
+		$free_parking = $this->input->post('free_parking');
+		if($free_parking == FALSE)
+		{
+			$free_parking = '';
+		}
+		
+		$first_aid_available = $this->input->post('first_aid_available');
+		if($first_aid_available == FALSE)
+		{
+			$first_aid_available = '';
+		}
+		
+		/*$internet_access = $_POST[''];
+		$smoking_allowd = $_POST[''];
+		$television_access = $_POST[''];
+		$pet_friendly = $_POST[''];
+		$air_condition = $_POST[''];
+		$payment_facility = $_POST[''];
+		$in_house_kitchen = $_POST[''];
+		$restaurant = $_POST[''];
+		$free_parking = $_POST[''];
+		$first_aid_available = $_POST['first_aid_available'];*/
 		$EntertainMent = $_POST['EntertainMent'];
 		$OtherAmenities = $_POST['OtherAmenities'];
 		$Theme = $_POST['Theme'];
 		$Attractions = $_POST['Attractions'];
 		$LeisureActivities = $_POST['LeisureActivities'];
 		$General = $_POST['General'];
-		$payment_facility = $_POST['payment_facility'];
+		
 
 		$postdata1 = array(
-							'property_type' => $property_type,
 							'property_name' => $PropertyName,
 							'street' => $Street,
 							'city' => $City,
@@ -85,7 +156,8 @@ class AddProperty extends CI_Controller {
 							'image_path' => $path,
 							'location_map' => $location_map,
 							'description' => $description,
-							'how_to_reach' => $how_to_reach
+							'how_to_reach' => $how_to_reach,
+							'property_type' => $property_type
 						);
 		//$id = $this->SqlQueryModel->insertProperty($postdata1);		
 		//
@@ -99,6 +171,12 @@ class AddProperty extends CI_Controller {
 							'television_access' => $television_access,
 							'pet_friendly' => $pet_friendly,
 							'air_condition' => $air_condition,
+							'in_house_kitchen' => $in_house_kitchen,
+							'restaurant' => $restaurant,
+							'beds' => $beds,
+							'accommodates' => $accommodates,
+							'free_parking' => $free_parking,
+							'first_aid_available' => $first_aid_available,
 							'entertainment' => $EntertainMent,
 							'other_amenities' => $OtherAmenities,
 							'theme' => $Theme,
