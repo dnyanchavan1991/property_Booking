@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="myRegApp">
 <head>
 <title>Classic Hotel a Hotel Category Flat Bootstrap Responsive Website Template | Booking :: w3layouts</title>
 <!-- for-mobile-apps -->
@@ -30,7 +30,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</script>
 	<!-- start-smoth-scrolling -->
 </head>
-<body>
+<body ng-controller="AppController as ctrl">
 <!-- banner -->
 <div class="banner page-head">
 	<div class="container">
@@ -87,14 +87,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</ul>
 				</div>
 				<div class="col-md-9 reservation-right">
-					<form>
+				<form ng-submit="ctrl.submit()" name="myForm">
 						<h4>Contact details</h4>
-						<input type="text" value="First Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'fName';}" required="">
-						<input type="text" value="Last Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'lName';}" required="">
-						<input type="text" value="Email ID" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
+						<input type="text" ng-model="ctrl.user.username" name="uname" placeholder="First Name" required ng-minlength="3"/>
+                             <span ng-show="myForm.$dirty && myForm.uname.$error.required">This is a required field</span>
+                             <span ng-show="myForm.$dirty && myForm.uname.$error.minlength">Minimum length required is 4</span>
+                         <input type="text" ng-model="ctrl.user.lastname" name="lname" placeholder="Last Name" required ng-minlength="3"/>
+                             <span ng-show="myForm.$dirty && myForm.lname.$error.required">This is a required field</span>
+                             <span ng-show="myForm.$dirty && myForm.lname.$error.minlength">Minimum length required is 4</span>
+                           <input type="email" ng-model="ctrl.user.email" name="email" placeholder="Email" required/>
+                           <span ng-show="myForm.$dirty && myForm.email.$error.required">This is a required field</span>
+                          <br/><br/>
+                              
+						<!-- <input type="text" value="First Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'fName';}" required=""> -->
+						<!-- <input type="text" value="Last Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'lName';}" required=""> -->
+						<!-- <input type="text" value="Email ID" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required=""> -->
 						<textarea onfocus="this.value = '' ;" onblur="if (this.value == '') {this.value = 'Address...';}" required=""> Address... </textarea>
-						<input type="text" value="Mobile Number" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'MobileNo';}" required="">
-						<button class="btn1 btn-1 btn-1e">REGISTER NOW</button>
+						<input type="text" placeholder="Mobile Number" name="phone" ng-model="ctrl.user.phone" required/>
+						<span ng-show="myForm.$dirty && myForm.phone.$error.required">Please enter a valid phone number.</span>
+						<button class="btn1 btn-1 btn-1e" type="submit" ng-disabled="myRegForm.$invalid">REGISTER NOW</button>
 					</form>
 					<!--strat-date-piker-->
 					
@@ -182,5 +193,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</script>
 	<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 <!-- //smooth scrolling -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js">
+      </script>  
+      <script>
+          angular.module('myRegApp', [])
+          .controller('AppController', [function() {
+              var self = this;
+              self.submit = function() {
+            	  alert('Data submited succesfully');  
+                  console.log('Form is submitted with following user', self.user);
+            };
+           
+
+      }]);
+  </script>
+
 </body>
 </html>
