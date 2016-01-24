@@ -148,10 +148,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="banner-bottom" >
 	<table class="new-table">
 	<tr>
-	<td><input type = "text" id="inpDestination" name="inpDestination" ng-model="inputDestination" ng-init="inputDestination='Where you want to go?'" style="width:90%;"/></td>
+	<td>
+		<input type = "text" id="inpDestination" name="inpDestination" 
+			ng-model="inputDestination" "
+			ng-click="expandFilterOptions()" 
+			style="width:90%;"/></td>
 	<td><select class="sel" ng-model="selectAccomodationType" 
 							ng-init="selectAccomodationType=accomodationType[0]" 
-							ng-options="option as option for option in accomodationType | orderBy:option" style="width:80%;">
+							ng-options="option as option for option in accomodationType | orderBy:option" 
+							ng-show = "inputDestination != 'Where you want to go?'"
+							style="width:80%;">
 													    
 						</select></td>
 						<td>

@@ -110,15 +110,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="search-hotel">
 						<h3 class="sear-head">Name contains</h3>
 						<form>
-							<input type="text" value="Hotel name..."
+							<input type="text" value="Property Name..."
 								onfocus="this.value = '';"
-								onblur="if (this.value == '') {this.value = 'Hotel name...';}"
+								onblur="if (this.value == '') {this.value = 'Property name...';}"
 								required=""> <input type="submit" value=" ">
 						</form>
 					</div>
 
 					<div class="range">
-						<h3 class="sear-head">Average nightly rate</h3>
+						<h3 class="sear-head">Per night rate</h3>
 						<ul class="dropdown-menu6">
 							<li>
 
@@ -139,29 +139,29 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 																	min : 0,
 																	max : 9000,
 																	values : [
-																			50,
-																			6000 ],
+																			500,
+																			10000 ],
 																	slide : function(
 																			event,
 																			ui) {
 																		$(
 																				"#amount")
 																				.val(
-																						"$"
+																						"INR"
 																								+ ui.values[0]
-																								+ " - $"
+																								+ " - INR"
 																								+ ui.values[1]);
 																	}
 																});
 												$("#amount")
 														.val(
-																"$"
+																"INR"
 																		+ $(
 																				"#slider-range")
 																				.slider(
 																						"values",
 																						0)
-																		+ " - $"
+																		+ " - INR"
 																		+ $(
 																				"#slider-range")
 																				.slider(
@@ -173,17 +173,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 					</div>
 					<div class="range-two">
-						<h3 class="sear-head">Distance from</h3>
-						<select class="sel">
-							<option value="">Enter City Center</option>
-							<option value="">Park View Center</option>
-							<option value="">E Park Road</option>
-							<option value="">Silver City</option>
-						</select>
-
+						<h3 class="sear-head">Accomodates</h3>
+						
 						<ul class="dropdown-menu5">
 							<li>
-
 								<div id="slider-range1"></div> <input type="text" id="amount1"
 								style="border: 0; color: #ffffff; font-weight: normal;" />
 							</li>
@@ -201,31 +194,31 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 																{
 																	range : true,
 																	min : 0,
-																	max : 6000,
+																	max : 20,
 																	values : [
-																			50,
-																			5000 ],
+																			1,
+																			20 ],
 																	slide : function(
 																			event,
 																			ui) {
 																		$(
 																				"#amount1")
 																				.val(
-																						"KM-"
+																						""
 																								+ ui.values[0]
-																								+ " - KM-"
+																								+ " - "
 																								+ ui.values[1]);
 																	}
 																});
 												$("#amount1")
 														.val(
-																"KM-"
+																""
 																		+ $(
 																				"#slider-range1")
 																				.slider(
 																						"values",
 																						0)
-																		+ " - KM-"
+																		+ " - "
 																		+ $(
 																				"#slider-range1")
 																				.slider(
@@ -254,19 +247,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 					<div class="menu-grid">
 						<ul class="menu_drop">
+						
 							<li class="item1"><a href="#"><span
 									class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>Features</a>
 								<ul>
-									<li class="subitem1"><a href="#">Roll-in shower </a></li>
-									<li class="subitem2"><a href="#">Comfortable bathroom</a></li>
-									<li class="subitem3"><a href="#">WI-FI facility</a></li>
-								</ul></li>
+									<li class="subitem1"> <input type="checkbox" >Internet/WIFI </input></li>
+									<li class="subitem2"><input type="checkbox" > Cable TV </input></li>
+									<li class="subitem3"><input type="checkbox" > Air Conditioning </input></li>																	
+								</ul>
+							</li>
 							<li class="item2"><a href="#"><span
 									class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>Facilities</a>
 								<ul>
-									<li class="subitem1"><a href="#">Childcare </a></li>
-									<li class="subitem2"><a href="#">Gym</a></li>
-									<li class="subitem3"><a href="#">Bar</a></li>
+									<li class="subitem1"> <input type="checkbox" >Free Parking </input></li>
+									<li class="subitem2"><input type="checkbox" > Restaurant / Kitchen </input></li>
+									<li class="subitem3"><input type="checkbox" > Smoking allowed </input></li>
+									<li class="subitem4"><input type="checkbox" > Pet Friendly </input></li>
 								</ul></li>
 							<li class="item3"><a href="#"><span
 									class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>Accommodation
@@ -276,7 +272,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<li class="subitem2"><a href="#">Hostel</a></li>
 									<li class="subitem3"><a href="#">Apartment</a></li>
 								</ul></li>
-							<li class="item4"><a href="#"><span
+							<!-- <li class="item4"><a href="#"><span
 									class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>Landmarks</a>
 								<ul>
 									<li class="subitem1"><a href="#">Mexican City</a></li>
@@ -289,7 +285,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<li class="subitem1"><a href="#">Diamond Park Colony</a></li>
 									<li class="subitem2"><a href="#">E Park Road</a></li>
 									<li class="subitem3"><a href="#">lake View Center</a></li>
-								</ul></li>
+								</ul></li> -->
 						</ul>
 						<!-- script for tabs -->
 						<script type="text/javascript">

@@ -13,8 +13,8 @@ class VisitorInfo extends CI_Controller {
 					'country' => $_POST ['country'] ,
 					'date_visited'=>date('Y-m-d'),
 					'location'=>$_POST ['loc'],
-					'Service_Provider'=>$_POST ['org'],
-					'Postal'=>$_POST ['postal']
+					'Service_Provider'=>$_POST ['org']
+					//'Postal'=>$_POST ['postal']
 					
 			);
 			$this->load->model ( 'PropertyModel' );
