@@ -121,7 +121,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										});
 										});
 			</script>
-		<div  id="top" class="callbacks_container">
+		<!-- <div  id="top" class="callbacks_container">
 				<ul class="rslides" id="slider3">
 					<li>
 						<div class="banner-text">
@@ -142,8 +142,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div>
 					</li>
 				</ul>
-			</div>
-		</div>
+			</div>-->
+		</div> 
 		
 	<div class="banner-bottom" >
 	<table class="new-table">
@@ -154,8 +154,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			ng-click="expandFilterOptions()" 
 			style="width:90%;"/></td>
 	<td><select class="sel" ng-model="selectAccomodationType" 
-							ng-init="selectAccomodationType=accomodationType[0]" 
-							ng-options="option as option for option in accomodationType | orderBy:option" 
+						 	ng-init="selectAccomodationType=accomodationType[0]"  
+							ng-options="accomodation as accomodation.label for accomodation in accomodationType track by accomodation.value " 
 							ng-show = "inputDestination != 'Where you want to go?'"
 							style="width:80%;">
 													    
@@ -168,10 +168,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</select>
 						</td>
 						<td>
-						<input class="date" name="checkIn" id="checkIn" ng-model="checkInDate" ng-init="checkInDate= 'CheckIn Date'" type="text"  style="width:70%;"onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required />
+						<input class="date" name="checkIn" readonly id="checkIn" ng-model="checkInDate" ng-init="checkInDate= 'CheckIn Date'" type="text"  style="width:70%;"onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required />
 						</td>
 						<td>
-						<input class="date" name="checkOut"  id="checkOut" type="text" ng-model="checkOutDate" ng-init="checkOutDate= 'CheckOut Date'" style="width:70%;margin-bottom: 0;" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required=""/>
+						<input class="date" name="checkOut" readonly id="checkOut" type="text" ng-model="checkOutDate" ng-init="checkOutDate= 'CheckOut Date'" style="width:70%;margin-bottom: 0;" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required=""/>
 						</td>
 						<td><div class="search"><input type="submit"  name="submit" value="search"></div></td>
 	</tr>
