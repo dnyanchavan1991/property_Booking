@@ -18,7 +18,9 @@ class VisitorInfo extends CI_Controller {
 					
 			);
 			$this->load->model ( 'PropertyModel' );
-			$visitorInfo = $this->PropertyModel->insertVisitorData ( $visitorInfo );
+			$visitorInfo_count = $this->PropertyModel->verifyDuplicateIPData($_POST ['ip'], date('Y-m-d'));
+			if ($visitorInfo_count <= 0 )
+				$visitorInfo = $this->PropertyModel->insertVisitorData ( $visitorInfo );
 		
 	}
 	

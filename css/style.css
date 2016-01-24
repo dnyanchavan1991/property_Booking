@@ -324,7 +324,7 @@ background-size:cover;
 -o-background-size: cover;
 -ms-background-size: cover;
 -moz-background-size: cover;
-min-height: 855px;
+min-height: 640px;
 }
 /*-- //banner --*/
 /*-- Effect 11 --*/
@@ -473,7 +473,7 @@ float:right;
   padding: 25px;
 }
 .banner-info {
-  margin-top: 200px;
+  margin-top: 170px;
 }
 .banner-text h3 {
   font-size: 36px;
@@ -1238,7 +1238,7 @@ label.checkbox {
 }
 /*-- about --*/
 .page-head {
-  min-height: 150px;
+  min-height: 125px;
 }
 /*--about-starts--*/
 .about-top {

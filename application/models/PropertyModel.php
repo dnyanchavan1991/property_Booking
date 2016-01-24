@@ -53,8 +53,7 @@ class PropertyModel extends CI_Model {
 	}
 	/*this function gives rooms available for particular is ,for it's particular accomodation type*/
 	public function getRoomAvailabilityCount($confirmArray) {
-		$this->load->database ();
-	
+		$this->load->database ();	
 		$reservationTable = 'reservation';
 		$accomodationTable = 'accomodationtype';
 		$propertyTable = 'property';
@@ -80,14 +79,30 @@ class PropertyModel extends CI_Model {
 		) );
 		$availabilityofRoomCount = $this->db->get ();
 		$roomAvailableCount=$availabilityofRoomCount->row()->count;
-		return 	$roomAvailableCount;
-			
+		return 	$roomAvailableCount;			
+	}
+	public function verifyDuplicateIPData($ip_address, $date_visited)
+	{
+		$this->load->database ();
+		$visitorTable = 'visitors_info';
+		$this->db->select ( " COUNT(visitor_id)as count");
+		$this->db->from ( "$visitorTable visitor" );
+		$where = "visitor_ip = '$ip_address' AND date_visited = '$date_visited'";
+		$this->db->where($where);
+		
+		$result = $this->db->get();	
+		$resultCount = $result->row()->count;	
+		
+		return $resultCount;
 	}
 	public function insertVisitorData ($visitorData)
 	{
-		$visitorTable='visitors_info';
-		$this->load->database ();
-		$query=$this->db->insert($visitorTable,$visitorData);
+		 
+			$visitorTable='visitors_info';
+			$this->load->database ();
+			$query=$this->db->insert($visitorTable,$visitorData);
+		 
+		
 	}
 	public function getVisitorCount (){
 		$visitorTable='visitors_info';
