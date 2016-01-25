@@ -265,290 +265,283 @@
 				</div>
 				
 				<br>
-				
-				<div class="row">
-					<div class="col-lg-12">
-						<label class="control-label col-md-3" for="PropertyName">Star Rate</label>
-							<div class="col-md-9">
-								{{list.star_rate}}
-							</div>&nbsp;
-					</div>
-				</div>
-				
-				<div class="row">
-					<div class="col-lg-12">
-						<label class="control-label col-md-3" for="PropertyName">Map Location</label>
-							<div class="col-md-9">
-								{{list.location_map}}
-							</div>&nbsp;
-					</div>
-				</div>
-				
-				<div class="row">
-					<div class="col-lg-12">
-						<label class="control-label col-md-3" for="PropertyName">Description</label>
-							<div class="col-md-9">
-								{{list.description}}
-							</div>&nbsp;
-					</div>
-				</div>
-				
-				<div class="row">
-					<div class="col-lg-12">
-						<label class="control-label col-md-3" for="PropertyName">How To Reach</label>
-							<div class="col-md-9">
-								{{list.how_to_reach}}
-							</div>&nbsp;
-					</div>
-				</div>
-				
-				<div class="row">
-					<div class="col-lg-12">
-						<label class="control-label col-md-3" for="PropertyName">Bedrooms</label>
-							<div class="col-md-9">
-								{{list.bedrooms}}
-							</div>&nbsp;
-					</div>
-				</div>
-				
-				<div class="row">
-					<div class="col-lg-12">
-						<label class="control-label col-md-3" for="PropertyName">Bathrooms</label>
-							<div class="col-md-9">
-								{{list.bathrooms}}
-							</div>&nbsp;
-					</div>
-				</div>
-				
-				<div class="row">
-					<div class="col-lg-12">
-						<label class="control-label col-md-3" for="PropertyName">Pool</label>
-							<div class="col-md-9">
-								{{list.pool}}
-							</div>&nbsp;
-					</div>
-				</div>
-				
-				<div class="row">
-					<div class="col-lg-12">
-						<label class="control-label col-md-3" for="PropertyName">Internet / WIFI</label>
-							<div class="col-md-9">
-								{{list.internet_access}}
-							</div>&nbsp;
-					</div>
-				</div>
-				
-				<div class="row">
-					<div class="col-lg-12">
-						<label class="control-label col-md-3" for="PropertyName">Smoking Allowed</label>
-							<div class="col-md-9">
-								{{list.smoking_allowd}}
-							</div>&nbsp;
-					</div>
-				</div>
-				
-				<div class="row">
-					<div class="col-lg-12">
-						<label class="control-label col-md-3" for="PropertyName">Cable TV</label>
-							<div class="col-md-9">
-								{{list.television_access}}
-							</div>&nbsp;
-					</div>
-				</div>
-				
-				<div class="row">
-					<div class="col-lg-12">
-						<label class="control-label col-md-3" for="PropertyName">Pet friendly</label>
-							<div class="col-md-9">
-								{{list.pet_friendly}}
-							</div>&nbsp;
-					</div>
-				</div>
-				
-				<div class="row">
-					<div class="col-lg-12">
-						<label class="control-label col-md-3" for="PropertyName">Air Conditioning</label>
-							<div class="col-md-9">
-								{{list.air_condition}}
-							</div>&nbsp;
-					</div>
-				</div>
-				
-				<div class="row">
-					<div class="col-lg-12">
-						<label class="control-label col-md-3" for="PropertyName">Meals</label>
-							<div class="col-md-9">
-								{{list.meals}}
-							</div>&nbsp;
-					</div>
-				</div>
-				
-				<div class="row">
-					<div class="col-lg-12">
-						<label class="control-label col-md-3" for="PropertyName">EntertainMent</label>
-							<div class="col-md-9">
-								{{list.entertainment}}
-							</div>&nbsp;
-					</div>
-				</div>
-				
-				<div class="row">
-					<div class="col-lg-12">
-						<label class="control-label col-md-3" for="PropertyName">OtherAmenities</label>
-							<div class="col-md-9">
-								{{list.other_amenities}}
-							</div>&nbsp;
-					</div>
-				</div>
-				
-				<div class="row">
-					<div class="col-lg-12">
-						<label class="control-label col-md-3" for="PropertyName">Theme</label>
-							<div class="col-md-9">
-								{{list.theme}}
-							</div>&nbsp;
-					</div>
-				</div>
-				
-				<div class="row">
-					<div class="col-lg-12">
-						<label class="control-label col-md-3" for="PropertyName">Attractions</label>
-							<div class="col-md-9">
-								{{list.attractions}}
-							</div>&nbsp;
-					</div>
-				</div>
-				
-				<div class="row">
-					<div class="col-lg-12">
-						<label class="control-label col-md-3" for="PropertyName">Leisure Activities</label>
-							<div class="col-md-9">
-								{{list.leisureActivities}}
-							</div>&nbsp;
-					</div>
-				</div>
-				
-				<div class="row">
-					<div class="col-lg-12">
-						<label class="control-label col-md-3" for="PropertyName">General</label>
-							<div class="col-md-9">
-								{{list.general}}
-							</div>&nbsp;
-					</div>
-				</div>
-				
-				<div class="row">
-					<div class="col-lg-12">
-						<label class="control-label col-md-3" for="PropertyName">Payment Facility</label>
-							<div class="col-md-9">
-								{{list.payment_facility}}
-							</div>&nbsp;
-					</div>
-				</div>
-				
-				<div class="row">
-					<div class="col-lg-4">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title"><i class="glyphicon glyphicon-camera"></i> Uploaded Images</h3>
-                            </div>
-                            <div class="panel-body">
-								<div class="col-md-6" ng-repeat="x in list.images">
-								    <img id="subImg" ng-src="<?php echo base_url() ?>{{x}}" class="img-responsive img-rounded" 
-									title="sub image" height="150" width="250">&nbsp;
+				<div class="example1">
+							
+					<div class="panel panel-default">
+						<div class="panel-heading" data-acc-link="demo1"><i class="glyphicon glyphicon-list"></i> Features & Facilities</div>
+						<div class="panel-body acc-open" data-acc-content="demo1">
+							<div class="row">
+								<div class="col-lg-12">
+									<label class="control-label col-md-3" for="PropertyName">Star Rate</label>
+										<div class="col-md-9">
+											{{list.star_rate}}
+										</div>&nbsp;
 								</div>
-								<!--<div class="col-md-6">
-								    <img id="subImg" src="Property gallery/agile properties/i2.jpg" class="img-responsive img-rounded" 
-									title="sub image">&nbsp;
+							</div>
+							
+							<div class="row">
+								<div class="col-lg-12">
+									<label class="control-label col-md-3" for="PropertyName">Map Location</label>
+										<div class="col-md-9">
+											{{list.location_map}}
+										</div>&nbsp;
 								</div>
-								<div class="col-md-6">
-								    <img id="subImg" src="Property gallery/agile properties/i2.jpg" class="img-responsive img-rounded" 
-									title="sub image">&nbsp;
+							</div>
+							
+							<div class="row">
+								<div class="col-lg-12">
+									<label class="control-label col-md-3" for="PropertyName">Description</label>
+										<div class="col-md-9">
+											{{list.description}}
+										</div>&nbsp;
 								</div>
-								<div class="col-md-6">
-								    <img id="subImg" src="Property gallery/agile properties/i2.jpg" class="img-responsive img-rounded" 
-									title="sub image">&nbsp;
-								</div>-->
-                            </div>
-                        </div>
-                    </div>
-				</div>
-						
-				<div class="row">
-					<div class="col-lg-12">
-						<center class="breadcrumb"><strong>--- Property Owner Info ---</strong></center>
+							</div>
+							
+							<div class="row">
+								<div class="col-lg-12">
+									<label class="control-label col-md-3" for="PropertyName">How To Reach</label>
+										<div class="col-md-9">
+											{{list.how_to_reach}}
+										</div>&nbsp;
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-lg-12">
+									<label class="control-label col-md-3" for="PropertyName">Bedrooms</label>
+										<div class="col-md-9">
+											{{list.bedrooms}}
+										</div>&nbsp;
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-lg-12">
+									<label class="control-label col-md-3" for="PropertyName">Bathrooms</label>
+										<div class="col-md-9">
+											{{list.bathrooms}}
+										</div>&nbsp;
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-lg-12">
+									<label class="control-label col-md-3" for="PropertyName">Pool</label>
+										<div class="col-md-9">
+											{{list.pool}}
+										</div>&nbsp;
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-lg-12">
+									<label class="control-label col-md-3" for="PropertyName">Internet / WIFI</label>
+										<div class="col-md-9">
+											{{list.internet_access}}
+										</div>&nbsp;
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-lg-12">
+									<label class="control-label col-md-3" for="PropertyName">Smoking Allowed</label>
+										<div class="col-md-9">
+											{{list.smoking_allowd}}
+										</div>&nbsp;
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-lg-12">
+									<label class="control-label col-md-3" for="PropertyName">Cable TV</label>
+										<div class="col-md-9">
+											{{list.television_access}}
+										</div>&nbsp;
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-lg-12">
+									<label class="control-label col-md-3" for="PropertyName">Pet friendly</label>
+										<div class="col-md-9">
+											{{list.pet_friendly}}
+										</div>&nbsp;
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-lg-12">
+									<label class="control-label col-md-3" for="PropertyName">Air Conditioning</label>
+										<div class="col-md-9">
+											{{list.air_condition}}
+										</div>&nbsp;
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-lg-12">
+									<label class="control-label col-md-3" for="PropertyName">Meals</label>
+										<div class="col-md-9">
+											{{list.meals}}
+										</div>&nbsp;
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-lg-12">
+									<label class="control-label col-md-3" for="PropertyName">EntertainMent</label>
+										<div class="col-md-9">
+											{{list.entertainment}}
+										</div>&nbsp;
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-lg-12">
+									<label class="control-label col-md-3" for="PropertyName">OtherAmenities</label>
+										<div class="col-md-9">
+											{{list.other_amenities}}
+										</div>&nbsp;
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-lg-12">
+									<label class="control-label col-md-3" for="PropertyName">Theme</label>
+										<div class="col-md-9">
+											{{list.theme}}
+										</div>&nbsp;
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-lg-12">
+									<label class="control-label col-md-3" for="PropertyName">Attractions</label>
+										<div class="col-md-9">
+											{{list.attractions}}
+										</div>&nbsp;
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-lg-12">
+									<label class="control-label col-md-3" for="PropertyName">Leisure Activities</label>
+										<div class="col-md-9">
+											{{list.leisureActivities}}
+										</div>&nbsp;
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-lg-12">
+									<label class="control-label col-md-3" for="PropertyName">General</label>
+										<div class="col-md-9">
+											{{list.general}}
+										</div>&nbsp;
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-lg-12">
+									<label class="control-label col-md-3" for="PropertyName">Payment Facility</label>
+										<div class="col-md-9">
+											{{list.payment_facility}}
+										</div>&nbsp;
+								</div>
+							</div>
+						</div>
 					</div>
-				</div>
 				
-				<div class="row">
-					<div class="col-lg-12">
-						<label class="control-label col-md-3" for="PropertyName">Name</label>
-							<div class="col-md-9">
-								{{list.owner_name}}
-							</div>&nbsp;
+					<div class="panel panel-default">
+						<div class="panel-heading" data-acc-link="demo2">
+							<h3 class="panel-title"><i class="glyphicon glyphicon-camera"></i> Uploaded Images</h3>
+						</div>
+						<div class="panel-body" data-acc-content="demo2">
+							<div class="col-md-6" ng-repeat="x in list.images">
+								<img id="subImg" ng-src="<?php echo base_url() ?>{{x}}" class="img-responsive img-rounded" 
+								title="sub image" height="150" width="250">&nbsp;
+							</div>
+						</div>
 					</div>
-				</div>
+                    
+					<div class="panel panel-default">
+						<div class="panel-heading" data-acc-link="demo3">
+							<h3 class="panel-title"><i class="glyphicon glyphicon-user"></i> Property Owner Info</h3>
+						</div>
+						<div class="panel-body" data-acc-content="demo3">	
+							<div class="row">
+								<div class="col-lg-12">
+									<label class="control-label col-md-3" for="PropertyName">Name</label>
+										<div class="col-md-9">
+											{{list.owner_name}}
+										</div>&nbsp;
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-lg-12">
+									<label class="control-label col-md-3" for="PropertyName">Email ID</label>
+										<div class="col-md-9">
+											{{list.email}}
+										</div>&nbsp;
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-lg-12">
+									<label class="control-label col-md-3" for="PropertyName">Address</label>
+										<div class="col-md-9">
+											{{list.address}}
+										</div>&nbsp;
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-lg-12">
+									<label class="control-label col-md-3" for="PropertyName">Registration Date</label>
+										<div class="col-md-9">
+											{{list.registred_date}}
+										</div>&nbsp;
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-lg-12">
+									<label class="control-label col-md-3" for="PropertyName">Tel/Mobile No.</label>
+										<div class="col-md-9">
+											{{list.phone}}
+										</div>&nbsp;
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-lg-12">
+									<label class="control-label col-md-3" for="PropertyName">Alternative Tel/Mobile No.</label>
+										<div class="col-md-9">
+											{{list.alternative_phone}}
+										</div>&nbsp;
+								</div>
+							</div>
+						</div>
+					</div>
 				
-				<div class="row">
-					<div class="col-lg-12">
-						<label class="control-label col-md-3" for="PropertyName">Email ID</label>
-							<div class="col-md-9">
-								{{list.email}}
-							</div>&nbsp;
-					</div>
-				</div>
 				
-				<div class="row">
-					<div class="col-lg-12">
-						<label class="control-label col-md-3" for="PropertyName">Address</label>
-							<div class="col-md-9">
-								{{list.address}}
-							</div>&nbsp;
-					</div>
-				</div>
-				
-				<div class="row">
-					<div class="col-lg-12">
-						<label class="control-label col-md-3" for="PropertyName">Registration Date</label>
-							<div class="col-md-9">
-								{{list.registred_date}}
-							</div>&nbsp;
-					</div>
-				</div>
-				
-				<div class="row">
-					<div class="col-lg-12">
-						<label class="control-label col-md-3" for="PropertyName">Tel/Mobile No.</label>
-							<div class="col-md-9">
-								{{list.phone}}
-							</div>&nbsp;
-					</div>
-				</div>
-				
-				<div class="row">
-					<div class="col-lg-12">
-						<label class="control-label col-md-3" for="PropertyName">Alternative Tel/Mobile No.</label>
-							<div class="col-md-9">
-								{{list.alternative_phone}}
-							</div>&nbsp;
-					</div>
-				</div>
 				<!--<div class="page-header" style="border:1px solid black;height:300px;margin-top:10%;">
 					jhyj
 				</div>-->
-            </div>
+				</div>
             <!-- /.container-fluid -->
 
-        </div>
+			</div>
         <!-- /#page-wrapper -->
 
-    </div>
+		</div>
     <!-- /#wrapper -->
 
     <!-- jQuery -->
     <script src="<?php echo base_url() ?>assets/js/jquery.js"></script>
     <script src="<?php echo base_url() ?>assets/js/angular.min.js"></script>
-
+	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery.accordion.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="<?php echo base_url() ?>assets/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
@@ -560,6 +553,12 @@
 			url:'singleProperty'
 		}).success(function (response){
 			$scope.list = response;
+		});
+	});
+	
+	$(function() {
+		$('.example1').accordion({ 
+			multiOpen: false
 		});
 	});
 	</script>
