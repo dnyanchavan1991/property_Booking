@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="myRegApp">
+<html ng-app="minmax">
 <head>
 <title>Classic Hotel a Hotel Category Flat Bootstrap Responsive Website Template | Booking :: w3layouts</title>
 <!-- for-mobile-apps -->
@@ -20,6 +20,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!-- start-smoth-scrolling -->
 		<script type="text/javascript" src="js/move-top.js"></script>
 		<script type="text/javascript" src="js/easing.js"></script>
+		<script type="text/javascript" src="libs/angular/angular.min.js" ></script >
+        <script type="text/javascript" src="libs/angular-auto-validate/dist/jcs-auto-validate.min.js" ></script >
+        <script type="text/javascript" src="libs/ladda/dist/spin.min.js" ></script >
+        <script type="text/javascript" src="libs/ladda/dist/ladda.min.js" ></script >
+        <script type="text/javascript" src="libs/angular-ladda/dist/angular-ladda.min.js" ></script >
+
+<script  type="text/javascript" src="js/reg_main.js" ></script >
 		<script type="text/javascript">
 			jQuery(document).ready(function($) {
 				$(".scroll").click(function(event){		
@@ -30,7 +37,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</script>
 	<!-- start-smoth-scrolling -->
 </head>
-<body ng-controller="AppController as ctrl">
+<body>
 <!-- banner -->
 <div class="banner page-head">
 	<div class="container">
@@ -87,7 +94,73 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</ul>
 				</div>
 				<div class="col-md-9 reservation-right">
-				<form ng-submit="ctrl.submit()" name="myForm">
+				<div class="container main-content" ng-controller="MinMaxCtrl">
+				<form ng-submit="onSubmit()" novalidate="novalidate"  ng-hide="submitted" >
+		<div class="form-group" >
+			
+			<input type="text"
+			       class="form-control"
+			       ng-model="formModel.name"
+			       name="fname" id="name" placeholder="First Name"
+					   required="required" >
+		</div >
+     <div class="form-group" >
+			
+			<input type="text"
+			       class="form-control"
+			       ng-model="formModel.lname" nmae="lname"
+			       id="lname" placeholder="Last Name"
+					   required="required" >
+		</div >
+		<div class="form-group">
+			
+			<input type="email"
+			       class="form-control"
+			       ng-model="formModel.email"
+			       id="email" nmae="email" placeholder="Email"
+					   required="required" >
+		</div >
+
+		<div class="form-group">
+			
+			<textarea type="text"
+			       class="form-control"
+			       ng-model="formModel.address"
+			       id="address" nmae="address" placeholder="Address.."
+					   required="required" ></textarea>
+		</div >
+		<div class="form-group">
+			
+			<input type="text"
+			       class="form-control"
+			       ng-model="formModel.phone"
+			       id="phone" name="phone" placeholder="Mobile Number"
+					   required="required" >
+		</div >
+
+				
+		<div class="form-group">
+
+			<div class="alert alert-danger text-center" ng-show="has_error">
+				<h3>There was a problem registering, please try again later!</h3>
+			</div>
+
+			<button class="btn btn-primary"
+			        ladda="submitting"
+			        data-style="expand-right"
+							type="submit">
+				<span ng-show="submitting">Registering</span>
+				<span ng-show="!submitting">Register</span>
+			</button>
+		</div>
+
+	</form >
+			<div class="alert alert-info text-center" ng-show="submitted">
+		<h3>Thanks for Registering!</h3>
+	</div>
+		</div>		
+				 
+				<!-- <form ng-submit="ctrl.submit()" name="myForm">
 						<h4>Contact details</h4>
 						<input type="text" ng-model="ctrl.user.username" name="uname" placeholder="First Name" required ng-minlength="3"/>
                              <span ng-show="myForm.$dirty && myForm.uname.$error.required">This is a required field</span>
@@ -102,11 +175,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<!-- <input type="text" value="First Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'fName';}" required=""> -->
 						<!-- <input type="text" value="Last Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'lName';}" required=""> -->
 						<!-- <input type="text" value="Email ID" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required=""> -->
-						<textarea onfocus="this.value = '' ;" onblur="if (this.value == '') {this.value = 'Address...';}" required=""> Address... </textarea>
-						<input type="text" placeholder="Mobile Number" name="phone" ng-model="ctrl.user.phone" required/>
+						<!--<textarea onfocus="this.value = '' ;" onblur="if (this.value == '') {this.value = 'Address...';}" required=""> Address... </textarea>
+					 	<input type="text" placeholder="Mobile Number" name="phone" ng-model="ctrl.user.phone" required/>
 						<span ng-show="myForm.$dirty && myForm.phone.$error.required">Please enter a valid phone number.</span>
 						<button class="btn1 btn-1 btn-1e" type="submit" ng-disabled="myRegForm.$invalid">REGISTER NOW</button>
-					</form>
+					</form>  -->
+					
 					<!--strat-date-piker-->
 					
 					<script src="js/jquery-ui.js"></script>
@@ -179,21 +253,31 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- //for bootstrap working -->
 <!-- smooth scrolling -->
 	<script type="text/javascript">
-		$(document).ready(function() {
-		/*
-			var defaults = {
-			containerID: 'toTop', // fading element id
-			containerHoverID: 'toTopHover', // fading element hover id
-			scrollSpeed: 1200,
-			easingType: 'linear' 
-			};
-		*/								
-		$().UItoTop({ easingType: 'easeOutQuart' });
-		});
+	<script type="text/javascript">
+	$(document).ready(function() {
+
+		var response = '';
+		$.ajax({
+			success : function(text)
+		
+		         { //alert($.parseJSON(text));
+		             response = text;
+		             $.ajax({ type: "post",   
+				         url: "CustomerInfo/insertCustomerData",  
+				         datatype:'json',
+				         data:response,
+				         async: false}
+				        
+				         });
+				        
+							
+	$().UItoTop({ easingType: 'easeOutQuart' });
+	});
+</script>
 	</script>
 	<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 <!-- //smooth scrolling -->
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js">
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js">
       </script>  
       <script>
           angular.module('myRegApp', [])
@@ -206,7 +290,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
            
 
       }]);
-  </script>
+  </script> -->
 
 </body>
 </html>
