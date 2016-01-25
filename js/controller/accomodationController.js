@@ -10,7 +10,7 @@
 	
 			 				$scope.getAccomodationType();
 				 		})
-				.controller('roomAvailabilityController', function($scope,$http) {
+				.controller('roomAvailabilityController', function($scope, $http) {
 						$scope.form = {};
 						$scope.getRoomAvalabilityCount = function() {
 				        // Posting data to php file
