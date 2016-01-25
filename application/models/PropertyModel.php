@@ -169,5 +169,15 @@ class PropertyModel extends CI_Model {
 		return  $query->result();
 		
 	}
+	/*this function inserts registration data in Customer table*/
+	public function insertCustomerData ($customerData)
+	{
+			
+		$customerTable='visitors_info';
+		$this->load->database ();
+		$query=$this->db->insert($customerTable,$customerData);
+			
+	
+	}
 
 }
