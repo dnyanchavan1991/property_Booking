@@ -471,6 +471,7 @@ float:right;
   margin-top: 30px;
   background: #ECCA69;
   padding: 25px;
+  width:85%;
 }
 .banner-info {
   margin-top: 170px;
@@ -1733,7 +1734,7 @@ margin-top: 25px;
 .reservation-right input[type="text"] {
   display: block;
   border: 1px solid #E5E5E5;
-  width: 100%;
+  max-width: 60%;
   outline: none;
   padding: 8px 8px;
   font-size: 14px;
@@ -1776,7 +1777,7 @@ input#datepicker ,input#datepicker1 ,input#datepicker2 {
   display: block;
   background: rgba(242, 241, 241, 0);
   border: 1px solid #E5E5E5;
-  width: 100%;
+  width: 60%;
   height:150px;
   resize:none;
   outline: none;
