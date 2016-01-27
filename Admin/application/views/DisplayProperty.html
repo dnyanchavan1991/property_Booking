@@ -221,8 +221,8 @@
 							<button id="deleteId" class="btn btn-info" >Delete</button>
 							
                             <table data-toggle="table" id="table-style" class="table table-bordered table-hover table-striped"
-							data-url="assets/json/Properties.json"  data-show-refresh="true" data-show-columns="true" 
-							data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="PropertyId" 
+							data-url="assets/json/Properties.json"  data-show-refresh="true" data-show-columns="true" data-show-toggle="true" 
+							data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="PropertyId" data-strict-search="true" 
 							data-sort-order="desc" data-single-select="true" data-click-to-select="true" data-maintain-selected="true">
                                 <thead>
                                     <tr>
@@ -256,6 +256,15 @@
     <script src="assets/js/bootstrap.min.js"></script>
 	<script src="assets/js/bootstrap-table.js"></script>
 	<script type="text/javascript">
+	
+	$(function () {
+		$('#table-style').bootstrapTable(); // init via javascript
+
+		$(window).resize(function () {
+			$('#table-style').bootstrapTable('resetView');
+		});
+	});
+	
 	$(document).ready(function()
 	{
 		$("#viewId").hide();

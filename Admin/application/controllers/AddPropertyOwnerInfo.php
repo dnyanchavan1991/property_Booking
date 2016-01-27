@@ -13,7 +13,7 @@ class AddPropertyOwnerInfo extends CI_Controller {
 	{
 		$PropertyOwnerName = $_POST['name'];
 		$PropertyOwnerEmail = $_POST['email'];
-		$PropertyOwnerAddress = $_POST['address'];
+		$PropertyOwnerAddress = nl2br(htmlentities($_POST['address'], ENT_QUOTES, 'UTF-8'));
 		$input_date = str_replace('/', '-', $_POST['registred_date']);
 		$PropertyOwnerRegistred_date = date("Y-m-d", strtotime($input_date));
 		$PropertyOwnerPhone = $_POST['phone'];

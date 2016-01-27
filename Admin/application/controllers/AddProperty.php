@@ -52,9 +52,9 @@ class AddProperty extends CI_Controller {
 			}
 		}
 		$path = "Property gallery/$PropertyName/";
-		$location_map = $_POST['location_map'];
-		$description = $_POST['description'];
-		$how_to_reach = $_POST['how_to_reach'];
+		$location_map = nl2br(htmlentities($_POST['location_map'], ENT_QUOTES, 'UTF-8'));
+		$description = nl2br(htmlentities($_POST['description'], ENT_QUOTES, 'UTF-8'));
+		$how_to_reach = nl2br(htmlentities($_POST['how_to_reach'], ENT_QUOTES, 'UTF-8'));
 		
 		$Bedrooms = $_POST['Bedrooms'];
 		$beds = $_POST['beds'];

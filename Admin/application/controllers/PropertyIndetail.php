@@ -35,24 +35,33 @@ class PropertyIndetail extends CI_Controller {
 			$star_rate = $row['star_rate'];
 			$state = $row['state'];
 			/*- directory path -*/
-			$image_path = $row['image_path'];
+			 $image_path = $row['image_path'];
+			 $image_path = trim($image_path, "/");
 			//echo $directory_path = site_url('Property gallery').$image_path;
 			/*--get all images in directory--*/
-			$map = directory_map($image_path);
-			//print_r($map);
-			foreach ($map as $result)
+			//$map = directory_map('./'.$image_path);
+			//var_dump($map);
+			//$relative_path = base_url().$image_path;
+			/*echo $handle = opendir('C:\xampp\htdocs\SVN_propertybooking\branches\dev\Admin\\'.$image_path);
+			while($file = readdir($handle)){
+				if($file !== '.' && $file !== '..'){
+					$get_result = $image_path.$file;
+					array_push($img_array,$get_result);
+				}
+			}*/
+			/*foreach ($map as $result)
 			{
 				$get_result = $image_path.$result;
 				array_push($img_array,$get_result);
-			}
+			}*/
 			/*- main image path -*/
-			$matches = preg_grep("/mainImage/", $img_array);
+			/*$matches = preg_grep("/mainImage/", $img_array);
 			$matches = implode($matches);
-			$main_img_path = $matches;
+			$main_img_path = $matches;*/
 			
-			$location_map = $row['location_map'];
-			$description = $row['description'];
-			$how_to_reach = $row['how_to_reach'];
+			$location_map = str_replace("<br />","\r\n",$row['location_map']);
+			$description = str_replace("<br />","\r\n",$row['description']);
+			$how_to_reach = str_replace("<br />","\r\n",$row['how_to_reach']);
 			$bedrooms = $row['bedrooms'];
 			$bathrooms = $row['bathrooms'];
 			$pool = $row['pool'];
@@ -73,10 +82,11 @@ class PropertyIndetail extends CI_Controller {
 			$phone = $row['phone'];
 			$alternative_phone = $row['alternative_phone'];
 			$email = $row['email'];
-			$address = $row['address'];
+			$address = str_replace("<br />","\r\n",$row['address']);
 			$registred_date = $row['registred_date'];
 			
 		}
+		/* for time being removed images value in $response_data array*/
 		$response_data = array(
 								'property_type'=>$property_type,
 								'property_name'=>$property_name,
@@ -85,8 +95,8 @@ class PropertyIndetail extends CI_Controller {
 								'postal_code'=>$postal_code,
 								'star_rate'=>$star_rate,
 								'state'=>$state,
-								'main_img_path'=>$main_img_path,
-								'images'=>$img_array,
+								'main_img_path'=>'',
+								'images'=>'',
 								'location_map'=>$location_map,
 								'description'=>$description,
 								'how_to_reach'=>$how_to_reach,

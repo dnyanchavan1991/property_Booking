@@ -49,5 +49,15 @@ class SqlQueryModel extends CI_Model{
 		$getList = $this->db->get();*/
 		return $getList->result_array();
 	}
+	
+	/*public function show_dir_files($in,$path)
+	{
+		$img_array = array();
+		foreach ($in as $key => $result) {
+			$get_result = $image_path.$result;
+			array_push($img_array,$get_result);
+		}
+		return $img_array;
+	}*/
 }
 ?>
