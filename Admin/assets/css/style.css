@@ -8,3 +8,6 @@
 /*#mainRight{
 	height:300px;
 }*/
+.angular-with-newlines {
+    white-space: pre-line;
+}

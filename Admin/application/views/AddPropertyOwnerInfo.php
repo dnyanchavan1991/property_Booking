@@ -44,7 +44,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="Admin">Property Booking Admin</a>
+                <a class="navbar-brand" href="../Admin">Property Booking Admin</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -151,7 +151,7 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="Admin"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                        <a href="../Admin"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                    <!-- <li>
                         <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
@@ -172,10 +172,10 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Property <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
                             <li>
-                                <a href="AddProperty">Add</a>
+                                <a href="../AddProperty">Add</a>
                             </li>
                             <li>
-                                <a href="DisplayProperty">Display</a>
+                                <a href="../DisplayProperty">Display</a>
                             </li>
                         </ul>
                     </li>
@@ -202,7 +202,7 @@
                         </h1>
                         <ol class="breadcrumb">
                             <li>
-                                <i class="fa fa-dashboard"></i>  <a href="Admin">Dashboard</a>
+                                <i class="fa fa-dashboard"></i>  <a href="../Admin">Dashboard</a>
                             </li>
                             <li class="active">
                                 <i class="fa fa-edit"></i> Add Property
@@ -222,13 +222,13 @@
                         <form role="form" id="form_id" class="form-horizontal" data-bv-feedbackicons-valid="glyphicon glyphicon-ok"
 							data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
 							data-bv-feedbackicons-validating="glyphicon glyphicon-refresh"
-							method="post" action="<?php echo base_url();?>AddPropertyOwnerInfo/getPropertyOwnerInfo">
+							method="post" action="../AddPropertyOwnerInfo/getPropertyOwnerInfo">
 
                             <div class="form-group">
                                 <label class="control-label col-md-3" for="name">Name</label>
 								<div class="col-md-9">
 									<input class="form-control" type="text" name="name" placeholder="Enter name"
-									pattern="^[a-zA-Z ]*$" data-bv-trigger="blur" data-bv-regexp-message="The name is not valid"
+									onblur="name_validate()" id="name_id"
 									required data-bv-notempty-message="The owner name is required">
 									<p class="help-block"></p>
 								</div>
@@ -238,7 +238,7 @@
                                 <label class="control-label col-md-3" for="email">Email</label>
                                 <div class="col-md-9">
 									<input class="form-control" placeholder="Enter email" type="email" name="email"
-									required data-bv-notempty-message="The email address is required" >
+									required data-bv-notempty-message="The email address is required" onblur="email_validate()" id="email_id">
 								</div>
                             </div>
 
@@ -324,6 +324,44 @@
         
 		$('#form_id').bootstrapValidator();
     });
+	
+	//validation of name
+	function name_validate()
+	{ 
+		 
+		var name = document.getElementById('name_id').value;
+		var letters = /^\S[a-zA-Z ]{1,50}$/;
+		if(!letters.test(name))
+		{
+			alert("Please enter alphabets and white space only");
+			document.getElementById('name_id').value = "";
+			$("#name_id").focus();
+		// return false;
+		}
+		else 
+		{
+		
+		// return true;
+		}
+	}
+	
+	//validation for email
+	function email_validate()
+	{
+		var email_id = document.getElementById('email_id').value;
+		var p = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,5})+$/;
+		if(!p.test(email_id))
+		{
+			alert("Please enter valid email id");
+			document.getElementById('email_id').value = "";
+			$("#email_id").focus();
+		}
+		else
+		{
+		    
+		}
+	}
+
 	</script>
 </body>
 

@@ -12,14 +12,14 @@
     <title>Admin | Display Property</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="<?php echo base_url() ?>assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="<?php echo base_url() ?>assets/css/sb-admin.css" rel="stylesheet">
-    <link href="<?php echo base_url() ?>assets/css/style.css" rel="stylesheet">
+    <link href="../assets/css/sb-admin.css" rel="stylesheet">
+    <link href="../assets/css/style.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="<?php echo base_url() ?>assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -44,7 +44,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="<?php echo base_url() ?>Admin">Property Booking Admin</a>
+                <a class="navbar-brand" href="../Admin">Property Booking Admin</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -151,7 +151,7 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="<?php echo base_url() ?>Admin"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                        <a href="../Admin"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                     <!--<li>
                         <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
@@ -172,10 +172,10 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Property <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
                             <li>
-                                <a href="<?php echo base_url() ?>AddProperty">Add</a>
+                                <a href="../AddProperty">Add</a>
                             </li>
                             <li>
-                                <a href="<?php echo base_url() ?>DisplayProperty">Display</a>
+                                <a href="../DisplayProperty">Display</a>
                             </li>
                         </ul>
                     </li>
@@ -202,7 +202,7 @@
                         </h1>
                         <ol class="breadcrumb">
                             <li>
-                                <i class="fa fa-dashboard"></i>  <a href="<?php echo base_url() ?>Admin">Dashboard</a>
+                                <i class="fa fa-dashboard"></i>  <a href="../Admin">Dashboard</a>
                             </li>
                             <li class="active">
                                 <i class="fa fa-wrench"></i> Property Details
@@ -214,7 +214,7 @@
                 <div class="row">
 					<div class="col-lg-12">
 						<div class="col-md-6 image-container" id="mainImgContainer">
-							<img id="mainImg" ng-src="<?php echo base_url() ?>{{list.main_img_path}}" class="img-responsive img-rounded" 
+							<img id="mainImg" ng-src="../{{list.main_img_path}}" class="img-responsive img-rounded" 
 							title="main image">
 						</div>
 						<div class="col-md-6" id="mainRight">
@@ -282,8 +282,8 @@
 							<div class="row">
 								<div class="col-lg-12">
 									<label class="control-label col-md-3" for="PropertyName">Map Location</label>
-										<div class="col-md-9">
-											{{list.location_map}}
+										<div class="col-md-9" ng-bind-html="list.location_map">
+											
 										</div>&nbsp;
 								</div>
 							</div>
@@ -291,8 +291,8 @@
 							<div class="row">
 								<div class="col-lg-12">
 									<label class="control-label col-md-3" for="PropertyName">Description</label>
-										<div class="col-md-9">
-											{{list.description}}
+										<div class="col-md-9" ng-bind-html="list.description">
+											
 										</div>&nbsp;
 								</div>
 							</div>
@@ -300,8 +300,8 @@
 							<div class="row">
 								<div class="col-lg-12">
 									<label class="control-label col-md-3" for="PropertyName">How To Reach</label>
-										<div class="col-md-9">
-											{{list.how_to_reach}}
+										<div class="col-md-9" ng-bind-html="list.how_to_reach">
+											
 										</div>&nbsp;
 								</div>
 							</div>
@@ -458,7 +458,7 @@
 						</div>
 						<div class="panel-body" data-acc-content="demo2">
 							<div class="col-md-6" ng-repeat="x in list.images">
-								<img id="subImg" ng-src="<?php echo base_url() ?>{{x}}" class="img-responsive img-rounded" 
+								<img id="subImg" ng-src="../{{x}}" class="img-responsive img-rounded" 
 								title="sub image" height="150" width="250">&nbsp;
 							</div>
 						</div>
@@ -490,8 +490,8 @@
 							<div class="row">
 								<div class="col-lg-12">
 									<label class="control-label col-md-3" for="PropertyName">Address</label>
-										<div class="col-md-9">
-											{{list.address}}
+										<div class="col-md-9" ng-bind-html="list.address">
+											
 										</div>&nbsp;
 								</div>
 							</div>
@@ -539,14 +539,15 @@
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-    <script src="<?php echo base_url() ?>assets/js/jquery.js"></script>
-    <script src="<?php echo base_url() ?>assets/js/angular.min.js"></script>
-	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery.accordion.js"></script>
+    <script src="../assets/js/jquery.js"></script>
+    <script src="../assets/js/angular.min.js"></script>
+    <script src="../assets/js/angular-sanitize.min.js"></script>
+	<script type="text/javascript" src="../assets/js/jquery.accordion.js"></script>
     <!-- Bootstrap Core JavaScript -->
-    <script src="<?php echo base_url() ?>assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
-	var app = angular.module('propertyIndetail', []);
-	
+	var app = angular.module('propertyIndetail', ['ngSanitize']);
+	//'Authentication','Modal','ngRoute','ngSanitize'
 	app.controller('displayDetails', function($scope, $http){
 	 	$http({
 			method: 'GET',

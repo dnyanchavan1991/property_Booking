@@ -16,6 +16,7 @@ class PropertyIndetail extends CI_Controller {
 	}
 	public function loadIndetailView()
 	{
+		
 		$this->load->view('DisplayPropertyIndetail');
 	}
 	public function singleProperty()
@@ -35,11 +36,11 @@ class PropertyIndetail extends CI_Controller {
 			$star_rate = $row['star_rate'];
 			$state = $row['state'];
 			/*- directory path -*/
-			 $image_path = $row['image_path'];
-			 $image_path = trim($image_path, "/");
+			$image_path = $row['image_path'];
+			$directory_path = './'.$image_path;
 			//echo $directory_path = site_url('Property gallery').$image_path;
 			/*--get all images in directory--*/
-			//$map = directory_map('./'.$image_path);
+			$map = directory_map($directory_path);
 			//var_dump($map);
 			//$relative_path = base_url().$image_path;
 			/*echo $handle = opendir('C:\xampp\htdocs\SVN_propertybooking\branches\dev\Admin\\'.$image_path);
@@ -49,19 +50,19 @@ class PropertyIndetail extends CI_Controller {
 					array_push($img_array,$get_result);
 				}
 			}*/
-			/*foreach ($map as $result)
+			foreach ($map as $result)
 			{
 				$get_result = $image_path.$result;
 				array_push($img_array,$get_result);
-			}*/
+			}
 			/*- main image path -*/
-			/*$matches = preg_grep("/mainImage/", $img_array);
+			$matches = preg_grep("/mainImage/", $img_array);
 			$matches = implode($matches);
-			$main_img_path = $matches;*/
+			$main_img_path = $matches;
 			
-			$location_map = str_replace("<br />","\r\n",$row['location_map']);
-			$description = str_replace("<br />","\r\n",$row['description']);
-			$how_to_reach = str_replace("<br />","\r\n",$row['how_to_reach']);
+			$location_map = nl2br(str_replace(" ",'&nbsp;',$row['location_map']));
+			$description = nl2br(str_replace(" ",'&nbsp;',$row['description']));
+			$how_to_reach = nl2br(str_replace(" ",'&nbsp;',$row['how_to_reach']));
 			$bedrooms = $row['bedrooms'];
 			$bathrooms = $row['bathrooms'];
 			$pool = $row['pool'];
@@ -82,7 +83,7 @@ class PropertyIndetail extends CI_Controller {
 			$phone = $row['phone'];
 			$alternative_phone = $row['alternative_phone'];
 			$email = $row['email'];
-			$address = str_replace("<br />","\r\n",$row['address']);
+			$address = nl2br(str_replace(" ",'&nbsp;',$row['address']));
 			$registred_date = $row['registred_date'];
 			
 		}
@@ -95,8 +96,8 @@ class PropertyIndetail extends CI_Controller {
 								'postal_code'=>$postal_code,
 								'star_rate'=>$star_rate,
 								'state'=>$state,
-								'main_img_path'=>'',
-								'images'=>'',
+								'main_img_path'=>$main_img_path,
+								'images'=>$img_array,
 								'location_map'=>$location_map,
 								'description'=>$description,
 								'how_to_reach'=>$how_to_reach,

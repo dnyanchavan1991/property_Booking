@@ -246,7 +246,8 @@
 											<label class="control-label col-md-3" for="PropertyName">Name</label>
 											<div class="col-md-7">
 												<input class="form-control" type="text" id="PropertyName_id" name="PropertyName" placeholder="Enter property name" 
-												required data-bv-notempty-message="The property name is required">
+												onblur="name_validate()" 
+												data-bv-notempty="true" data-bv-notempty-message="The property name is required">
 											</div>
 										</div>
 
@@ -588,7 +589,7 @@
 									</div>
 									<div class="form-group">
 										<div class="col-md-12 col-md-offset-3">
-											<button type="submit" class="btn btn-success" onclick="return validation()">Save and Continue</button>
+											<button type="submit" class="btn btn-success" >Save and Continue</button>
 										</div>
 									</div>
 								</div>
@@ -622,6 +623,26 @@
 	$("#switcher").on("input", function() {
 		document.getElementById('rating').value = $("#switcher").val();
 	});
+	
+	//validation of name
+	function name_validate()
+	{ 
+		 
+		var name = document.getElementById('PropertyName_id').value;
+		var letters = /^\S[a-zA-Z ]{1,50}$/;
+		if(!letters.test(name))
+		{
+			alert("Please enter alphabets and white space only");
+			document.getElementById('PropertyName_id').value = "";
+			$("#PropertyName_id").focus();
+		// return false;
+		}
+		else 
+		{
+		
+		// return true;
+		}
+	}
 	/*-- validation function--*/
 	/*function validation()
 	{

@@ -52,9 +52,9 @@ class AddProperty extends CI_Controller {
 			}
 		}
 		$path = "Property gallery/$PropertyName/";
-		$location_map = nl2br(htmlentities($_POST['location_map'], ENT_QUOTES, 'UTF-8'));
-		$description = nl2br(htmlentities($_POST['description'], ENT_QUOTES, 'UTF-8'));
-		$how_to_reach = nl2br(htmlentities($_POST['how_to_reach'], ENT_QUOTES, 'UTF-8'));
+		$location_map = $_POST['location_map'];
+		$description = $_POST['description'];
+		$how_to_reach = $_POST['how_to_reach'];
 		
 		$Bedrooms = $_POST['Bedrooms'];
 		$beds = $_POST['beds'];
@@ -186,7 +186,7 @@ class AddProperty extends CI_Controller {
 							'payment_facility' => $payment_facility
 						);
 		$id = $this->SqlQueryModel->insertProperty($postdata1,$postdata2);	
-		echo "last insert id ".$id;
+		//echo "last insert id ".$id;
 		$_SESSION['lastPropertyId'] = $id;
 		$this->load->view('AddPropertyOwnerInfo');
 	}
