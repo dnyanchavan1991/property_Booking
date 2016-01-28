@@ -26,7 +26,7 @@ app.controller('MinMaxCtrl', function ($scope, $http) {
 		console.log("Hey i'm submitted!");
 		console.log($scope.formModel);
 
-		$http.post('https://minmax-server.herokuapp.com/register/', $scope.formModel).
+		$http.post('Registration/insertRegistrationData', $scope.formModel).
 			success(function (data) {
 				console.log(":)");
 				$scope.submitting = false;
