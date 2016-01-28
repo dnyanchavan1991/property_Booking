@@ -1,10 +1,4 @@
 
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
 <!DOCTYPE html>
 <html>
 <head>
@@ -274,21 +268,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<li class="subitem2"><a href="#">Hostel</a></li>
 									<li class="subitem3"><a href="#">Apartment</a></li>
 								</ul></li>
-							<!-- <li class="item4"><a href="#"><span
-									class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>Landmarks</a>
-								<ul>
-									<li class="subitem1"><a href="#">Mexican City</a></li>
-									<li class="subitem2"><a href="#">Park View Center</a></li>
-									<li class="subitem3"><a href="#">Land Park Center</a></li>
-								</ul></li>
-							<li class="item5"><a href="#"><span
-									class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>Neighbourhood</a>
-								<ul>
-									<li class="subitem1"><a href="#">Diamond Park Colony</a></li>
-									<li class="subitem2"><a href="#">E Park Road</a></li>
-									<li class="subitem3"><a href="#">lake View Center</a></li>
-								</ul></li> -->
-						</ul>
+							
 						<!-- script for tabs -->
 						<script type="text/javascript">
 							$(function() {
@@ -378,7 +358,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 												style="width: 60%;" onfocus="this.value = '';"
 												onblur="if (this.value == '') {this.value = '';}" required>
 										</div>
-										
+										<div class="form-group">
+										<label for="enquiry">Enquiry</label>
+											<textarea type="text"
+			                                        class="form-control"
+			                                        ng-model="form.enquiry"
+			                                        id="enquiry" name="enquiry" placeholder="Enquiry.."
+					                                required="required" ></textarea>
+										</div>
+					
 <br>
 
 										<button type="submit" class="btn btn-default">Submit</button>

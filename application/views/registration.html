@@ -98,11 +98,31 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="col-md-9 reservation-right">
 				<div class="container main-content" ng-controller="MinMaxCtrl">
 				<form ng-submit="onSubmit()" novalidate="novalidate"  ng-hide="submitted" >
+				<div class="form-group" >
+			
+			<input type="text"
+			       class="form-control"
+			       ng-model="formModel.username"
+			       ng-pattern="/^[A-Za-z0-9_]{1,32}$/"
+			       ng-minlength="7"
+			       ng-pattern-err-type="badUsername"
+			       id="username" name="username" placeholder="User Name"
+			       required="required" >
+		</div >
+		<div class="form-group" >
+			
+			<input type="password"
+			       class="form-control"
+			       ng-model="formModel.password"
+			       id="password" placeholder="Password"
+			       required="required" name="password"
+						 ng-minlength="10">
+		</div >
 		<div class="form-group" >
 			
 			<input type="text"
 			       class="form-control"
-			       ng-model="formModel.name"
+			       ng-model="formModel.fname"
 			       name="fname" id="name" placeholder="First Name"
 					   required="required" >
 		</div >
@@ -110,10 +130,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			
 			<input type="text"
 			       class="form-control"
-			       ng-model="formModel.lname" nmae="lname"
+			       ng-model="formModel.lname" name="lname"
 			       id="lname" placeholder="Last Name"
 					   required="required" >
 		</div >
+		
 		<div class="form-group">
 			
 			<input type="text"
@@ -127,7 +148,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<input type="email"
 			       class="form-control"
 			       ng-model="formModel.email"
-			       id="email" nmae="email" placeholder="Email"
+			       id="email" name="email" placeholder="Email"
 					   required="required" >
 		</div >
 
@@ -136,7 +157,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<textarea type="text"
 			       class="form-control"
 			       ng-model="formModel.address"
-			       id="address" nmae="address" placeholder="Address.."
+			       id="address" name="address" placeholder="Address.."
 					   required="required" ></textarea>
 		</div >
 		
@@ -163,27 +184,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 		</div>		
 				 
-				<!-- <form ng-submit="ctrl.submit()" name="myForm">
-						<h4>Contact details</h4>
-						<input type="text" ng-model="ctrl.user.username" name="uname" placeholder="First Name" required ng-minlength="3"/>
-                             <span ng-show="myForm.$dirty && myForm.uname.$error.required">This is a required field</span>
-                             <span ng-show="myForm.$dirty && myForm.uname.$error.minlength">Minimum length required is 4</span>
-                         <input type="text" ng-model="ctrl.user.lastname" name="lname" placeholder="Last Name" required ng-minlength="3"/>
-                             <span ng-show="myForm.$dirty && myForm.lname.$error.required">This is a required field</span>
-                             <span ng-show="myForm.$dirty && myForm.lname.$error.minlength">Minimum length required is 4</span>
-                           <input type="email" ng-model="ctrl.user.email" name="email" placeholder="Email" required/>
-                           <span ng-show="myForm.$dirty && myForm.email.$error.required">This is a required field</span>
-                          <br/><br/>
-                              
-						<!-- <input type="text" value="First Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'fName';}" required=""> -->
-						<!-- <input type="text" value="Last Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'lName';}" required=""> -->
-						<!-- <input type="text" value="Email ID" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required=""> -->
-						<!--<textarea onfocus="this.value = '' ;" onblur="if (this.value == '') {this.value = 'Address...';}" required=""> Address... </textarea>
-					 	<input type="text" placeholder="Mobile Number" name="phone" ng-model="ctrl.user.phone" required/>
-						<span ng-show="myForm.$dirty && myForm.phone.$error.required">Please enter a valid phone number.</span>
-						<button class="btn1 btn-1 btn-1e" type="submit" ng-disabled="myRegForm.$invalid">REGISTER NOW</button>
-					</form>  -->
-					
+									
 					<!--strat-date-piker-->
 					
 					<script src="js/jquery-ui.js"></script>
@@ -255,45 +256,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<script src="js/bootstrap.js"></script>
 <!-- //for bootstrap working -->
 <!-- smooth scrolling -->
-	<script type="text/javascript">
-	<script type="text/javascript">
-	$(document).ready(function() {
-
-		var response = '';
-		$.ajax({
-			success : function(text)
-		
-		         { //alert($.parseJSON(text));
-		             response = text;
-		             $.ajax({ type: "post",   
-				         url: "CustomerInfo/insertCustomerData",  
-				         datatype:'json',
-				         data:response,
-				         async: false}
-				        
-				         });
-				        
-							
-	$().UItoTop({ easingType: 'easeOutQuart' });
-	});
-</script>
-	</script>
-	<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+	
+		<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 <!-- //smooth scrolling -->
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js">
-      </script>  
-      <script>
-          angular.module('myRegApp', [])
-          .controller('AppController', [function() {
-              var self = this;
-              self.submit = function() {
-            	  alert('Data submited succesfully');  
-                  console.log('Form is submitted with following user', self.user);
-            };
-           
 
-      }]);
-  </script> -->
 
 </body>
 </html>
