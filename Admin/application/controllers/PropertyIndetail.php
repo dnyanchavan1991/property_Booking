@@ -28,6 +28,7 @@ class PropertyIndetail extends CI_Controller {
 		$img_array = array();
 		foreach($response as $row)
 		{
+			$property_id = $row['property_id'];
 			$property_type = $row['property_type'];
 			$property_name = $row['property_name'];
 			$street = $row['street'];
@@ -89,6 +90,7 @@ class PropertyIndetail extends CI_Controller {
 		}
 		/* for time being removed images value in $response_data array*/
 		$response_data = array(
+								'property_id'=>$property_id,
 								'property_type'=>$property_type,
 								'property_name'=>$property_name,
 								'street'=>$street,

@@ -207,6 +207,9 @@
                             <li class="active">
                                 <i class="fa fa-wrench"></i> Property Details
                             </li>
+							<li class="active">
+                                <i class="fa fa-edit"></i> <a href="../UpdateProperty/index/{{list.property_id}}">Edit</a>
+                            </li>
                         </ol>
                     </div>
                 </div>
@@ -459,7 +462,7 @@
 						<div class="panel-body" data-acc-content="demo2">
 							<div class="col-md-6" ng-repeat="x in list.images">
 								<img id="subImg" ng-src="../{{x}}" class="img-responsive img-rounded" 
-								title="sub image" height="150" width="250">&nbsp;
+								title="sub image" >&nbsp;
 							</div>
 						</div>
 					</div>
