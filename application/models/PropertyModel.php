@@ -176,8 +176,23 @@ class PropertyModel extends CI_Model {
 		$registrationTable='registration';
 		$this->load->database ();
 		$query=$this->db->insert($registrationTable,$registerData);
-			
 	
 	}
-
+	/*this function checks registration table for username and password availability*/
+	
+	public function authenticate ($username,$password,$accestype)
+	{
+			
+		$registrationTable='registration';
+		$this->load->database ();
+		$this->db->select('count(*) as count');
+		$this->db->from($registrationTable);
+		$this->db->where('user_name',$username);
+		$this->db->where('password',$password);
+		$this->db->where('access_type',$accestype);
+		$query=$this->db->get();
+		
+		return $query->row()->count;
+	
+	}
 }

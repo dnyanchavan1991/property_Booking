@@ -548,23 +548,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
       			
       			<div class="clearfix"></div>
       			<div id='social-icons-conatainer'>
-	        		<div class='modal-body-left'>
+	        		<div class='modal-body-left'ng-controller="loginCtrl">
 	        		<h3>Admin</h3>
 	        			<div class="form-group">
-		              		<input type="text" id="username" placeholder="Username" value="" class="form-control login-field">
+		              		<input type="text" id="username" placeholder="Username" ng-model="form.username" class="form-control login-field">
 		              		<i class="fa fa-user login-field-icon"></i>
 		            	</div>
 		
 		            	<div class="form-group">
-		            	  	<input type="password" id="login-pass" placeholder="Password" value="" class="form-control login-field">
+		            	  	<input type="password" id="login-pass" placeholder="Password" ng-model="form.password" class="form-control login-field">
 		              		<i class="fa fa-lock login-field-icon"></i>
+		              		<input type="hidden" name="acces_type" value="admin">
 		            	</div>
-		
-		            	<a href="#" class="btn btn-success modal-login-btn">Login</a>
+		                 <div class="form-group">
+		            	  	<input type="hidden" name="access_type" id="access_type"  ng-model="form.access_type" value="admin" ng_init="form.access_type='admin'" class="form-control login-field">
+		              		
+		              	 	</div>
+		            	<button ng-click="authenticateAdmin()"  class="btn btn-success modal-login-btn">Login</button>
 		            	<a href="#" class="login-link text-center">Lost your password?</a>
 	        		</div>
 	        	
-	        		<div class='modal-body-right'>
+	        		<div class='modal-body-right' ng-controller="loginCtrl">
 	        			  <!--<div class="modal-social-icons">
 	        				<a href='#' class="btn btn-default facebook"> <i class="fa fa-facebook modal-icons"></i> Sign In with Facebook </a>
 	        				<a href='#' class="btn btn-default twitter"> <i class="fa fa-twitter modal-icons"></i> Sign In with Twitter </a>
@@ -574,16 +578,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	        			</div> -->
 	        			<h3>User</h3>
 	        			<div class="form-group">
-		              		<input type="text" id="username" placeholder="Username" value="" class="form-control login-field">
+		              		<input type="text" id="username" placeholder="Username" ng-model="form.username" value="" class="form-control login-field">
 		              		<i class="fa fa-user login-field-icon"></i>
 		            	</div>
 		
 		            	<div class="form-group">
-		            	  	<input type="password" id="login-pass" placeholder="Password" value="" class="form-control login-field">
+		            	  	<input type="password" id="login-pass" placeholder="Password" ng-model="form.password" value="" class="form-control login-field">
 		              		<i class="fa fa-lock login-field-icon"></i>
-		            	</div>
+		              	 	</div>
+		              	 		<div class="form-group">
+		            	  	<input type="hidden" name="access_type" id="access_type" placeholder="Password" ng-model="form.access_type" value="user" ng_init="form.access_type='user'" class="form-control login-field">
+		              		
+		              	 	</div>
 		
-		            	<a href="Index1" class="btn btn-success modal-login-btn">Login</a>
+		            <button ng-click="authenticate()" class="btn btn-success modal-login-btn">Login</button>
 		            	<a href="#" class="login-link text-center">Lost your password?</a>
 		
 	        		</div>	
