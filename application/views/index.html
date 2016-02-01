@@ -31,7 +31,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<script src="js/jquery-ui.js"></script>
 							  <script>
 									  $(function() {
-									    $( "#datepicker,#checkIn,#checkOut" ).datepicker();
+									    $( "#datepicker,#checkIn,#checkOut" ).datepicker({
+									    	dateFormat: "dd/mm/yy"
+									    });
 									  });
 							  </script>
 <!-- //js -->
@@ -66,12 +68,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<ul class="nav1">
 						<li><a class="active" href="Index1" data-hover="HOME">HOME</a></li>
 						<li><a href="About" data-hover="ABOUT">ABOUT</a></li>
-						<li><a href="Typography" data-hover="SERVICES">SERVICES</a></li>
-						<li><a href="Booking" data-hover="BOOKING">BOOKING</a></li>
+						<!-- <li><a href="Typography" data-hover="SERVICES">SERVICES</a></li>
+						 <li><a href="Booking" data-hover="BOOKING">BOOKING</a></li> -->
 						<li><a href="Contact" data-hover="CONTACT">CONTACT</a></li>
-						<li><a href="Registration" data-hover="REGISTRATION">REGISTRATION</a></li>					  	
-				       <li><button id='modal-launcher' class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login-modal">
-					  LOGIN</button></li>
+						<li><a href="Registration" data-hover="REGISTRATION">REGISTRATION</a></li>
+						<li><a href="#Login-modal" id='modal-launcher' data-toggle="modal" data-target="#login-modal" data-hover="LOGIN">LOGIN</a></li>					  	
+				       <!-- <li><button id='modal-launcher' class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login-modal">
+					  LOGIN</button></li> -->
                        </ul>
 					  	
 				</nav>
@@ -131,15 +134,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			ng-model="inputDestination" "
 			ng-click="expandFilterOptions()" 
 			style="width:90%;"/></td>
-	<td><select class="sel" ng-model="selectAccomodationType" 
-						 	ng-init="selectAccomodationType=accomodationType[0]"  
+	<td><select class="sel" ng-model="selectAccomodationType" id="propertyType"
+ name="propertyType"						 	ng-init="selectAccomodationType=accomodationType[0]"  
 							ng-options="accomodation as accomodation.label for accomodation in accomodationType track by accomodation.value " 
 							ng-show = "inputDestination != 'Where you want to go?'"
 							style="width:80%;">
 													    
 						</select></td>
 						<td>
-						<select class="sel" ng-model="selectGuestHeadCount" 
+						<select class="sel" ng-model="selectGuestHeadCount" id="guestCount" name="guestCount"
 							ng-init="selectGuestHeadCount=guestHeadCount[0] " 
 							ng-options="option as option for option in guestHeadCount "						
 							>													    
@@ -289,7 +292,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- //services -->
   
 <!-- facilities -->
-<div class="facilities">
+<!-- <div class="facilities">
 	<div class="container">
 		<h3 class="tittle">FACILITIES</h3>
 		<div class="facilities-grids">
@@ -313,7 +316,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="clearfix"></div>
 		</div>
 	</div>
-</div>
+</div> -->
 <!-- //facilities -->
 
 <!-- gallery -->
@@ -423,9 +426,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 					<div class="clearfix"> </div>
 			</div>
-				<div>
-					Today's Unique Visitors : <span id="visitCount"></span>
-				</div>
+				
 				<script src="js/jquery.chocolat.js"></script>
 			
 			<!--light-box-files -->
@@ -436,7 +437,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</script>
 
 	</div>
+	
 </div>
+<div style="width:100%;position:relative;marging-left:50%;font-weight:bold">
+					Today's Unique Visitors : <span id="visitCount" ></span>
+				</div>
 <!-- //gallery -->
 <!--footer-->
 	<div class="footer">
@@ -548,27 +553,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
       			
       			<div class="clearfix"></div>
       			<div id='social-icons-conatainer'>
-	        		<div class='modal-body-left'ng-controller="loginCtrl">
+	        		<div class='modal-body-left'>
 	        		<h3>Admin</h3>
 	        			<div class="form-group">
-		              		<input type="text" id="username" placeholder="Username" ng-model="form.username" class="form-control login-field">
+		              		<input type="text" id="username" placeholder="Username" value="" class="form-control login-field">
 		              		<i class="fa fa-user login-field-icon"></i>
 		            	</div>
 		
 		            	<div class="form-group">
-		            	  	<input type="password" id="login-pass" placeholder="Password" ng-model="form.password" class="form-control login-field">
+		            	  	<input type="password" id="login-pass" placeholder="Password" value="" class="form-control login-field">
 		              		<i class="fa fa-lock login-field-icon"></i>
-		              		<input type="hidden" name="acces_type" value="admin">
 		            	</div>
-		                 <div class="form-group">
-		            	  	<input type="hidden" name="access_type" id="access_type"  ng-model="form.access_type" value="admin" ng_init="form.access_type='admin'" class="form-control login-field">
-		              		
-		              	 	</div>
-		            	<button ng-click="authenticateAdmin()"  class="btn btn-success modal-login-btn">Login</button>
+		
+		            	<a href="#" class="btn btn-success modal-login-btn">Login</a>
 		            	<a href="#" class="login-link text-center">Lost your password?</a>
 	        		</div>
 	        	
-	        		<div class='modal-body-right' ng-controller="loginCtrl">
+	        		<div class='modal-body-right'>
 	        			  <!--<div class="modal-social-icons">
 	        				<a href='#' class="btn btn-default facebook"> <i class="fa fa-facebook modal-icons"></i> Sign In with Facebook </a>
 	        				<a href='#' class="btn btn-default twitter"> <i class="fa fa-twitter modal-icons"></i> Sign In with Twitter </a>
@@ -578,20 +579,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	        			</div> -->
 	        			<h3>User</h3>
 	        			<div class="form-group">
-		              		<input type="text" id="username" placeholder="Username" ng-model="form.username" value="" class="form-control login-field">
+		              		<input type="text" id="username" placeholder="Username" value="" class="form-control login-field">
 		              		<i class="fa fa-user login-field-icon"></i>
 		            	</div>
 		
 		            	<div class="form-group">
-		            	  	<input type="password" id="login-pass" placeholder="Password" ng-model="form.password" value="" class="form-control login-field">
+		            	  	<input type="password" id="login-pass" placeholder="Password" value="" class="form-control login-field">
 		              		<i class="fa fa-lock login-field-icon"></i>
-		              	 	</div>
-		              	 		<div class="form-group">
-		            	  	<input type="hidden" name="access_type" id="access_type" placeholder="Password" ng-model="form.access_type" value="user" ng_init="form.access_type='user'" class="form-control login-field">
-		              		
-		              	 	</div>
+		            	</div>
 		
-		            <button ng-click="authenticate()" class="btn btn-success modal-login-btn">Login</button>
+		            	<a href="Index1" class="btn btn-success modal-login-btn">Login</a>
 		            	<a href="#" class="login-link text-center">Lost your password?</a>
 		
 	        		</div>	
