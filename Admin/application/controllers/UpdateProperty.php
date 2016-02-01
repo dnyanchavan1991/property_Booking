@@ -13,8 +13,21 @@ class UpdateProperty extends CI_Controller {
 		$getResult['data'] = $this->SqlQueryModel->getUpdateProperty($id);
 		$this->load->view('UpdateProperty', $getResult);
 	}
+	
+	public function unlinkImg()
+	{
+		if(isset($_GET['val']))
+		{
+			$img_path = strstr($_GET['val'], "P");
+			unlink($img_path);
+			echo $img_path;
+		}
+	}
+	
 	public function getUpdateData()
 	{
+		/*-- post property --*/
+		
 		/*$property_type = $_POST['property_type'];
 		$shiftarray = array();
 		//$shift=$_POST['selectShift'];
@@ -33,37 +46,43 @@ class UpdateProperty extends CI_Controller {
 		$State = $_POST['State'];
 		$PostalCode = $_POST['PostalCode'];
 		$StarRate = $_POST['StarRate'];
-		/*$fdata_mainImg=$_FILES['mainImage'];
-		$fdata=$_FILES['propertyImages'];
-		if(is_array($fdata['name']))
+		$old_path = $_POST['old_path'];
+		
+		/* image handling */
+		if(isset($_FILES['mainImage']))
 		{
-			$files="";
-			$temp="";
-			$path = "Property gallery/$PropertyName/";
-			mkdir($path);
 			/*--upload main img--*/
-			/*$exetention = explode(".", $fdata_mainImg["name"]);
+			$fdata_mainImg=$_FILES['mainImage'];
+			$exetention = explode(".", $fdata_mainImg["name"]);
 			$mainImg = "mainImage.".end($exetention);
-			move_uploaded_file($fdata_mainImg["tmp_name"], $path.$mainImg);
-			/*--upload gallery imgs--*/
-			/*for($i=0 ; $i<count($fdata['name']) ; $i++)
+			move_uploaded_file($fdata_mainImg["tmp_name"], $old_path.$mainImg);
+		}
+		if(isset($_FILES['mainImage']))
+		{
+			/*--upload gallery img--*/
+			$fdata=$_FILES['propertyImages'];
+			for($i=0 ; $i<count($fdata['name']) ; $i++)
 			{
 				$temp = $fdata['tmp_name'][$i];
 				$files = $fdata['name'][$i];
-				move_uploaded_file($temp,$path.$files);
+				move_uploaded_file($temp,$old_path.$files);
 			}
 		}
-		$path = "Property gallery/$PropertyName/";*/
+		
+		/*-- remane directory --*/
+		$new_path = "Property gallery/$PropertyName/";
+		rename($old_path,$new_path);
 		$location_map = $_POST['location_map'];
 		$description = $_POST['description'];
 		$how_to_reach = $_POST['how_to_reach'];
+		/*--end post property --*/
 		
+		/*--post property info--*/
 		$Bedrooms = $_POST['Bedrooms'];
 		$beds = $_POST['beds'];
 		$Bathrooms = $_POST['Bathrooms'];
 		$accommodates = $_POST['accommodates'];
 		$Meals = $_POST['Meals'];
-		
 		$Pool = $this->input->post('Pool');
 		if($Pool == FALSE)
 		{
@@ -136,8 +155,18 @@ class UpdateProperty extends CI_Controller {
 		$Attractions = $_POST['Attractions'];
 		$LeisureActivities = $_POST['LeisureActivities'];
 		$General = $_POST['General'];
+		/*--end post property info--*/
 		
-
+		/*--post property owner info--*/
+		$PropertyOwnerName = $_POST['name'];
+		$PropertyOwnerEmail = $_POST['email'];
+		$PropertyOwnerAddress = $_POST['address'];
+		$input_date = str_replace('/', '-', $_POST['registred_date']);
+		$PropertyOwnerRegistred_date = date("Y-m-d", strtotime($input_date));
+		$PropertyOwnerPhone = $_POST['phone'];
+		$alternative_phone = $_POST['alternative_phone'];
+		
+		/*-- property --*/
 		$postdata_update1 = array(
 							'property_name' => $PropertyName,
 							'street' => $Street,
@@ -145,13 +174,14 @@ class UpdateProperty extends CI_Controller {
 							'postal_code' => $PostalCode,
 							'star_rate' => $StarRate,
 							'state' => $State,
+							'image_path' => $new_path,
 							'location_map' => $location_map,
 							'description' => $description,
 							'how_to_reach' => $how_to_reach
 							
 						);
-		//$id = $this->SqlQueryModel->insertProperty($postdata1);		
-		//
+		
+		/*-- property info--*/
 		$postdata_update2 = array(				
 							'bedrooms' => $Bedrooms,
 							'bathrooms' => $Bathrooms,
@@ -176,20 +206,26 @@ class UpdateProperty extends CI_Controller {
 							'general' => $General,
 							'payment_facility' => $payment_facility
 						);
-					
+		
+		/*-- property owner info --*/
+		$postdata_update3 = array(
+							'owner_name' => $PropertyOwnerName,
+							'phone' => $PropertyOwnerPhone,
+							'alternative_phone' => $alternative_phone,
+							'email' => $PropertyOwnerEmail,
+							'address' => $PropertyOwnerAddress,
+							'registred_date' => $PropertyOwnerRegistred_date
+							
+						);
 		$for_id = $_SESSION['edit_id'];
 		$res = $this->SqlQueryModel->doUpdateProperty($for_id,$postdata_update1);	
 		if($res)
 		{
 			$this->SqlQueryModel->doUpdateProperty_info($for_id,$postdata_update2);
-			$_SESSION['edit_id'] = null;
-			header("location: ../../Admin");
-			//$this->load->view('index');
 		}
-		else
-		{
-			echo "error on update";
-		}
+		$this->SqlQueryModel->doUpdateProperty_owner_info($for_id,$postdata_update3);
+		$_SESSION['edit_id'] = null;
+		header("location: ../../Admin");
 		//echo "last insert id ".$id;
 		
 		//$this->load->view('AddPropertyOwnerInfo');

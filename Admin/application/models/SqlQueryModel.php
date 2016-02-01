@@ -47,14 +47,15 @@ class SqlQueryModel extends CI_Model{
 	
 	public function getUpdateProperty($id)
 	{
-		$editProperty = $this->db->query("SELECT P.property_id,P.property_type,P.property_name,P.street,P.city,P.postal_code,P.star_rate,P.state,
-									P.image_path,P.location_map,P.description,P.how_to_reach,PI.bedrooms,PI.bathrooms,PI.pool,PI.in_house_kitchen,PI.restaurant,PI.free_parking,
-									PI.meals,PI.internet_access,PI.smoking_allowd,PI.television_access,PI.pet_friendly,PI.air_condition,PI.first_aid_available,PI.accommodates,
-									PI.entertainment,PI.other_amenities,PI.theme,PI.attractions,PI.leisureActivities,PI.general,PI.payment_facility,PI.beds 
-									FROM property P INNER JOIN property_info PI ON P.property_id = PI.property_id 
+		$editProperty = $this->db->query("SELECT P.*, PI.bedrooms, PI.bathrooms, PI.pool, PI.meals, PI.internet_access, PI.smoking_allowd, PI.television_access, 
+									PI.pet_friendly, PI.air_condition, PI.in_house_kitchen, PI.restaurant, PI.beds, PI.accommodates, PI.free_parking, 
+									PI.first_aid_available, PI.entertainment, PI.other_amenities, PI.theme, PI.attractions, PI.leisureActivities, PI.general, 
+									PI.payment_facility, PO.owner_name,	PO.phone, PO.alternative_phone,	PO.email, PO.address, DATE_FORMAT(PO.registred_date, '%d/%m/%Y') registred_date 
+									FROM property P INNER JOIN property_info PI INNER JOIN property_owner_info PO ON P.property_id = PI.property_id 
+									AND PI.property_id = PO.property_id 
 									WHERE P.property_id = $id");
 		return $editProperty->row_array();
-	}
+	}	
 	public function doUpdateProperty($for_id,$postdata_update1)
 	{
 		$this->db->where('property.property_id',$for_id);
@@ -64,6 +65,11 @@ class SqlQueryModel extends CI_Model{
 	{
 		$this->db->where('property_info.property_id',$for_id);
 		return $this->db->update('property_info', $postdata_update2);
+	}
+	public function doUpdateProperty_owner_info($for_id,$postdata_update3)
+	{
+		$this->db->where('property_owner_info.property_id',$for_id);
+		return $this->db->update('property_owner_info', $postdata_update3);
 	}
 }
 ?>

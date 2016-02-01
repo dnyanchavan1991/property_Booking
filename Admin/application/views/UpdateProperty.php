@@ -16,6 +16,9 @@
 	<link href="../../assets/css/bootstrapValidator.css" type="text/css" rel="stylesheet"/>
     <!-- Custom CSS -->
     <link href="../../assets/css/sb-admin.css" type="text/css" rel="stylesheet"/>
+    <link href="../../assets/css/style.css" type="text/css" rel="stylesheet"/>
+	<link rel="stylesheet" href="../../assets/css/jquery-ui.min.css" />
+	<link rel="stylesheet" href="../../assets/css/jquery-ui.theme.min.css" />
 	<!--<link href="assets/css/accordian-style.css" type="text/css" rel="stylesheet"/>-->
     <!-- Custom Fonts -->
     <link href="../../assets/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet"/>
@@ -225,148 +228,123 @@
 							data-bv-feedbackicons-valid="glyphicon glyphicon-ok"
 							data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
 							data-bv-feedbackicons-validating="glyphicon glyphicon-refresh">
-                            <div class="example1">
-								<?php extract($data); ?>
-								<div class="panel panel-default">
-									<div class="panel-heading" data-acc-link="demo1"><i class="glyphicon glyphicon-ok-circle"></i> Mandatory</div>
-									<div class="panel-body acc-open" data-acc-content="demo1">
-										<!--<div class="form-group">
-											<label class="control-label col-md-3" for="PropertyName">Type</label>
-											<div class="col-md-7">
-												<select name="property_type[]" id="property_type_id" class="form-control" multiple required data-bv-notempty-message="Please select the property type">
-													<option value=""> Select Property Type </option>
-													<option value="Bungalow">Bungalow</option>
-													<option value="Villa">Villa</option>
-													<option value="Row House">Row House</option>
-												</select>
-											</div>
-										</div>-->
+                            <?php extract($data); ?>
+							<div class="panel panel-default">
+								<div class="panel-heading" ><i class="glyphicon glyphicon-ok-circle"></i> Mandatory</div>
+								<div class="panel-body">
+									<!--<div class="form-group">
+										<label class="control-label col-md-3" for="PropertyName">Type</label>
+										<div class="col-md-7">
+											<select name="property_type[]" id="property_type_id" class="form-control" multiple required data-bv-notempty-message="Please select the property type">
+												<option value=""> Select Property Type </option>
+												<option value="Bungalow">Bungalow</option>
+												<option value="Villa">Villa</option>
+												<option value="Row House">Row House</option>
+											</select>
+										</div>
+									</div>-->
 
-										<div class="form-group">
-											<label class="control-label col-md-3" for="PropertyName">Name</label>
-											<div class="col-md-7">
-												<input class="form-control" type="text" id="PropertyName_id" name="PropertyName" placeholder="Enter property name" 
-												onblur="name_validate()" value="<?php echo $property_name;?>" readonly
-												data-bv-notempty="true" data-bv-notempty-message="The property name is required">
-											</div>
+									<div class="form-group">
+										<label class="control-label col-md-3" for="PropertyName">Name</label>
+										<div class="col-md-7">
+											<input class="form-control" type="text" id="PropertyName_id" name="PropertyName" placeholder="Enter property name" 
+											onblur="name_validate()" value="<?php echo $property_name;?>" readonly
+											data-bv-notempty="true" data-bv-notempty-message="The property name is required">
 										</div>
+									</div>
 
-										<div class="form-group">
-											<label class="control-label col-md-3" for="Street">Street</label>
-											<div class="col-md-7">
-												<input class="form-control" placeholder="Enter street" id="Street_id" type="text" name="Street" value="<?php echo $street;?>"
-												required data-bv-notempty-message="The street name is required">
-											</div>
+									<div class="form-group">
+										<label class="control-label col-md-3" for="Street">Street</label>
+										<div class="col-md-7">
+											<input class="form-control" placeholder="Enter street" id="Street_id" type="text" name="Street" value="<?php echo $street;?>"
+											required data-bv-notempty-message="The street name is required">
 										</div>
+									</div>
 
-										<div class="form-group">
-											<label class="control-label col-md-3" for="City">City</label>
-											<div class="col-md-7">
-												<input class="form-control" placeholder="Enter city" type="text" id="City_id" name="City" value="<?php echo $city;?>"
-												required data-bv-notempty-message="The city name is required">
-											</div>
+									<div class="form-group">
+										<label class="control-label col-md-3" for="City">City</label>
+										<div class="col-md-7">
+											<input class="form-control" placeholder="Enter city" type="text" id="City_id" name="City" value="<?php echo $city;?>"
+											required data-bv-notempty-message="The city name is required">
 										</div>
+									</div>
 
-										<div class="form-group">
-											<label class="control-label col-md-3" for="State">State</label>
-											<div class="col-md-7">
-												<select name="State" id="State_id" class="form-control" required data-bv-notempty-message="Please select the state">
-													<option value=""> Select State </option>
-													<option <?php if($state=="Andaman and Nicobar Islands"){echo "selected";}?> value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
-													<option <?php if($state=="Andhra Pradesh"){echo "selected";}?> value="Andhra Pradesh">Andhra Pradesh</option>
-													<option <?php if($state=="Arunachal Pradesh"){echo "selected";}?> value="Arunachal Pradesh">Arunachal Pradesh</option>
-													<option <?php if($state=="Assam"){echo "selected";}?> value="Assam">Assam</option>
-													<option <?php if($state=="Bihar"){echo "selected";}?> value="Bihar">Bihar</option>
-													<option <?php if($state=="Chandigarh"){echo "selected";}?> value="Chandigarh">Chandigarh</option>
-													<option <?php if($state=="Chhattisgarh"){echo "selected";}?> value="Chhattisgarh">Chhattisgarh</option>
-													<option <?php if($state=="Dadra and Nagar Haveli"){echo "selected";}?> value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
-													<option <?php if($state=="Daman and Diu"){echo "selected";}?> value="Daman and Diu">Daman and Diu</option>
-													<option <?php if($state=="Delhi"){echo "selected";}?> value="Delhi">Delhi</option>
-													<option <?php if($state=="Goa"){echo "selected";}?> value="Goa">Goa</option>
-													<option <?php if($state=="Gujarat"){echo "selected";}?> value="Gujarat">Gujarat</option>
-													<option <?php if($state=="Haryana"){echo "selected";}?> value="Haryana">Haryana</option>
-													<option <?php if($state=="Himachal Pradesh"){echo "selected";}?> value="Himachal Pradesh">Himachal Pradesh</option>
-													<option <?php if($state=="Jammu and Kashmir"){echo "selected";}?> value="Jammu and Kashmir">Jammu and Kashmir</option>
-													<option <?php if($state=="Jharkhand"){echo "selected";}?> value="Jharkhand">Jharkhand</option>
-													<option <?php if($state=="Karnataka"){echo "selected";}?> value="Karnataka">Karnataka</option>
-													<option <?php if($state=="Kerala"){echo "selected";}?> value="Kerala">Kerala</option>
-													<option <?php if($state=="Lakshadweep"){echo "selected";}?> value="Lakshadweep">Lakshadweep</option>
-													<option <?php if($state=="Madhya Pradesh"){echo "selected";}?> value="Madhya Pradesh">Madhya Pradesh</option>
-													<option <?php if($state=="Maharashtra"){echo "selected";}?> value="Maharashtra">Maharashtra</option>
-													<option <?php if($state=="Manipur"){echo "selected";}?> value="Manipur">Manipur</option>
-													<option <?php if($state=="Meghalaya"){echo "selected";}?> value="Meghalaya">Meghalaya</option>
-													<option <?php if($state=="Mizoram"){echo "selected";}?> value="Mizoram">Mizoram</option>
-													<option <?php if($state=="Nagaland"){echo "selected";}?> value="Nagaland">Nagaland</option>
-													<option <?php if($state=="Orissa"){echo "selected";}?> value="Orissa">Orissa</option>
-													<option <?php if($state=="Pondicherry"){echo "selected";}?> value="Pondicherry">Pondicherry</option>
-													<option <?php if($state=="Punjab"){echo "selected";}?> value="Punjab">Punjab</option>
-													<option <?php if($state=="Rajasthan"){echo "selected";}?> value="Rajasthan">Rajasthan</option>
-													<option <?php if($state=="Sikkim"){echo "selected";}?> value="Sikkim">Sikkim</option>
-													<option <?php if($state=="Tamil Nadu"){echo "selected";}?> value="Tamil Nadu">Tamil Nadu</option>
-													<option <?php if($state=="Telangana"){echo "selected";}?> value="Telangana">Telangana</option>
-													<option <?php if($state=="Tripura"){echo "selected";}?> value="Tripura">Tripura</option>
-													<option <?php if($state=="Uttaranchal"){echo "selected";}?> value="Uttaranchal">Uttaranchal</option>
-													<option <?php if($state=="Uttar Pradesh"){echo "selected";}?> value="Uttar Pradesh">Uttar Pradesh</option>
-													<option <?php if($state=="West Bengal"){echo "selected";}?> value="West Bengal">West Bengal</option>
-												</select>
-											</div>
+									<div class="form-group">
+										<label class="control-label col-md-3" for="State">State</label>
+										<div class="col-md-7">
+											<select name="State" id="State_id" class="form-control" required data-bv-notempty-message="Please select the state">
+												<option value=""> Select State </option>
+												<option <?php if($state=="Andaman and Nicobar Islands"){echo "selected";}?> value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+												<option <?php if($state=="Andhra Pradesh"){echo "selected";}?> value="Andhra Pradesh">Andhra Pradesh</option>
+												<option <?php if($state=="Arunachal Pradesh"){echo "selected";}?> value="Arunachal Pradesh">Arunachal Pradesh</option>
+												<option <?php if($state=="Assam"){echo "selected";}?> value="Assam">Assam</option>
+												<option <?php if($state=="Bihar"){echo "selected";}?> value="Bihar">Bihar</option>
+												<option <?php if($state=="Chandigarh"){echo "selected";}?> value="Chandigarh">Chandigarh</option>
+												<option <?php if($state=="Chhattisgarh"){echo "selected";}?> value="Chhattisgarh">Chhattisgarh</option>
+												<option <?php if($state=="Dadra and Nagar Haveli"){echo "selected";}?> value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
+												<option <?php if($state=="Daman and Diu"){echo "selected";}?> value="Daman and Diu">Daman and Diu</option>
+												<option <?php if($state=="Delhi"){echo "selected";}?> value="Delhi">Delhi</option>
+												<option <?php if($state=="Goa"){echo "selected";}?> value="Goa">Goa</option>
+												<option <?php if($state=="Gujarat"){echo "selected";}?> value="Gujarat">Gujarat</option>
+												<option <?php if($state=="Haryana"){echo "selected";}?> value="Haryana">Haryana</option>
+												<option <?php if($state=="Himachal Pradesh"){echo "selected";}?> value="Himachal Pradesh">Himachal Pradesh</option>
+												<option <?php if($state=="Jammu and Kashmir"){echo "selected";}?> value="Jammu and Kashmir">Jammu and Kashmir</option>
+												<option <?php if($state=="Jharkhand"){echo "selected";}?> value="Jharkhand">Jharkhand</option>
+												<option <?php if($state=="Karnataka"){echo "selected";}?> value="Karnataka">Karnataka</option>
+												<option <?php if($state=="Kerala"){echo "selected";}?> value="Kerala">Kerala</option>
+												<option <?php if($state=="Lakshadweep"){echo "selected";}?> value="Lakshadweep">Lakshadweep</option>
+												<option <?php if($state=="Madhya Pradesh"){echo "selected";}?> value="Madhya Pradesh">Madhya Pradesh</option>
+												<option <?php if($state=="Maharashtra"){echo "selected";}?> value="Maharashtra">Maharashtra</option>
+												<option <?php if($state=="Manipur"){echo "selected";}?> value="Manipur">Manipur</option>
+												<option <?php if($state=="Meghalaya"){echo "selected";}?> value="Meghalaya">Meghalaya</option>
+												<option <?php if($state=="Mizoram"){echo "selected";}?> value="Mizoram">Mizoram</option>
+												<option <?php if($state=="Nagaland"){echo "selected";}?> value="Nagaland">Nagaland</option>
+												<option <?php if($state=="Orissa"){echo "selected";}?> value="Orissa">Orissa</option>
+												<option <?php if($state=="Pondicherry"){echo "selected";}?> value="Pondicherry">Pondicherry</option>
+												<option <?php if($state=="Punjab"){echo "selected";}?> value="Punjab">Punjab</option>
+												<option <?php if($state=="Rajasthan"){echo "selected";}?> value="Rajasthan">Rajasthan</option>
+												<option <?php if($state=="Sikkim"){echo "selected";}?> value="Sikkim">Sikkim</option>
+												<option <?php if($state=="Tamil Nadu"){echo "selected";}?> value="Tamil Nadu">Tamil Nadu</option>
+												<option <?php if($state=="Telangana"){echo "selected";}?> value="Telangana">Telangana</option>
+												<option <?php if($state=="Tripura"){echo "selected";}?> value="Tripura">Tripura</option>
+												<option <?php if($state=="Uttaranchal"){echo "selected";}?> value="Uttaranchal">Uttaranchal</option>
+												<option <?php if($state=="Uttar Pradesh"){echo "selected";}?> value="Uttar Pradesh">Uttar Pradesh</option>
+												<option <?php if($state=="West Bengal"){echo "selected";}?> value="West Bengal">West Bengal</option>
+											</select>
 										</div>
-										
-										<div class="form-group">
-											<label class="control-label col-md-3" for="State">PIN Code</label>
-											<div class="col-md-7">
-												<input class="form-control" placeholder="Enter PIN" type="text" name="PostalCode" id="PostalCode_id" 
-												pattern="^\d{6}$" data-bv-trigger="blur" data-bv-regexp-message="The PIN code is not valid" value="<?php echo $postal_code;?>"
-												data-bv-notempty="true" data-bv-notempty-message="The PIN code is required">
-											</div>
+									</div>
+									
+									<div class="form-group">
+										<label class="control-label col-md-3" for="State">PIN Code</label>
+										<div class="col-md-7">
+											<input class="form-control" placeholder="Enter PIN" type="text" name="PostalCode" id="PostalCode_id" 
+											pattern="^\d{6}$" data-bv-trigger="blur" data-bv-regexp-message="The PIN code is not valid" value="<?php echo $postal_code;?>"
+											data-bv-notempty="true" data-bv-notempty-message="The PIN code is required">
 										</div>
+									</div>
 
-									   <div class="form-group">
-											 <label class="control-label col-md-3" for="StarRate">Star Rate</label>
-												<div class="col-md-7">
-													<input id="switcher" class="form-control" placeholder="Enter star rate" type="range" name="StarRate" min="1" max="5" step="1" value="<?php echo $star_rate;?>">
-													<output for="StarRate" id="rating"></output>
-												</div>
-										 </div>
-										
-										<!--<div class="form-group">
-											<label class="control-label file col-md-3" for="mainImage">Upload Main Image</label>
+								   <div class="form-group">
+										 <label class="control-label col-md-3" for="StarRate">Star Rate</label>
 											<div class="col-md-7">
-												<input class="form-control" type="file" name="mainImage" id="mainImage_id" required data-bv-notempty-message="Please upload main image">
-												<p class="help-block">(Image for main display)</p>
+												<input id="switcher" class="form-control" placeholder="Enter star rate" type="range" name="StarRate" min="1" max="5" step="1" value="<?php echo $star_rate;?>">
+												<output for="StarRate" id="rating"></output>
 											</div>
+									 </div>
+									
+									<div class="form-group">
+										<label class="control-label col-md-3" for="description">Description</label>
+										<div class="col-md-7">
+											<textarea class="form-control" id="description_id" name="description" placeholder="Enter property description (This will appear on website)"
+											required data-bv-notempty-message="Please enter description about property" rows="6" ><?php echo $description;?></textarea>
 										</div>
-										
-										<div class="form-group">
-											<label class="control-label col-md-3" for="propertyImages">Upload Images</label>
-											<div class="col-md-7">
-												<input class="form-control" type="file" name="propertyImages[]" id="propertyImages_id" multiple required data-bv-notempty-message="Please upload gallery images">
-												<p class="help-block">(Images for gallery)</p>
-											</div>
-										</div>-->
-
-										
-										
-										<div class="form-group">
-											<label class="control-label col-md-3" for="description">Description</label>
-											<div class="col-md-7">
-												<textarea class="form-control" id="description_id" name="description" placeholder="Enter property description (This will appear on website)"
-												required data-bv-notempty-message="Please enter description about property" rows="6" ><?php echo $description;?></textarea>
-											</div>
-										</div>
-										
-										<!--<div class="form-group">
-											<div class="col-md-12 col-md-offset-3">
-												<button id="collapse" class="btn btn-success" >Save and Continue</button>
-											</div>
-										</div>-->
 									</div>
 								</div>
-							
-							
+							</div>
+						
+							<div class="example1">
 								<div class="panel panel-default">
-									<div class="panel-heading" data-acc-link="demo2"><i class="glyphicon glyphicon-list"></i> Features and Facilities (<i>Optional</i>)</div>
-									<div class="panel-body" data-acc-content="demo2">
+									<div class="panel-heading" data-acc-link="demo1"><i class="glyphicon glyphicon-list"></i> Features and Facilities (<i>Optional</i>)</div>
+									<div class="panel-body " data-acc-content="demo1">
 										<div class="form-group">
 											<label class="control-label col-md-3" for="location_map">Map Location</label>
 											<div class="col-md-7">
@@ -538,13 +516,6 @@
 											</div>
 										</div>
 										
-										<!--<div class="form-group">
-											<label class="control-label col-md-3" for="Pool"></label>
-											<div class="checkbox-inline col-md-9">
-												
-											</div>
-										</div>-->
-										
 										<div class="form-group">
 											<label class="control-label col-md-3" for="EntertainMent">EntertainMent</label>
 											<div class="col-md-7">
@@ -586,12 +557,130 @@
 												<input class="form-control" placeholder="Enter general info" type="text" name="General" value="<?php echo $general;?>">
 											</div>
 										</div>
+										
+										<input class="form-control"type="hidden" name="old_path" value="<?php echo $image_path;?>">
+									
 									</div>
-									<div class="form-group">
-										<div class="col-md-12 col-md-offset-3">
-											<button type="submit" class="btn btn-success" >Save and Continue</button>
+								</div>
+								
+								<div class="panel panel-default">
+									<div class="panel-heading" data-acc-link="demo2"><i class="glyphicon glyphicon-camera"></i> Update Main Image (<i>Optional</i>)</div>
+									<div class="panel-body" data-acc-content="demo2">
+										<?php
+											$img_array = array();
+											$directory_path = './'.$image_path;
+											$map = directory_map($directory_path);
+											foreach ($map as $result)
+											{
+												$get_result = $image_path.$result;
+												array_push($img_array,$get_result);
+											}
+											/*- main image path -*/
+											$matches = preg_grep("/mainImage/", $img_array);
+											$matches = implode($matches);
+											$main_img_path = $matches;
+										?>
+										<div class="col-sm-6">
+											<div class="form-group">
+												<p>Upload new main image</p>
+												<input class="form-control" type="file" name="mainImage" id="mainImage_id" >
+											</div>
+										</div>
+										<div class="col-sm-6 img-wrap main_image">
+											<?php if($main_img_path){?>
+												<span class="close">&times;</span>
+											<?php }?>
+											<img id="subImg" src="../../<?php echo $main_img_path;?>" class="img-responsive img-rounded" 
+											title="main image" >&nbsp;
 										</div>
 									</div>
+								</div>
+								
+								<div class="panel panel-default">
+									<div class="panel-heading" data-acc-link="demo3"><i class="glyphicon glyphicon-camera"></i> Update Gallery (<i>Optional</i>)</div>
+									<div class="panel-body" data-acc-content="demo3">
+										<div class="col-sm-6">
+											<div class="form-group">
+												<p>Upload new images</p>
+												<input class="form-control" type="file" name="propertyImages[]" id="mainImage_id" >
+											</div>
+										</div>
+										<?php
+										foreach($img_array as $value)
+										{
+										?>
+										<div id="<?php echo str_replace(str_split('/ .'),'_',$value);?>" class="col-sm-6 img-wrap-sub">
+											<?php if($value){?>
+												<span class="close-sub">&times;</span>
+											<?php }?>
+											<img id="subImg" src="../../<?php echo $value;?>" class="img-responsive img-rounded" 
+											title="sub image" >&nbsp;
+										</div>
+										<?php }?>
+										
+									</div>
+								</div>
+								<div class="panel panel-default">
+									<div class="panel-heading" data-acc-link="demo4"><i class="glyphicon glyphicon-list"></i> Update Property Owner Info (<i>Optional</i>)</div>
+									<div class="panel-body " data-acc-content="demo4">
+									
+										<div class="form-group">
+											<label class="control-label col-md-3" for="name">Name</label>
+											<div class="col-md-9">
+												<input class="form-control" type="text" name="name" placeholder="Enter name" value="<?php echo $owner_name;?>"
+												id="name_id" required data-bv-notempty-message="The owner name is required">
+												<p class="help-block"></p>
+											</div>
+										</div>
+
+										<div class="form-group">
+											<label class="control-label col-md-3" for="email">Email</label>
+											<div class="col-md-9">
+												<input class="form-control" placeholder="Enter email" type="email" name="email" value="<?php echo $email;?>"
+												required data-bv-notempty-message="The email address is required" id="email_id">
+											</div>
+										</div>
+
+										<div class="form-group">
+											<label class="control-label col-md-3" for="address">Address</label>
+											<div class="col-md-9">
+												<textarea class="form-control" placeholder="Enter address" name="address" rows="4"
+												required data-bv-notempty-message="The address is required" ><?php echo $address;?></textarea>
+											</div>
+										</div>
+
+										<div class="form-group">
+											<label class="control-label col-md-3" for="registred_date">Registration Date</label>
+											<div class="col-md-9">
+												<input class="form-control" id="Dateid" placeholder="Enter registration date" type="text" name="registred_date" 
+												 data-bv-notempty="true" data-bv-notempty-message="Registration date is required" value="<?php echo $registred_date;?>">
+											</div>
+										</div>
+
+										<div class="form-group">
+											<label class="control-label col-md-3" for="phone">Tel/Mobile No.</label>
+											<div class="col-md-9">
+												<input class="form-control" placeholder="Enter Tel/Mobile No." type="text" name="phone" value="<?php echo $phone;?>"
+												pattern="^\d{10}$" data-bv-trigger="blur" data-bv-regexp-message="The phone number is not valid" 
+												 value="" data-bv-notempty="true" data-bv-notempty-message="The phone number is required">
+											</div>
+										</div>
+
+										<div class="form-group">
+											<label class="control-label col-md-3" for="phone">Alternative Tel/Mobile No.</label>
+											<div class="col-md-9">
+												<input class="form-control" placeholder="Enter Tel/Mobile No." type="text" name="alternative_phone" value="<?php echo $alternative_phone;?>"
+												pattern="^\d{10}$" data-bv-trigger="blur" data-bv-regexp-message="The phone number is not valid" 
+												 value="">
+											</div>
+										</div>
+									
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-md-12 col-md-offset-3">
+									<button type="submit" class="btn btn-success" >Update</button>
 								</div>
 							</div>
 						</form>
@@ -611,30 +700,27 @@
 
     <!-- jQuery -->
 	<script type="text/javascript" src="../../assets/js/jquery.js"></script>
-	<script type="text/javascript" src="../../assets/js/angular.min.js"></script>
-	<script src="../../assets/js/angular-sanitize.min.js"></script>
+	<script type="text/javascript" src="../../assets/js/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="../../assets/js/bootstrapValidator.js"></script>
 	<script type="text/javascript" src="../../assets/js/jquery.accordion.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="../../assets/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 	
-	/*var app = angular.module('updateProperty_app', ['ngSanitize']);
-	//'Authentication','Modal','ngRoute','ngSanitize'
-	app.controller('updateProperty_con', function($scope, $http){
-	 	$http({
-			method: 'GET',
-			url:'../edit'
-		}).success(function (response){
-			//alert("get");
-			$scope.list = response;
-			
-		});
-	});*/
-	
 	/*---*/
 	$(document).ready(function() {
 		$('#form_id').bootstrapValidator();
+		
+		/*-- datepicker --*/
+		$('#Dateid').datepicker
+		({
+			dateFormat: 'dd/mm/yy',
+			changeMonth: true,
+			changeYear: true,
+			yearRange: '1900:2150',
+			maxDate: new Date(),
+			inline: true
+		});
     });
 	$("#switcher").on("input", function() {
 		document.getElementById('rating').value = $("#switcher").val();
@@ -713,12 +799,35 @@
 		}
 	}*/
 	
-	/*$(function() {
+	$(function() {
 		$('.example1').accordion({ 
 			multiOpen: false
 		});
-	});*/
+	});
 	
+	$('.img-wrap .close').on('click', function() {
+		var img_src = $(this).closest('.img-wrap').find('img').attr('src');
+		$.ajax({
+			type: "GET",
+			url: "../unlinkImg",
+			data:{val: img_src},
+			success: function(d){
+				$('.main_image').hide();
+			}
+		});
+	});
+	$('.img-wrap-sub .close-sub').on('click', function() {
+		var img_src = $(this).closest('.img-wrap-sub').find('img').attr('src');
+		var img_id = $(this).closest('.img-wrap-sub').attr('id');
+		$.ajax({
+			type: "GET",
+			url: "../unlinkImg",
+			data:{val: img_src},
+			success: function(d){
+				$('#'+img_id).hide();
+			}
+		});
+	});
 	</script>
 </body>
 

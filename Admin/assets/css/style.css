@@ -11,3 +11,43 @@
 .angular-with-newlines {
     white-space: pre-line;
 }
+
+.img-wrap .close {
+    position: absolute;
+    top: 2px;
+    right: 16px;
+    z-index: 100;
+    background-color: #FFF;
+    padding: 5px 2px 2px;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    opacity: .2;
+    text-align: center;
+    font-size: 22px;
+    line-height: 10px;
+    border-radius: 50%;
+}
+.img-wrap:hover .close {
+    opacity: 1;
+}
+
+.img-wrap-sub .close-sub {
+    position: absolute;
+    top: 2px;
+    right: 16px;
+    z-index: 100;
+    background-color: #FFF;
+    padding: 5px 2px 2px;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    opacity: .2;
+    text-align: center;
+    font-size: 22px;
+    line-height: 10px;
+    border-radius: 50%;
+}
+.img-wrap-sub:hover .close-sub {
+    opacity: 1;
+}
