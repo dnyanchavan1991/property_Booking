@@ -195,4 +195,13 @@ class PropertyModel extends CI_Model {
 		return $query->row()->count;
 	
 	}
+	/*this function inserts username,pass and datetime  in login table*/
+	public function insertLoginData ($loginData)
+	{
+			
+		$loginTable='login';
+		$this->load->database ();
+		$query=$this->db->insert($loginTable,$loginData);
+	
+	}
 }

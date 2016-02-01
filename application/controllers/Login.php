@@ -12,6 +12,15 @@ public function authenticate() {
 	$accesstype=$post->access_type;
 	
 	$count=$this->PropertyModel->authenticate($username,$password,$accesstype);
+	if($count==1){
+		$loginDetailsArray=array(
+			'user_name'=>$username,
+		    'password'=>$password,
+			'logged_in_dateTime'=>date("y-m-d h:i:s")
+				
+		);
+		$this->PropertyModel->insertLoginData ($loginDetailsArray);
+	}
 	$response=array('count'=>$count);
 	echo json_encode($response);
 		
