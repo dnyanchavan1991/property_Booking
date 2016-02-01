@@ -2,57 +2,52 @@
 class RoomAvailability extends CI_Controller {
 	public function __construct() {
 		parent::__construct ();
-		session_cache_limiter('private, must-revalidate');
-		session_cache_expire(60);
+		session_cache_limiter ( 'private, must-revalidate' );
+		session_cache_expire ( 60 );
 		$this->load->library ( 'session' );
 	}
 	public function index() {
-		if (isset($_POST['submit'])) {
+		if (isset ( $_POST ['submit'] )) {
 			
 			$checkin = $_POST ['checkIn'];
 			$checkin = str_replace ( '/', '-', $checkin );
+			$checkin = date ('Y-m-d', strtotime ( $checkin ));
+			
 			$checkout = $_POST ['checkOut'];
 			$checkout = str_replace ( '/', '-', $checkout );
-			$checkin = date ( 'Y-m-d', strtotime ( $checkin ) );
-			$checkout = date ( 'Y-m-d', strtotime ( $checkout ) );
-			
+			$checkin = date ('Y-m-d', strtotime ( $checkout ));
+				
 			$this->session->set_userdata ( 'checkIn', $checkin );
 			$this->session->set_userdata ( 'checkOut', $checkout );
+			$this->session->set_userdata ( 'guestCount',$_POST['guestCount'] );
+			$this->session->set_userdata ( 'destination', $_POST['inpDestination'] );
+			$this->session->set_userdata ( 'propertyType',$_POST['propertyType']);
 		}
 		
-		$this->load->view ('search.html');
+	$this->load->view ( 'search.html' );
 	}
 	public function checkRoomAvailabilty() {
 		$this->load->model ( 'PropertyModel' );
+		$searchArray=array(
+				'checkIn'=>$this->session->userdata ( 'checkIn' ),
+				'checkOut'=>$this->session->userdata ( 'checkOut' ),
+				'guestCount'=>$this->session->userdata ( 'guestCount' ),
+				'destination'=>$this->session->userdata ( 'destination' ),
+				'propertyType'=>$this->session->userdata ( 'propertyType' )
+				
+				
+		);
+                	
+		$roomAvailableInfo = $this->PropertyModel->checkRoomAvailabilty ($searchArray);
 		
-	
-		$roomAvailableInfo = $this->PropertyModel->checkRoomAvailabilty ( $this->session->userdata ( 'checkIn' ), $this->session->userdata ( 'checkOut' ) );
-		foreach ( $roomAvailableInfo as $row ) {
-			if (! isset ( $propertyInfo [$row ['propertyId']] ['AccomodationTypeName'] )) {
-				$propertyInfo [$row ['propertyId']] ['AccomodationTypeName'] = array ();
+                $i=0;
+                foreach($roomAvailableInfo as $row)
+			{
+                    $row=(array)$row;
+                    $response[$i]=array('propertyId'=>$row['propertyId'],'propertyName'=>$row['property'],'ImagePath' => $row['imagePath'],'propertyAddress'=>$row['propertyAddress']);
+                    $i++; 
+       
 			}
-			$propertyInfo [$row ['propertyId']] ['AccomodationTypeName'] [] = $row ['Accomodation'];
-			$propertyInfo [$row ['propertyId']] ['roomidCount'] [] = $row ['roomidCount'];
-			$propertyInfo [$row ['propertyId']] ['ImagePath'] = $row ['imagePath'];
-			$propertyInfo [$row ['propertyId']] ['propertyName'] = $row ['property'];
-			$propertyInfo [$row ['propertyId']] ['propertyAddress'] = $row ['propertyAddress'];
-			$propertyInfo [$row ['propertyId']] ['basePrice'] = $row ['basePrice'];
-		}
-		
-		foreach ( $propertyInfo as $q => $data ) {
-			$responce ['roomavAilableInfo'] [] = ( object ) array (
-					"propertyId" => $q,
-					"propertyName" => $data ['propertyName'],
-					"propertyAddress" => $data ['propertyAddress'],
-					"ImagePath" => $data ['ImagePath'],
-					"AccomodationTypeName" => ( object ) array (
-							"accomdation" => $data ['AccomodationTypeName'],
-							"availability" => $data ['roomidCount'] 
-					)
-					,
-					"basePrice" => $data ['basePrice'] 
-			);
-		}
-		echo json_encode ( $responce );
-	}
+		echo json_encode ( $response );
+        }
 }
