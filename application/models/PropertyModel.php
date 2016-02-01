@@ -1,7 +1,7 @@
 <?php
 class PropertyModel extends CI_Model {
 	// this function returns available rooms according to checkin &checkout date
-	public function checkRoomAvailabilty($checkin, $checkout) {
+public function checkRoomAvailabilty($searchArray) {
 		$this->load->database ();
 		
 		$reservationTable = 'reservation';
@@ -10,25 +10,35 @@ class PropertyModel extends CI_Model {
 		$propertyInfo='property_info';
 		$roomTable = 'room';
 		
-		$this->db->select ( "room.property_id as propertyId,property.property_name as property,room.room_id,COUNT(distinct(room.room_id))as roomidCount,acc.accomodation_type_name as Accomodation,property.image_path as imagePath ,concat(property.street,',',property.city,',',property.state,',',property.postal_code)as propertyAddress,room.base_price as basePrice" );
-		$this->db->from ( "$roomTable room" );
-		$this->db->join ( "$reservationTable res", "res.room_id=room.room_id", "left" );
-		$this->db->join ( "$propertyTable property", "property.property_id=room.property_id" );
-		$this->db->join ( "$accomodationTable acc", "acc.accomodation_type_id=room.accomodation_type_id" );
-		//$this->db->join ( "$propertyInfo propertyInfo", "propertyInfo.accomodation_type_id=room.accomodation_type_id" );
-		$this->db->where ( "res.room_id", NULL );
-		 $where = "check_out >= '$checkout' AND check_in >='$checkin'";
+		
+		$checkout=$searchArray['checkOut'];
+		$checkin=$searchArray['checkIn'];
+                $guestCountstring=$searchArray['guestCount'];
+                $guestCount=(int)substr($guestCountstring,7);
+                $propertyType=$searchArray['propertyType'];
+                $destination=$searchArray['destination'];
+     
+       $this->db->select ("property.property_id as propertyId,property.property_name as property,property.property_type_id,property.image_path as imagePath ,concat(property.street,',',property.city,',',property.state,',',property.postal_code)as propertyAddress,propertyInfo.accommodates-sum(res.accomodates) as availableAccomodes");
+		$this->db->from ( "$propertyInfo propertyInfo" );
+		$this->db->join ( "$reservationTable res", "res.property_id=propertyInfo.property_id", "left" );
+		$this->db->join ( "$propertyTable property", "propertyInfo.property_id=property.property_id" );
+		$this->db->where ( "res.property_id", NULL );
+        $where = "city  like'%$destination%' or state like '%$destination%'";
+		$this->db->where ( $where );
+         $where = "property_type_id='$propertyType'";
+		$this->db->where ( $where );
+		$where = "check_out >= '$checkout' AND check_in >='$checkin'";
 		$this->db->or_where ( $where );
 		$where = "check_out <= '$checkout' AND check_out <='$checkout'";
 		$this->db->or_where ( $where );
 		$this->db->group_by ( array (
-				"property.property_id",
-				"room.accomodation_type_id" 
+				"property.property_id"
 		) );
+		$this->db->having("availableAccomodes>=$guestCount");
 		$roomAvailableInfo = $this->db->get ();
-		$roomAvailableInfoResult=$roomAvailableInfo->result_array () ;
+		$roomAvailableInfoResult=$roomAvailableInfo->result() ;
 	
-		return $roomAvailableInfoResult;
+	return  $roomAvailableInfoResult;
 			
 	}
 	/*checkRoomAvailabilty ends here*/
