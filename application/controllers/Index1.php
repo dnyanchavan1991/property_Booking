@@ -18,4 +18,17 @@ class Index1 extends CI_Controller {
 		echo json_encode( $list);
 		
 	}
+	public  function galleryImgFetch(){
+		$this->load->model ( 'PropertyModel' );
+		$getImgData = $this->PropertyModel->galleryImgFetch();
+		$i=0;
+		$list = array();
+		foreach($getImgData as $row)
+		{
+				
+			$list[] = array('property_id' =>$row->property_id,'image'=>$row->image_path);
+		}
+		echo json_encode( $list);
+	
+	}
 }

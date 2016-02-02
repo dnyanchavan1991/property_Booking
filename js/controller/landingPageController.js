@@ -82,3 +82,19 @@ app.controller('loginCtrl', function ($scope,$http) {
     }
 });
 
+app.controller('galleryImgCtrl', function ($scope,$http) {
+	
+	
+    $scope.galleryImgFetch=function()
+    {
+    	
+    	$http.post("Index1/galleryImgFetch/").then(
+				function(response) {
+					$scope.imageSrc = response.data;
+					
+					
+				});
+    	
+      }
+
+});

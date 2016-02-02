@@ -214,4 +214,19 @@ public function checkRoomAvailabilty($searchArray) {
 		$query=$this->db->insert($loginTable,$loginData);
 	
 	}
+	/*this function used to fetch proprty images randomly*/
+	public function galleryImgFetch()
+	{
+			
+		$propertyTable='property';
+		$this->load->database ();
+		$this->db->select('property_id,image_path');
+		$this->db->from($propertyTable);
+		$this->db->order_by('rand()');
+		$this->db->limit(5);
+		$query=$this->db->get();
+	
+		return $query->result();
+	
+	}
 }
