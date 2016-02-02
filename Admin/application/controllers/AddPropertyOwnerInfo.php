@@ -31,7 +31,8 @@ class AddPropertyOwnerInfo extends CI_Controller {
 		if($this->SqlQueryModel->insertPropertyOwner_info($data))	
 		{
 			$_SESSION['lastPropertyId'] = NULL;
-			$this->load->view('AddPropertyOwnerInfo');
+			$flag = 1;
+			$this->load->view('AddPropertyOwnerInfo', $flag);
 			//header('location:'.base_url());
 		}
 		else

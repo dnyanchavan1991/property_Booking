@@ -29,7 +29,7 @@
 
 </head>
 
-<body >
+<body ng-app="add_property">
 
     <div id="wrapper">
 
@@ -189,7 +189,7 @@
             <!-- /.navbar-collapse -->
         </nav>
 
-        <div id="page-wrapper">
+        <div id="page-wrapper" ng-controller="add_property_ctrl">
 
             <div class="container-fluid">
 
@@ -233,11 +233,14 @@
 										<div class="form-group">
 											<label class="control-label col-md-3" for="PropertyName">Type</label>
 											<div class="col-md-7">
-												<select name="property_type[]" id="property_type_id" class="form-control" multiple required data-bv-notempty-message="Please select the property type">
+												<select name="property_type" id="property_type_id" class="form-control" required data-bv-notempty-message="Please select the property type">
 													<option value=""> Select Property Type </option>
-													<option value="Bungalow">Bungalow</option>
+													<option ng-repeat="p_type in typeList" value="{{p_type.property_type_id}}">
+														{{p_type.property_type_name}}
+													</option>
+													<!--<option value="Bungalow">Bungalow</option>
 													<option value="Villa">Villa</option>
-													<option value="Row House">Row House</option>
+													<option value="Row House">Row House</option>-->
 												</select>
 											</div>
 										</div>
@@ -246,7 +249,7 @@
 											<label class="control-label col-md-3" for="PropertyName">Name</label>
 											<div class="col-md-7">
 												<input class="form-control" type="text" id="PropertyName_id" name="PropertyName" placeholder="Enter property name" 
-												onblur="name_validate()" 
+												pattern="^\S[A-Za-z ]{1,50}" data-bv-regexp-message="Characters and white space allowed only"
 												data-bv-notempty="true" data-bv-notempty-message="The property name is required">
 											</div>
 										</div>
@@ -617,6 +620,18 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="assets/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
+	var app = angular.module('add_property', []);
+	//'Authentication','Modal','ngRoute','ngSanitize'
+	app.controller('add_property_ctrl', function($scope, $http){
+		$http({
+			method: 'GET',
+			url:'AddProperty/getPropertyType'
+		}).success(function (response){
+			//alert(response));
+			$scope.typeList = response;
+		});
+	});
+	
 	$(document).ready(function() {
 		$('#form_id').bootstrapValidator();
     });
@@ -625,7 +640,7 @@
 	});
 	
 	//validation of name
-	function name_validate()
+	/*function name_validate()
 	{ 
 		 
 		var name = document.getElementById('PropertyName_id').value;
@@ -642,7 +657,7 @@
 		
 		// return true;
 		}
-	}
+	}*/
 	/*-- validation function--*/
 	/*function validation()
 	{

@@ -31,7 +31,18 @@
 </head>
 
 <body>
-
+	<?php 
+	if(isset($confirm_flag))
+	{
+		echo "<script>alert('..Now add owner info')</script>";
+		$confirm_flag = '';
+	}
+	if(isset($flag))
+	{
+		echo "<script>alert('Record added successfully..!')</script>";
+		$flag = '';
+	}
+	?>
     <div id="wrapper">
 
         <!-- Navigation -->
@@ -228,7 +239,7 @@
                                 <label class="control-label col-md-3" for="name">Name</label>
 								<div class="col-md-9">
 									<input class="form-control" type="text" name="name" placeholder="Enter name"
-									onblur="name_validate()" id="name_id"
+									id="name_id" pattern="^\S[A-Za-z ]{1,50}" data-bv-regexp-message="Characters and white space allowed only"
 									required data-bv-notempty-message="The owner name is required">
 									<p class="help-block"></p>
 								</div>
@@ -238,7 +249,7 @@
                                 <label class="control-label col-md-3" for="email">Email</label>
                                 <div class="col-md-9">
 									<input class="form-control" placeholder="Enter email" type="email" name="email"
-									required data-bv-notempty-message="The email address is required" onblur="email_validate()" id="email_id">
+									required data-bv-notempty-message="The email address is required" id="email_id">
 								</div>
                             </div>
 
@@ -326,7 +337,7 @@
     });
 	
 	//validation of name
-	function name_validate()
+	/*function name_validate()
 	{ 
 		 
 		var name = document.getElementById('name_id').value;
@@ -360,7 +371,7 @@
 		{
 		    
 		}
-	}
+	}*/
 
 	</script>
 </body>

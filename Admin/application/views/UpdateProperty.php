@@ -248,7 +248,7 @@
 										<label class="control-label col-md-3" for="PropertyName">Name</label>
 										<div class="col-md-7">
 											<input class="form-control" type="text" id="PropertyName_id" name="PropertyName" placeholder="Enter property name" 
-											onblur="name_validate()" value="<?php echo $property_name;?>" readonly
+											value="<?php echo $property_name;?>" pattern="^\S[A-Za-z ]{1,50}" data-bv-regexp-message="Characters and white space allowed only"
 											data-bv-notempty="true" data-bv-notempty-message="The property name is required">
 										</div>
 									</div>
@@ -628,8 +628,9 @@
 											<label class="control-label col-md-3" for="name">Name</label>
 											<div class="col-md-9">
 												<input class="form-control" type="text" name="name" placeholder="Enter name" value="<?php echo $owner_name;?>"
+												pattern="^\S[A-Za-z ]{1,50}" data-bv-regexp-message="Characters and white space allowed only"
 												id="name_id" required data-bv-notempty-message="The owner name is required">
-												<p class="help-block"></p>
+												
 											</div>
 										</div>
 
@@ -727,7 +728,7 @@
 	});
 	
 	//validation of name
-	function name_validate()
+	/*function name_validate()
 	{ 
 		 
 		var name = document.getElementById('PropertyName_id').value;
@@ -744,7 +745,7 @@
 		
 		// return true;
 		}
-	}
+	}*/
 	/*-- validation function--*/
 	/*function validation()
 	{

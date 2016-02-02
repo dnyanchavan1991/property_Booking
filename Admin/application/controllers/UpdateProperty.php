@@ -225,7 +225,8 @@ class UpdateProperty extends CI_Controller {
 		}
 		$this->SqlQueryModel->doUpdateProperty_owner_info($for_id,$postdata_update3);
 		$_SESSION['edit_id'] = null;
-		header("location: ../../Admin");
+		$update_confirm_flag = 1;
+		header("location: ../../Admin", $update_confirm_flag);
 		//echo "last insert id ".$id;
 		
 		//$this->load->view('AddPropertyOwnerInfo');

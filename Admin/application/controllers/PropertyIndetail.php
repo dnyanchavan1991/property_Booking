@@ -12,7 +12,6 @@ class PropertyIndetail extends CI_Controller {
 	public function SessionStorage()
 	{
 		echo $_SESSION['propertyDetailId'] = $_POST['id'];
-		//$this->load->view('DisplayPropertyIndetail.html');
 	}
 	public function loadIndetailView()
 	{
@@ -29,7 +28,13 @@ class PropertyIndetail extends CI_Controller {
 		foreach($response as $row)
 		{
 			$property_id = $row['property_id'];
-			$property_type = $row['property_type'];
+			$property_type_id = $row['property_type_id'];
+			$property_type = $this->SqlQueryModel->getPropertyTypeById($property_type_id);
+			foreach($property_type as $type_row)
+			{
+				$property_type = $type_row['property_type_name'];
+			}
+			 
 			$property_name = $row['property_name'];
 			$street = $row['street'];
 			$city = $row['city'];
@@ -39,18 +44,8 @@ class PropertyIndetail extends CI_Controller {
 			/*- directory path -*/
 			$image_path = $row['image_path'];
 			$directory_path = './'.$image_path;
-			//echo $directory_path = site_url('Property gallery').$image_path;
 			/*--get all images in directory--*/
 			$map = directory_map($directory_path);
-			//var_dump($map);
-			//$relative_path = base_url().$image_path;
-			/*echo $handle = opendir('C:\xampp\htdocs\SVN_propertybooking\branches\dev\Admin\\'.$image_path);
-			while($file = readdir($handle)){
-				if($file !== '.' && $file !== '..'){
-					$get_result = $image_path.$file;
-					array_push($img_array,$get_result);
-				}
-			}*/
 			foreach ($map as $result)
 			{
 				$get_result = $image_path.$result;
@@ -65,7 +60,9 @@ class PropertyIndetail extends CI_Controller {
 			$description = nl2br(str_replace(" ",'&nbsp;',$row['description']));
 			$how_to_reach = nl2br(str_replace(" ",'&nbsp;',$row['how_to_reach']));
 			$bedrooms = $row['bedrooms'];
+			$beds = $row['beds'];
 			$bathrooms = $row['bathrooms'];
+			$accommodates = $row['accommodates'];
 			$pool = $row['pool'];
 			$meals = $row['meals'];
 			$internet_access = $row['internet_access'];
@@ -73,6 +70,10 @@ class PropertyIndetail extends CI_Controller {
 			$television_access = $row['television_access'];
 			$pet_friendly = $row['pet_friendly'];
 			$air_condition = $row['air_condition'];
+			$in_house_kitchen = $row['in_house_kitchen'];
+			$restaurant = $row['restaurant'];
+			$free_parking = $row['free_parking'];
+			$first_aid_available = $row['first_aid_available'];
 			$entertainment = $row['entertainment'];
 			$other_amenities = $row['other_amenities'];
 			$theme = $row['theme'];
@@ -104,6 +105,8 @@ class PropertyIndetail extends CI_Controller {
 								'description'=>$description,
 								'how_to_reach'=>$how_to_reach,
 								'bedrooms'=>$bedrooms,
+								'beds'=>$beds,
+								'accommodates'=>$accommodates,
 								'bathrooms'=>$bathrooms,
 								'pool'=>$pool,
 								'meals'=>$meals,
@@ -113,6 +116,10 @@ class PropertyIndetail extends CI_Controller {
 								'television_access'=>$television_access,
 								'pet_friendly'=>$pet_friendly,
 								'air_condition'=>$air_condition,
+								'in_house_kitchen'=>$in_house_kitchen,
+								'restaurant'=>$restaurant,
+								'free_parking'=>$free_parking,
+								'first_aid_available'=>$first_aid_available,
 								'entertainment'=>$entertainment,
 								'other_amenities'=>$other_amenities,
 								'theme'=>$theme,
@@ -126,10 +133,8 @@ class PropertyIndetail extends CI_Controller {
 								'address'=>$address,
 								'registred_date'=>$registred_date
 							);
-		//echo $image_path=$response['image_path'];
 		$data = json_encode($response_data);
 		echo $data;
-		//$this->load->view('DisplayPropertyIndetail');
 	}
 	
 }

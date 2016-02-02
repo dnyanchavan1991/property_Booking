@@ -226,8 +226,10 @@
 							</h3>
 							<center class="breadcrumb"><strong>--- Property Info ---</strong></center>
 							<div class="row">
-								<label class="control-label col-md-3" for="PropertyName">Property Type</label>
-								<div class="col-md-9">
+								<div class="col-xs-7">
+									<label class="control-label" for="PropertyName">Property Type</label>
+								</div>
+								<div class="col-xs-5">
 									{{list.property_type}}
 								</div>
 							</div>
@@ -320,9 +322,27 @@
 							
 							<div class="row">
 								<div class="col-lg-12">
+									<label class="control-label col-md-3" for="PropertyName">Beds</label>
+										<div class="col-md-9">
+											{{list.beds}}
+										</div>&nbsp;
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-lg-12">
 									<label class="control-label col-md-3" for="PropertyName">Bathrooms</label>
 										<div class="col-md-9">
 											{{list.bathrooms}}
+										</div>&nbsp;
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-lg-12">
+									<label class="control-label col-md-3" for="PropertyName">Accommodates</label>
+										<div class="col-md-9">
+											{{list.accommodates}}
 										</div>&nbsp;
 								</div>
 							</div>
@@ -377,6 +397,51 @@
 									<label class="control-label col-md-3" for="PropertyName">Air Conditioning</label>
 										<div class="col-md-9">
 											{{list.air_condition}}
+										</div>&nbsp;
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-lg-12">
+									<label class="control-label col-md-3" for="PropertyName">Payment Facility</label>
+										<div class="col-md-9">
+											{{list.payment_facility}}
+										</div>&nbsp;
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-lg-12">
+									<label class="control-label col-md-3" for="PropertyName">In House Kitchen</label>
+										<div class="col-md-9">
+											{{list.in_house_kitchen}}
+										</div>&nbsp;
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-lg-12">
+									<label class="control-label col-md-3" for="PropertyName">Restaurant</label>
+										<div class="col-md-9">
+											{{list.restaurant}}
+										</div>&nbsp;
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-lg-12">
+									<label class="control-label col-md-3" for="PropertyName">Free Parking</label>
+										<div class="col-md-9">
+											{{list.free_parking}}
+										</div>&nbsp;
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-lg-12">
+									<label class="control-label col-md-3" for="PropertyName">First Aid Available</label>
+										<div class="col-md-9">
+											{{list.first_aid_available}}
 										</div>&nbsp;
 								</div>
 							</div>
@@ -444,14 +509,6 @@
 								</div>
 							</div>
 							
-							<div class="row">
-								<div class="col-lg-12">
-									<label class="control-label col-md-3" for="PropertyName">Payment Facility</label>
-										<div class="col-md-9">
-											{{list.payment_facility}}
-										</div>&nbsp;
-								</div>
-							</div>
 						</div>
 					</div>
 				
@@ -460,7 +517,7 @@
 							<h3 class="panel-title"><i class="glyphicon glyphicon-camera"></i> Uploaded Images</h3>
 						</div>
 						<div class="panel-body" data-acc-content="demo2">
-							<div class="col-md-6" ng-repeat="x in list.images">
+							<div class="col-xs-6" ng-repeat="x in list.images">
 								<img id="subImg" ng-src="../{{x}}" class="img-responsive img-rounded" 
 								title="sub image" >&nbsp;
 							</div>

@@ -15,6 +15,13 @@ class SqlQueryModel extends CI_Model{
 		$getList = $this->db->get();
 		return $getList->result();
 	}
+	public function propertyType()
+	{
+		$this->db->select ("property_type_id, property_type_name");
+		$this->db->from ("property_type");
+		$getTypeList = $this->db->get();
+		return $getTypeList->result_array();
+	}
 	public function insertProperty($postdata1,$postdata2)
 	{
 		$this->db->insert('property', $postdata1);
@@ -34,15 +41,21 @@ class SqlQueryModel extends CI_Model{
 	
 	public function getSingleProperty($id)
 	{
-		$getList = $this->db->query("SELECT P.property_id,P.property_type,P.property_name,P.street,P.city,P.postal_code,P.star_rate,P.state,
-									P.image_path,P.location_map,P.description,P.how_to_reach,PI.bedrooms,PI.bathrooms,PI.pool,
-									PI.meals,PI.internet_access,PI.smoking_allowd,PI.television_access,PI.pet_friendly,PI.air_condition,
-									PI.entertainment,PI.other_amenities,PI.theme,PI.attractions,PI.leisureActivities,PI.general,PI.payment_facility,
+		$getList = $this->db->query("SELECT P.property_id,P.property_type_id,P.property_name,P.street,P.city,P.postal_code,P.star_rate,P.state,
+									P.image_path,P.location_map,P.description,P.how_to_reach,PI.bedrooms,PI.bathrooms,PI.pool,PI.beds,PI.accommodates,PI.free_parking,
+									PI.meals,PI.internet_access,PI.smoking_allowd,PI.television_access,PI.pet_friendly,PI.air_condition,PI.in_house_kitchen,PI.first_aid_available,
+									PI.entertainment,PI.other_amenities,PI.theme,PI.attractions,PI.leisureActivities,PI.general,PI.payment_facility,PI.restaurant,
 									PO.owner_name,PO.phone,PO.alternative_phone,PO.email,PO.address,DATE_FORMAT(PO.registred_date, '%d/%m/%Y') registred_date  
 									FROM property P INNER JOIN property_info PI INNER JOIN property_owner_info PO ON P.property_id = PI.property_id 
 									AND PI.property_id = PO.property_id
 									WHERE P.property_id = $id");
 		return $getList->result_array();
+	}
+	
+	public function getPropertyTypeById($property_type_id)
+	{
+		$type_by_id = $this->db->query("SELECT property_type_name FROM property_type WHERE property_type_id	= $property_type_id");
+		return $type_by_id -> result_array();
 	}
 	
 	public function getUpdateProperty($id)
