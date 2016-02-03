@@ -73,8 +73,8 @@ app.controller('loginCtrl', function ($scope,$http) {
 	        	  }
 	        		  else{
 	        			  alert('Login Successful.'); 
-	        			  window.location.href='Admin';
-	        			  
+	        			 // window.location.href='Admin';
+	        			  window.location.href='Admin/Admin/setLoginSession';
 	        	  }
 	          });
     	
@@ -87,11 +87,11 @@ app.controller('galleryImgCtrl', function ($scope,$http) {
 	
     $scope.galleryImgFetch=function()
     {
-    	
+    	//alert("called");
     	$http.post("Index1/galleryImgFetch/").then(
 				function(response) {
 					$scope.imageSrc = response.data;
-					
+					//alert($scope.imageSrc);
 					
 				});
     	
