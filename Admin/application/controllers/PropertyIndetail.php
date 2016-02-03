@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start();
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class PropertyIndetail extends CI_Controller {
@@ -7,6 +7,11 @@ class PropertyIndetail extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct();
+		$this->load->library('session');
+		if (!$this->session->userdata('user_name') && !$this->session->userdata('password'))
+		{ 
+			header("location: ../../dev");
+		}
 		$this->load->model('SqlQueryModel');
 	}
 	public function SessionStorage()

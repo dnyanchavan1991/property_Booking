@@ -1,5 +1,4 @@
 <?php
-session_start();
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class AddPropertyOwnerInfo extends CI_Controller {
@@ -7,7 +6,13 @@ class AddPropertyOwnerInfo extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct();
+		$this->load->library('session');
+		if (!$this->session->userdata('user_name') && !$this->session->userdata('password'))
+		{ 
+			header("location: ../../dev");
+		}
 		$this->load->model('SqlQueryModel');
+		
 	}
 	public function getPropertyOwnerInfo()
 	{
@@ -20,7 +25,7 @@ class AddPropertyOwnerInfo extends CI_Controller {
 		$alternative_phone = $_POST['alternative_phone'];
 
 		$data = array(
-						'property_id' => $_SESSION['lastPropertyId'],
+						'property_id' => $this->session->userdata('lastPropertyId'),
 						'owner_name' => $PropertyOwnerName,
 						'phone' => $PropertyOwnerPhone,
 						'alternative_phone' => $alternative_phone,
@@ -30,9 +35,9 @@ class AddPropertyOwnerInfo extends CI_Controller {
 					);
 		if($this->SqlQueryModel->insertPropertyOwner_info($data))	
 		{
-			$_SESSION['lastPropertyId'] = NULL;
-			$flag = 1;
-			$this->load->view('AddPropertyOwnerInfo', $flag);
+			$this->session->unset_userdata('lastPropertyId');
+			echo "<script>alert('Property added successfully..!')</script>";
+			$this->load->view('AddPropertyOwnerInfo');
 			//header('location:'.base_url());
 		}
 		else

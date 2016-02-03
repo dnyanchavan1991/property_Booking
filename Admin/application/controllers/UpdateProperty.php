@@ -1,10 +1,15 @@
 <?php
 
-session_start();
+//session_start();
 class UpdateProperty extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct();
+		$this->load->library('session');
+		if (!$this->session->userdata('user_name') && !$this->session->userdata('password'))
+		{ 
+			header("location: ../../dev");
+		}
 		$this->load->model('SqlQueryModel');
 	}
 	public function index($id)
@@ -86,67 +91,67 @@ class UpdateProperty extends CI_Controller {
 		$Pool = $this->input->post('Pool');
 		if($Pool == FALSE)
 		{
-			$Pool = '';
+			$Pool = 'No';
 		}
 		
 		$internet_access = $this->input->post('internet_access');
 		if($internet_access == FALSE)
 		{
-			$internet_access = '';
+			$internet_access = 'No';
 		}
 		
 		$smoking_allowd = $this->input->post('smoking_allowd');
 		if($smoking_allowd == FALSE)
 		{
-			$smoking_allowd = '';
+			$smoking_allowd = 'No';
 		}
 		
 		$television_access = $this->input->post('television_access');
 		if($television_access == FALSE)
 		{
-			$television_access = '';
+			$television_access = 'No';
 		}
 		
 		$pet_friendly = $this->input->post('pet_friendly');
 		if($pet_friendly == FALSE)
 		{
-			$pet_friendly = '';
+			$pet_friendly = 'No';
 		}
 		
 		$air_condition = $this->input->post('air_condition');
 		if($air_condition == FALSE)
 		{
-			$air_condition = '';
+			$air_condition = 'No';
 		}
 		
 		$payment_facility = $this->input->post('payment_facility');
 		if($payment_facility == FALSE)
 		{
-			$payment_facility = '';
+			$payment_facility = 'No';
 		}
 		
 		$in_house_kitchen = $this->input->post('in_house_kitchen');
 		if($in_house_kitchen == FALSE)
 		{
-			$in_house_kitchen = '';
+			$in_house_kitchen = 'No';
 		}
 		
 		$restaurant = $this->input->post('restaurant');
 		if($restaurant == FALSE)
 		{
-			$restaurant = '';
+			$restaurant = 'No';
 		}
 		
 		$free_parking = $this->input->post('free_parking');
 		if($free_parking == FALSE)
 		{
-			$free_parking = '';
+			$free_parking = 'No';
 		}
 		
 		$first_aid_available = $this->input->post('first_aid_available');
 		if($first_aid_available == FALSE)
 		{
-			$first_aid_available = '';
+			$first_aid_available = 'No';
 		}
 		
 		$EntertainMent = $_POST['EntertainMent'];
@@ -225,8 +230,8 @@ class UpdateProperty extends CI_Controller {
 		}
 		$this->SqlQueryModel->doUpdateProperty_owner_info($for_id,$postdata_update3);
 		$_SESSION['edit_id'] = null;
-		$update_confirm_flag = 1;
-		header("location: ../../Admin", $update_confirm_flag);
+		//$update_confirm_flag = "alert";
+		header("location: ../../Admin");
 		//echo "last insert id ".$id;
 		
 		//$this->load->view('AddPropertyOwnerInfo');

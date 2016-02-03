@@ -1,11 +1,15 @@
 <?php
 
-session_start();
 class AddProperty extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct();
 		$this->load->model('SqlQueryModel');
+		$this->load->library('session');
+		if ($this->session->userdata('user_name') == null && $this->session->userdata('password') == null)
+		{ 
+			header("location: ../../dev");
+		}
 	}
 	public function index()
 	{
@@ -133,16 +137,6 @@ class AddProperty extends CI_Controller {
 			$first_aid_available = 'No';
 		}
 		
-		/*$internet_access = $_POST[''];
-		$smoking_allowd = $_POST[''];
-		$television_access = $_POST[''];
-		$pet_friendly = $_POST[''];
-		$air_condition = $_POST[''];
-		$payment_facility = $_POST[''];
-		$in_house_kitchen = $_POST[''];
-		$restaurant = $_POST[''];
-		$free_parking = $_POST[''];
-		$first_aid_available = $_POST['first_aid_available'];*/
 		$EntertainMent = $_POST['EntertainMent'];
 		$OtherAmenities = $_POST['OtherAmenities'];
 		$Theme = $_POST['Theme'];
@@ -164,7 +158,6 @@ class AddProperty extends CI_Controller {
 							'how_to_reach' => $how_to_reach,
 							'property_type_id' => $property_type
 						);
-		//$id = $this->SqlQueryModel->insertProperty($postdata1);		
 		//
 		$postdata2 = array(				
 							'bedrooms' => $Bedrooms,
@@ -192,7 +185,8 @@ class AddProperty extends CI_Controller {
 						);
 		$id = $this->SqlQueryModel->insertProperty($postdata1,$postdata2);	
 		//echo "last insert id ".$id;
-		$_SESSION['lastPropertyId'] = $id;
+		//$_SESSION['lastPropertyId'] = $id;
+		$this->session->set_userdata('lastPropertyId', $id);
 		$confirm_flag = 1;
 		$this->load->view('AddPropertyOwnerInfo', $confirm_flag);
 	}

@@ -50,7 +50,7 @@
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
-                <li class="dropdown">
+                <!--<li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
                     <ul class="dropdown-menu message-dropdown">
                         <li class="message-preview">
@@ -129,11 +129,11 @@
                             <a href="#">View All</a>
                         </li>
                     </ul>
-                </li>
+                </li>-->
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>  <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li>
+                        <!--<li>
                             <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
                         </li>
                         <li>
@@ -142,9 +142,9 @@
                         <li>
                             <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
                         </li>
-                        <li class="divider"></li>
+                        <li class="divider"></li>-->
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                            <a href="../../Logout"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                         </li>
                     </ul>
                 </li>
@@ -214,14 +214,14 @@
                 </div>
                 <!-- /.row -->
 				
-                <div class="row">
+                <div class="row" ng-app="add_property">
                     <div class="col-lg-6">
 						<div class="row">
 							<div class="col-lg-12">
 								<center class="breadcrumb"><strong>--- Property Info ---</strong></center>
 							</div>
 						</div>
-						<div>
+						<div ng-controller="add_property_ctrl">
                         <form data-toggle="validator" role="form" id="form_id" class="form-horizontal"
 							method="post" action="../getUpdateData" 
 							enctype="multipart/form-data" 
@@ -232,17 +232,20 @@
 							<div class="panel panel-default">
 								<div class="panel-heading" ><i class="glyphicon glyphicon-ok-circle"></i> Mandatory</div>
 								<div class="panel-body">
-									<!--<div class="form-group">
+									<div class="form-group">
 										<label class="control-label col-md-3" for="PropertyName">Type</label>
 										<div class="col-md-7">
-											<select name="property_type[]" id="property_type_id" class="form-control" multiple required data-bv-notempty-message="Please select the property type">
+											<select name="property_type" id="property_type_id" class="form-control" required data-bv-notempty-message="Please select the property type">
 												<option value=""> Select Property Type </option>
-												<option value="Bungalow">Bungalow</option>
+												<option ng-selected="{{p_type.property_type_id == <?php echo $property_type_id;?>}}" ng-repeat="p_type in typeList" value="{{p_type.property_type_id}}">
+													{{p_type.property_type_name}}
+												</option>
+												<!--<option value="Bungalow">Bungalow</option>
 												<option value="Villa">Villa</option>
-												<option value="Row House">Row House</option>
+												<option value="Row House">Row House</option>-->
 											</select>
 										</div>
-									</div>-->
+									</div>
 
 									<div class="form-group">
 										<label class="control-label col-md-3" for="PropertyName">Name</label>
@@ -702,11 +705,23 @@
     <!-- jQuery -->
 	<script type="text/javascript" src="../../assets/js/jquery.js"></script>
 	<script type="text/javascript" src="../../assets/js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="../../assets/js/angular.min.js"></script>
 	<script type="text/javascript" src="../../assets/js/bootstrapValidator.js"></script>
 	<script type="text/javascript" src="../../assets/js/jquery.accordion.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="../../assets/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
+	var app = angular.module('add_property', []);
+	//'Authentication','Modal','ngRoute','ngSanitize'
+	app.controller('add_property_ctrl', function($scope, $http){
+		$http({
+			method: 'GET',
+			url:'../../Propertytype/getPropertyType'
+		}).success(function (response){
+			//alert(response));
+			$scope.typeList = response;
+		});
+	});
 	
 	/*---*/
 	$(document).ready(function() {
