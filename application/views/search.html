@@ -102,7 +102,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="search-page">
 		<div class="container">
 			<div class="search-grids">
-				<div class="col-md-3 search-grid-left">
+				<div class="col-md-3 search-grid-left" ng-controller="CheckboxFilterCtrl">
 					<div class="search-hotel">
 						<h3 class="sear-head">Name contains</h3>
 						<form>
@@ -226,19 +226,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 					<div class="single-star-bottom">
 						<h3 class="sear-head">Star rating</h3>
-
-						<input type="checkbox" id="nike" value=""> <label
-							for="nike"><span></span><b><img src="images/st2.png"
-								alt="" /></b></label> <input type="checkbox" id="nike1" value=""> <label
-							for="nike1"><span></span> <b><img
-								src="images/st3.png" alt="" /></b></label> <input type="checkbox"
-							id="nike2" value=""> <label for="nike2"><span></span><b><img
-								src="images/st4.png" alt="" /></b></label> <input type="checkbox"
-							id="nike3" value=""> <label for="nike3"><span></span>
-							<b><img src="images/st5.png" alt="" /></b></label> <input
-							type="checkbox" id="nike4" value=""> <label for="nike4"><span></span><b><img
-								src="images/st.png" alt="" /></b></label>
-
+<div ng-repeat="starRateLabel  in starRateList ">
+						<input type="checkbox" id={{starRateLabel.name}} value="" ng-change="isLabelChecked('starRate')"> <label
+							for={{starRateLabel.name}}><span></span><b><img src={{starRateLabel.star_image_url}}
+								alt="" /></b></label> 
+</div>
 					</div>
 
 					<div class="menu-grid">
