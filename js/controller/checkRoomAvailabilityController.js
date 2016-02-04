@@ -111,4 +111,56 @@
 			        });
 			      }
 			    };
-			  });
+			  })
+			.controller('CheckboxFilterCtrl', function ($scope) {
+
+				    $scope.starRateList = [
+					            {name:'5',star_image_url:"images/st2.png"},
+					            {name:'4',star_image_url:"images/st3.png"},
+					            {name:'3',star_image_url:"images/st4.png"},
+					            {name:'2',star_image_url:"images/st5.png"},
+					            {name:'1',star_image_url:"images/st.png"},
+					          
+					        ]
+				    $scope.model = {
+				    	selectedLabelList : [],
+						selectedLabelList1 : [],
+				    }
+				    $scope.isSelectAll = function(){
+				    $scope.model.selectedLabelList = [];
+						if($scope.master){
+						$scope.master = true;
+					    for(var i=0;i<$scope.labelList.length;i++){
+										        $scope.model.selectedLabelList.push($scope.labelList);	
+				 $scope.model.selectedLabelList1.push($scope.labelList);								
+									}
+								}
+				    else{$scope.master = false;}
+				   angular.forEach($scope.labelList, function (item) {
+						    item.selected = $scope.master;
+				   });
+				}
+				    
+				  $scope.isLabelChecked = function(objName)
+							{
+								  //alert($scope.[objName]);
+							
+								if(this.label.selected){
+								$scope.model.selectedLabelList.push(this.label);
+								$scope.model.selectedLabelList1.push(this.label)
+									if($scope.model.selectedLabelList.length == $scope.labelList.length ){
+																												$scope.master = true;
+															                                               
+																										   }
+								                        }
+								
+							else{
+							           $scope.model.selectedLabelList.splice(this.label,1);
+									   $scope.model.selectedLabelList1.push(this.label)
+								}
+
+							  console.log($scope.model.selectedLabelList[0].name);
+							}  
+				    
+				    
+				});
