@@ -229,4 +229,13 @@ public function checkRoomAvailabilty($searchArray) {
 		return $query->result();
 	
 	}
+	/*this function inserts data in enquiry table*/
+	public function insertEnquiryData ($enquiryData)
+	{
+			
+		$enquiryTable='enquiry';
+		$this->load->database ();
+		$query=$this->db->insert($enquiryTable,$enquiryData);
+	
+	}
 }

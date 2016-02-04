@@ -24,6 +24,7 @@ class Contact extends CI_Controller {
 		$checkin = date ( 'Y-m-d', strtotime ( $checkin ) );
 		$checkout = date ( 'Y-m-d', strtotime ( $checkout ) );
 		$full_name=$post->full_name;
+		$guestCount = $post->guestCount;
 		if($post->phone==null){
 			$contactInfo=$post->email_id;
 		}
@@ -52,6 +53,19 @@ class Contact extends CI_Controller {
 		//echo $recepient.'<br>'.$subject.'<br>'.$message.'<br>'.$header;
 		if( mail ($recepient,$subject,$message,$header)){
 			echo 'message sent';
+			$templateId=$messageContentQuery->row()->template_id;
+			 function insertEnquiryData ($enquiryData){
+			 	$enquiryDetailsArray=array(
+			 			'user_name'=>$username,
+			 			'property_id'=>$this->session->userdata( 'propertyId' ),
+			 			'sent_date'=>date("y-m-d h:i:s"),
+			 			'template_id'=>$templateId,
+			 			'check_in'=>date("y-m-d h:i:s"),
+			 			'check_out'=>date("y-m-d h:i:s"),
+			 			'guest_count'=>$guestcount
+				);
+			 	$this->PropertyModel->insertEnquiryData ($enquiryDetailsArray);
+			}
 		}
 		else{
 			echo 'message  not sent';
