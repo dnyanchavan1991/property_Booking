@@ -24,7 +24,7 @@ public function checkRoomAvailabilty($searchArray) {
 		$this->db->join ( "$propertyTable property", "propertyInfo.property_id=property.property_id" );
 		$this->db->where ( "res.property_id", NULL );
         $where = "city  like'%$destination%' or state like '%$destination%'";
-		$this->db->where ( $where );
+		$this->db->or_where( $where );
          $where = "property_type_id='$propertyType'";
 		$this->db->where ( $where );
 		$where = "check_out >= '$checkout' AND check_in >='$checkin'";
@@ -159,7 +159,7 @@ public function checkRoomAvailabilty($searchArray) {
 	public function  getmessageContent($messageType){
 		$templateMessageTable='msg_template_table';
 		$this->load->database ();
-		$this->db->select ( "template_content as message_content");
+		$this->db->select ( "template_content as message_content,template_id");
 		$this->db->from ( "$templateMessageTable" );
 		$this->db->where ('type',$messageType);
 		$query=$this->db->get();
