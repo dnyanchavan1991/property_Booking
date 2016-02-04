@@ -131,15 +131,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			ng-model="inputDestination" "
 			ng-click="expandFilterOptions()" 
 			style="width:90%;"/></td>
-	<td><select class="sel" ng-model="selectAccomodationType" 
-						 	ng-init="selectAccomodationType=accomodationType[0]"  
+	<td><select class="sel" ng-model="selectAccomodationType"  id="propertyType"
+ name="propertyType"	 	ng-init="selectAccomodationType=accomodationType[0]"  
 							ng-options="accomodation as accomodation.label for accomodation in accomodationType track by accomodation.value " 
 							ng-show = "inputDestination != 'Where you want to go?'"
 							style="width:80%;">
 													    
 						</select></td>
 						<td>
-						<select class="sel" ng-model="selectGuestHeadCount" 
+						<select class="sel" ng-model="selectGuestHeadCount" id="guestCount" name="guestCount"
 							ng-init="selectGuestHeadCount=guestHeadCount[0] " 
 							ng-options="option as option for option in guestHeadCount "						
 							>													    
