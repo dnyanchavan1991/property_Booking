@@ -7,7 +7,7 @@ class DisplayProperty extends CI_Controller {
 		$this->load->library('session');
 		if (!$this->session->userdata('user_name') && !$this->session->userdata('password'))
 		{ 
-			header("location: ../../dev");
+			header("location: ../");
 			//echo "<script>alert('You are not logged in..!')</script>";
 			//echo "<meta http-equiv='refresh' content='0;url=../../dev'>";
 		}

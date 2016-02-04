@@ -8,11 +8,10 @@ class Logout extends CI_Controller {
 	}
 	public function index()
 	{
-		//$this->session->userdata('user_name') == null ;
 		$this->session->unset_userdata('user_name');
 		$this->session->unset_userdata('password');
-		//$this->session->userdata('password') == null;
-		header("location: ../../dev");
+		echo "<script>alert('Logged out successfully..!')</script>";	
+		echo "<meta http-equiv='refresh' content='0;url=../'>";	
 	}
 }
 ?>

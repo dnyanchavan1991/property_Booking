@@ -8,7 +8,7 @@ class AddProperty extends CI_Controller {
 		$this->load->library('session');
 		if ($this->session->userdata('user_name') == null && $this->session->userdata('password') == null)
 		{ 
-			header("location: ../../dev");
+			header("location: ../");
 		}
 	}
 	public function index()

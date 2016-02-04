@@ -9,7 +9,7 @@ class AddPropertyOwnerInfo extends CI_Controller {
 		$this->load->library('session');
 		if (!$this->session->userdata('user_name') && !$this->session->userdata('password'))
 		{ 
-			header("location: ../../dev");
+			header("location: ../");
 		}
 		$this->load->model('SqlQueryModel');
 		

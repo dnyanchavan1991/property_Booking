@@ -6,9 +6,16 @@ class Admin extends CI_Controller {
 	public function index()
 	{
 		$this->load->library('session');
-		if ($this->session->userdata('user_name') == null && $this->session->userdata('password') == null)
+		if (!$this->session->userdata('user_name') && !$this->session->userdata('password'))
 		{ 
-			header("location: ../../dev");
+			//echo "hghf";
+			header("location: ../");
+			//echo $_SERVER['REQUEST_URI']."</br>";
+			//echo $_SERVER['SCRIPT_NAME']."</br>";
+			//echo FCPATH."</br>";
+			//echo SELF."</br>";
+			//echo BASEPATH."</br>";
+			//echo APPPATH."</br>";
 		}
 		$this->load->view('index');
 	}
@@ -24,7 +31,7 @@ class Admin extends CI_Controller {
 		}
 		else
 		{
-			header("location: ../../dev");
+			header("location: ../");
 		}
 	}
 }
