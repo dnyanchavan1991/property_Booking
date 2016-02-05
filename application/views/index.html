@@ -123,36 +123,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		
 		</div> 
 		
-	<div class="banner-bottom" >
+	<div class="banner-bottom"  >
 	<table class="new-table">
-	<tr>
-	<td>
-		<input type = "text" id="inpDestination" name="inpDestination" 
-			ng-model="inputDestination" "
-			ng-click="expandFilterOptions()" 
-			style="width:90%;"/></td>
-	<td><select class="sel" ng-model="selectAccomodationType"  id="propertyType"
- name="propertyType"	 	ng-init="selectAccomodationType=accomodationType[0]"  
+		<tr>
+			<td>
+				<input type = "text" id="inpDestination" name="inpDestination" ng-model="inputDestination" "ng-click="expandFilterOptions()" style="width:210%; padding-top: 11px;     margin-bottom: 5px;"/>
+			</td>
+			<td>
+					<select class="sel" ng-model="selectAccomodationType"  id="propertyType" name="propertyType" ng-init="selectAccomodationType=accomodationType[0]"  
 							ng-options="accomodation as accomodation.label for accomodation in accomodationType track by accomodation.value " 
-							ng-show = "inputDestination != 'Where you want to go?'"
-							style="width:80%;">
-													    
-						</select></td>
-						<td>
-						<select class="sel" ng-model="selectGuestHeadCount" id="guestCount" name="guestCount"
-							ng-init="selectGuestHeadCount=guestHeadCount[0] " 
-							ng-options="option as option for option in guestHeadCount "						
-							>													    
-					</select>
-						</td>
-						<td>
-						<input class="date" name="checkIn" readonly id="checkIn" ng-model="checkInDate" ng-init="checkInDate= 'CheckIn Date'" type="text"  style="width:70%;"onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required />
-						</td>
-						<td>
-						<input class="date" name="checkOut" readonly id="checkOut" type="text" ng-model="checkOutDate" ng-init="checkOutDate= 'CheckOut Date'" style="width:70%;margin-bottom: 0;" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required=""/>
-						</td>
-						<td><div class="search"><input type="submit"  name="submit" value="search"></div></td>
-	</tr>
+							ng-show = "inputDestination != 'Where you want to go?'" style="width:60%; margin-left: 172px; margin-bottom: 6px; padding-top: 12px;"></select>
+			</td>
+			<td>
+					<select class="sel" ng-model="selectGuestHeadCount" id="guestCount" name="guestCount" ng-init="selectGuestHeadCount=guestHeadCount[0] " ng-options="option as option for option in guestHeadCount " style="margin-left: 78px; margin-bottom: 6px; padding-top: 12px; margin-right: 4px;"}></select>
+			</td>
+			<td>
+					<input class="date" name="checkIn" readonly id="checkIn" ng-model="checkInDate" ng-init="checkInDate= 'CheckIn Date'" type="text"  style="width:113%; padding-top: 11px; margin-left: -8px; margin-bottom: 7px;" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required />
+			</td>
+			<td>
+					<input class="date" name="checkOut" readonly id="checkOut" type="text" ng-model="checkOutDate" ng-init="checkOutDate= 'CheckOut Date'" style="width:113%; margin-bottom:8px;" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required=""/>
+			</td>
+					<td><div class="search"><input type="submit"  name="submit" value="search"></div></td>
+		</tr>
 	</table>
 	  		   <!-- 	<div class="book-pag-frm">
 				<input type = "text" id="inpDestination" name="inpDestination" ng-model="inputDestination" ng-init="inputDestination='Where do you want to go?'" style="width:70%;"/> 
@@ -160,6 +152,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="droop-down">
 			 	<div class="droop">
 					<div class="sort-by">
+						<select class="sel" ng-model="selectAccomodationType" 
 						<select class="sel" ng-model="selectAccomodationType" 
 							ng-init="selectAccomodationType=accomodationType[0]" 
 							ng-options="option as option for option in accomodationType | orderBy:option" style="width:70%;">
