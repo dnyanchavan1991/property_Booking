@@ -469,7 +469,7 @@ float:right;
 /*-- //header --*/
 .banner-bottom {
   margin-top: 30px;
-  background: #ECCA69;
+  background: rgba(236, 202, 105, 0.48);
   padding: 25px;
   width:85%;
 }
@@ -506,7 +506,7 @@ float:right;
   text-transform: uppercase;
   border: none;
   outline: none;
-  background:#DF1E1C;
+  background:#1C69DF;
   color: #fff; 
   align:center;
 }
@@ -521,6 +521,7 @@ width:25%;
 
 .search{
 float:left;
+padding-left: 20px;
 }
 /*-- effect- bubba --*/
 .l-grids figure {
@@ -1840,6 +1841,11 @@ width:20%;
 .date {
 	background: url(../images/date-icon.png) no-repeat 95.5% 45% #fff;
 	cursor: pointer;
+	margin-bottom: 7px;
+	margin-left: -8px;
+	margin-left: 8px;
+	padding-top: 11px;
+
 }
 
 .reservation-left img {
