@@ -149,7 +149,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div id="tab2" class="tab">
 							<div class="flexslider">
 						<ul class="slides">	
-					<?php		$files = glob($imagePath."*.*");
+					<?php		$files = glob('Admin/'.$imagePath."*.*");
 
   for ($i=1; $i<count($files); $i++)
 

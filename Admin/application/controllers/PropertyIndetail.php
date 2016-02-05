@@ -39,7 +39,6 @@ class PropertyIndetail extends CI_Controller {
 			{
 				$property_type = $type_row['property_type_name'];
 			}
-			 
 			$property_name = $row['property_name'];
 			$street = $row['street'];
 			$city = $row['city'];

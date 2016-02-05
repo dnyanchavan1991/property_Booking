@@ -316,11 +316,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="gallery-bottom"  ng-repeat="imageData in imageSrc" >
 					<div class="col-md-4 gal-grid" >
 						<div class="view view-fifth">
-							<a href= "/{{imageData.property_id}}" class="b-link-stripe b-animate-go  thickbox"  title="Image Title"><img src={{imageData.image}}mainImage.jpg alt="" class="img-responsive">
+							<a href="" ng-click="getPropertyDetails(imageData.property_id)" class="b-link-stripe b-animate-go  thickbox"  title="Image Title"><img src="{{imageData.image}}" alt="" class="img-responsive">
 								<div class="mask">
 									<h4>CLASSIC HOTEL</h4>
 									<p>A wonderful serenity has taken possession of my entire soul.</p>
-									<a href= "/{{imageData.property_id}}"><button>More</button></a>
+									<a href=""ng-click="getPropertyDetails(imageData.property_id)"><button>More</button></a>
 								</div>
 							</a>
 						</div>
