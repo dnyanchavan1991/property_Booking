@@ -51,6 +51,14 @@ app.controller('loginCtrl', function ($scope,$http) {
 	        	  }
 	        		  else{
 	        			  alert('Login Successful.'); 
+	        			  function WriteCookie()
+	        	            {
+	        	             
+	        	               cookievalue= escape($scope.form.username) + ";";
+	        	               document.cookie="username=" + cookievalue;
+	        	               //document.write ("Setting Cookies : " + "username=" + cookievalue );
+	        	            }
+	        			  WriteCookie();
 	        			  window.location.href='Index1';
 	        			  
 	        	  }
@@ -82,29 +90,19 @@ app.controller('loginCtrl', function ($scope,$http) {
     }
 });
 
-app.controller('galleryImgCtrl', function ($scope,$http)
-{
+app.controller('galleryImgCtrl', function ($scope,$http) {
+	
+	
     $scope.galleryImgFetch=function()
     {
     	//alert("called");
-    	$http.post("Index1/galleryImgFetch/").then(function(response){
-			$scope.imageSrc = response.data;
-			//alert($scope.imageSrc);
-		});
-    }
-	$scope.getPropertyDetails = function(item)
-	{
-		var objForm = document.createElement('FORM');
-		objForm.method = 'post';
-		objForm.action = 'PropertyDetails';
+    	$http.post("Index1/galleryImgFetch/").then(
+				function(response) {
+					$scope.imageSrc = response.data;
+					//alert($scope.imageSrc);
+					
+				});
+    	
+      }
 
-		var objInput = document.createElement('INPUT');
-		objInput.type = 'hidden';
-		objInput.name = 'propertyId';
-		objInput.value = item;
-		objForm.appendChild(objInput);
-
-		document.body.appendChild(objForm);
-		objForm.submit();
-	}
 });
