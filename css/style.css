@@ -2298,7 +2298,36 @@ font-weight:bold;
 }
 /*-- //single-page --*/
 /*-- responsive media queries --*/
+@media (min-width: 1024px){
+	.inputDestination {
+		width:20em; 
+		border:0px; 
+		margin:0em; 
+		padding: 0.5em;
+	}
+	.propertyType{
+		width:6em;  
+		padding: 0.5em; 
+		border:0px; 
+		margin:0.5em
+	}
+
+	}
 @media (max-width: 1024px){
+	.inputDestination {
+		width:15em; 
+		border:0px; 
+		margin:0em; 
+		padding: 0.3em;
+	}
+	.propertyType {
+		width:6em;
+		height:2em;
+		padding: 0.3em; 
+		border:0px; 
+		margin:0.3em
+	}
+	
 	.logo a {
 	  font-size: 30px;
 	  }
