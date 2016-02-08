@@ -96,103 +96,83 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</ul>
 				</div>
 				<div class="col-md-9 reservation-right">
-				<div class="container main-content" ng-controller="MinMaxCtrl">
-				<form ng-submit="onSubmit()" novalidate="novalidate"  ng-hide="submitted" >
-				<div class="form-group" >
-			
-			<input type="text"
-			       class="form-control"
-			       ng-model="formModel.username"
-			       ng-pattern="/^[A-Za-z0-9_]{1,32}$/"
-			       ng-minlength="7"
-			       ng-pattern-err-type="badUsername"
-			       id="username" name="username" placeholder="User Name"
-			       required="required" >
-		</div >
-		<div class="form-group" >
-			
-			<input type="password"
-			       class="form-control"
-			       ng-model="formModel.password"
-			       id="password" placeholder="Password"
-			       required="required" name="password"
-						 ng-minlength="10">
-		</div >
-		<div class="form-group" >
-			
-			<input type="text"
-			       class="form-control"
-			       ng-model="formModel.fname"
-			       name="fname" id="name" placeholder="First Name"
-					   required="required" >
-		</div >
-     <div class="form-group" >
-			
-			<input type="text"
-			       class="form-control"
-			       ng-model="formModel.lname" name="lname"
-			       id="lname" placeholder="Last Name"
-					   required="required" >
-		</div >
-		
-		<div class="form-group">
-			
-			<input type="text"
-			       class="form-control"
-			       ng-model="formModel.phone"
-			       id="phone" name="phone" placeholder="Mobile Number"
-					   required="required" >
-		</div >
-		<div class="form-group">
-			
-			<input type="email"
-			       class="form-control"
-			       ng-model="formModel.email"
-			       id="email" name="email" placeholder="Email"
-					   required="required" >
-		</div >
-
-		<div class="form-group">
-			
-			<textarea type="text"
-			       class="form-control"
-			       ng-model="formModel.address"
-			       id="address" name="address" placeholder="Address.."
-					   required="required" ></textarea>
-		</div >
-		
-
-				
-		<div class="form-group">
-
-			<div class="alert alert-danger text-center" ng-show="has_error">
-				<h3>There was a problem registering, please try again later!</h3>
-			</div>
-
-			<button class="btn btn-primary"
-			        ladda="submitting"
-			        data-style="expand-right"
-							type="submit">
-				<span ng-show="submitting">Registering</span>
-				<span ng-show="!submitting">Register</span>
-			</button>
-		</div>
-
-	</form >
-			<div class="alert alert-info text-center" ng-show="submitted">
-		<h3>Thanks for Registering!</h3>
-	</div>
-		</div>		
-				 
+					<div class="container main-content" ng-controller="MinMaxCtrl">
+						<form ng-submit="onSubmit()" novalidate="novalidate"  ng-hide="submitted" >
+							<div class="form-group" >
+								<input type="text" class="form-control" ng-model="formModel.username"ng-pattern="/^[A-Za-z0-9_]{1,32}$/"
+										   ng-minlength="7" ng-pattern-err-type="badUsername" id="username" name="username" placeholder="User Name" required="required" >
+							</div >
+								<div class="form-group" >
 									
-					<!--strat-date-piker-->
-					
-					<script src="js/jquery-ui.js"></script>
-							  <script>
-									  $(function() {
-									    $( "#datepicker,#datepicker1,#datepicker2" ).datepicker();
-									  });
-							  </script>
+									<input type="password" class="form-control"   ng-model="formModel.password"  id="password" placeholder="Password"
+												 required="required" name="password" ng-minlength="10">
+								</div >
+								<div class="form-group" >
+									<input type="text" class="form-control" ng-model="formModel.fname"  name="fname" id="name" placeholder="First Name"  required="required" >
+								</div >
+								<div class="form-group" >
+									
+									<input type="text"  class="form-control" ng-model="formModel.lname" name="lname" id="lname" placeholder="Last Name"  required="required" >
+								</div >
+								
+								<div class="form-group">
+									
+									<input type="text"
+										   class="form-control"
+										   ng-model="formModel.phone"
+										   id="phone" name="phone" placeholder="Mobile Number"
+											   required="required" >
+								</div >
+								<div class="form-group">
+									
+									<input type="email"
+										   class="form-control"
+										   ng-model="formModel.email"
+										   id="email" name="email" placeholder="Email"
+											   required="required" >
+								</div >
+
+								<div class="form-group">
+									
+									<textarea type="text"
+										   class="form-control"
+										   ng-model="formModel.address"
+										   id="address" name="address" placeholder="Address.."
+											   required="required" ></textarea>
+								</div >
+								
+
+										
+								<div class="form-group">
+
+									<div class="alert alert-danger text-center" ng-show="has_error">
+										<h3>There was a problem registering, please try again later!</h3>
+									</div>
+
+									<button class="btn btn-primary"
+											ladda="submitting"
+											data-style="expand-right"
+													type="submit">
+										<span ng-show="submitting">Registering</span>
+										<span ng-show="!submitting">Register</span>
+									</button>
+								</div>
+
+						</form >
+							<div class="alert alert-info text-center" ng-show="submitted">
+										<h3>Thanks for Registering!</h3>
+							</div>
+						</div>		
+										 
+															
+											<!--strat-date-piker-->
+											
+											<script src="js/jquery-ui.js"></script>
+													  <script>
+															  $(function() {
+																$( "#datepicker,#datepicker1,#datepicker2" ).datepicker();
+															  });
+													  </script>
 					<!--//End-date-piker-->
 				</div>
 				<div class="clearfix"></div>
