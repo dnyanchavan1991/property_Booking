@@ -12,8 +12,12 @@
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript">
 	
+	
+	
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } 
+
+
 
 </script>
 <!-- //for-mobile-apps -->
@@ -65,13 +69,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<nav class="cl-effect-11" id="cl-effect-11">
 						<ul class="nav1">
 							<li><a class="active" href="Index1" data-hover="HOME">HOME</a></li>
-						<li><a href="About" data-hover="ABOUT">ABOUT</a></li>
-						<li><a href="Typography" data-hover="SERVICES">SERVICES</a></li>
-						<li><a href="Booking" data-hover="BOOKING">BOOKING</a></li>
-						<li><a href="Contact" data-hover="CONTACT">CONTACT</a></li>
-						<li><a href="Registration" data-hover="REGISTRATION">REGISTRATION</a></li>					  	
-				       <li><button id='modal-launcher' class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login-modal">
-					  LOGIN</button></li>
+							<li><a href="About" data-hover="ABOUT">ABOUT</a></li>
+							<li><a href="Typography" data-hover="SERVICES">SERVICES</a></li>
+							<li><a href="Booking" data-hover="BOOKING">BOOKING</a></li>
+							<li><a href="Contact" data-hover="CONTACT">CONTACT</a></li>
+							<li><a href="Registration" data-hover="REGISTRATION">REGISTRATION</a></li>
+							<li><button id='modal-launcher'
+									class="btn btn-primary btn-lg" data-toggle="modal"
+									data-target="#login-modal">LOGIN</button></li>
 						</ul>
 					</nav>
 					<!-- script for menu -->
@@ -102,7 +107,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="search-page">
 		<div class="container">
 			<div class="search-grids">
-				<div class="col-md-3 search-grid-left" ng-controller="CheckboxFilterCtrl">
+				<div class="col-md-3 search-grid-left"
+					ng-controller="CheckboxFilterCtrl">
 					<div class="search-hotel">
 						<h3 class="sear-head">Name contains</h3>
 						<form>
@@ -170,7 +176,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 					<div class="range-two">
 						<h3 class="sear-head">Accomodates</h3>
-						
+
 						<ul class="dropdown-menu5">
 							<li>
 								<div id="slider-range1"></div> <input type="text" id="amount1"
@@ -226,72 +232,91 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 					<div class="single-star-bottom">
 						<h3 class="sear-head">Star rating</h3>
-<div ng-repeat="starRateLabel  in starRateList">
-				
-				<input type="checkbox" id={{starRateLabel.name}} value=""> <label
-							for="nike"><span></span><b><img ng-src={{starRateLabel.star_image_url}}
-								alt="" /></b></label>
-				
-						
-</div>
+						<div ng-repeat="starRateLabel  in starRateList">
+
+							<input type="checkbox" id={{starRateLabel.name}} value=""  ng-model="starRateLabel.selected" ng-change="isLabelChecked('starRate')"> </input><label
+								for={{starRateLabel.name}}><span></span><b><img
+									ng-src={{starRateLabel.star_image_url}} alt="" /></b></label>
+
+
+						</div>
 					</div>
 
 					<div class="menu-grid">
 						<ul class="menu_drop">
-						
+
 							<li class="item1"><a href="#"><span
 									class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>Features</a>
-								<ul ng-repeat="featureListLabel  in featureList">
-									<li class="subitem1"> <input type="checkbox" >{{featureListLabel.featureLabel}}</input></li>
-											</ul>
-							</li>
-							<li class="item2"><a href="#"><span
+								<ul>
+									<li ng-repeat=" featureListLabel in featureList"><input
+										id={{featureListLabel.name}} type="checkbox"
+										ng-model="featureListLabel.selected"
+										ng-change="isLabelChecked('features')">{{featureListLabel.featureLabel}}</input></li>
+								</ul><li class="item2"><a href="#"><span
 									class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>Facilities</a>
 								<ul>
-									<li class="subitem1"> <input type="checkbox" >Free Parking </input></li>
-									<li class="subitem2"><input type="checkbox" > Restaurant / Kitchen </input></li>
-									<li class="subitem3"><input type="checkbox" > Smoking allowed </input></li>
-									<li class="subitem4"><input type="checkbox" > Pet Friendly </input></li>
-								</ul></li>
-							<li class="item3"><a href="#"><span
-									class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>Accommodation
-									type</a>
-								<ul>
-									<li class="subitem1"><a href="#">Resort</a></li>
-									<li class="subitem2"><a href="#">Hostel</a></li>
-									<li class="subitem3"><a href="#">Apartment</a></li>
-								</ul></li>
+																			<li ng-repeat=" facilityListLabel in facilityList"><input
+										id={{facilityListLabel.name}} type="checkbox"
+										ng-model="facilityListLabel.selected"
+										ng-change="isLabelChecked('facility')">{{facilityListLabel.facilityLabel}}</input></li>
+										</ul>
+											
+										
+						</ul></li>
 							
-						<!-- script for tabs -->
-						<script type="text/javascript">
-							$(function() {
+									<li class="item3"><a href="#"><span
+								class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>Accommodation
+											type</a>
+										<ul>
+											<li class="subitem1"><a href="#">Resort</a></li>
+											<li class="subitem2"><a href="#">Hostel</a></li>
+											<li class="subitem3"><a href="#">Apartment</a></li>
+										</ul></li>
 
-								var menu_ul = $('.menu_drop > li > ul'), menu_a = $('.menu_drop > li > a');
+									<!-- script for tabs -->
+									<script type="text/javascript">
+										$(function() {
 
-								menu_ul.hide();
+											var menu_ul = $('.menu_drop > li > ul'), menu_a = $('.menu_drop > li > a');
 
-								menu_a
-										.click(function(e) {
-											e.preventDefault();
-											if (!$(this).hasClass('active')) {
-												menu_a.removeClass('active');
-												menu_ul.filter(':visible')
-														.slideUp('normal');
-												$(this).addClass('active')
-														.next()
-														.stop(true, true)
-														.slideDown('normal');
-											} else {
-												$(this).removeClass('active');
-												$(this).next().stop(true, true)
-														.slideUp('normal');
-											}
+											menu_ul.hide();
+
+											menu_a
+													.click(function(e) {
+														e.preventDefault();
+														if (!$(this).hasClass(
+																'active')) {
+															menu_a
+																	.removeClass('active');
+															menu_ul
+																	.filter(
+																			':visible')
+																	.slideUp(
+																			'normal');
+															$(this)
+																	.addClass(
+																			'active')
+																	.next()
+																	.stop(true,
+																			true)
+																	.slideDown(
+																			'normal');
+														} else {
+															$(this)
+																	.removeClass(
+																			'active');
+															$(this)
+																	.next()
+																	.stop(true,
+																			true)
+																	.slideUp(
+																			'normal');
+														}
+													});
+
 										});
-
-							});
-						</script>
-						<!-- script for tabs -->
-
+									</script>
+									<!-- script for tabs -->
 					</div>
 				</div>
 				<div class="col-md-9 search-grid-right"
@@ -321,20 +346,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											class="btn btn-default">Send SMS</button>
 									</p>
 									<modal title="Enquiry via mail" visible="showModal">
-									<form name="formData"  ng-submit="contactToCustomer(rooms)">
+									<form name="formData" ng-submit="contactToCustomer(rooms)">
 										<div class="form-group">
 											<label for="email">Full Name</label> <input type="text"
-												class="form-control" name="full_name" id="full_name" ng-model="form.full_name"
-												placeholder="Full Name" />
+												class="form-control" name="full_name" id="full_name"
+												ng-model="form.full_name" placeholder="Full Name" />
 										</div>
 										<div class="form-group" id="email_id_div">
 											<label for="email">Email</label> <input type="email"
-												class="form-control" name="email_id" id="email_id" ng-model="form.email_id"
-												placeholder="Enter email" />
+												class="form-control" name="email_id" id="email_id"
+												ng-model="form.email_id" placeholder="Enter email" />
 										</div>
 										<div class="form-group" id="phone_div">
 											<label for="email">Phone</label> <input type="text"
-												class="form-control" name="phone" id="phone" ng-model="form.phone"
+												class="form-control" name="phone" id="phone"
+												ng-model="form.phone"
 												placeholder="Enter Phone/Mobile Number" />
 										</div>
 										<div class="form-group">
@@ -352,26 +378,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 												onblur="if (this.value == '') {this.value = '';}" required>
 										</div>
 										<div class="form-group">
-										<label for="enquiry">Enquiry</label>
-											<textarea type="text"
-			                                        class="form-control"
-			                                        ng-model="form.enquiry"
-			                                        id="enquiry" name="enquiry" placeholder="Enquiry.."
-					                                required="required" ></textarea>
+											<label for="enquiry">Enquiry</label>
+											<textarea type="text" class="form-control"
+												ng-model="form.enquiry" id="enquiry" name="enquiry"
+												placeholder="Enquiry.." required="required"></textarea>
 										</div>
-					
-<br>
+
+										<br>
 
 										<button type="submit" class="btn btn-default">Submit</button>
 									</form>
-									<script src="js/jquery-ui.js"></script>
-					<script>
-						$(function() {
-							$("#datepicker,#checkIn,#checkOut")
-									.datepicker();
-						});
-					</script>
-									</modal>
+									<script src="js/jquery-ui.js"></script> <script>
+										$(function() {
+											$("#datepicker,#checkIn,#checkOut")
+													.datepicker();
+										});
+									</script> </modal>
 
 								</div>
 
@@ -379,9 +401,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</div>
 						</div>
 						<div class="hotel-right text-right">
-							
-								Payment via card Available-<b>Yes</b>
-							
+
+							Payment via card Available-<b>Yes</b>
+
 							<h4>
 								<span>$8,750</span> {{rooms.basePrice}}
 							</h4>
