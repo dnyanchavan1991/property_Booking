@@ -1,5 +1,6 @@
 var app= angular.module('landingPageApp', []);
 				 app.controller('landingPageCntrl', function($scope, $http) {
+					 $scope.displayFlag = false;
 					  $scope.accomodationType =[
 					                             { value: '0',
 					                            	 label: 'All' },
@@ -24,11 +25,15 @@ var app= angular.module('landingPageApp', []);
 					                               ];
 					  
 					  $scope.guestHeadCount = ["1", "2", "3", "4", "5", "6" ,"7", "8", "9", "10", "11", "12", "13", "14", "15"];
-					  $scope.inputDestination = "Where do you want to go?";
+					//  $scope.inputDestination = "Where do you want to go?";
 					  $scope.expandFilterOptions = function(){
-						//  alert("hello");
-						  $scope.inputDestination = '';
+						  
+						 //  $scope.inputDestination = "";
+						   $scope.displayFlag = true;
+						 //  #scope.selectAccomodationType.hide('0');						   
 					  }
+					  
+					 
 
 				});
 
