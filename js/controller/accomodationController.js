@@ -12,20 +12,34 @@
 			 				$scope.getAccomodationType();
 				 		})
 				.controller('roomAvailabilityController', function($scope, $http) {
+					$scope.form={};
 					function ReadCookie()
 		            {
 		               var allcookies = document.cookie;
-		               document.write ("All Cookies : " + allcookies );
+		               //document.write ("All Cookies : " + allcookies );
 		               
 		               // Get all the cookies pairs in an array
 		               cookiearray = allcookies.split(';');
 		               
-		               /* Now take key value pair out of this array
-		             for(var i=0; i<cookiearray.length; i++){
-		                 userName = cookiearray[i].split('=')[0];*/
+		               
 		                  userName = cookiearray[0].split('=')[1];
 		                 //alert ( "Value is : " + userName);
-		               //}
+		                  
+		                  $scope.formData={'user_name':userName};
+		              	$http({
+					          method  : 'POST',
+					          url     : 'PropertyRoomAvailability/getLogedInUserDetails/',
+					          data    : $scope.formData, //forms user object
+					         // datatype:"json"
+					          
+					         })
+					          .success(function(response) {
+					        	  $scope.userDetails = response;
+					        	  $scope.form.user_name =  $scope.userDetails.username;
+					        	  $scope.form.Email =  $scope.userDetails.email;
+					        	  $scope.form.Telephone =  $scope.userDetails.mobile;
+					        		 
+					          });
 		            }
 				ReadCookie();
 						$scope.form = {};

@@ -34,4 +34,21 @@ class PropertyRoomAvailability extends CI_Controller {
 			$response=array('count'=>$availabilityofRoomCount);
 			echo json_encode($response);
 	}
+	public function getLogedInUserDetails(){
+		$postdata = file_get_contents("php://input");
+		$post= json_decode($postdata);
+		$user_name = $post->user_name;
+		
+		
+		$this->load->model('PropertyModel');
+		$userInfo = $this->PropertyModel->getLogedInUserDetails( $user_name );
+		 $i=0;
+		 foreach($userInfo as $row)
+		 {
+		 	$row=(array)$row;
+		 $response=array('username'=>$row['user_name'],'email'=>$row['email_address'],'mobile' => $row['mobile_number']);
+		 $i++;
+		 }
+		 echo json_encode($response);
+	}
 }

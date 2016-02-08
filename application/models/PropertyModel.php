@@ -238,4 +238,16 @@ public function checkRoomAvailabilty($searchArray) {
 		$query=$this->db->insert($enquiryTable,$enquiryData);
 	
 	}
+	/*this function used to retrive values fron registration table based on cokkie value */
+	public function getLogedInUserDetails($user_name){
+		$registrationTable='registration';
+		$this->load->database ();
+		$this->db->select('user_name,email_address,mobile_number');
+		$this->db->from($registrationTable);
+		$this->db->where('user_name',$user_name);
+		$query=$this->db->get();
+		
+		return $query->result();
+		
+	}
 }

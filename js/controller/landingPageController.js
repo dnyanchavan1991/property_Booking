@@ -60,7 +60,8 @@ app.controller('loginCtrl', function ($scope,$http) {
 	        	            {
 	        	             
 	        	               cookievalue= escape($scope.form.username) + ";";
-	        	               document.cookie="username=" + cookievalue;
+	        	             //  document.cookie="username=" + cookievalue;
+	        	              // alert(cookievalue);
 	        	               //document.write ("Setting Cookies : " + "username=" + cookievalue );
 	        	            }
 	        			  WriteCookie();
