@@ -30,7 +30,7 @@
 
 </head>
 
-<body ng-app="propertyIndetail">
+<body ng-app="propertyIndetail" >
 
     <div id="wrapper">
 
@@ -48,99 +48,9 @@
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
-                <!--<li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
-                    <ul class="dropdown-menu message-dropdown">
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-footer">
-                            <a href="#">Read All New Messages</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b class="caret"></b></a>
-                    <ul class="dropdown-menu alert-dropdown">
-                        <li>
-                            <a href="#">Alert Name <span class="label label-default">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-primary">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-success">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-info">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-warning">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-danger">Alert Badge</span></a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">View All</a>
-                        </li>
-                    </ul>
-                </li>-->
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>  <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <!--<li>
-                            <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
-                        </li>
-                        <li class="divider"></li>-->
                         <li>
                             <a href="../Logout"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                         </li>
@@ -153,21 +63,6 @@
                     <li>
                         <a href="../Admin"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
-                    <!--<li>
-                        <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
-                    </li>
-                    <li>
-                        <a href="tables.html"><i class="fa fa-fw fa-table"></i> Tables</a>
-                    </li>
-                    <li>
-                        <a href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a>
-                    </li>
-                    <li>
-                        <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
-                    </li>
-                    <li class="active">
-                        <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
-                    </li>-->
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Property <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
@@ -179,12 +74,6 @@
                             </li>
                         </ul>
                     </li>
-                    <!--<li>
-                        <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Blank Page</a>
-                    </li>
-                    <li>
-                        <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> RTL Dashboard</a>
-                    </li>-->
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -259,12 +148,6 @@
 									{{list.postal_code}}
 								</div>
 							</div>
-							<!--<div class="row">
-								<label class="control-label col-md-3" for="PropertyName">Tel/Mobile No.</label>
-								<div class="col-md-9">
-									{{list.Phone}}
-								</div>
-							</div>-->
 						</div>
 					</div>
 				</div>
@@ -287,8 +170,8 @@
 							<div class="row">
 								<div class="col-lg-12">
 									<label class="control-label col-md-3" for="PropertyName">Map Location</label>
-										<div class="col-md-9" ng-bind-html="list.location_map">
-											
+										<div class="col-md-9">
+											<div class="col-md-9" id="map_canvas" style="width:100%;height:270px;"></div>
 										</div>&nbsp;
 								</div>
 							</div>
@@ -457,7 +340,7 @@
 							
 							<div class="row">
 								<div class="col-lg-12">
-									<label class="control-label col-md-3" for="PropertyName">EntertainMent</label>
+									<label class="control-label col-md-3" for="PropertyName">Entertainment</label>
 										<div class="col-md-9">
 											{{list.entertainment}}
 										</div>&nbsp;
@@ -466,7 +349,7 @@
 							
 							<div class="row">
 								<div class="col-lg-12">
-									<label class="control-label col-md-3" for="PropertyName">OtherAmenities</label>
+									<label class="control-label col-md-3" for="PropertyName">Other Amenities</label>
 										<div class="col-md-9">
 											{{list.other_amenities}}
 										</div>&nbsp;
@@ -602,6 +485,7 @@
     <script src="../assets/js/jquery.js"></script>
     <script src="../assets/js/angular.min.js"></script>
     <script src="../assets/js/angular-sanitize.min.js"></script>
+	<script src="http://maps.googleapis.com/maps/api/js"></script>
 	<script type="text/javascript" src="../assets/js/jquery.accordion.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="../assets/js/bootstrap.min.js"></script>
@@ -614,6 +498,22 @@
 			url:'singleProperty'
 		}).success(function (response){
 			$scope.list = response;
+			/* - map - */
+			var map;
+			var myLatlng = new google.maps.LatLng($scope.list.latitude,$scope.list.longitude);
+			var myOptions = {
+								zoom: 15,
+								center: myLatlng,
+								mapTypeId: google.maps.MapTypeId.ROADMAP
+							};
+			map = new google.maps.Map(document.getElementById("map_canvas"), myOptions); 
+			var marker = new google.maps.Marker({
+				draggable: true,
+				position: myLatlng,
+				map: map,
+				title: "Property location"
+			});
+			/* - map end - */
 		});
 	});
 	

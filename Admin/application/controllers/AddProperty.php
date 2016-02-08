@@ -61,10 +61,11 @@ class AddProperty extends CI_Controller {
 			}
 		}
 		$path = "Property gallery/$PropertyName/";
-		$location_map = $_POST['location_map'];
 		$description = $_POST['description'];
 		$how_to_reach = $_POST['how_to_reach'];
 		
+		$latitude = $_POST['latitude'];
+		$longitude = $_POST['longitude'];
 		$Bedrooms = $_POST['Bedrooms'];
 		$beds = $_POST['beds'];
 		$Bathrooms = $_POST['Bathrooms'];
@@ -153,7 +154,6 @@ class AddProperty extends CI_Controller {
 							'star_rate' => $StarRate,
 							'state' => $State,
 							'image_path' => $path,
-							'location_map' => $location_map,
 							'description' => $description,
 							'how_to_reach' => $how_to_reach,
 							'property_type_id' => $property_type
@@ -181,7 +181,9 @@ class AddProperty extends CI_Controller {
 							'attractions' => $Attractions,
 							'leisureActivities' => $LeisureActivities,
 							'general' => $General,
-							'payment_facility' => $payment_facility
+							'payment_facility' => $payment_facility,
+							'latitude' => $latitude,
+							'longitude' => $longitude
 						);
 		$id = $this->SqlQueryModel->insertProperty($postdata1,$postdata2);	
 		//echo "last insert id ".$id;

@@ -32,7 +32,7 @@
 
 </head>
 
-<body >
+<body onload="initialize()">
 
     <div id="wrapper">
 
@@ -50,99 +50,11 @@
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
-                <!--<li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
-                    <ul class="dropdown-menu message-dropdown">
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-footer">
-                            <a href="#">Read All New Messages</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b class="caret"></b></a>
-                    <ul class="dropdown-menu alert-dropdown">
-                        <li>
-                            <a href="#">Alert Name <span class="label label-default">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-primary">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-success">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-info">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-warning">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-danger">Alert Badge</span></a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">View All</a>
-                        </li>
-                    </ul>
-                </li>-->
+                
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>  <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <!--<li>
-                            <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
-                        </li>
-                        <li class="divider"></li>-->
+                        
                         <li>
                             <a href="../../Logout"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                         </li>
@@ -155,21 +67,6 @@
                     <li>
                         <a href="../../Admin"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
-                    <!--<li>
-                        <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
-                    </li>
-                    <li>
-                        <a href="tables.html"><i class="fa fa-fw fa-table"></i> Tables</a>
-                    </li>
-                    <li class="active">
-                        <a href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a>
-                    </li>
-                    <li>
-                        <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
-                    </li>
-                    <li>
-                        <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
-                    </li>-->
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Property <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
@@ -181,12 +78,7 @@
                             </li>
                         </ul>
                     </li>
-                    <!--<li>
-                        <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Blank Page</a>
-                    </li>
-                    <li>
-                        <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> RTL Dashboard</a>
-                    </li>-->
+                    
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -240,9 +132,7 @@
 												<option ng-selected="{{p_type.property_type_id == <?php echo $property_type_id;?>}}" ng-repeat="p_type in typeList" value="{{p_type.property_type_id}}">
 													{{p_type.property_type_name}}
 												</option>
-												<!--<option value="Bungalow">Bungalow</option>
-												<option value="Villa">Villa</option>
-												<option value="Row House">Row House</option>-->
+												
 											</select>
 										</div>
 									</div>
@@ -351,7 +241,11 @@
 										<div class="form-group">
 											<label class="control-label col-md-3" for="location_map">Map Location</label>
 											<div class="col-md-7">
-												<textarea class="form-control" name="location_map" placeholder="Enter location string for Google map" rows="6"><?php echo $location_map;?></textarea>
+												<!--<textarea class="form-control" name="location_map" placeholder="Enter location string for Google map" rows="6"></textarea>-->
+												<div class="col-lg-7" id="map_canvas" style="width:auto;height:270px;"></div>
+												<input class="form-control" type="hidden" name="latitude" id="latbox" value="<?php echo $latitude;?>">
+												<input class="form-control" type="hidden" name="longitude" id="lngbox" value="<?php echo $longitude;?>">
+												<p class="help-block">Drag & drop the marker near your location</p>
 											</div>
 										</div>
 										
@@ -700,14 +594,16 @@
         <!-- /#page-wrapper -->
 
     </div>
-    <!-- /#wrapper -->
+	<!-- /#wrapper -->
 
     <!-- jQuery -->
+	<script src="http://maps.googleapis.com/maps/api/js"></script>
 	<script type="text/javascript" src="../../assets/js/jquery.js"></script>
 	<script type="text/javascript" src="../../assets/js/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="../../assets/js/angular.min.js"></script>
 	<script type="text/javascript" src="../../assets/js/bootstrapValidator.js"></script>
 	<script type="text/javascript" src="../../assets/js/jquery.accordion.js"></script>
+	
     <!-- Bootstrap Core JavaScript -->
     <script src="../../assets/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
@@ -741,6 +637,35 @@
 	$("#switcher").on("input", function() {
 		document.getElementById('rating').value = $("#switcher").val();
 	});
+	/* - map - */
+	var map;
+	function initialize()
+	{
+		var latitude = '<?php echo $latitude;?>';
+		var longitude = '<?php echo $longitude;?>';
+		//alert(latitude);
+		//alert(longitude);
+		var myLatlng = new google.maps.LatLng(latitude,longitude);
+		var myOptions = {
+							zoom: 15,
+							center: myLatlng,
+							mapTypeId: google.maps.MapTypeId.ROADMAP
+						};
+		map = new google.maps.Map(document.getElementById("map_canvas"), myOptions); 
+		var marker = new google.maps.Marker({
+			draggable: true,
+			position: myLatlng,
+			map: map,
+			title: "Property location"
+		});
+
+		
+		google.maps.event.addListener(marker, 'dragend', function (event) {
+			document.getElementById("latbox").value = this.getPosition().lat();
+			document.getElementById("lngbox").value = this.getPosition().lng();
+		});
+	}
+	/* - map end - */
 	
 	//validation of name
 	/*function name_validate()

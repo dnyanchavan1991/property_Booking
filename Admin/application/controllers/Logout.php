@@ -10,7 +10,6 @@ class Logout extends CI_Controller {
 	{
 		$this->session->unset_userdata('user_name');
 		$this->session->unset_userdata('password');
-		echo "<script>alert('Logged out successfully..!')</script>";	
 		echo "<meta http-equiv='refresh' content='0;url=../'>";	
 	}
 }

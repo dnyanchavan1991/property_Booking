@@ -202,7 +202,7 @@
                 </div>
                 <!-- /.row -->
 
-                <div class="row">
+                <!--<div class="row">
                     <div class="col-lg-12">
                         <div class="alert alert-info alert-dismissable">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -212,7 +212,7 @@
                 </div>
                 <!-- /.row -->
 
-                <div class="row">
+                <!--<div class="row">
                     <div class="col-lg-3 col-md-6">
                         <div class="panel panel-primary">
                             <div class="panel-heading">
@@ -301,10 +301,10 @@
                             </a>
                         </div>
                     </div>
-                </div>
+                </div>-->
                 <!-- /.row -->
 
-                <div class="row">
+               <!-- <div class="row">
                     <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
@@ -318,7 +318,7 @@
                 </div>
                 <!-- /.row -->
 
-                <div class="row">
+                <!--<div class="row">
                     <div class="col-lg-4">
                         <div class="panel panel-default">
                             <div class="panel-heading">

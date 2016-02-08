@@ -77,7 +77,8 @@ class UpdateProperty extends CI_Controller {
 		/*-- remane directory --*/
 		$new_path = "Property gallery/$PropertyName/";
 		rename($old_path,$new_path);
-		$location_map = $_POST['location_map'];
+		$latitude = $_POST['latitude'];
+		$longitude = $_POST['longitude'];
 		$description = $_POST['description'];
 		$how_to_reach = $_POST['how_to_reach'];
 		/*--end post property --*/
@@ -180,7 +181,6 @@ class UpdateProperty extends CI_Controller {
 							'star_rate' => $StarRate,
 							'state' => $State,
 							'image_path' => $new_path,
-							'location_map' => $location_map,
 							'description' => $description,
 							'how_to_reach' => $how_to_reach
 							
@@ -209,7 +209,9 @@ class UpdateProperty extends CI_Controller {
 							'attractions' => $Attractions,
 							'leisureActivities' => $LeisureActivities,
 							'general' => $General,
-							'payment_facility' => $payment_facility
+							'payment_facility' => $payment_facility,
+							'latitude' => $latitude,
+							'longitude' => $longitude
 						);
 		
 		/*-- property owner info --*/

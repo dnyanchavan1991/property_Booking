@@ -60,7 +60,8 @@ class PropertyIndetail extends CI_Controller {
 			$matches = implode($matches);
 			$main_img_path = $matches;
 			
-			$location_map = nl2br(str_replace(" ",'&nbsp;',$row['location_map']));
+			$latitude = $row['latitude'];
+			$longitude = $row['longitude'];
 			$description = nl2br(str_replace(" ",'&nbsp;',$row['description']));
 			$how_to_reach = nl2br(str_replace(" ",'&nbsp;',$row['how_to_reach']));
 			$bedrooms = $row['bedrooms'];
@@ -105,7 +106,8 @@ class PropertyIndetail extends CI_Controller {
 								'state'=>$state,
 								'main_img_path'=>$main_img_path,
 								'images'=>$img_array,
-								'location_map'=>$location_map,
+								'latitude'=>$latitude,
+								'longitude'=>$longitude,
 								'description'=>$description,
 								'how_to_reach'=>$how_to_reach,
 								'bedrooms'=>$bedrooms,
