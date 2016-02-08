@@ -24,6 +24,7 @@ class RoomAvailability extends CI_Controller {
 			$this->session->set_userdata ( 'propertyType',$_POST['propertyType']);
 		}
 		
+		
 	$this->load->view ( 'search.html' );
 	}
 	public function checkRoomAvailabilty() {
@@ -49,5 +50,32 @@ class RoomAvailability extends CI_Controller {
        
 			}
 		echo json_encode ( $response );
+        }
+        public function checkFilterRoomAvailabilty() {
+        	$postdata = file_get_contents("php://input");
+        	$post= json_decode($postdata);
+        	//echo $post->selectedstarRateList[0]->name;
+        	/*$this->load->model ( 'PropertyModel' );
+        	$searchArray=array(
+        			'checkIn'=>$this->session->userdata ( 'checkIn' ),
+        			'checkOut'=>$this->session->userdata ( 'checkOut' ),
+        			'guestCount'=>$this->session->userdata ( 'guestCount' ),
+        			'destination'=>$this->session->userdata ( 'destination' ),
+        			'propertyType'=>$this->session->userdata ( 'propertyType' )
+        
+        
+        	);
+        	 
+        	$roomAvailableInfo = $this->PropertyModel->checkRoomAvailabilty ($searchArray);
+        
+        	$i=0;
+        	foreach($roomAvailableInfo as $row)
+        	{
+        		$row=(array)$row;
+        		$response[$i]=array('propertyId'=>$row['propertyId'],'propertyName'=>$row['property'],'ImagePath' => $row['imagePath'],'propertyAddress'=>$row['propertyAddress']);
+        		$i++;
+        		 
+        	}
+        	echo json_encode ( $response );*/
         }
 }
