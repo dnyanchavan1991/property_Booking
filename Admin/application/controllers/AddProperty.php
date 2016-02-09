@@ -6,7 +6,7 @@ class AddProperty extends CI_Controller {
 		parent::__construct();
 		$this->load->model('SqlQueryModel');
 		$this->load->library('session');
-		if ($this->session->userdata('user_name') == null && $this->session->userdata('password') == null)
+		if (!$this->session->userdata('authenticate'))
 		{ 
 			header("location: ../");
 		}

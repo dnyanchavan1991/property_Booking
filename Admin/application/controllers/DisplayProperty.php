@@ -5,7 +5,7 @@ class DisplayProperty extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->library('session');
-		if (!$this->session->userdata('user_name') && !$this->session->userdata('password'))
+		if (!$this->session->userdata('authenticate'))
 		{ 
 			header("location: ../");
 			//echo "<script>alert('You are not logged in..!')</script>";
@@ -20,5 +20,12 @@ class DisplayProperty extends CI_Controller {
 		$response = json_encode($response);
 		file_put_contents("assets/json/Properties.json",$response);
 		$this->load->view('DisplayProperty.html');
+	}
+	public function listOnIndexPage()
+	{
+		$response = $this->SqlQueryModel->propertyList();
+		$response = json_encode($response);
+		file_put_contents("assets/json/Properties.json",$response);
+		echo "1";
 	}
 }

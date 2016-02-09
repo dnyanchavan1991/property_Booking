@@ -8,7 +8,7 @@ class PropertyIndetail extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->library('session');
-		if (!$this->session->userdata('user_name') && !$this->session->userdata('password'))
+		if (!$this->session->userdata('authenticate'))
 		{ 
 			header("location: ../");
 		}
@@ -62,8 +62,8 @@ class PropertyIndetail extends CI_Controller {
 			
 			$latitude = $row['latitude'];
 			$longitude = $row['longitude'];
-			$description = nl2br(str_replace(" ",'&nbsp;',$row['description']));
-			$how_to_reach = nl2br(str_replace(" ",'&nbsp;',$row['how_to_reach']));
+			$description = nl2br($row['description']);
+			$how_to_reach = nl2br($row['how_to_reach']);
 			$bedrooms = $row['bedrooms'];
 			$beds = $row['beds'];
 			$bathrooms = $row['bathrooms'];
@@ -90,7 +90,7 @@ class PropertyIndetail extends CI_Controller {
 			$phone = $row['phone'];
 			$alternative_phone = $row['alternative_phone'];
 			$email = $row['email'];
-			$address = nl2br(str_replace(" ",'&nbsp;',$row['address']));
+			$address = nl2br($row['address']);
 			$registred_date = $row['registred_date'];
 			
 		}

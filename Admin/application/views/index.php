@@ -13,7 +13,7 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-
+	<link href="assets/css/bootstrap-table.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="assets/css/sb-admin.css" rel="stylesheet">
 
@@ -47,6 +47,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="Admin">Property Booking Admin</a>
+                <a class="navbar-brand" href="../">View Site</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -201,7 +202,30 @@
                     </div>
                 </div>
                 <!-- /.row -->
-
+				<div class="row" id="property_list">
+                    <div class="col-lg-6">
+                        <h3>List</h3>
+                        <div class="table-responsive">
+							<button id="viewId" class="btn btn-info" >View</button>
+							
+                            <table data-toggle="table" id="table-style" class="table table-bordered table-hover table-striped"
+							data-url="assets/json/Properties.json"  data-show-refresh="true" data-show-columns="true" data-show-toggle="true" 
+							data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="PropertyId" data-strict-search="true" 
+							data-sort-order="desc" data-single-select="true" data-click-to-select="true" data-maintain-selected="true">
+                                <thead>
+                                    <tr>
+                                        <th data-field="state" data-checkbox="true"></th>
+										<th data-field="property_id" >Property ID</th>
+										<th data-field="property_name" data-sortable="true">Property Name</th>
+										<th data-field="owner_name" data-sortable="true">Property Owner Name</th>
+										<th data-field="phone" data-sortable="true">Owner Phone</th>
+										<th data-field="registred_date" data-sortable="true">Registration Date</th>
+									</tr>
+                                </thead>
+                            </table>
+						</div>
+                    </div>
+                </div>
                 <!--<div class="row">
                     <div class="col-lg-12">
                         <div class="alert alert-info alert-dismissable">
@@ -469,12 +493,83 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="assets/js/bootstrap.min.js"></script>
-
+	<script src="assets/js/bootstrap-table.js"></script>
     <!-- Morris Charts JavaScript -->
-    <script src="assets/js/plugins/morris/raphael.min.js"></script>
-    <script src="assets/js/plugins/morris/morris.min.js"></script>
-    <script src="assets/js/plugins/morris/morris-data.js"></script>
+    
+	<script type="text/javascript">
+	$(document).ready(function()
+	{
+		$("#property_list").hide();
+		$.ajax({
+			type: "post",
+			url:"DisplayProperty/listOnIndexPage",
+			success: function(d){
+				$("#property_list").show();
+				$("#viewId").hide();
+			}
+		});
+		var json;
+		var checkedRows = [];
+		$('#table-style').on('click-row.bs.table', function (e, row) {
+			$.each(checkedRows, function(index, value) {
+				checkedRows.splice(index,1);
+			});
+			checkedRows.push({id: row.property_id});
+			$("#viewId").show();
+			//$("#editId").show();
+			//$("#deleteId").show();
+		});
+		$('#table-style').on('uncheck.bs.table', function (e, row) {
+			$.each(checkedRows, function(index, value) {
+				checkedRows.splice(index,1);
+				$("#viewId").hide();
+				//$("#editId").hide();
+				//$("#deleteId").hide();
+			});
+		});
+		
+		$("#viewId").click(function(){
 
+			json = JSON.stringify(checkedRows);
+			$.ajax({
+				type: "post",
+				url:"PropertyIndetail/SessionStorage",
+				dataType: "json",
+				data:{id: json},
+				success: function(d){
+					window.location='PropertyIndetail/loadIndetailView';
+				}
+			});
+		});
+		/*$("#editId").click(function(){
+			json = JSON.stringify(checkedRows);
+			alert("edit "+json);
+			
+		});
+		$("#deleteId").click(function(){
+			json = JSON.stringify(checkedRows);
+			alert("delete "+json);
+			if(confirm("Are you sure?"))
+			{
+				alert("yse no action till..");
+				/*$.ajax({
+					type: "post",
+					url:"DeleteProperty/DeleteFun",
+					dataType: "json",
+					data:{id: json},
+					success: function(d){
+						//window.location='PropertyIndetail/loadIndetailView';
+					}
+				});*/
+			/*}
+			else
+			{
+				alert("no");
+			}
+			
+		});*/
+	});
+	</script>
 </body>
 
 </html>

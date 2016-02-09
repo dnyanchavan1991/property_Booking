@@ -25,10 +25,10 @@ class Login extends CI_Controller {
 					
 			);
 			$this->PropertyModel->insertLoginData ($loginDetailsArray);
-			$this->session->set_userdata('user', $username);
-			$this->session->set_userdata('password', $password);
+			$this->session->set_userdata('user_name', $username);
+			$this->session->set_userdata('access_type', $accesstype);
 		}
-		$response=array('count'=>$count,'user_name'=>$username,'password'=>$password, 'access_type'=>$accesstype);
+		$response=array('count'=>$count);
 		echo json_encode($response);
 			
 	}
