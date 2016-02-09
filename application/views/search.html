@@ -251,15 +251,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<li ng-repeat=" featureListLabel in featureList"><input
 										id={{featureListLabel.name}} type="checkbox"
 										ng-model="featureListLabel.selected"
-										ng-change="isLabelChecked('features')">{{featureListLabel.featureLabel}}</input></li>
-								</ul><li class="item2"><a href="#"><span
+										ng-change="isLabelChecked('features')">{{featureListLabel.featureLabel}}</input>
+									</li>
+								</ul>
+							</li>	
+								<li class="item2"><a href="#"><span
 									class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>Facilities</a>
-								<ul>
-																			<li ng-repeat=" facilityListLabel in facilityList"><input
-										id={{facilityListLabel.name}} type="checkbox"
-										ng-model="facilityListLabel.selected"
-										ng-change="isLabelChecked('facility')">{{facilityListLabel.facilityLabel}}</input></li>
-										</ul>
+									<ul>
+										<li ng-repeat=" facilityListLabel in facilityList">
+											<input id={{facilityListLabel.name}} type="checkbox"
+												ng-model="facilityListLabel.selected"
+												ng-change="isLabelChecked('facility')">{{facilityListLabel.facilityLabel}}
+											</input>
+										</li>
+									</ul>
 											
 										
 						</ul></li>
