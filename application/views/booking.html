@@ -18,8 +18,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 </script>
 <!-- //for-mobile-apps -->
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css"
-	media="all" />
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 <link rel="stylesheet" href="css/jquery-ui.css" />
 <!-- js -->
@@ -32,9 +31,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="text/javascript" src="js/move-top.js"></script>
 <script type="text/javascript" src="js/easing.js"></script>
 <script type="text/javascript" src="js/angular.min.js"></script>
-
+<link href="css/chocolat.css" rel="stylesheet">
 <script type="text/javascript" src="js/controller/accomodationController.js"></script>
+<link href='http://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Philosopher' rel='stylesheet' type='text/css'>
+		
+		
+		<link rel="stylesheet" href="css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="css/font-awesome.min.css"/>
+	
+		<link rel="stylesheet" href="css/popup_style.css" />
+		<script src="js/vendor/modernizr-2.6.2.min.js"></script>
+		<script src="js/vendor/jquery-1.10.2.min.js"></script>
+		
 
+<script src="js/jquery-1.11.1.min.js"></script>
+	<script src="js/jquery-ui.js"></script>
+							  
 <script type="text/javascript">
 	jQuery(document).ready(function($) {
 		$(".scroll").click(function(event) {
@@ -238,3 +251,74 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!-- //smooth scrolling -->
 </body>
 </html>
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+    	<div class="modal-content">
+      		<div class="modal-header login_modal_header">
+        		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        		<h2 class="modal-title" id="myModalLabel">Login</h2>
+      		</div>
+      		<div class="modal-body login-modal">
+      			
+      			<div class="clearfix"></div>
+      			<div id='social-icons-conatainer'>
+	        		<div class='modal-body-left'ng-controller="loginCtrl">
+	        		<h3>Admin</h3>
+	        			<div class="form-group">
+		              		<input type="text" id="username" placeholder="Username" ng-model="form.username" class="form-control login-field">
+		              		<i class="fa fa-user login-field-icon"></i>
+		            	</div>
+		
+		            	<div class="form-group">
+		            	  	<input type="password" id="login-pass" placeholder="Password" ng-model="form.password" class="form-control login-field">
+		              		<i class="fa fa-lock login-field-icon"></i>
+		              		<input type="hidden" name="acces_type" value="admin">
+		            	</div>
+		                 <div class="form-group">
+		            	  	<input type="hidden" name="access_type" id="access_type"  ng-model="form.access_type" value="admin" ng_init="form.access_type='admin'" class="form-control login-field">
+		              		
+		              	 	</div>
+		            	<button ng-click="authenticateAdmin()"  class="btn btn-success modal-login-btn">Login</button>
+		            	<a href="#" class="login-link text-center">Lost your password?</a>
+		            	<a href="Registration" class="login-link text-center">New User? Register!</a>
+	        		</div>
+	        	
+	        		<div class='modal-body-right' ng-controller="loginCtrl">
+	        			  <!--<div class="modal-social-icons">
+	        				<a href='#' class="btn btn-default facebook"> <i class="fa fa-facebook modal-icons"></i> Sign In with Facebook </a>
+	        				<a href='#' class="btn btn-default twitter"> <i class="fa fa-twitter modal-icons"></i> Sign In with Twitter </a>
+	        				<a href='#' class="btn btn-default google"> <i class="fa fa-google-plus modal-icons"></i> Sign In with Google </a>
+	        				<a href='#' class="btn btn-default linkedin"> <i class="fa fa-linkedin modal-icons"></i> Sign In with Linkedin </a>
+	        			
+	        			</div> -->
+	        			<h3>User</h3>
+	        			<div class="form-group">
+		              		<input type="text" id="username" placeholder="Username" ng-model="form.username" value="" class="form-control login-field">
+		              		<i class="fa fa-user login-field-icon"></i>
+		            	</div>
+		
+		            	<div class="form-group">
+		            	  	<input type="password" id="login-pass" placeholder="Password" ng-model="form.password" value="" class="form-control login-field">
+		              		<i class="fa fa-lock login-field-icon"></i>
+		              	 	</div>
+		              	 		<div class="form-group">
+		            	  	<input type="hidden" name="access_type" id="access_type" placeholder="Password" ng-model="form.access_type" value="user" ng_init="form.access_type='user'" class="form-control login-field">
+		              		
+		              	 	</div>
+		
+		            <button ng-click="authenticate()" class="btn btn-success modal-login-btn">Login</button>
+		            	<a href="#" class="login-link text-center">Lost your password?</a>
+		                <a href="Registration" class="login-link text-center">New User? Register!</a>
+	        		</div>	
+	        		<div id='center-line'> OR </div>
+	        	</div>																												
+        		<div class="clearfix"></div>
+        		
+        		
+      		</div>
+      		<div class="clearfix"></div>
+      		<div class="modal-footer login_modal_footer">
+      		</div>
+    	</div>
+  	</div>
+</div>
