@@ -26,6 +26,7 @@ class RoomAvailability extends CI_Controller {
 		
 		
 	$this->load->view ( 'search.html' );
+	$this->load->view ( 'search1.txt' );
 	}
 	public function checkRoomAvailabilty() {
 		$this->load->model ( 'PropertyModel' );
