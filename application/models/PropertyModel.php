@@ -55,10 +55,18 @@ public function checkRoomAvailabilty($searchArray) {
 		$roomTable = 'room';
 		$accomodationTable = 'accomodationtype';
 		$this->load->database ();
-		$this->db->select ( 'distinct(room.accomodation_type_id)as accomodationTypeId,acc.accomodation_type_name as accomodationTypeName' );
-		$this->db->from ( "$roomTable room" );
-		$this->db->join ( "$accomodationTable acc", "acc.accomodation_type_id=room.accomodation_type_id" );
-		$query = $this->db->get_where ( 'property' ,array('room.property_id' =>$propertyId));
+		if($propertyId!=null){
+			$this->db->select ( 'distinct(room.accomodation_type_id)as accomodationTypeId,acc.accomodation_type_name as accomodationTypeName' );
+			$this->db->from ( "$roomTable room" );
+			$this->db->join ( "$accomodationTable acc", "acc.accomodation_type_id==room.accomodation_type_id" );
+			$query = $this->db->get_where ( 'property' ,array('room.property_id' =>$propertyId));
+		}
+		else{
+			$this->db->select ( 'accomodation_type_id as accomodationTypeId,accomodation_type_name as accomodationTypeName' );
+			$this->db->from ( "$accomodationTable" );
+			$query = $this->db->get();
+			}
+
 		return $query->result();
 	}
 	/*this function gives rooms available for particular is ,for it's particular accomodation type*/
