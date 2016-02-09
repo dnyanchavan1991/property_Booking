@@ -2513,7 +2513,7 @@ input[type="search"] {
 }
 input[type="radio"],
 input[type="checkbox"] {
-  margin: 4px 0 0;
+    margin: 4px 20px 8px;
   margin-top: 1px \9;
   line-height: normal;
 }
@@ -3047,7 +3047,7 @@ fieldset[disabled] .btn {
   color: #333;
   background-color: #fff;
   border-color: #ccc;
-  margin-left: 235px;
+  margin-left: 0px;
 }
 .btn-default:hover,
 .btn-default:focus,
