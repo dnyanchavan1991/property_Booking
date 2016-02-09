@@ -2,7 +2,7 @@
 				 .controller('accomodationController', function($scope, $http) {
 					 
 					 		$scope.getAccomodationType = function() {
-					 			$http.get("AccomodationType/getAccomodationType").then(
+					 			$http.get("AccomodationType/getAccomodationType/"+1).then(
 					 					function(response) {
 					 						$scope.names = response.data;
 					 					});

@@ -3,7 +3,12 @@ angular
 		.controller(
 				'CheckboxFilterCtrl',
 				function($scope, $http) {
+					$http.get("AccomodationType/getAccomodationType/"+2).then(
+			 					function(response) {
+			 						$scope.names = response.data;
+			 					});
 
+			 			
 					$scope.starRateList = [ {
 						name : 5,
 						star_image_url : 'images/st2.png'
