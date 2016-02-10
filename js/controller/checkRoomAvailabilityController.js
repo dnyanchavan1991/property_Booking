@@ -57,7 +57,8 @@ angular
 					$scope.model = {
 						selectedstarRateList : [],
 						selectedFeatureList : [],
-						selectedFacilityList : []
+						selectedFacilityList : [],
+						selectedAccomodationList:[]
 					}
 
 					$scope.isLabelChecked = function(objName) {
@@ -89,6 +90,15 @@ angular
 							} else {
 								$scope.model.selectedFacilityList.splice(
 										this.facilityListLabel, 1);
+							}
+						}else if (objName == 'accomodation') {
+							if (this.accomodationListLabel.selected) {
+
+								$scope.model.selectedAccomodationList
+										.push(this.accomodationListLabel);
+							} else {
+								$scope.model.selectedAccomodationList.splice(
+										this.accomodationListLabel, 1);
 							}
 						}
 
