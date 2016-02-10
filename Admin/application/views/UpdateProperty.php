@@ -32,7 +32,7 @@
 
 </head>
 
-<body >
+<body onload="initialize()">
 
     <div id="wrapper">
 
@@ -47,7 +47,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="../../Admin">Property Booking Admin</a>
-				 <a class="navbar-brand" href="../../../">View Site</a>
+				 <a class="navbar-brand" href="../../Logout/viewSite">View Site</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -238,50 +238,16 @@
 							<div class="example1">
 								<div class="panel panel-default">
 									<div class="panel-heading" data-acc-link="demo1"><i class="glyphicon glyphicon-list"></i> Features and Facilities (<i>Optional</i>)</div>
-									<div class="panel-body " data-acc-content="demo1">
+									<div class="panel-body acc-open" data-acc-content="demo1">
 										<div class="form-group">
 											<label class="control-label col-md-3" for="location_map">Map Location</label>
-											<?php if($latitude){?>
 											<div class="col-md-7">
 												<div class="col-lg-7" id="map_canvas" style="width:auto;height:270px;"></div>
 												<input class="form-control" type="hidden" name="latitude" id="latbox" value="<?php echo $latitude;?>">
 												<input class="form-control" type="hidden" name="longitude" id="lngbox" value="<?php echo $longitude;?>">
 												<p class="help-block">Drag & drop the marker near your location</p>
-											<script src="http://maps.googleapis.com/maps/api/js"></script>
-											<script type="text/javascript">
-											/* - map - */
-											var map;
-											
-												var latitude = parseFloat(<?php echo $latitude;?>);
-												var longitude = parseFloat(<?php echo $longitude;?>);
-												//alert(latitude);
-												//alert(longitude);
-												var myLatlng = new google.maps.LatLng(latitude,longitude);
-												var myOptions = {
-																	zoom: 15,
-																	center: myLatlng,
-																	mapTypeId: google.maps.MapTypeId.ROADMAP
-																};
-												map = new google.maps.Map(document.getElementById("map_canvas"), myOptions); 
-												var marker = new google.maps.Marker({
-													draggable: true,
-													position: myLatlng,
-													map: map,
-													title: "Property location"
-												});
-
-												
-												google.maps.event.addListener(marker, 'dragend', function (event) {
-													document.getElementById("latbox").value = this.getPosition().lat();
-													document.getElementById("lngbox").value = this.getPosition().lng();
-												});
-											
-											/* - map end - */
-											</script>
 												<!--<textarea class="form-control" name="location_map" placeholder="Enter location string for Google map" rows="6"></textarea>-->
-												
 											</div>
-											<?php }?>
 										</div>
 										
 										<div class="form-group">
@@ -638,7 +604,7 @@
 	<script type="text/javascript" src="../../assets/js/angular.min.js"></script>
 	<script type="text/javascript" src="../../assets/js/bootstrapValidator.js"></script>
 	<script type="text/javascript" src="../../assets/js/jquery.accordion.js"></script>
-	
+	<script src="http://maps.googleapis.com/maps/api/js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="../../assets/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
@@ -672,7 +638,35 @@
 	$("#switcher").on("input", function() {
 		document.getElementById('rating').value = $("#switcher").val();
 	});
-	
+	/* - map - */
+	var map;
+	function initialize()
+	{
+		var latitude = parseFloat(<?php echo $latitude;?>);
+		var longitude = parseFloat(<?php echo $longitude;?>);
+		//alert(latitude);
+		//alert(longitude);
+		var myLatlng = new google.maps.LatLng(latitude,longitude);
+		var myOptions = {
+							zoom: 15,
+							center: myLatlng,
+							mapTypeId: google.maps.MapTypeId.ROADMAP
+						};
+		map = new google.maps.Map(document.getElementById("map_canvas"), myOptions); 
+		var marker = new google.maps.Marker({
+			draggable: true,
+			position: myLatlng,
+			map: map,
+			title: "Property location"
+		});
+
+		
+		google.maps.event.addListener(marker, 'dragend', function (event) {
+			document.getElementById("latbox").value = this.getPosition().lat();
+			document.getElementById("lngbox").value = this.getPosition().lng();
+		});
+	}
+	/* - map end - */
 	
 	//validation of name
 	/*function name_validate()

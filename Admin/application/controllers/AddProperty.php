@@ -40,13 +40,14 @@ class AddProperty extends CI_Controller {
 		$State = $_POST['State'];
 		$PostalCode = $_POST['PostalCode'];
 		$StarRate = $_POST['StarRate'];
-		$fdata_mainImg=$_FILES['mainImage'];
-		$fdata=$_FILES['propertyImages'];
+		$fdata_mainImg = $_FILES['mainImage'];
+		$fdata = $_FILES['propertyImages'];
+		$path = "";
 		if(is_array($fdata['name']))
 		{
 			$files="";
 			$temp="";
-			$path = "Property gallery/$PropertyName/";
+			$path = "Property gallery/$PropertyName".mt_rand()."/";
 			mkdir($path);
 			/*--upload main img--*/
 			$exetention = explode(".", $fdata_mainImg["name"]);
@@ -60,7 +61,7 @@ class AddProperty extends CI_Controller {
 				move_uploaded_file($temp,$path.$files);
 			}
 		}
-		$path = "Property gallery/$PropertyName/";
+		//$path = "Property gallery/$PropertyName/";
 		$description = $_POST['description'];
 		$how_to_reach = $_POST['how_to_reach'];
 		

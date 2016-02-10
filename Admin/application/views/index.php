@@ -47,7 +47,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="Admin">Property Booking Admin</a>
-                <a class="navbar-brand" href="../">View Site</a>
+                <a class="navbar-brand" href="Logout/viewSite">View Site</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -510,7 +510,7 @@
 		});
 		var json;
 		var checkedRows = [];
-		$('#table-style').on('click-row.bs.table', function (e, row) {
+		$('#table-style').bind('check.bs.table click-row.bs.table', function (e, row) {
 			$.each(checkedRows, function(index, value) {
 				checkedRows.splice(index,1);
 			});
