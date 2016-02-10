@@ -251,13 +251,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<li ng-repeat=" featureListLabel in featureList"><input
 										id={{featureListLabel.name}} type="checkbox"
 										ng-model="featureListLabel.selected"
-										ng-change="isLabelChecked('features')">{{featureListLabel.featureLabel}}</input>
-									</li>
+										ng-change="isLabelChecked('features')">{{featureListLabel.featureLabel}}</input></li>
 								</ul>
-							</li>	
 								<li class="item2"><a href="#"><span
-									class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>Facilities</a>
-									<ul>
+				<ul>
 										<li ng-repeat=" facilityListLabel in facilityList">
 											<input id={{facilityListLabel.name}} type="checkbox"
 												ng-model="facilityListLabel.selected"
@@ -265,18 +262,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											</input>
 										</li>
 									</ul>
+										</li>
 											
 										
-						</ul></li>
+					
 							
 									<li class="item3"><a href="#"><span
 								class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>Accommodation
-											type</a>
+										</a>
 										<ul>
-											<li class="subitem1"><a href="#">Resort</a></li>
-											<li class="subitem2"><a href="#">Hostel</a></li>
-											<li class="subitem3"><a href="#">Apartment</a></li>
+											<li ng-repeat=" accomodationListLabel in names"><input
+										id={{accomodationListLabel.accomodationTypeId}} type="checkbox"
+										ng-model="accomodationListLabel.selected"
+										ng-change="isLabelChecked('accomodation')">{{accomodationListLabel.accomodationTypeName}}</input></li>
 										</ul></li>
+										</ul>
 
 									<!-- script for tabs -->
 									<script type="text/javascript">
@@ -345,45 +345,45 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>Diamond
 										Street</a>
 									<p>
-										<button ng-click="togglemailPopUp()" class="btn btn-default">Send
+										<button ng-click="togglemailPopUp()" >Send
 											Mail</button>
 										<button ng-click="togglemessagePopUp()"
-											class="btn btn-default">Send SMS</button>
+											>Send SMS</button>
 									</p>
 									<modal title="Enquiry via mail" visible="showModal">
 									<form name="formData" ng-submit="contactToCustomer(rooms)">
 										<div class="form-group">
-											<label for="email">Full Name</label> <input type="text"
+											 <input type="text"
 												class="form-control" name="full_name" id="full_name"
 												ng-model="form.full_name" placeholder="Full Name" />
 										</div>
 										<div class="form-group" id="email_id_div">
-											<label for="email">Email</label> <input type="email"
+											 <input type="email"
 												class="form-control" name="email_id" id="email_id"
 												ng-model="form.email_id" placeholder="Enter email" />
 										</div>
 										<div class="form-group" id="phone_div">
-											<label for="email">Phone</label> <input type="text"
+											 <input type="text"
 												class="form-control" name="phone" id="phone"
 												ng-model="form.phone"
 												placeholder="Enter Phone/Mobile Number" />
 										</div>
 										<div class="form-group">
-											<label for="checkIn">CheckIn</label><input class="date"
+											<input class="date"
 												name="checkIn" id="checkIn" ng-model="form.checkIn"
 												ng-init="checkIn= 'CheckIn Date'" type="text"
 												style="width: 60%;" onfocus="this.value = '';"
 												onblur="if (this.value == '') {this.value = '';}" required>
 										</div>
 										<div class="form-group">
-											<label for="checkOut">Checkout</label><input class="date"
+											<input class="date"
 												name="checkOut" id="checkOut" ng-model="form.checkOut"
 												ng-init="checkOut= 'CheckIn Date'" type="text"
 												style="width: 60%;" onfocus="this.value = '';"
 												onblur="if (this.value == '') {this.value = '';}" required>
 										</div>
 										<div class="form-group">
-											<label for="enquiry">Enquiry</label>
+										
 											<textarea type="text" class="form-control"
 												ng-model="form.enquiry" id="enquiry" name="enquiry"
 												placeholder="Enquiry.." required="required"></textarea>
@@ -413,20 +413,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<span>$8,750</span> {{rooms.basePrice}}
 							</h4>
 							<p>Best price</p>
-							<a href="single.html">Continue</a>
+							<a href="" ng-click="getPropertyDetails(rooms)">Continue</a>
 						</div>
 						<div class="clearfix"></div>
 					</div>
 
 				</div>
 			</div>
-			<div class="hotel-right text-right">
-				<h4>
-					<span>$4,650</span> $2,650
-				</h4>
-				<p>Best price</p>
-				<a href="single.html">Continue</a>
-			</div>
+		
 			<div class="clearfix"></div>
 		</div>
 	</div>
