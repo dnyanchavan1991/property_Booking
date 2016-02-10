@@ -26,7 +26,7 @@ class RoomAvailability extends CI_Controller {
 		
 		
 	$this->load->view ( 'search.html' );
-	$this->load->view ( 'search1.txt' );
+	
 	}
 	public function checkRoomAvailabilty() {
 		$this->load->model ( 'PropertyModel' );
@@ -39,8 +39,9 @@ class RoomAvailability extends CI_Controller {
 				
 				
 		);
+		$filterData=null;
                 	
-		$roomAvailableInfo = $this->PropertyModel->checkRoomAvailabilty ($searchArray);
+		$roomAvailableInfo = $this->PropertyModel->checkRoomAvailabilty ($searchArray,$filterData);
 		
                 $i=0;
                 foreach($roomAvailableInfo as $row)
@@ -54,9 +55,9 @@ class RoomAvailability extends CI_Controller {
         }
         public function checkFilterRoomAvailabilty() {
         	$postdata = file_get_contents("php://input");
-        	$post= json_decode($postdata);
-        	//echo $post->selectedstarRateList[0]->name;
-        	/*$this->load->model ( 'PropertyModel' );
+        	$filterData= json_decode($postdata);
+        	//echo sizeof($post->selectedFeatureList);
+        	$this->load->model ( 'PropertyModel' );
         	$searchArray=array(
         			'checkIn'=>$this->session->userdata ( 'checkIn' ),
         			'checkOut'=>$this->session->userdata ( 'checkOut' ),
@@ -66,8 +67,11 @@ class RoomAvailability extends CI_Controller {
         
         
         	);
-        	 
-        	$roomAvailableInfo = $this->PropertyModel->checkRoomAvailabilty ($searchArray);
+        	if(sizeof($filterData->selectedstarRateList)==0 &&  sizeof($filterData->selectedFeatureList)==0 && sizeof($filterData->selectedFacilityList)==0 && sizeof($filterData->selectedAccomodationList)==0)
+        	{
+        		$filterData=NULL;
+        	} 
+        	$roomAvailableInfo = $this->PropertyModel->checkRoomAvailabilty ($searchArray,$filterData);
         
         	$i=0;
         	foreach($roomAvailableInfo as $row)
@@ -77,6 +81,6 @@ class RoomAvailability extends CI_Controller {
         		$i++;
         		 
         	}
-        	echo json_encode ( $response );*/
+        	echo json_encode ( $response );
         }
 }
