@@ -100,9 +100,9 @@ angular
 
 								}).success(function(data) {
 							if (data.count == 0) {
-								alert('you canot add data');
+								alert('Cannot send message');
 							} else {
-								alert('from here it will get to payu mney');
+								alert('Message sent successfully..');
 
 							}
 						});
