@@ -1,7 +1,7 @@
 <?php
 class PropertyModel extends CI_Model {
 	// this function returns available rooms according to checkin &checkout date
-public function checkRoomAvailabilty($searchArray) {
+public function checkRoomAvailabilty($searchArray,$filterData) {
 		$this->load->database ();
 		
 		$reservationTable = 'reservation';
@@ -31,6 +31,20 @@ public function checkRoomAvailabilty($searchArray) {
 		$this->db->or_where ( $where );
 		$where = "check_out <= '$checkout' AND check_out <='$checkout'";
 		$this->db->or_where ( $where );
+		if($filterData!=null){
+			if(sizeof($filterData->selectedstarRateList)!=0){
+				foreach($filterData->selectedstarRateList as $starList){
+					$this->db->or_where('property.star_rate', $starList->name);
+					
+				}
+			}
+			/*if(sizeof($filterData->selectedFeatureList)!=0){
+				foreach($filterData->selectedFeatureList as $featurerList){
+					$this->db->or_where("`propertyInfo."."$featurerList->name`", 'Yes');
+						
+				}
+			}*/
+		}
 		$this->db->group_by ( array (
 				"property.property_id"
 		) );
