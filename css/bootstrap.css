@@ -2544,18 +2544,18 @@ output {
 }
 .form-control {
   display: inline;
-  width: 60%;
+  width:85%;
   height: 34px;
   padding: 6px 12px;
   font-size: 14px;
-  line-height: 1.42857143;
+  line-height: 2.42857143;
   color: #555;
   background-color: #fff;
   background-image: none;
   border: 1px solid #ccc;
   border-radius: 4px;
-	margin-left: 130px;
-	margin-top: -28px;
+	margin-left: 15px;
+	margin-top: -9px;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
           box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
   -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
@@ -3047,7 +3047,8 @@ fieldset[disabled] .btn {
   color: #333;
   background-color: #fff;
   border-color: #ccc;
-  margin-left: 0px;
+  margin-left: 15px;
+  margin-top: -37px;
 }
 .btn-default:hover,
 .btn-default:focus,
@@ -5830,10 +5831,12 @@ button.close {
   .modal-dialog {
     width: 600px;
     margin: 30px auto;
+	
   }
   .modal-content {
     -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
             box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+			margin-right: 125px;
   }
   .modal-sm {
     width: 300px;
