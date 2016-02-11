@@ -39,7 +39,7 @@ class Index1 extends CI_Controller {
 					if(strpos($result ,"mainImage") !==false)
 					{
 						$get_result = "Admin/".$image_path.$result;
-						$list[] = array('property_id' =>$row->property_id,'image'=>$get_result);
+						$list[] = array('property_id' =>$row->property_id,'property_name' =>$row->property_name,'property_description' =>$row->description,'image'=>$get_result);
 					}
 				}
 			}
