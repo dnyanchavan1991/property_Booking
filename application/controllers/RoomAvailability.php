@@ -15,7 +15,7 @@ class RoomAvailability extends CI_Controller {
 			
 			$checkout = $_POST ['checkOut'];
 			$checkout = str_replace ( '/', '-', $checkout );
-			$checkin = date ('Y-m-d', strtotime ( $checkout ));
+			$checkout = date ('Y-m-d', strtotime ( $checkout ));
 				
 			$this->session->set_userdata ( 'checkIn', $checkin );
 			$this->session->set_userdata ( 'checkOut', $checkout );
@@ -23,9 +23,10 @@ class RoomAvailability extends CI_Controller {
 			$this->session->set_userdata ( 'destination', $_POST['inpDestination'] );
 			$this->session->set_userdata ( 'propertyType',$_POST['propertyType']);
 		}
-		
+	
 		
 	$this->load->view ( 'search.html' );
+	//$this->load->view ( 'search.html' );
 	
 	}
 	public function checkRoomAvailabilty() {
