@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<!--footer-->
+	<div class="footer">
+		<div class="container">				 	
+			<div class="col-md-3 ftr_navi ftr">
+				<h3>NAVIGATION</h3>
+				<ul>
+					<li><a href="Index1">Home</a></li>
+					<li><a href="About">About</a></li>
+					<li><a href="Typography">Services</a></li>						
+					<li><a href="Booking">Booking</a></li>
+					<li><a href="Contact">Contact</a></li>
+				</ul>
+			</div>
+			<div class="col-md-3 ftr_navi ftr">
+					 <h3>FACILITIES</h3>
+					 <ul>
+						 <li><a href="#">Quick Property Search</a></li>
+						 <li><a href="#">Online Payment</a></li>
+						 <li><a href="#">Reviews</a></li>						
+						 <li><a href="#">Google Map</a></li>
+					 </ul>
+			</div>
+			<div class="col-md-3 ftr_navi ftr">
+				<h3>GET IN TOUCH</h3>
+				<ul>
+					<li>Address 1</li>
+					<li>Address 2</li>
+					<li>Contact Number</li>
+				</ul>
+			</div>
+			<div class="col-md-3 ftr-logo">
+				
+				<ul>
+					<li><a href="#" class="f1"> </a></li>
+					<li><a href="#" class="f2"> </a></li>
+					<li><a href="#" class="f3"> </a></li>
+				</ul>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+<!--footer-->
+<!-- copy -->
+<div class="copy-right">
+	<div class="container">
+			<p>
+				&copy; 2015 All Rights Reserved | Design by <a
+					href="http://www.agilesoftsol.com/">Agile Technologies</a>
+			</p>
+	</div>
+</div>
+<!-- //copy -->
+<!-- for bootstrap working -->
+	<script src="js/bootstrap.js"></script>
+<!-- //for bootstrap working -->
+<!-- smooth scrolling -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+	
+			var response = '';
+			$.ajax({ type: "GET",   
+			         url: "http://ipinfo.io/json",   
+			         async: false,
+			         success : function(text)
+			         { //alert($.parseJSON(text));
+			             response = text;
+			             $.ajax({ type: "post",   
+					         url: "VisitorInfo/insertVisitorData",  
+					         datatype:'json',
+					         data:response,
+					         async: false,
+					         success : function(text)					         
+						         { 
+						           	$.ajax({ 
+										type: "post",   
+									    url: "VisitorInfo/getVisitorCount",  		         
+								         async: false,
+								         success : function(response)
+								         { 								        	
+								        	var parseResp = $.parseJSON(response);
+								        	$("#visitCount").html(parseResp.count);
+								            
+								         }
+									});
+						         }
+					        
+					         });
+					         }
+					
+			});
+			
+							
+		$().UItoTop({ easingType: 'easeOutQuart' });
+		});
+	</script>
+	<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+<!-- //smooth scrolling -->
+</body>
+</html>

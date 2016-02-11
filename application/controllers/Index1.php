@@ -7,6 +7,7 @@ class Index1 extends CI_Controller {
 	}
 
 	public function index() {
+		$this->load->view ( 'menus.html' );
 		$this->load->view ( 'index.html' );
 	}
 	

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Property booking website for easy and fast vacation rental " />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //for-mobile-apps -->
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/chocolat.css" rel="stylesheet">
+<link rel="stylesheet" href="css/jquery-ui.css" />
+<!-- js -->
+<link href='http://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Philosopher' rel='stylesheet' type='text/css'>
+		
+		
+		<link rel="stylesheet" href="css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="css/font-awesome.min.css"/>
+	
+		<link rel="stylesheet" href="css/popup_style.css" />
+		<script src="js/vendor/modernizr-2.6.2.min.js"></script>
+		<script src="js/vendor/jquery-1.10.2.min.js"></script>
+		<script src="js/vendor/bootstrap.min.js"></script>
+
+<script src="js/jquery-1.11.1.min.js"></script>
+	<script src="js/jquery-ui.js"></script>
+							  
+<!-- //js -->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+	<!-- start-smoth-scrolling -->
+		<script type="text/javascript" src="js/move-top.js"></script>
+		<script type="text/javascript" src="js/easing.js"></script>
+		<script type="text/javascript" src="js/angular.min.js"></script>
+		<script type="text/javascript" src="js/controller/menusController.js"></script>
+		<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				
+				$(".scroll").click(function(event){		
+					event.preventDefault();
+					$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+				});
+			});
+		</script>
+</head>
+<body ng-app="menusApp" ng-controller="menusCtrl">
+<!-- banner -->
+<div class="banner">
+	<div class="container">
+		<div class="header-nav">
+			<!-- <div class="logo">
+				<h1><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Classic Hotel</a></h1>
+			</div>-->
+			<div class="navigation">
+				<span class="menu"><img src="images/menu.png" alt=""/></span>
+				<nav class="cl-effect-11" id="cl-effect-11">
+					<ul class="nav1">
+						<li><a class="active" href="Index1" data-hover="HOME">HOME</a></li>
+						<li><a href="About" data-hover="ABOUT">ABOUT</a></li>
+						<li><a href="Typography" data-hover="SERVICES">SERVICES</a></li>
+						<li><a href="Booking" data-hover="BOOKING">BOOKING</a></li>
+						<li><a href="Contact" data-hover="CONTACT">CONTACT</a></li>
+						<li><a href="Registration" data-hover="REGISTRATION">REGISTRATION</a></li>					  	
+				       <li><button id='modal-launcher' class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login-modal">
+					  LOGIN</button></li>
+                       </ul>
+					  	
+				</nav>
+				
+				<!-- script for menu -->
+					<script> 
+						$( "span.menu" ).click(function() {
+						$( "ul.nav1" ).slideToggle( 300, function() {
+						 // Animation complete.
+						});
+						});
+					</script>
+				<!-- //script for menu -->
+				
+			</div>
+			<div class="social-icons">
+				<ul>
+					<li><a href="#" class="f1"></a></li>
+					<li><a href="#" class="f2"></a></li>
+					<li><a href="#" class="f3"></a></li>
+					<li><a href="#" class="f4"></a></li>
+				</ul>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+
+</body>
+</html>
+ <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+    	<div class="modal-content">
+      		<div class="modal-header login_modal_header">
+        		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        		<h2 class="modal-title" id="myModalLabel">Login</h2>
+      		</div>
+      		<div class="modal-body login-modal">
+      			
+      			<div class="clearfix"></div>
+      			<div id='social-icons-conatainer'>
+	        		<div class='modal-body-left'ng-controller="menusCtrl">
+	        		<h3>Admin</h3>
+	        			<div class="form-group">
+		              		<input type="text" id="username" placeholder="Username" ng-model="form.username" class="form-control login-field">
+		              		<i class="fa fa-user login-field-icon"></i>
+		            	</div>
+		
+		            	<div class="form-group">
+		            	  	<input type="password" id="login-pass" placeholder="Password" ng-model="form.password" class="form-control login-field">
+		              		<i class="fa fa-lock login-field-icon"></i>
+		              		<input type="hidden" name="acces_type" value="admin">
+		            	</div>
+		                 <div class="form-group">
+		            	  	<input type="hidden" name="access_type" id="access_type"  ng-model="form.access_type" value="admin" ng_init="form.access_type='admin'" class="form-control login-field">
+		              		
+		              	 	</div>
+		            	<button ng-click="authenticateAdmin()"  class="btn btn-success modal-login-btn">Login</button>
+		            	<a href="#" class="login-link text-center">Lost your password?</a>
+		            	<a href="Registration" class="login-link text-center">New User? Register!</a>
+	        		</div>
+	        	
+	        		<div class='modal-body-right' ng-controller="menusCtrl">
+	        			  <!--<div class="modal-social-icons">
+	        				<a href='#' class="btn btn-default facebook"> <i class="fa fa-facebook modal-icons"></i> Sign In with Facebook </a>
+	        				<a href='#' class="btn btn-default twitter"> <i class="fa fa-twitter modal-icons"></i> Sign In with Twitter </a>
+	        				<a href='#' class="btn btn-default google"> <i class="fa fa-google-plus modal-icons"></i> Sign In with Google </a>
+	        				<a href='#' class="btn btn-default linkedin"> <i class="fa fa-linkedin modal-icons"></i> Sign In with Linkedin </a>
+	        			
+	        			</div> -->
+	        			<h3>User</h3>
+	        			<div class="form-group">
+		              		<input type="text" id="username" placeholder="Username" ng-model="form.username" value="" class="form-control login-field">
+		              		<i class="fa fa-user login-field-icon"></i>
+		            	</div>
+		
+		            	<div class="form-group">
+		            	  	<input type="password" id="login-pass" placeholder="Password" ng-model="form.password" value="" class="form-control login-field">
+		              		<i class="fa fa-lock login-field-icon"></i>
+		              	 	</div>
+		              	 		<div class="form-group">
+		            	  	<input type="hidden" name="access_type" id="access_type" placeholder="Password" ng-model="form.access_type" value="user" ng_init="form.access_type='user'" class="form-control login-field">
+		              		
+		              	 	</div>
+		
+		            <button ng-click="authenticate()" class="btn btn-success modal-login-btn">Login</button>
+		            	<a href="#" class="login-link text-center">Lost your password?</a>
+		                <a href="Registration" class="login-link text-center">New User? Register!</a>
+	        		</div>	
+	        		<div id='center-line'> OR </div>
+	        	</div>																												
+        		<div class="clearfix"></div>
+        		
+        		
+      		</div>
+      		<div class="clearfix"></div>
+      		<div class="modal-footer login_modal_footer">
+      		</div>
+    	</div>
+  	</div>
+</div>
