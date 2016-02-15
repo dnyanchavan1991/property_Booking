@@ -37,6 +37,58 @@ var app= angular.module('landingPageApp', []);
 
 				});
 
+app.controller('loginCtrl', function ($scope,$http) {
+	$scope.form = {};
+	
+    $scope.authenticate=function()
+    {
+    	$http({
+	          method  : 'POST',
+	          url     : 'Login/authenticate/',
+	          data    : $scope.form, //forms user object
+	         // datatype:"json"
+	          
+	         })
+	          .success(function(data) {
+	        	
+	        	  if(data.count==0){
+	        		  alert('Please Enter Valid Username & Password.');
+	        	  }
+	        		  else{
+	        			  function WriteCookie()
+	        	            {
+	        	             
+	        	               cookievalue= escape($scope.form.username) + ";";
+	        	             //  document.cookie="username=" + cookievalue;
+	        	              // alert(cookievalue);
+	        	               //document.write ("Setting Cookies : " + "username=" + cookievalue );
+	        	            }
+	        			  WriteCookie();
+	        			  window.location.href='Index1';
+	        			  
+	        	  }
+	          });
+    	
+      }
+    $scope.authenticateAdmin=function()
+    {
+    	$http({
+	          method  : 'POST',
+	          url     : 'Login/authenticate/',
+	          data    : $scope.form, //forms user object
+	         // datatype:"json"
+	          
+	         })
+	          .success(function(data) {
+	        	
+	        	  if(data.count==0){
+	        		  alert('Please Enter Valid Username & Password.');
+	        	  }
+	        		  else{
+	        			window.location.href='Admin/Admin/setLoginSession';
+	        	  }
+	          });
+    	
    
     }
 });
@@ -50,7 +102,6 @@ app.controller('galleryImgCtrl', function ($scope,$http){
     }
 	$scope.getPropertyDetails = function(item)
 	{
-		
 		var objForm = document.createElement('FORM');
 		objForm.method = 'post';
 		objForm.action = 'PropertyDetails';

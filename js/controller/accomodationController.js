@@ -54,10 +54,10 @@
 				         })
 				          .success(function(data) {
 				        	  if(data.count==0){
-				        		  alert('Cannot send message..');
+				        		  alert('you canot add data');
 				        	  }
 				        		  else{
-				        			  alert('Message sent successfuly.');  
+				        			  alert('from here it will get to payu mney');  
 				        			  
 				        	  }
 				          });
