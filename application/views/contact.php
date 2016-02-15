@@ -128,122 +128,152 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<?php echo $propertyName;  ?>
 			</h2>
 			<div class="col-md-8 single-gd-lt">
-			<div class="tabs">
-				<ul class="tab-links">
-					<li class="active"><a href="#tab1">Description</a></li>
-					<li><a href="#tab2">Gallery</a></li>
-					<li><a href="#tab4">Charges</a></li>
-					
-					<li><a href="#tab6">How to Reach</a></li>
-					
-				</ul>
+				<div class="tabs">
+					<ul class="tab-links">
+						<li class="active"><a href="#tab1">Description</a></li>
+						<li><a href="#tab2">Gallery</a></li>
+						<li><a href="#tab4">Charges</a></li>
+						<li><a href="#tab6">How to Reach</a></li>
+						<li><a href="#tab7">Reviews</a></li>
+					</ul>
 
-				<div class="tab-content">
-					<div id="tab1" class="tab active">
-
-						<p>
-							<?php echo  $propertyDescription; ?>
-						</p>
-					</div>
-
-					<div id="tab2" class="tab">
+					<div class="tab-content">
+						<div id="tab1" class="tab active">
+							<p>
+								<?php echo  $propertyDescription; ?>
+							</p>
+						</div>
+						<div id="tab2" class="tab">
 							<div class="flexslider">
-						<ul class="slides">	
-					<?php		$files = glob('Admin/'.$imagePath."*.*");
+								<ul class="slides">	
+								<?php	
+								$files = glob('Admin/'.$imagePath."*.*");
+								for ($i=1; $i<count($files); $i++)
+								{
+									$image = $files[$i];
+									$supported_file = array(
+																'gif',
+																'jpg',
+																'jpeg',
+																'png'
+															);
 
-  for ($i=1; $i<count($files); $i++)
+									$ext = strtolower(pathinfo($image, PATHINFO_EXTENSION));
+									if (in_array($ext, $supported_file))
+									{
+										echo '<li data-thumb="'.$image .'">';
+										echo'<img src="'.$image .'" alt="" />';
+										echo'</li>'; 
+									} 
+									else 
+									{
+										continue;
+									}
 
-{
-
-$image = $files[$i];
-$supported_file = array(
-    'gif',
-    'jpg',
-    'jpeg',
-    'png'
-);
-
-$ext = strtolower(pathinfo($image, PATHINFO_EXTENSION));
-if (in_array($ext, $supported_file)) {
- echo '<li data-thumb="'.$image .'">';
-echo'<img src="'.$image .'" alt="" />';
-echo'</li>'; 
-} else {
-    continue;
- }
-
-}?>
-</ul>
-								
-
-							
-			
-</div>
-					</div>
-
+								}?>
+								</ul>
+							</div>
+						</div>
 					
-					<div id="tab4" class="tab">
-					<?php foreach($rentresult as $row){
-						$row=(array)$row;
-						echo'<p><b>Accomodation Type:-</b>'.$row['accomodation'].
-						'<br><b>Base Price:-</b>'.$row['basePrice'].
-						'<br><b>Price per child:-</b>'.$row['childPrice'].
-						'<br><b>Price per Adult:-</b>'.$row['adultPrice'].
-						'<br><b>Room capacity:-</b>'.$row['capacity'].
-						'</p><br><br>';
-					}?>
+						<div id="tab4" class="tab">
+						<?php 
+						foreach($rentresult as $row)
+						{
+							$row=(array)$row;
+							echo'<p><b>Accomodation Type:-</b>'.$row['accomodation'].
+							'<br><b>Base Price:-</b>'.$row['basePrice'].
+							'<br><b>Price per child:-</b>'.$row['childPrice'].
+							'<br><b>Price per Adult:-</b>'.$row['adultPrice'].
+							'<br><b>Room capacity:-</b>'.$row['capacity'].
+							'</p><br><br>';
+						}
+						?>
+						</div>
+						<div id="tab6" class="tab">
+							<?php echo $way_to_reach; ?>
+						</div>
+						<div class="tab contact-form" id="tab7">
+							<?php //echo $way_to_reach; ?>
+							<div class="contact-form">
+								<form>
+									<input type="text" placeholder="Name" required>
+									<input type="text" placeholder="Email" required>
+									<div class="clearfix"> </div>
+									<input style="margin-top:9px;" type="range" name="StarRate" min="1" max="5" step="1" required>
+									<div class="clearfix"> </div>
+									<textarea style="height: 110px !important;" placeholder="Content...(max 250)" required></textarea>
+									<div class="clearfix"> </div>
+									<input style="margin-top: 0px!important;margin-left:0px !important;" type="submit" value="SEND">
+								</form>
+							</div>
+							<div>
+							<p><h4>By:</h4>Mayur Patil</p>
+							<h4>Rating:</h4>5
+							<p>We had purchased a property in Marvel Isola. It was to be handed over in 2012. 
+							We have been chasing Marvel since then - 3 years. Our money is locked up, employee and 
+							sales force turnover is high, CEO is rude, arrogant and unresponsive. </p>
+							<p><h4>By:</h4>Mayur Patil</p>
+							<h4>Rating:</h4>5
+							<p>We had purchased a property in Marvel Isola. It was to be handed over in 2012. 
+							We have been chasing Marvel since then - 3 years. Our money is locked up, employee and 
+							sales force turnover is high, CEO is rude, arrogant and unresponsive. </p>
+							<p><h4>By:</h4>Mayur Patil</p>
+							<h4>Rating:</h4>5
+							<p>We had purchased a property in Marvel Isola. It was to be handed over in 2012. 
+							We have been chasing Marvel since then - 3 years. Our money is locked up, employee and 
+							sales force turnover is high, CEO is rude, arrogant and unresponsive. </p>
+							<p><h4>By:</h4>Mayur Patil</p>
+							<h4>Rating:</h4>5
+							<p>We had purchased a property in Marvel Isola. It was to be handed over in 2012. 
+							We have been chasing Marvel since then - 3 years. Our money is locked up, employee and 
+							sales force turnover is high, CEO is rude, arrogant and unresponsive. </p>
+							</div>
+						</div>
 					</div>
-					
-					<div id="tab6" class="tab">
-						<?php echo $way_to_reach; ?>
-					</div>
-					
 				</div>
-			</div>
 			</div>
 			<div class="col-md-4 single-gd-rt">
-			<div class="spl-btn">
-				<div class="spl-btn-bor">
-					<a href="#" data-toggle="tooltip" title="Save up to 50% on this stay">
-						<span class="glyphicon glyphicon-tag" aria-hidden="true"></span>
-																	
-					</a>
-					<p>Special Offer</p>	
-					<script>
-						$(document).ready(function(){
-						$('[data-toggle="tooltip"]').tooltip();   
-						});
-					</script>
+				<div class="spl-btn">
+					<div class="spl-btn-bor">
+						<a href="#" data-toggle="tooltip" title="Save up to 50% on this stay">
+							<span class="glyphicon glyphicon-tag" aria-hidden="true"></span>
+						</a>
+						<p>Special Offer</p>	
+						<script>
+							$(document).ready(function(){
+								$('[data-toggle="tooltip"]').tooltip();   
+							});
+						</script>
+					</div>
+					<div class="sp-bor-btn text-right">
+						<h4><span>$8,750</span> $4,850</h4>
+						<p class="best-pri">Best price</p>
+						<a class="best-btn" href="BookProperty">Book Now</a>
+					</div>
 				</div>
-				<div class="sp-bor-btn text-right">
-					<h4><span>$8,750</span> $4,850</h4>
-					<p class="best-pri">Best price</p>
-					<a class="best-btn" href="BookProperty">Book Now</a>
+				<div class="map-gd">
+					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63718.72916803739!2d102.31975295000002!3d3.489618449999993!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31ceba2007355f81%3A0xd2ff1ad6a3ca801!2sMentakab%2C+Pahang%2C+Malaysia!5e0!3m2!1sen!2sin!4v1439535856431"></iframe>
+				</div>
+				<div class="other-comments">
+					<div class="comments-head">
+						<h3>Excellent</h3>
+						<p>4.5/5</p>
+						<div class="clearfix"></div>
+					</div>
+					<div class="comments-bot">
+						<p>"Food and rooms are very good to stay. Iam very happy to stay in such a nice hotel".</p>
+						<h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span> John Doe</h4>
+					</div>
+					<div class="comments-bot">
+						<p>"This is the 19th visit for me. Overall very happy with the service, the breakfast spread & the efficiency of the staff. ".</p>
+						<h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span> Luther</h4>
+					</div>
+					<div class="comments-bot">
+						<p>"A very pleasant hotel with good staff and a great attitude.".</p>
+						<h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span> Patrick</h4>
+					</div>
 				</div>
 			</div>
-			<div class="map-gd">
-				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63718.72916803739!2d102.31975295000002!3d3.489618449999993!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31ceba2007355f81%3A0xd2ff1ad6a3ca801!2sMentakab%2C+Pahang%2C+Malaysia!5e0!3m2!1sen!2sin!4v1439535856431"></iframe>
-			</div>
-			<div class="other-comments">
-				<div class="comments-head">
-					<h3>Excellent</h3>
-					<p>4.5/5</p>
-					<div class="clearfix"></div>
-				</div>
-				<div class="comments-bot">
-					<p>"Food and rooms are very good to stay. Iam very happy to stay in such a nice hotel".</p>
-					<h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span> John Doe</h4>
-				</div>
-				<div class="comments-bot">
-					<p>"This is the 19th visit for me. Overall very happy with the service, the breakfast spread & the efficiency of the staff. ".</p>
-					<h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span> Luther</h4>
-				</div>
-				<div class="comments-bot">
-					<p>"A very pleasant hotel with good staff and a great attitude.".</p>
-					<h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span> Patrick</h4>
-				</div>
-			</div>
-		</div>
 			<!--<div class="map">
 				<iframe
 					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63718.72916803739!2d102.31975295000002!3d3.489618449999993!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31ceba2007355f81%3A0xd2ff1ad6a3ca801!2sMentakab%2C+Pahang%2C+Malaysia!5e0!3m2!1sen!2sin!4v1439535856431"></iframe>
@@ -265,15 +295,15 @@ echo'</li>';
 				</form>
 			</div>-->
 		</div>
-			<script>
-						// Can also be used with $(document).ready()
-						$(window).load(function() {
-						  $('.flexslider').flexslider({
-							animation: "slide",
-							controlNav: "thumbnails"
-						  });
-						});
-						</script>
+		<script>
+		// Can also be used with $(document).ready()
+		$(window).load(function() {
+			$('.flexslider').flexslider({
+			animation: "slide",
+			controlNav: "thumbnails"
+			});
+		});
+		</script>
 	</div>
 	
 

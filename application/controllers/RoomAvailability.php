@@ -44,14 +44,28 @@ class RoomAvailability extends CI_Controller {
                 	
 		$roomAvailableInfo = $this->PropertyModel->checkRoomAvailabilty ($searchArray,$filterData);
 		
-                $i=0;
-                foreach($roomAvailableInfo as $row)
-			{
-                    $row=(array)$row;
-                    $response[$i]=array('propertyId'=>$row['propertyId'],'propertyName'=>$row['property'],'ImagePath' => $row['imagePath'],'propertyAddress'=>$row['propertyAddress']);
-                    $i++; 
-       
-			}
+		$i=0;
+		foreach($roomAvailableInfo as $row)
+		{
+				$row=(array)$row;
+				$image_path = $row['imagePath'];
+				$directory_path = './Admin/'.$image_path;
+				$map = directory_map($directory_path);
+				if($map)
+				{
+					foreach ($map as $result)
+					{
+						if(strpos($result ,"mainImage") !==false)
+						{
+							$get_result = "Admin/".$image_path.$result;
+							$response[$i]=array('propertyId'=>$row['propertyId'],'propertyName'=>$row['property'],'ImagePath' => $get_result,'propertyAddress'=>$row['propertyAddress']);
+							$i++;
+						}
+					}
+				}
+				 
+   
+		}
 		echo json_encode ( $response );
         }
         public function checkFilterRoomAvailabilty() {
