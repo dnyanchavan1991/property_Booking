@@ -7,8 +7,8 @@ class Index1 extends CI_Controller {
 	}
 
 	public function index() {
-		$this->load->view ( 'menus.html' );
 		$this->load->view ( 'index.html' );
+		//$this->load->view ( 'ex2.html' );
 	}
 	
 	public  function getlastMinDeal(){
@@ -40,7 +40,7 @@ class Index1 extends CI_Controller {
 					if(strpos($result ,"mainImage") !==false)
 					{
 						$get_result = "Admin/".$image_path.$result;
-						$list[] = array('property_id' =>$row->property_id,'property_name' =>$row->property_name,'property_description' =>$row->description,'image'=>$get_result);
+						$list[] = array('property_id' =>$row->property_id,'image'=>$get_result);
 					}
 				}
 			}

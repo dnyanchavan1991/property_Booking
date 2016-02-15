@@ -17,7 +17,6 @@ class PropertyDetails extends CI_Controller {
 	}
 	public function getRoomDetail() {
 		$this->load->model ( 'PropertyModel' );
-		
 		$roomDetailInfo = $this->PropertyModel->getroomRentDetail ( $this->session->userdata ( 'propertyId' ) );
 		$propertyDetailInfo = $this->PropertyModel->getPropertyDetail ( $this->session->userdata ( 'propertyId' ) );
 		$data['propertyName']=$propertyDetailInfo->row()->propertyName;
@@ -25,7 +24,6 @@ class PropertyDetails extends CI_Controller {
 		$data['imagePath']=$propertyDetailInfo->row()->imagePath;
 		$data['way_to_reach']=$propertyDetailInfo->row()->Direction;
 		$data['rentresult']=$roomDetailInfo;
-		//echo $data['way_to_reach'];
-		$this->load->view ('contact',$data );
+		$this->load->view ( 'contact',$data );
 	}
 }

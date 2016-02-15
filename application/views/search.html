@@ -351,7 +351,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<button ng-click="togglemessagePopUp()"
 											>Send SMS</button>
 									</p>
-									<modal title="Enquiry " visible="showModal">
+									<modal title="Enquiry via mail" visible="showModal">
 									<form name="formData" ng-submit="contactToCustomer(rooms)">
 										<div class="form-group">
 											 <input type="text"
@@ -370,24 +370,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 												placeholder="Enter Phone/Mobile Number" />
 										</div>
 										<div class="form-group">
-											<input class="date form-control"
+											<input class="date"
 												name="checkIn" id="checkIn" ng-model="form.checkIn"
-												ng-init="checkIn= 'CheckIn Date'"  type="text" placeholder="CheckIn Date."
-												style="margin-left: 15px;" onfocus="this.value = '';"
+												ng-init="checkIn= 'CheckIn Date'" type="text"
+												style="width: 60%;" onfocus="this.value = '';"
 												onblur="if (this.value == '') {this.value = '';}" required>
 										</div>
 										<div class="form-group">
-											<input class="date form-control"
+											<input class="date"
 												name="checkOut" id="checkOut" ng-model="form.checkOut"
-												ng-init="checkOut= 'CheckIn Date'"  type="text" placeholder="CheckOut Date"
-												style="margin-left:15px;" onfocus="this.value = '';"
+												ng-init="checkOut= 'CheckIn Date'" type="text"
+												style="width: 60%;" onfocus="this.value = '';"
 												onblur="if (this.value == '') {this.value = '';}" required>
 										</div>
 										<div class="form-group">
 										
 											<textarea type="text" class="form-control"
 												ng-model="form.enquiry" id="enquiry" name="enquiry"
-												placeholder="Enquiry.."  required="required"></textarea>
+												placeholder="Enquiry.." required="required"></textarea>
 										</div>
 
 										<br>
