@@ -1,151 +1,189 @@
- 
+
 <html>
 <head>
 <title>Vacation - Lets Go...</title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Property booking website for easy and fast vacation rental " />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
-		function hideURLbar(){ window.scrollTo(0,1); } </script>
+<meta name="keywords"
+	content="Property booking website for easy and fast vacation rental " />
+<script type="application/x-javascript">
+	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); } 
+</script>
 <!-- //for-mobile-apps -->
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css"
+	media="all" />
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 <link href="css/chocolat.css" rel="stylesheet">
 <link rel="stylesheet" href="css/jquery-ui.css" />
 <!-- js -->
-<link href='http://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
-		<link href='http://fonts.googleapis.com/css?family=Philosopher' rel='stylesheet' type='text/css'>
-		
-		
-		<link rel="stylesheet" href="css/bootstrap.min.css"/>
-		<link rel="stylesheet" href="css/font-awesome.min.css"/>
-	
-		<link rel="stylesheet" href="css/popup_style.css" />
-		<script src="js/vendor/modernizr-2.6.2.min.js"></script>
-		<script src="js/vendor/jquery-1.10.2.min.js"></script>
-		<script src="js/vendor/bootstrap.min.js"></script>
+<link href='http://fonts.googleapis.com/css?family=Bree+Serif'
+	rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Philosopher'
+	rel='stylesheet' type='text/css'>
+
+
+<link rel="stylesheet" href="css/bootstrap.min.css" />
+<link rel="stylesheet" href="css/font-awesome.min.css" />
+
+<link rel="stylesheet" href="css/popup_style.css" />
+<script src="js/vendor/modernizr-2.6.2.min.js"></script>
+<script src="js/vendor/jquery-1.10.2.min.js"></script>
+<script src="js/vendor/bootstrap.min.js"></script>
 
 <script src="js/jquery-1.11.1.min.js"></script>
-	<script src="js/jquery-ui.js"></script>
-							  <script>
-									  $(function() {
-									    $( "#datepicker,#checkIn,#checkOut" ).datepicker({ dateFormat: 'dd-mm-yy' });
-									  });
-							  </script>
+<script src="js/jquery-ui.js"></script>
+<script>
+	$(function() {
+		$("#datepicker,#checkIn,#checkOut").datepicker({
+			dateFormat : 'dd-mm-yy'
+		});
+	});
+</script>
 <!-- //js -->
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
-	<!-- start-smoth-scrolling -->
-		<script type="text/javascript" src="js/move-top.js"></script>
-		<script type="text/javascript" src="js/easing.js"></script>
-		<script type="text/javascript" src="js/angular.min.js"></script>
-		<script type="text/javascript" src="js/controller/landingPageController.js"></script>
-		<script type="text/javascript">
-			jQuery(document).ready(function($) {
-				
-				$(".scroll").click(function(event){		
-					event.preventDefault();
-					$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
-				});
-			});
-		</script>
-	<!-- start-smoth-scrolling -->
+<link
+	href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic'
+	rel='stylesheet' type='text/css'>
+<!-- start-smoth-scrolling -->
+<script type="text/javascript" src="js/move-top.js"></script>
+<script type="text/javascript" src="js/easing.js"></script>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript"
+	src="js/controller/landingPageController.js"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+
+		$(".scroll").click(function(event) {
+			event.preventDefault();
+			$('html,body').animate({
+				scrollTop : $(this.hash).offset().top
+			}, 1000);
+		});
+	});
+</script>
+<!-- start-smoth-scrolling -->
 </head>
 <body ng-app="landingPageApp" ng-controller="landingPageCntrl">
-<!-- banner -->
-<div class="banner">
-	<div class="container">
-		<div class="header-nav">
-			<!-- <div class="logo">
+	<!-- banner -->
+	<div class="banner">
+		<div class="container">
+			<div class="header-nav">
+				<!-- <div class="logo">
 				<h1><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Classic Hotel</a></h1>
 			</div>-->
-			<div class="navigation">
-				<span class="menu"><img src="images/menu.png" alt=""/></span>
-				<nav class="cl-effect-11" id="cl-effect-11">
-					<ul class="nav1">
-						<li><a class="active" href="Index1" data-hover="HOME">HOME</a></li>
-						<li><a href="About" data-hover="ABOUT">ABOUT</a></li>
-						<li><a href="Typography" data-hover="SERVICES">SERVICES</a></li>
-						<li><a href="Booking" data-hover="BOOKING">BOOKING</a></li>
-						<li><a href="Contact" data-hover="CONTACT">CONTACT</a></li>
-						<li><a href="Registration" data-hover="REGISTRATION">REGISTRATION</a></li>					  	
-				       <li><button id='modal-launcher' class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login-modal">
-					  LOGIN</button></li>
-                       </ul>
-					  	
-				</nav>
-				
-				<!-- script for menu -->
-					<script> 
-						$( "span.menu" ).click(function() {
-						$( "ul.nav1" ).slideToggle( 300, function() {
-						 // Animation complete.
-						});
+				<div class="navigation">
+					<span class="menu"><img src="images/menu.png" alt="" /></span>
+					<nav class="cl-effect-11" id="cl-effect-11">
+						<ul class="nav1">
+							<li><a class="active" href="Index1" data-hover="HOME">HOME</a></li>
+							<li><a href="About" data-hover="ABOUT">ABOUT</a></li>
+							<li><a href="Typography" data-hover="SERVICES">SERVICES</a></li>
+							<li><a href="Booking" data-hover="BOOKING">BOOKING</a></li>
+							<li><a href="Contact" data-hover="CONTACT">CONTACT</a></li>
+							<li><a href="Registration" data-hover="REGISTRATION">REGISTRATION</a></li>
+							<li><button id='modal-launcher'
+									class="btn btn-primary btn-lg" data-toggle="modal"
+									data-target="#login-modal">LOGIN</button></li>
+						</ul>
+
+					</nav>
+
+					<!-- script for menu -->
+					<script>
+						$("span.menu").click(function() {
+							$("ul.nav1").slideToggle(300, function() {
+								// Animation complete.
+							});
 						});
 					</script>
-				<!-- //script for menu -->
-				
+					<!-- //script for menu -->
+
+				</div>
+				<div class="social-icons">
+					<ul>
+						<li><a href="#" class="f1"></a></li>
+						<li><a href="#" class="f2"></a></li>
+						<li><a href="#" class="f3"></a></li>
+						<li><a href="#" class="f4"></a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
 			</div>
-			<div class="social-icons">
-				<ul>
-					<li><a href="#" class="f1"></a></li>
-					<li><a href="#" class="f2"></a></li>
-					<li><a href="#" class="f3"></a></li>
-					<li><a href="#" class="f4"></a></li>
-				</ul>
-			</div>
-			<div class="clearfix"></div>
-		</div>
-		<form method="post" action="RoomAvailability">
-		
-		<div class="banner-info">
-			<script src="js/responsiveslides.min.js"></script>
-			<script>
-									// You can also use "$(window).load(function() {"
-									$(function () {
-									 // Slideshow 4
-									$("#slider3").responsiveSlides({
-										auto: true,
-										pager: false,
-										nav: false,
-										speed: 500,
-										namespace: "callbacks",
-										before: function () {
-									$('.events').append("<li>before event fired.</li>");
-									},
-									after: function () {
-										$('.events').append("<li>after event fired.</li>");
-										}
-										});
-										});
-			</script>
-		
-		</div> 
-		
-	<div class="banner-bottom" ng-class="(displayFlag  == true ) ? 'banner-bottom' : 'banner-bottom-expand'" >
-	<table class="new-table">
-		<tr>
-			<td>
-				<input type = "text" id="inpDestination" name="inpDestination" ng-model="inputDestination" ng-click="expandFilterOptions()" class="inputDestination" placeholder="Where do you want to go?" ng-class="(displayFlag  == true ) ? 'inputDestination' : 'inputDestination-expand'"/>
-			</td>
-			<td>
-					<select class="sel propertyType" ng-model="selectAccomodationType"  id="propertyType" name="propertyType" ng-init="selectAccomodationType=accomodationType[0]"  
-							ng-options="accomodation as accomodation.label for accomodation in accomodationType track by accomodation.value " 
-							ng-show = "displayFlag"></select>
-			</td>
-			<td>
-					<select class="sel" ng-model="selectGuestHeadCount" id="guestCount" name="guestCount" ng-init="selectGuestHeadCount=guestHeadCount[0] " ng-options="option as option for option in guestHeadCount " ng-show = "displayFlag" style=" padding: 0.5em; margin: 0em; border:0px"}></select>
-			</td>
-			<td>
-					<input class="date" name="checkIn" readonly id="checkIn" ng-model="checkInDate" ng-init="checkInDate= 'CheckIn'" type="text"  style="width:8em; border:0px;  padding: 0.5em; margin: 0.5em; " onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required ng-show = "displayFlag"/>
-			</td>
-			<td>
-					<input class="date" name="checkOut" readonly id="checkOut" type="text" ng-model="checkOutDate" ng-init="checkOutDate= 'CheckOut'" style="width:8em; border:0px;  padding: 0.5em; margin: 0em;" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required="" ng-show = "displayFlag"/>
-			</td>
-					<td><div class="search"><input type="submit"  name="submit" value="search"></div></td>
-		</tr>
-	</table>
-	  		   <!-- 	<div class="book-pag-frm">
+			<form method="post" action="RoomAvailability">
+
+				<div class="banner-info">
+					<script src="js/responsiveslides.min.js"></script>
+					<script>
+						// You can also use "$(window).load(function() {"
+						$(function() {
+							// Slideshow 4
+							$("#slider3")
+									.responsiveSlides(
+											{
+												auto : true,
+												pager : false,
+												nav : false,
+												speed : 500,
+												namespace : "callbacks",
+												before : function() {
+													$('.events')
+															.append(
+																	"<li>before event fired.</li>");
+												},
+												after : function() {
+													$('.events')
+															.append(
+																	"<li>after event fired.</li>");
+												}
+											});
+						});
+					</script>
+
+				</div>
+
+				<div class="banner-bottom"
+					ng-class="(displayFlag  == true ) ? 'banner-bottom' : 'banner-bottom-expand'">
+					<table class="new-table">
+						<tr>
+							<td><input type="text" id="inpDestination"
+								name="inpDestination" ng-model="inputDestination"
+								ng-click="expandFilterOptions()" class="inputDestination"
+								placeholder="Where do you want to go?"
+								ng-class="(displayFlag  == true ) ? 'inputDestination' : 'inputDestination-expand'" />
+							</td>
+							<td><select class="sel propertyType"
+								ng-model="selectAccomodationType" id="propertyType"
+								name="propertyType"
+								ng-init="selectAccomodationType=accomodationType[0]"
+								ng-options="accomodation as accomodation.label for accomodation in accomodationType track by accomodation.value "
+								ng-show="displayFlag"></select></td>
+							<td><select class="sel" ng-model="selectGuestHeadCount"
+								id="guestCount" name="guestCount"
+								ng-init="selectGuestHeadCount=guestHeadCount[0] "
+								ng-options="option as option for option in guestHeadCount "
+								ng-show="displayFlag"
+								style="padding: 0.5em; margin: 0em; border: 0px"}></select></td>
+							<td><input class="date" name="checkIn" readonly id="checkIn"
+								ng-model="checkInDate" ng-init="checkInDate= 'CheckIn'"
+								type="text"
+								style="width: 8em; border: 0px; padding: 0.5em; margin: 0.5em;"
+								onfocus="this.value = '';"
+								onblur="if (this.value == '') {this.value = '';}" required
+								ng-show="displayFlag" /></td>
+							<td><input class="date" name="checkOut" readonly
+								id="checkOut" type="text" ng-model="checkOutDate"
+								ng-init="checkOutDate= 'CheckOut'"
+								style="width: 8em; border: 0px; padding: 0.5em; margin: 0em;"
+								onfocus="this.value = '';"
+								onblur="if (this.value == '') {this.value = '';}" required=""
+								ng-show="displayFlag" /></td>
+							<td><div class="search">
+									<input type="submit" name="submit" value="search">
+								</div></td>
+						</tr>
+					</table>
+					<!-- 	<div class="book-pag-frm">
 				<input type = "text" id="inpDestination" name="inpDestination" ng-model="inputDestination" ng-init="inputDestination='Where do you want to go?'" style="width:70%;"/> 
 			</div>
 			<div class="droop-down">
@@ -178,153 +216,168 @@
 				</div>
 		
 		 -->
-		<div class="clearfix"></div>
-							
-			
-			<div class="clearfix"></div>
-		</div>
-		
-	</div>
-	
-	</form>
-	
-	<!--</div>-->
-</div>
-<!-- //banner -->
-<!-- services -->
-<div class="feature-serv">
-	<div class="container">
-		<h3 class="tittle">FEATURED SERVICES</h3>
-		<div class="services-bottom-grids">
-			<div class="row">
-				<div class="col-md-4 services-bottom-grid">
-					<div class="services-bottom-grd-left wel-grid">
-						<div class="time-service">
-							<figure class="icon">
-								<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-							</figure>
-						</div>
-					</div>
-					<div class="services-bottom-grd-right">
-						<h4>Quick Property Search</h4>
-						<p>Provide your travel destination, tentative travel dates and total travelers...sit back.... and choose from 
-						our best deals for you</p>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-				<div class="col-md-4 services-bottom-grid">
-					<div class="services-bottom-grd-left wel-grid btm-gre">
-						<div class="time-service">
-							<figure class="icon">
-								<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-							</figure>
-						</div>
-					</div>
-					<div class="services-bottom-grd-right">
-						<h4>Notification</h4>
-						<p>On every property enquiry and booking, we keep both Customer and Property owner informed with
-						real time SMS feature. An Email is always accompanied by the SMS.</p>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-				<div class="col-md-4 services-bottom-grid">
-					<div class="services-bottom-grd-left wel-grid">
-						<div class="time-service">
-							<figure class="icon">
-								<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-							</figure>
-						</div>
-					</div>
-					<div class="services-bottom-grd-right">
-						<h4>Secured Payment</h4>
-						<p>We are 100% secure when it is related to payment. We have tied up with the best payment gateway, <a href="http://www.payumoney.com">payUMoney.com</a> 
-						</p>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-4 services-bottom-grid">
-					<div class="services-bottom-grd-left wel-grid btm-gre">
-						<div class="time-service">
-							<figure class="icon">
-								<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
-							</figure>
-						</div>
-					</div>
-					<div class="services-bottom-grd-right">
-						<h4>Locate on Google MAP</h4>
-						<p>We provide excellent feature of locating any property on google map, which will give you real feel of the location and distance of the property from the Travel origin place.
-						</p>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-				<div class="col-md-4 services-bottom-grid">
-					<div class="services-bottom-grd-left wel-grid">
-						<div class="time-service">
-							<figure class="icon">
-								<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-							</figure>
-						</div>
-					</div>
-					<div class="services-bottom-grd-right">
-						<h4>Reviews</h4>
-						<p>We trust on "Self Experience is the Best Experience".. <br/>Visit properties and provide your reviews to help future travelers book their properties conveniently.</p>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-			</div>	
-				
-		</div>
-	</div>
-</div>
-<!-- //services -->
-  
-<!-- facilities -->
-<div class="facilities">
-	<div class="container">
-		<h3 class="tittle">FACILITIES</h3>
-		<div class="facilities-grids">
-			<div class="col-md-6 facilities-grid">
-				<img src="images/222.jpg" alt="" />
-			</div>
-			<div class="col-md-6 facilities-grid-left">
-				<div class="fac-grids">
-					<div class="facilities-left">
-						<img src="images/111.jpg" alt="" />
-					</div>
-					<div class="facilities-right">
-						<img src="images/333.jpg" alt="" />
-					</div>
+					<div class="clearfix"></div>
+
+
 					<div class="clearfix"></div>
 				</div>
-				<div class="fac-rig-btm">
-					<img src="images/444.jpg" alt="" />
+		</div>
+
+		</form>
+
+		<!--</div>-->
+	</div>
+	<!-- //banner -->
+	<!-- services -->
+	<div class="feature-serv">
+		<div class="container">
+			<h3 class="tittle">FEATURED SERVICES</h3>
+			<div class="services-bottom-grids">
+				<div class="row">
+					<div class="col-md-4 services-bottom-grid">
+						<div class="services-bottom-grd-left wel-grid">
+							<div class="time-service">
+								<figure class="icon">
+									<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+								</figure>
+							</div>
+						</div>
+						<div class="services-bottom-grd-right">
+							<h4>Quick Property Search</h4>
+							<p>Provide your travel destination, tentative travel dates
+								and total travelers...sit back.... and choose from our best
+								deals for you</p>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="col-md-4 services-bottom-grid">
+						<div class="services-bottom-grd-left wel-grid btm-gre">
+							<div class="time-service">
+								<figure class="icon">
+									<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+								</figure>
+							</div>
+						</div>
+						<div class="services-bottom-grd-right">
+							<h4>Notification</h4>
+							<p>On every property enquiry and booking, we keep both
+								Customer and Property owner informed with real time SMS feature.
+								An Email is always accompanied by the SMS.</p>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="col-md-4 services-bottom-grid">
+						<div class="services-bottom-grd-left wel-grid">
+							<div class="time-service">
+								<figure class="icon">
+									<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+								</figure>
+							</div>
+						</div>
+						<div class="services-bottom-grd-right">
+							<h4>Secured Payment</h4>
+							<p>
+								We are 100% secure when it is related to payment. We have tied
+								up with the best payment gateway, <a
+									href="http://www.payumoney.com">payUMoney.com</a>
+							</p>
+						</div>
+						<div class="clearfix"></div>
+					</div>
 				</div>
+				<div class="row">
+					<div class="col-md-4 services-bottom-grid">
+						<div class="services-bottom-grd-left wel-grid btm-gre">
+							<div class="time-service">
+								<figure class="icon">
+									<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+								</figure>
+							</div>
+						</div>
+						<div class="services-bottom-grd-right">
+							<h4>Locate on Google MAP</h4>
+							<p>We provide excellent feature of locating any property on
+								google map, which will give you real feel of the location and
+								distance of the property from the Travel origin place.</p>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="col-md-4 services-bottom-grid">
+						<div class="services-bottom-grd-left wel-grid">
+							<div class="time-service">
+								<figure class="icon">
+									<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+								</figure>
+							</div>
+						</div>
+						<div class="services-bottom-grd-right">
+							<h4>Reviews</h4>
+							<p>
+								We trust on "Self Experience is the Best Experience".. <br />Visit
+								properties and provide your reviews to help future travelers
+								book their properties conveniently.
+							</p>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+
 			</div>
-			<div class="clearfix"></div>
 		</div>
 	</div>
-</div>
-<!-- //facilities -->
+	<!-- //services -->
 
-<!-- gallery -->
-<div class="gallery" id="gallery" ng-controller="galleryImgCtrl" data-ng-init="galleryImgFetch()" >
-	<div class="container">
-		<h3 class="tittle">GALLERY</h3>
-			<div class="gallery-bottom"  ng-repeat="imageData in imageSrc" >
-					<div class="col-md-4 gal-grid" >
-						<div class="view view-fifth">
-							<a href="" ng-click="getPropertyDetails(imageData.property_id)" class="b-link-stripe b-animate-go  thickbox"  title="Image Title"><img src="{{imageData.image}}" alt="" class="img-responsive">
-								<div class="mask">
-									<h4>CLASSIC HOTEL</h4>
-									<p>A wonderful serenity has taken possession of my entire soul.</p>
-									<a href=""ng-click="getPropertyDetails(imageData.property_id)"><button>More</button></a>
-								</div>
-							</a>
+	<!-- facilities -->
+	<div class="facilities">
+		<div class="container">
+			<h3 class="tittle">FACILITIES</h3>
+			<div class="facilities-grids">
+				<div class="col-md-6 facilities-grid">
+					<img src="images/222.jpg" alt="" />
+				</div>
+				<div class="col-md-6 facilities-grid-left">
+					<div class="fac-grids">
+						<div class="facilities-left">
+							<img src="images/111.jpg" alt="" />
 						</div>
+						<div class="facilities-right">
+							<img src="images/333.jpg" alt="" />
+						</div>
+						<div class="clearfix"></div>
 					</div>
-				<!-- 	<div class="col-md-4 gal-grid">
+					<div class="fac-rig-btm">
+						<img src="images/444.jpg" alt="" />
+					</div>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+	<!-- //facilities -->
+
+	<!-- gallery -->
+	<div class="gallery" id="gallery" ng-controller="galleryImgCtrl"
+		data-ng-init="galleryImgFetch()">
+		<div class="container">
+			<h3 class="tittle">GALLERY</h3>
+			<div class="gallery-bottom col-md-4" style="display: inline-block"
+				ng-repeat="imageData in imageSrc">
+				<div class=" gal-grid">
+					<div class="view view-fifth">
+						<a href="" ng-click="getPropertyDetails(imageData.property_id)"
+							class="b-link-stripe b-animate-go thickbox"
+							title="{{imageData.property_name}}"
+							style="text-decoration: none;"> <img
+							ng-src="{{imageData.image}}" alt="" class="img-responsive">
+							<div class="mask">
+								<h4>{{imageData.property_name}}</h4>
+								<p>{{imageData.property_description | limitTo:
+									45}}{{imageData.property_description.length > 45 ? '...' : ''}}</p>
+								<a href="" ng-click="getPropertyDetails(imageData.property_id)"><button>More</button></a>
+							</div>
+						</a>
+					</div>
+					<!-- 	<div class="col-md-4 gal-grid">
 						<div class="view view-fifth">
 						   <a href="images/bbb.jpg" class="b-link-stripe b-animate-go  thickbox"  title="Image Title"><img src="images/bbb.jpg" alt="" class="img-responsive">
 								<div class="mask">
@@ -413,190 +466,209 @@
 							</a>
 						</div>
 					</div>-->
-					<div class="clearfix"> </div>
-			</div>
-				<div>
-					Today's Unique Visitors : <span id="visitCount"></span>
+					<div class="clearfix"></div>
 				</div>
-				<script src="js/jquery.chocolat.js"></script>
-			
-			<!--light-box-files -->
-			<script type="text/javascript">
-			$(function() {
-				$('.gallery a').Chocolat();
-			});
-			</script>
 
-	</div>
-</div>
-<!-- //gallery -->
-<!--footer-->
-	<div class="footer">
-		<div class="container">				 	
-			<div class="col-md-3 ftr_navi ftr">
-				<h3>NAVIGATION</h3>
-				<ul>
-					<li><a href="Index1">Home</a></li>
-					<li><a href="About">About</a></li>
-					<li><a href="Typography">Services</a></li>						
-					<li><a href="Booking">Booking</a></li>
-					<li><a href="Contact">Contact</a></li>
-				</ul>
+				<script src="js/jquery.chocolat.js"></script>
+
+				<!--light-box-files -->
+				<script type="text/javascript">
+					$(function() {
+						$('.gallery a').Chocolat();
+					});
+				</script>
+
 			</div>
-			<div class="col-md-3 ftr_navi ftr">
-					 <h3>FACILITIES</h3>
-					 <ul>
-						 <li><a href="#">Quick Property Search</a></li>
-						 <li><a href="#">Online Payment</a></li>
-						 <li><a href="#">Reviews</a></li>						
-						 <li><a href="#">Google Map</a></li>
-					 </ul>
+			<div>
+				Today's Unique Visitors : <span id="visitCount"></span>
 			</div>
-			<div class="col-md-3 ftr_navi ftr">
-				<h3>GET IN TOUCH</h3>
-				<ul>
-					<li>Address 1</li>
-					<li>Address 2</li>
-					<li>Contact Number</li>
-				</ul>
-			</div>
-			<div class="col-md-3 ftr-logo">
-				
-				<ul>
-					<li><a href="#" class="f1"> </a></li>
-					<li><a href="#" class="f2"> </a></li>
-					<li><a href="#" class="f3"> </a></li>
-				</ul>
-			</div>
-			<div class="clearfix"> </div>
 		</div>
-	</div>
-<!--footer-->
-<!-- copy -->
-<div class="copy-right">
-	<div class="container">
-			<p>
-				&copy; 2015 All Rights Reserved | Design by <a
-					href="http://www.agilesoftsol.com/">Agile Technologies</a>
-			</p>
-	</div>
-</div>
-<!-- //copy -->
-<!-- for bootstrap working -->
-	<script src="js/bootstrap.js"></script>
-<!-- //for bootstrap working -->
-<!-- smooth scrolling -->
-	<script type="text/javascript">
-		$(document).ready(function() {
-	
-			var response = '';
-			$.ajax({ type: "GET",   
-			         url: "http://ipinfo.io/json",   
-			         async: false,
-			         success : function(text)
-			         { //alert($.parseJSON(text));
-			             response = text;
-			             $.ajax({ type: "post",   
-					         url: "VisitorInfo/insertVisitorData",  
-					         datatype:'json',
-					         data:response,
-					         async: false,
-					         success : function(text)					         
-						         { 
-						           	$.ajax({ 
-										type: "post",   
-									    url: "VisitorInfo/getVisitorCount",  		         
-								         async: false,
-								         success : function(response)
-								         { 								        	
-								        	var parseResp = $.parseJSON(response);
-								        	$("#visitCount").html(parseResp.count);
-								            
-								         }
-									});
-						         }
-					        
-					         });
-					         }
-					
+		<!-- //gallery -->
+		<!--footer-->
+		<div class="footer">
+			<div class="container">
+				<div class="col-md-3 ftr_navi ftr">
+					<h3>NAVIGATION</h3>
+					<ul>
+						<li><a href="Index1">Home</a></li>
+						<li><a href="About">About</a></li>
+						<li><a href="Typography">Services</a></li>
+						<li><a href="Booking">Booking</a></li>
+						<li><a href="Contact">Contact</a></li>
+					</ul>
+				</div>
+				<div class="col-md-3 ftr_navi ftr">
+					<h3>FACILITIES</h3>
+					<ul>
+						<li><a href="#">Quick Property Search</a></li>
+						<li><a href="#">Online Payment</a></li>
+						<li><a href="#">Reviews</a></li>
+						<li><a href="#">Google Map</a></li>
+					</ul>
+				</div>
+				<div class="col-md-3 ftr_navi ftr">
+					<h3>GET IN TOUCH</h3>
+					<ul>
+						<li>Address 1</li>
+						<li>Address 2</li>
+						<li>Contact Number</li>
+					</ul>
+				</div>
+				<div class="col-md-3 ftr-logo">
+
+					<ul>
+						<li><a href="#" class="f1"> </a></li>
+						<li><a href="#" class="f2"> </a></li>
+						<li><a href="#" class="f3"> </a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<!--footer-->
+		<!-- copy -->
+		<div class="copy-right">
+			<div class="container">
+				<p>
+					&copy; 2015 All Rights Reserved | Design by <a
+						href="http://www.agilesoftsol.com/">Agile Technologies</a>
+				</p>
+			</div>
+		</div>
+		<!-- //copy -->
+		<!-- for bootstrap working -->
+		<script src="js/bootstrap.js"></script>
+		<!-- //for bootstrap working -->
+		<!-- smooth scrolling -->
+		<script type="text/javascript">
+			$(document).ready(function() {
+
+				var response = '';
+				$.ajax({
+					type : "GET",
+					url : "http://ipinfo.io/json",
+					async : false,
+					success : function(text) { //alert($.parseJSON(text));
+						response = text;
+						$.ajax({
+							type : "post",
+							url : "VisitorInfo/insertVisitorData",
+							datatype : 'json',
+							data : response,
+							async : false,
+							success : function(text) {
+								$.ajax({
+									type : "post",
+									url : "VisitorInfo/getVisitorCount",
+									async : false,
+									success : function(response) {
+										var parseResp = $.parseJSON(response);
+										$("#visitCount").html(parseResp.count);
+
+									}
+								});
+							}
+
+						});
+					}
+
+				});
+
+				$().UItoTop({
+					easingType : 'easeOutQuart'
+				});
 			});
-			
-							
-		$().UItoTop({ easingType: 'easeOutQuart' });
-		});
-	</script>
-	<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
-<!-- //smooth scrolling -->
+		</script>
+		<a href="#" id="toTop" style="display: block;"> <span
+			id="toTopHover" style="opacity: 1;"> </span></a>
+		<!-- //smooth scrolling -->
 </body>
 </html>
-<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog"
+	aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
-    	<div class="modal-content">
-      		<div class="modal-header login_modal_header">
-        		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        		<h2 class="modal-title" id="myModalLabel">Login</h2>
-      		</div>
-      		<div class="modal-body login-modal">
-      			
-      			<div class="clearfix"></div>
-      			<div id='social-icons-conatainer'>
-	        		<div class='modal-body-left'ng-controller="loginCtrl">
-	        		<h3>Admin</h3>
-	        			<div class="form-group">
-		              		<input type="text" id="username" placeholder="Username" ng-model="form.username" class="form-control login-field">
-		              		<i class="fa fa-user login-field-icon"></i>
-		            	</div>
-		
-		            	<div class="form-group">
-		            	  	<input type="password" id="login-pass" placeholder="Password" ng-model="form.password" class="form-control login-field">
-		              		<i class="fa fa-lock login-field-icon"></i>
-		              		<input type="hidden" name="acces_type" value="admin">
-		            	</div>
-		                 <div class="form-group">
-		            	  	<input type="hidden" name="access_type" id="access_type"  ng-model="form.access_type" value="admin" ng_init="form.access_type='admin'" class="form-control login-field">
-		              		
-		              	 	</div>
-		            	<button ng-click="authenticateAdmin()"  class="btn btn-success modal-login-btn">Login</button>
-		            	<a href="#" class="login-link text-center">Lost your password?</a>
-		            	<a href="Registration" class="login-link text-center">New User? Register!</a>
-	        		</div>
-	        	
-	        		<div class='modal-body-right' ng-controller="loginCtrl">
-	        			  <!--<div class="modal-social-icons">
+		<div class="modal-content">
+			<div class="modal-header login_modal_header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true">&times;</button>
+				<h2 class="modal-title" id="myModalLabel">Login</h2>
+			</div>
+			<div class="modal-body login-modal">
+
+				<div class="clearfix"></div>
+				<div id='social-icons-conatainer'>
+					<div class='modal-body-left' ng-controller="loginCtrl">
+						<h3>Admin</h3>
+						<div class="form-group">
+							<input type="text" id="username" placeholder="Username"
+								ng-model="form.username" class="form-control login-field">
+							<i class="fa fa-user login-field-icon"></i>
+						</div>
+
+						<div class="form-group">
+							<input type="password" id="login-pass" placeholder="Password"
+								ng-model="form.password" class="form-control login-field">
+							<i class="fa fa-lock login-field-icon"></i> <input type="hidden"
+								name="acces_type" value="admin">
+						</div>
+						<div class="form-group">
+							<input type="hidden" name="access_type" id="access_type"
+								ng-model="form.access_type" value="admin"
+								ng_init="form.access_type='admin'"
+								class="form-control login-field">
+
+						</div>
+						<button ng-click="authenticateAdmin()"
+							class="btn btn-success modal-login-btn">Login</button>
+						<a href="#" class="login-link text-center">Lost your password?</a>
+						<a href="Registration" class="login-link text-center">New
+							User? Register!</a>
+					</div>
+
+					<div class='modal-body-right' ng-controller="loginCtrl">
+						<!--<div class="modal-social-icons">
 	        				<a href='#' class="btn btn-default facebook"> <i class="fa fa-facebook modal-icons"></i> Sign In with Facebook </a>
 	        				<a href='#' class="btn btn-default twitter"> <i class="fa fa-twitter modal-icons"></i> Sign In with Twitter </a>
 	        				<a href='#' class="btn btn-default google"> <i class="fa fa-google-plus modal-icons"></i> Sign In with Google </a>
 	        				<a href='#' class="btn btn-default linkedin"> <i class="fa fa-linkedin modal-icons"></i> Sign In with Linkedin </a>
 	        			
 	        			</div> -->
-	        			<h3>User</h3>
-	        			<div class="form-group">
-		              		<input type="text" id="username" placeholder="Username" ng-model="form.username" value="" class="form-control login-field">
-		              		<i class="fa fa-user login-field-icon"></i>
-		            	</div>
-		
-		            	<div class="form-group">
-		            	  	<input type="password" id="login-pass" placeholder="Password" ng-model="form.password" value="" class="form-control login-field">
-		              		<i class="fa fa-lock login-field-icon"></i>
-		              	 	</div>
-		              	 		<div class="form-group">
-		            	  	<input type="hidden" name="access_type" id="access_type" placeholder="Password" ng-model="form.access_type" value="user" ng_init="form.access_type='user'" class="form-control login-field">
-		              		
-		              	 	</div>
-		
-		            <button ng-click="authenticate()" class="btn btn-success modal-login-btn">Login</button>
-		            	<a href="#" class="login-link text-center">Lost your password?</a>
-		                <a href="Registration" class="login-link text-center">New User? Register!</a>
-	        		</div>	
-	        		<div id='center-line'> OR </div>
-	        	</div>																												
-        		<div class="clearfix"></div>
-        		
-        		
-      		</div>
-      		<div class="clearfix"></div>
-      		<div class="modal-footer login_modal_footer">
-      		</div>
-    	</div>
-  	</div>
+						<h3>User</h3>
+						<div class="form-group">
+							<input type="text" id="username" placeholder="Username"
+								ng-model="form.username" value=""
+								class="form-control login-field"> <i
+								class="fa fa-user login-field-icon"></i>
+						</div>
+
+						<div class="form-group">
+							<input type="password" id="login-pass" placeholder="Password"
+								ng-model="form.password" value=""
+								class="form-control login-field"> <i
+								class="fa fa-lock login-field-icon"></i>
+						</div>
+						<div class="form-group">
+							<input type="hidden" name="access_type" id="access_type"
+								placeholder="Password" ng-model="form.access_type" value="user"
+								ng_init="form.access_type='user'"
+								class="form-control login-field">
+
+						</div>
+
+						<button ng-click="authenticate()"
+							class="btn btn-success modal-login-btn">Login</button>
+						<a href="#" class="login-link text-center">Lost your password?</a>
+						<a href="Registration" class="login-link text-center">New
+							User? Register!</a>
+					</div>
+					<div id='center-line'>OR</div>
+				</div>
+				<div class="clearfix"></div>
+
+
+			</div>
+			<div class="clearfix"></div>
+			<div class="modal-footer login_modal_footer"></div>
+		</div>
+	</div>
 </div>
