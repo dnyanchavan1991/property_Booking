@@ -259,15 +259,24 @@ public function checkRoomAvailabilty($searchArray, $filterData) {
 			
 		$registrationTable='registration';
 		$this->load->database ();
-		$this->db->select('count(*) as count');
+		$this->db->select('count(*) as user_count,user_id');
 		$this->db->from($registrationTable);
 		$this->db->where('user_name',$username);
 		$this->db->where('password',$password);
 		$this->db->where('access_type',$accestype);
 		$query=$this->db->get();
 		
-		return $query->row()->count;
+		return $query->row();
 	
+	}
+	
+	public function getUser($user)
+	{
+		$this->db->select("CONCAT(first_name,' ',last_name) as name, email_address");
+		$this->db->from("registration");
+		$this->db->where('user_id',$user);
+		$query=$this->db->get();
+		return $query->row();
 	}
 	/*this function inserts username,pass and datetime  in login table*/
 	public function insertLoginData ($loginData)
@@ -312,6 +321,14 @@ public function checkRoomAvailabilty($searchArray, $filterData) {
 		$query=$this->db->get();
 		
 		return $query->result();
-		
+	}
+	
+	/* submit review */
+	public function submitReview($reviewArray)
+	{
+		$this->load->database ();
+		$this->db->insert('customer_reviews', $reviewArray);
+		$lastId = $this->db->insert_id();
+		return $lastId;
 	}
 }

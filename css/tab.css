@@ -53,3 +53,43 @@ tabs {
         .tab.active {
             display:block;
         }
+		
+/*--star rating--*/
+.starRatingReview:not(old){
+  display        : inline-block;
+  width          : 7.5em;
+  height         : 1.5em;
+  overflow       : hidden;
+  vertical-align : bottom;
+}
+
+.starRatingReview:not(old) > input{
+  margin-right : -100%;
+  opacity      : 0;
+}
+
+.starRatingReview:not(old) > label{
+  display         : block;
+  float           : right;
+  position        : relative;
+  background      : url('../images/blank_rate.png');
+  background-size : contain;
+}
+
+.starRatingReview:not(old) > label:before{
+  content         : '';
+  display         : block;
+  width           : 1.5em;
+  height          : 1.5em;
+  background      : url('../images/star_rate.png');
+  background-size : contain;
+  opacity         : 0;
+  transition      : opacity 0.2s linear;
+}
+
+.starRatingReview:not(old) > label:hover:before,
+.starRatingReview:not(old) > label:hover ~ label:before,
+.starRatingReview:not(:hover) > :checked ~ label:before{
+  opacity : 1;
+}
+/*--star rating end--*/

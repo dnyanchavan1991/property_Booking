@@ -50,12 +50,11 @@ app.controller('loginCtrl', function ($scope,$http) {
 	          
 	         })
 	          .success(function(data) {
-	        	
-	        	  if(data.count==0){
-	        		  alert('Please Enter Valid Username & Password.');
+				  if(data.count==0){
+					  alert('Please Enter Valid Username & Password.');
 	        	  }
 	        		  else{
-	        			  function WriteCookie()
+						  function WriteCookie()
 	        	            {
 	        	             
 	        	               cookievalue= escape($scope.form.username) + ";";

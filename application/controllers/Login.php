@@ -16,8 +16,11 @@ class Login extends CI_Controller {
 		$password=$post->password;
 		$accesstype=$post->access_type;
 		
-		$count=$this->PropertyModel->authenticate($username,$password,$accesstype);
-		if($count==1){
+		$validate = $this->PropertyModel->authenticate($username,$password,$accesstype);
+		$user_id = $validate->user_id;
+		$user_count = $validate->user_count;
+		if($user_count == 1)
+		{
 			$loginDetailsArray=array(
 				'user_name'=>$username,
 			    'password'=>$password,
@@ -25,10 +28,11 @@ class Login extends CI_Controller {
 					
 			);
 			$this->PropertyModel->insertLoginData ($loginDetailsArray);
+			$this->session->set_userdata('user_id', $user_id);
 			$this->session->set_userdata('user_name', $username);
 			$this->session->set_userdata('access_type', $accesstype);
 		}
-		$response=array('count'=>$count);
+		$response=array('count'=>$user_count);
 		echo json_encode($response);
 			
 	}

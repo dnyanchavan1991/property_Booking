@@ -35,9 +35,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="js/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="js/angular.min.js"></script>
 
-<script type="text/javascript"
-	src="js/controller/getRoomDetailController.js"></script>
-
+<script type="text/javascript" src="js/controller/getRoomDetailController.js"></script>
 <!-- //js -->
 <link
 	href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic'
@@ -194,14 +192,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div>
 						<div class="tab contact-form" id="tab7">
 							<?php //echo $way_to_reach; ?>
-							<div class="contact-form">
-								<form>
-									<input type="text" placeholder="Name" required>
-									<input type="text" placeholder="Email" required>
+							<div class="contact-form" ng-controller="reviewCtrl">
+								<form method="post" action="Review/sendReview/">
+									<input type="hidden" name="property_id" value = "<?php echo $property_id; ?>" >
+									<input type="text" name="customer_name" placeholder="Name" value="<?php if(isset($name)){echo $name;} else {echo "";}?>" required>
+									<input type="text" name="customer_email" placeholder="Email" value="<?php if(isset($email_address)){echo $email_address;} else {echo "";}?>" required>
 									<div class="clearfix"> </div>
-									<input style="margin-top:9px;" type="range" name="StarRate" min="1" max="5" step="1" required>
+									Rating:
+									<span class="starRatingReview">
+										<input id="rating5" type="radio" name="rating_given" value="5">
+										<label for="rating5">5</label>
+										<input id="rating4" type="radio" name="rating_given" value="4">
+										<label for="rating4">4</label>
+										<input id="rating3" type="radio" name="rating_given" value="3" checked>
+										<label for="rating3">3</label>
+										<input id="rating2" type="radio" name="rating_given" value="2">
+										<label for="rating2">2</label>
+										<input id="rating1" type="radio" name="rating_given" value="1">
+										<label for="rating1">1</label>
+									</span>
 									<div class="clearfix"> </div>
-									<textarea style="height: 110px !important;" placeholder="Content...(max 250)" required></textarea>
+									<textarea style="height: 110px !important;" name="review_given" placeholder="Content...(max 250)" required></textarea>
 									<div class="clearfix"> </div>
 									<input style="margin-top: 0px!important;margin-left:0px !important;" type="submit" value="SEND">
 								</form>

@@ -5,7 +5,7 @@ class PropertyDetails extends CI_Controller {
 		session_cache_limiter ( 'private, must-revalidate' );
 		session_cache_expire ( 60 );
 		$this->load->library ( 'session' );
-		
+		$this->load->model ( 'PropertyModel' );
 		
 	}
 	public function index() {
@@ -16,7 +16,7 @@ class PropertyDetails extends CI_Controller {
 		
 	}
 	public function getRoomDetail() {
-		$this->load->model ( 'PropertyModel' );
+		
 		$roomDetailInfo = $this->PropertyModel->getroomRentDetail ( $this->session->userdata ( 'propertyId' ) );
 		$propertyDetailInfo = $this->PropertyModel->getPropertyDetail ( $this->session->userdata ( 'propertyId' ) );
 		$data['propertyName']=$propertyDetailInfo->row()->propertyName;
@@ -24,6 +24,13 @@ class PropertyDetails extends CI_Controller {
 		$data['imagePath']=$propertyDetailInfo->row()->imagePath;
 		$data['way_to_reach']=$propertyDetailInfo->row()->Direction;
 		$data['rentresult']=$roomDetailInfo;
+		$data['property_id']=$this->session->userdata ( 'propertyId' );
+		if($this->session->userdata('user_id'))
+		{
+			$get_user = $this->PropertyModel->getUser($this->session->userdata('user_id'));
+			$data['name'] = $get_user->name;
+			$data['email_address'] = $get_user->email_address;
+		}
 		$this->load->view ( 'contact',$data );
 	}
 }

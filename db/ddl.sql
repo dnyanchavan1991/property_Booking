@@ -93,17 +93,16 @@ CREATE TABLE `customer` (
   PRIMARY KEY (`customer_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
 
-CREATE TABLE `customer_reviews` (
+CREATE TABLE IF NOT EXISTS `customer_reviews` (
   `review_id` int(11) NOT NULL AUTO_INCREMENT,
   `property_id` int(11) NOT NULL,
-  `review_text` varchar(5000) NOT NULL,
-  `customer_id` int(11) NOT NULL,
+  `customer_name` varchar(100) NOT NULL,
+  `customer_email` varchar(50) NOT NULL,
+  `star_rating` int(11) NOT NULL,
+  `review_text` varchar(250) NOT NULL,
   PRIMARY KEY (`review_id`),
-  KEY `PropertyId` (`property_id`),
-  KEY `customer_reviews_ibfk_1_idx` (`customer_id`),
-  CONSTRAINT `customer_reviews_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`) ON UPDATE CASCADE,
-  CONSTRAINT `customer_reviews_ibfk_2` FOREIGN KEY (`property_id`) REFERENCES `property` (`property_id`) ON DELETE NO ACTION ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  KEY `PropertyId` (`property_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
 
 CREATE TABLE `registration` (
   `user_name` varchar(50) NOT NULL,
