@@ -30,7 +30,7 @@ app.controller('reviewCtrl', function ($scope,$http) {
 		})
 		.success(function(data){
 			alert("Review submitted");
-			
+			location.reload();
 		});*/
     };
 });

@@ -195,8 +195,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="contact-form" ng-controller="reviewCtrl">
 								<form name="formData" ng-submit="processForm()">
 									<input type="hidden" ng-model="formData.property_id" ng-value="<?php echo $property_id; ?>">
-									<input type="text" ng-model="formData.customer_name" placeholder="Name" required>
-									<input type="text" ng-model="formData.customer_email" placeholder="Email" required>
+									<input type="text" ng-model="formData.customer_name" ng-value="<?php if(isset($name)){echo $name;} else {echo "";}?>"placeholder="Name" required>
+									<input type="text" ng-model="formData.customer_email" ng-value="<?php if(isset($email_address)){echo $email_address;} else {echo "";}?>"placeholder="Email" required>
 									<div class="clearfix"> </div>
 									Rating:
 									<span class="starRatingReview">
