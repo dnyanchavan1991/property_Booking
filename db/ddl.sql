@@ -104,7 +104,9 @@ CREATE TABLE IF NOT EXISTS `customer_reviews` (
   KEY `PropertyId` (`property_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
 
-CREATE TABLE `registration` (
+CREATE TABLE IF NOT EXISTS `registration` (
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `customer_id` int(11) NOT NULL,
   `user_name` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
   `first_name` varchar(100) NOT NULL,
@@ -114,9 +116,10 @@ CREATE TABLE `registration` (
   `address` varchar(400) NOT NULL,
   `account_active` varchar(5) NOT NULL,
   `access_type` enum('user','admin') DEFAULT 'user',
-  PRIMARY KEY (`user_name`),
-  UNIQUE KEY `user_name_UNIQUE` (`user_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`user_id`),
+  UNIQUE KEY `user_name_UNIQUE` (`user_name`),
+  KEY `customer_id` (`customer_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 CREATE TABLE `enquiry` (
   `enq_id` int(11) NOT NULL AUTO_INCREMENT,
