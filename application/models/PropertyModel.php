@@ -1,7 +1,7 @@
 <?php
 class PropertyModel extends CI_Model {
 	// this function returns available rooms according to checkin &checkout date
-	public function checkRoomAvailabilty($searchArray, $filterData) {
+public function checkRoomAvailabilty($searchArray, $filterData) {
 		$this->load->database ();
 		
 		$reservationTable = 'reservation';
@@ -21,17 +21,21 @@ class PropertyModel extends CI_Model {
 		$this->db->from ( "$propertyInfo propertyInfo" );
 		$this->db->join ( "$reservationTable res", "res.property_id=propertyInfo.property_id", "left" );
 		$this->db->join ( "$propertyTable property", "propertyInfo.property_id=property.property_id" );
-	    $this->db->where ( "res.property_id", NULL );
+	    //$this->db->where ( "res.property_id", NULL );
+		$where = "(res.property_id is Null";
+		$this->db->where ( $where );
+	    $where = "(check_out >= '$checkout' AND check_in >='$checkin')";
+	    $this->db->or_where ( $where );
+	    $where = "(check_out <= '$checkout' AND check_out <='$checkout'))";
+	    $this->db->or_where ( $where );
 		$where = "(city  like'%$destination%' or state like '%$destination%')";
 		$this->db->where ( $where );
+		
 		if ($propertyType != '0') {
 			$where = "(property_type_id='$propertyType')";
 			$this->db->where ( $where );
 		}
-		/*$where = "((check_out >= '$checkout' AND check_in >='$checkin')";
-		$this->db->where ( $where );
-		$where = "(check_out <= '$checkout' AND check_out <='$checkout'))";
-		$this->db->or_where ( $where );*/
+		
 		$i = 0;
 		
 		if ($filterData != null) {
@@ -58,7 +62,7 @@ class PropertyModel extends CI_Model {
 					$where = "(";
 					foreach ( $filterData->selectedFeatureList as $featureList ) {
 						// $this->db->or_where('property.star_rate', $starList->name);
-						$where = $where . "`property`.`$featureList->name`='Yes'" ;
+						$where = $where . "`propertyInfo`.`$featureList->name`='Yes'" ;
 						if ($i <= (sizeof ( $filterData->selectedFeatureList  ) - 2)) {
 							$where = $where . " or ";
 						} else {
