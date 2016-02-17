@@ -190,54 +190,47 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div id="tab6" class="tab">
 							<?php echo $way_to_reach; ?>
 						</div>
-						<div class="tab contact-form" id="tab7">
+						<div class="tab" id="tab7">
 							<?php //echo $way_to_reach; ?>
 							<div class="contact-form" ng-controller="reviewCtrl">
-								<form method="post" action="Review/sendReview/">
-									<input type="hidden" name="property_id" value = "<?php echo $property_id; ?>" >
-									<input type="text" name="customer_name" placeholder="Name" value="<?php if(isset($name)){echo $name;} else {echo "";}?>" required>
-									<input type="text" name="customer_email" placeholder="Email" value="<?php if(isset($email_address)){echo $email_address;} else {echo "";}?>" required>
+								<form name="formData" ng-submit="processForm()">
+									<input type="hidden" ng-model="formData.property_id" ng-value="<?php echo $property_id; ?>">
+									<input type="text" ng-model="formData.customer_name" placeholder="Name" required>
+									<input type="text" ng-model="formData.customer_email" placeholder="Email" required>
 									<div class="clearfix"> </div>
 									Rating:
 									<span class="starRatingReview">
-										<input id="rating5" type="radio" name="rating_given" value="5">
+										<input id="rating5" type="radio" ng-model="formData.rating_given" value="5">
 										<label for="rating5">5</label>
-										<input id="rating4" type="radio" name="rating_given" value="4">
+										<input id="rating4" type="radio" ng-model="formData.rating_given" value="4">
 										<label for="rating4">4</label>
-										<input id="rating3" type="radio" name="rating_given" value="3" checked>
+										<input id="rating3" type="radio" ng-model="formData.rating_given" value="3" ng-checked="true">
 										<label for="rating3">3</label>
-										<input id="rating2" type="radio" name="rating_given" value="2">
+										<input id="rating2" type="radio" ng-model="formData.rating_given" value="2">
 										<label for="rating2">2</label>
-										<input id="rating1" type="radio" name="rating_given" value="1">
+										<input id="rating1" type="radio" ng-model="formData.rating_given" value="1">
 										<label for="rating1">1</label>
 									</span>
 									<div class="clearfix"> </div>
-									<textarea style="height: 110px !important;" name="review_given" placeholder="Content...(max 250)" required></textarea>
+									<textarea style="height: 110px !important;" ng-model="formData.review_given" placeholder="Content...(max 250)" required></textarea>
 									<div class="clearfix"> </div>
 									<input style="margin-top: 0px!important;margin-left:0px !important;" type="submit" value="SEND">
 								</form>
 							</div>
-							<div>
-							<p><h4>By:</h4>Mayur Patil</p>
-							<h4>Rating:</h4>5
-							<p>We had purchased a property in Marvel Isola. It was to be handed over in 2012. 
-							We have been chasing Marvel since then - 3 years. Our money is locked up, employee and 
-							sales force turnover is high, CEO is rude, arrogant and unresponsive. </p>
-							<p><h4>By:</h4>Mayur Patil</p>
-							<h4>Rating:</h4>5
-							<p>We had purchased a property in Marvel Isola. It was to be handed over in 2012. 
-							We have been chasing Marvel since then - 3 years. Our money is locked up, employee and 
-							sales force turnover is high, CEO is rude, arrogant and unresponsive. </p>
-							<p><h4>By:</h4>Mayur Patil</p>
-							<h4>Rating:</h4>5
-							<p>We had purchased a property in Marvel Isola. It was to be handed over in 2012. 
-							We have been chasing Marvel since then - 3 years. Our money is locked up, employee and 
-							sales force turnover is high, CEO is rude, arrogant and unresponsive. </p>
-							<p><h4>By:</h4>Mayur Patil</p>
-							<h4>Rating:</h4>5
-							<p>We had purchased a property in Marvel Isola. It was to be handed over in 2012. 
-							We have been chasing Marvel since then - 3 years. Our money is locked up, employee and 
-							sales force turnover is high, CEO is rude, arrogant and unresponsive. </p>
+							<div class="other-comments">
+								<div class="comments-head">
+									<h3>Reviews</h3>
+									<div class="clearfix"></div>
+								</div>
+								<div class="comments-bot">
+									<?php 
+									foreach($propertyReviews as $review){
+									?>
+									<p>"<?php echo $review['review_text'];?>"</p>
+									<p class="starRatingReview">Ratings:<?php echo $review['star_rating'];?></p>
+									<h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span> <?php echo $review['customer_name'];?> <p style="display:inline-block;"><?php echo $review['customer_email'];?></p></h4>
+									<?php }?>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -265,25 +258,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="map-gd">
 					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63718.72916803739!2d102.31975295000002!3d3.489618449999993!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31ceba2007355f81%3A0xd2ff1ad6a3ca801!2sMentakab%2C+Pahang%2C+Malaysia!5e0!3m2!1sen!2sin!4v1439535856431"></iframe>
 				</div>
-				<div class="other-comments">
-					<div class="comments-head">
-						<h3>Excellent</h3>
-						<p>4.5/5</p>
-						<div class="clearfix"></div>
-					</div>
-					<div class="comments-bot">
-						<p>"Food and rooms are very good to stay. Iam very happy to stay in such a nice hotel".</p>
-						<h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span> John Doe</h4>
-					</div>
-					<div class="comments-bot">
-						<p>"This is the 19th visit for me. Overall very happy with the service, the breakfast spread & the efficiency of the staff. ".</p>
-						<h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span> Luther</h4>
-					</div>
-					<div class="comments-bot">
-						<p>"A very pleasant hotel with good staff and a great attitude.".</p>
-						<h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span> Patrick</h4>
-					</div>
-				</div>
+				
 			</div>
 			<!--<div class="map">
 				<iframe

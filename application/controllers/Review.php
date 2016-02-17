@@ -10,13 +10,13 @@ class Review extends CI_Controller {
 				
 	}
 	public function sendReview() {
-		//$postdata = file_get_contents("php://input");
-		//$post = json_decode($postdata);
-		$property_id= $_POST['property_id'];
-		$customer_name= $_POST['customer_name'];
-		$customer_email = $_POST['customer_email'];
-		$rating_given = $_POST['rating_given'];
-		$review_given = $_POST['review_given'];
+		$postdata = file_get_contents("php://input");
+		$post = json_decode($postdata);
+		$property_id= $post->property_id;
+		$customer_name= $post->customer_name;
+		$customer_email = $post->customer_email;
+		$rating_given = $post->rating_given;
+		$review_given = $post->review_given;
 		$reviewArray = array(
 							'property_id'=>$property_id,
 							'customer_name'=>$customer_name,
@@ -26,7 +26,7 @@ class Review extends CI_Controller {
 						);
 		$send_review = $this->PropertyModel->submitReview($reviewArray);
 		
-		/*$propertyDetailInfo = $this->PropertyModel->getPropertyDetail ( $this->session->userdata ( 'propertyId' ) );
+		$propertyDetailInfo = $this->PropertyModel->getPropertyDetail ( $this->session->userdata ( 'propertyId' ) );
 		$data['propertyName']=$propertyDetailInfo->row()->propertyName;
 		$data['propertyDescription']=$propertyDetailInfo->row()->description;
 		$data['imagePath']=$propertyDetailInfo->row()->imagePath;
@@ -37,8 +37,8 @@ class Review extends CI_Controller {
 			$get_user = $this->PropertyModel->getUser($this->session->userdata('user_id'));
 			$data['name'] = $get_user->name;
 			$data['email_address'] = $get_user->email_address;
-		}*/
+		}
 		//$this->load->view ('index.html');
-		header("location: ../../");
+		//header("location: ../../");
 	}
 }

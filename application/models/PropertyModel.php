@@ -331,4 +331,17 @@ class PropertyModel extends CI_Model {
 		$lastId = $this->db->insert_id();
 		return $lastId;
 	}
+	/* end submit review */
+	/* get Reviews By PropertyId */
+	public function getReviewsByPropertyId($property_id)
+	{
+		$this->load->database ();
+		$this->db->select('customer_name,customer_email,star_rating,review_text');
+		$this->db->from('customer_reviews');
+		$this->db->where('property_id',$property_id);
+		$query=$this->db->get();
+		
+		return $query->result_array();
+	}
+	/* end get Reviews By PropertyId */
 }
