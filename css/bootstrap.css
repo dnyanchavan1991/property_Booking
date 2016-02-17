@@ -1416,7 +1416,7 @@ ul ul,
 ol ul,
 ul ol,
 ol ol {
-  margin-bottom: 0;
+  margin-bottom: 2px;
 }
 .list-unstyled {
   padding-left: 0;
@@ -1580,7 +1580,7 @@ pre code {
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
-  margin-left: auto;
+  margin-left:auto;
 }
 @media (min-width: 768px) {
   .container {
@@ -2513,8 +2513,8 @@ input[type="search"] {
 }
 input[type="radio"],
 input[type="checkbox"] {
-  margin: 4px 9px 10px;
-  margin-top: 1px \9;
+  margin: 4px 9px 10px !important;
+  margin-top: 1px;
   line-height: normal;
 }
 input[type="file"] {
@@ -3345,7 +3345,7 @@ fieldset[disabled] .btn-link:focus {
 }
 .btn-lg,
 .btn-group-lg > .btn {
-  padding: 10px 16px;
+  padding: 10px 16px !important;
   font-size: 18px;
   line-height: 1.3333333;
   border-radius: 6px;
@@ -6533,7 +6533,9 @@ button.close {
   .hidden-lg {
     display: none !important;
   }
+  		
 }
+
 .visible-print {
   display: none !important;
 }
