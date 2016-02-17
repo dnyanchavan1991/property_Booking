@@ -54,6 +54,7 @@ app.controller('loginCtrl', function ($scope,$http) {
 					  alert('Please Enter Valid Username & Password.');
 	        	  }
 	        		  else{
+						   alert('Login successful.');
 						  function WriteCookie()
 	        	            {
 	        	             
@@ -84,6 +85,7 @@ app.controller('loginCtrl', function ($scope,$http) {
 	        		  alert('Please Enter Valid Username & Password.');
 	        	  }
 	        		  else{
+						   alert('Login successful.');
 	        			window.location.href='Admin/Admin/setLoginSession';
 	        	  }
 	          });

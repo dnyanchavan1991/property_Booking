@@ -110,9 +110,9 @@ angular
 
 								}).success(function(data) {
 							if (data.count == 0) {
-								alert('Cannot send message');
+								//alert('Cannot add data');
 							} else {
-								alert('Message sent successfully..');
+								//alert('From here it will go to the payu money.');
 
 							}
 						});
@@ -185,9 +185,9 @@ angular
 
 								}).success(function(data) {
 							if (data.count == 0) {
-								alert('you canot add data');
+								alert('Cannot send message.');
 							} else {
-								alert('from here it will get to payu mney');
+								alert('Message sent succesfuly.');
 
 							}
 						});
