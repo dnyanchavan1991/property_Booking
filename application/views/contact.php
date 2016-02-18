@@ -29,10 +29,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	media="all" />
 <link href="css/tab.css" rel="stylesheet" type="text/css" media="all" />
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-<link rel="stylesheet" href="css/flexslider.css" media="screen" />
+<link rel="stylesheet" href="css/flexslider.css" media="screen" /><link rel="stylesheet" href="css/jquery-ui.css" />
 
 <!-- js -->
 <script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/jquery-ui.js"></script>
 <script type="text/javascript" src="js/angular.min.js"></script>
 
 <script type="text/javascript" src="js/controller/getRoomDetailController.js"></script>
@@ -259,7 +260,68 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="sp-bor-btn text-right">
 						<h4><span>$8,750</span> $4,850</h4>
 						<p class="best-pri">Best price</p>
+						
 						<a class="best-btn" href="BookProperty">Book Now</a>
+						<div class="hotel-left-two" ng-controller="popupController">
+									
+									<p>
+										<button ng-click="togglemailPopUp()" class="btn btn-default">Send
+											Mail</button>
+										<button ng-click="togglemessagePopUp()"
+											class="btn btn-default">Send SMS</button>
+									</p>
+									<modal title="Enquiry via mail" visible="showModal">
+									<form name="formData" ng-submit="contactToCustomer(rooms)">
+										<div class="form-group">
+											<label for="email"></label> <input type="text"
+												class="form-control" name="full_name" id="full_name"
+												ng-model="form.full_name" placeholder="Full Name" />
+										</div>
+										<div class="form-group" id="email_id_div">
+											<label for="email"></label> <input type="email"
+												class="form-control" name="email_id" id="email_id"
+												ng-model="form.email_id" placeholder="Enter email" />
+										</div>
+										<div class="form-group" id="phone_div">
+											<label for="email"></label> <input type="text"
+												class="form-control" name="phone" id="phone"
+												ng-model="form.phone"
+												placeholder="Enter Phone/Mobile Number" />
+										</div>
+										<div class="form-group">
+											<label for="checkIn"></label><input class="date"
+												name="checkIn" id="checkIn" ng-model="form.checkIn"
+												ng-init="checkIn= 'CheckIn Date'" type="text"
+												style="width: 60%; height: 0px;" onfocus="this.value = '';"
+												onblur="if (this.value == '') {this.value = '';}" required>
+										</div>
+										<div class="form-group">
+											<label for="checkOut"></label><input class="date"
+												name="checkOut" id="checkOut" ng-model="form.checkOut"
+												ng-init="checkOut= 'CheckIn Date'" type="text"
+												style="width: 60%; height: 0px;" onfocus="this.value = '';"
+												onblur="if (this.value == '') {this.value = '';}" required>
+										</div>
+										<div class="form-group">
+											<label for="enquiry"></label>
+											<textarea type="text" class="form-control"
+												ng-model="form.enquiry" id="enquiry" name="enquiry"
+												placeholder="Enquiry.." required="required"></textarea>
+										</div>
+
+										<br>
+
+										<button type="submit" class="btn btn-default">Submit</button>
+									</form>
+									<script src="js/jquery-ui.js"></script>
+									 <script>
+										$(function() {
+											$("#datepicker,#checkIn,#checkOut")
+													.datepicker();
+										});
+									</script> </modal>
+
+								</div>
 					</div>
 				</div>
 				<div class="map-gd">
