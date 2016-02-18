@@ -101,7 +101,7 @@ app.controller('galleryImgCtrl', function ($scope,$http){
 			$scope.imageSrc = response.data;
 		});
     }
-	$scope.getPropertyDetails = function(item)
+	$scope.getPropertyDetails = function(property_id)
 	{
 		var objForm = document.createElement('FORM');
 		objForm.method = 'post';
@@ -110,7 +110,7 @@ app.controller('galleryImgCtrl', function ($scope,$http){
 		var objInput = document.createElement('INPUT');
 		objInput.type = 'hidden';
 		objInput.name = 'propertyId';
-		objInput.value = item;
+		objInput.value = property_id;
 		objForm.appendChild(objInput);
 
 		document.body.appendChild(objForm);

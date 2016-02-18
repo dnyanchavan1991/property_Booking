@@ -325,31 +325,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 			
 				</div>
-				<div class="col-md-9 search-grid-right"
-					ng-controller="checkRoomAvailabilityController"
-					data-ng-init="getRoomAvailability();">
-					<div class="hotel-rooms" ng-repeat="rooms in propNames ">
+				<div class="col-md-9 search-grid-right"	ng-controller="checkRoomAvailabilityController"	data-ng-init="getRoomAvailability();">
+					<div class="hotel-rooms" ng-repeat="rooms in propNames">
 						<div class="hotel-left">
-							<a href="" ng-click="getPropertyDetails(rooms)"><span
-								class="glyphicon glyphicon-bed" aria-hidden="true"></span>{{rooms.propertyName}}</a>
+							<a href="" ng-click="getPropertyDetails(rooms)">
+								<span class="glyphicon glyphicon-bed" aria-hidden="true"></span>{{rooms.propertyName}}
+							</a>
 							<p>{{rooms.propertyAddress}}</p>
 							<div class="hotel-left-grids">
 								<div class="hotel-left-one">
-									<a href="" ng-click="getPropertyDetails(rooms)"><img
-										src="rooms.ImagePath" alt="" /></a>
+									<a href="" ng-click="getPropertyDetails(rooms)">
+										<img ng-src="{{rooms.ImagePath}}" alt="" />
+									</a>
 								</div>
-							<div class="hotel-left-two" ng-controller="popupController">
 									<div class="rating text-left">
 										<span>☆</span> <span>☆</span> <span>☆</span> <span>☆</span> <span>☆</span>
 									</div>
-									<a href="single.html"><span
-										class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>Diamond
-										Street</a>
-										<!-- <p>
-										 <button ng-click="togglemailPopUp()" class="btn btn-default">Send
-											Mail</button>
-										<button ng-click="togglemessagePopUp()"
-											class="btn btn-default">Send SMS</button>
+									<a href="">
+										<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>Diamond Street
+									</a>
+									<p>
+										<button ng-click="togglemailPopUp()" class="btn btn-default">Send Mail</button>
+										<button ng-click="togglemessagePopUp()"	class="btn btn-default">Send SMS</button>
 									</p>
 									<modal title="Enquiry via mail" visible="showModal">
 									<form name="formData" ng-submit="contactToCustomer(rooms)">
@@ -394,13 +391,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 										<button type="submit" class="btn btn-default">Submit</button>
 									</form>
-									<script src="js/jquery-ui.js"></script>
-									 <script>
 										$(function() {
 											$("#datepicker,#checkIn,#checkOut")
 													.datepicker();
 										});
-									</script> </modal>-->
 
 								</div>
 
