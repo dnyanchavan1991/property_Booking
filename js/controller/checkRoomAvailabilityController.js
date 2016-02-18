@@ -30,11 +30,8 @@ angular
 					$scope.featureList = [ {
 						name : 'pool',
 						featureLabel : 'Swimming Pool'
-					}, {
-						name : 'meals',
-						featureLabel : 'WIFI/Internet Access'
-					}, {
-						name : 'internet_acess',
+					},  {
+						name : 'internet_access',
 						featureLabel : 'Television'
 					}, {
 						name : 'air_condition',
