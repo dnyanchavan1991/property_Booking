@@ -227,7 +227,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									foreach($propertyReviews as $review){
 									?>
 									<p>"<?php echo $review['review_text'];?>"</p>
-									<p class="starRatingReview">Ratings:<?php echo $review['star_rating'];?></p>
+									<div class="rating text-left">
+										<?php 
+										for($i=1; $i<=$review['star_rating']; $i++)
+										{
+											echo "<span>☆</span>";
+										}
+										?>
+									</div>
 									<h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span> <?php echo $review['customer_name'];?> <p style="display:inline-block;"><?php echo $review['customer_email'];?></p></h4>
 									<?php }?>
 								</div>
