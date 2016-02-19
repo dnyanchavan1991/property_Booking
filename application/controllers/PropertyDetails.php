@@ -25,6 +25,11 @@ class PropertyDetails extends CI_Controller {
 		$data['propertyDescription']=$propertyDetailInfo->row()->description;
 		$data['imagePath']=$propertyDetailInfo->row()->imagePath;
 		$data['way_to_reach']=$propertyDetailInfo->row()->Direction;
+		
+		$get_latlong = $this->PropertyModel->getlatlongById( $this->session->userdata ( 'propertyId' ) );
+		$data['latitude']=$get_latlong->latitude;
+		$data['longitude']=$get_latlong->longitude;
+		
 		$data['rentresult']=$roomDetailInfo;
 		$data['property_id']=$this->session->userdata ( 'propertyId' );
 		if($this->session->userdata('user_id'))

@@ -10,17 +10,17 @@ app.controller('getRoomDetailController',function($scope, $http){
 
 app.controller('reviewCtrl', function ($scope,$http) {
 	
-	$scope.formData = {};
+	//$scope.formData = {};
 	
-	$scope.processForm=function()
+	$scope.processForm=function(form)
     {
 		alert("reviewCtrl");
 		//$scope.formData = {};
 		//alert("review data got");
 		//console.log($scope.inputVal);
 		//alert(formData);
-		console.log(formData);
-		console.log(formData.customer_name);
+		console.log($scope.form);
+		console.log($scope.form.customer_name);
 		//alert(formData.customer_email);
 		//alert($scope.formData.customer_email);
 		/*$http({

@@ -76,7 +76,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- start-smoth-scrolling -->
 </head>
 <body ng-app="getRoomDetailApp" ng-controller="getRoomDetailController"
-	ng-init="getRoomDetail()">
+	ng-init="getRoomDetail()" >
 	<!-- banner -->
 	<div class="banner page-head">
 		<div class="container">
@@ -191,29 +191,29 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div id="tab6" class="tab">
 							<?php echo $way_to_reach; ?>
 						</div>
-						<div class="tab" id="tab7">
+						<div class="tab" id="tab7" ng-controller="reviewCtrl">
 							<?php //echo $way_to_reach; ?>
-							<div class="contact-form" ng-controller="reviewCtrl">
-								<form name="formData" ng-submit="processForm()">
-									<input type="hidden" ng-model="formData.property_id" ng-value="<?php echo $property_id; ?>">
-									<input type="text" ng-model="formData.customer_name" ng-value="<?php if(isset($name)){echo $name;} else {echo "";}?>"placeholder="Name" required>
-									<input type="text" ng-model="formData.customer_email" ng-value="<?php if(isset($email_address)){echo $email_address;} else {echo "";}?>"placeholder="Email" required>
+							<div class="contact-form"  ng-init="form={}">
+								<form name="form" ng-submit="processForm(form)" value="<?php echo $property_id;?>">
+									<input type="hidden" ng-model="form.property_id" >
+									<input type="text" ng-model="form.customer_name" placeholder="Name" ng-value="" required>
+									<input type="text" ng-model="form.customer_email" placeholder="Email" ng-value="" required>
 									<div class="clearfix"> </div>
 									Rating:
 									<span class="starRatingReview">
-										<input id="rating5" type="radio" ng-model="formData.rating_given" value="5">
+										<input id="rating5" type="radio" ng-model="form.rating_given" value="5">
 										<label for="rating5">5</label>
-										<input id="rating4" type="radio" ng-model="formData.rating_given" value="4">
+										<input id="rating4" type="radio" ng-model="form.rating_given" value="4">
 										<label for="rating4">4</label>
-										<input id="rating3" type="radio" ng-model="formData.rating_given" value="3" ng-checked="true">
+										<input id="rating3" type="radio" ng-model="form.rating_given" value="3" ng-checked="true">
 										<label for="rating3">3</label>
-										<input id="rating2" type="radio" ng-model="formData.rating_given" value="2">
+										<input id="rating2" type="radio" ng-model="form.rating_given" value="2">
 										<label for="rating2">2</label>
-										<input id="rating1" type="radio" ng-model="formData.rating_given" value="1">
+										<input id="rating1" type="radio" ng-model="form.rating_given" value="1">
 										<label for="rating1">1</label>
 									</span>
 									<div class="clearfix"> </div>
-									<textarea style="height: 110px !important;" ng-model="formData.review_given" placeholder="Content...(max 250)" required></textarea>
+									<textarea style="height: 110px !important;" ng-model="form.review_given" placeholder="Content...(max 250)" required></textarea>
 									<div class="clearfix"> </div>
 									<input style="margin-top: 0px!important;margin-left:0px !important;" type="submit" value="SEND">
 								</form>
@@ -223,10 +223,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<h3>Reviews</h3>
 									<div class="clearfix"></div>
 								</div>
+								<?php 
+								foreach($propertyReviews as $review){
+								?>
 								<div class="comments-bot">
-									<?php 
-									foreach($propertyReviews as $review){
-									?>
 									<p>"<?php echo $review['review_text'];?>"</p>
 									<div class="rating text-left">
 										<?php 
@@ -237,8 +237,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										?>
 									</div>
 									<h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span> <?php echo $review['customer_name'];?> <p style="display:inline-block;"><?php echo $review['customer_email'];?></p></h4>
-									<?php }?>
 								</div>
+								<?php }?>
 							</div>
 						</div>
 					</div>
@@ -325,7 +325,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 				</div>
 				<div class="map-gd">
-					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63718.72916803739!2d102.31975295000002!3d3.489618449999993!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31ceba2007355f81%3A0xd2ff1ad6a3ca801!2sMentakab%2C+Pahang%2C+Malaysia!5e0!3m2!1sen!2sin!4v1439535856431"></iframe>
+					<div id="map_canvas" style="width:100%;height:270px;"></div>
+					<script src="http://maps.googleapis.com/maps/api/js"></script>
+					<script>
+						/* - map - */
+						var map;
+						var lat = parseFloat('<?php echo $latitude;?>');
+						var log = parseFloat('<?php echo $longitude;?>');
+						var myLatlng = new google.maps.LatLng(lat,log);
+						var myOptions = {
+											zoom: 12,
+											center: myLatlng,
+											mapTypeId: google.maps.MapTypeId.ROADMAP
+										};
+						map = new google.maps.Map(document.getElementById("map_canvas"), myOptions); 
+						var marker = new google.maps.Marker({
+							position: myLatlng,
+							map: map,
+							title: "Property location"
+						});
+						
+						/* - map end - */
+					</script>
 				</div>
 				
 			</div>

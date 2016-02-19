@@ -106,9 +106,17 @@ public function checkRoomAvailabilty($searchArray, $filterData) {
 	/*this function gets property detail on click on particular property of search.html*/
 	public function getPropertyDetail($propertyId) {
 		$this->load->database ();
-		$this->db->select ( 'property_name as propertyName,description,image_path as imagePath,how_to_reach as Direction' );
+		$this->db->select ( 'property_name as propertyName,description,image_path as imagePath,how_to_reach as Direction, ' );
 		$query = $this->db->get_where ( 'property' ,array('property_id' =>$propertyId));
 		return $query;
+	}
+	public function getlatlongById($byid)
+	{
+		$this->db->select("latitude,longitude");
+		$this->db->from("property_info");
+		$this->db->where('property_id',$byid);
+		$query=$this->db->get();
+		return $query->row();
 	}
 	/*this function gives accomodation type as abhk/2 bhk*/
 	public function getAccomodationType($propertyId) {
