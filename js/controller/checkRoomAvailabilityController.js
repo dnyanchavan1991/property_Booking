@@ -8,7 +8,9 @@ angular
 			 						$scope.names = response.data;
 			 					});
 
-			 			
+			 			$scope.propertyName=[{
+			 					name:""
+			 			}];
 					$scope.starRateList = [ {
 						name : 5,
 						star_image_url : 'images/st2.png'
@@ -55,7 +57,9 @@ angular
 						selectedstarRateList : [],
 						selectedFeatureList : [],
 						selectedFacilityList : [],
-						selectedAccomodationList:[]
+						selectedAccomodationList:[],
+						propertyNameList:[]
+						
 					}
 
 					$scope.isLabelChecked = function(objName) {
@@ -98,6 +102,11 @@ angular
 										this.accomodationListLabel, 1);
 							}
 						}
+						else if (objName=='propertyName') {
+							if(this.propertyName[0].name!=""){
+							$scope.model.propertyNameList
+							.push(this.propertyName[0]);
+						}}
 
 						$http(
 								{
