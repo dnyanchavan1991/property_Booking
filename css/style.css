@@ -42,6 +42,7 @@ h1,h2,h3,h4,h5,h6{
 }	
 p{
 	margin:0;
+	font-family: Calibri;
 }
 ul{
 	margin:0;
@@ -416,7 +417,7 @@ nav a:focus {
   top: 0;
 }
 .social-icons{
-margin-top: 20px;
+margin-top: -21px;
 float:right;
 }
 .social-icons ul li {
@@ -707,6 +708,7 @@ color:#DF1E1C;
 font-size:36px;
  font-family: 'Alegreya-Regular';
 text-align:center;
+font-family: Forte;
 }
 .welcome,.facilities,.feature-serv ,#gallery ,.about,.vision,.staff,.typrography,.contact,.booking,.single-page,.search-page{
 padding:80px 0;
@@ -923,7 +925,7 @@ margin:30px 0;
   background-color: #9E9FA4;
 }
  .ftr_navi h3 {
-  margin-bottom: 15px;
+  margin-bottom: 40px;
   color: #ECCA69;
   font-size: 22px;
  font-family: 'Alegreya-Regular';
@@ -1875,7 +1877,7 @@ width:20%;
 	background: url(../images/date-icon.png) no-repeat 95.5% 45% #fff;
 	cursor: pointer;
 	
-	   padding: 26px 0px 0px 75px !important;
+	   padding: 26px 0px 0px 11px !important;
 	margin: 15px 0px 0px 0px !important;
 }
 
@@ -2244,6 +2246,7 @@ border:1px solid #d5d5d5;
 color:#fff;
 font-size:20px;
 display:inline-block;
+font-family: Bodoni MT Black;
 }
 .spl-btn-bor {
   padding: 8px 20px;
@@ -2356,6 +2359,7 @@ font-weight:bold;
 		margin: 16px 100px 0px -11px !important;
 		padding: 24px 0px 0px 0px !important;
 		font-size: 17px;
+		height: 2.7em !important;
 	}
 	.propertyType{
 		width:100%;
@@ -2381,6 +2385,17 @@ font-weight:bold;
     border: 4px solid #DDDDDD;
     border-radius: 20px;
 	}
+	.tab-links a {
+    padding: 15px 17px;
+    display: inline-block;
+    border-radius: 3px 3px 0px 0px;
+    background: #7FB5DA;
+    font-size: 15px;
+    font-weight: 600;
+    color: #4c4c4c;
+    transition: all linear 0.15s;
+    font-family: Bodoni MT Black;
+}
 	.modal-body-left {
     float: left;
     width: 50%;
@@ -2445,7 +2460,17 @@ button, input, optgroup, select, textarea{
     font-size: 15px;
     padding: 8px 6px;
 }
-	
+	.tab-links a {
+    padding: 15px 17px;
+    display: inline-block;
+    border-radius: 3px 3px 0px 0px;
+    background: #7FB5DA;
+    font-size: 15px;
+    font-weight: 600;
+    color: #4c4c4c;
+    transition: all linear 0.15s;
+    font-family: Bodoni MT Black;
+}
 	
 button, input, optgroup, select, textarea{
 margin: 1px -6px !important;
@@ -2759,7 +2784,7 @@ margin: 1px -6px !important;
 	  }
 }
 
-@media((min-width:640px) and (max-width: 800px)){
+@((min-width:640px) and (max-width: 800px)){
 	span.menu {
 	display: block;
 	cursor: pointer;
@@ -3027,7 +3052,7 @@ margin: 1px -6px !important;
 	  padding: 0 10px;
 	}
 }
-@media (min-width:480px)and(max-width: 640px){
+@media (min-width:360px and max-width: 640px){
 	.logo {
 	  float: left;
 	  width: 35%;
@@ -3057,6 +3082,7 @@ margin: 1px -6px !important;
     padding-right: 4%;
     border-right: 4px solid #DDD;
 }
+	
 #center-line {
 		position: absolute;
 			right:50%;
@@ -3286,7 +3312,7 @@ margin: 1px -6px !important;
 	}
 
 }
-@media (min-width:320px) and (max-width: 480px){
+@media (min-width:320px and max-width: 480px){
 	.copy-right p {
 	  font-size: 13px;
 	  }
@@ -3297,6 +3323,15 @@ margin: 1px -6px !important;
 	  margin-right: 6px;
 	  font-size: 21px;
 	}
+	.input, .button, .select, .textarea {
+						font-family: inherit;
+						font-size: inherit;
+						line-height: inherit;
+						padding-top: 25px;
+						padding-bottom: 0px;
+						margin-top: 0px;
+						width: 50%;
+						}
 	.inputDestination {
 				width: 100%;
 				border: 0px none;
@@ -3307,7 +3342,7 @@ margin: 1px -6px !important;
 		.propertyType {
 				height: 4.7em;
 				border: 0px none;
-				margin: 0px 13px -7px -11px !important;
+				margin: 0px 23px -2px -11px !important;
 				width: 50%;
 			}
 		.date {
@@ -3364,9 +3399,9 @@ margin: 1px -6px !important;
 	}
 	.guedtf {
     width: 44%;
-    margin: 13px 0px 0px 1px !important;
-	height: 2.3em;
-	padding: 40px 35px 2px 18px !important;
+    margin: 7px 0px 0px -22px !important;
+	height: 4.7em;
+	padding: 30px 12px 2px 0px !important;
 	}
 	.ban-pos-gridone {
 	  float: left;
@@ -3578,7 +3613,7 @@ margin: 1px -6px !important;
 		margin-top: -250px;
 	}
 	.banner-info {
-		margin-top: 28px;
+		margin-top: 132px;
 	}
 	.banner-text h3 {
 		font-size: 22px;
@@ -3605,7 +3640,7 @@ margin: 1px -6px !important;
 		padding-top: 11%;
 	}
 	.navigation ul {
-		top: 62px;
+		top: 22px;
 	}
 	.ban-pos-gridtwo {
 		float: left;

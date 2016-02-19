@@ -171,15 +171,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="banner-bottom"  >
 		<div class="row">
 			<div class="col-md-4 fff">
-				<input type = "text" id="inpDestination" onClick="show()" name="inpDestination" ng-model="inputDestination" placeholder="Where do you want to go?" ng-click="expandFilterOptions()" class="inputDestination" />
+				<input type = "text" id="inpDestination" onClick="show()" name="inpDestination" ng-model="inputDestination" placeholder="Where do you want to go?" ng-click="expandFilterOptions()" class="inputDestination" style="width: 100%; height: 4.2em;" />
 			</div>
 			<div class="col-md-1" id="aaa" style="display:none;">
 					<select class="sel propertyType" ng-model="selectAccomodationType"  id="propertyType" name="propertyType" ng-init="selectAccomodationType=accomodationType[0]"  
 							ng-options="accomodation as accomodation.label for accomodation in accomodationType track by accomodation.value " 
-							ng-show = "inputDestination != 'Where you want to go?'" style="padding-top: 25px; padding-bottom: 0px; margin-top: 0px;" ></select>
+							ng-show = "inputDestination != 'Where you want to go?'" style=" padding-top: 25px; padding-bottom: 0px; margin-top: 0px;" ></select>
 			</div>
 			<div class="col-md-1" id="bbb" style="display:none;">
-					<select class="sel guedtf" ng-model="selectGuestHeadCount" id="guestCount" name="guestCount" ng-init="selectGuestHeadCount=guestHeadCount[0] " ng-options="option as option for option in guestHeadCount " }></select>
+					<select class="sel guedtf" ng-model="selectGuestHeadCount" id="guestCount" name="guestCount" ng-init="selectGuestHeadCount=guestHeadCount[0] " ng-options="option as option for option in guestHeadCount" }></select>
 			</div>
 			<div class="col-md-2" id="ccc"  style="display:none;">
 					<input class="date" name="checkIn" readonly id="checkIn" ng-model="checkInDate" ng-init="checkInDate= 'CheckIn'" type="text"  style=" width:10em; border:0px;" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required />
