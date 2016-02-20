@@ -56,7 +56,7 @@ tabs {
 		
 /*--star rating--*/
 .starRatingReview:not(old){
-  display        : inline-block;
+  /*display        : inline-block;*/
   width          : 9em;
   height         : 1.5em;
   overflow       : hidden;

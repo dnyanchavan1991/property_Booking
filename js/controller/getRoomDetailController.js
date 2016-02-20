@@ -1,6 +1,7 @@
 var app = angular.module('getRoomDetailApp', []);
 
 app.controller('getRoomDetailController',function($scope, $http){
+
 	$scope.getRoomDetail = function() {
 		$http.get("propertyDetails/getRoomDetail").then(function(response){
 			$scope.names = response.data;
@@ -8,30 +9,28 @@ app.controller('getRoomDetailController',function($scope, $http){
 	};
 });
 
-app.controller('reviewCtrl', function ($scope,$http) {
+app.controller('reviewCtrl',  function ($scope, $http) {
 	
 	//$scope.formData = {};
 	
-	$scope.processForm=function(form)
-    {
-		alert("reviewCtrl");
-		//$scope.formData = {};
-		//alert("review data got");
-		//console.log($scope.inputVal);
-		//alert(formData);
-		console.log($scope.form);
-		console.log($scope.form.customer_name);
-		//alert(formData.customer_email);
-		//alert($scope.formData.customer_email);
-		/*$http({
+	$scope.processForm = function(prop_id)
+    { 	
+		 $scope.formData = {};
+		 $scope.formData.customer_name = $scope.customer_name;
+		 $scope.formData.customer_email = $scope.customer_email;
+		 $scope.formData.property_id = prop_id;
+		 $scope.formData.rating_given = $scope.rating_given;
+		 $scope.formData.review_given = $scope.review_given;
+		 
+		 $http({
 			method  : 'POST',
-			url     : 'Review/sendReview/',
+			url     : 'Review/sendReview',
 			data    : $scope.formData,
 		})
-		.success(function(data){
+		.success(function(data){			
 			alert("Review submitted");
 			location.reload();
-		});*/
+		}); 
     };
 });
 

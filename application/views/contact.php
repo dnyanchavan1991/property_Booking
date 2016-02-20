@@ -191,31 +191,33 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div id="tab6" class="tab">
 							<?php echo $way_to_reach; ?>
 						</div>
-						<div class="tab" id="tab7" ng-controller="reviewCtrl">
+						<div class="tab" id="tab7" >
 							<?php //echo $way_to_reach; ?>
-							<div class="contact-form"  ng-init="form={}">
-								<form name="form" ng-submit="processForm(form)" value="<?php echo $property_id;?>">
-									<input type="hidden" ng-model="form.property_id" >
-									<input type="text" ng-model="form.customer_name" placeholder="Name" ng-value="" required>
-									<input type="text" ng-model="form.customer_email" placeholder="Email" ng-value="" required>
+							<div class="contact-form"   >
+								<form name="form" ng-submit="processForm('30')" ng-controller="reviewCtrl" >
+								
+									<input type="hidden" ng-model="prop_id" value=<?php echo $property_id;?> >
+									<input type="text" id="customer_name" ng-model="customer_name" placeholder="Name" ng-value="" required>
+									<input type="text" ng-model="customer_email" placeholder="Email" ng-value="" required>
 									<div class="clearfix"> </div>
 									Rating:
 									<span class="starRatingReview">
-										<input id="rating5" type="radio" ng-model="form.rating_given" value="5">
+										<input id="rating5" type="radio" ng-model="rating_given" value="5">
 										<label for="rating5">5</label>
-										<input id="rating4" type="radio" ng-model="form.rating_given" value="4">
+										<input id="rating4" type="radio" ng-model="rating_given" value="4">
 										<label for="rating4">4</label>
-										<input id="rating3" type="radio" ng-model="form.rating_given" value="3" ng-checked="true">
+										<input id="rating3" type="radio" ng-model="rating_given" value="3" ng-checked="true">
 										<label for="rating3">3</label>
-										<input id="rating2" type="radio" ng-model="form.rating_given" value="2">
+										<input id="rating2" type="radio" ng-model="rating_given" value="2">
 										<label for="rating2">2</label>
-										<input id="rating1" type="radio" ng-model="form.rating_given" value="1">
+										<input id="rating1" type="radio" ng-model="rating_given" value="1">
 										<label for="rating1">1</label>
 									</span>
 									<div class="clearfix"> </div>
-									<textarea style="height: 110px !important;" ng-model="form.review_given" placeholder="Content...(max 250)" required></textarea>
+									<textarea style="height: 110px !important;" ng-model="review_given" placeholder="Content...(max 250)" required></textarea>
 									<div class="clearfix"> </div>
-									<input style="margin-top: 0px!important;margin-left:0px !important;" type="submit" value="SEND">
+									<input style="margin-top: 0px!important;margin-left:0px !important;" type="submit" id="submit" value="Submit">
+									<br/><br/>
 								</form>
 							</div>
 							<div class="other-comments">
@@ -227,7 +229,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								foreach($propertyReviews as $review){
 								?>
 								<div class="comments-bot">
-									<p>"<?php echo $review['review_text'];?>"</p>
+									<p>"<?php echo nl2br($review['review_text']);?>"</p>
 									<div class="rating text-left">
 										<?php 
 										for($i=1; $i<=$review['star_rating']; $i++)
