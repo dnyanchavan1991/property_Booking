@@ -361,18 +361,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				ng-repeat="imageData in imageSrc">
 				<div class="gal-grid">
 					<div class="view view-fifth">
-						<a href="" ng-click="getPropertyDetails(imageData.property_id)"
+						<div
 							class="b-link-stripe b-animate-go thickbox"
 							title="{{imageData.property_name}}"
 							style="text-decoration: none;"> <img
 							ng-src="{{imageData.image}}" alt="" class="img-responsive">
 							<div class="mask">
 								<h4>{{imageData.property_name}}</h4>
-								<p>{{imageData.property_description | limitTo:
-									45}}{{imageData.property_description.length > 45 ? '...' : ''}}</p>
-								<a href="" ng-click="getPropertyDetails(imageData.property_id)"><button>More</button></a>
+								<p>{{imageData.property_description | limitTo:70}}
+								{{imageData.property_description.length > 70 ? '...' : ''}}</p>								
+								<input type="submit" ng-click="getPropertyDetails(imageData.property_id)"  value="More Information" />  
 							</div>
-						</a>
+						</div>
 					</div>
 					<div class="clearfix"></div>
 				</div>&nbsp;
