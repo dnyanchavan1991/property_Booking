@@ -39,6 +39,7 @@ public function checkRoomAvailabilty($searchArray, $filterData) {
 		$i = 0;
 		
 		if ($filterData != null) {
+			
 			if (sizeof ( $filterData->selectedstarRateList ) != 0) {
 				
 				$where = "(";
@@ -53,8 +54,8 @@ public function checkRoomAvailabilty($searchArray, $filterData) {
 					
 					$i ++;
 				}
-			}
-			$this->db->where ( $where );
+			$this->db->where ( $where );}
+			
 			$i=0;
 			
 				if (sizeof ( $filterData->selectedFeatureList ) != 0) {
@@ -71,8 +72,8 @@ public function checkRoomAvailabilty($searchArray, $filterData) {
 							
 						$i ++;
 					}
-				}
-				$this->db->where ( $where );
+					$this->db->where ( $where );}
+			
 				
 				
 				if (sizeof ( $filterData->selectedFacilityList ) != 0) {
@@ -89,8 +90,14 @@ public function checkRoomAvailabilty($searchArray, $filterData) {
 							
 						$i ++;
 					}
-				}
-				$this->db->where ( $where );
+			$this->db->where ( $where );	}
+			if($filterData->propertyNameList[0]->name!=null){
+	$propertyName=$filterData->propertyNameList[0]->name;
+			$where="property_name like '$propertyName%'";
+			$this->db->where ( $where );
+		}}
+		else {
+			
 		}
 		$this->db->group_by ( array (
 				"property.property_id" 
@@ -99,8 +106,9 @@ public function checkRoomAvailabilty($searchArray, $filterData) {
 		$roomAvailableInfo = $this->db->get ();
 		$roomAvailableInfoResult = $roomAvailableInfo->result ();
 		
-		return $roomAvailableInfoResult;
-	}
+		return( $roomAvailableInfoResult);
+	
+}
 	/*checkRoomAvailabilty ends here*/
 	
 	/*this function gets property detail on click on particular property of search.html*/
