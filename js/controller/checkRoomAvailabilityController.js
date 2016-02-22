@@ -1,16 +1,24 @@
 angular
 		.module('checkRoomAvailabilityApp', [])
 		.controller(
-				'CheckboxFilterCtrl',
+				'checkRoomAvailabilityController',
 				function($scope, $http) {
-					$http.get("AccomodationType/getAccomodationType/"+2).then(
-			 					function(response) {
-			 						$scope.names = response.data;
-			 					});
 
-			 			$scope.propertyName=[{
-			 					name:""
-			 			}];
+					$http.get("AccomodationType/getAccomodationType/" + 2)
+							.then(function(response) {
+								$scope.names = response.data;
+							});
+
+				/*	$scope.getRoomAvailability = function() {
+						$http.get("RoomAvailability/checkRoomAvailabilty")
+								.then(function(response) {
+									$scope.propNames = response.data;
+								});
+
+					};*/
+					$scope.propertyName = [ {
+						name : ""
+					} ];
 					$scope.starRateList = [ {
 						name : 5,
 						star_image_url : 'images/st2.png'
@@ -32,7 +40,7 @@ angular
 					$scope.featureList = [ {
 						name : 'pool',
 						featureLabel : 'Swimming Pool'
-					},  {
+					}, {
 						name : 'internet_access',
 						featureLabel : 'Television'
 					}, {
@@ -57,9 +65,9 @@ angular
 						selectedstarRateList : [],
 						selectedFeatureList : [],
 						selectedFacilityList : [],
-						selectedAccomodationList:[],
-						propertyNameList:[]
-						
+						selectedAccomodationList : [],
+						propertyNameList : []
+
 					}
 
 					$scope.isLabelChecked = function(objName) {
@@ -80,8 +88,9 @@ angular
 								$scope.model.selectedFeatureList
 										.push(this.featureListLabel);
 							} else {
-								$scope.model.selectedFeatureList.splice(this.featureListLabel, 1);
-										
+								$scope.model.selectedFeatureList.splice(
+										this.featureListLabel, 1);
+
 							}
 						} else if (objName == 'facility') {
 							if (this.facilityListLabel.selected) {
@@ -92,7 +101,7 @@ angular
 								$scope.model.selectedFacilityList.splice(
 										this.facilityListLabel, 1);
 							}
-						}else if (objName == 'accomodation') {
+						} else if (objName == 'accomodation') {
 							if (this.accomodationListLabel.selected) {
 
 								$scope.model.selectedAccomodationList
@@ -101,12 +110,16 @@ angular
 								$scope.model.selectedAccomodationList.splice(
 										this.accomodationListLabel, 1);
 							}
+						} else if (objName == 'propertyName') {
+							if (this.propertyName[0].name != "") {
+								alert(this.propertyName[0].name);
+								$scope.model.propertyNameList
+										.push(this.propertyName[0]);
+							}
 						}
-						else if (objName=='propertyName') {
-							if(this.propertyName[0].name!=""){
-							$scope.model.propertyNameList
-							.push(this.propertyName[0]);
-						}}
+						else{
+							
+						}
 
 						$http(
 								{
@@ -114,29 +127,14 @@ angular
 									url : 'RoomAvailability/checkFilterRoomAvailabilty/',
 									data : $scope.model, // forms user object
 
-								}).success(function(data) {
-							if (data.count == 0) {
-								//alert('Cannot add data');
-							} else {
-								//alert('From here it will go to the payu money.');
-
-							}
+								}).success(function(response) {
+									
+							$scope.propNames = response.data;
+							
 						});
 
-					}
-
-				})
-		.controller(
-				'checkRoomAvailabilityController',
-				function($scope, $http) {
-
-					$scope.getRoomAvailability = function() {
-						$http.get("RoomAvailability/checkRoomAvailabilty")
-								.then(function(response) {
-									$scope.propNames = response.data;
-								});
-
 					};
+				
 					// Show Div
 					$scope.showResult = function() {
 						$scope.showhideprop = true;
@@ -157,89 +155,5 @@ angular
 						objForm.submit();
 
 					}
-				})
-		.controller(
-				'popupController',
-				function($scope, $http) {
-					$scope.showModal = false;
-
-					$scope.form = {};
-					$scope.togglemailPopUp = function() {
-						$('#phone_div').hide();
-
-						$('#email_id_div').show();
-						$scope.form.phone = null;
-						$scope.showModal = !$scope.showModal;
-					};
-					$scope.togglemessagePopUp = function() {
-						$('#email_id_div').hide();
-
-						$('#phone_div').show();
-						$('#email_id').val('');
-						$scope.form.email_id = null;
-						$scope.showModal = !$scope.showModal;
-					};
-					$scope.contactToCustomer = function(item) {
-
-						$http(
-								{
-									method : 'POST',
-									url : 'Contact/Contact_to_customer/'
-											+ item.propertyId + '/',
-									data : $scope.form, // forms user object
-								// datatype:"json"
-
-								}).success(function(data) {
-							if (data.count == 0) {
-								alert('Cannot send message.');
-							} else {
-								alert('Message sent succesfuly.');
-
-							}
-						});
-
-						$scope.showModal = !$scope.showModal;
-					};
-
-				})
-		.directive(
-				'modal',
-				function() {
-					return {
-						template : '<div class="modal fade">'
-								+ '<div class="modal-dialog">'
-								+ '<div class="modal-content">'
-								+ '<div class="modal-header">'
-								+ '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>'
-								+ '<h4 class="modal-title">{{ title }}</h4>'
-								+ '</div>'
-								+ '<div class="modal-body" ng-transclude></div>'
-								+ '</div>' + '</div>' + '</div>',
-						restrict : 'E',
-						transclude : true,
-						replace : true,
-						scope : true,
-						link : function postLink(scope, element, attrs) {
-							scope.title = attrs.title;
-
-							scope.$watch(attrs.visible, function(value) {
-								if (value == true)
-									$(element).modal('show');
-								else
-									$(element).modal('hide');
-							});
-
-							$(element).on('shown.bs.modal', function() {
-								scope.$apply(function() {
-									scope.$parent[attrs.visible] = true;
-								});
-							});
-
-							$(element).on('hidden.bs.modal', function() {
-								scope.$apply(function() {
-									scope.$parent[attrs.visible] = false;
-								});
-							});
-						}
-					};
-				})
+				});
+		
