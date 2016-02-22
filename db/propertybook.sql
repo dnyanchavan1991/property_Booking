@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Feb 16, 2016 at 07:13 PM
+-- Generation Time: Feb 22, 2016 at 06:41 PM
 -- Server version: 5.1.37
 -- PHP Version: 5.3.0
 
@@ -109,33 +109,38 @@ CREATE TABLE IF NOT EXISTS `customer_reviews` (
   `customer_name` varchar(100) NOT NULL,
   `customer_email` varchar(50) NOT NULL,
   `star_rating` int(11) NOT NULL,
-  `review_text` varchar(5000) NOT NULL,
+  `check_in` date NOT NULL,
+  `check_out` date NOT NULL,
+  `review_text` varchar(1000) NOT NULL,
   PRIMARY KEY (`review_id`),
   KEY `PropertyId` (`property_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=26 ;
 
 --
 -- Dumping data for table `customer_reviews`
 --
 
-INSERT INTO `customer_reviews` (`review_id`, `property_id`, `customer_name`, `customer_email`, `star_rating`, `review_text`) VALUES
-(1, 30, '', 'shrutikharge@gmail.com', 1, 'Suyog constructions is a moderately popular name in Pune real estate buisness who claim to have over 30 years of experience in construction business. Some of the completed and ongoing projects of this builder are: Suyog Lucky Homes(Wagholi), Suyog Ni'),
-(2, 31, '', 'shrutikharge@gmail.com', 1, 'Suyog constructions is a moderately popular name in Pune real estate buisness who claim to have over 30 years of experience in construction business. Some of the completed and ongoing projects of this builder are: Suyog Lucky Homes(Wagholi), Suyog Ni'),
-(3, 32, '', 'shrutikharge@gmail.com', 1, 'Suyog constructions is a moderately popular name in Pune real estate buisness who claim to have over 30 years of experience in construction business. Some of the completed and ongoing projects of this builder are: Suyog Lucky Homes(Wagholi), Suyog Ni'),
-(4, 33, '', 'shrutikharge@gmail.com', 1, 'Marvel Bounty Located at Magarpatta Road and penthouses designed to allow nature to flow from the outdoors into your living space transforming your living experience into calm, quiet and beautiful. Still the project need some time to complete a few p '),
-(5, 34, '', 'shrutikharge@gmail.com', 1, 'Marvel Bounty Located at Magarpatta Road and penthouses designed to allow nature to flow from the outdoors into your living space transforming your living experience into calm, quiet and beautiful. Still the project need some time to complete a few p '),
-(6, 35, '', 'shrutikharge@gmail.com', 1, 'I have visited the pinnacle group of constructions building in pune at tilk road,the building is build in very littile space and also the construction is not well planed the lift available at very unlocated location no one can guess where is the lift '),
-(7, 36, '', 'shrutikharge@gmail.com', 1, 'I have visited the pinnacle group of constructions building in pune at tilk road,the building is build in very littile space and also the construction is not well planed the lift available at very unlocated location no one can guess where is the lift '),
-(8, 37, '', 'shrutikharge@gmail.com', 1, 'Worst experience ever had in life. invested in kul nation the project hasnt moved a stone, and now after a lot of effort to get the cancellation done, these shameless set of unethical people are delaying the reimbursement of the agreement value which '),
-(9, 38, '', 'shrutikharge@gmail.com', 1, 'Worst experience ever had in life. invested in kul nation the project hasnt moved a stone, and now after a lot of effort to get the cancellation done, these shameless set of unethical people are delaying the reimbursement of the agreement value which '),
-(10, 39, '', 'shrutikharge@gmail.com', 1, 'This is the one of the punes builder and that builder makeing the cheap land but when I was know about the offer of this ACE AUGUSTA IN THE HInjewadi offer is the best and good qualitys .i also one of the plot but but the same thing is happen in the '),
-(11, 40, '', 'shrutikharge@gmail.com', 1, 'This is the one of the punes builder and that builder makeing the cheap land but when I was know about the offer of this ACE AUGUSTA IN THE HInjewadi offer is the best and good qualitys .i also one of the plot but but the same thing is happen in the '),
-(12, 41, '', 'shrutikharge@gmail.com', 1, 'Recently I was looking for a good construction company for a private school project and I visited Renuka constructions for my project. I found this company very dedicated and experienced in construction line.They are very polite and they know how to '),
-(13, 42, '', 'shrutikharge@gmail.com', 1, 'Recently I was looking for a good construction company for a private school project and I visited Renuka constructions for my project. I found this company very dedicated and experienced in construction line.They are very polite and they know how to '),
-(14, 33, 'shruti kharge', 'shruti@agile.com', 3, 'trj y54y5e y54y45e '),
-(15, 33, 'shruti kharge', 'shruti@agile.com', 3, 'Sunny Midtown is good property.'),
-(16, 33, 'shruti kharge', 'shruti@agile.com', 3, 'Sunny Midtown is best property'),
-(17, 33, 'shruti kharge', 'shruti@agile.com', 3, 'Sunny Midtown is best property');
+INSERT INTO `customer_reviews` (`review_id`, `property_id`, `customer_name`, `customer_email`, `star_rating`, `check_in`, `check_out`, `review_text`) VALUES
+(1, 30, 'shruti kharge', 'shrutikharge@gmail.com', 4, '0000-00-00', '0000-00-00', 'Suyog constructions is a moderately popular name in Pune real estate buisness who claim to have over 30 years of experience in construction business. Some of the completed and ongoing projects of this builder are: Suyog Lucky Homes(Wagholi), Suyog Ni'),
+(2, 31, 'shruti kharge', 'shrutikharge@gmail.com', 3, '0000-00-00', '0000-00-00', 'Suyog constructions is a moderately popular name in Pune real estate buisness who claim to have over 30 years of experience in construction business. Some of the completed and ongoing projects of this builder are: Suyog Lucky Homes(Wagholi), Suyog Ni'),
+(3, 32, 'shruti kharge', 'shrutikharge@gmail.com', 5, '0000-00-00', '0000-00-00', 'Suyog constructions is a moderately popular name in Pune real estate buisness who claim to have over 30 years of experience in construction business. Some of the completed and ongoing projects of this builder are: Suyog Lucky Homes(Wagholi), Suyog Ni'),
+(4, 33, 'shruti kharge', 'shrutikharge@gmail.com', 5, '0000-00-00', '0000-00-00', 'Marvel Bounty Located at Magarpatta Road and penthouses designed to allow nature to flow from the outdoors into your living space transforming your living experience into calm, quiet and beautiful. Still the project need some time to complete a few p '),
+(5, 34, 'shruti kharge', 'shrutikharge@gmail.com', 2, '0000-00-00', '0000-00-00', 'Marvel Bounty Located at Magarpatta Road and penthouses designed to allow nature to flow from the outdoors into your living space transforming your living experience into calm, quiet and beautiful. Still the project need some time to complete a few p '),
+(6, 35, 'shruti kharge', 'shrutikharge@gmail.com', 3, '0000-00-00', '0000-00-00', 'I have visited the pinnacle group of constructions building in pune at tilk road,the building is build in very littile space and also the construction is not well planed the lift available at very unlocated location no one can guess where is the lift '),
+(7, 36, 'shruti kharge', 'shrutikharge@gmail.com', 3, '0000-00-00', '0000-00-00', 'I have visited the pinnacle group of constructions building in pune at tilk road,the building is build in very littile space and also the construction is not well planed the lift available at very unlocated location no one can guess where is the lift '),
+(8, 37, 'shruti kharge', 'shrutikharge@gmail.com', 5, '0000-00-00', '0000-00-00', 'Worst experience ever had in life. invested in kul nation the project hasnt moved a stone, and now after a lot of effort to get the cancellation done, these shameless set of unethical people are delaying the reimbursement of the agreement value which '),
+(9, 38, 'shruti kharge', 'shrutikharge@gmail.com', 4, '0000-00-00', '0000-00-00', 'Worst experience ever had in life. invested in kul nation the project hasnt moved a stone, and now after a lot of effort to get the cancellation done, these shameless set of unethical people are delaying the reimbursement of the agreement value which '),
+(10, 39, 'shruti kharge', 'shrutikharge@gmail.com', 5, '0000-00-00', '0000-00-00', 'This is the one of the punes builder and that builder makeing the cheap land but when I was know about the offer of this ACE AUGUSTA IN THE HInjewadi offer is the best and good qualitys .i also one of the plot but but the same thing is happen in the '),
+(11, 40, 'shruti kharge', 'shrutikharge@gmail.com', 5, '0000-00-00', '0000-00-00', 'This is the one of the punes builder and that builder makeing the cheap land but when I was know about the offer of this ACE AUGUSTA IN THE HInjewadi offer is the best and good qualitys .i also one of the plot but but the same thing is happen in the '),
+(12, 41, 'shruti kharge', 'shrutikharge@gmail.com', 5, '0000-00-00', '0000-00-00', 'Recently I was looking for a good construction company for a private school project and I visited Renuka constructions for my project. I found this company very dedicated and experienced in construction line.They are very polite and they know how to '),
+(13, 42, 'shruti kharge', 'shrutikharge@gmail.com', 5, '0000-00-00', '0000-00-00', 'Recently I was looking for a good construction company for a private school project and I visited Renuka constructions for my project. I found this company very dedicated and experienced in construction line.They are very polite and they know how to '),
+(14, 33, 'shruti kharge', 'shruti@agile.com', 3, '0000-00-00', '0000-00-00', 'trj y54y5e y54y45e '),
+(15, 33, 'shruti kharge', 'shruti@agile.com', 3, '0000-00-00', '0000-00-00', 'Sunny Midtown is good property.'),
+(16, 33, 'shruti kharge', 'shruti@agile.com', 3, '0000-00-00', '0000-00-00', 'Sunny Midtown is best property'),
+(17, 33, 'shruti kharge', 'shruti@agile.com', 3, '0000-00-00', '0000-00-00', 'Sunny Midtown is best property'),
+(18, 30, 'Vilas Galave', 'vilas@agile.com', 5, '0000-00-00', '0000-00-00', 'Orchid Villa is a moderately popular name in Pune real estate buisness who claim to have over 30 years of experience in construction business.'),
+(19, 30, 'Vishwanath Awate', 'vishu.awate@gmail.com', 5, '0000-00-00', '0000-00-00', 'This is nice property\n\n\n\n\nAtleast visit once..\n\n\n\n\nI had a great experience'),
+(22, 31, 'mukech', 'mukesh@agile.com', 3, '0000-00-00', '0000-00-00', 'good');
 
 -- --------------------------------------------------------
 
@@ -208,7 +213,16 @@ INSERT INTO `login` (`user_name`, `password`, `logged_in_dateTime`) VALUES
 ('agile', 'agile', '2016-02-16 04:26:50'),
 ('agile', 'agile', '2016-02-16 04:27:45'),
 ('agile', 'agile', '2016-02-16 04:29:12'),
-('agile', 'agile', '2016-02-16 06:36:29');
+('agile', 'agile', '2016-02-16 06:36:29'),
+('agile', 'agile', '2016-02-17 09:24:53'),
+('agile', 'agile', '2016-02-17 12:33:13'),
+('agile', 'agile', '2016-02-17 01:09:48'),
+('agile', 'agile', '2016-02-17 02:28:46'),
+('agile', 'agile', '2016-02-17 02:45:17'),
+('agile', 'agile', '2016-02-17 04:09:21'),
+('agile', 'agile', '2016-02-18 11:48:31'),
+('agile', 'agile', '2016-02-18 01:10:18'),
+('agile', 'agile', '2016-02-22 12:35:10');
 
 -- --------------------------------------------------------
 
@@ -586,7 +600,7 @@ CREATE TABLE IF NOT EXISTS `visitors_info` (
   `location` varchar(200) NOT NULL,
   `Service_Provider` varchar(300) NOT NULL,
   PRIMARY KEY (`visitor_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=56 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=70 ;
 
 --
 -- Dumping data for table `visitors_info`
@@ -611,7 +625,21 @@ INSERT INTO `visitors_info` (`visitor_id`, `visitor_ip`, `city`, `region`, `coun
 (52, '49.248.83.7', '', '', 'IN', NULL, '2016-02-16', '20.0000,77.0000', 'AS17762 Tata Teleservices Maharashtra Ltd'),
 (53, '114.143.253.115', 'Pune', 'Maharashtra', 'IN', NULL, '2016-02-16', '18.5333,73.8667', 'AS17762 Tata Teleservices Maharashtra Ltd'),
 (54, '114.143.253.68', 'Pune', 'Maharashtra', 'IN', NULL, '2016-02-16', '18.5333,73.8667', 'AS17762 Tata Teleservices Maharashtra Ltd'),
-(55, '123.252.218.22', 'Pune', 'Maharashtra', 'IN', NULL, '2016-02-16', '18.5333,73.8667', 'AS17762 Tata Teleservices Maharashtra Ltd');
+(55, '123.252.218.22', 'Pune', 'Maharashtra', 'IN', NULL, '2016-02-16', '18.5333,73.8667', 'AS17762 Tata Teleservices Maharashtra Ltd'),
+(56, '123.252.174.27', '', '', 'IN', NULL, '2016-02-17', '20.0000,77.0000', 'AS17762 Tata Teleservices Maharashtra Ltd'),
+(57, '114.143.171.239', '', '', 'IN', NULL, '2016-02-17', '20.0000,77.0000', 'AS17762 Tata Teleservices Maharashtra Ltd'),
+(58, '123.252.241.5', 'Pune', 'Maharashtra', 'IN', NULL, '2016-02-17', '18.5333,73.8667', 'AS17762 Tata Teleservices Maharashtra Ltd'),
+(59, '114.143.17.18', '', '', 'IN', NULL, '2016-02-17', '20.0000,77.0000', 'AS17762 Tata Teleservices Maharashtra Ltd'),
+(60, '114.143.245.179', '', '', 'IN', NULL, '2016-02-18', '20.0000,77.0000', 'AS17762 Tata Teleservices Maharashtra Ltd'),
+(61, '103.8.148.36', 'Pune', 'Maharashtra', 'IN', NULL, '2016-02-18', '18.5333,73.8667', 'AS17762 Tata Teleservices Maharashtra Ltd'),
+(62, '49.248.192.31', 'Pune', 'Maharashtra', 'IN', NULL, '2016-02-18', '18.5333,73.8667', 'AS17762 Tata Teleservices Maharashtra Ltd'),
+(63, '114.143.251.70', '', '', 'IN', NULL, '2016-02-18', '20.0000,77.0000', 'AS17762 Tata Teleservices Maharashtra Ltd'),
+(64, '114.143.254.67', '', '', 'IN', NULL, '2016-02-18', '20.0000,77.0000', 'AS17762 Tata Teleservices Maharashtra Ltd'),
+(65, '123.252.174.59', '', '', 'IN', NULL, '2016-02-19', '20.0000,77.0000', 'AS17762 Tata Teleservices Maharashtra Ltd'),
+(66, '123.252.171.204', '', '', 'IN', NULL, '2016-02-19', '20.0000,77.0000', 'AS17762 Tata Teleservices Maharashtra Ltd'),
+(67, '114.143.251.142', '', '', 'IN', NULL, '2016-02-22', '20.0000,77.0000', 'AS17762 Tata Teleservices Maharashtra Ltd'),
+(68, '49.248.72.208', 'Mumbai', 'Maharashtra', 'IN', NULL, '2016-02-22', '18.9750,72.8258', 'AS17762 Tata Teleservices Maharashtra Ltd'),
+(69, '49.248.79.235', '', '', 'IN', NULL, '2016-02-22', '20.0000,77.0000', 'AS17762 Tata Teleservices Maharashtra Ltd');
 
 --
 -- Constraints for dumped tables

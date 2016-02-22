@@ -99,10 +99,12 @@ CREATE TABLE IF NOT EXISTS `customer_reviews` (
   `customer_name` varchar(100) NOT NULL,
   `customer_email` varchar(50) NOT NULL,
   `star_rating` int(11) NOT NULL,
-  `review_text` varchar(250) NOT NULL,
+  `check_in` date NOT NULL,
+  `check_out` date NOT NULL,
+  `review_text` varchar(1000) NOT NULL,
   PRIMARY KEY (`review_id`),
   KEY `PropertyId` (`property_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=26 ;
 
 CREATE TABLE IF NOT EXISTS `registration` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT,

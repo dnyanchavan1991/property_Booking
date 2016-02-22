@@ -13,14 +13,16 @@ app.controller('reviewCtrl',  function ($scope, $http) {
 	
 	//$scope.formData = {};
 	
-	$scope.processForm = function(prop_id)
+	$scope.processForm = function()
     { 	
 		 $scope.formData = {};
 		 $scope.formData.customer_name = $scope.customer_name;
 		 $scope.formData.customer_email = $scope.customer_email;
-		 $scope.formData.property_id = prop_id;
+		 $scope.formData.property_id = $scope.prop_id;
 		 $scope.formData.rating_given = $scope.rating_given;
 		 $scope.formData.review_given = $scope.review_given;
+		 $scope.formData.review_checkin = $scope.review_checkin;
+		 $scope.formData.review_checkout = $scope.review_checkout;
 		 
 		 $http({
 			method  : 'POST',
@@ -29,8 +31,10 @@ app.controller('reviewCtrl',  function ($scope, $http) {
 		})
 		.success(function(data){			
 			alert("Review submitted");
-			location.reload();
-		}); 
+			//location.reload();
+			location.href = "#tab7";
+			//$(this).html("<a href='#tab7'></a>");
+		});
     };
 });
 

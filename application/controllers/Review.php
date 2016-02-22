@@ -17,11 +17,18 @@ class Review extends CI_Controller {
 		$customer_email = $post->customer_email;
 		$rating_given = $post->rating_given;
 		$review_given = $post->review_given;
+		$review_checkin = str_replace( '/', '-', $post->review_checkin);
+		$review_checkin = date ('Y-m-d', strtotime($review_checkin));
+		$review_checkout = str_replace( '/', '-', $post->review_checkout);
+		$review_checkout = date ('Y-m-d', strtotime($review_checkout));
+		
 		$reviewArray = array(
 							'property_id'=>$property_id,
 							'customer_name'=>$customer_name,
 							'customer_email'=>$customer_email,
 							'star_rating'=>$rating_given,
+							'check_in'=>$review_checkin,
+							'check_out'=>$review_checkout,
 							'review_text'=>$review_given
 						);
 		$send_review = $this->PropertyModel->submitReview($reviewArray);

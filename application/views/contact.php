@@ -13,8 +13,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords"
-	content="Classic Hotel Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+<meta name="keywords" content="Classic Hotel Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript">
 	
@@ -46,31 +45,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="text/javascript" src="js/easing.js"></script>
 <script defer src="js/jquery.flexslider.js"></script>
 <script type="text/javascript">
-	jQuery(document).ready(
-			function($) {
-				$(".scroll").click(function(event) {
-					event.preventDefault();
-					$('html,body').animate({
-						scrollTop : $(this.hash).offset().top
-					}, 1000);
-				});
-				jQuery('.tabs .tab-links a').on(
-						'click',
-						function(e) {
-							var currentAttrValue = jQuery(this).attr('href');
-
-							// Show/Hide Tabs
-							jQuery('.tabs ' + currentAttrValue).show()
-									.siblings().hide();
-
-							// Change/remove current tab to active
-							jQuery(this).parent('li').addClass('active')
-									.siblings().removeClass('active');
-
-							e.preventDefault();
-						});
-				
-			});
+	jQuery(document).ready(function($){
+		$(".scroll").click(function(event){
+			event.preventDefault();
+			$('html,body').animate({
+				scrollTop : $(this.hash).offset().top
+			}, 1000);
+		});
+		jQuery('.tabs .tab-links a').on('click',function(e){
+			var currentAttrValue = jQuery(this).attr('href');
+			// Show/Hide Tabs
+			jQuery('.tabs ' + currentAttrValue).show().siblings().hide();
+			// Change/remove current tab to active
+			jQuery(this).parent('li').addClass('active').siblings().removeClass('active');
+			e.preventDefault();
+		});
+	});
+	$(function() {
+		$( "#review_checkin,#review_checkout" ).datepicker({dateFormat: 'dd/mm/yy'});
+	});
 </script>
 
 <!-- start-smoth-scrolling -->
@@ -135,7 +128,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="tab-content">
 						<div id="tab1" class="tab active">
 							<p>
-								<?php echo  $propertyDescription; ?>
+								<?php echo  nl2br($propertyDescription); ?>
 							</p>
 						</div>
 						<div id="tab2" class="tab">
@@ -185,33 +178,33 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						?>
 						</div>
 						<div id="tab6" class="tab">
-							<?php echo $way_to_reach; ?>
+							<?php echo nl2br($way_to_reach); ?>
 						</div>
 						<div class="tab" id="tab7" >
-							<?php //echo $way_to_reach; ?>
-							<div class="contact-form"   >
-								<form name="form" ng-submit="processForm('30')" ng-controller="reviewCtrl" >
-								
-									<input type="hidden" ng-model="prop_id" value=<?php echo $property_id;?> >
-									<input type="text" id="customer_name" ng-model="customer_name" placeholder="Name" ng-value="" required>
-									<input type="text" ng-model="customer_email" placeholder="Email" ng-value="" required>
+							<div class="contact-form">
+								<form name="form" ng-submit="processForm()" ng-controller="reviewCtrl" >
+									<?php if(isset($name) && isset($email_address)){?>
+										<input type="text" id="customer_name" ng-model="customer_name" placeholder="Name" ng-init="customer_name='<?php echo $name;?>'" readonly>
+										<input type="text" ng-model="customer_email" placeholder="Email" ng-init="customer_email='<?php echo $email_address;?>'" readonly>
+									<?php } else{?>
+										<input type="text" id="customer_name" ng-model="customer_name" placeholder="Name" ng-value="" required>
+										<input type="text" ng-model="customer_email" placeholder="Email" ng-value="" required>
+									<?php }?>
 									<div class="clearfix"> </div>
-									Rating:
-									<span class="starRatingReview">
-										<input id="rating5" type="radio" ng-model="rating_given" value="5">
-										<label for="rating5">5</label>
-										<input id="rating4" type="radio" ng-model="rating_given" value="4">
-										<label for="rating4">4</label>
-										<input id="rating3" type="radio" ng-model="rating_given" value="3" ng-checked="true">
-										<label for="rating3">3</label>
-										<input id="rating2" type="radio" ng-model="rating_given" value="2">
-										<label for="rating2">2</label>
-										<input id="rating1" type="radio" ng-model="rating_given" value="1">
-										<label for="rating1">1</label>
-									</span>
+									<input id="review_checkin" type="text" ng-model="review_checkin" placeholder="Check-In date"  required>
+									<input id="review_checkout" type="text" ng-model="review_checkout" placeholder="Check-Out date"  required>
 									<div class="clearfix"> </div>
-									<textarea style="height: 110px !important;" ng-model="review_given" placeholder="Content...(max 250)" required></textarea>
+									<div style="display:inline-block;">Rating:</div>
+									<div class="acidjs-rating-stars">
+										<input type="radio" ng-model="rating_given" id="group-2-0" value="5" /><label for="group-2-0"></label>
+										<input type="radio" ng-model="rating_given" id="group-2-1" value="4" /><label for="group-2-1"></label>
+										<input type="radio" ng-model="rating_given" id="group-2-2" value="3" ng-init="rating_given=3" ng-checked="true"/><label for="group-2-2"></label>
+										<input type="radio" ng-model="rating_given" id="group-2-3" value="2" /><label for="group-2-3"></label>
+										<input type="radio" ng-model="rating_given" id="group-2-4"  value="1" /><label for="group-2-4"></label>
+									</div>
+									<textarea style="height: 110px !important;" ng-model="review_given" placeholder="Content...(max 1000)" required></textarea>
 									<div class="clearfix"> </div>
+									<input type="hidden" ng-model="prop_id" ng-init="prop_id='<?php echo $property_id;?>'" >
 									<input style="margin-top: 0px!important;margin-left:0px !important;" type="submit" id="submit" value="Submit">
 									<br/><br/>
 								</form>
@@ -226,12 +219,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								?>
 								<div class="comments-bot">
 									<p>"<?php echo nl2br($review['review_text']);?>"</p>
-									<div class="rating text-left">
+									<div class="text-left">
 										<?php 
 										for($i=1; $i<=$review['star_rating']; $i++)
-										{
-											echo "<span>☆</span>";
-										}
+										{?>
+											<span class="red-star">★</span>
+										<?php }
 										?>
 									</div>
 									<h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span> <?php echo $review['customer_name'];?> <p style="display:inline-block;"><?php echo $review['customer_email'];?></p></h4>
