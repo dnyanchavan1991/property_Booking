@@ -55,7 +55,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </script>
 <!-- start-smoth-scrolling -->
 </head>
-<body ng-app="checkRoomAvailabilityApp">
+<body ng-app="checkRoomAvailabilityApp" ng-controller="checkRoomAvailabilityController" ng-init="isLabelChecked('false')">
 	<!-- banner -->
 	<div class="banner page-head">
 		<div class="container">
@@ -96,7 +96,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="search-page">
 		<div class="container">
 			<div class="search-grids">
-				<div class="col-md-3 search-grid-left" ng-controller="CheckboxFilterCtrl">
+				<div class="col-md-3 search-grid-left" >
 					<div class="search-hotel">
 						<h3 class="sear-head">Name contains</h3>
 						<form>
@@ -235,7 +235,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<!-- script for tabs -->
 					</div>
 				</div>
-				<div class="col-md-9 search-grid-right"	ng-controller="checkRoomAvailabilityController"	data-ng-init="getRoomAvailability();">
+				<div class="col-md-9 search-grid-right"	>
 					<div class="hotel-rooms" ng-repeat="rooms in propNames">
 						<div class="hotel-left">
 							<a href="" ng-click="getPropertyDetails(rooms)">
