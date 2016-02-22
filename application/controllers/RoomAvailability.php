@@ -82,7 +82,7 @@ class RoomAvailability extends CI_Controller {
         
         
         	);
-        	if(sizeof($filterData->selectedstarRateList)==0 &&  sizeof($filterData->selectedFeatureList)==0 && sizeof($filterData->selectedFacilityList)==0 && sizeof($filterData->selectedAccomodationList)==0)
+        	if(sizeof($filterData->selectedstarRateList)==0 &&  sizeof($filterData->selectedFeatureList)==0 && sizeof($filterData->selectedFacilityList)==0 && sizeof($filterData->selectedAccomodationList)==0 &&  sizeof($filterData->propertyNameList)==0)
         	{
         		$filterData=NULL;
         	} 
