@@ -33,7 +33,7 @@ padding-right:0px !important;
 padding-left:5px !important;
 }
 .guedtf{
-width:100%;
+width:28%;
 padding: 25px 0px 0px 0px !important;
 margin: 14px 0px 0px 0px !important;
 }
@@ -431,7 +431,7 @@ nav a:focus {
   top: 0;
 }
 .social-icons{
-margin-top: -21px;
+margin-top: 5px;
 float:right;
 }
 .social-icons ul li {
@@ -1892,7 +1892,7 @@ width:20%;
 	cursor: pointer;
 	
 	   padding: 26px 0px 0px 11px !important;
-	margin: 15px 0px 0px 0px !important;
+	margin: 15px 0px 0px 13px !important;
 }
 
 .reservation-left img {
@@ -2433,6 +2433,7 @@ font-weight:bold;
 button, input, optgroup, select, textarea{
 	margin: 13px 0px 0px 0px !important;
 	padding: 12px 0px 0px 0px !important;
+	top: -48px !important;
 }
 .date {
 	font-size: 17px;
@@ -2679,6 +2680,7 @@ margin: 1px -6px !important;
 		padding: 12px 25px !important;
 		margin: 16px 0px 0px -16px !important;
 	  }
+	
 	.radio-btns label {
 	  font-size: 13px;
 	  }
@@ -3066,7 +3068,7 @@ margin: 1px -6px !important;
 	  padding: 0 10px;
 	}
 }
-@media (min-width:360px and max-width: 640px){
+@media (min-width:360px) and (max-width: 640px)and(orientation:landscape){
 	.logo {
 	  float: left;
 	  width: 35%;
@@ -3326,7 +3328,7 @@ margin: 1px -6px !important;
 	}
 
 }
-@media (min-width:320px and max-width: 480px){
+/*@media (min-width:320px) and (max-width: 480px) and ({
 	.copy-right p {
 	  font-size: 13px;
 	  }
@@ -3598,10 +3600,27 @@ margin: 1px -6px !important;
 	  margin: 15px 0px;
 	}
 
-}
-@media (max-width: 320px){
+}*/
+@media (min-width:320px and max-width:480px)and(0rientation:portrait){
 	.body {
 		font-size: 9px;
+	}
+	.input.button .select .textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    width: 60%;
+	}
+	.guedtf {
+    width: 28%;
+    padding: 25px 0px 0px 0px !important;
+    margin: 14px 0px 0px 0px !important;
+	}
+	.date {
+    background: url(../images/date-icon.png) no-repeat 95.5% 45% #fff;
+    cursor: pointer;
+    padding: 26px 0px 0px 11px !important;
+    margin: 15px 0px 0px 15px !important;
 	}
 	  #center-line {
     position: absolute;
