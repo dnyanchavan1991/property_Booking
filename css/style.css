@@ -1893,6 +1893,7 @@ width:20%;
 	
 	   padding: 26px 0px 0px 11px !important;
 	margin: 15px 0px 0px 13px !important;
+	
 }
 
 .reservation-left img {
@@ -2371,17 +2372,17 @@ font-weight:bold;
 		width:100%; 
 		border:0px; 
 		margin: 16px 100px 0px -11px !important;
-		padding: 24px 0px 0px 0px !important;
+		padding: 0px 0px 0px 0px !important;
 		font-size: 17px;
-		height: 2.7em !important;
+		height: 2.8em !important;
 	}
 	.propertyType{
 		width:100%;
 		height: 2.9em !important;	
 		font-size: 17px;		
-		padding: 25px 0px 0px 0px !important;
+		padding: 0px 0px 0px 0px !important;
 		border:0px; 
-		margin: 15px 27px 0px -12px !important;
+		margin: 15px 27px 0px -13px !important;
 	}
 	.banner-bottom{
 		width: 100%;
@@ -2440,12 +2441,13 @@ button, input, optgroup, select, textarea{
     background: #FFF url("../images/date-icon.png") no-repeat scroll 95.5% 45%;
     cursor: pointer;
     padding: 23px 0px 0px 0px !important;
-    margin: 15px 1px 0px -17px !important;
+    margin: 15px 1px 0px -18px !important;
+	width: 10em;
 }
 	.guedtf {
 		width: 100%;
-		padding: 26px 0px 0px !important;
-		margin: 14px 0px 0px -14px !important;
+		padding: 0px 0px 0px !important;
+		margin: 14px 0px 0px -16px !important;
 		    font-size: 17px;
 			height: 2.9em !important;
 			    height: 2.8em;
@@ -2459,8 +2461,8 @@ button, input, optgroup, select, textarea{
 					outline: medium none;
 					background: #1C69DF none repeat scroll 0% 0%;
 					color: #FFF;
-					margin: 15px 0px 0px 21px !important;
-					padding: 14px 16px 10px !important;
+					margin: 15px 0px 0px 30px !important;
+					padding: 12px 0px 12px !important;
 				}
 	
 	}
@@ -2800,7 +2802,7 @@ margin: 1px -6px !important;
 	  }
 }
 
-@((min-width:640px) and (max-width: 800px)){
+@media(min-width:640px and max-width: 768px){
 	span.menu {
 	display: block;
 	cursor: pointer;
@@ -2827,6 +2829,7 @@ margin: 1px -6px !important;
 	z-index: 9999;
 	width: 100%;
 	}
+	
 	.logo {
 	z-index: 9999;
 	}
