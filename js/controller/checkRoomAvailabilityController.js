@@ -111,14 +111,18 @@ angular
 										this.accomodationListLabel, 1);
 							}
 						} else if (objName == 'propertyName') {
-							if (this.propertyName[0].name != "") {
-								alert(this.propertyName[0].name);
+							if (this.propertyName[0].name != null) {
+								
 								$scope.model.propertyNameList
 										.push(this.propertyName[0]);
 							}
+							else{
+								$scope.model.propertyNameList
+								.push('');
+							}
 						}
 						else{
-							
+						
 						}
 
 						$http(
@@ -129,16 +133,14 @@ angular
 
 								}).success(function(response) {
 									
-							$scope.propNames = response.data;
+							$scope.propNames = response;
 							
 						});
 
 					};
 				
 					// Show Div
-					$scope.showResult = function() {
-						$scope.showhideprop = true;
-					};
+				
 					$scope.getPropertyDetails = function(item) {
 
 						var objForm = document.createElement('FORM');
