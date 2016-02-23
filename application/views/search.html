@@ -55,7 +55,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </script>
 <!-- start-smoth-scrolling -->
 </head>
-<body ng-app="checkRoomAvailabilityApp" ng-controller="checkRoomAvailabilityController" ng-init="isLabelChecked('false')">
+<body>
 	<!-- banner -->
 	<div class="banner page-head">
 		<div class="container">
@@ -93,7 +93,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 	<!-- //banner -->
 	<!--search-->
-	<div class="search-page">
+	<div class="search-page" ng-app="checkRoomAvailabilityApp" ng-controller="checkRoomAvailabilityController" data-ng-init="isLabelChecked('false');">
 		<div class="container">
 			<div class="search-grids">
 				<div class="col-md-3 search-grid-left" >
