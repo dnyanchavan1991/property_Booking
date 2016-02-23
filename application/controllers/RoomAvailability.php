@@ -58,7 +58,7 @@ class RoomAvailability extends CI_Controller {
 						if(strpos($result ,"mainImage") !==false)
 						{
 							$get_result = "Admin/".$image_path.$result;
-							$response[$i]=array('propertyId'=>$row['propertyId'],'propertyName'=>$row['property'],'ImagePath' => $get_result,'propertyAddress'=>$row['propertyAddress']);
+							$response[$i]=array('propertyId'=>$row['propertyId'],'propertyName'=>$row['property'],'ImagePath' => $get_result,'star_rate'=>$row['star_rate'],'propertyAddress'=>$row['propertyAddress']);
 							$i++;
 						}
 					}
@@ -92,9 +92,21 @@ class RoomAvailability extends CI_Controller {
         	foreach($roomAvailableInfo as $row)
         	{
         		$row=(array)$row;
-        		$response[$i]=array('propertyId'=>$row['propertyId'],'propertyName'=>$row['property'],'ImagePath' => $row['imagePath'],'propertyAddress'=>$row['propertyAddress']);
-        		$i++;
-        		 
+				$image_path = $row['imagePath'];
+				$directory_path = './Admin/'.$image_path;
+				$map = directory_map($directory_path);
+				if($map)
+				{
+					foreach ($map as $result)
+					{
+						if(strpos($result ,"mainImage") !==false)
+						{
+							$get_result = "Admin/".$image_path.$result;
+							$response[$i]=array('propertyId'=>$row['propertyId'],'propertyName'=>$row['property'],'ImagePath' => $get_result,'propertyAddress'=>$row['propertyAddress']);
+							$i++;
+						}
+					}
+				}
         	}
         	echo json_encode ( $response );
         }

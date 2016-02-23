@@ -31,8 +31,8 @@ app.controller('reviewCtrl',  function ($scope, $http) {
 		})
 		.success(function(data){			
 			alert("Review submitted");
-			//location.reload();
-			location.href = "#tab7";
+			location.reload();
+			//location.href = "#tab7";
 			//$(this).html("<a href='#tab7'></a>");
 		});
     };

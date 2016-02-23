@@ -17,7 +17,7 @@ public function checkRoomAvailabilty($searchArray, $filterData) {
 		$propertyType = $searchArray ['propertyType'];
 		$destination = $searchArray ['destination'];
 		
-		$this->db->select ( "property.property_id as propertyId,property.property_name as property,property.property_type_id,property.image_path as imagePath ,concat(property.street,',',property.city,',',property.state,',',property.postal_code)as propertyAddress,propertyInfo.accommodates,(propertyInfo.accommodates-IFNULL(sum(res.accomodates), 0)) as availableAccomodes" );
+		$this->db->select ( "property.property_id as propertyId,property.property_name as property,property.property_type_id,property.image_path as imagePath, property.star_rate, concat(property.street,',',property.city,',',property.state,',',property.postal_code)as propertyAddress,propertyInfo.accommodates,(propertyInfo.accommodates-IFNULL(sum(res.accomodates), 0)) as availableAccomodes" );
 		$this->db->from ( "$propertyInfo propertyInfo" );
 		$this->db->join ( "$reservationTable res", "res.property_id=propertyInfo.property_id", "left" );
 		$this->db->join ( "$propertyTable property", "propertyInfo.property_id=property.property_id" );
@@ -352,15 +352,27 @@ public function checkRoomAvailabilty($searchArray, $filterData) {
 		return $lastId;
 	}
 	/* end submit review */
+	
 	/* get Reviews By PropertyId */
-	public function getReviewsByPropertyId($property_id)
+	public function review_count($p_id)
+	{
+		$this->load->database ();
+		$this->db->select('count(*) as total_reviews');
+		$this->db->from('customer_reviews');
+		$this->db->where('property_id',$p_id);
+		$query=$this->db->get();
+		//$count_review = $query->result_array();
+		//return $count_review['total_reviews'];
+		return $query->row()->total_reviews;
+	}
+	public function getReviewsByPropertyId($property_id,$limit,$start)
 	{
 		$this->load->database ();
 		$this->db->select('customer_name,customer_email,star_rating,review_text');
 		$this->db->from('customer_reviews');
 		$this->db->where('property_id',$property_id);
+		$this->db->limit($limit, $start);
 		$query=$this->db->get();
-		
 		return $query->result_array();
 	}
 	/* end get Reviews By PropertyId */

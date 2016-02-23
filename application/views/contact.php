@@ -230,6 +230,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span> <?php echo $review['customer_name'];?> <p style="display:inline-block;"><?php echo $review['customer_email'];?></p></h4>
 								</div>
 								<?php }?>
+								<p><?php echo $links; ?></p>
 							</div>
 						</div>
 					</div>

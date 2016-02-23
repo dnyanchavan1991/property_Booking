@@ -103,7 +103,6 @@ app.controller('galleryImgCtrl', function ($scope,$http){
     }
 	$scope.getPropertyDetails = function(property_id)
 	{
-		alert(property_id);
 		var objForm = document.createElement('FORM');
 		objForm.method = 'post';
 		objForm.action = 'PropertyDetails';
