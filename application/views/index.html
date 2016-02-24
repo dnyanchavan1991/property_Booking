@@ -31,7 +31,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<script src="js/jquery-ui.js"></script>
 							  <script>
 									  $(function() {
-									    $( "#datepicker,#checkIn,#checkOut" ).datepicker();
+									   //$( "#datepicker,#checkIn,#checkOut" ).datepicker({dateFormat: 'yy-mm-dd'});
+										  $("#checkIn").datepicker({
+											  dateFormat: 'dd-mm-yy',
+										        numberOfMonths: 1,
+										        onSelect: function(selected) {
+										          $("#checkOut").datepicker("option","minDate", selected,'d-m-Y')
+										        }
+										    });
+										    $("#checkOut").datepicker({ 
+										    	dateFormat: 'dd-mm-yy',
+										        numberOfMonths: 1,
+										        onSelect: function(selected) {
+										           $("#checkIn").datepicker("option","maxDate", selected)
+										        }
+										    }); 
+										  
 									  });
 							  </script>
 <!-- //js -->
@@ -47,7 +62,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				$(".scroll").click(function(event){		
 					event.preventDefault();
 					$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
-				});
+				});   /* $("#checkIn").datepicker({
+			        numberOfMonths: 1,
+			        onSelect: function(selected) {
+			          $("#checkIn").datepicker("option","minDate", selected)
+			        }
+			    });
+			    $("#checkOut").datepicker({ 
+			        numberOfMonths: 1,
+			        onSelect: function(selected) {
+			           $("#checkOut").datepicker("option","maxDate", selected)
+			        }
+			    }); */
 			});
 		</script>
 	<!-- start-smoth-scrolling -->
