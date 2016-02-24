@@ -257,10 +257,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="hotel-left-two" ng-controller="popupController">
 									
 									<p>
-										<button ng-click="togglemailPopUp()" class="btn btn-default">Send
-											Mail</button>
-										<button ng-click="togglemessagePopUp()"
-											class="btn btn-default">Send SMS</button>
+										<a href="" ng-click="togglemailPopUp()" class="best-btn">Send
+											Mail</a>
+										<a href="" ng-click="togglemessagePopUp()"
+											class="best-btn">Send SMS</a>
 									</p>
 									<modal title="Enquiry via mail" visible="showModal">
 									<form name="formData" ng-submit="contactToCustomer(rooms)">
