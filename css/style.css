@@ -16,9 +16,9 @@ body a {
 }
 body {
     font-size: 0px;
-    background-color: #9E9FA4;
+   
     font-family: 'Bree Serif',serif;
-    min-height: 2000px;
+    
 }
 a:hover{
  text-decoration:none;
