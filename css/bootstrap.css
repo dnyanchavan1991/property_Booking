@@ -1318,7 +1318,7 @@ mark,
   text-align: left;
 }
 .text-right {
-  text-align: right;
+  text-align: left;
 }
 .text-center {
   text-align: center;
@@ -2987,25 +2987,14 @@ select[multiple].form-group-lg .form-control {
   }
 }
 .btn {
-  display: inline-block;
-  padding: 6px 12px;
-  margin-bottom: 0;
-  font-size: 14px;
-  font-weight: normal;
-  line-height: 1.42857143;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  -ms-touch-action: manipulation;
-      touch-action: manipulation;
-  cursor: pointer;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  background-image: none;
-  border: 1px solid transparent;
-  border-radius: 4px;
+    text-decoration: none;
+	background: #464646;
+	color: #fff;
+	font-size: 18px;
+    padding: 6px 5px !important;
+    margin-left: -8px !important;
+	}
+}
 }
 .btn:focus,
 .btn:active:focus,
@@ -3040,10 +3029,13 @@ fieldset[disabled] .btn {
           box-shadow: none;
   opacity: .65;
 }
-.btn-default {
-  color: #333;
-  background-color: #fff;
-  border-color: #ccc;
+..btn-default {
+  text-decoration: none;
+  background: #464646;
+  color: #fff;
+  font-size: 18px;
+  padding: 5px 8px;
+  margin-left: -11px !important;
 }
 .btn-default:hover,
 .btn-default:focus,

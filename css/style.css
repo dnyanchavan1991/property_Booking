@@ -34,7 +34,7 @@ padding-left:5px !important;
 }
 .guedtf{
 width:28%;
-padding: 25px 0px 0px 0px !important;
+padding: 38px 0px 0px 0px !important;
 margin: 14px 0px 0px 0px !important;
 }
 h1,h2,h3,h4,h5,h6{
@@ -726,6 +726,7 @@ font-family: Forte;
 }
 .welcome,.facilities,.feature-serv ,#gallery ,.about,.vision,.staff,.typrography,.contact,.booking,.single-page,.search-page{
 padding:80px 0;
+
 }
 .welcome-grids ul li{
   background: url(../images/arrow.png) no-repeat 0px 8px;
@@ -802,7 +803,7 @@ margin-top:30px;
 /*-- //services --*/
 /*--gallery--*/
 .gallery{
-background:#ECCA69;
+background:#E7D6A3;
 }
 .view {
   border: 3px solid #fff;
@@ -1033,24 +1034,24 @@ color:#fff;
 }
 /*-- copy --*/
 .wel-grid .icon {
-  width: 70px;
-  height: 70px;
+ width: 50px;
+  height: 45px;
   border-radius: 50%;
   background:#ECCA69;
-  margin: 0 auto;
+  margin: 15px 9px auto;
   text-align: center;
   position: relative;	
 }
 .time-service .glyphicon-time,.time-service .glyphicon-star,.time-service .glyphicon-cog,.time-service .glyphicon-map-marker{
   z-index: 9999;
-  top: 21px;
+ top: 10px;
   left: 0px;
   font-size: 29px;
   color: #fff;
 }
 .time-service .glyphicon-user,.time-service .glyphicon-home{
   z-index: 9999;
-  top: 21px;
+  top: 9px;
   left: 0px;
   color: #fff;
   font-size: 26px;
@@ -1093,15 +1094,15 @@ color:#fff;
   transform: scale(1);
 }
 .wel-grid.btm-gre  .icon {
-  width: 70px;
-  height: 70px;
+  width: 50px;
+  height: 45px;
   border-radius: 50%;
   -webkit-border-radius: 50%;
   -o-border-radius: 50%;
   -ms-border-radius: 50%;
   -moz-border-radius: 50%;
   background: #020202;
-  margin: 0 auto;
+  margin: 14px 12px auto;
   text-align: center;
   position: relative;	
 }
@@ -1717,9 +1718,10 @@ border:none;
   float: left;
   width: 32%;
   color: #000;
+  margin: 10px 10px !important;
 	}
 .contact-form input[type="text"]:nth-child(2){
-	  margin: 0 22px;
+	 margin: 10px 10px !important;
 	}
 .contact-form textarea{
 	float:none;
@@ -1738,9 +1740,10 @@ border:none;
   -ms-transition: 0.5s all;
   color: #fff;
   font-weight: 600;
-  padding: 9px 53px;
+  padding: 5px 20px !important;
   font-size: 20px;
   border: none;
+  margin-left: 13px !important;
 	}
 .contact-form input[type="submit"]:hover{
 	background:#ECCA69;
@@ -1891,10 +1894,11 @@ width:20%;
 	background: url(../images/date-icon.png) no-repeat 95.5% 45% #fff;
 	cursor: pointer;
 	
-	   padding: 26px 0px 0px 11px !important;
-	margin: 15px 0px 0px 13px !important;
-	
+	      padding: 40px 0px 0px 104px !important;
+    margin: 16px 0px 0px 10px !important;
 }
+	
+
 
 .reservation-left img {
  width: 100%; 
@@ -2219,7 +2223,8 @@ top: 4px;
 line-height:1.8em;
   color: #000;
   font-size: 13px;
-  margin: 20px 0 0 0;
+	margin: -23px -18px -15px -26px !important;
+	padding: 2px 0px 0px 0px !important;
 }
 .hotel-left-two p span{
 display:block;
@@ -2295,7 +2300,8 @@ text-align:right;
   background: #464646;
   color: #fff;
   font-size: 18px;
-  padding: 6px 16px;
+  padding: 6px 6px;
+margin-left: -16px !important;
 }
  a.best-btn:hover {
   background: #DF1E1C;
@@ -2445,7 +2451,7 @@ button, input, optgroup, select, textarea{
 	width: 10em;
 }
 	.guedtf {
-		width: 100%;
+		width: 100% !important;
 		padding: 0px 0px 0px !important;
 		margin: 14px 0px 0px -16px !important;
 		    font-size: 17px;
@@ -2461,7 +2467,7 @@ button, input, optgroup, select, textarea{
 					outline: medium none;
 					background: #1C69DF none repeat scroll 0% 0%;
 					color: #FFF;
-					margin: 15px 0px 0px 30px !important;
+					margin: 0px 0px 0px 30px !important;
 					padding: 12px 0px 12px !important;
 				}
 	
@@ -2802,7 +2808,7 @@ margin: 1px -6px !important;
 	  }
 }
 
-@media(min-width:640px and max-width: 768px){
+@media.screen(max-width: 768px){
 	span.menu {
 	display: block;
 	cursor: pointer;
@@ -3604,7 +3610,7 @@ margin: 1px -6px !important;
 	}
 
 }*/
-@media (min-width:320px and max-width:480px)and(0rientation:portrait){
+@media (min-width:320px) {
 	.body {
 		font-size: 9px;
 	}
@@ -3616,14 +3622,14 @@ margin: 1px -6px !important;
 	}
 	.guedtf {
     width: 28%;
-    padding: 25px 0px 0px 0px !important;
-    margin: 14px 0px 0px 0px !important;
+   /* padding: 31px 2px 7px 0px !important;
+	margin: 44px 0px -4px 0px !important;*/
 	}
 	.date {
     background: url(../images/date-icon.png) no-repeat 95.5% 45% #fff;
     cursor: pointer;
-    padding: 26px 0px 0px 11px !important;
-    margin: 15px 0px 0px 15px !important;
+   /*padding: 37px 0px 0px 101px !important;
+margin: 15px 0px 0px 8px !important;*/
 	}
 	  #center-line {
     position: absolute;

@@ -194,7 +194,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<input id="review_checkin" type="text" ng-model="review_checkin" placeholder="Check-In date"  required>
 									<input id="review_checkout" type="text" ng-model="review_checkout" placeholder="Check-Out date"  required>
 									<div class="clearfix"> </div>
-									<div style="display:inline-block;">Rating:</div>
+									<div style="display:inline-block;margin-left: 10px; ">Rating:</div>
 									<div class="acidjs-rating-stars">
 										<input type="radio" ng-model="rating_given" id="group-2-0" value="5" /><label for="group-2-0"></label>
 										<input type="radio" ng-model="rating_given" id="group-2-1" value="4" /><label for="group-2-1"></label>
@@ -205,7 +205,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<textarea style="height: 110px !important;" ng-model="review_given" placeholder="Content...(max 1000)" required></textarea>
 									<div class="clearfix"> </div>
 									<input type="hidden" ng-model="prop_id" ng-init="prop_id='<?php echo $property_id;?>'" >
-									<input style="margin-top: 0px!important;margin-left:0px !important;" type="submit" id="submit" value="Submit">
+									<input style="margin-top: 0px!important; !important;" type="submit" id="submit" value="Submit">
 									<br/><br/>
 								</form>
 							</div>
