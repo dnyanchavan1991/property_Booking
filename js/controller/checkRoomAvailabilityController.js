@@ -9,13 +9,13 @@ angular
 								$scope.names = response.data;
 							});
 
-				/*	$scope.getRoomAvailability = function() {
+					$scope.getRoomAvailability = function() {
 						$http.get("RoomAvailability/checkRoomAvailabilty")
 								.then(function(response) {
 									$scope.propNames = response.data;
 								});
 
-					};*/
+					};
 					$scope.propertyName = [ {
 						name : ""
 					} ];
@@ -69,7 +69,8 @@ angular
 						propertyNameList : []
 
 					}
-
+					$scope.model.propertyNameList
+					.push({name:""});
 					$scope.isLabelChecked = function(objName) {
 
 						if (objName == 'starRate') {
@@ -111,14 +112,15 @@ angular
 										this.accomodationListLabel, 1);
 							}
 						} else if (objName == 'propertyName') {
+							$scope.model.propertyNameList.pop();
 							if (this.propertyName[0].name != null) {
-								
+								$scope.model.propertyNameList.splice(0,1);
 								$scope.model.propertyNameList
 										.push(this.propertyName[0]);
 							}
 							else{
 								$scope.model.propertyNameList
-								.push('');
+								.push({name:""});
 							}
 						}
 						else{
