@@ -1,10 +1,3 @@
-
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,29 +9,29 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <meta name="keywords" content="Classic Hotel Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript">
-	
-	
-	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
-		function hideURLbar(){ window.scrollTo(0,1); } 
-
-
+	addEventListener("load", function(){
+		setTimeout(hideURLbar, 0); 
+	}, false);
+	function hideURLbar()
+	{ 
+		window.scrollTo(0,1);
+	} 
 </script>
 <!-- //for-mobile-apps -->
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css"
-	media="all" />
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css"	media="all" />
 <link href="css/tab.css" rel="stylesheet" type="text/css" media="all" />
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-<link rel="stylesheet" href="css/flexslider.css" media="screen" /><link rel="stylesheet" href="css/jquery-ui.css" />
-
+<link rel="stylesheet" href="css/flexslider.css" media="screen" />
+<link rel="stylesheet" href="css/jquery-ui.css" />
 <!-- js -->
 <script src="js/jquery-1.11.1.min.js"></script>
 <script src="js/jquery-ui.js"></script>
 <script type="text/javascript" src="js/angular.min.js"></script>
-
+<script type="text/javascript" src="js/dirPagination.js"></script>
+<script type="text/javascript" src="js/angular-messages.min.js"></script>
 <script type="text/javascript" src="js/controller/getRoomDetailController.js"></script>
 <!-- //js -->
-<link
-	href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic'
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic'
 	rel='stylesheet' type='text/css'>
 <!-- start-smoth-scrolling -->
 <script type="text/javascript" src="js/move-top.js"></script>
@@ -68,8 +61,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 <!-- start-smoth-scrolling -->
 </head>
-<body ng-app="getRoomDetailApp" ng-controller="getRoomDetailController"
-	ng-init="getRoomDetail()" >
+<body ng-app="getRoomDetailApp" ng-controller="getRoomDetailController"	ng-init="getRoomDetail()">
 	<!-- banner -->
 	<div class="banner page-head">
 		<div class="container">
@@ -182,17 +174,31 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div>
 						<div class="tab" id="tab7" >
 							<div class="contact-form">
-								<form name="form" ng-submit="processForm()" ng-controller="reviewCtrl" >
+								<form name="form" ng-submit="form.$valid && processForm()" ng-controller="reviewCtrl" class="angular-msgs">
 									<?php if(isset($name) && isset($email_address)){?>
 										<input type="text" id="customer_name" ng-model="customer_name" placeholder="Name" ng-init="customer_name='<?php echo $name;?>'" readonly>
-										<input type="text" ng-model="customer_email" placeholder="Email" ng-init="customer_email='<?php echo $email_address;?>'" readonly>
+										<input type="email" ng-model="customer_email" placeholder="Email" ng-init="customer_email='<?php echo $email_address;?>'" readonly>
 									<?php } else{?>
-										<input type="text" id="customer_name" ng-model="customer_name" placeholder="Name" ng-value="" required>
-										<input type="text" ng-model="customer_email" placeholder="Email" ng-value="" required>
+										<input type="text" id="customer_name" ng-model="customer_name" name="customer_name" ng-pattern="/^[a-zA-Z ]*$/" placeholder="Name" ng-value="" required>
+										<div ng-messages="form.customer_name.$error" ng-if="form.customer_name.$dirty">
+											<div ng-message="required">This field is required</div>
+											<div ng-message="pattern">Only characters & space allowed</div>
+										</div>
+										<input type="email" ng-model="customer_email" name="customer_email" placeholder="Email" ng-value="" required>
+										<div ng-messages="form.customer_email.$error" ng-if="form.customer_email.$dirty">
+											<div ng-message="required">This field is required</div>
+											<div ng-message="customer_email">Your email address is invalid</div>
+										</div>
 									<?php }?>
 									<div class="clearfix"> </div>
-									<input id="review_checkin" type="text" ng-model="review_checkin" placeholder="Check-In date"  required>
-									<input id="review_checkout" type="text" ng-model="review_checkout" placeholder="Check-Out date"  required>
+									<input id="review_checkin" type="text" ng-model="review_checkin" name="review_checkin" placeholder="Check-In date"  required>
+									<div ng-messages="form.review_checkin.$error" ng-if="form.review_checkin.$dirty">
+										<div ng-message="required">This field is required</div>
+									</div>
+									<input id="review_checkout" type="text" ng-model="review_checkout" name="review_checkout" placeholder="Check-Out date"  required>
+									<div ng-messages="form.review_checkout.$error" ng-if="form.review_checkout.$dirty">
+										<div ng-message="required">This field is required</div>
+									</div>
 									<div class="clearfix"> </div>
 									<div style="display:inline-block;margin-left: 10px; ">Rating:</div>
 									<div class="acidjs-rating-stars">
@@ -202,35 +208,57 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<input type="radio" ng-model="rating_given" id="group-2-3" value="2" /><label for="group-2-3"></label>
 										<input type="radio" ng-model="rating_given" id="group-2-4"  value="1" /><label for="group-2-4"></label>
 									</div>
-									<textarea style="height: 110px !important;" ng-model="review_given" placeholder="Content...(max 1000)" required></textarea>
+									<textarea style="height: 110px !important;" ng-model="review_given" ng-minlength="100" ng-maxlength="1000" name="review_given" placeholder="Content...(max 1000)" required></textarea>
+									<div ng-messages="form.review_given.$error" ng-if="form.review_given.$dirty">
+										<div ng-message="required">This field is required</div>
+										<div ng-message="minlength">Review must be over 100 characters</div>
+										<div ng-message="maxlength">Review must not exceed 1000 characters</div>									
+									</div>
 									<div class="clearfix"> </div>
 									<input type="hidden" ng-model="prop_id" ng-init="prop_id='<?php echo $property_id;?>'" >
 									<input style="margin-top: 0px!important; !important;" type="submit" id="submit" value="Submit">
 									<br/><br/>
 								</form>
 							</div>
-							<div class="other-comments">
+							<div class="other-comments" ng-controller="paginateReview" ng-init="getReviews()">
 								<div class="comments-head">
-									<h3>Reviews</h3>
+									<div style="float:left;"><h3>Reviews</h3></div>
+									<div style="float:right;">
+										<dir-pagination-controls
+											max-size="5"
+											direction-links="true"
+											boundary-links="true"
+											auto-hide="true">
+										</dir-pagination-controls>
+									</div>
+									<!--<div>
+										<select ng-model="perpage">
+											<option ng-value="5" ng-selected="true">5</option>
+											<option ng-value="10">10</option>
+											<option ng-value="25">25</option>
+										</select>
+									</div>-->
 									<div class="clearfix"></div>
 								</div>
-								<?php 
-								foreach($propertyReviews as $review){
-								?>
-								<div class="comments-bot">
-									<p>"<?php echo nl2br($review['review_text']);?>"</p>
-									<div class="text-left">
-										<?php 
-										for($i=1; $i<=$review['star_rating']; $i++)
-										{?>
-											<span class="red-star">★</span>
-										<?php }
-										?>
+								<div class="comments-bot" dir-paginate="reviews_count in reviews|itemsPerPage:5">
+									<p>{{reviews_count.review_text}}</p>
+									<div class="text-left" ng-if="reviews_count.star_rating==5">
+										<span class="red-star" >★</span><span class="red-star" >★</span><span class="red-star" >★</span><span class="red-star" >★</span><span class="red-star" >★</span>
 									</div>
-									<h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span> <?php echo $review['customer_name'];?> <p style="display:inline-block;"><?php echo $review['customer_email'];?></p></h4>
+									<div class="text-left" ng-if="reviews_count.star_rating==4">
+										<span class="red-star" >★</span><span class="red-star" >★</span><span class="red-star" >★</span><span class="red-star" >★</span>
+									</div>
+									<div class="text-left" ng-if="reviews_count.star_rating==3">
+										<span class="red-star" >★</span><span class="red-star" >★</span><span class="red-star" >★</span>
+									</div>
+									<div class="text-left" ng-if="reviews_count.star_rating==2">
+										<span class="red-star" >★</span><span class="red-star" >★</span>
+									</div>
+									<div class="text-left" ng-if="reviews_count.star_rating==1">
+										<span class="red-star" >★</span>
+									</div>
+									<h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span> {{reviews_count.customer_name}} <p style="display:inline-block;">{{reviews_count.customer_email}}</p></h4>
 								</div>
-								<?php }?>
-								<p><?php echo $links; ?></p>
 							</div>
 						</div>
 					</div>

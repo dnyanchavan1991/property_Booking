@@ -1,8 +1,9 @@
 body{
-	font-size: 0px;
-   background-color: #9E9FA4;;
-    font-family: 'Bree Serif',serif;
-    
+   font-size: 14px;
+   background-color: #9E9FA4;
+   font-family: 'Bree Serif',serif;
+   /*font-size: 14px;
+    font-size: 0px;*/
     min-height: 2000px;
 }
 

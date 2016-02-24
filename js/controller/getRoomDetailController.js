@@ -1,18 +1,27 @@
-var app = angular.module('getRoomDetailApp', []);
+var app = angular.module('getRoomDetailApp', ['angularUtils.directives.dirPagination','ngMessages']);
 
 app.controller('getRoomDetailController',function($scope, $http){
-
+	
 	$scope.getRoomDetail = function() {
 		$http.get("propertyDetails/getRoomDetail").then(function(response){
 			$scope.names = response.data;
 		});
 	};
 });
-
+/*--paginate review*/
+app.controller('paginateReview',function($scope,$http){
+	$scope.getReviews = function()
+    {
+		$http.get("json/ReviewsPerProperty.json").success(function(data){ 
+			$scope.reviews = data;
+			//alert();
+			//alert($scope.reviews);
+		});
+	};
+});
+/*--//paginate review*/
+/*--submit review*/
 app.controller('reviewCtrl',  function ($scope, $http) {
-	
-	//$scope.formData = {};
-	
 	$scope.processForm = function()
     { 	
 		 $scope.formData = {};
@@ -37,7 +46,7 @@ app.controller('reviewCtrl',  function ($scope, $http) {
 		});
     };
 });
-
+/*--//submit review*/
 
 app.controller(
 		'popupController',

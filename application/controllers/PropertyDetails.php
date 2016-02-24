@@ -22,8 +22,9 @@ class PropertyDetails extends CI_Controller {
 	{
 		$roomDetailInfo = $this->PropertyModel->getroomRentDetail ( $this->session->userdata ( 'propertyId' ) );
 		$propertyDetailInfo = $this->PropertyModel->getPropertyDetail ( $this->session->userdata ( 'propertyId' ) );
+		
 		/* -- review pagination --*/
-		$config = array();
+		/*$config = array();
         $config["base_url"] = "PropertyDetails/getRoomDetail";
         $config["total_rows"] = $this->PropertyModel->review_count($this->session->userdata ( 'propertyId' ));
         $config["per_page"] = 3;
@@ -32,10 +33,13 @@ class PropertyDetails extends CI_Controller {
 		$config["num_links"] = round($choice);
         $this->pagination->initialize($config);
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;		
-		//$data['propertyReviews'] = $this->PropertyModel->getReviewsByPropertyId ( $this->session->userdata ( 'propertyId' ) );
 		$data["propertyReviews"] = $this->PropertyModel->getReviewsByPropertyId($this->session->userdata ( 'propertyId' ),$config["per_page"], $page);
-        $data["links"] = $this->pagination->create_links();
+        $data["links"] = $this->pagination->create_links();*/
 		/* -- //review pagination --*/
+		$data['propertyReviews'] = $this->PropertyModel->getReviewsByPropertyId ( $this->session->userdata ( 'propertyId' ) );
+		$response = json_encode($data['propertyReviews']);
+		file_put_contents("json/ReviewsPerProperty.json",$response);
+		
 		$data['propertyName']=$propertyDetailInfo->row()->propertyName;
 		$data['propertyDescription']=$propertyDetailInfo->row()->description;
 		$data['imagePath']=$propertyDetailInfo->row()->imagePath;

@@ -15,7 +15,7 @@ body a {
 	-ms-transition:0.5s all;
 }
 body {
-    font-size: 0px;
+    font-size: 17px;
    
     font-family: 'Bree Serif',serif;
     
@@ -2368,6 +2368,22 @@ font-weight:bold;
   top: 0;
 }
 /*-- //single-page --*/
+/*-- unique-visitor*/
+.unique-visitors{
+	margin:10px;
+	margin: 10px 0px 0px 50px;
+	background-color: azure;
+	width: 18%;
+}
+/*-- //unique-visitor*/
+/*-- angular-msgs*/
+.angular-msgs >div{
+	/*display:inline-block;
+	vertical-align:top;*/
+	color: red;
+	/*margin-top: 5px;*/
+}
+/*-- //angular-msgs*/
 /*-- responsive media queries --*/
 @media.screen(max-width:1200px){
 	.search-grid-left{

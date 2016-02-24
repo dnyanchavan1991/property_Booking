@@ -355,7 +355,7 @@ public function checkRoomAvailabilty($searchArray, $filterData) {
 	/* end submit review */
 	
 	/* get Reviews By PropertyId */
-	public function review_count($p_id)
+	/*public function review_count($p_id)
 	{
 		$this->load->database ();
 		$this->db->select('count(*) as total_reviews');
@@ -365,16 +365,16 @@ public function checkRoomAvailabilty($searchArray, $filterData) {
 		//$count_review = $query->result_array();
 		//return $count_review['total_reviews'];
 		return $query->row()->total_reviews;
-	}
-	public function getReviewsByPropertyId($property_id,$limit,$start)
+	}*/
+	public function getReviewsByPropertyId($property_id)
 	{
 		$this->load->database ();
 		$this->db->select('customer_name,customer_email,star_rating,review_text');
 		$this->db->from('customer_reviews');
 		$this->db->where('property_id',$property_id);
-		$this->db->limit($limit, $start);
+		//$this->db->limit($limit, $start);
 		$query=$this->db->get();
-		return $query->result_array();
+		return $query->result();
 	}
 	/* end get Reviews By PropertyId */
 }
