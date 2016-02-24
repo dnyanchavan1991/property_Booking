@@ -78,18 +78,19 @@ public function checkRoomAvailabilty($searchArray, $filterData) {
 				
 				if (sizeof ( $filterData->selectedFacilityList ) != 0) {
 						
-					$where = "(";
+					$facilityWhere = "(";
 					foreach ( $filterData->selectedFacilityList as $facilityList ) {
 						// $this->db->or_where('property.star_rate', $starList->name);
-						$where = $where . "`property`.`$facilityList->name`='Yes'" ;
+						$facilityWhere = $facilityWhere . "`propertyInfo`.`$facilityList->name`='Yes'" ;
 						if ($i <= (sizeof ( $filterData->selectedFacilityList  ) - 2)) {
-							$where = $where . " or ";
+							$facilityWhere = $facilityWhere . " or ";
+							
 						} else {
-							$where = $where . ")";
+							$facilityWhere = $facilityWhere . ")";
 						}
 							
 						$i ++;
-					}
+					}//echo $where;
 			$this->db->where ( $where );	}
 			if($filterData->propertyNameList[0]->name!=null){
 	$propertyName=$filterData->propertyNameList[0]->name;
