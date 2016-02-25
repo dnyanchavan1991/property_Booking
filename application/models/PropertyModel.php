@@ -10,6 +10,9 @@ public function checkRoomAvailabilty($searchArray, $filterData) {
 		$propertyInfo = 'property_info';
 		$roomTable = 'room';
 		
+		
+		
+		
 		$checkout = $searchArray ['checkOut'];
 		$checkin = $searchArray ['checkIn'];
 		$guestCountstring = $searchArray ['guestCount'];
