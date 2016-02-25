@@ -174,29 +174,29 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div>
 						<div class="tab" id="tab7" >
 							<div class="contact-form">
-								<form name="form" ng-submit="form.$valid && processForm()" ng-controller="reviewCtrl" class="angular-msgs">
+								<form name="form" novalidate ng-submit="form.$valid && processForm()" ng-controller="reviewCtrl" class="angular-msgs">
 									<?php if(isset($name) && isset($email_address)){?>
 										<input type="text" id="customer_name" ng-model="customer_name" placeholder="Name" ng-init="customer_name='<?php echo $name;?>'" readonly>
 										<input type="email" ng-model="customer_email" placeholder="Email" ng-init="customer_email='<?php echo $email_address;?>'" readonly>
 									<?php } else{?>
 										<input type="text" id="customer_name" ng-model="customer_name" name="customer_name" ng-pattern="/^[a-zA-Z ]*$/" placeholder="Name" ng-value="" required>
-										<div ng-messages="form.customer_name.$error" ng-if="form.customer_name.$dirty">
+										<div id="ng-error" ng-messages="form.customer_name.$error" ng-if="form.customer_name.$dirty">
 											<div ng-message="required">This field is required</div>
 											<div ng-message="pattern">Only characters & space allowed</div>
 										</div>
 										<input type="email" ng-model="customer_email" name="customer_email" placeholder="Email" ng-value="" required>
-										<div ng-messages="form.customer_email.$error" ng-if="form.customer_email.$dirty">
+										<div id="ng-error" ng-messages="form.customer_email.$error" ng-if="form.customer_email.$dirty">
 											<div ng-message="required">This field is required</div>
 											<div ng-message="customer_email">Your email address is invalid</div>
 										</div>
 									<?php }?>
 									<div class="clearfix"> </div>
 									<input id="review_checkin" type="text" ng-model="review_checkin" name="review_checkin" placeholder="Check-In date"  required>
-									<div ng-messages="form.review_checkin.$error" ng-if="form.review_checkin.$dirty">
+									<div id="ng-error" ng-messages="form.review_checkin.$error" ng-if="form.review_checkin.$dirty">
 										<div ng-message="required">This field is required</div>
 									</div>
 									<input id="review_checkout" type="text" ng-model="review_checkout" name="review_checkout" placeholder="Check-Out date"  required>
-									<div ng-messages="form.review_checkout.$error" ng-if="form.review_checkout.$dirty">
+									<div id="ng-error" ng-messages="form.review_checkout.$error" ng-if="form.review_checkout.$dirty">
 										<div ng-message="required">This field is required</div>
 									</div>
 									<div class="clearfix"> </div>
@@ -206,10 +206,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<input type="radio" ng-model="rating_given" id="group-2-1" value="4" /><label for="group-2-1"></label>
 										<input type="radio" ng-model="rating_given" id="group-2-2" value="3" ng-init="rating_given=3" ng-checked="true"/><label for="group-2-2"></label>
 										<input type="radio" ng-model="rating_given" id="group-2-3" value="2" /><label for="group-2-3"></label>
-										<input type="radio" ng-model="rating_given" id="group-2-4"  value="1" /><label for="group-2-4"></label>
+										<input type="radio" ng-model="rating_given" id="group-2-4" value="1" /><label for="group-2-4"></label>
 									</div>
 									<textarea style="height: 110px !important;" ng-model="review_given" ng-minlength="100" ng-maxlength="1000" name="review_given" placeholder="Content...(max 1000)" required></textarea>
-									<div ng-messages="form.review_given.$error" ng-if="form.review_given.$dirty">
+									<div id="ng-error" ng-messages="form.review_given.$error" ng-if="form.review_given.$dirty">
 										<div ng-message="required">This field is required</div>
 										<div ng-message="minlength">Review must be over 100 characters</div>
 										<div ng-message="maxlength">Review must not exceed 1000 characters</div>									

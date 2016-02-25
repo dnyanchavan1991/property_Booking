@@ -1716,7 +1716,7 @@ border:none;
 .contact-form{
 	  margin: 50px 0 0 0;
 	}
-.contact-form input[type="text"],.contact-form textarea{
+.contact-form input[type="text"],.contact-form input[type="email"],.contact-form textarea{
   outline: none;
   padding: 10px 10px;
   border: 1px solid #464646;
@@ -1727,7 +1727,7 @@ border:none;
   color: #000;
   margin: 10px 10px !important;
 	}
-.contact-form input[type="text"]:nth-child(2){
+.contact-form input[type="email"]{
 	 margin: 10px 10px !important;
 	}
 .contact-form textarea{
@@ -2377,7 +2377,7 @@ font-weight:bold;
 }
 /*-- //unique-visitor*/
 /*-- angular-msgs*/
-.angular-msgs >div{
+.angular-msgs #ng-error{
 	/*display:inline-block;
 	vertical-align:top;*/
 	color: red;
@@ -3756,7 +3756,7 @@ margin: 15px 0px 0px 8px !important;*/
 	}
 	.view-fifth h4 {
 	  padding: 9px;
-	  margin: 24px 0 0 0;
+	  margin: 0px 0 0 0;
 	}
 	.view p {
 	  padding: 10px 4px;
