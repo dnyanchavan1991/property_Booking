@@ -69,6 +69,9 @@ angular
 						propertyNameList : []
 
 					}
+					
+					
+					
 					$scope.model.propertyNameList
 					.push({name:""});
 					$scope.isLabelChecked = function(objName) {
