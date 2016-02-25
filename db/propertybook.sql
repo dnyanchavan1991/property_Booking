@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Feb 22, 2016 at 06:41 PM
+-- Generation Time: Feb 25, 2016 at 01:19 PM
 -- Server version: 5.1.37
 -- PHP Version: 5.3.0
 
@@ -114,7 +114,7 @@ CREATE TABLE IF NOT EXISTS `customer_reviews` (
   `review_text` varchar(1000) NOT NULL,
   PRIMARY KEY (`review_id`),
   KEY `PropertyId` (`property_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=26 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=30 ;
 
 --
 -- Dumping data for table `customer_reviews`
@@ -140,7 +140,14 @@ INSERT INTO `customer_reviews` (`review_id`, `property_id`, `customer_name`, `cu
 (17, 33, 'shruti kharge', 'shruti@agile.com', 3, '0000-00-00', '0000-00-00', 'Sunny Midtown is best property'),
 (18, 30, 'Vilas Galave', 'vilas@agile.com', 5, '0000-00-00', '0000-00-00', 'Orchid Villa is a moderately popular name in Pune real estate buisness who claim to have over 30 years of experience in construction business.'),
 (19, 30, 'Vishwanath Awate', 'vishu.awate@gmail.com', 5, '0000-00-00', '0000-00-00', 'This is nice property\n\n\n\n\nAtleast visit once..\n\n\n\n\nI had a great experience'),
-(22, 31, 'mukech', 'mukesh@agile.com', 3, '0000-00-00', '0000-00-00', 'good');
+(22, 31, 'mukech', 'mukesh@agile.com', 3, '0000-00-00', '0000-00-00', 'good'),
+(23, 33, 'mukesh', 'mukesh@agil.com', 5, '2016-02-22', '2016-02-24', 'Sunny Midtown is good property...!'),
+(24, 33, 'Vishwanath Awate', 'v@agile.com', 3, '2016-02-22', '2016-02-24', 'Sunny Midtown is good property...!'),
+(25, 33, 'nareshg', 'n@agile.com', 5, '2016-02-22', '2016-02-25', 'Sunny Midtown is good property...!'),
+(26, 33, 'hari', 'hari@agil.com', 5, '2016-02-22', '2016-02-24', 'Sunny Midtown Located at Magarpatta Road and penthouses designed to allow nature to flow from the outdoors into your living space transforming your living experience into calm, quiet and beautiful.'),
+(27, 33, 'j p patil', 'jp@agil.com', 2, '2016-02-22', '2016-02-24', 'Sunny Midtown Located at Magarpatta Road and penthouses designed to allow nature to flow from the outdoors into your living space transforming your living experience into calm, quiet and beautiful.'),
+(28, 33, 'TY Patil', 'typ@agile.com', 3, '2016-02-21', '2016-02-29', 'Sunny Midtown Located at Magarpatta Road and penthouses designed to allow nature to flow from the outdoors into your living space transforming your living experience into calm, quiet and beautiful.'),
+(29, 33, 'Arjun Pandit', 'bbr@agil.com', 3, '2016-02-23', '2016-02-24', 'Sunny Midtown Located at Magarpatta Road and penthouses designed to allow nature to flow from the outdoors into your living space transforming your living experience into calm, quiet and beautiful.');
 
 -- --------------------------------------------------------
 
@@ -600,7 +607,7 @@ CREATE TABLE IF NOT EXISTS `visitors_info` (
   `location` varchar(200) NOT NULL,
   `Service_Provider` varchar(300) NOT NULL,
   PRIMARY KEY (`visitor_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=70 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=78 ;
 
 --
 -- Dumping data for table `visitors_info`
@@ -639,7 +646,15 @@ INSERT INTO `visitors_info` (`visitor_id`, `visitor_ip`, `city`, `region`, `coun
 (66, '123.252.171.204', '', '', 'IN', NULL, '2016-02-19', '20.0000,77.0000', 'AS17762 Tata Teleservices Maharashtra Ltd'),
 (67, '114.143.251.142', '', '', 'IN', NULL, '2016-02-22', '20.0000,77.0000', 'AS17762 Tata Teleservices Maharashtra Ltd'),
 (68, '49.248.72.208', 'Mumbai', 'Maharashtra', 'IN', NULL, '2016-02-22', '18.9750,72.8258', 'AS17762 Tata Teleservices Maharashtra Ltd'),
-(69, '49.248.79.235', '', '', 'IN', NULL, '2016-02-22', '20.0000,77.0000', 'AS17762 Tata Teleservices Maharashtra Ltd');
+(69, '49.248.79.235', '', '', 'IN', NULL, '2016-02-22', '20.0000,77.0000', 'AS17762 Tata Teleservices Maharashtra Ltd'),
+(70, '114.143.175.28', 'Pune', 'Maharashtra', 'IN', NULL, '2016-02-23', '18.5333,73.8667', 'AS17762 Tata Teleservices Maharashtra Ltd'),
+(71, '49.248.156.123', 'Vikhroli', 'Maharashtra', 'IN', NULL, '2016-02-23', '19.1000,72.9167', 'AS17762 Tata Teleservices Maharashtra Ltd'),
+(72, '114.143.169.20', '', '', 'IN', NULL, '2016-02-23', '20.0000,77.0000', 'AS17762 Tata Teleservices Maharashtra Ltd'),
+(73, '49.248.207.24', 'Pune', 'Maharashtra', 'IN', NULL, '2016-02-23', '18.5333,73.8667', 'AS17762 Tata Teleservices Maharashtra Ltd'),
+(74, '49.248.194.209', 'Pune', 'Maharashtra', 'IN', NULL, '2016-02-24', '18.5333,73.8667', 'AS17762 Tata Teleservices Maharashtra Ltd'),
+(75, '103.3.43.193', '', '', 'IN', NULL, '2016-02-24', '20.0000,77.0000', 'AS17762 Tata Teleservices Maharashtra Ltd'),
+(76, '114.143.255.210', '', '', 'IN', NULL, '2016-02-25', '20.0000,77.0000', 'AS17762 Tata Teleservices Maharashtra Ltd'),
+(77, '49.248.73.56', 'Mumbai', 'Maharashtra', 'IN', NULL, '2016-02-25', '18.9750,72.8258', 'AS17762 Tata Teleservices Maharashtra Ltd');
 
 --
 -- Constraints for dumped tables
