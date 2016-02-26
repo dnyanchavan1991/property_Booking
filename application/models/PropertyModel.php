@@ -150,33 +150,110 @@ public function checkRoomAvailabilty($searchArray, $filterData) {
 		return $query->result();
 	}
 	/*this function gives rooms available for particular is ,for it's particular accomodation type*/
-	public function getRoomAvailabilityCount($confirmArray) {
-		$this->load->database ();	
+	public function getRoomAvailabilityCount($searchArray, $filterData) {
+	$this->load->database ();
+		
 		$reservationTable = 'reservation';
 		$accomodationTable = 'accomodationtype';
 		$propertyTable = 'property';
+		$propertyInfo = 'property_info';
 		$roomTable = 'room';
-		$checkIn=$confirmArray['checkin'];
-		$checkOut=$confirmArray['checkout'];
-	
-		$this->db->select ( "COUNT(distinct(room.room_id))as count");
-		$this->db->from ( "$roomTable room" );
-		$this->db->join ( "$reservationTable res", "res.room_id=room.room_id", "left" );
-		$this->db->join ( "$propertyTable property", "property.property_id=room.property_id" );
-		$this->db->join ( "$accomodationTable acc", "acc.accomodation_type_id=room.accomodation_type_id" );
-		$this->db->where ( "res.room_id", NULL );
-		$this->db->where("room.accomodation_type_id",$confirmArray['accomodationTypeId']);
-		$where = "check_out >= '$checkOut' AND check_in >='$checkIn'";
-		$this->db->or_where ( $where );
-		$where = "check_out <= '$checkOut' AND check_out <='$checkOut'";
-		$this->db->or_where ( $where );
 		
-		$this->db->group_by ( array (
-				"property.property_id",
-				"room.accomodation_type_id"
-		) );
-		$availabilityofRoomCount = $this->db->get ();
-		$roomAvailableCount=$availabilityofRoomCount->row()->count;
+		$checkout = $searchArray ['checkOut'];
+		$checkin = $searchArray ['checkIn'];
+		$guestCountstring = $searchArray ['guestCount'];
+		$guestCount = ( int ) substr ( $guestCountstring, 7 );
+		$propertyType = $searchArray ['propertyType'];
+		$destination = $searchArray ['destination'];
+		
+		
+		$this->db->select ( "Count(*) as count,(propertyInfo.accommodates-IFNULL(sum(res.accomodates), 0)) as availableAccomodes" );
+		$this->db->from ( "$propertyInfo propertyInfo" );
+		$this->db->join ( "$reservationTable res", "res.property_id=propertyInfo.property_id", "left" );
+		$this->db->join ( "$propertyTable property", "propertyInfo.property_id=property.property_id" );
+	    //$this->db->where ( "res.property_id", NULL );
+		$where = "(res.property_id is Null";
+		$this->db->where ( $where );
+	    $where = "(check_out >= '$checkout' AND check_in >='$checkin')";
+	    $this->db->or_where ( $where );
+	    $where = "(check_out <= '$checkout' AND check_out <='$checkout'))";
+	    $this->db->or_where ( $where );
+		$where = "(city  like'%$destination%' or state like '%$destination%')";
+		$this->db->where ( $where );
+		
+		if ($propertyType != '0') {
+			$where = "(property_type_id='$propertyType')";
+			$this->db->where ( $where );
+		}
+		
+		$i = 0;
+		
+		if ($filterData != null) {
+			
+			if (sizeof ( $filterData->selectedstarRateList ) != 0) {
+				
+				$where = "(";
+				foreach ( $filterData->selectedstarRateList as $starList ) {
+					// $this->db->or_where('property.star_rate', $starList->name);
+					$where = $where . "property.star_rate=" . $starList->name;
+					if ($i <= (sizeof ( $filterData->selectedstarRateList ) - 2)) {
+						$where = $where . " or ";
+					} else {
+						$where = $where . ")";
+					}
+					
+					$i ++;
+				}
+			$this->db->where ( $where );}
+			
+			$i=0;
+			
+				if (sizeof ( $filterData->selectedFeatureList ) != 0) {
+			
+					$where = "(";
+					foreach ( $filterData->selectedFeatureList as $featureList ) {
+						// $this->db->or_where('property.star_rate', $starList->name);
+						$where = $where . "`propertyInfo`.`$featureList->name`='Yes'" ;
+						if ($i <= (sizeof ( $filterData->selectedFeatureList  ) - 2)) {
+							$where = $where . " or ";
+						} else {
+							$where = $where . ")";
+						}
+							
+						$i ++;
+					}
+					$this->db->where ( $where );}
+			
+				
+				
+				if (sizeof ( $filterData->selectedFacilityList ) != 0) {
+						
+					$facilityWhere = "(";
+					foreach ( $filterData->selectedFacilityList as $facilityList ) {
+						// $this->db->or_where('property.star_rate', $starList->name);
+						$facilityWhere = $facilityWhere . "`propertyInfo`.`$facilityList->name`='Yes'" ;
+						if ($i <= (sizeof ( $filterData->selectedFacilityList  ) - 2)) {
+							$facilityWhere = $facilityWhere . " or ";
+							
+						} else {
+							$facilityWhere = $facilityWhere . ")";
+						}
+							
+						$i ++;
+					}//echo $where;
+			$this->db->where ( $where );	}
+			if($filterData->propertyNameList[0]->name!=null){
+	$propertyName=$filterData->propertyNameList[0]->name;
+			$where="property_name like '$propertyName%'";
+			$this->db->where ( $where );
+		}}
+		else {
+			
+		}
+		
+		$this->db->having ( "availableAccomodes>=$guestCount" );
+		$roomAvailableInfo = $this->db->get ();
+		$roomAvailableCount=$roomAvailableInfo->row()->count;
 		return 	$roomAvailableCount;			
 	}
 	public function verifyDuplicateIPData($ip_address, $date_visited)
