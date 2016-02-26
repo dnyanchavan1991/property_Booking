@@ -1,5 +1,5 @@
 angular
-		.module('checkRoomAvailabilityApp', [])
+		.module('checkRoomAvailabilityApp', ['ui.bootstrap'])
 		.controller(
 				'checkRoomAvailabilityController',
 				function($scope, $http) {
@@ -12,7 +12,7 @@ angular
 					$scope.getRoomAvailability = function() {
 						$http.get("RoomAvailability/checkRoomAvailabilty")
 								.then(function(response) {
-									$scope.propNames = response.data;
+									$scope.propNames = response.data.rows;
 								});
 
 					};
@@ -69,9 +69,6 @@ angular
 						propertyNameList : []
 
 					}
-					
-					
-					
 					$scope.model.propertyNameList
 					.push({name:""});
 					$scope.isLabelChecked = function(objName) {
@@ -138,7 +135,7 @@ angular
 
 								}).success(function(response) {
 									
-							$scope.propNames = response;
+							$scope.propNames = response.rows;
 							
 						});
 
@@ -162,5 +159,24 @@ angular
 						objForm.submit();
 
 					}
+					$scope.filteredTodos = []
+					  ,$scope.currentPage = 1
+					  ,$scope.numPerPage = 10
+					  ,$scope.maxSize = 5;
+					 
+					  $scope.makeTodos = function() {
+					    $scope.todos = [];
+					    for (i=1;i<=1000;i++) {
+					      $scope.todos.push({ text:'todo '+i, done:false});
+					    }
+					  };
+					  $scope.makeTodos(); 
+					$scope.todos=[];
+					 $scope.$watch('currentPage + numPerPage', function() {
+						    var begin = (($scope.currentPage - 1) * $scope.numPerPage)
+						    , end = begin + $scope.numPerPage;
+						    
+						    $scope.filteredTodos = $scope.todos.slice(begin, end);
+						  });
 				});
 		
