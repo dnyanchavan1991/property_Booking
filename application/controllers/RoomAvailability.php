@@ -41,10 +41,13 @@ class RoomAvailability extends CI_Controller {
 				
 		);
 		$filterData=null;
-                	
+		$roomAvailableCount = $this->PropertyModel->getRoomAvailabilityCount ($searchArray,$filterData);
+	
 		$roomAvailableInfo = $this->PropertyModel->checkRoomAvailabilty ($searchArray,$filterData);
 		
 		$i=0;
+		$response=new stdClass();
+		$response->records =$roomAvailableCount;
 		foreach($roomAvailableInfo as $row)
 		{
 				$row=(array)$row;
@@ -58,7 +61,8 @@ class RoomAvailability extends CI_Controller {
 						if(strpos($result ,"mainImage") !==false)
 						{
 							$get_result = "Admin/".$image_path.$result;
-							$response[$i]=array('propertyId'=>$row['propertyId'],'propertyName'=>$row['property'],'ImagePath' => $get_result,'star_rate'=>$row['star_rate'],'propertyAddress'=>$row['propertyAddress']);
+							$response->rows[$i]=array('propertyId'=>$row['propertyId'],'propertyName'=>$row['property'],'ImagePath' => $get_result,'star_rate'=>$row['star_rate'],'propertyAddress'=>$row['propertyAddress']);
+							
 							$i++;
 						}
 					}
@@ -82,10 +86,14 @@ class RoomAvailability extends CI_Controller {
         
         
         	);
+        	
         	if(sizeof($filterData->selectedstarRateList)==0 &&  sizeof($filterData->selectedFeatureList)==0 && sizeof($filterData->selectedFacilityList)==0 && sizeof($filterData->selectedAccomodationList)==0 &&  $filterData->propertyNameList[0]->name==""){
         		$filterData=NULL;
         	} 
+        	$roomAvailableCount = $this->PropertyModel->getRoomAvailabilityCount ($searchArray,$filterData);
         	$roomAvailableInfo = $this->PropertyModel->checkRoomAvailabilty ($searchArray,$filterData);
+        	$response=new stdClass();
+        	$response->records =$roomAvailableCount;
         
         	$i=0;
         	foreach($roomAvailableInfo as $row)
@@ -101,7 +109,7 @@ class RoomAvailability extends CI_Controller {
 						if(strpos($result ,"mainImage") !==false)
 						{
 							$get_result = "Admin/".$image_path.$result;
-							$response[$i]=array('propertyId'=>$row['propertyId'],'propertyName'=>$row['property'],'ImagePath' => $get_result,'propertyAddress'=>$row['propertyAddress']);
+							$response->rows[$i]=array('propertyId'=>$row['propertyId'],'propertyName'=>$row['property'],'ImagePath' => $get_result,'propertyAddress'=>$row['propertyAddress']);
 							$i++;
 						}
 					}
