@@ -16,25 +16,42 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link rel="stylesheet" href="css/jquery-ui.css" />
 <!-- js -->
 <link href='http://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
-		<link href='http://fonts.googleapis.com/css?family=Philosopher' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Philosopher' rel='stylesheet' type='text/css'>
 		
-		
-		<link rel="stylesheet" href="css/bootstrap.min.css"/>
-		<link rel="stylesheet" href="css/font-awesome.min.css"/>
+ <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+ <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+ <link rel="stylesheet" href="css/bootstrap.min.css"/>
+ <link rel="stylesheet" href="css/font-awesome.min.css"/>
 	
-		<link rel="stylesheet" href="css/popup_style.css" />
-		<script src="js/vendor/modernizr-2.6.2.min.js"></script>
-		<script src="js/vendor/jquery-1.10.2.min.js"></script>
-		<script src="js/vendor/bootstrap.min.js"></script>
+ <link rel="stylesheet" href="css/popup_style.css" />
+ <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+ <script src="js/vendor/jquery-1.10.2.min.js"></script>
+ <script src="js/vendor/bootstrap.min.js"></script>
 
 <script src="js/jquery-1.11.1.min.js"></script>
 	<script src="js/jquery-ui.js"></script>
-				 <script>
-					 $(function() {
-					  $( "#datepicker,#checkIn,#checkOut" ).datepicker();
-					});
-				 </script>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.9/angular.min.js"></script>
+							  <script>
+									  $(function() {
+									   //$( "#datepicker,#checkIn,#checkOut" ).datepicker({dateFormat: 'yy-mm-dd'});
+										  $("#checkIn").datepicker({
+											  dateFormat: 'dd-mm-yy',
+										        numberOfMonths: 1,
+										        onSelect: function(selected) {
+										          $("#checkOut").datepicker("option","minDate", selected,'d-m-Y')
+										        }
+										    });
+										    $("#checkOut").datepicker({ 
+										    	dateFormat: 'dd-mm-yy',
+										        numberOfMonths: 1,
+										        onSelect: function(selected) {
+										           $("#checkIn").datepicker("option","maxDate", selected)
+										        }
+										    }); 
+										  
+									  });
+							  </script>
+<!-- //js -->
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
 	<!-- start-smoth-scrolling -->
 		<script type="text/javascript" src="js/move-top.js"></script>
@@ -43,14 +60,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<script type="text/javascript" src="js/controller/landingPageController.js"></script>
 		<script type="text/javascript">
 			jQuery(document).ready(function($) {
-				
+				var accessType="";
 				$(".scroll").click(function(event){		
 					event.preventDefault();
 					$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
-				});
+				});  
 			});
 		</script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<!-- start-smoth-scrolling -->
 </head>
 <body ng-app="landingPageApp" ng-controller="landingPageCntrl">
@@ -71,30 +87,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						
 						 
 						
-				       <!--   <li><button id='modal-launcher' class="btn btn-primary btn-lg"  data-toggle="modal" data-target="#login-modal">
-					  LOGIN</button></li> -->
-					  <select  id='modal-launcher' data-toggle="modal" data-target="#login-modal" >
-					 <option value="opel" >Login</option>
-					    <option value="admin">Admin Login</option>
-                        <option value="traveler">Traveler Login</option>
-                        <option value="owner">Owner Login</option>
-                        
-                      </select>
-                      
-		   		<li>		
-		</ul>	  	
-    
-				<!-- script for menu -->
-					<script> 
-						$( "span.menu" ).click(function() {
-						$( "ul.nav1" ).slideToggle( 300, function() {
-						 // Animation complete.
-						});
-						});
-					</script>
-				<!-- //script for menu -->
-				
-			</div>
+				      <!--   <li><button id='modal-launcher' class="btn btn-primary btn-lg"  data-toggle="modal" data-target="#login-modal">
+					  LOGIN</button></li>-->
+		<li><div class="dropdown">
+					<div class="dropdown">
+						<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">LOGIN
+							<span class="caret"></span></button>
+						    <ul class="dropdown-menu">
+						       <li data-access="admin"><a href="" id='modal-launcher' data-toggle="modal"  data-target="#login-modal">Admin Login</a></li>
+						       <li data-access="traveler"><a href="#" id='modal-launcher' data-toggle="modal" data-target="#login-modal">Traveler Login</a></li>
+						       <li data-access="owner"><a href="#" id='modal-launcher' data-toggle="modal" data-target="#login-modal">Owner Login</a></li>
+						   </ul>
+         </div>
+            </div>
+                
+		</li>
+		</ul>		   
+		</nav>
+								
+	</div>
 			<div class="social-icons">
 				<ul>
 					<li><a href="#" class="f1"></a></li>
@@ -129,18 +140,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										});
 										
 										
-											//$(window).resize(function(){
-											 // if($(window).width() < 768) {
-															//$('.round-card-slick').slick({
-															//});
-											//		alert("modal-launcher");
-											 // } else {
-											//		alert("modal-launcher");
-											//});
-										 // });
-					//			$("#inpDestination").focus(function(){
-						//			$(".aaa").css("display", "block");
-							//	});		
+											
 								function show()
 										{
 										document.getElementById('aaa').style.display="inline" ;
@@ -156,7 +156,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									$( "#modal-launcher" ).click(function(){
 										var width = $(window).width(), height = $(window).height();
 										//if ((width <= 1023) && (height >= 768)) {
-										if ((width <= 1023)) {
+										if ((width <= 400)) {
 											//alert('Remove my nav!');
 											$("#hiddenresponsive").css("display", "none");
 										} else {
@@ -165,7 +165,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										}
 									});
 			</script>
-		
+		<style>
+		 
+		</style>
 		</div> 
 		
 	<div class="banner-bottom"  >
@@ -176,7 +178,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="col-md-1" id="aaa" style="display:none;">
 					<select class="sel propertyType" ng-model="selectAccomodationType"  id="propertyType" name="propertyType" ng-init="selectAccomodationType=accomodationType[0]"  
 							ng-options="accomodation as accomodation.label for accomodation in accomodationType track by accomodation.value " 
-							ng-show = "inputDestination != 'Where you want to go?'" style=" padding-top: 25px; padding-bottom: 0px; margin-top: 0px;" ></select>
+							ng-show = "inputDestination != 'Where you want to go?'" style=" padding-top: 38px; padding-bottom: 0px; margin-top: 0px;" ></select>
 			</div>
 			<div class="col-md-1" id="bbb" style="display:none;">
 					<select class="sel guedtf" ng-model="selectGuestHeadCount" id="guestCount" name="guestCount" ng-init="selectGuestHeadCount=guestHeadCount[0] " ng-options="option as option for option in guestHeadCount" }></select>
@@ -185,52 +187,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<input class="date" name="checkIn" readonly id="checkIn" ng-model="checkInDate" ng-init="checkInDate= 'CheckIn'" type="text"  style=" width:10em; border:0px;" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required />
 			</div>
 			<div class="col-md-2" id="ddd" style="display:none;">
-					<input class="date" name="checkOut" readonly id="checkOut" type="text" ng-model="checkOutDate" ng-init="checkOutDate= 'CheckOut'" style="width:10em; margin-left: 3px !important; border:0px;" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required=""/>
+					<input class="date" name="checkOut" readonly id="checkOut" type="text" ng-model="checkOutDate" ng-init="checkOutDate= 'CheckOut'" style="width:10em; margin-left: 6px !important; border:0px;" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required=""/>
 			</div>
 		    <div class="col-md-2 eee"><div class="search"><input type="submit"  name="submit" style="margin: 0px;" value="search"></div></div >
 		</div>
-	  		   <!-- 	<div class="book-pag-frm">
-				<input type = "text" id="inpDestination" name="inpDestination" ng-model="inputDestination" ng-init="inputDestination='Where do you want to go?'" style="width:70%;"/> 
-			</div>
-			<div class="droop-down">
-			 	<div class="droop">
-					<div class="sort-by">
-						<select class="sel" ng-model="selectAccomodationType" 
-						<select class="sel" ng-model="selectAccomodationType" 
-							ng-init="selectAccomodationType=accomodationType[0]" 
-							ng-options="option as option for option in accomodationType | orderBy:option" style="width:70%;">
-													    
-						</select>
-					</div>
-				</div>
-			</div>
-			<div class="book-pag-cnt">
-						<select class="sel" ng-model="selectGuestHeadCount" 
-							ng-init="selectGuestHeadCount=guestHeadCount[0] " 
-							ng-options="option as option for option in guestHeadCount "						
-							>													    
-					</select>
-			</div>
-	<div class="book-pag-frm">
-					<input class="date" name="checkIn" id="checkIn" ng-model="checkInDate" ng-init="checkInDate= 'CheckIn Date'" type="text"  style="width:70%;"onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required >
-				</div>
-				<div class="book-pag-to">
-					<input class="date" name="checkOut"  id="checkOut" type="text" ng-model="checkOutDate" ng-init="checkOutDate= 'CheckOut Date'" style="width:70%;margin-bottom: 0;" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required="">
-				</div>
-				<div class="search">
-					<input type="submit"  name="submit" value="search">
-				</div>
-		
-		 -->
+	  	
 		<div class="clearfix"></div>
 							
-			
+			</form>
+	
 			<div class="clearfix"></div>
 		</div>
 		
 	</div>
 	
-	</form>
 	
 	<!--</div>-->
 </div>
@@ -324,33 +294,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </div>
 <!-- //services -->
   
-<!-- facilities -->
-<div class="facilities">
-	<div class="container">
-		<h3 class="tittle">FACILITIES</h3>
-		<div class="facilities-grids">
-			<div class="col-md-6 facilities-grid">
-				<img src="images/222.jpg" alt="" />
-			</div>
-			<div class="col-md-6 facilities-grid-left">
-				<div class="fac-grids">
-					<div class="facilities-left">
-						<img src="images/111.jpg" alt="" />
-					</div>
-					<div class="facilities-right">
-						<img src="images/333.jpg" alt="" />
-					</div>
-					<div class="clearfix"></div>
-				</div>
-				<div class="fac-rig-btm">
-					<img src="images/444.jpg" alt="" />
-				</div>
-			</div>
-			<div class="clearfix"></div>
-		</div>
-	</div>
-</div>
-<!-- //facilities -->
+
 
 <!-- gallery -->
 	<div class="gallery" id="gallery" ng-controller="galleryImgCtrl"
@@ -385,13 +329,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						$('.gallery a').Chocolat();
 					});
 				</script>
-
-			</div>
-			<div>
-				Today's Unique Visitors : <span id="visitCount"></span>
 			</div>
 		</div>
+		<div class="unique-visitors">
+			Today's Unique Visitors : <span id="visitCount"></span>
+		</div>
 	</div>
+	
 <!-- //gallery -->
 <!--footer-->
 	<div class="footer">
@@ -490,77 +434,57 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</script>
 	<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 <!-- //smooth scrolling -->
-
-  <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+</body>
+</html>
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
-	
     	<div class="modal-content">
       		<div class="modal-header login_modal_header">
         		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         		<h2 class="modal-title" id="myModalLabel">Login</h2>
       		</div>
-      		<div class="modal-body login-modal">
+      		<div class="modal-body login-modal" ng-controller="loginCtrl">
       			
       			<div class="clearfix"></div>
       			<div id='social-icons-conatainer'>
-	        		<div class='modal-body-left'ng-controller="loginCtrl">
-	        		<h3>Admin</h3>
+	        		<!--  <div class='modal-body-left'ng-controller="loginCtrl">-->
+	        		
 	        			<div class="form-group">
 		              		<input type="text" id="username" placeholder="Username" ng-model="form.username" class="form-control login-field">
 		              	
 		            	</div>
-		
+		            	
+		                   <div class="form-group">
+		            	  	<input type="text"  id="access_type"   value="admin" ng-model="form.access_type"  class="form-control login-field">
+		              		
+		              	 	</div>
 		            	<div class="form-group">
 		            	  	<input type="password" id="login-pass" placeholder="Password" ng-model="form.password" class="form-control login-field">
 		              		
-		              		<input type="hidden" name="acces_type" value="admin">
-		            	</div>
-		                 <div class="form-group">
-		            	  	<input type="hidden" name="access_type" id="access_type"  ng-model="form.access_type" value="admin" ng_init="form.access_type='admin'" class="form-control login-field">
 		              		
-		              	 	</div>
-		            	<button ng-click="authenticateAdmin()"  class="btn btn-success modal-login-btn">Login</button>
-		            	<a href="#" class="login-link text-center" style="margin-left: -19px";>Lost your password?</a>
+		            	</div>
+		                
+		                
+		            	<button ng-click="authenticate()"  class="btn btn-success modal-login-btn">Login</button>
+		            	<a href="#" class="login-link text-center" style="margin-left: -19px";>Forgot password?</a>
+	        		    		
 	        		</div>
-	        	
-	        		<div class='modal-body-right' ng-controller="loginCtrl">
-	        			  <!--<div class="modal-social-icons">
-	        				<a href='#' class="btn btn-default facebook"> <i class="fa fa-facebook modal-icons"></i> Sign In with Facebook </a>
-	        				<a href='#' class="btn btn-default twitter"> <i class="fa fa-twitter modal-icons"></i> Sign In with Twitter </a>
-	        				<a href='#' class="btn btn-default google"> <i class="fa fa-google-plus modal-icons"></i> Sign In with Google </a>
-	        				<a href='#' class="btn btn-default linkedin"> <i class="fa fa-linkedin modal-icons"></i> Sign In with Linkedin </a>
-	        			
-	        			</div>-->
-	        			<h3>User</h3>
-	        			<div class="form-group">
-		              		<input type="text" id="username" placeholder="Username" ng-model="form.username" value="" class="form-control login-field">
-		              	
-		            	</div>
-		
-		            	<div class="form-group">
-		            	  	<input type="password" id="login-pass" placeholder="Password" ng-model="form.password" value="" class="form-control login-field">
-		              		
-		              	 	</div>
-		              	 		<div class="form-group">
-		            	  	<input type="hidden" name="access_type" id="access_type" placeholder="Password" ng-model="form.access_type" value="user" ng_init="form.access_type='user'" class="form-control login-field">
-		              		
-		              	 	</div>
-		
-		            <button ng-click="authenticate()" class="btn btn-success modal-login-btn">Login</button>
-		            	<a href="#" class="login-link text-center" style="margin-left: -8px">Lost your password?
-		
-	        		</div>	
-	        		<div id='center-line'> OR </div>
-	        	</div>																												
+	        																												
         		<div class="clearfix"></div>
-        		
+        		</div>	
         		
       		</div>
       		<div class="clearfix"></div>
-      		<div class="modal-footer login_modal_footer">
-      		</div>
+      		
     	</div>
   	</div>
-</div>
-</body>
-</html>
+<script type="text/javascript">
+$(document).ready(function() 
+ {
+    $('ul.dropdown-menu li').click(function() 
+    {     	accessType=$(this).data("access");
+    // $("#username").val($(this).data("access"));
+     $('#access_type').val(accessType);
+    });
+ });
+</script>
