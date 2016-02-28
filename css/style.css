@@ -368,13 +368,13 @@ top: 9%;
 
 /*-- banner --*/
 .banner{
-background: url(../images/banner5.jpg) no-repeat 0px 0px;
+background: url(../images/banner5.jpg), url(../images/banner2.jpg), url(../images/banner3.jpg) no-repeat 0px 0px;
 background-size:cover;
 -webkit-background-size: cover;
 -o-background-size: cover;
 -ms-background-size: cover;
 -moz-background-size: cover;
-min-height: 640px;
+min-height: 70%;
 }
 /*-- //banner --*/
 /*-- Effect 11 --*/
@@ -521,10 +521,10 @@ float:right;
 /*-- //header --*/
 .banner-bottom {
   margin-top: 30px;
-  background: rgba(236, 202, 105, 0.48);
+  /*background: rgba(236, 202, 105, 0.48);*/
   padding: 25px;
     width: 90%;
-    margin: 0 auto;  
+      
 }
 .banner-info {
   margin-top: 170px;
@@ -732,7 +732,7 @@ text-align:center;
 font-family: Forte;
 }
 .welcome,.facilities,.feature-serv ,#gallery ,.about,.vision,.staff,.typrography,.contact,.booking,.single-page,.search-page{
-padding:80px 0;
+padding:30px 0;
 
 }
 .welcome-grids ul li{
@@ -2420,10 +2420,10 @@ font-weight:bold;
 	}
 	.banner-bottom{
 		width: 100%;
-	background: rgba(236, 202, 105, 0.48) none repeat scroll 0% 0%;
+	/*background: rgba(236, 202, 105, 0.48) none repeat scroll 0% 0%;*/
     padding: 25px;
    
-    margin: 215px auto;
+    
 
 	}
 	#center-line {
@@ -2536,10 +2536,10 @@ margin: 1px -6px !important;
 	}
 	.banner-bottom{
 		width: 90%;
-		    background: rgba(236, 202, 105, 0.48) none repeat scroll 0% 0%;
+		/*background: rgba(236, 202, 105, 0.48) none repeat scroll 0% 0%;*/
     padding: 25px;
     
-    margin: 135px auto;
+    
 }
 	
 	.guedtf {

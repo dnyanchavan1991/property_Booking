@@ -80,28 +80,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </head>
 <body ng-app="landingPageApp" ng-controller="landingPageCntrl">
 <!-- banner -->
+<div class="bannerImg"></div>
 <div class="banner">
+
 	<div class="container">
 		<div class="header-nav">
-			<!-- <div class="logo">
-				<h1><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Classic Hotel</a></h1>
-			</div>-->
+			
 			<div class="navigation">
 			
 				<span class="menu"><img src="images/menu.png" alt=""/></span>
 				<nav class="cl-effect-11" id="cl-effect-11">
 				
 					<ul id="hiddenresponsive" class="nav1">
-						<li><a class="active" href="Index1" data-hover="HOME">HOME</a></li>
-						
-						 
+						<li><a class="active" href="Index1" data-hover="HOME">HOME</a></li>											 
 						
 				       <li><button id='modal-launcher' class="btn btn-primary btn-lg"  data-toggle="modal" data-target="#login-modal">
 					  LOGIN</button></li>
 		
-					</ul>
-					 
-					   
+					</ul>  
 					  	
 				</nav>
 			
@@ -134,7 +130,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<script>
 									// You can also use "$(window).load(function() {"
 									$(function () {
-									 // Slideshow 4
+									 
+										 $.fx.interval = -3000;
+										  (function cycleBgImage(elem, bgimg) {
+										    // `elem`:`#slideshow`
+										    // set, reset, delay to `1000` after background image reset
+										    elem.css("backgroundImage", bgimg)
+										      // fade in background image
+										      .fadeTo(3000, 1, "linear", function() {
+										        // fade in background image
+										        $(this).delay(3000, "fx").fadeTo(3000, 0, "linear", function() {
+										          // split background image string at comma , creating array
+										          var img = $(this).css("backgroundImage").split(","),
+										            // concat first background image to `img` array,
+										            // remove first background image from `img` array
+										            bgimg = img.concat(img[0]).splice(1).join(",");
+										          // recursively call `cycleBgImage`
+										          cycleBgImage(elem, bgimg);
+										        });
+										      });
+										  }($(".banner")));
+										
+										// Slideshow 4
 									$("#slider3").responsiveSlides({
 										auto: true,
 										pager: false,
