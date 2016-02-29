@@ -1,5 +1,5 @@
 angular
-		.module('checkRoomAvailabilityApp', [])
+		.module('checkRoomAvailabilityApp', ['angularUtils.directives.dirPagination'])
 		.controller(
 				'checkRoomAvailabilityController',
 				function($scope, $http) {

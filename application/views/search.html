@@ -7,11 +7,9 @@
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords"
-	content="Classic Hotel Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+<meta name="keywords" content="Classic Hotel Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript">
-	
 	addEventListener("load", function()
 	{
 		setTimeout(hideURLbar, 0); 
@@ -20,11 +18,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	{
 		window.scrollTo(0,1);
 	}
-
 </script>
 <!-- //for-mobile-apps -->
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css"
-	media="all" />
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css"	media="all" />
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 <link rel="stylesheet" type="text/css" href="css/jquery-ui1.css">
 <link rel="stylesheet" href="css/jquery-ui.css" />
@@ -33,8 +29,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="js/jquery-ui.js"></script>
 <script type="text/javascript" src="js/angular.min.js"></script>
 
-<script type="text/javascript"
-	src="js/controller/checkRoomAvailabilityController.js"></script>
+<script type="text/javascript" src="js/controller/checkRoomAvailabilityController.js"></script>
 <script>
 	/*$(function() {
 		$("#checkIn,#checkOut").datepicker();
@@ -60,7 +55,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </script>
 <!-- start-smoth-scrolling -->
 </head>
-<body>
+<body ng-app="checkRoomAvailabilityApp">
 	<!-- banner -->
 	<div class="banner page-head">
 		<div class="container">
@@ -70,10 +65,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<nav class="cl-effect-11" id="cl-effect-11">
 						<ul class="nav1">
 							<li><a class="active" href="Index1" data-hover="HOME">HOME</a></li>
-
-							<li><button id='modal-launcher'
-									class="btn btn-primary btn-lg" data-toggle="modal"
-									data-target="#login-modal">LOGIN</button></li>
+							
+							<li><button id='modal-launcher'	class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login-modal">LOGIN</button></li>
 						</ul>
 					</nav>
 					<!-- script for menu -->
@@ -100,219 +93,167 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 	<!-- //banner -->
 	<!--search-->
-	<div class="search-page" ng-app="checkRoomAvailabilityApp"
-		ng-controller="checkRoomAvailabilityController"
-		data-ng-init="getRoomAvailability()">
+	<div class="search-page">
 		<div class="container">
 			<div class="search-grids">
-				<div class="col-md-3 search-grid-left">
+				<div class="col-md-3 search-grid-left" ng-controller="CheckboxFilterCtrl">
 					<div class="search-hotel">
 						<h3 class="sear-head">Name contains</h3>
 						<form>
-							<input type="text" value="Property Name..."
-								ng-model="propertyName[0].name"
-								ng-change="isLabelChecked('propertyName')"
-								
-								required=""> <input type="submit" value=" ">
+							<input type="text" value="Property Name..."	onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Property name...';}" required=""> 
+							<input type="submit" value=" ">
 						</form>
 					</div>
 					<div class="range">
 						<h3 class="sear-head">Per night rate</h3>
 						<ul class="dropdown-menu6">
 							<li>
-								<div id="slider-range"></div> <input type="text" id="amount"
-								style="border: 0; color: #ffffff; font-weight: normal;" />
+								<div id="slider-range"></div> 
+								<input type="text" id="amount" style="border: 0; color: #ffffff; font-weight: normal;" />
 							</li>
 						</ul>
 						<!---->
 						<script type='text/javascript'>
 							//<![CDATA[ 
-							$(window)
-									.load(
-											function() {
-												$("#slider-range")
-														.slider(
-																{
-																	range : true,
-																	min : 0,
-																	max : 9000,
-																	values : [
-																			500,
-																			10000 ],
-																	slide : function(
-																			event,
-																			ui) {
-																		$(
-																				"#amount")
-																				.val(
-																						"INR"
-																								+ ui.values[0]
-																								+ " - INR"
-																								+ ui.values[1]);
+							$(window).load(function()
+							{
+								$("#slider-range").slider({
+															range : true,
+															min : 0,
+															max : 9000,
+															values :[
+																		500,
+																		10000
+																	],
+															slide : function(event,ui)
+																	{
+																		$("#amount").val("INR"+ ui.values[0]+ " - INR"+ ui.values[1]);
 																	}
-																});
-												$("#amount")
-														.val(
-																"INR"
-																		+ $(
-																				"#slider-range")
-																				.slider(
-																						"values",
-																						0)
-																		+ " - INR"
-																		+ $(
-																				"#slider-range")
-																				.slider(
-																						"values",
-																						1));
+														});
+								$("#amount").val("INR"+ $("#slider-range").slider("values",0)+ " - INR"+ $("#slider-range").slider("values",1));
 
-											});//]]>
+							});//]]>
 						</script>
 					</div>
 					<div class="range-two">
 						<h3 class="sear-head">Accomodates</h3>
 						<ul class="dropdown-menu5">
 							<li>
-								<div id="slider-range1"></div> <input type="text" id="amount1"
-								style="border: 0; color: #ffffff; font-weight: normal;" />
+								<div id="slider-range1"></div> 
+								<input type="text" id="amount1"	style="border: 0; color: #ffffff; font-weight: normal;" />
 							</li>
 						</ul>
 						<!---->
 						<script type="text/javascript" src="js/jquery-ui.js"></script>
 						<script type='text/javascript'>
 							//<![CDATA[ 
-							$(window)
-									.load(
-											function() {
-												$("#slider-range1")
-														.slider(
-																{
-																	range : true,
-																	min : 0,
-																	max : 20,
-																	values : [
-																			1,
-																			20 ],
-																	slide : function(
-																			event,
-																			ui) {
-																		$(
-																				"#amount1")
-																				.val(
-																						""
-																								+ ui.values[0]
-																								+ " - "
-																								+ ui.values[1]);
+							$(window).load(function()
+							{
+								$("#slider-range1").slider({
+															range : true,
+															min : 0,
+															max : 20,
+															values :[
+																		1,
+																		20
+																	],
+															slide : function(event,ui)
+																	{
+																		$("#amount1").val(""+ ui.values[0]+ " - "+ ui.values[1]);
 																	}
-																});
-												$("#amount1")
-														.val(
-																""
-																		+ $(
-																				"#slider-range1")
-																				.slider(
-																						"values",
-																						0)
-																		+ " - "
-																		+ $(
-																				"#slider-range1")
-																				.slider(
-																						"values",
-																						1));
-											});//]]>
+															});
+								$("#amount1").val(""+ $("#slider-range1").slider("values",0)+ " - "+ $("#slider-range1").slider("values",1));
+							});//]]>
 						</script>
 					</div>
 					<div class="single-star-bottom">
 						<h3 class="sear-head">Star rating</h3>
 						<div ng-repeat="starRateLabel  in starRateList">
-							<input type="checkbox" id={{starRateLabel.name}} value=""
-								ng-model="starRateLabel.selected"
-								ng-change="isLabelChecked('starRate')"> <label
-								for={{starRateLabel.name}}> <span></span> <b><img
-									ng-src={{starRateLabel.star_image_url}} alt="" /></b>
+							<input type="checkbox" id={{starRateLabel.name}} value="" ng-model="starRateLabel.selected" ng-change="isLabelChecked('starRate')">
+							<label for={{starRateLabel.name}}>
+								<span></span>
+								<b><img	ng-src={{starRateLabel.star_image_url}} alt="" /></b>
 							</label>
 						</div>
 					</div>
 					<div class="menu-grid">
 						<ul class="menu_drop">
-							<li class="item1"><a href="#"> <span
-									class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>Features
-							</a>
+							<li class="item1">
+								<a href="#">
+									<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>Features
+								</a>
 								<ul>
-									<li ng-repeat=" featureListLabel in featureList"><input
-										id={{featureListLabel.name}} type="checkbox"
-										ng-model="featureListLabel.selected"
-										ng-change="isLabelChecked('features')">{{featureListLabel.featureLabel}}
+									<li ng-repeat=" featureListLabel in featureList">
+										<input id={{featureListLabel.name}} type="checkbox"	ng-model="featureListLabel.selected" ng-change="isLabelChecked('features')">{{featureListLabel.featureLabel}}
 									</li>
-								</ul></li>
-							<li class="item2"><a href="#"> <span
-									class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>Facilities
-							</a>
+								</ul>
+							</li>	
+							<li class="item2">
+								<a href="#">
+									<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>Facilities
+								</a>
 								<ul>
-									<li ng-repeat=" facilityListLabel in facilityList"><input
-										id={{facilityListLabel.name}} type="checkbox"
-										ng-model="facilityListLabel.selected"
-										ng-change="isLabelChecked('facility')">{{facilityListLabel.facilityLabel}}
+									<li ng-repeat=" facilityListLabel in facilityList">
+										<input id={{facilityListLabel.name}} type="checkbox" ng-model="facilityListLabel.selected" ng-change="isLabelChecked('facility')">{{facilityListLabel.facilityLabel}}
 									</li>
-								</ul></li>
-							<li class="item3"><a href="#"> <span
-									class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>Accommodation
-									type
-							</a>
+								</ul>
+							</li>
+							<li class="item3">
+								<a href="#">
+									<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>Accommodation type
+								</a>
 								<ul>
 									<li class="subitem1"><a href="#">Resort</a></li>
 									<li class="subitem2"><a href="#">Hostel</a></li>
 									<li class="subitem3"><a href="#">Apartment</a></li>
-								</ul></li>
+								</ul>
+							</li>
 						</ul>
 						<!-- script for tabs -->
 						<script type="text/javascript">
-							$(function() {
+							$(function()
+							{
 								var menu_ul = $('.menu_drop > li > ul'), menu_a = $('.menu_drop > li > a');
 								menu_ul.hide();
-								menu_a
-										.click(function(e) {
-											e.preventDefault();
-											if (!$(this).hasClass('active')) {
-												menu_a.removeClass('active');
-												menu_ul.filter(':visible')
-														.slideUp('normal');
-												$(this).addClass('active')
-														.next()
-														.stop(true, true)
-														.slideDown('normal');
-											} else {
-												$(this).removeClass('active');
-												$(this).next().stop(true, true)
-														.slideUp('normal');
-											}
-										});
+								menu_a.click(function(e)
+								{
+									e.preventDefault();
+									if(!$(this).hasClass('active'))
+									{
+										menu_a.removeClass('active');
+										menu_ul.filter(':visible').slideUp('normal');
+										$(this).addClass('active').next().stop(true,true).slideDown('normal');
+									}
+									else 
+									{
+										$(this).removeClass('active');
+										$(this).next().stop(true,true).slideUp('normal');
+									}
+								});
 							});
 						</script>
 						<!-- script for tabs -->
 					</div>
 				</div>
-				<div class="col-md-9 search-grid-right">
+				<div class="col-md-9 search-grid-right"	ng-controller="checkRoomAvailabilityController"	data-ng-init="getRoomAvailability();">
 					<div class="hotel-rooms" ng-repeat="rooms in propNames">
 						<div class="hotel-left">
-							<a href="" ng-click="getPropertyDetails(rooms)"> 
+							<a href="" ng-click="getPropertyDetails(rooms)">
 								<span class="glyphicon glyphicon-bed" aria-hidden="true"></span>{{rooms.propertyName}}
 							</a>
 							<p><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>{{rooms.propertyAddress}}</p>
-							<div class="text-left" style="display: inline-block;"
-								ng-repeat="stars in rooms">
-								<span style="color:red;">★</span>
-							</div>
 							<div class="hotel-left-grids">
 								<div class="hotel-left-one">
-									<a href="" ng-click="getPropertyDetails(rooms)"> 
-										<img ng-src="{{rooms.ImagePath}}" alt=""/>
+									<a href="" ng-click="getPropertyDetails(rooms)">
+										<img ng-src="{{rooms.ImagePath}}" alt="" />
 									</a>
 								</div>
-
-								<!--<a href="">
+								<div class="rating text-left">
+									<span>☆</span> <span>☆</span> <span>☆</span> <span>☆</span> <span>☆</span>
+								</div>
+								<a href="">
 									<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>Diamond Street
-								</a>-->
+								</a>
 								<!--<p>
 									<button ng-click="togglemailPopUp()" class="btn btn-default">Send Mail</button>
 									<button ng-click="togglemessagePopUp()"	class="btn btn-default">Send SMS</button>
@@ -359,11 +300,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</div>
 							<div class="clearfix"></div>
 						</div>
-						<!--<div class="hotel-right text-right">Payment via card Available-<b>Yes</b>
+						<div class="hotel-right text-right">Payment via card Available-<b>Yes</b>
 							<h4><span>$8,750</span> {{rooms.basePrice}}	</h4>
 							<p>Best price</p>
 							<a href="single.html">Continue</a>
-						</div>-->
+						</div>
 						<div class="clearfix"></div>
 					</div>
 				</div>
@@ -444,8 +385,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			});
 		});
 	</script>
-	<a href="#" id="toTop" style="display: block;"> <span
-		id="toTopHover" style="opacity: 1;"> </span>
+	<a href="#" id="toTop" style="display: block;">
+		<span id="toTopHover" style="opacity: 1;"> </span>
 	</a>
 	<!-- //smooth scrolling -->
 
