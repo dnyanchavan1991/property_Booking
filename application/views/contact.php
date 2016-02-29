@@ -177,14 +177,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<form name="form" novalidate ng-submit="form.$valid && processForm()" ng-controller="reviewCtrl" class="angular-msgs">
 									<?php if(isset($name) && isset($email_address)){?>
 										<input type="text" id="customer_name" ng-model="customer_name" placeholder="Name" ng-init="customer_name='<?php echo $name;?>'" readonly>
-										<input type="email" ng-model="customer_email" placeholder="Email" ng-init="customer_email='<?php echo $email_address;?>'" readonly>
+										<input type="email" ng-model="customer_email" placeholder="Email"  ng-init="customer_email='<?php echo $email_address;?>'" readonly>
 									<?php } else{?>
-										<input type="text" id="customer_name" ng-model="customer_name" name="customer_name" ng-pattern="/^[a-zA-Z ]*$/" placeholder="Name" ng-value="" required>
+										<input type="text" id="customer_name" ng-model="customer_name" name="customer_name" ng-pattern="/^[a-zA-Z ]*$/" placeholder="Name"  style="margin-top: -28px !important;" ng-value="" required>
 										<div id="ng-error" ng-messages="form.customer_name.$error" ng-if="form.customer_name.$dirty">
 											<div ng-message="required">This field is required</div>
 											<div ng-message="pattern">Only characters & space allowed</div>
 										</div>
-										<input type="email" ng-model="customer_email" name="customer_email" placeholder="Email" ng-value="" required>
+										<input type="email" ng-model="customer_email" name="customer_email" placeholder="Email" style="    margin-top: -28px !important;" ng-value="" required>
 										<div id="ng-error" ng-messages="form.customer_email.$error" ng-if="form.customer_email.$dirty">
 											<div ng-message="required">This field is required</div>
 											<div ng-message="customer_email">Your email address is invalid</div>
@@ -208,10 +208,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<input type="radio" ng-model="rating_given" id="group-2-3" value="2" /><label for="group-2-3"></label>
 										<input type="radio" ng-model="rating_given" id="group-2-4" value="1" /><label for="group-2-4"></label>
 									</div>
-									<textarea style="height: 110px !important;" ng-model="review_given" ng-minlength="100" ng-maxlength="1000" name="review_given" placeholder="Content...(max 1000)" required></textarea>
-									<div id="ng-error" ng-messages="form.review_given.$error" ng-if="form.review_given.$dirty">
+									<textarea style="height: 110px !important;" ng-model="review_given" ng-minlength="100" ng-maxlength="1000" name="review_given"  placeholder="Content...(max 1000)" required></textarea>
+									<div id="ng-error" ng-messages="form.review_given.$error" ng-if="form.review_given.$dirty" >
 										<div ng-message="required">This field is required</div>
-										<div ng-message="minlength">Review must be over 100 characters</div>
+										<div ng-message="minlength" style=" margin-left: 205px; margin-top:-15px;">Review must be over 100 characters</div>
 										<div ng-message="maxlength">Review must not exceed 1000 characters</div>									
 									</div>
 									<div class="clearfix"> </div>
