@@ -308,8 +308,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<span class="glyphicon glyphicon-bed" aria-hidden="true"></span>{{rooms.propertyName}}
 							</a>
 							<p><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>{{rooms.propertyAddress}}</p>
+								<div class="text-left" style="display: inline-block;"
+								 ng-if="rooms.star_rate==5">
+								<span style="color:red;">★★★★★</span>
+							</div>
 							<div class="text-left" style="display: inline-block;"
-								ng-repeat="stars in rooms">
+								 ng-if="rooms.star_rate==4">
+								<span style="color:red;">★★★★</span>
+							</div>
+							<div class="text-left" style="display: inline-block;"
+								 ng-if="rooms.star_rate==3">
+								<span style="color:red;">★★★</span>
+							</div>
+							<div class="text-left" style="display: inline-block;"
+								 ng-if="rooms.star_rate==2">
+								<span style="color:red;">★★</span>
+							</div>
+							<div class="text-left" style="display: inline-block;"
+								 ng-if="rooms.star_rate==1">
 								<span style="color:red;">★</span>
 							</div>
 							<div class="hotel-left-grids">
