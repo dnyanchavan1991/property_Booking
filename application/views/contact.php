@@ -242,7 +242,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</div>
 								<div class="comments-bot" dir-paginate="reviews_count in reviews|itemsPerPage:5">
 									<p>{{reviews_count.review_text}}</p>
-									<div class="text-left" ng-if="reviews_count.star_rating==5">
+									<!--<div class="text-left" ng-if="reviews_count.star_rating==5">
 										<span class="red-star" >★</span><span class="red-star" >★</span><span class="red-star" >★</span><span class="red-star" >★</span><span class="red-star" >★</span>
 									</div>
 									<div class="text-left" ng-if="reviews_count.star_rating==4">
@@ -253,9 +253,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									</div>
 									<div class="text-left" ng-if="reviews_count.star_rating==2">
 										<span class="red-star" >★</span><span class="red-star" >★</span>
-									</div>
-									<div class="text-left" ng-if="reviews_count.star_rating==1">
-										<span class="red-star" >★</span>
+									</div>-->
+									<div class="text-left" >
+										<span class="red-star" ng-repeat="r_cnt in strtoint(reviews_count.star_rating)">★</span>
 									</div>
 									<h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span> {{reviews_count.customer_name}} <p style="display:inline-block;">{{reviews_count.customer_email}}</p></h4>
 								</div>

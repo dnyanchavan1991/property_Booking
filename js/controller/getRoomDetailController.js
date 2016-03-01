@@ -18,6 +18,14 @@ app.controller('paginateReview',function($scope,$http){
 			//alert($scope.reviews);
 		});
 	};
+	$scope.strtoint = function(num)
+    {
+		var arr = [];
+		for(var i=1; i<=num; i++) {
+		   arr.push(i.toString());
+		}
+		return arr;
+	};
 });
 /*--//paginate review*/
 /*--submit review*/
