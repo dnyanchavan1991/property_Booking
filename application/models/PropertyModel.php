@@ -20,7 +20,7 @@ public function checkRoomAvailabilty($searchArray, $filterData) {
 		$propertyType = $searchArray ['propertyType'];
 		$destination = $searchArray ['destination'];
 		
-		$this->db->select ( "property.property_id as propertyId,property.property_name as property,property.property_type_id,property.image_path as imagePath, property.star_rate, concat(property.street,',',property.city,',',property.state,',',property.postal_code)as propertyAddress,propertyInfo.accommodates,(propertyInfo.accommodates-IFNULL(sum(res.accomodates), 0)) as availableAccomodes" );
+		$this->db->select ( "property.property_id as propertyId,star_rate,property.property_name as property,property.property_type_id,property.image_path as imagePath, property.star_rate, concat(property.street,',',property.city,',',property.state,',',property.postal_code)as propertyAddress,propertyInfo.accommodates,(propertyInfo.accommodates-IFNULL(sum(res.accomodates), 0)) as availableAccomodes" );
 		$this->db->from ( "$propertyInfo propertyInfo" );
 		$this->db->join ( "$reservationTable res", "res.property_id=propertyInfo.property_id", "left" );
 		$this->db->join ( "$propertyTable property", "propertyInfo.property_id=property.property_id" );
