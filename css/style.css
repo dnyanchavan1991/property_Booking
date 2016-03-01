@@ -23,7 +23,7 @@ body {
 a:hover{
  text-decoration:none;
 }
-input[type="button"],input[type="submit"]{
+.input[type="button"],.input[type="submit"]{
 	transition:0.5s all;
 	-webkit-transition:0.5s all;
 	-moz-transition:0.5s all;
@@ -31,6 +31,7 @@ input[type="button"],input[type="submit"]{
 
 	-ms-transition:0.5s all;
 }
+
 @font-face {
    font-family: 'Alegreya-Regular';
    src: url(../fonts/Alegreya-Regular.ttf)format('truetype');
@@ -326,8 +327,10 @@ ul.social-slide li i.mac{
 					color: #4c4c4c;
 					transition: all linear 0.15s;
 					}
+			
 	
 }
+
 
 .callbacks_tabs a{
  visibility: hidden;
@@ -1936,6 +1939,7 @@ input[type="date"], input[type="time"], input[type="datetime-local"], input[type
   padding: 10px 0px 10px 0px !important;
   font-size: 13px;
   color: #c4c4c4;
+  margin: 18px 0px !important;
 }
 .search-hotel form input[type="submit"]{
   background: url(../images/search.png) no-repeat 13px 11px #000;
@@ -1961,7 +1965,7 @@ border-bottom: 1px solid #e5e3db;
 }
 /*-- Slider range --*/
 ul.dropdown-menu6 ,ul.dropdown-menu5{
-margin:0;
+margin:-5px;
 position:relative;
 }
 ul.dropdown-menu6 li {
@@ -1983,7 +1987,7 @@ input#amount,input#amount1 {
   position: absolute;
   left: 0%;
   top: -27px;
-  margin-top: -10px;
+  margin-top: 22px !important;
 }
 ul.dropdown-menu6 li a {
 text-decoration: none;
@@ -1991,6 +1995,7 @@ text-decoration: none;
 .range,.range-two{
 padding: 0px 0 6px 0;
 border-bottom: 1px solid #e5e3db; 
+margin-top: -2px !important;
 }
 /*-- //Slider range --*/
 
@@ -2023,7 +2028,7 @@ cursor: pointer;
   padding-left: 31px;
   width: 100%;
   font-size: 1em;
-  margin: 3px 0;	  
+  margin: 0px 0;	  
 }
 .single-star-bottom  input[type="checkbox"]+label span:first-child {
   width: 18px;
@@ -2234,7 +2239,7 @@ top: 4px;
 line-height:1.8em;
   color: #000;
   font-size: 13px;
-	margin: -34px -18px -15px 105px !important;
+	margin: -34px -18px -15px 85px !important;
 padding: 2px 0px 0px 0px !important;
 }
 .hotel-left-two p span{
@@ -2290,7 +2295,7 @@ font-size:20px;
 top:0;
 }
 .spl-btn h4 {
-text-align:right;
+text-align:left;
   font-weight: 600;
   color: #DF1E1C;
   font-size: 26px;
@@ -2383,7 +2388,7 @@ font-weight:bold;
 	color: red;
 	/*margin-top: 5px;*/
 	float: left !important;
-    margin-left: -189px !important;
+    margin-left: -193px !important;
     font-size: 14px;
     margin-top: 6px;
 }
@@ -2420,17 +2425,21 @@ font-weight:bold;
 		height: 2.8em !important;	
 		font-size: 17px;		
 		padding: 0px 0px 0px 0px !important;
-		border:0px; 
+		border:-1px; 
 		margin: 16px 27px 0px -1px !important;
 	}
 	.banner-bottom{
 		width: 100%;
 	/*background: rgba(236, 202, 105, 0.48) none repeat scroll 0% 0%;*/
     padding: 25px;
-   
-    
-
 	}
+	.angular-msgs #ng-error {
+    color: red;
+    font-size: 14px;
+    margin-left: -193px !important;
+    margin-top: 12px;
+	}    
+
 	#center-line {
 		right:50%;
 		position: absolute;
@@ -2471,16 +2480,16 @@ font-weight:bold;
     width: 12%;
 }
 button, input, optgroup, select, textarea{
-	margin: 13px 0px 0px 0px !important;
-	padding: 12px 0px 0px 0px !important;
+	margin: -26px 0px 0px 0px !important;
+	padding: 3px 0px 0px 4px !important;
 	top: -48px !important;
 }
 .date {
 	font-size: 17px;
     background: #FFF url("../images/date-icon.png") no-repeat scroll 95.5% 45%;
     cursor: pointer;
-    padding: 13px 0px 11px 5px !important;
-    margin: 16px 1px 0px -9px !important;
+    padding: 24px 0px 11px 5px !important;
+    margin: 0px 1px 0px 1px !important;
 	width: 10em;
 }
 	.guedtf {
@@ -2505,7 +2514,7 @@ button, input, optgroup, select, textarea{
 				}
 	
 	}
-@media (max-width: 1024px){
+@media(max-width: 1024px){
 	.inputDestination {
 		width: 100%;
 		border:0px; 
@@ -2528,10 +2537,15 @@ button, input, optgroup, select, textarea{
     font-family: Bodoni MT Black;
 }
 	
-button, input, optgroup, select, textarea{
+.button, .input, .optgroup, .select, .textarea{
 margin: 1px -6px !important;
 }
-
+.angular-msgs #ng-error {
+    color: red;
+    font-size: 14px;
+    margin-left: -193px !important;
+    margin-top: 12px;
+	}
 	.propertyType {
 		width:100%;
 		height:4.7em;
@@ -2842,6 +2856,12 @@ margin: 1px -6px !important;
 }
 
 @media.screen(max-width: 768px){
+	.angular-msgs #ng-error {
+    color: red;
+    font-size: 14px;
+    margin-left: -193px !important;
+    margin-top: 12px;
+	}
 	span.menu {
 	display: block;
 	cursor: pointer;
@@ -2868,7 +2888,12 @@ margin: 1px -6px !important;
 	z-index: 9999;
 	width: 100%;
 	}
-	
+	.angular-msgs #ng-error {
+    color: red;
+    font-size: 14px;
+    margin-left: -193px !important;
+    margin-top: 12px;
+	}
 	.logo {
 	z-index: 9999;
 	}
@@ -3110,10 +3135,22 @@ margin: 1px -6px !important;
 	  padding: 0 10px;
 	}
 }
-@media (min-width:360px) and (max-width: 640px)and(orientation:landscape){
+@media  (max-width: 640px)and(orientation:landscape){
+	.angular-msgs #ng-error {
+    color: red;
+    font-size: 14px;
+    margin-left: -193px !important;
+    margin-top: 12px;
+	}
 	.logo {
 	  float: left;
 	  width: 35%;
+	}
+	.angular-msgs #ng-error {
+    color: red;
+    font-size: 14px;
+    margin-left: -193px !important;
+    margin-top: 12px;
 	}
 	.header-nav {
 	  padding-top: 22px;
@@ -3643,9 +3680,23 @@ margin: 1px -6px !important;
 	}
 
 }*/
+@media(max-width:320px){
+	.angular-msgs #ng-error {
+    color: red;
+    font-size: 14px;
+    margin-left: -193px !important;
+    margin-top: 12px;
+	}
+}
 @media (min-width:320px) {
 	.body {
 		font-size: 9px;
+	}
+	.angular-msgs #ng-error {
+    color: red;
+    font-size: 14px;
+    margin-left: -193px !important;
+    margin-top: 12px;
 	}
 	.input.button .select .textarea {
     font-family: inherit;
