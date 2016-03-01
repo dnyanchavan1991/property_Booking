@@ -197,8 +197,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	
 		<div class="banner-bottom">
 			<div class="row">
-				<div class="col-md-4 fff">
-					<input type = "text" id="inpDestination" onClick="show()" name="inpDestination" ng-model="inputDestination" placeholder="Where do you want to go?" ng-click="expandFilterOptions()" class="inputDestination" style="width: 100%; height: 3.2em;" />
+				<div class="col-md-4 fff" >
+					<input type = "text" id="inpDestination" onClick="show()" name="inpDestination" ng-model="inputDestination" placeholder="Where do you want to go?" ng-click="expandFilterOptions()" class="inputDestination" style="width: 100%; height: 3.2em; " />
 				</div>
 				<div class="col-md-1" id="aaa" style="display:none;">
 						<select class="sel propertyType" ng-model="selectAccomodationType"  id="propertyType" name="propertyType" ng-init="selectAccomodationType=accomodationType[0]"  
@@ -209,10 +209,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<select class="sel guedtf" ng-model="selectGuestHeadCount" id="guestCount" name="guestCount" ng-init="selectGuestHeadCount=guestHeadCount[0] " ng-options="option as option for option in guestHeadCount" }></select>
 				</div>
 				<div class="col-md-2" id="ccc"  style="display:none;">
-						<input class="date" name="checkIn" readonly id="checkIn" ng-model="checkInDate" ng-init="checkInDate= 'CheckIn'" type="text"  style=" width:10em; border:0px;" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required />
+						<input class="date" name="checkIn" readonly id="checkIn" ng-model="checkInDate" ng-init="checkInDate= 'CheckIn'" type="text"  style=" width:10em; padding: 12px !important; margin: 15px 0px 0px -9px !important; border:0px;" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required />
 				</div>
 				<div class="col-md-2" id="ddd" style="display:none;">
-						<input class="date" name="checkOut" readonly id="checkOut" type="text" ng-model="checkOutDate" ng-init="checkOutDate= 'CheckOut'" style="width:10em; margin-left:9px !important; border:0px;" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required=""/>
+						<input class="date" name="checkOut" readonly id="checkOut" type="text" ng-model="checkOutDate" ng-init="checkOutDate= 'CheckOut'" style="width:10em;  margin: 15px 0px 0px 9px !important; padding: 12px !important; border:0px;" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required=""/>
 				</div>
 				<div class="col-md-2 eee"><div class="search"><input type="submit"  name="submit" style="margin: 0px;" value="search"></div></div >
 			</div>
@@ -428,14 +428,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 <!--footer-->
 <!-- copy -->
-<div class="copy-right">
-	<div class="container">
-			<p>
-				&copy; 2015 All Rights Reserved | Design by <a
-					href="http://www.agilesoftsol.com/">Agile Technologies</a>
-			</p>
-	</div>
-</div>
+
 <!-- //copy -->
 <!-- for bootstrap working -->
 	<script src="js/bootstrap.js"></script>
@@ -481,6 +474,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		});
 	</script>
 	<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+	<div class="copy-right">
+	<div class="container">
+			<p>
+				&copy; 2015 All Rights Reserved | Design by <a
+					href="http://www.agilesoftsol.com/">Agile Technologies</a>
+			</p>
+	</div>
+</div>
 <!-- //smooth scrolling -->
 </body>
 </html>
