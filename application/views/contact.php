@@ -312,14 +312,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											<label for="checkIn"></label><input class="date"
 												name="checkIn" id="checkIn" ng-model="form.checkIn"
 												ng-init="checkIn= 'CheckIn Date'" type="text"
-												style="width: 70%; height: 0px;" onfocus="this.value = '';"
+												style="width: 70%; padding: 15px !important; margin: 0px !important;  height: 0px;  " onfocus="this.value = '';"
 												onblur="if (this.value == '') {this.value = '';}" required>
 										</div>
 										<div class="form-group">
 											<label for="checkOut"></label><input class="date"
 												name="checkOut" id="checkOut" ng-model="form.checkOut"
 												ng-init="checkOut= 'CheckIn Date'" type="text"
-												style="width: 70%; height: 0px;" onfocus="this.value = '';"
+												style="width: 70%; padding: 15px !important; margin: 0px !important; height: 0px;" onfocus="this.value = '';"
 												onblur="if (this.value == '') {this.value = '';}" required>
 										</div>
 										<div class="form-group">
