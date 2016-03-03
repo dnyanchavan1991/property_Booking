@@ -2436,7 +2436,7 @@ font-weight:bold;
     color: red;
     font-size: 14px;
     margin-left: -193px !important;
-	 margin-top: -3px !important;
+	margin-top: 25px !important;
 	}    
 
 	#center-line {
@@ -2554,7 +2554,7 @@ margin: 1px -6px !important;
     color: red;
     font-size: 14px;
 	margin-left: -193px !important;
-    margin-top: -3px !important;
+   margin-top: 25px !important;
    }
 	
 	.propertyType {
@@ -3696,7 +3696,7 @@ margin: 1px -6px !important;
     color: red;
     font-size: 14px;
     margin-left: -193px !important;
-    margin-top: -3px !important;
+    margin-top: 25px !important;
 	}
 	.date {
     background: url(../images/date-icon.png) no-repeat 95.5% 45% #fff;
@@ -3713,7 +3713,7 @@ margin: 1px -6px !important;
     color: red;
     font-size: 14px;
     margin-left: -193px !important;
-    margin-top: -3px !important;
+    margin-top: 25px !important;
 	}
 	.input.button .select .textarea {
     font-family: inherit;
