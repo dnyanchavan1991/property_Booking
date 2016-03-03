@@ -89,7 +89,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<nav class="cl-effect-11" id="cl-effect-11">
 					<ul id="hiddenresponsive" class="nav1">
 						<li><a class="active" href="Index1" data-hover="HOME">HOME</a></li>											 
-						<li><button id='modal-launcher' class="btn btn-primary btn-lg"  data-toggle="modal" data-target="#login-modal">LOGIN</button></li>
+						<li><a id='modal-launcher' class="active"  data-toggle="modal" data-target="#login-modal">LOGIN</a></li>
 					</ul>  
 				</nav>
 				<!-- script for menu -->
@@ -126,9 +126,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						// set, reset, delay to `1000` after background image reset
 						elem.css("backgroundImage", bgimg)
 						  // fade in background image
-						  .fadeTo(3000, 1, "linear", function() {
+						  .fadeTo(7000, 1, "linear", function() {
 							// fade in background image
-							$(this).delay(3000, "fx").fadeTo(3000, 0, "linear", function() {
+							//$(this).delay(3000, "fx").fadeTo(3000, 0, "linear", function() {
 							  // split background image string at comma , creating array
 							  var img = $(this).css("backgroundImage").split(","),
 								// concat first background image to `img` array,
@@ -136,7 +136,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								bgimg = img.concat(img[0]).splice(1).join(",");
 							  // recursively call `cycleBgImage`
 							  cycleBgImage(elem, bgimg);
-							});
+							//});
 						  });
 					  }($(".banner")));
 					
@@ -175,6 +175,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					document.getElementById('bbb').style.display="inline" ;
 					document.getElementById('ccc').style.display="inline" ;
 					document.getElementById('ddd').style.display="inline" ;
+					document.getElementById('blankdiv').style.display="none" ;
 					}
 			function showmodal(){
 				//document.getElementById("hiddenresponsive").style.display = "none";
@@ -197,6 +198,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	
 		<div class="banner-bottom">
 			<div class="row">
+			<div class="col-md-3" id="blankdiv">&nbsp;</div>
 				<div class="col-md-4 fff" >
 					<input type = "text" id="inpDestination" onClick="show()" name="inpDestination" ng-model="inputDestination" placeholder="Where do you want to go?" ng-click="expandFilterOptions()" class="inputDestination" style="width: 100%; height: 3.2em; " />
 				</div>
@@ -209,10 +211,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<select class="sel guedtf" ng-model="selectGuestHeadCount" id="guestCount" name="guestCount" ng-init="selectGuestHeadCount=guestHeadCount[0] " ng-options="option as option for option in guestHeadCount" }></select>
 				</div>
 				<div class="col-md-2" id="ccc"  style="display:none;">
-						<input class="date" name="checkIn" readonly id="checkIn" ng-model="checkInDate" ng-init="checkInDate= 'CheckIn'" type="text"  style=" width:10em; padding: 12px 0px -1px 0px !important;  border:0px;" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required />
+					<input class="date" name="checkIn" readonly id="checkIn" ng-model="checkInDate" placeholder="checkIn" type="text"  style=" width:10em; padding: 12px 0px -1px 0px !important;  border:0px;" required />
 				</div>
 				<div class="col-md-2" id="ddd" style="display:none;">
-						<input class="date" name="checkOut" readonly id="checkOut" type="text" ng-model="checkOutDate" ng-init="checkOutDate= 'CheckOut'" style="width:10em;  margin: 15px 0px 0px 9px !important; padding: 12px !important; border:0px;" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required=""/>
+					<input class="date" name="checkOut" readonly id="checkOut" type="text" ng-model="checkOutDate" placeholder="checkOut" style="width:10em;  margin: 15px 0px 0px 9px !important; padding: 12px !important; border:0px;" required=""/>
 				</div>
 				<div class="col-md-2 eee"><div class="search"><input type="submit"  name="submit" style="margin: 0px;" value="search"></div></div >
 			</div>

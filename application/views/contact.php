@@ -179,12 +179,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<input type="text" id="customer_name" ng-model="customer_name" placeholder="Name" ng-init="customer_name='<?php echo $name;?>'" readonly>
 										<input type="email" ng-model="customer_email" placeholder="Email"  ng-init="customer_email='<?php echo $email_address;?>'" readonly>
 									<?php } else{?>
-										<input type="text" id="customer_name" ng-model="customer_name" name="customer_name" ng-pattern="/^[a-zA-Z ]*$/" placeholder="Name"  style="margin-top: -28px !important;" ng-value="" required>
+										<input type="text" id="customer_name" ng-model="customer_name" name="customer_name" ng-pattern="/^[a-zA-Z ]*$/" placeholder="Name"  style="margin-top: -13px !important;" ng-value="" required>
 										<div id="ng-error" ng-messages="form.customer_name.$error" ng-if="form.customer_name.$dirty">
 											<div ng-message="required">This field is required</div>
 											<div ng-message="pattern">Only characters & space allowed</div>
 										</div>
-										<input type="email" ng-model="customer_email" name="customer_email" placeholder="Email" style="    margin-top: -28px !important;" ng-value="" required>
+										<input type="email" ng-model="customer_email" name="customer_email" placeholder="Email" style="    margin-top: -13px !important;" ng-value="" required>
 										<div id="ng-error" ng-messages="form.customer_email.$error" ng-if="form.customer_email.$dirty">
 											<div ng-message="required">This field is required</div>
 											<div ng-message="customer_email">Your email address is invalid</div>
