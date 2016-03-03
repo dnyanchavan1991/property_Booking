@@ -73,8 +73,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<ul class="nav1">
 							<li><a class="active" href="Index1" data-hover="HOME">HOME</a></li>
 						
-				       <li><button id='modal-launcher' class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login-modal">
-					  LOGIN</button></li>
+				       <li><a id='modal-launcher' class="active" data-toggle="modal" data-target="#login-modal">
+					  LOGIN</a></li>
 						</ul>
 					</nav>
 					<!-- script for menu -->
