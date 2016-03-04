@@ -1739,6 +1739,7 @@ border:none;
 	margin: 22px 0;
 	resize:none;
 	height:250px;
+	margin-left: 0px !important;
 	}
 .contact-form input[type="submit"]{
   outline: none;
@@ -2436,7 +2437,7 @@ font-weight:bold;
     color: red;
     font-size: 14px;
     margin-left: -193px !important;
-	margin-top: 25px !important;
+	margin-top: 28px !important;
 	}    
 
 	#center-line {
@@ -2554,7 +2555,7 @@ margin: 1px -6px !important;
     color: red;
     font-size: 14px;
 	margin-left: -193px !important;
-   margin-top: 25px !important;
+   margin-top: 28px !important;
    }
 	
 	.propertyType {
@@ -2871,7 +2872,7 @@ margin: 1px -6px !important;
     color: red;
     font-size: 14px;
     margin-left: -193px !important;
-    margin-top: 12px;
+    margin-top: 28px;
 	}
 	span.menu {
 	display: block;
@@ -2903,7 +2904,7 @@ margin: 1px -6px !important;
     color: red;
     font-size: 14px;
     margin-left: -193px !important;
-    margin-top: 12px;
+    margin-top: 28px;
 	}
 	.logo {
 	z-index: 9999;
@@ -3146,12 +3147,12 @@ margin: 1px -6px !important;
 	  padding: 0 10px;
 	}
 }
-@media  (max-width: 640px)and(orientation:landscape){
+@media  (max-width: 640px){
 	.angular-msgs #ng-error {
     color: red;
     font-size: 14px;
     margin-left: -193px !important;
-    margin-top: 12px;
+    margin-top: 28px;
 	}
 	.logo {
 	  float: left;
@@ -3161,7 +3162,7 @@ margin: 1px -6px !important;
     color: red;
     font-size: 14px;
     margin-left: -193px !important;
-    margin-top: 12px;
+    margin-top: 28px;
 	}
 	.header-nav {
 	  padding-top: 22px;
@@ -3696,7 +3697,7 @@ margin: 1px -6px !important;
     color: red;
     font-size: 14px;
     margin-left: -193px !important;
-    margin-top: 25px !important;
+    margin-top: 28px !important;
 	}
 	.date {
     background: url(../images/date-icon.png) no-repeat 95.5% 45% #fff;
@@ -3713,7 +3714,7 @@ margin: 1px -6px !important;
     color: red;
     font-size: 14px;
     margin-left: -193px !important;
-    margin-top: 25px !important;
+    margin-top: 28px !important;
 	}
 	.input.button .select .textarea {
     font-family: inherit;
