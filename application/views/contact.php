@@ -88,7 +88,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<!-- //script for menu -->
 
 				</div>
-				<div class="social-icons">
+				<div class="social-icons" style="margin-top: -3%;" >
 					<ul>
 						<li><a href="#" class="f1"></a></li>
 						<li><a href="#" class="f2"></a></li>
