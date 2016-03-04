@@ -55,7 +55,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		});
 	});
 	$(function() {
-		$( "#review_checkin,#review_checkout" ).datepicker({dateFormat: 'dd/mm/yy'});
+		$("#review_checkin").datepicker({
+			dateFormat: "dd/mm/yy", 
+			//minDate:  0,
+			onSelect: function(date){            
+				var date1 = $('#review_checkin').datepicker('getDate');           
+				var date = new Date( Date.parse( date1 ) ); 
+				date.setDate( date.getDate() + 1 );        
+				var newDate = date.toDateString(); 
+				newDate = new Date( Date.parse( newDate ) );                      
+				$('#review_checkout').datepicker("option","minDate",newDate);            
+			}
+		});
+		$('#review_checkout').datepicker({
+			dateFormat: "dd/mm/yy" 
+		});
 	});
 </script>
 

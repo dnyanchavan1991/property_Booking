@@ -155,3 +155,8 @@ tabs {
 .red-star {
     color: red;
 }
+
+#review_checkin, #review_checkout{
+	background: url(../images/date-icon.png) no-repeat 95.5% 45% #fff;
+    cursor: pointer;
+}
