@@ -211,7 +211,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<textarea style="height: 110px !important;" ng-model="review_given" ng-minlength="100" ng-maxlength="1000" name="review_given"  placeholder="Content...(max 1000)" required></textarea>
 									<div id="ng-error" ng-messages="form.review_given.$error" ng-if="form.review_given.$dirty" >
 										<div ng-message="required">This field is required</div>
-										<div ng-message="minlength" style=" margin-left: 205px; margin-top:-15px;">Review must be over 100 characters</div>
+										<div ng-message="minlength" style=" margin-left: 205px; margin-top:-38px;">Review must be over 100 characters</div>
 										<div ng-message="maxlength">Review must not exceed 1000 characters</div>									
 									</div>
 									<div class="clearfix"> </div>
