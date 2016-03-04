@@ -517,6 +517,7 @@ margin-top: 20px;
 }
 .navigation ul li a.active {
   color: #DF1E1C;
+  margin-left: 0px;
 }
 .social-icons{
 float:right;
@@ -3290,11 +3291,11 @@ margin: 1px -6px !important;
 	}
 	.search-grid-left {
 	  float: left;
-	  width: 38%;
+	  width: 100%;
 	}
 	.search-grid-right {
 	  float: left;
-	  width: 62%;
+	  width: 100%;
 	  }
 	.hotel-left-two {
 	  float: right;
@@ -3704,7 +3705,13 @@ margin: 1px -6px !important;
     cursor: pointer;
     padding: 37px 0px -1px 101px !important;
     margin: 15px 0px 0px 10px !important;
-}
+	}
+	.social-icons {
+	  float: left;
+	  width: 100%;
+	  text-align: right;
+	  margin-top: -28%;
+	}
 }
 @media (min-width:320px) {
 	.body {
@@ -3754,7 +3761,7 @@ margin: 15px 0px 0px 10px !important;*/
 	}
 	.social-icons {
 		float: left;
-		margin-top: -250px;
+		margin-top: -28%;
 	}
 	.banner-info {
 		margin-top: 132px;
@@ -3784,7 +3791,7 @@ margin: 15px 0px 0px 10px !important;*/
 		padding-top: 11%;
 	}
 	.navigation ul {
-		top: 72px;
+		top: 33px;
 	}
 	.ban-pos-gridtwo {
 		float: left;
@@ -3908,6 +3915,7 @@ margin: 15px 0px 0px 10px !important;*/
 	  float: left;
 	  width: 100%;
 	  text-align: right;
+	  margin-top: -28%;
 	}
 	.welcome-grids {
 	  margin-bottom: 20px;
