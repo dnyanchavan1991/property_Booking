@@ -85,10 +85,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<span class="menu"><img src="images/menu.png" alt="" /></span>
 					<nav class="cl-effect-11" id="cl-effect-11">
 						<ul class="nav1">
-							<li><a class="active" href="Index1" data-hover="HOME">HOME</a></li>
-						
-				       <li><a id='modal-launcher' class="active" data-toggle="modal" data-target="#login-modal">
-					  LOGIN</a></li>
+							<li><a href="Index1" data-hover="HOME">HOME</a></li>
+						    <li><a  href="" id='modal-launcher' data-toggle="modal" data-target="#login-modal" data-hover="LOGIN">LOGIN</a></li>
 						</ul>
 					</nav>
 					<!-- script for menu -->
@@ -167,6 +165,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								}?>
 								</ul>
 							</div>
+							<script>
+							// Can also be used with $(document).ready()
+							$(window).load(function() {
+								$('.flexslider').flexslider({
+								animation: "slide",
+								controlNav: "thumbnails",
+								slideshowSpeed: "5000"
+								});
+							});
+							</script>
 						</div>
 					
 						<div id="tab4" class="tab">
@@ -198,10 +206,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											<div ng-message="required">This field is required</div>
 											<div ng-message="pattern">Only characters & space allowed</div>
 										</div>
-										<input type="email" ng-model="customer_email" name="customer_email" placeholder="Email" style="    margin-top: -13px !important;" ng-value="" required>
+										<input type="email" ng-model="customer_email" name="customer_email" ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" placeholder="Email" style="    margin-top: -13px !important;" ng-value="" required>
 										<div id="ng-error" ng-messages="form.customer_email.$error" ng-if="form.customer_email.$dirty">
 											<div ng-message="required">This field is required</div>
-											<div ng-message="customer_email">Your email address is invalid</div>
+											<div ng-message="pattern">Your email address is invalid</div>
 										</div>
 									<?php }?>
 									<div class="clearfix"> </div>
@@ -218,7 +226,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<div class="acidjs-rating-stars">
 										<input type="radio" ng-model="rating_given" id="group-2-0" value="5" /><label for="group-2-0"></label>
 										<input type="radio" ng-model="rating_given" id="group-2-1" value="4" /><label for="group-2-1"></label>
-										<input type="radio" ng-model="rating_given" id="group-2-2" value="3" ng-init="rating_given=3" ng-checked="true"/><label for="group-2-2"></label>
+										<input type="radio" ng-model="rating_given" id="group-2-2" value="3" /><label for="group-2-2"></label>
 										<input type="radio" ng-model="rating_given" id="group-2-3" value="2" /><label for="group-2-3"></label>
 										<input type="radio" ng-model="rating_given" id="group-2-4" value="1" /><label for="group-2-4"></label>
 									</div>
@@ -256,22 +264,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</div>
 								<div class="comments-bot" dir-paginate="reviews_count in reviews|itemsPerPage:5">
 									<p>{{reviews_count.review_text}}</p>
-									<!--<div class="text-left" ng-if="reviews_count.star_rating==5">
-										<span class="red-star" >★</span><span class="red-star" >★</span><span class="red-star" >★</span><span class="red-star" >★</span><span class="red-star" >★</span>
-									</div>
-									<div class="text-left" ng-if="reviews_count.star_rating==4">
-										<span class="red-star" >★</span><span class="red-star" >★</span><span class="red-star" >★</span><span class="red-star" >★</span>
-									</div>
-									<div class="text-left" ng-if="reviews_count.star_rating==3">
-										<span class="red-star" >★</span><span class="red-star" >★</span><span class="red-star" >★</span>
-									</div>
-									<div class="text-left" ng-if="reviews_count.star_rating==2">
-										<span class="red-star" >★</span><span class="red-star" >★</span>
-									</div>-->
 									<div class="text-left" >
 										<span class="red-star" ng-repeat="r_cnt in strtoint(reviews_count.star_rating)">★</span>
 									</div>
-									<h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span> {{reviews_count.customer_name}} <p style="display:inline-block;">{{reviews_count.customer_email}}</p></h4>
+									<h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span> {{reviews_count.customer_name}} <p style="display:inline-block;">{{reviews_count.check_in}} - {{reviews_count.check_out}}</p></h4>
 								</div>
 							</div>
 						</div>
@@ -388,11 +384,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<iframe
 					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63718.72916803739!2d102.31975295000002!3d3.489618449999993!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31ceba2007355f81%3A0xd2ff1ad6a3ca801!2sMentakab%2C+Pahang%2C+Malaysia!5e0!3m2!1sen!2sin!4v1439535856431"></iframe>
 			</div>-->
-			<div class="paragraph">
-				<p>
-					<b></b>
-				</p>
-			</div>
 			<!-- <div class="contact-form">
 				<h3 class="tittle">CONTACT FORM</h3>
 				<form>
@@ -405,15 +396,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</form>
 			</div>-->
 		</div>
-		<script>
-		// Can also be used with $(document).ready()
-		$(window).load(function() {
-			$('.flexslider').flexslider({
-			animation: "slide",
-			controlNav: "thumbnails"
-			});
-		});
-		</script>
 	</div>
 	
 

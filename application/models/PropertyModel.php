@@ -449,7 +449,7 @@ public function checkRoomAvailabilty($searchArray, $filterData) {
 	public function getReviewsByPropertyId($property_id)
 	{
 		$this->load->database ();
-		$this->db->select('customer_name,customer_email,star_rating,review_text');
+		$this->db->select("customer_name,DATE_FORMAT(check_in, '%d/%m/%Y') check_in,DATE_FORMAT(check_out, '%d/%m/%Y') check_out,star_rating,review_text");
 		$this->db->from('customer_reviews');
 		$this->db->where('property_id',$property_id);
 		//$this->db->limit($limit, $start);
