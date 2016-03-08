@@ -214,6 +214,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<?php }?>
 									<div class="clearfix"> </div>
 									<input id="review_checkin" type="text" ng-model="review_checkin" name="review_checkin" placeholder="Check-In date"  required>
+									{{form.review_checkin.$error}} - {{form.review_checkin.$valid}}
 									<div id="ng-error" ng-messages="form.review_checkin.$error" ng-if="form.review_checkin.$dirty">
 										<div ng-message="required" style="margin-top: 23px;" >This field is required</div>
 									</div>
@@ -288,7 +289,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</script>
 					</div>
 					<div class="sp-bor-btn text-right">
-						<h4><span>$8,750</span> $4,850</h4>
+						<h4>Availability : <?php echo $avail_accomodates;?></h4>
 						<p class="best-pri">Best price</p>
 						
 						<a class="best-btn" href="BookProperty">Book Now</a>

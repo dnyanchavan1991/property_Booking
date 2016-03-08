@@ -2377,10 +2377,9 @@ font-weight:bold;
 /*-- //single-page --*/
 /*-- unique-visitor*/
 .unique-visitors{
-	margin:10px;
-	margin: 10px 0px 0px 50px;
-	background-color: azure;
-	width: 18%;
+	background-color: #FAFAD2;
+    width: 100%;
+    text-align: center;
 }
 /*-- //unique-visitor*/
 /*-- angular-msgs*/

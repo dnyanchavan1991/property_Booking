@@ -1,9 +1,12 @@
 <?php
 class PropertyModel extends CI_Model {
+	function __construct()
+	{
+		parent::__construct();
+		$this->load->database();
+	}
 	// this function returns available rooms according to checkin &checkout date
-public function checkRoomAvailabilty($searchArray, $filterData) {
-		$this->load->database ();
-		
+	public function checkRoomAvailabilty($searchArray, $filterData) {
 		$reservationTable = 'reservation';
 		$accomodationTable = 'accomodationtype';
 		$propertyTable = 'property';
@@ -24,13 +27,13 @@ public function checkRoomAvailabilty($searchArray, $filterData) {
 		$this->db->from ( "$propertyInfo propertyInfo" );
 		$this->db->join ( "$reservationTable res", "res.property_id=propertyInfo.property_id", "left" );
 		$this->db->join ( "$propertyTable property", "propertyInfo.property_id=property.property_id" );
-	    //$this->db->where ( "res.property_id", NULL );
+		//$this->db->where ( "res.property_id", NULL );
 		$where = "(res.property_id is Null";
 		$this->db->where ( $where );
-	    $where = "(check_out >= '$checkout' AND check_in >='$checkin')";
-	    $this->db->or_where ( $where );
-	    $where = "(check_out <= '$checkout' AND check_out <='$checkout'))";
-	    $this->db->or_where ( $where );
+		$where = "(check_out >= '$checkout' AND check_in >='$checkin')";
+		$this->db->or_where ( $where );
+		$where = "(check_out <= '$checkout' AND check_out <='$checkout'))";
+		$this->db->or_where ( $where );
 		$where = "(city  like'%$destination%' or state like '%$destination%')";
 		$this->db->where ( $where );
 		
@@ -96,7 +99,7 @@ public function checkRoomAvailabilty($searchArray, $filterData) {
 					}//echo $where;
 			$this->db->where ( $where );	}
 			if($filterData->propertyNameList[0]->name!=null){
-	$propertyName=$filterData->propertyNameList[0]->name;
+			$propertyName=$filterData->propertyNameList[0]->name;
 			$where="property_name like '$propertyName%'";
 			$this->db->where ( $where );
 		}}
@@ -112,12 +115,11 @@ public function checkRoomAvailabilty($searchArray, $filterData) {
 		
 		return( $roomAvailableInfoResult);
 	
-}
+	}
 	/*checkRoomAvailabilty ends here*/
 	
 	/*this function gets property detail on click on particular property of search.html*/
 	public function getPropertyDetail($propertyId) {
-		$this->load->database ();
 		$this->db->select ( 'property_name as propertyName,description,image_path as imagePath,how_to_reach as Direction, ' );
 		$query = $this->db->get_where ( 'property' ,array('property_id' =>$propertyId));
 		return $query;
@@ -134,7 +136,6 @@ public function checkRoomAvailabilty($searchArray, $filterData) {
 	public function getAccomodationType($propertyId) {
 		$roomTable = 'room';
 		$accomodationTable = 'accomodationtype';
-		$this->load->database ();
 		if($propertyId!=null){
 			$this->db->select ( 'distinct(room.accomodation_type_id)as accomodationTypeId,acc.accomodation_type_name as accomodationTypeName' );
 			$this->db->from ( "$roomTable room" );
@@ -151,8 +152,6 @@ public function checkRoomAvailabilty($searchArray, $filterData) {
 	}
 	/*this function gives rooms available for particular is ,for it's particular accomodation type*/
 	public function getRoomAvailabilityCount($searchArray, $filterData) {
-	$this->load->database ();
-		
 		$reservationTable = 'reservation';
 		$accomodationTable = 'accomodationtype';
 		$propertyTable = 'property';
@@ -258,7 +257,6 @@ public function checkRoomAvailabilty($searchArray, $filterData) {
 	}
 	public function verifyDuplicateIPData($ip_address, $date_visited)
 	{
-		$this->load->database ();
 		$visitorTable = 'visitors_info';
 		$this->db->select ( " COUNT(visitor_id)as count");
 		$this->db->from ( "$visitorTable visitor" );
@@ -274,14 +272,12 @@ public function checkRoomAvailabilty($searchArray, $filterData) {
 	{
 		 
 			$visitorTable='visitors_info';
-			$this->load->database ();
 			$query=$this->db->insert($visitorTable,$visitorData);
 		 
 		
 	}
 	public function getVisitorCount (){
 		$visitorTable='visitors_info';
-		$this->load->database ();
 		$query=$this->db->select ( 'count(distinct visitor_ip) as count' );
 		$this->db->from ("$visitorTable");
 		$this->db->where('date_visited',date('Y-m-d'));
@@ -293,7 +289,6 @@ public function checkRoomAvailabilty($searchArray, $filterData) {
 	/*this function gives last minute deal data*/
 	public  function getlastMinDeal(){
 		$currentDate=date('Y-m-d');
-		$this->load->database ();
 		$propertyTable = 'property';
 		$auditRentTable = 'audit_rent';
 		$this->db->select ( "property.property_name as name,auditRent.rent_description as des,property.image_pathas imagePath");
@@ -312,7 +307,6 @@ public function checkRoomAvailabilty($searchArray, $filterData) {
 	public  function getOwnerDetail($propertyId){
 		$ownerInfoTable='property_owner_info';
 		$propertyTable='property';
-		$this->load->database ();
 		$this->db->select ( "owner_name as name,phone,email,property_name as propertyName");
 		$this->db->from (" $ownerInfoTable  owner" );
 		$this->db->join ( "$propertyTable property", "owner.property_id=property.property_id" );
@@ -323,7 +317,6 @@ public function checkRoomAvailabilty($searchArray, $filterData) {
 	/*this function gives message content from db depending upon message type*/
 	public function  getmessageContent($messageType){
 		$templateMessageTable='msg_template_table';
-		$this->load->database ();
 		$this->db->select ( "template_content as message_content,template_id");
 		$this->db->from ( "$templateMessageTable" );
 		$this->db->where ('type',$messageType);
@@ -334,7 +327,6 @@ public function checkRoomAvailabilty($searchArray, $filterData) {
 	public  function  getroomRentDetail($propertyId){
 		$roomTable='room';
 		$accomodationTable='accomodationtype';
-		$this->load->database ();
 		$this->db->select ( "base_price as basePrice,price_per_adult as adultPrice,price_per_child as childPrice,accomodation_type_name as accomodation,room_capacity as capacity");
 		$this->db->from ( "$roomTable room" );
 		$this->db->join ( "$accomodationTable acc", "acc.accomodation_type_id=room.accomodation_type_id");
@@ -349,7 +341,6 @@ public function checkRoomAvailabilty($searchArray, $filterData) {
 	{
 			
 		$registrationTable='registration';
-		$this->load->database ();
 		$query=$this->db->insert($registrationTable,$registerData);
 	
 	}
@@ -359,7 +350,6 @@ public function checkRoomAvailabilty($searchArray, $filterData) {
 	{
 			
 		$registrationTable='registration';
-		$this->load->database ();
 		$this->db->select('count(*) as user_count,user_id');
 		$this->db->from($registrationTable);
 		$this->db->where('user_name',$username);
@@ -384,7 +374,6 @@ public function checkRoomAvailabilty($searchArray, $filterData) {
 	{
 			
 		$loginTable='login';
-		$this->load->database ();
 		$query=$this->db->insert($loginTable,$loginData);
 	
 	}
@@ -393,7 +382,6 @@ public function checkRoomAvailabilty($searchArray, $filterData) {
 	{
 			
 		$propertyTable='property';
-		$this->load->database ();
 		$this->db->select('property_id,image_path,property_name,description');
 		$this->db->from($propertyTable);
 		$this->db->order_by('rand()');
@@ -408,14 +396,12 @@ public function checkRoomAvailabilty($searchArray, $filterData) {
 	{
 			
 		$enquiryTable='enquiry';
-		$this->load->database ();
 		$query=$this->db->insert($enquiryTable,$enquiryData);
 	
 	}
 	/*this function used to retrive values fron registration table based on cokkie value */
 	public function getLogedInUserDetails($user_name){
 		$registrationTable='registration';
-		$this->load->database ();
 		$this->db->select('user_name,email_address,mobile_number');
 		$this->db->from($registrationTable);
 		$this->db->where('user_name',$user_name);
@@ -427,28 +413,14 @@ public function checkRoomAvailabilty($searchArray, $filterData) {
 	/* submit review */
 	public function submitReview($reviewArray)
 	{
-		$this->load->database ();
 		$this->db->insert('customer_reviews', $reviewArray);
 		$lastId = $this->db->insert_id();
 		return $lastId;
 	}
 	/* end submit review */
 	
-	/* get Reviews By PropertyId */
-	/*public function review_count($p_id)
-	{
-		$this->load->database ();
-		$this->db->select('count(*) as total_reviews');
-		$this->db->from('customer_reviews');
-		$this->db->where('property_id',$p_id);
-		$query=$this->db->get();
-		//$count_review = $query->result_array();
-		//return $count_review['total_reviews'];
-		return $query->row()->total_reviews;
-	}*/
 	public function getReviewsByPropertyId($property_id)
 	{
-		$this->load->database ();
 		$this->db->select("customer_name,DATE_FORMAT(check_in, '%d/%m/%Y') check_in,DATE_FORMAT(check_out, '%d/%m/%Y') check_out,star_rating,review_text");
 		$this->db->from('customer_reviews');
 		$this->db->where('property_id',$property_id);
@@ -457,4 +429,27 @@ public function checkRoomAvailabilty($searchArray, $filterData) {
 		return $query->result();
 	}
 	/* end get Reviews By PropertyId */
+	/* available accomodates*/
+	public function getAvailableAccomodates($property_id)
+	{
+		$query = $this->db->query("SELECT (P.accommodates - R.accomodates) accomodates 
+						  FROM property_info P INNER JOIN reservation R ON P.property_id = R.property_id 
+						  WHERE P.property_id = $property_id AND R.check_out < curdate()");
+		if($query){
+			$query1 = $query->result_array();
+			//return $query1->accomodates;
+			foreach($query1 as $num){
+				return $num['accomodates'];
+			}
+		}
+		else{
+			$query2 = $this->db->query("SELECT P.accommodates accomodates FROM property_info P WHERE P.property_id = $property_id");		
+			$query3 = $query2->result_array();
+			//return $query3['accomodates'];
+			foreach($query3 as $num){
+				return $num['accomodates'];
+			}
+		}
+	}
+	/* //available accomodates*/
 }
