@@ -2419,15 +2419,15 @@ font-weight:bold;
 		margin: 16px 100px 0px 3px !important;
 		padding: 0px 0px 0px 0px !important;
 		font-size: 17px;
-		height: 2.8em !important;
+		height: 49px !important;
 	}
 	.propertyType{
 		width:100%;
-		height: 2.8em !important;	
+		height: 2.9em !important;	
 		font-size: 17px;		
 		padding: 0px 0px 0px 0px !important;
 		border:-1px; 
-		margin: 16px 27px 0px -1px !important;
+		margin: 15px 27px 0px -1px !important;
 	}
 	.banner-bottom{
 		width: 100%;
@@ -2490,7 +2490,7 @@ button, input, optgroup, select, textarea{
     background: #FFF url("../images/date-icon.png") no-repeat scroll 95.5% 45%;
     cursor: pointer;
     padding: 14px 0px 10px 5px !important;
-	margin: 15px 1px 0px -9px !important;
+	margin: 16px 1px 0px -9px !important;
 	width: 10em;
 }
 	.guedtf {
@@ -2510,8 +2510,8 @@ button, input, optgroup, select, textarea{
 					outline: medium none;
 					background: #1C69DF none repeat scroll 0% 0%;
 					color: #FFF;
-					margin: 1px 0px 0px 27px !important;
-					padding: 8px 4px 16px !important;
+					margin: 1px 0px 0px 26px !important;
+					padding: 10px 4px 16px !important;
 				}
 	
 	}
