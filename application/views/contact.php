@@ -215,11 +215,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<div class="clearfix"> </div>
 									<input id="review_checkin" type="text" ng-model="review_checkin" name="review_checkin" placeholder="Check-In date"  required>
 									<div id="ng-error" ng-messages="form.review_checkin.$error" ng-if="form.review_checkin.$dirty">
-										<div ng-message="required">This field is required</div>
+										<div ng-message="required" style="margin-top: 23px;" >This field is required</div>
 									</div>
 									<input id="review_checkout" type="text" ng-model="review_checkout" name="review_checkout" placeholder="Check-Out date"  required>
 									<div id="ng-error" ng-messages="form.review_checkout.$error" ng-if="form.review_checkout.$dirty">
-										<div ng-message="required">This field is required</div>
+										<div ng-message="required" style="margin-top: 23px; " >This field is required</div>
 									</div>
 									<div class="clearfix"> </div>
 									<div style="display:inline-block;margin-left: 10px; ">Rating:</div>
