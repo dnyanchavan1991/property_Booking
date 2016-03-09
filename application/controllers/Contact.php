@@ -67,6 +67,50 @@ class Contact extends CI_Controller {
 			 	$this->PropertyModel->insertEnquiryData ($enquiryDetailsArray);
 			}
 		}
+		else if($post->phone!=null){
+			
+			$propertyOwnerInfo=$this->PropertyModel->getOwnerDetail($propertyId);
+			$recepient=$propertyOwnerInfo->row()->phone.','.$contactInfo;
+			$subject=$messageContent.'for'.$propertyOwnerInfo->row()->propertyName;
+				
+			$message = $messageContent.'for'.$propertyOwnerInfo->row()->propertyName.'from'.$checkin.'to'.$checkout;
+			if(sendMsg ($recepient, $message, $debug=false)){
+				
+		$SMSURL="http://bhashsms.com/api/sendmsg.php?user={0}&pass={1}&sender=&phone={2}&text={3}&priority=sdnd&stype=normal";
+        $SMSUser="Test";
+        $SMSPassword="Test";
+        $url = 'username='. $SMSUser;
+        $url.= '&password='.$SMSPassword;
+        $url.= '&action=sendmessage';
+        $url.= '&messagetype=SMS:TEXT';
+        $url.= '&recepient='.urlencode($phone);
+        $url.= '&messagedata='.urlencode($message);
+        $urltouse =  $SMSURL.$url;
+        if ($debug) { echo "Request: <br>$urltouse<br><br>"; }
+        
+        //Open the URL to send the message
+        $response = httpRequest($urltouse);
+                
+        	return($response);
+        }
+				}
+				
+			//echo $recepient.'<br>'.$subject.'<br>'.$message.'<br>'.$header;
+			/*if( msg ($recepient,$subject,$message)){
+				echo 'message sent';
+				$templateId=$messageContentQuery->row()->template_id;
+				function insertEnquiryData ($enquiryData){
+					$enquiryDetailsArray=array(
+							'user_name'=>$username,
+							'property_id'=>$this->session->userdata( 'propertyId' ),
+							'sent_date'=>date("y-m-d h:i:s"),
+							'template_id'=>$templateId,
+							'check_in'=>date("y-m-d h:i:s"),
+							'check_out'=>date("y-m-d h:i:s"),
+							'guest_count'=>$guestcount
+					);
+					$this->PropertyModel->insertEnquiryData ($enquiryDetailsArray);
+				}}*/
 		else{
 			echo 'message  not sent';
 		}
