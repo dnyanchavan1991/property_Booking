@@ -56,14 +56,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	});
 	$(function() {
 		$("#review_checkin").datepicker({
-			dateFormat: "dd/mm/yy", 
+			dateFormat: "dd/mm/yy",
 			//minDate:  0,
-			onSelect: function(date){            
+			onClose: function(date){            
 				var date1 = $('#review_checkin').datepicker('getDate');           
 				var date = new Date( Date.parse( date1 ) ); 
 				date.setDate( date.getDate() + 1 );        
 				var newDate = date.toDateString(); 
-				newDate = new Date( Date.parse( newDate ) );                      
+				newDate = new Date( Date.parse( newDate ) );   
+				alert(newDate);
 				$('#review_checkout').datepicker("option","minDate",newDate);            
 			}
 		});
@@ -214,7 +215,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<?php }?>
 									<div class="clearfix"> </div>
 									<input id="review_checkin" type="text" ng-model="review_checkin" name="review_checkin" placeholder="Check-In date"  required>
-									{{form.review_checkin.$error}} - {{form.review_checkin.$valid}}
 									<div id="ng-error" ng-messages="form.review_checkin.$error" ng-if="form.review_checkin.$dirty">
 										<div ng-message="required" style="margin-top: 23px;" >This field is required</div>
 									</div>
@@ -227,7 +227,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<div class="acidjs-rating-stars">
 										<input type="radio" ng-model="rating_given" id="group-2-0" value="5" /><label for="group-2-0"></label>
 										<input type="radio" ng-model="rating_given" id="group-2-1" value="4" /><label for="group-2-1"></label>
-										<input type="radio" ng-model="rating_given" id="group-2-2" value="3" /><label for="group-2-2"></label>
+										<input type="radio" ng-model="rating_given" id="group-2-2" ng-init="rating_given=3" ng-selected="true" value="3" /><label for="group-2-2"></label>
 										<input type="radio" ng-model="rating_given" id="group-2-3" value="2" /><label for="group-2-3"></label>
 										<input type="radio" ng-model="rating_given" id="group-2-4" value="1" /><label for="group-2-4"></label>
 									</div>
@@ -281,7 +281,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<a href="#" data-toggle="tooltip" title="Save up to 50% on this stay">
 							<span class="glyphicon glyphicon-tag" aria-hidden="true"></span>
 						</a>
-						<p>Special Offer</p>	
+						<p>Contact</p>	
 						<script>
 							$(document).ready(function(){
 								$('[data-toggle="tooltip"]').tooltip();   

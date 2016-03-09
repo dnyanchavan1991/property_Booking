@@ -424,7 +424,7 @@ class PropertyModel extends CI_Model {
 		$this->db->select("customer_name,DATE_FORMAT(check_in, '%d/%m/%Y') check_in,DATE_FORMAT(check_out, '%d/%m/%Y') check_out,star_rating,review_text");
 		$this->db->from('customer_reviews');
 		$this->db->where('property_id',$property_id);
-		//$this->db->limit($limit, $start);
+		$this->db->order_by("review_id","desc");
 		$query=$this->db->get();
 		return $query->result();
 	}
@@ -432,15 +432,16 @@ class PropertyModel extends CI_Model {
 	/* available accomodates*/
 	public function getAvailableAccomodates($property_id)
 	{
-		$query = $this->db->query("SELECT (P.accommodates - R.accomodates) accomodates 
+		$is_reserved = $this->db->query("SELECT reservation_id FROM reservation WHERE check_out > NOW() AND property_id = $property_id");
+		//print_r( $is_reserved->result_array());
+		if($is_reserved->result_array()){
+			$query = $this->db->query("SELECT (P.accommodates - SUM(R.accomodates)) accomodates 
 						  FROM property_info P INNER JOIN reservation R ON P.property_id = R.property_id 
-						  WHERE P.property_id = $property_id AND R.check_out < curdate()");
-		if($query){
+						  WHERE P.property_id = $property_id AND R.check_out > NOW()");
 			$query1 = $query->result_array();
-			//return $query1->accomodates;
 			foreach($query1 as $num){
 				return $num['accomodates'];
-			}
+			}			  
 		}
 		else{
 			$query2 = $this->db->query("SELECT P.accommodates accomodates FROM property_info P WHERE P.property_id = $property_id");		

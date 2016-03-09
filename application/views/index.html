@@ -50,7 +50,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										$("#checkIn").datepicker({
 										dateFormat: "dd-mm-yy", 
 										minDate:  0,
-										onSelect: function(date){            
+										onClose: function(date){            
 											var date1 = $('#checkIn').datepicker('getDate');           
 											var date = new Date( Date.parse( date1 ) ); 
 											date.setDate( date.getDate() + 1 );        
