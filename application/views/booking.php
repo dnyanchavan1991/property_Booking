@@ -28,18 +28,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- start-smoth-scrolling -->
 <script type="text/javascript" src="js/move-top.js"></script>
 <script type="text/javascript" src="js/easing.js"></script>
+<script src="js/vendor/modernizr-2.6.2.min.js"></script>
+<script src="js/vendor/jquery-1.10.2.min.js"></script>
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/jquery-ui.js"></script>
 <script type="text/javascript" src="js/angular.min.js"></script>
-
+<script type="text/javascript" src="js/angular-messages.min.js"></script>
 <script type="text/javascript" src="js/controller/accomodationController.js"></script>
 <link href='http://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Philosopher' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="css/bootstrap.min.css"/>
 <link rel="stylesheet" href="css/font-awesome.min.css"/>
 <link rel="stylesheet" href="css/popup_style.css" />
-<script src="js/vendor/modernizr-2.6.2.min.js"></script>
-<script src="js/vendor/jquery-1.10.2.min.js"></script>
-<script src="js/jquery-1.11.1.min.js"></script>
-<script src="js/jquery-ui.js"></script>
+
 <script type="text/javascript">
 	jQuery(document).ready(function($) {
 		$(".scroll").click(function(event) {
@@ -110,47 +111,68 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</ul>
 				</div>
 				<div class="col-md-9 reservation-right">
-					<form  name="formData"  ng-controller="roomAvailabilityController" ng-submit="getRoomAvalabilityCount()" >
-						<!--<h4>How many members?</h4>
-						<div class="dropdown-button"></div>
-						<h4>Rooms</h4>
-						<div class="dropdown-button"  ng-controller="accomodationController">
-							<select class="dropdown" ng-model="form.accomodation" name="accomodation" id="accomodation">
-								<option value="select">select</option>
-								<option ng-repeat="AccomodationType in names" value="{{AccomodationType.accomodationTypeId}}">{{AccomodationType.accomodationTypeName}}</option>
-							</select>
-						</div>-->
+					<form name="form" novalidate ng-controller="roomAvailabilityController" ng-submit="form.$valid && getRoomAvalabilityCount()" class="angular-msgs">
 						<h4>When would you like to come?</h4>
 						<div class="book-pag">
 							<div class="book-pag-frm">
 								<label>Check In :</label> 
-								<input class="date" id="checkin" name="checkin" type="text" value="Date" onfocus="this.value = '';"
-								onblur="if (this.value == '') {this.value = '';}" required ng-model='form.checkin' />
+								<input type="text" class="date" jqdatepicker ng-model="checkin" name="checkin" Placeholder="Check-In date" ng-required="true"  />
+								{{form.checkin.$valid}} - {{form.checkin.$error}}
+								<div id="ng-error" ng-messages="form.checkin.$error" ng-if="form.checkin.$dirty">
+									<div ng-message="required" style="" >This field is required</div>
+								</div>
 							</div>
 							<div class="book-pag-frm">
 								<label>Check Out:</label>
-								<input class="date" id="checkout" name="checkout" ng-model='form.checkout' type="text" value="Date" onfocus="this.value = '';"
-								onblur="if (this.value == '') {this.value = '';}" required />
+								<input type="text" class="date" jqdatepicker ng-model="checkout" name="checkout" Placeholder="Check-Out date" ng-required="true" />
+								{{form.checkout.$valid}} - {{form.checkout.$error}}
+								<div id="ng-error" ng-messages="form.checkout.$error" ng-if="form.checkout.$dirty">
+									<div ng-message="required" style="" >This field is required</div>
+								</div>
 							</div>
 							<div class="book-pag-frm">
 								<label>Guests:</label>
-								<input type="number" min="1" max="15">
+								<input type="number" ng-model="accomodates" name="accomodates" min="1" max="15" ng-required="true">
+								{{form.accomodates.$valid}} - {{form.accomodates.$error}}
+								<div id="ng-error" ng-messages="form.accomodates.$error" ng-if="form.accomodates.$dirty">
+									<div ng-message="required" style="" >This field is required</div>
+								</div>
 							</div>
 							<div class="clearfix"></div>
 						</div>
 						<h4>Contact details</h4>
-						<input type="text" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" required />
-						<input type="email" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required /> 
-						<!--<input type="text" value="Telephone" onfocus="this.value = '';"	onblur="if (this.value == '') {this.value = 'Telephone';}" required />
-						<textarea onfocus="this.value = '' ;" onblur="if (this.value == '') {this.value = 'Message...';}" required> Message... </textarea>-->
+						<input type="text" ng-model="name" name="name" Placeholder="Name" ng-required="true" />
+						{{form.name.$valid}} - {{form.name.$error}}
+						<div id="ng-error" ng-messages="form.name.$error" ng-if="form.name.$dirty">
+							<div ng-message="required" style="" >This field is required</div>
+						</div>
+						<input type="email" ng-model="email" name="email" Placeholder="Email" ng-required="true" /> 
+						{{form.email.$valid}} - {{form.email.$error}}
+						<div id="ng-error" ng-messages="form.email.$error" ng-if="form.email.$dirty">
+							<div ng-message="required" style="" >This field is required</div>
+						</div>
 						<button type="submit" >RESERVE NOW</button>
 					</form>
 					<!--strat-date-piker-->
-					<script src="js/jquery-ui.js"></script>
 					<script>
-						$(function() {
-							$("#datepicker,#checkin,#checkout").datepicker();
-						});
+						/*$(function() {
+							//$("#datepicker,#checkin,#checkout").datepicker();
+							$("#checkin_date").datepicker({
+								dateFormat: "dd/mm/yy",
+								minDate:  0,
+								onClose: function(date){            
+									var date1 = $('#checkin_date').datepicker('getDate');           
+									var date = new Date( Date.parse( date1 ) ); 
+									date.setDate( date.getDate() + 1 );        
+									var newDate = date.toDateString(); 
+									newDate = new Date( Date.parse( newDate ) );   
+									$('#checkout_date').datepicker("option","minDate",newDate);            
+								}
+							});
+							$('#checkout_date').datepicker({
+								dateFormat: "dd/mm/yy" 
+							});
+						});*/
 					</script>
 					<!--//End-date-piker-->
 				</div>

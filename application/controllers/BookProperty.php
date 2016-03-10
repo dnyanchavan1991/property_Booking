@@ -10,6 +10,6 @@ class BookProperty extends CI_Controller {
 	
 	}
 	public function bookingProperty(){
-		$this->load->view ( 'booking.html' );
+		$this->load->view ( 'booking' );
 	}
 }

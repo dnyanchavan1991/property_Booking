@@ -433,7 +433,6 @@ class PropertyModel extends CI_Model {
 	public function getAvailableAccomodates($property_id)
 	{
 		$is_reserved = $this->db->query("SELECT reservation_id FROM reservation WHERE check_out > NOW() AND property_id = $property_id");
-		//print_r( $is_reserved->result_array());
 		if($is_reserved->result_array()){
 			$query = $this->db->query("SELECT (P.accommodates - SUM(R.accomodates)) accomodates 
 						  FROM property_info P INNER JOIN reservation R ON P.property_id = R.property_id 
@@ -446,7 +445,6 @@ class PropertyModel extends CI_Model {
 		else{
 			$query2 = $this->db->query("SELECT P.accommodates accomodates FROM property_info P WHERE P.property_id = $property_id");		
 			$query3 = $query2->result_array();
-			//return $query3['accomodates'];
 			foreach($query3 as $num){
 				return $num['accomodates'];
 			}

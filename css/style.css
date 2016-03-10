@@ -1797,14 +1797,26 @@ margin-top: 25px;
 	display:inline-block;
 }
 .reservation-right input[type="text"] {
-  display: block;
+ /* display: block;*/
   border: 1px solid #E5E5E5;
-  max-width: 60%;
+  max-width: 64%;
   outline: none;
   padding: 8px 8px;
   font-size: 14px;
   color: #000;
   margin-bottom: 20px;
+  margin-left: 2px !important;
+}
+.reservation-right input[type="email"] {
+ /* display: block;*/
+  border: 1px solid #E5E5E5;
+  max-width: 64%;
+  outline: none;
+  padding: 8px 8px;
+  font-size: 14px;
+  color: #000;
+  margin-bottom: 20px;
+  margin-left: 2px !important;
 }
 input#datepicker ,input#datepicker1 ,input#datepicker2 {
   display: inline-block;
@@ -1874,7 +1886,7 @@ color:#464646;
 }
 .book-pag-frm{
 float:left;
-width:22%;
+width:33%;
 }
 .book-pag-frm:nth-child(2) {
   margin: 0 2px;
@@ -1924,7 +1936,7 @@ input[type="date"], input[type="time"], input[type="datetime-local"], input[type
  font-family: 'Alegreya-Regular';
 }
 .book-pag-frm label {
-  margin-bottom: 10px;
+  margin-bottom: 0px;
   font-size: 16px;
   font-weight: 500;
   color: #000;
