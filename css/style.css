@@ -1951,14 +1951,14 @@ input[type="date"], input[type="time"], input[type="datetime-local"], input[type
   width: 81%;
   outline: none;
   padding: 10px 0px 10px 0px !important;
-  font-size: 13px;
-  color: #c4c4c4;
+  font-size: 14px;
+  color: #000;
   margin: 18px 0px !important;
 }
 .search-hotel form input[type="submit"]{
-  background: url(../images/search.png) no-repeat 13px 11px #000;
-  width: 44px;
-  height: 39px;
+  background: url(../images/search.png) no-repeat 10px 11px #000;
+  width: 34px;
+  height: 42px;
   border: none;
   padding:0;
   }
@@ -2131,22 +2131,26 @@ color:#fff;
 /*--//style for menu-drop--*/
 
 .hotel-left{
-float:left;
-width:100%;
-background: #f5f4f0;
-padding:20px;
+	float:left;
+	width:50%;
+	background: #f5f4f0;
+	padding:20px;
+	border: 3px solid #fff;
+	border-radius: 4px;
+	box-shadow: 0px 0px 1px 1px #ccc;
+	margin-bottom: 30px;
 }
 .hotel-right{
 float:right;
 width:28%;
   padding: 20px;
 }
-.hotel-rooms{
+/*.hotel-rooms{
   border: 3px solid #fff;
   border-radius: 4px;
   box-shadow: 0px 0px 1px 1px #ccc;
   margin-bottom: 30px;
-}
+}*/
 .hotel-right h4{
 font-weight: 600;
 color:#DF1E1C;
@@ -2191,18 +2195,18 @@ background:#DF1E1C;
   border-radius: 5px;
 }
 .hotel-left p{
-color:#000;
-font-size:13px;
-margin: 20px 0 0 0;
+  color:#000;
+  font-size:13px;
+  margin: 20px 0 0 0;
 }
 .hotel-left-one{
   border: 3px solid #fff;
   border-radius: 4px;
   box-shadow: 0px 0px 1px 1px #ccc;
-float:left;
-width: 50% !important;
-padding: 0px 0px 0px 4px !important;
-margin: 0px 4px 0px 0px !important;
+  float:left;
+  width: 100% !important;
+  padding: 0px 0px 0px 4px !important;
+  margin: 0px 4px 0px 0px !important;
 }
 .hotel-left-one img{
 width:100%;

@@ -9,30 +9,7 @@ var app = angular.module('accomodationApp', ['ngMessages']);
 	};
 	$scope.getAccomodationType();
 });*/
-/*-- datepicker --*/
-app.directive('jqdatepicker', function () {
-	return {
-		restrict: 'A',
-		require: 'ngModel',
-		link: function (scope, element, attrs, ngModelCtrl) {
-			element.datepicker({
-				dateFormat: 'dd/mm/yy',
-				onSelect: function (date) {
-					scope.checkin = date;
-					scope.$apply();
-				}
-			});
-			/*element.datepicker({
-				dateFormat: 'dd/mm/yy',
-				onSelect: function (date) {
-					scope.checkout = date;
-					scope.$apply();
-				}
-			});*/
-		}
-	};
-});
-	/*-- //datepicker --*/
+
 app.controller('roomAvailabilityController', function($scope, $http) {
 	
 	//$scope.form={};

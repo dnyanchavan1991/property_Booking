@@ -272,7 +272,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<div class="clearfix"></div>
 								</div>
 								<div class="comments-bot" dir-paginate="reviews_count in reviews|itemsPerPage:5">
-									<p>{{reviews_count.review_text}}</p>
+									<p style="white-space: pre-line;">{{reviews_count.review_text}}</p>
 									<div class="text-left" >
 										<span class="red-star" ng-repeat="r_cnt in strtoint(reviews_count.star_rating)">★</span>
 									</div>
@@ -298,7 +298,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 					<div class="sp-bor-btn text-right">
 						<h4>Availability : <?php echo $avail_accomodates;?></h4>
-						<p class="best-pri">Best price</p>
+						<p class="best-pri"></p>
 						
 						<a class="best-btn" href="BookProperty">Book Now</a>
 						<div class="hotel-left-two" ng-controller="popupController">

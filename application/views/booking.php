@@ -116,16 +116,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="book-pag">
 							<div class="book-pag-frm">
 								<label>Check In :</label> 
-								<input type="text" class="date" jqdatepicker ng-model="checkin" name="checkin" Placeholder="Check-In date" ng-required="true"  />
-								{{form.checkin.$valid}} - {{form.checkin.$error}}
+								<input type="text" class="date" id="checkin_id" ng-model="checkin" name="checkin" Placeholder="Check-In date" ng-required="true"  />
 								<div id="ng-error" ng-messages="form.checkin.$error" ng-if="form.checkin.$dirty">
 									<div ng-message="required" style="" >This field is required</div>
 								</div>
 							</div>
 							<div class="book-pag-frm">
 								<label>Check Out:</label>
-								<input type="text" class="date" jqdatepicker ng-model="checkout" name="checkout" Placeholder="Check-Out date" ng-required="true" />
-								{{form.checkout.$valid}} - {{form.checkout.$error}}
+								<input type="text" class="date" id="checkout_id" ng-model="checkout" name="checkout" Placeholder="Check-Out date" ng-required="true" />
 								<div id="ng-error" ng-messages="form.checkout.$error" ng-if="form.checkout.$dirty">
 									<div ng-message="required" style="" >This field is required</div>
 								</div>
@@ -133,7 +131,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="book-pag-frm">
 								<label>Guests:</label>
 								<input type="number" ng-model="accomodates" name="accomodates" min="1" max="15" ng-required="true">
-								{{form.accomodates.$valid}} - {{form.accomodates.$error}}
 								<div id="ng-error" ng-messages="form.accomodates.$error" ng-if="form.accomodates.$dirty">
 									<div ng-message="required" style="" >This field is required</div>
 								</div>
@@ -141,38 +138,37 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="clearfix"></div>
 						</div>
 						<h4>Contact details</h4>
-						<input type="text" ng-model="name" name="name" Placeholder="Name" ng-required="true" />
-						{{form.name.$valid}} - {{form.name.$error}}
+						<input type="text" ng-model="name" name="name" Placeholder="Name" ng-pattern="/^[a-zA-Z ]*$/" ng-required="true" />
 						<div id="ng-error" ng-messages="form.name.$error" ng-if="form.name.$dirty">
 							<div ng-message="required" style="" >This field is required</div>
+							<div ng-message="pattern">Only characters & space allowed</div>
 						</div>
-						<input type="email" ng-model="email" name="email" Placeholder="Email" ng-required="true" /> 
-						{{form.email.$valid}} - {{form.email.$error}}
+						<input type="email" ng-model="email" name="email" Placeholder="Email" ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" ng-required="true" /> 
 						<div id="ng-error" ng-messages="form.email.$error" ng-if="form.email.$dirty">
 							<div ng-message="required" style="" >This field is required</div>
+							<div ng-message="pattern">Your email address is invalid</div>
 						</div>
 						<button type="submit" >RESERVE NOW</button>
 					</form>
 					<!--strat-date-piker-->
 					<script>
-						/*$(function() {
-							//$("#datepicker,#checkin,#checkout").datepicker();
-							$("#checkin_date").datepicker({
+						$(function() {
+							$("#checkin_id").datepicker({
 								dateFormat: "dd/mm/yy",
 								minDate:  0,
 								onClose: function(date){            
-									var date1 = $('#checkin_date').datepicker('getDate');           
+									var date1 = $('#checkin_id').datepicker('getDate');           
 									var date = new Date( Date.parse( date1 ) ); 
 									date.setDate( date.getDate() + 1 );        
 									var newDate = date.toDateString(); 
 									newDate = new Date( Date.parse( newDate ) );   
-									$('#checkout_date').datepicker("option","minDate",newDate);            
+									$('#checkout_id').datepicker("option","minDate",newDate);            
 								}
 							});
-							$('#checkout_date').datepicker({
+							$('#checkout_id').datepicker({
 								dateFormat: "dd/mm/yy" 
 							});
-						});*/
+						});
 					</script>
 					<!--//End-date-piker-->
 				</div>
@@ -246,74 +242,3 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!-- //smooth scrolling -->
 </body>
 </html>
-<!--<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-    	<div class="modal-content">
-      		<div class="modal-header login_modal_header">
-        		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        		<h2 class="modal-title" id="myModalLabel">Login</h2>
-      		</div>
-      		<div class="modal-body login-modal">
-      			
-      			<div class="clearfix"></div>
-      			<div id='social-icons-conatainer'>
-	        		<div class='modal-body-left'ng-controller="loginCtrl">
-	        		<h3>Admin</h3>
-	        			<div class="form-group">
-		              		<input type="text" id="username" placeholder="Username" ng-model="form.username" class="form-control login-field">
-		              		<i class="fa fa-user login-field-icon"></i>
-		            	</div>
-		
-		            	<div class="form-group">
-		            	  	<input type="password" id="login-pass" placeholder="Password" ng-model="form.password" class="form-control login-field">
-		              		<i class="fa fa-lock login-field-icon"></i>
-		              		<input type="hidden" name="acces_type" value="admin">
-		            	</div>
-		                 <div class="form-group">
-		            	  	<input type="hidden" name="access_type" id="access_type"  ng-model="form.access_type" value="admin" ng_init="form.access_type='admin'" class="form-control login-field">
-		              		
-		              	 	</div>
-		            	<button ng-click="authenticateAdmin()"  class="btn btn-success modal-login-btn">Login</button>
-		            	<a href="#" class="login-link text-center">Lost your password?</a>
-		            	<a href="Registration" class="login-link text-center">New User? Register!</a>
-	        		</div>
-	        	
-	        		<div class='modal-body-right' ng-controller="loginCtrl">
-	        			  <!--<div class="modal-social-icons">
-	        				<a href='#' class="btn btn-default facebook"> <i class="fa fa-facebook modal-icons"></i> Sign In with Facebook </a>
-	        				<a href='#' class="btn btn-default twitter"> <i class="fa fa-twitter modal-icons"></i> Sign In with Twitter </a>
-	        				<a href='#' class="btn btn-default google"> <i class="fa fa-google-plus modal-icons"></i> Sign In with Google </a>
-	        				<a href='#' class="btn btn-default linkedin"> <i class="fa fa-linkedin modal-icons"></i> Sign In with Linkedin </a>
-	        			
-	        			</div> -->
-	        			<!--<h3>User</h3>
-	        			<div class="form-group">
-		              		<input type="text" id="username" placeholder="Username" ng-model="form.username" value="" class="form-control login-field">
-		              		<i class="fa fa-user login-field-icon"></i>
-		            	</div>
-		
-		            	<div class="form-group">
-		            	  	<input type="password" id="login-pass" placeholder="Password" ng-model="form.password" value="" class="form-control login-field">
-		              		<i class="fa fa-lock login-field-icon"></i>
-		              	 	</div>
-		              	 		<div class="form-group">
-		            	  	<input type="hidden" name="access_type" id="access_type" placeholder="Password" ng-model="form.access_type" value="user" ng_init="form.access_type='user'" class="form-control login-field">
-		              		
-		              	 	</div>
-		
-		            <button ng-click="authenticate()" class="btn btn-success modal-login-btn">Login</button>
-		            	<a href="#" class="login-link text-center">Lost your password?</a>
-		                <a href="Registration" class="login-link text-center">New User? Register!</a>
-	        		</div>	
-	        		<div id='center-line'> OR </div>
-	        	</div>																												
-        		<div class="clearfix"></div>
-        		
-        		
-      		</div>
-      		<div class="clearfix"></div>
-      		<div class="modal-footer login_modal_footer">
-      		</div>
-    	</div>
-  	</div>
-</div>-->

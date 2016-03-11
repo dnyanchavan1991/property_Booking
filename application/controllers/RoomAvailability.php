@@ -61,7 +61,7 @@ class RoomAvailability extends CI_Controller {
 						if(strpos($result ,"mainImage") !==false)
 						{
 							$get_result = "Admin/".$image_path.$result;
-							$response->rows[$i]=array('propertyId'=>$row['propertyId'],'propertyName'=>$row['property'],'ImagePath' => $get_result,'star_rate'=>$row['star_rate'],'propertyAddress'=>$row['propertyAddress']);
+							$response->rows[$i]=array('propertyId'=>$row['propertyId'],'propertyName'=>$row['property'],'ImagePath' => $get_result,'starRate'=>$row['star_rate'],'propertyAddress'=>$row['propertyAddress']);
 							
 							$i++;
 						}

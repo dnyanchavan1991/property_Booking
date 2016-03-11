@@ -242,7 +242,7 @@ class PropertyModel extends CI_Model {
 					}//echo $where;
 			$this->db->where ( $where );	}
 			if($filterData->propertyNameList[0]->name!=null){
-	$propertyName=$filterData->propertyNameList[0]->name;
+			$propertyName=$filterData->propertyNameList[0]->name;
 			$where="property_name like '$propertyName%'";
 			$this->db->where ( $where );
 		}}
