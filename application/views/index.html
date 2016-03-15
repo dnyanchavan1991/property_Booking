@@ -16,71 +16,51 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link rel="stylesheet" href="css/jquery-ui.css" />
 <!-- js -->
 <link href='http://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
-		<link href='http://fonts.googleapis.com/css?family=Philosopher' rel='stylesheet' type='text/css'>
-		
-		
-		<link rel="stylesheet" href="css/bootstrap.min.css"/>
-		<link rel="stylesheet" href="css/font-awesome.min.css"/>
-	
-		<link rel="stylesheet" href="css/popup_style.css" />
-		<script src="js/vendor/modernizr-2.6.2.min.js"></script>
-		<script src="js/vendor/jquery-1.10.2.min.js"></script>
-		<script src="js/vendor/bootstrap.min.js"></script>
-
+<link href='http://fonts.googleapis.com/css?family=Philosopher' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="css/bootstrap.min.css"/>
+<link rel="stylesheet" href="css/font-awesome.min.css"/>
+<link rel="stylesheet" href="css/popup_style.css" />
+<script src="js/vendor/modernizr-2.6.2.min.js"></script>
+<script src="js/vendor/jquery-1.10.2.min.js"></script>
+<script src="js/vendor/bootstrap.min.js"></script>
 <script src="js/jquery-1.11.1.min.js"></script>
-	<script src="js/jquery-ui.js"></script>
-							  <script>
-									  $(function() {
-									   //$( "#datepicker,#checkIn,#checkOut" ).datepicker({dateFormat: 'yy-mm-dd'});
-										 /* $("#checkIn").datepicker({
-											  dateFormat: 'dd-mm-yy',
-										        numberOfMonths: 1,
-										        onSelect: function(selected) {
-										          $("#checkOut").datepicker("option","minDate", selected,'d-m-Y')
-										        }
-										    });
-										    $("#checkOut").datepicker({ 
-										    	dateFormat: 'dd-mm-yy',
-										        numberOfMonths: 1,
-										        onSelect: function(selected) {
-										           $("#checkIn").datepicker("option","maxDate", selected)
-										        }
-										    }); */
-										//
-										$("#checkIn").datepicker({
-										dateFormat: "dd-mm-yy", 
-										minDate:  0,
-										onClose: function(date){            
-											var date1 = $('#checkIn').datepicker('getDate');           
-											var date = new Date( Date.parse( date1 ) ); 
-											date.setDate( date.getDate() + 1 );        
-											var newDate = date.toDateString(); 
-											newDate = new Date( Date.parse( newDate ) );                      
-											$('#checkOut').datepicker("option","minDate",newDate);            
-										}
-									});
-									$('#checkOut').datepicker({
-										dateFormat: "dd-mm-yy" 
-									});
-									  });
-							  </script>
+<script src="js/jquery-ui.js"></script>
+<script>
+	$(function() {
+		$("#checkIn").datepicker({
+			dateFormat: "dd-mm-yy", 
+			minDate:  0,
+			onClose: function(date){            
+				var date1 = $('#checkIn').datepicker('getDate');           
+				var date = new Date( Date.parse( date1 ) ); 
+				date.setDate( date.getDate() + 1 );        
+				var newDate = date.toDateString(); 
+				newDate = new Date( Date.parse( newDate ) );                      
+				$('#checkOut').datepicker("option","minDate",newDate);            
+			}
+		});
+		$('#checkOut').datepicker({
+			dateFormat: "dd-mm-yy" 
+		});
+	});
+</script>
 <!-- //js -->
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
-	<!-- start-smoth-scrolling -->
-		<script type="text/javascript" src="js/move-top.js"></script>
-		<script type="text/javascript" src="js/easing.js"></script>
-		<script type="text/javascript" src="js/angular.min.js"></script>
-		<script type="text/javascript" src="js/controller/landingPageController.js"></script>
-		<script type="text/javascript">
-			jQuery(document).ready(function($) {
-				
-				$(".scroll").click(function(event){		
-					event.preventDefault();
-					$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
-				});  
-			});
-		</script>
-	<!-- start-smoth-scrolling -->
+<!-- start-smoth-scrolling -->
+<script type="text/javascript" src="js/move-top.js"></script>
+<script type="text/javascript" src="js/easing.js"></script>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/controller/landingPageController.js"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		
+		$(".scroll").click(function(event){		
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		});  
+	});
+</script>
+<!-- start-smoth-scrolling -->
 </head>
 <body ng-app="landingPageApp" ng-controller="landingPageCntrl">
 <!-- banner -->
@@ -490,8 +470,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 </div>
 <!-- //smooth scrolling -->
-</body>
-</html>
+<!-- login -->
 <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
     	<div class="modal-content">
@@ -500,30 +479,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         		<h2 class="modal-title" id="myModalLabel">Login</h2>
       		</div>
       		<div class="modal-body login-modal">
-      			
       			<div class="clearfix"></div>
       			<div id='social-icons-conatainer'>
 	        		<div class='modal-body-left'ng-controller="loginCtrl">
-	        		<h3>Admin</h3>
+						<h3>Admin</h3>
 	        			<div class="form-group">
 		              		<input type="text" id="username" placeholder="Username" ng-model="form.username" class="form-control login-field">
-		              	
-		            	</div>
+		              	</div>
 		
 		            	<div class="form-group">
 		            	  	<input type="password" id="login-pass" placeholder="Password" ng-model="form.password" class="form-control login-field">
 		              		
 		              		<input type="hidden" name="acces_type" value="admin">
 		            	</div>
-		                 <div class="form-group">
+						
+		                <div class="form-group">
 		            	  	<input type="hidden" name="access_type" id="access_type"  ng-model="form.access_type" value="admin" ng_init="form.access_type='admin'" class="form-control login-field">
-		              		
-		              	 	</div>
+		              	</div>
 		            	<button ng-click="authenticateAdmin()"  class="btn btn-success modal-login-btn">Login</button>
 		            	<a href="#" class="login-link text-center" style="margin-left: -19px";>Lost your password?</a>
 	        		</div>
 	        	
-	        		<div class='modal-body-right' ng-controller="loginCtrl">
+	        		<!--<div class='modal-body-right' ng-controller="loginCtrl">
 	        			  <!--<div class="modal-social-icons">
 	        				<a href='#' class="btn btn-default facebook"> <i class="fa fa-facebook modal-icons"></i> Sign In with Facebook </a>
 	        				<a href='#' class="btn btn-default twitter"> <i class="fa fa-twitter modal-icons"></i> Sign In with Twitter </a>
@@ -531,34 +508,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	        				<a href='#' class="btn btn-default linkedin"> <i class="fa fa-linkedin modal-icons"></i> Sign In with Linkedin </a>
 	        			
 	        			</div> -->
-	        			<h3>User</h3>
+	        			<!--<h3>User</h3>
 	        			<div class="form-group">
 		              		<input type="text" id="username" placeholder="Username" ng-model="form.username" value="" class="form-control login-field">
-		              	
-		            	</div>
+		              	</div>
 		
 		            	<div class="form-group">
 		            	  	<input type="password" id="login-pass" placeholder="Password" ng-model="form.password" value="" class="form-control login-field">
-		              		
-		              	 	</div>
-		              	 		<div class="form-group">
+		              	</div>
+		              	<div class="form-group">
 		            	  	<input type="hidden" name="access_type" id="access_type" placeholder="Password" ng-model="form.access_type" value="user" ng_init="form.access_type='user'" class="form-control login-field">
-		              		
-		              	 	</div>
-		
-		            <button ng-click="authenticate()" class="btn btn-success modal-login-btn">Login</button>
+		              	</div>
+						<button ng-click="authenticate()" class="btn btn-success modal-login-btn">Login</button>
 		            	<a href="#" class="login-link text-center" style="margin-left: -8px">Lost your password?
-		
-	        		</div>	
-	        		<div id='center-line'> OR </div>
+					</div>	
+	        		<div id='center-line'> OR </div>-->
 	        	</div>																												
         		<div class="clearfix"></div>
-        		
-        		
-      		</div>
+        	</div>
       		<div class="clearfix"></div>
-      		<div class="modal-footer login_modal_footer">
-      		</div>
+      		<div class="modal-footer login_modal_footer"></div>
     	</div>
   	</div>
 </div>
+</body>
+</html>
