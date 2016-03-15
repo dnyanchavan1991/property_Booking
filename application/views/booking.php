@@ -130,7 +130,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</div>
 							<div class="book-pag-frm">
 								<label>Guests:</label>
-								<input type="number" ng-model="accomodates" name="accomodates" min="1" max="15" ng-required="true">
+								<input type="number" ng-model="accomodates" name="accomodates" min="1" max="15" Placeholder="Check-Out date"ng-required="true" style="width:100%;">
 								<div id="ng-error" ng-messages="form.accomodates.$error" ng-if="form.accomodates.$dirty">
 									<div ng-message="required" style="" >This field is required</div>
 								</div>

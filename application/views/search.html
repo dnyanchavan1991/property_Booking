@@ -290,28 +290,32 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<!-- script for tabs -->
 					</div>
 				</div>
-				
-										<dir-pagination-controls
-											max-size="5"
-											direction-links="true"
-											boundary-links="true"
-											auto-hide="true">
-										</dir-pagination-controls>
 									
 				<div class="col-md-9 ">
-					<div class=" search-grid-right" >
+					<div class="search-grid-right" >
+						<div class="ang-dir-paginate">
+							<dir-pagination-controls
+								max-size="5"
+								direction-links="true"
+								boundary-links="true"
+								auto-hide="true">
+							</dir-pagination-controls>
+						</div>
 						<div class="hotel-left" dir-paginate="rooms in propNames|itemsPerPage:6">
-							<a href="" ng-click="getPropertyDetails(rooms)"> 
-								<span class="glyphicon glyphicon-bed" aria-hidden="true"></span>{{rooms.propertyName}}
-							</a>
-							<p><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>{{rooms.propertyAddress}}</p>
-							<div class="text-left" style="display: inline-block;">
-								<span style="color:red;" ng-repeat="r_cnt in strtoint(rooms.starRate)">★</span>
+							<div style="padding:10px;">
+								<a href="" ng-click="getPropertyDetails(rooms)"> 
+									<span class="glyphicon glyphicon-bed" aria-hidden="true"></span>{{rooms.propertyName}}
+								</a>
+							
+								<div class="text-left" style="padding-left: 45px;">
+									<span style="color:red;" ng-repeat="r_cnt in strtoint(rooms.starRate)">★</span>
+								</div>
 							</div>
 							<div class="hotel-left-grids">
 								<div class="hotel-left-one">
 									<a href="" ng-click="getPropertyDetails(rooms)"> 
 										<img ng-src="{{rooms.ImagePath}}" alt=""/>
+										<p id="text"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>{{rooms.propertyAddress}}</p>
 									</a>
 								</div>
 

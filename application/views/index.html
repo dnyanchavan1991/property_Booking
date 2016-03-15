@@ -475,29 +475,32 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="modal-dialog">
     	<div class="modal-content">
       		<div class="modal-header login_modal_header">
-        		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        		<h2 class="modal-title" id="myModalLabel">Login</h2>
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<div>
+					<h2 class="modal-title" id="myModalLabel">Login</h2>
+				</div>
       		</div>
       		<div class="modal-body login-modal">
       			<div class="clearfix"></div>
       			<div id='social-icons-conatainer'>
 	        		<div class='modal-body-left'ng-controller="loginCtrl">
-						<h3>Admin</h3>
+						<h3 style="text-align: center; margin-top: 0px;">Admin</h3>
 	        			<div class="form-group">
 		              		<input type="text" id="username" placeholder="Username" ng-model="form.username" class="form-control login-field">
 		              	</div>
 		
 		            	<div class="form-group">
 		            	  	<input type="password" id="login-pass" placeholder="Password" ng-model="form.password" class="form-control login-field">
-		              		
-		              		<input type="hidden" name="acces_type" value="admin">
-		            	</div>
+		              	</div>
 						
 		                <div class="form-group">
 		            	  	<input type="hidden" name="access_type" id="access_type"  ng-model="form.access_type" value="admin" ng_init="form.access_type='admin'" class="form-control login-field">
 		              	</div>
-		            	<button ng-click="authenticateAdmin()"  class="btn btn-success modal-login-btn">Login</button>
-		            	<a href="#" class="login-link text-center" style="margin-left: -19px";>Lost your password?</a>
+						
+						<div class="form-group">
+							<button ng-click="authenticateAdmin()" class="btn btn-success modal-login-btn">Login</button>
+							
+						</div>
 	        		</div>
 	        	
 	        		<!--<div class='modal-body-right' ng-controller="loginCtrl">
@@ -527,7 +530,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         		<div class="clearfix"></div>
         	</div>
       		<div class="clearfix"></div>
-      		<div class="modal-footer login_modal_footer"></div>
+      		<div class="modal-footer login_modal_footer">
+				<div style="text-align:left !important; float:left;">
+					<a href="#" class="login-link text-center" >New User?</a>
+				</div>
+				<div style="text-align:right !important; float:right;">
+					<a href="#" class="login-link text-center" style="">Lost your password?</a>
+				</div>
+			</div>
     	</div>
   	</div>
 </div>
