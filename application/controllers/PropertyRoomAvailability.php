@@ -9,7 +9,7 @@ class PropertyRoomAvailability extends CI_Controller {
 	public function index() {
 		//$this->load->view ('search.html');
 	}
-	public function getRoomAvailabilityCount(){
+	public function getAvailablePropertyAccomodatesCount(){
 		
 		$postdata = file_get_contents("php://input");
 		$post= json_decode($postdata);
@@ -19,16 +19,17 @@ class PropertyRoomAvailability extends CI_Controller {
 		$checkout = str_replace ( '/', '-', $checkout );
 		$checkin = date ( 'Y-m-d', strtotime ( $checkin ) );
 		$checkout = date ( 'Y-m-d', strtotime ( $checkout ) );
-		$accomodation=$post->accomodation;
+		$accomodates=$post->accomodates;
+		
 		$confirmArray=array(
-								'accomodationTypeId'=>$accomodation,
-								'checkin'=>$checkin,
-								'checkout'=>$checkout,
+								'accomodates'=>$accomodates,
+								'checkIn'=>$checkin,
+								'checkOut'=>$checkout,
 								'propertyId'=>$this->session->userdata ( 'propertyId' )
 							);
 		$this->load->model('PropertyModel');
-		$availabilityofRoomCount= $this->PropertyModel->getRoomAvailabilityCount( $confirmArray );
-		//echo(	$availabilityofRoomCount);//echo json_encode($availabilityofRoomCount);
+		
+		$availabilityofRoomCount= $this->PropertyModel->getAvailablePropertyAccomodatesCount( $confirmArray );
 		$response=array('count'=>$availabilityofRoomCount);
 		echo json_encode($response);
 	}
