@@ -39,30 +39,31 @@ app.controller('roomAvailabilityController', function($scope, $http) {
 	//$scope.form = {};
 	$scope.getRoomAvalabilityCount = function() {
 		 $scope.formData = {};
-		 alert($scope.checkin);
-		 alert($scope.checkout);
-		 alert($scope.accomodates);
-		 alert($scope.name);
-		 alert($scope.email);
+		
 		 $scope.formData.checkin = $scope.checkin;
 		 $scope.formData.checkout = $scope.checkout;
 		 $scope.formData.accomodates = $scope.accomodates;
-		 $scope.formData.name = $scope.name;
-		 $scope.formData.email = $scope.email;
+		// $scope.formData.name = $scope.name;
+		 //$scope.formData.email = $scope.email;
 		 // Posting data to php file
-		/*$http({
+		$http({
 			method  : 'POST',
-			url     : 'PropertyRoomAvailability/getRoomAvailabilityCount/',
+			url     : 'PropertyRoomAvailability/getAvailablePropertyAccomodatesCount/',
 			data    : $scope.formData //forms user object
 			// datatype:"json"
 		}).success(function(data) {
-			if(data.count==0){
-				alert('you canot add data');
+			if(data.count>=$scope.accomodates){
+				$http({
+					method  : 'POST',
+					url     : 'PropertyRoomAvailability/getAvailablePropertyAccomodatesCount/',
+					data    : $scope.formData //forms user object
+					// datatype:"json"
+				})
 			}
 			else{
-				alert('from here it will get to payu mney');  
+				alert('Sorry Available seats are'+data.count);  
 			}
-		});*/
+		});
 	};
 });
 
