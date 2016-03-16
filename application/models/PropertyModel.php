@@ -451,4 +451,35 @@ class PropertyModel extends CI_Model {
 		}
 	}
 	/* //available accomodates*/
+	/*GET AVALIABLE NO OF ACCOMODATES FOR PARTICULAR PEOPERTY FOR SPECIFIC CHECKIN & CHECKOUT DATE*/
+	public function getAvailablePropertyAccomodatesCount($confirmArray) {
+		$reservationTable = 'reservation';
+		$propertyTable = 'property';
+		$propertyInfo = 'property_info';
+		
+		
+		$checkout = $confirmArray ['checkOut'];
+		$checkin = $confirmArray ['checkIn'];
+		$guestCount = $confirmArray ['accomodates'];
+		$propertyId = $confirmArray ['propertyId'];
+		
+		$this->db->select ( "(propertyInfo.accommodates-IFNULL(sum(res.accomodates), 0)) as availableAccomodes" );
+		$this->db->from ( "$propertyInfo propertyInfo" );
+		$this->db->join ( "$reservationTable res", "res.property_id=propertyInfo.property_id", "left" );
+		$this->db->join ( "$propertyTable property", "propertyInfo.property_id=property.property_id" );
+		
+		$where = "(res.property_id is Null";
+		$this->db->where ( $where );
+		$where = "(check_out >= '$checkout' AND check_in >='$checkin')";
+		$this->db->or_where ( $where );
+		$where = "(check_out <= '$checkout' AND check_out <='$checkout'))";
+		$this->db->or_where ( $where );
+		$where = "(propertyInfo.property_id='$propertyId')";
+		$this->db->where ( $where );
+		
+		$roomAvailableInfo = $this->db->get ();
+		$roomAvailableCount = $roomAvailableInfo->row ()->availableAccomodes;
+		return $roomAvailableCount;
+	}
+	//getAvailablePropertyAccomodatesCount ENDS HERE
 }
