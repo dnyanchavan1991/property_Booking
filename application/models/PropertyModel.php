@@ -448,4 +448,11 @@ class PropertyModel extends CI_Model {
 		return $roomAvailableCount;
 	}
 	//getAvailablePropertyAccomodatesCount ENDS HERE
+	
+	public function booking($reservationArray){
+		$reservationTable="reservation";
+		$this->db->insert($reservationTable,$reservationArray);
+		$afftectedRows = $this->db->affected_rows();
+		return  $afftectedRows;
+	}
 }
