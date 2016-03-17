@@ -46,11 +46,11 @@
   margin: 0;
   padding: 0;
 }
-.flexslider .slides > li {
-  display: none;
+.flexslider .slides > li:not(:first-child){
+   display: none;
   -webkit-backface-visibility: hidden;
 }
-.flexslider .slides > li:first-child {display: block; -webkit-backface-visibility: visible;}
+/*.flexslider .slides > li:first-child {display: block; -webkit-backface-visibility: visible;}*/
 .flexslider .slides img {
   width: 100%;
   display: block;

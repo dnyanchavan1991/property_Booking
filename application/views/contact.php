@@ -21,7 +21,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css"	media="all" />
 <link href="css/tab.css" rel="stylesheet" type="text/css" media="all" />
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-<link rel="stylesheet" href="css/flexslider.css" media="screen" />
+<link rel="stylesheet" href="css/slippry.css" media="screen" />
 <link rel="stylesheet" href="css/jquery-ui.css" />
 <!-- js -->
 <script src="js/jquery-1.11.1.min.js"></script>
@@ -36,7 +36,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- start-smoth-scrolling -->
 <script type="text/javascript" src="js/move-top.js"></script>
 <script type="text/javascript" src="js/easing.js"></script>
-<script defer src="js/jquery.flexslider.js"></script>
+<script defer src="js/slippry.min.js"></script>
 <script type="text/javascript">
 	jQuery(document).ready(function($){
 		$(".scroll").click(function(event){
@@ -136,42 +136,43 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</p>
 						</div>
 						<div id="tab2" class="tab">
-							<div class="flexslider">
-								<ul class="slides">	
-								<?php	
-								$files = glob('Admin/'.$imagePath."*.*");
-								for ($i=1; $i<count($files); $i++)
-								{
-									$image = $files[$i];
-									$supported_file = array(
-																'gif',
-																'jpg',
-																'jpeg',
-																'png'
-															);
-
-									$ext = strtolower(pathinfo($image, PATHINFO_EXTENSION));
-									if (in_array($ext, $supported_file))
+							<div class="">
+								<ul id="slides">	
+									<?php	
+									$files = glob('Admin/'.$imagePath."*.*");
+									for ($i=1; $i<count($files); $i++)
 									{
-										echo '<li data-thumb="'.$image .'">';
-										echo'<img src="'.$image .'" alt="" />';
-										echo'</li>'; 
-									} 
-									else 
-									{
-										continue;
-									}
-
-								}?>
+										$image = $files[$i];
+										$supported_file = array(
+																	'gif',
+																	'jpg',
+																	'jpeg',
+																	'png'
+																);
+										$ext = strtolower(pathinfo($image, PATHINFO_EXTENSION));
+										if (in_array($ext, $supported_file))
+										{
+											echo "<li>";
+											echo "<img src='".$image."' alt=''/>";
+											echo "</li>"; 
+										} 
+										else 
+										{
+											continue;
+										}
+									}?>
 								</ul>
 							</div>
 							<script>
-							// Can also be used with $(document).ready()
-							$(window).load(function() {
-								$('.flexslider').flexslider({
-								animation: "slide",
-								controlNav: "thumbnails",
-								slideshowSpeed: "5000"
+							$(function() {
+								var demo1 = $("#slides").slippry({
+									 transition: 'horizontal',
+									// useCSS: true,
+									// speed: 1000,
+									// pause: 3000,
+									// auto: true,
+									// preload: 'visible',
+									// autoHover: false
 								});
 							});
 							</script>
