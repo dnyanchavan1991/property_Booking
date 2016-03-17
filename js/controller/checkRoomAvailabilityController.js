@@ -1,6 +1,7 @@
 angular.module('checkRoomAvailabilityApp', ['angularUtils.directives.dirPagination'])
 	.controller('checkRoomAvailabilityController',function($scope, $http) {
-		/*--*/
+		 $scope.guestHeadCount = ["Select","1", "2", "3", "4", "5", "6" ,"7", "8", "9", "10", "11", "12", "13", "14", "15"];
+			
 		$http.get("AccomodationType/getAccomodationType/" + 2).then(function(response) {
 			$scope.names = response.data;
 		});
@@ -14,6 +15,10 @@ angular.module('checkRoomAvailabilityApp', ['angularUtils.directives.dirPaginati
 		$scope.propertyName = [{
 			name : ""
 		} ];
+		$scope.selectGuestHeadCount= [{
+			name : "Select"
+		} ];
+		
 		
 		$scope.starRateList = [{
 			name : 5,
@@ -62,10 +67,12 @@ angular.module('checkRoomAvailabilityApp', ['angularUtils.directives.dirPaginati
 			selectedFeatureList : [],
 			selectedFacilityList : [],
 			selectedAccomodationList : [],
-			propertyNameList : []
+			propertyNameList : [],
+			accomodatesList:[]
 		};
 		/*--*/
 		$scope.model.propertyNameList.push({name:""});
+		$scope.model.accomodatesList.push({name:"Select"});
 		/*--*/
 		$scope.isLabelChecked = function(objName) {
 			if (objName == 'starRate') {
@@ -101,6 +108,18 @@ angular.module('checkRoomAvailabilityApp', ['angularUtils.directives.dirPaginati
 				else{
 					$scope.model.propertyNameList.push({name:""});
 				}
+			}
+			else if(objName=='accomodates'){
+				$scope.model.accomodatesList.pop();
+				
+				if(this.selectGuestHeadCount!='Select'){
+					$scope.model.accomodatesList.splice(0,1);
+				$scope.model.accomodatesList.push({name:this.selectGuestHeadCount[0]});
+			       }
+			else{
+				$scope.model.accomodatesList.push({name:""});	
+			   }
+					
 			}
 			else{
 			
