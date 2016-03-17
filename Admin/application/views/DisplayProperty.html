@@ -220,17 +220,18 @@
 							<button id="viewId" class="btn btn-info" >View</button>
 							
                             <table data-toggle="table" id="table-style" class="table table-bordered table-hover table-striped"
-							data-url="assets/json/Properties.json"  data-show-refresh="true" data-show-columns="true" data-show-toggle="true" 
+							data-url="assets/json/Properties.json"    data-show-columns="true" data-show-toggle="true" 
 							data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="PropertyId" data-strict-search="true" 
 							data-sort-order="desc" data-single-select="true" data-click-to-select="true" data-maintain-selected="true">
                                 <thead>
                                     <tr>
                                         <th data-field="state" data-checkbox="true"></th>
-										<th data-field="property_id" >Property ID</th>
+										<!--<th data-field="property_id" >Property ID</th>-->
 										<th data-field="property_name" data-sortable="true">Property Name</th>
-										<th data-field="owner_name" data-sortable="true">Property Owner Name</th>
-										<th data-field="phone" data-sortable="true">Owner Phone</th>
+										<th data-field="owner_name" data-sortable="true">Property Owner Name (contact number)</th>										
 										<th data-field="registred_date" data-sortable="true">Registration Date</th>
+										<th data-field="state" data-sortable="true">State</th>
+										<th data-field="city" data-sortable="true">City</th>
 									</tr>
                                 </thead>
                             </table>
