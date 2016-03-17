@@ -1,4 +1,4 @@
-
+﻿
 <!DOCTYPE html>
 <html>
 <head>
@@ -171,8 +171,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<h3 class="sear-head">Accomodates</h3>
 						<ul class="dropdown-menu5">
 							<li>
-								<div id="slider-range1"></div> <input type="text" id="amount1"
-								style="border: 0; color: #ffffff; font-weight: normal;" />
+					<div class="col-md-1" id="bbb" >
+						<select class="sel guedtf" ng-model="selectGuestHeadCount" id="guestCount" name="guestCount" ng-init="selectGuestHeadCount=guestHeadCount[0] " ng-options="option as option for option in guestHeadCount"  ng-change="isLabelChecked('accomodates')"}></select>
+				</div>
 							</li>
 						</ul>
 						<!---->
@@ -187,15 +188,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 																{
 																	range : true,
 																	min : 0,
-																	max : 20,
+																	max : 15,
 																	values : [
 																			1,
-																			20 ],
+																			15 ],
 																	slide : function(
 																			event,
 																			ui) {
 																		$(
-																				"#amount1")
+																				"#accomodates")
 																				.val(
 																						""
 																								+ ui.values[0]
@@ -203,7 +204,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 																								+ ui.values[1]);
 																	}
 																});
-												$("#amount1")
+												$("#accomodates")
 														.val(
 																""
 																		+ $(
