@@ -36,15 +36,15 @@ app.controller('roomAvailabilityController', function($scope, $http) {
 		});
 	}
 	ReadCookie();
-	//$scope.form = {};
-	$scope.getRoomAvalabilityCount = function() {
+	$scope.form = {};
+	$scope.getRoomAvalabilityCount = function() {alert();
 		 $scope.formData = {};
 		
 		 $scope.formData.checkin = $scope.checkin;
 		 $scope.formData.checkout = $scope.checkout;
 		 $scope.formData.accomodates = $scope.accomodates;
-		// $scope.formData.name = $scope.name;
-		 //$scope.formData.email = $scope.email;
+		 $scope.formData.name = $scope.name;
+		 $scope.formData.email = $scope.email;
 		 // Posting data to php file
 		$http({
 			method  : 'POST',
@@ -55,9 +55,16 @@ app.controller('roomAvailabilityController', function($scope, $http) {
 			if(data.count>=$scope.accomodates){
 				$http({
 					method  : 'POST',
-					url     : 'PropertyRoomAvailability/getAvailablePropertyAccomodatesCount/',
+					url     : 'BookProperty/booking/',
 					data    : $scope.formData //forms user object
 					// datatype:"json"
+				}).success(function(data) {
+					if(data.reservationcount='1'){
+					alert('Congrats Reservation is done');
+					}
+					else{
+						alert('Sorry problem in rese5rvation');  
+					}
 				})
 			}
 			else{
