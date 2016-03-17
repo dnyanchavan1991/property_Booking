@@ -111,27 +111,71 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</ul>
 				</div>
 				<div class="col-md-9 reservation-right">
-					<form name="form" novalidate ng-controller="roomAvailabilityController" ng-submit="form.$valid && getRoomAvalabilityCount()" class="angular-msgs">
+					<form name="form" role="form" novalidate ng-controller="roomAvailabilityController" ng-submit="form.$valid && getRoomAvalabilityCount()" class="angular-msgs form-horizontal">
 						<h4>When would you like to come?</h4>
-						<div class="book-pag">
-							<div class="book-pag-frm">
-								<label>Check In :</label> 
+							<div class="form-group">
+								<label class="control-label col-md-3">Name</label>
+								<div class="col-md-7">
+									<input type="text" class="form-control" ng-model="cust_name" name="cust_name" Placeholder="Enter name" ng-required="true"/>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-md-3">Email</label>
+								<div class="col-md-7">
+									<input type="email" class="form-control" ng-model="cust_email" name="cust_email" Placeholder="Enter email" ng-required="true"/>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-md-3">Check In</label>
+								<div class="col-md-7">
+									<input type="text" class="date form-control" id="checkin_id" ng-model="checkin" name="checkin" Placeholder="Check-In date" ng-required="true"  />
+									<div class="col-md-7 col-md-offset-3" id="ng-error" ng-messages="form.checkin.$error" ng-if="form.checkin.$dirty">
+										<div ng-message="required" style="" >This field is required</div>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-md-3">Check Out</label>
+								<div class="col-md-7">
+									<input type="text" class="date form-control" id="checkout_id" ng-model="checkout" name="checkout" Placeholder="Check-Out date" ng-required="true" />
+									<div id="ng-error" ng-messages="form.checkout.$error" ng-if="form.checkout.$dirty">
+										<div ng-message="required" style="" >This field is required</div>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-md-3">Guests</label>
+								<div class="col-md-7">
+									<input type="number" class="form-control" ng-model="accomodates" name="accomodates" min="1" max="15" Placeholder="No. of guests" ng-required="true" />
+									<div id="ng-error" ng-messages="form.accomodates.$error" ng-if="form.accomodates.$dirty">
+										<div ng-message="required" style="" >This field is required</div>
+									</div>
+								</div>
+							</div><br>
+							<div class="form-group">
+								<div class="col-md-9 col-md-offset-3">
+									<button type="submit" class="btn btn-success">Reserve</button>
+								</div>
+							</div>
+						
+							<!--<div class="col-md-3">
+								<!--<label>Check In :</label>
 								<input type="text" class="date" id="checkin_id" ng-model="checkin" name="checkin" Placeholder="Check-In date" ng-required="true"  />
-								<div id="ng-error" ng-messages="form.checkin.$error" ng-if="form.checkin.$dirty">
+								<!--<div id="ng-error" ng-messages="form.checkin.$error" ng-if="form.checkin.$dirty">
 									<div ng-message="required" style="" >This field is required</div>
 								</div>
 							</div>
-							<div class="book-pag-frm">
-								<label>Check Out:</label>
+							<div class="col-md-3">
+								<!--<label>Check Out:</label>
 								<input type="text" class="date" id="checkout_id" ng-model="checkout" name="checkout" Placeholder="Check-Out date" ng-required="true" />
-								<div id="ng-error" ng-messages="form.checkout.$error" ng-if="form.checkout.$dirty">
+								<!--<div id="ng-error" ng-messages="form.checkout.$error" ng-if="form.checkout.$dirty">
 									<div ng-message="required" style="" >This field is required</div>
 								</div>
 							</div>
-							<div class="book-pag-frm">
-								<label>Guests:</label>
-								<input type="number" ng-model="accomodates" name="accomodates" min="1" max="15" Placeholder="Check-Out date"ng-required="true" style="width:100%;">
-								<div id="ng-error" ng-messages="form.accomodates.$error" ng-if="form.accomodates.$dirty">
+							<div class="col-md-3">
+								<!--<label>Guests:</label>
+								<input type="text" ng-model="accomodates" name="accomodates" min="1" max="15" Placeholder="Check-Out date"ng-required="true" style="width:100%;">
+								<!--<div id="ng-error" ng-messages="form.accomodates.$error" ng-if="form.accomodates.$dirty">
 									<div ng-message="required" style="" >This field is required</div>
 								</div>
 							</div>
@@ -148,7 +192,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div ng-message="required" style="" >This field is required</div>
 							<div ng-message="pattern">Your email address is invalid</div>
 						</div>
-						<button type="submit" >RESERVE NOW</button>
+						<button type="submit" >RESERVE NOW</button>-->
 					</form>
 					<!--strat-date-piker-->
 					<script>

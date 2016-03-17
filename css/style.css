@@ -1799,7 +1799,7 @@ margin-top: 25px;
 .reservation-right input[type="text"],input[type="number"]{
  /* display: block;*/
   border: 1px solid #E5E5E5;
-  max-width: 64%;
+  max-width: 100%;
   outline: none;
   padding: 8px 8px;
   font-size: 14px;
@@ -1810,7 +1810,7 @@ margin-top: 25px;
 .reservation-right input[type="email"] {
  /* display: block;*/
   border: 1px solid #E5E5E5;
-  max-width: 64%;
+  max-width: 100%;
   outline: none;
   padding: 8px 8px;
   font-size: 14px;
