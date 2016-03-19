@@ -60,10 +60,10 @@ app.controller('roomAvailabilityController', function($scope, $http) {
 					// datatype:"json"
 				}).success(function(data) {
 					if(data.reservationcount='1'){
-					alert('Congrats Reservation is done');
+					alert('Congrats ! Your Reservation is succesful.');
 					}
 					else{
-						alert('Sorry problem in rese5rvation');  
+						alert('Oops, Something went wrong in the Reservation process. Kindly try again.');  
 					}
 				})
 			}

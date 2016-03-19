@@ -6,7 +6,7 @@ class Login extends CI_Controller {
 		$this->load->library('session');
 	}
 	public function index() {
-		
+			$this->load->view ( 'login.html' );
 	}
 	public function authenticate() {
 		$this->load->model ( 'PropertyModel' );
@@ -15,10 +15,14 @@ class Login extends CI_Controller {
 		$username=$post->username;
 		$password=$post->password;
 		$accesstype=$post->access_type;
-		
-		$validate = $this->PropertyModel->authenticate($username,$password,$accesstype);
-		$user_id = $validate->user_id;
-		$user_count = $validate->user_count;
+		$this->session->set_userdata('call_back_url',$post->call_back_url);
+		$user_count = 0;
+		if ($username != '' && $username != null )
+		{
+			$validate = $this->PropertyModel->authenticate($username,$password,$accesstype);
+			$user_id = $validate->user_id;
+			$user_count = $validate->user_count;
+		}
 		if($user_count == 1)
 		{
 			$loginDetailsArray=array(
@@ -33,7 +37,7 @@ class Login extends CI_Controller {
 			$this->session->set_userdata('access_type', $accesstype);
 		}
 		$response=array('count'=>$user_count);
-		echo json_encode($response);
+		echo json_encode($response); 
 			
 	}
 }

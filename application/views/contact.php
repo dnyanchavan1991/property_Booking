@@ -488,6 +488,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				return true;
 			} else {
 				alert("Please login to book the property...!");
+				//return false;
+				window.location.href = "http://localhost:8081/Property_Booking/dev_1/branches/dev/login";
 				return false;
 			}
 		}

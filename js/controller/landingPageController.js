@@ -72,6 +72,7 @@ app.controller('loginCtrl', function ($scope,$http) {
       }
     $scope.authenticateAdmin=function()
     {
+    	$scope.form.call_back_url = window.location;
     	$http({
 	          method  : 'POST',
 	          url     : 'Login/authenticate/',
@@ -79,14 +80,14 @@ app.controller('loginCtrl', function ($scope,$http) {
 	         // datatype:"json"
 	          
 	         })
-	          .success(function(data) {
+	          .success(function(data) { 
 	        	
-	        	  if(data.count==0){
+	        	  if(data.count == 0){
 	        		  alert('Please Enter Valid Username & Password.');
-	        	  }
-	        		  else{
-						   alert('Login successful.');
-	        			window.location.href='Admin/Admin/setLoginSession';
+	        	  } else{
+					     alert('Login successful.');					     
+					    // $this->session->set_userdata('call_back_url', window.location);
+	        		    window.location.href='Admin/Admin/setLoginSession';
 	        	  }
 	          });
     	

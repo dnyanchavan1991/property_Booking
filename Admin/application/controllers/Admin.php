@@ -22,7 +22,9 @@ class Admin extends CI_Controller {
 		}
 		else
 		{
-			header("location: ../");
+			//alert($this->session->userdata('call_back_url'));
+			  header("location:../");// + $this->session->userdata('call_back_url'));
+			//$this->load-view($this->session->userdata('call_back_url'));
 		}
 	}
 }

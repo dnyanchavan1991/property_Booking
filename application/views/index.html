@@ -73,7 +73,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<nav class="cl-effect-11" id="cl-effect-11">
 					<ul id="hiddenresponsive" class="nav1">
 						<li><a class="active" href="Index1" data-hover="HOME">HOME</a></li>											 
-						<li><a href="" id='modal-launcher' data-toggle="modal" data-target="#login-modal" data-hover="LOGIN">LOGIN</a></li>
+						 <!--<li><a href="" id='modal-launcher' data-toggle="modal" data-target="#login-modal" data-hover="LOGIN">LOGIN</a></li> -->
+						 <li><a href="Login"   data-hover="LOGIN">LOGIN</a></li> 
 					</ul>  
 				</nav>
 				<!-- script for menu -->
@@ -155,12 +156,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		//	});		
 			function show()
 					{
-					document.getElementById('aaa').style.display="inline" ;
-					document.getElementById('bbb').style.display="inline" ;
-					document.getElementById('ccc').style.display="inline" ;
-					document.getElementById('ddd').style.display="inline" ;
-					document.getElementById('blankdiv').style.display="none" ;
+						document.getElementById('aaa').style.display="inline" ;
+						document.getElementById('bbb').style.display="inline" ;
+						document.getElementById('ccc').style.display="inline" ;
+						document.getElementById('ddd').style.display="inline" ;
+						document.getElementById('blankdiv').style.display="none" ;
 					}
+			function allFieldsVisible(){
+				
+				 var elm = $('#aaa');
+				 
+				  if (elm[0].style.display == "inline"){
+					  return true;
+				  } else {
+					  
+					  show();
+				  }
+			}
 			function showmodal(){
 				//document.getElementById("hiddenresponsive").style.display = "none";
 					//alert("modal-launcher");
@@ -200,7 +212,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="col-md-2" id="ddd" style="display:none;">
 					<input class="date" name="checkOut" id="checkOut" type="text" ng-model="checkOutDate" placeholder="checkOut" style="width:10em;  margin: 16px 0px 0px 8px !important;  border:0px;" required/>
 				</div>
-				<div class="col-md-2 eee"><div class="search"><input type="submit"  name="submit" style="margin: 0px;" value="search"></div></div >
+				<div class="col-md-2 eee"><div class="search"><input type="submit"  onClick="return allFieldsVisible()" name="submit" style="margin: 0px;" value="search"></div></div >
 			</div>
 			<div class="clearfix"></div>
 		</div>
