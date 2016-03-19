@@ -8,7 +8,7 @@ class SqlQueryModel extends CI_Model{
 	}
 	public function propertyList()
 	{
-		$this->db->select ("P.property_name,P.city,concat(PO.owner_name,'&nbsp;&nbsp;&nbsp;(',PO.phone,')') as owner_name,DATE_FORMAT(PO.registred_date, '%d/%m/%Y') registred_date, P.city, P.state");
+		$this->db->select ("P.property_id,P.property_name,P.city,concat(PO.owner_name,'&nbsp;&nbsp;&nbsp;(',PO.phone,')') as owner_name,DATE_FORMAT(PO.registred_date, '%d/%m/%Y') registred_date, P.city, P.state state_name");
 		$this->db->from ("property P");
 		$this->db->join ( "property_info PI", "P.property_id = PI.property_id", "inner" );
 		$this->db->join ( "property_owner_info PO", "PI.property_id = PO.property_id", "inner" );

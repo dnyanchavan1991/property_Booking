@@ -166,7 +166,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<script>
 							$(function() {
 								var demo1 = $("#slides").slippry({
-									 transition: 'horizontal',
+									 transition: 'horizontal'
 									// useCSS: true,
 									// speed: 1000,
 									// pause: 3000,
@@ -201,7 +201,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									
 									<?php if(isset($name) && isset($email_address)){?>
 										<input type="text" id="customer_name" ng-model="customer_name" placeholder="Name" ng-init="customer_name='<?php echo $name;?>'" readonly>
-										<input type="email" ng-model="customer_email" placeholder="Email"  ng-init="customer_email='<?php echo $email_address;?>'" readonly>
+										<input type="email" ng-model="customer_email" placeholder="Email" ng-init="customer_email='<?php echo $email_address;?>'" readonly>
 									<?php } else{?>
 									
 										<input type="text" id="customer_name" ng-model="customer_name" name="customer_name" ng-pattern="/^[a-zA-Z ]*$/" placeholder="Name"  style="margin-top: -13px !important;" ng-value="" required>
@@ -301,7 +301,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<h4>Availability : <?php echo $avail_accomodates;?></h4>
 						<p class="best-pri"></p>
 						
-						<a class="best-btn" href="BookProperty">Book Now</a>
+						<a class="best-btn" onclick=" return checkLogin()" href="BookProperty">Book Now</a>
 						<div class="hotel-left-two" ng-controller="popupController">
 									
 									<p>
@@ -481,6 +481,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				easingType : 'easeOutQuart'
 			});
 		});
+		
+		function checkLogin() {
+			var name = $("#customer_name").val();
+			if(name !='') {
+				return true;
+			} else {
+				alert("Please login to book the property...!");
+				return false;
+			}
+		}
 	</script>
 	<a href="#" id="toTop" style="display: block;"> <span
 		id="toTopHover" style="opacity: 1;"> </span></a>

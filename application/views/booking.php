@@ -113,18 +113,41 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="col-md-9 reservation-right">
 					<form name="form" role="form" novalidate ng-controller="roomAvailabilityController" ng-submit="form.$valid && getRoomAvalabilityCount()" class="angular-msgs form-horizontal">
 						<h4>When would you like to come?</h4>
+							<?php if(isset($name) && isset($email_address)){?>
 							<div class="form-group">
 								<label class="control-label col-md-3">Name</label>
 								<div class="col-md-7">
-									<input type="text" class="form-control" ng-model="cust_name" name="cust_name" Placeholder="Enter name" ng-required="true"/>
+									<input type="text" class="form-control" ng-model="cust_name" name="cust_name" ng-init="cust_name='<?php echo $name;?>'" readonly />
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="control-label col-md-3">Email</label>
 								<div class="col-md-7">
-									<input type="email" class="form-control" ng-model="cust_email" name="cust_email" Placeholder="Enter email" ng-required="true"/>
+									<input type="email" class="form-control" ng-model="cust_email" name="cust_email" ng-init="cust_email='<?php echo $email_address;?>'" readonly />
 								</div>
 							</div>
+							<?php } else{?>
+							<div class="form-group">
+								<label class="control-label col-md-3">Name</label>
+								<div class="col-md-7">
+									<input type="text" class="form-control" ng-model="cust_name" ng-pattern="/^[a-zA-Z ]*$/" name="cust_name" Placeholder="Enter name" ng-required="true"/>
+									<div id="ng-error" ng-messages="form.cust_name.$error" ng-if="form.cust_name.$dirty">
+										<div ng-message="required">This field is required</div>
+										<div ng-message="pattern">Only characters & space allowed</div>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-md-3">Email</label>
+								<div class="col-md-7">
+									<input type="email" class="form-control" ng-model="cust_email" ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" name="cust_email" Placeholder="Enter email" ng-required="true"/>
+									<div id="ng-error" ng-messages="form.cust_email.$error" ng-if="form.cust_email.$dirty">
+										<div ng-message="required">This field is required</div>
+										<div ng-message="pattern">Your email address is invalid</div>
+									</div>
+								</div>
+							</div>
+							<?php }?>
 							<div class="form-group">
 								<label class="control-label col-md-3">Check In</label>
 								<div class="col-md-7">

@@ -5,14 +5,22 @@ class BookProperty extends CI_Controller {
 		session_cache_limiter('private, must-revalidate');
 		session_cache_expire(60);
 		$this->load->library ( 'session' );
-		
+		$this->load->model('PropertyModel');
 	}
 	public function index() {
 		$this->bookingProperty();
 	
 	}
 	public function bookingProperty(){
-		$this->load->view ( 'booking' );
+		if($this->session->userdata('user_id'))
+		{
+			$get_user = $this->PropertyModel->getUser($this->session->userdata('user_id'));
+			$data['name'] = $get_user->name;
+			$data['email_address'] = $get_user->email_address;
+			$this->load->view ( 'booking',$data);
+		} else {
+			$this->load->view ( 'booking');
+		}
 	}
 	public function booking(){
 	$postdata = file_get_contents("php://input");
@@ -32,7 +40,6 @@ class BookProperty extends CI_Controller {
 				'customer_id'=>'1',
 				'reservation_date'=>date('Y-m-d')
 		);
-		$this->load->model('PropertyModel');
 		$reservationAffectedRow= $this->PropertyModel->booking( $reservationArray);
 		$response=array('reservationcount'=>$reservationAffectedRow);
 		echo json_encode($response);
