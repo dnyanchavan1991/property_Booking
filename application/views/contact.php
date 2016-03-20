@@ -29,6 +29,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="text/javascript" src="js/angular.min.js"></script>
 <script type="text/javascript" src="js/dirPagination.js"></script>
 <script type="text/javascript" src="js/angular-messages.min.js"></script>
+<script type="text/javascript" src="js/global/global_url_variable.js"></script>
 <script type="text/javascript" src="js/controller/getRoomDetailController.js"></script>
 <!-- //js -->
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic'
@@ -331,15 +332,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									</div>-->
 									<div class="clearfix"></div>
 								</div>
-								<div class="comments-bot" dir-paginate="reviews_count in reviews | itemsPerPage: 10">
+								<div class="comments-bot" dir-paginate="reviews_count in reviews|itemsPerPage:5">
 									<p style="white-space: pre-line;">{{reviews_count.review_text}}</p>
 									<div class="text-left" >
-										<span class="red-star" ng-repeat="r_cnt in strtoint(reviews_count.star_rating)">★</span>
+										<span class="red-star" ng-repeat="r_cnt in strtoint(reviews_count.star_rating)">â˜…</span>
 									</div>
-									<h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span> 
-										{{reviews_count.customer_name}} <br/>
-									<p style="display:inline-block;">Visited property during {{reviews_count.check_in}} - {{reviews_count.check_out}}</p>
-									</h4>
+									<h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span> {{reviews_count.customer_name}} <p style="display:inline-block;">{{reviews_count.check_in}} - {{reviews_count.check_out}}</p></h4>
 								</div>
 							</div>
 						</div>
@@ -373,7 +371,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											class="best-btn">Send SMS</a>
 									</p>
 									<modal title="Enquiry via mail" visible="showModal">
-									<form name="formData" ng-submit="Contact_to_customer_enquiry(<?php echo "'$propertyId'"; ?>)">
+									<form name="formData" ng-submit="Contact_to_customer_enquiry(
+									<?php echo "'$propertyId'"; ?>)">
 										<div class="form-group">
 											<label for="email"></label> <input type="text"
 												class="form-control" name="full_name" id="full_name"
@@ -551,9 +550,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			} else {
 				alert("Please login to book the property...!");
 				//return false;
-				 window.location.href = "http://localhost:8081/Property_Booking/dev_1/branches/dev/login";
-				
-				
+				window.location.href = login_url;
 				return false;
 			}
 		}
