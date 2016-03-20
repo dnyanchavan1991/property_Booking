@@ -30,6 +30,7 @@ class PropertyDetails extends CI_Controller {
 		file_put_contents("json/ReviewsPerProperty.json",$response);
 		/* //get reviews*/
 		/* general info*/
+		$data['propertyId']=$this->session->userdata ( 'propertyId' );
 		$data['propertyName']=$propertyDetailInfo->row()->propertyName;
 		$data['propertyDescription']=$propertyDetailInfo->row()->description;
 		$data['imagePath']=$propertyDetailInfo->row()->imagePath;
