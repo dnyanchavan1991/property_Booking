@@ -114,7 +114,8 @@ class Contact extends CI_Controller {
 		$header = 'MIME-Version: 1.0' . "\r\n";
 		$header .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 		$header .= "From:vilasgalave14@gmail.com \r\n";
-		if( mail ($recepient,$subject,$originalMessageContent,$header)){
+		
+		if( mail ($mailDetailArray['recepient'],$mailDetailArray['subject'],$mailDetailArray['message'],$header)){
 			return 'success';
 		}
 		else{
