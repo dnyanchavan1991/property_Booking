@@ -32,9 +32,6 @@ var app= angular.module('landingPageApp', []);
 						   $scope.displayFlag = true;
 						 //  #scope.selectAccomodationType.hide('0');						   
 					  }
-					  
-					 
-
 				});
 
 app.controller('loginCtrl', function ($scope,$http) {
@@ -52,24 +49,22 @@ app.controller('loginCtrl', function ($scope,$http) {
 	         })
 	          .success(function(data) {
 				  if(data.count==0){
-					  alert('Please Enter Valid Username & Password.');
+					  alert(' AA Please Enter Valid Username & Password.');
 	        	  }
 	        		  else{
 	        			  function WriteCookie()
-	        			  {
-      	            
-	        	             
-       	               cookievalue= escape($scope.form.username) + ";";
-       	             //  document.cookie="username=" + cookievalue;
-       	              // alert(cookievalue);
-       	               //document.write ("Setting Cookies : " + "username=" + cookievalue );
-       	            }
+	        			  {          
+	        				  cookievalue= escape($scope.form.username) + ";";
+		       	             //  document.cookie="username=" + cookievalue;
+		       	              // alert(cookievalue);
+		       	               //document.write ("Setting Cookies : " + "username=" + cookievalue );
+	        			  }
        			  WriteCookie();
 	        			 
-						   alert('Login successful.');
+						   alert('AA Login successful.');
 						  if($scope.form.access_type=='admin'){	
 							 // window.location.href='Admin/Admin/setLoginSession';
-    	}
+						  	}
 						  else  {
 							 // window.location.href='Index1';
 						}
@@ -90,12 +85,13 @@ app.controller('loginCtrl', function ($scope,$http) {
 	          
 	         })
 	          .success(function(data) {
+	        	  alert(data);
 	        	
 	        	  if(data.count==0){
-	        		  alert('Please Enter Valid Username & Password.');
+	        		  alert(' A Please Enter Valid Username & Password.');
 	        	  }
 	        		  else{
-						   alert('Login successful.');
+						   alert('A Login successful.');
 	        			window.location.href='Admin/Admin/setLoginSession';
 	        	  }
 	          });

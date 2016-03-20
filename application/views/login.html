@@ -92,9 +92,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 	<div class="gallery"  >
 		<div class="container">
-			<h3 class="tittle">Login </h3>
+			<h3 class="tittle">Sign Up </h3>
 			<div   ng-controller="loginCtrl">
 				<form ng-submit="authenticateAdmin()">	 
+				<div class="form-group">
+		              		<input type="text" id="firstName" placeholder="First Name" ng-model="form.firstName" class="form-control login-field" required>
+							
+		              	</div>
+		              	<div class="form-group">
+		              		<input type="text" id=lastName placeholder="Last Name" ng-model="form.lastName" class="form-control login-field" required>
+							
+		              	</div>
+		              	<div class="form-group">
+		              		<input type="text" id="mobileNumber" placeholder="Mobile Number" ng-model="form.mobileNumber" class="form-control login-field" required>
+							
+		              	</div>
 	        			<div class="form-group">
 		              		<input type="text" id="username" placeholder="Username" ng-model="form.username" class="form-control login-field" required>
 							
@@ -109,9 +121,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		              	</div>
 						
 						<div class="form-group">
-							<button  class="btn btn-success modal-login-btn">Login</button>
+							<button  id="lgnBtn" class="btn btn-success modal-login-btn">Sign Up</button>
 							
 						</div>
+						<div class="form-group">
+							<a id="signUp_status_text" onClick="toggleFields()" style="cursor: hand">Already have an account? Login!</a>							
+						</div>
+						
 						</form>	
 	        		</div> 
 		</div>
@@ -170,6 +186,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- //for bootstrap working -->
 <!-- smooth scrolling -->
 	<script type="text/javascript">
+	function toggleFields(){
+		//alert('here');
+		$('#firstName').toggle();
+		$('#lastName').toggle();
+		$('#mobileNumber').toggle();
+		if ($('#signUp_status_text').text() == "Already have an account? Login!") {
+			$('#signUp_status_text').text("Don't have an account? Sign Up!");
+			$('#lgnBtn').text("Login");
+		} else{
+			$('#signUp_status_text').text("Already have an account? Login!");
+			$('#lgnBtn').text("Sign Up");
+			}
+	}
 		$(document).ready(function() {
 	
 			var response = '';
@@ -206,6 +235,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			
 							
 		$().UItoTop({ easingType: 'easeOutQuart' });
+		
+		
 		});
 	</script>
 	<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
