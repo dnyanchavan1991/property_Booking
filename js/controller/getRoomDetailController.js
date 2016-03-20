@@ -78,7 +78,7 @@ app.controller(
 				$scope.form.email_id = null;
 				$scope.showModal = !$scope.showModal;
 			};
-			$scope.contactToCustomer = function(propertyId) {
+			$scope.Contact_to_customer_enquiry = function(propertyId) {
 
 				$http(
 						{
