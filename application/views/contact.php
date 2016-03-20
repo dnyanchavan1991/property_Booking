@@ -311,7 +311,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											class="best-btn">Send SMS</a>
 									</p>
 									<modal title="Enquiry via mail" visible="showModal">
-									<form name="formData" ng-submit="contactToCustomer(rooms)">
+									<form name="formData" ng-submit="Contact_to_customer_enquiry(<?php echo "'$propertyId'"; ?>)">
 										<div class="form-group">
 											<label for="email"></label> <input type="text"
 												class="form-control" name="full_name" id="full_name"
