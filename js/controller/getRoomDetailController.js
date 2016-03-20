@@ -5,6 +5,7 @@ app.controller('getRoomDetailController',function($scope, $http){
 	$scope.getRoomDetail = function() {
 		$http.get("propertyDetails/getRoomDetail").then(function(response){
 			$scope.names = response.data;
+			
 		});
 	};
 });
@@ -77,13 +78,13 @@ app.controller(
 				$scope.form.email_id = null;
 				$scope.showModal = !$scope.showModal;
 			};
-			$scope.contactToCustomer = function(item) {
+			$scope.contactToCustomer = function(propertyId) {
 
 				$http(
 						{
 							method : 'POST',
-							url : 'Contact/Contact_to_customer/'
-									+ item.propertyId + '/',
+							url : 'Contact/Contact_to_customer_enquiry/'
+									+ propertyId + '/',
 							data : $scope.form, // forms user object
 						// datatype:"json"
 
