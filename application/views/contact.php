@@ -272,12 +272,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									</div>-->
 									<div class="clearfix"></div>
 								</div>
-								<div class="comments-bot" dir-paginate="reviews_count in reviews|itemsPerPage:5">
+								<div class="comments-bot" dir-paginate="reviews_count in reviews | itemsPerPage: 10">
 									<p style="white-space: pre-line;">{{reviews_count.review_text}}</p>
 									<div class="text-left" >
 										<span class="red-star" ng-repeat="r_cnt in strtoint(reviews_count.star_rating)">★</span>
 									</div>
-									<h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span> {{reviews_count.customer_name}} <p style="display:inline-block;">{{reviews_count.check_in}} - {{reviews_count.check_out}}</p></h4>
+									<h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span> 
+										{{reviews_count.customer_name}} <br/>
+									<p style="display:inline-block;">Visited property during {{reviews_count.check_in}} - {{reviews_count.check_out}}</p>
+									</h4>
 								</div>
 							</div>
 						</div>
@@ -489,7 +492,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			} else {
 				alert("Please login to book the property...!");
 				//return false;
-				window.location.href = "http://localhost:8081/Property_Booking/dev_1/branches/dev/login";
+				 window.location.href = "http://localhost:8081/Property_Booking/dev_1/branches/dev/login";
+				
+				
 				return false;
 			}
 		}
