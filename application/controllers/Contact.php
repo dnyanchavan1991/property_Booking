@@ -13,7 +13,7 @@ class Contact extends CI_Controller {
 	public function index() {
 		$this->load->view ( 'contact.html' );
 	}
-	public function  Contact_to_customer($propertyId){
+	public function  Contact_to_customer_enquiry($propertyId){
 		$this->load->model('PropertyModel');
 		$postdata = file_get_contents("php://input");
 		$post= json_decode($postdata);
@@ -24,7 +24,7 @@ class Contact extends CI_Controller {
 		$checkin = date ( 'Y-m-d', strtotime ( $checkin ) );
 		$checkout = date ( 'Y-m-d', strtotime ( $checkout ) );
 		$full_name=$post->full_name;
-		$guestCount = $post->guestCount;
+	//	$guestCount = $post->guestCount;
 		if($post->phone==null){
 			$contactInfo=$post->email_id;
 		}
@@ -38,20 +38,30 @@ class Contact extends CI_Controller {
 		'contact'=>$contactInfo
 		);
 		$messageContentQuery=$this->PropertyModel->getmessageContent('Enq');
-		$messageContent=$messageContentQuery->row()->message_content;
+		$dbMessageContent=$messageContentQuery->row()->message_content;
 	
 		if($post->phone==null){
 			
 			$propertyOwnerInfo=$this->PropertyModel->getOwnerDetail($propertyId);
 			$recepient=$propertyOwnerInfo->row()->email.','.$contactInfo;
-			$subject=$messageContent.'for'.$propertyOwnerInfo->row()->propertyName;
+			$subject=$dbMessageContent.' for '.$propertyOwnerInfo->row()->propertyName;
+			$replacableString=array("propertyname", "user", "checkin _date","checkout_date");
+			$originalContentString=array($propertyOwnerInfo->row()->propertyName,$full_name,$checkin,$checkout);
+			$originalMessageContent=str_replace($replacableString,$originalContentString, $dbMessageContent);
+			$mailDetailArray=array(
+				'recepient'	=>$recepient,
+					'subject'=>$subject,
+					'message'=>$originalMessageContent
+					
+			);
+			$mailStatus=$this->sendMail($mailDetailArray);
 			
-			$message = $messageContent.'for'.$propertyOwnerInfo->row()->propertyName.'from'.$checkin.'to'.$checkout;
-		$header = 'MIME-Version: 1.0' . "\r\n";
+			
+	/*	$header = 'MIME-Version: 1.0' . "\r\n";
 		$header .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 		$header .= "From:vilasgalave14@gmail.com \r\n";
-		//echo $recepient.'<br>'.$subject.'<br>'.$message.'<br>'.$header;
-		if( mail ($recepient,$subject,$message,$header)){
+		
+		if( mail ($recepient,$subject,$originalMessageContent,$header)){
 			echo 'message sent';
 			$templateId=$messageContentQuery->row()->template_id;
 			 function insertEnquiryData ($enquiryData){
@@ -62,7 +72,7 @@ class Contact extends CI_Controller {
 			 			'template_id'=>$templateId,
 			 			'check_in'=>date("y-m-d h:i:s"),
 			 			'check_out'=>date("y-m-d h:i:s"),
-			 			'guest_count'=>$guestcount
+			 			//'guest_count'=>$guestcount
 				);
 			 	$this->PropertyModel->insertEnquiryData ($enquiryDetailsArray);
 			}
@@ -94,27 +104,23 @@ class Contact extends CI_Controller {
         	return($response);
         }
 				}
-				
-			//echo $recepient.'<br>'.$subject.'<br>'.$message.'<br>'.$header;
-			/*if( msg ($recepient,$subject,$message)){
-				echo 'message sent';
-				$templateId=$messageContentQuery->row()->template_id;
-				function insertEnquiryData ($enquiryData){
-					$enquiryDetailsArray=array(
-							'user_name'=>$username,
-							'property_id'=>$this->session->userdata( 'propertyId' ),
-							'sent_date'=>date("y-m-d h:i:s"),
-							'template_id'=>$templateId,
-							'check_in'=>date("y-m-d h:i:s"),
-							'check_out'=>date("y-m-d h:i:s"),
-							'guest_count'=>$guestcount
-					);
-					$this->PropertyModel->insertEnquiryData ($enquiryDetailsArray);
-				}}*/
+	
 		else{
 			echo 'message  not sent';
 		}
+		*/}
+	}
+	public function  sendMail($mailDetailArray) {
+		$header = 'MIME-Version: 1.0' . "\r\n";
+		$header .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+		$header .= "From:vilasgalave14@gmail.com \r\n";
+		if( mail ($recepient,$subject,$originalMessageContent,$header)){
+			return 'success';
 		}
+		else{
+			return 'fail';
+		}
+		
 	}
 	
 }
