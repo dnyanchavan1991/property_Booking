@@ -125,6 +125,13 @@ class PropertyModel extends CI_Model {
 		) );
 		return $query;
 	}
+	public function getPropertyInfoDetail($propertyId) {
+		$this->db->select ( 'bedrooms, bathrooms, pool, meals, internet_access, television_access as television, pet_friendly, air_condition, in_house_kitchen, other_amenities, leisureActivities, accommodates,   ' );
+		$query = $this->db->get_where ( 'property_info', array (
+				'property_id' => $propertyId 
+		) );
+		return $query;
+	}
 	public function getlatlongById($byid) {
 		$this->db->select ( "latitude,longitude" );
 		$this->db->from ( "property_info" );

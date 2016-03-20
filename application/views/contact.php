@@ -130,11 +130,70 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</ul>
 
 					<div class="tab-content">
+						<!-- Description-->
 						<div id="tab1" class="tab active">
 							<p>
 								<?php echo  nl2br($propertyDescription); ?>
 							</p>
+							<br/>
+							<h3> The Property </h3>
+							<p>
+								<ul>
+									<li style=" float: left"> 
+										Type :
+									</li>
+									<li style="  float: left"> 
+										Bedrooms : <?php echo  nl2br($bedrooms); ?>
+									</li>
+									<li style=" float: left"> 
+										Bathrooms : <?php echo  nl2br($bathrooms); ?>
+									</li>
+									<li style="  float: left"> 
+										Accommodates : <?php echo  $accommodates; ?>
+									</li>
+								</ul>
+								<br/><br/>
+								<h3>Amenities </h3>
+								
+								<ul>
+									<li style="float: left; padding: 10px"> 
+										Swimming Pool : <?php echo  nl2br($pool); ?>
+									</li>
+									<li style="  float: left; padding: 10px"> 
+										Food : <?php echo  nl2br($meals); ?>
+									</li>
+									<li style="  float: left; padding: 10px"> 
+										Internet Access  : <?php echo  nl2br($internet_access); ?>
+									</li> 
+								</ul><br/><br/>
+								<ul>
+									<li style="  float: left: padding: 10px"> 
+										television : <?php echo  $television; ?>
+									</li>
+									<li style="  float: left; padding: 10px"> 
+										Pets Allowed : <?php echo  nl2br($pet_friendly); ?>
+									</li>
+									<li style="  float: left: padding: 10px"> 
+										Air Conditioned : <?php echo  $air_condition; ?>
+									</li>
+									
+									<li style="  float: left; padding: 10px"> 
+										In-House Kitchen : <?php echo  $in_house_kitchen; ?>
+									</li>
+									<li style="  float: left"> 
+										Other Amenities : <?php echo  nl2br($other_amenities); ?>
+									</li>
+									<li style="  float: left"> 
+										Leisure Activities : <?php echo  nl2br($leisureActivities); ?>
+									</li>
+								</ul> 
+							</p>
+						  
+							 
+						 
 						</div>
+						<!-- Description-->
+						
 						<div id="tab2" class="tab">
 							<div class="">
 								<ul id="slides">	

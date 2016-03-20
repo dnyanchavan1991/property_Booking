@@ -16,11 +16,14 @@ class PropertyDetails extends CI_Controller {
 			$this->session->set_userdata ( 'propertyId', $_POST ['propertyId'] );
 		}
 		$this->getRoomDetail();
+		
 	}
 	public function getRoomDetail() 
 	{
 		$roomDetailInfo = $this->PropertyModel->getroomRentDetail ( $this->session->userdata ( 'propertyId' ) );
 		$propertyDetailInfo = $this->PropertyModel->getPropertyDetail ( $this->session->userdata ( 'propertyId' ) );
+		$propertyOtherInfo = $this->PropertyModel->getPropertyInfoDetail ( $this->session->userdata ( 'propertyId' ) );
+		
 		/* get reviews*/
 		$data['propertyReviews'] = $this->PropertyModel->getReviewsByPropertyId ( $this->session->userdata ( 'propertyId' ) );
 		$response = json_encode($data['propertyReviews']);
@@ -32,6 +35,21 @@ class PropertyDetails extends CI_Controller {
 		$data['imagePath']=$propertyDetailInfo->row()->imagePath;
 		$data['way_to_reach']=$propertyDetailInfo->row()->Direction;
 		/* //general info*/
+		/* Property Other Info */
+		$data['bedrooms']=$propertyOtherInfo->row()->bedrooms;
+		$data['bathrooms']=$propertyOtherInfo->row()->bathrooms;
+		$data['pool']=$propertyOtherInfo->row()->pool;
+		$data['meals']=$propertyOtherInfo->row()->meals;
+		$data['internet_access']=$propertyOtherInfo->row()->internet_access;
+		$data['television']=$propertyOtherInfo->row()->television;
+		$data['pet_friendly']=$propertyOtherInfo->row()->pet_friendly;
+		$data['air_condition']=$propertyOtherInfo->row()->air_condition;
+		$data['in_house_kitchen']=$propertyOtherInfo->row()->in_house_kitchen;
+		$data['other_amenities']=$propertyOtherInfo->row()->other_amenities;
+		$data['leisureActivities']=$propertyOtherInfo->row()->leisureActivities;
+		$data['accommodates']=$propertyOtherInfo->row()->accommodates;
+		/* Property Other Info */	
+		
 		/* map*/
 		$get_latlong = $this->PropertyModel->getlatlongById( $this->session->userdata ( 'propertyId' ) );
 		$data['latitude']=$get_latlong->latitude;
