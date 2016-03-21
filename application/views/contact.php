@@ -553,7 +553,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			} else {
 				alert("Please login to book the property...!");
 				//return false;
-				window.location.href = login_url;
+				window.location.href = "Login";
 				return false;
 			}
 		}

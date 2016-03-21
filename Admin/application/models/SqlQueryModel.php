@@ -8,7 +8,7 @@ class SqlQueryModel extends CI_Model{
 	}
 	public function propertyList()
 	{
-		$this->db->select ("P.property_id,P.property_name,P.city,concat(PO.owner_name,'&nbsp;&nbsp;&nbsp;(',PO.phone,')') as owner_name,DATE_FORMAT(PO.registred_date, '%d/%m/%Y') registred_date, P.city, P.state state_name");
+		$this->db->select ("P.property_id,P.property_name,P.city,concat(PO.owner_name,'&nbsp;&nbsp;&nbsp;(',PO.phone,')') as owner_name,DATE_FORMAT(PO.registred_date, '%d/%m/%Y') registred_date, P.city, P.state state_name, P.activation_flag");
 		$this->db->from ("property P");
 		$this->db->join ( "property_info PI", "P.property_id = PI.property_id", "inner" );
 		$this->db->join ( "property_owner_info PO", "PI.property_id = PO.property_id", "inner" );
@@ -84,6 +84,10 @@ class SqlQueryModel extends CI_Model{
 	{
 		$this->db->where('property_owner_info.property_id',$for_id);
 		return $this->db->update('property_owner_info', $postdata_update3);
+	}
+	public function updatePropertyStatus($action_id)
+	{
+		$this->db->query("update property set activation_flag = case when activation_flag = 'YES' then 'NO' when activation_flag = 'NO' then 'YES' else '' end where property_id = $action_id");
 	}
 }
 ?>

@@ -218,6 +218,7 @@
                         <h3>List</h3>
                         <div class="table-responsive">
 							<button id="viewId" class="btn btn-info" >View</button>
+							<button id="activation_flag_id" class="btn btn-success" >Inactivate</button>
 							
                             <table data-toggle="table" id="table-style" class="table table-bordered table-hover table-striped"
 							data-url="assets/json/Properties.json"    data-show-columns="true" data-show-toggle="true" 
@@ -267,25 +268,41 @@
 	$(document).ready(function()
 	{
 		$("#viewId").hide();
-		//$("#editId").hide();
-		//$("#deleteId").hide();
-		var json;
+		$("#activation_flag_id").hide();
+		//$("#deleteId").hide();  click-row.bs.table
+		var json,flag;
 		var checkedRows = [];
-		$('#table-style').bind('check.bs.table click-row.bs.table', function (e, row) {
+		$('#table-style').bind('check.bs.table', function (e, row) {
 			$.each(checkedRows, function(index, value) {
 				checkedRows.splice(index,1);
 			});
 			checkedRows.push({id: row.property_id});
 			$("#viewId").show();
-			//$("#editId").show();
-			//$("#deleteId").show();
+			$("#activation_flag_id").removeClass("btn-warning");
+			$("#activation_flag_id").addClass("btn-success");
+			$('#activation_flag_id').text("Inactivate");
+			if(row.activation_flag == 'YES')
+			{
+				flag = 'YES';
+				$("#activation_flag_id").show();
+			}
+			else
+			{
+				flag = 'NO';
+				$("#activation_flag_id").removeClass("btn-success");
+				$("#activation_flag_id").addClass("btn-warning");
+				$('#activation_flag_id').text("Activate");
+				$("#activation_flag_id").show();
+			}
 		});
 		$('#table-style').on('uncheck.bs.table', function (e, row) {
 			$.each(checkedRows, function(index, value) {
 				checkedRows.splice(index,1);
 				$("#viewId").hide();
-				//$("#editId").hide();
-				//$("#deleteId").hide();
+				$("#activation_flag_id").hide();
+				$("#activation_flag_id").removeClass("btn-warning");
+				$("#activation_flag_id").addClass("btn-success");
+				$('#activation_flag_id').text("Inactivate");
 			});
 		});
 		
@@ -302,33 +319,52 @@
 				}
 			});
 		});
-		/*$("#editId").click(function(){
-			json = JSON.stringify(checkedRows);
-			alert("edit "+json);
-			
-		});
-		$("#deleteId").click(function(){
-			json = JSON.stringify(checkedRows);
-			alert("delete "+json);
-			if(confirm("Are you sure?"))
+		$("#activation_flag_id").click(function(){
+			if(flag == 'YES')
 			{
-				alert("yse no action till..");
-				/*$.ajax({
-					type: "post",
-					url:"DeleteProperty/DeleteFun",
-					dataType: "json",
-					data:{id: json},
-					success: function(d){
-						//window.location='PropertyIndetail/loadIndetailView';
-					}
-				});*/
-			/*}
+				if(confirm("Do you really want to Inactivate the property...?"))
+				{
+					json = JSON.stringify(checkedRows);
+					//alert(json);
+					$.ajax({
+						type: "post",
+						url:"PropertyIndetail/UpdatePropertyStatus",
+						dataType: "json",
+						data:{action: json},
+						success: function(d){
+							alert("Inactivated");
+							window.location='DisplayProperty';
+						}
+					});
+				}
+				else
+				{
+					return false;
+				}
+			}
 			else
 			{
-				alert("no");
+				if(confirm("Do you really want to Activate the property...?"))
+				{
+					json = JSON.stringify(checkedRows);
+					//alert(json);
+					$.ajax({
+						type: "post",
+						url:"PropertyIndetail/UpdatePropertyStatus",
+						dataType: "json",
+						data:{action: json},
+						success: function(d){
+							alert("activated");
+							window.location='DisplayProperty';
+						}
+					});
+				}
+				else
+				{
+					return false;
+				}
 			}
-			
-		});*/
+		});
 	});
 	
 	</script>

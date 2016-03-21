@@ -157,7 +157,8 @@ class AddProperty extends CI_Controller {
 							'image_path' => $path,
 							'description' => $description,
 							'how_to_reach' => $how_to_reach,
-							'property_type_id' => $property_type
+							'property_type_id' => $property_type,
+							'activation_flag' => 'YES'
 						);
 		//
 		$postdata2 = array(				

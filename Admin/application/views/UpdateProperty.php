@@ -257,6 +257,8 @@
 											</div>
 										</div>
 										
+										<input class="form-control" type="hidden" name="activation_flag" value="<?php echo $activation_flag;?>">
+										
 										<div class="form-group">
 											<label class="control-label col-md-3" for="Bedrooms">Bedrooms</label>
 											<div class="col-md-7">

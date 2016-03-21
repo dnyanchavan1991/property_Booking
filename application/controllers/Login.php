@@ -42,6 +42,5 @@ class Login extends CI_Controller {
 		}
 		$response=array('count'=>$user_count);
 		echo json_encode($response); 
-			
 	}
 }

@@ -142,5 +142,11 @@ class PropertyIndetail extends CI_Controller {
 		$data = json_encode($response_data);
 		echo $data;
 	}
-	
+	public function UpdatePropertyStatus()
+	{
+		$sessionID = json_decode($_POST['action']);
+		$action_id = $sessionID[0]->id;
+		$this->SqlQueryModel->updatePropertyStatus($action_id);
+		echo "1";
+	}
 }

@@ -82,6 +82,7 @@ class UpdateProperty extends CI_Controller {
 		$longitude = $_POST['longitude'];
 		$description = $_POST['description'];
 		$how_to_reach = $_POST['how_to_reach'];
+		$activation_flag = $_POST['activation_flag'];
 		/*--end post property --*/
 		
 		/*--post property info--*/
@@ -184,8 +185,8 @@ class UpdateProperty extends CI_Controller {
 							'image_path' => $new_path,
 							'description' => $description,
 							'how_to_reach' => $how_to_reach,
-							'property_type_id' => $property_type
-							
+							'property_type_id' => $property_type,
+							'activation_flag' => $activation_flag
 						);
 		
 		/*-- property info--*/

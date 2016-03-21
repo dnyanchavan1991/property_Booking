@@ -76,7 +76,7 @@ app.controller('loginCtrl', function ($scope,$http) {
     	$http({
 	          method  : 'POST',
 	          url     : 'Login/authenticate/',
-	          data    : $scope.form, //forms user object
+	          data    : $scope.form //forms user object
 	         // datatype:"json"
 	          
 	         })

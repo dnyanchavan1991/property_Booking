@@ -56,7 +56,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<ul id="hiddenresponsive" class="nav1">
 						<li><a class="active" href="Index1" data-hover="HOME">HOME</a></li>											 
 						 <!--<li><a href="" id='modal-launcher' data-toggle="modal" data-target="#login-modal" data-hover="LOGIN">LOGIN</a></li> -->
-						 <li><a href="Login"   data-hover="LOGIN">LOGIN</a></li> 
+						 <li><a href="Login" data-hover="LOGIN">LOGIN</a></li> 
 					</ul>  
 				</nav>
 				<!-- script for menu -->
@@ -85,54 +85,41 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	
 	<!--</div>-->
 </div>
-<!-- //banner -->
-   
- 
-<!-- gallery -->
-
-	<div class="gallery"  >
-		<div class="container">
+<div class="gallery"  >
+	<div class="container">
+		<div class="col-md-6 col-md-offset-3">
 			<h3 class="tittle">Sign Up </h3>
-			<div   ng-controller="loginCtrl">
+			<div ng-controller="loginCtrl">
 				<form ng-submit="authenticateAdmin()">	 
-				<div class="form-group">
-		              		<input type="text" id="firstName" placeholder="First Name" ng-model="form.firstName" class="form-control login-field" required>
-							
-		              	</div>
-		              	<div class="form-group">
-		              		<input type="text" id=lastName placeholder="Last Name" ng-model="form.lastName" class="form-control login-field" required>
-							
-		              	</div>
-		              	<div class="form-group">
-		              		<input type="text" id="mobileNumber" placeholder="Mobile Number" ng-model="form.mobileNumber" class="form-control login-field" required>
-							
-		              	</div>
-	        			<div class="form-group">
-		              		<input type="text" id="username" placeholder="Username" ng-model="form.username" class="form-control login-field" required>
-							
-		              	</div>
-		
-		            	<div class="form-group">
-		            	  	<input type="password" id="login-pass" placeholder="Password" ng-model="form.password" class="form-control login-field" required>
-		              	</div>
-						
-		                <div class="form-group">
-		            	  	<input type="hidden" name="access_type" id="access_type"  ng-model="form.access_type" value="user" ng_init="form.access_type='user'" class="form-control login-field" >
-		              	</div>
-						
-						<div class="form-group">
-							<button  id="lgnBtn" class="btn btn-success modal-login-btn">Sign Up</button>
-							
-						</div>
-						<div class="form-group">
-							<a id="signUp_status_text" onClick="toggleFields()" style="cursor: hand">Already have an account? Login!</a>							
-						</div>
-						
-						</form>	
-	        		</div> 
-		</div>
-		
-	</div>
+					<div class="form-group">
+						<input type="text" id="firstName" placeholder="First Name" ng-model="form.firstName" class="form-control login-field" required>
+					</div>
+					<div class="form-group">
+						<input type="text" id="lastName" placeholder="Last Name" ng-model="form.lastName" class="form-control login-field" required>
+					</div>
+					<div class="form-group">
+						<input type="text" id="mobileNumber" placeholder="Mobile Number" ng-model="form.mobileNumber" class="form-control login-field" required>
+					</div>
+					<div class="form-group">
+						<input type="text" id="username" placeholder="Username" ng-model="form.username" class="form-control login-field" required>
+					</div>
+					<div class="form-group">
+						<input type="password" id="login-pass" placeholder="Password" ng-model="form.password" class="form-control login-field" required>
+					</div>
+					<div class="form-group">
+						<input type="hidden" name="access_type" id="access_type" ng-model="form.access_type" ng_init="form.access_type='user'">
+					</div>
+					<div class="form-group">
+						<button  id="lgnBtn" class="btn btn-success modal-login-btn">Sign Up</button>
+					</div>
+					<div class="form-group">
+						<a id="signUp_status_text" onClick="toggleFields()" style="cursor: pointer;">Already have an account? Login!</a>							
+					</div>
+				</form>	
+			</div> 
+		</div>	
+	</div>	
+</div>
 
 <!-- //gallery -->
 <!--footer-->

@@ -108,9 +108,10 @@
                         <h3>List</h3>
                         <div class="table-responsive">
 							<button id="viewId" class="btn btn-info" >View</button>
+							<button id="activation_flag_id" class="btn btn-success" >Inactivate</button>
 							
                             <table data-toggle="table" id="table-style" class="table table-bordered table-hover table-striped"
-							data-url="assets/json/Properties.json"   data-show-columns="true" data-show-toggle="true" 
+							data-url="" data-show-columns="true" data-show-toggle="true" 
 							data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="PropertyId" data-strict-search="true" 
 							data-sort-order="desc" data-single-select="true" data-click-to-select="true" data-maintain-selected="true">
                                 <thead>
@@ -148,6 +149,13 @@
     <!-- Morris Charts JavaScript -->
     
 	<script type="text/javascript">
+	$(function () {
+		$('#table-style').bootstrapTable(); // init via javascript
+
+		$(window).resize(function () {
+			$('#table-style').bootstrapTable('resetView');
+		});
+	});
 	$(document).ready(function()
 	{
 		$("#property_list").hide();
@@ -156,26 +164,47 @@
 			url:"DisplayProperty/listOnIndexPage",
 			success: function(d){
 				$("#property_list").show();
+				$('#table-style').bootstrapTable('refresh', {
+					url: 'assets/json/Properties.json',
+					silent: true
+				});
 				$("#viewId").hide();
+				$("#activation_flag_id").hide();
 			}
 		});
-		var json;
+		var json,flag;
 		var checkedRows = [];
-		$('#table-style').bind('check.bs.table click-row.bs.table', function (e, row) {
+		$('#table-style').bind('check.bs.table', function (e, row) {
 			$.each(checkedRows, function(index, value) {
 				checkedRows.splice(index,1);
 			});
 			checkedRows.push({id: row.property_id});
 			$("#viewId").show();
-			//$("#editId").show();
-			//$("#deleteId").show();
+			$("#activation_flag_id").removeClass("btn-warning");
+			$("#activation_flag_id").addClass("btn-success");
+			$('#activation_flag_id').text("Inactivate");
+			if(row.activation_flag == 'YES')
+			{
+				flag = 'YES';
+				$("#activation_flag_id").show();
+			}
+			else
+			{
+				flag = 'NO';
+				$("#activation_flag_id").removeClass("btn-success");
+				$("#activation_flag_id").addClass("btn-warning");
+				$('#activation_flag_id').text("Activate");
+				$("#activation_flag_id").show();
+			}
 		});
 		$('#table-style').on('uncheck.bs.table', function (e, row) {
 			$.each(checkedRows, function(index, value) {
 				checkedRows.splice(index,1);
 				$("#viewId").hide();
-				//$("#editId").hide();
-				//$("#deleteId").hide();
+				$("#activation_flag_id").hide();
+				$("#activation_flag_id").removeClass("btn-warning");
+				$("#activation_flag_id").addClass("btn-success");
+				$('#activation_flag_id').text("Inactivate");
 			});
 		});
 		
@@ -192,7 +221,52 @@
 				}
 			});
 		});
-		 
+		$("#activation_flag_id").click(function(){
+			if(flag == 'YES')
+			{
+				if(confirm("Do you really want to Inactivate the property...?"))
+				{
+					json = JSON.stringify(checkedRows);
+					//alert(json);
+					$.ajax({
+						type: "post",
+						url:"PropertyIndetail/UpdatePropertyStatus",
+						dataType: "json",
+						data:{action: json},
+						success: function(d){
+							alert("Inactivated...!");
+							window.location='Admin';
+						}
+					});
+				}
+				else
+				{
+					return false;
+				}
+			}
+			else
+			{
+				if(confirm("Do you really want to Activate the property...?"))
+				{
+					json = JSON.stringify(checkedRows);
+					//alert(json);
+					$.ajax({
+						type: "post",
+						url:"PropertyIndetail/UpdatePropertyStatus",
+						dataType: "json",
+						data:{action: json},
+						success: function(d){
+							alert("activated...!");
+							window.location='Admin';
+						}
+					});
+				}
+				else
+				{
+					return false;
+				}
+			}
+		}); 
 	});
 	</script>
 </body>

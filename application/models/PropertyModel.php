@@ -366,6 +366,7 @@ class PropertyModel extends CI_Model {
 		$propertyTable = 'property';
 		$this->db->select ( 'property_id,image_path,property_name,description' );
 		$this->db->from ( $propertyTable );
+		$this->db->where ( 'activation_flag', 'YES');
 		$this->db->order_by ( 'rand()' );
 		$this->db->limit ( 6 );
 		$query = $this->db->get ();
