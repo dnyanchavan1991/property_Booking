@@ -828,7 +828,7 @@ background:#E7D6A3;
   cursor: default;
 }
 .view .mask,.view .content {
-     width: 100%;
+   width: 100%;
    height: 200px;
    position: absolute;
    overflow: hidden;

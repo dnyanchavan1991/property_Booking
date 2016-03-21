@@ -133,59 +133,64 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="tab-content">
 						<!-- Description-->
 						<div id="tab1" class="tab active">
-							<p>
-								<?php echo  nl2br($propertyDescription); ?>
-							</p>
-							<br/>
-							<h3> The Property </h3>
+							<p><?php echo nl2br($propertyDescription);?></p>
+							<div class="page-header" style="margin: 25px 0 15px;">
+								<h4> The Property </h4>
+							</div>
 							<p>
 								<ul>
 									<li style=" float: left"> 
-										Type :
+										Type : abc &nbsp;
 									</li>
 									<li style="  float: left"> 
-										Bedrooms : <?php echo  nl2br($bedrooms); ?>
+										Bedrooms : <?php echo  nl2br($bedrooms); ?> &nbsp;
 									</li>
 									<li style=" float: left"> 
-										Bathrooms : <?php echo  nl2br($bathrooms); ?>
+										Bathrooms : <?php echo  nl2br($bathrooms); ?> &nbsp;
 									</li>
 									<li style="  float: left"> 
-										Accommodates : <?php echo  $accommodates; ?>
+										Accommodates : <?php echo  $accommodates; ?> &nbsp;
 									</li>
 								</ul>
-								<br/><br/>
-								<h3>Amenities </h3>
-								
+							</p>
+							<br>
+							<div class="page-header" style="margin: 25px 0 15px;">
+								<h4> Amenities </h4>
+							</div>
+							<p>
 								<ul>
-									<li style="float: left; padding: 10px"> 
-										Swimming Pool : <?php echo  nl2br($pool); ?>
+									<li style="float: left; "> 
+										Swimming Pool : <?php echo  nl2br($pool); ?> &nbsp;
 									</li>
-									<li style="  float: left; padding: 10px"> 
-										Food : <?php echo  nl2br($meals); ?>
+									<li style="  float: left; "> 
+										Food : <?php echo  nl2br($meals); ?> &nbsp;
 									</li>
-									<li style="  float: left; padding: 10px"> 
-										Internet Access  : <?php echo  nl2br($internet_access); ?>
+									<li style="  float: left; "> 
+										Internet Access  : <?php echo  nl2br($internet_access); ?> &nbsp;
 									</li> 
-								</ul><br/><br/>
+								</ul>
+							</p>
+							
+							<p>
 								<ul>
-									<li style="  float: left: padding: 10px"> 
-										television : <?php echo  $television; ?>
+									<li style="  float: left;"> 
+										television : <?php echo  $television; ?> &nbsp;
 									</li>
-									<li style="  float: left; padding: 10px"> 
-										Pets Allowed : <?php echo  nl2br($pet_friendly); ?>
+									<li style="  float: left;"> 
+										Pets Allowed : <?php echo  nl2br($pet_friendly); ?> &nbsp;
 									</li>
-									<li style="  float: left: padding: 10px"> 
-										Air Conditioned : <?php echo  $air_condition; ?>
+									<li style="  float: left;"> 
+										Air Conditioned : <?php echo  $air_condition; ?> &nbsp;
 									</li>
 									
-									<li style="  float: left; padding: 10px"> 
-										In-House Kitchen : <?php echo  $in_house_kitchen; ?>
+									<li style="  float: left;"> 
+										In-House Kitchen : <?php echo  $in_house_kitchen; ?> &nbsp;
 									</li>
-									<li style="  float: left"> 
-										Other Amenities : <?php echo  nl2br($other_amenities); ?>
+									<li style="  float: left;"> 
+										Other Amenities : <?php echo  nl2br($other_amenities); ?> &nbsp;
 									</li>
-									<li style="  float: left"> 
-										Leisure Activities : <?php echo  nl2br($leisureActivities); ?>
+									<li style="  float: left;"> 
+										Leisure Activities : <?php echo  nl2br($leisureActivities); ?> &nbsp;
 									</li>
 								</ul> 
 							</p>

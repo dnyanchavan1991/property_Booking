@@ -351,11 +351,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				ng-repeat="imageData in imageSrc">
 				<div class="gal-grid">
 					<div class="view view-fifth">
-						<div
-							class="b-link-stripe b-animate-go thickbox"
-							title="{{imageData.property_name}}"
-							style="text-decoration: none;"> <img
-							ng-src="{{imageData.image}}" alt="" class="img-responsive" style="height: 100%;width: 100%;">
+						<div class="b-link-stripe b-animate-go thickbox" title="{{imageData.property_name}}" style="text-decoration: none;"> 
+							<img ng-src="{{imageData.image}}" alt="" class="img-responsive" style="height: 100%;width: 100%;">
 							<div class="mask">
 								<h4>{{imageData.property_name}}</h4>
 								<p>{{imageData.property_description | limitTo:70}}
@@ -367,14 +364,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="clearfix"></div>
 				</div>&nbsp;
 
-				<script src="js/jquery.chocolat.js"></script>
+				<!--<script src="js/jquery.chocolat.js"></script>
 
-				<!--light-box-files -->
+				<!--light-box-files 
 				<script type="text/javascript">
 					$(function() {
 						$('.gallery a').Chocolat();
 					});
-				</script>
+				</script>-->
 			</div>
 		</div>
 		
