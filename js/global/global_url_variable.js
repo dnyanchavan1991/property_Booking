@@ -1,1 +1,1 @@
-login_url='http://localhost:8081/propertyBook/login'
+login_url='Login';
