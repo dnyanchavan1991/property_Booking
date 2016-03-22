@@ -12,11 +12,11 @@ class Registration extends CI_Controller {
 		$registerInfo = array (
 				'user_name' => $post->username,
 				'password' => $post->password,
-				'first_name' => $post->fname,
-				'last_name' => $post->lname,
-				'mobile_number'=>$post->phone,
-				'email_address'=>$post->email,
-				'address'=>$post->address
+				'first_name' => $post->firstName,
+				'last_name' => $post->lastName,
+				'mobile_number'=>$post->mobileNumber,
+				'email_address'=>$post->email
+				
 				
 					
 		);

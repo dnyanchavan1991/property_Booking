@@ -9,6 +9,13 @@ class Redirecting extends CI_Controller {
 	public function index(){
 		
 		$controller=$this->session->userdata ( 'controller');
-		header("location:$controller");
+		if($this->session->userdata ( 'access_type')=='admin'){
+			header("location:Admin/Admin/setLoginSession");
+			
+		}
+		else{
+			header("location:$controller");
+		}
+		
 	}
 }

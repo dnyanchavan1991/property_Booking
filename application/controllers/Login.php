@@ -7,6 +7,7 @@ class Login extends CI_Controller {
 	}
 	public function index() {
 		$this->session->set_userdata ( 'controller', $_POST['page']);
+		//echo'sds'. $this->session->set_userdata ( 'controller', $_POST['page']);;
 		$this->load->view ( 'login.html' );
 	}
 	public function authenticate() {
@@ -16,6 +17,7 @@ class Login extends CI_Controller {
 		$username=$post->username;
 		$password=$post->password;
 		$accesstype=$post->access_type;
+		$this->session->set_userdata ( 'acessType',$post->access_type);
 		$this->session->set_userdata('call_back_url',$post->call_back_url);
 		$user_count = 0;
 		if ($username == "admin" && $password == "admin")
@@ -44,4 +46,5 @@ class Login extends CI_Controller {
 		$response=array('count'=>$user_count);
 		echo json_encode($response); 
 	}
+	
 }
