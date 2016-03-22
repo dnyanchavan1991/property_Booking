@@ -87,7 +87,7 @@ app.controller('loginCtrl', function ($scope,$http) {
 	        	  } else{
 					     alert('Login successful.');					     
 					    // $this->session->set_userdata('call_back_url', window.location);
-	        		    window.location.href='Admin/Admin/setLoginSession';
+	        		     window.location.href='Redirecting';
 	        	  }
 	          });
     	
