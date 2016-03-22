@@ -6,7 +6,8 @@ class Login extends CI_Controller {
 		$this->load->library('session');
 	}
 	public function index() {
-			$this->load->view ( 'login.html' );
+		$this->session->set_userdata ( 'controller', $_POST['page']);
+		$this->load->view ( 'login.html' );
 	}
 	public function authenticate() {
 		$this->load->model ( 'PropertyModel' );
