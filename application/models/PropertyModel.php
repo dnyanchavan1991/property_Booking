@@ -126,10 +126,18 @@ class PropertyModel extends CI_Model {
 		return $query;
 	}
 	public function getPropertyInfoDetail($propertyId) {
-		$this->db->select ( 'bedrooms, bathrooms, pool, meals, internet_access, television_access as television, pet_friendly, air_condition, in_house_kitchen, other_amenities, leisureActivities, accommodates,   ' );
-		$query = $this->db->get_where ( 'property_info', array (
-				'property_id' => $propertyId 
-		) );
+		$this->db->select ( 'property_type_id, bedrooms, bathrooms, pool, meals, internet_access, television_access as television, pet_friendly, air_condition, in_house_kitchen, other_amenities, leisureActivities, accommodates,   ' );
+		$this->db->from ( "property" );
+		$this->db->join ( "property_info", "property.property_id = property_info.property_id" );
+		$this->db->where("property_info.property_id = $propertyId");
+		$query = $this->db->get();
+		return $query;
+	}
+	public function getPropertyType($property_type) {
+		$this->db->select ("property_type_name");
+		$this->db->from ( "property_type" );
+		$this->db->where("property_type_id = $property_type");
+		$query = $this->db->get();
 		return $query;
 	}
 	public function getlatlongById($byid) {

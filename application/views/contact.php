@@ -134,69 +134,91 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<!-- Description-->
 						<div id="tab1" class="tab active">
 							<p><?php echo nl2br($propertyDescription);?></p>
-							<div class="page-header" style="margin: 25px 0 15px;">
-								<h4> The Property </h4>
+							<div class="panel panel-default">
+								<div class="panel-heading"><i class="glyphicon glyphicon-ok-circle"></i> The Property</div>
+									<div class="panel-body">
+										<p>
+											<ul>
+												<li style=" float: left"> 
+													Type : <?php echo  nl2br($property_type); ?> &nbsp;
+												</li>
+												<li style="  float: left"> 
+													Bedrooms : <?php echo  nl2br($bedrooms); ?> &nbsp;
+												</li>
+												<li style=" float: left"> 
+													Bathrooms : <?php echo  nl2br($bathrooms); ?> &nbsp;
+												</li>
+												<li style="  float: left"> 
+													Accommodates : <?php echo  $accommodates; ?> &nbsp;
+												</li>
+											</ul>
+										</p>
+									</div>
 							</div>
-							<p>
-								<ul>
-									<li style=" float: left"> 
-										Type : abc &nbsp;
-									</li>
-									<li style="  float: left"> 
-										Bedrooms : <?php echo  nl2br($bedrooms); ?> &nbsp;
-									</li>
-									<li style=" float: left"> 
-										Bathrooms : <?php echo  nl2br($bathrooms); ?> &nbsp;
-									</li>
-									<li style="  float: left"> 
-										Accommodates : <?php echo  $accommodates; ?> &nbsp;
-									</li>
-								</ul>
-							</p>
-							<br>
-							<div class="page-header" style="margin: 25px 0 15px;">
-								<h4> Amenities </h4>
+							<div class="panel panel-default">
+								<div class="panel-heading"><i class="glyphicon glyphicon-ok-circle"></i> Amenities</div>
+									<div class="panel-body">
+										<p>
+											<ul>
+												<li style="float: left; "> 
+													Swimming Pool : <?php if($pool == "Yes"){?>
+																		<img src="images/Yes_tick.gif" style="height: 20px;width: 20px;">
+																	<?php } else{?>
+																		<img src="images/No_tick.png" style="height: 15px;width: 15px;">
+																	<?php } ?> &nbsp;
+												</li>
+												<li style="  float: left; "> 
+													Internet Access : <?php if($internet_access == "Yes"){?>
+																		<img src="images/Yes_tick.gif" style="height: 20px;width: 20px;">
+																	<?php } else{?>
+																		<img src="images/No_tick.png" style="height: 15px;width: 15px;">
+																	<?php } ?> &nbsp;
+												</li>
+												<li style="  float: left; "> 
+													Television : <?php if($television == "Yes"){?>
+																		<img src="images/Yes_tick.gif" style="height: 20px;width: 20px;">
+																	<?php } else{?>
+																		<img src="images/No_tick.png" style="height: 15px;width: 15px;">
+																	<?php } ?> &nbsp;
+												</li> 												
+												<li style="  float: left; "> 
+													Pets Allowed : <?php if($pet_friendly == "Yes"){?>
+																		<img src="images/Yes_tick.gif" style="height: 20px;width: 20px;">
+																	<?php } else{?>
+																		<img src="images/No_tick.png" style="height: 15px;width: 15px;">
+																	<?php } ?> &nbsp;
+												</li> 	
+												<li style="  float: left; "> 
+													Air Conditioned : <?php if($air_condition == "Yes"){?>
+																		<img src="images/Yes_tick.gif" style="height: 20px;width: 20px;">
+																	<?php } else{?>
+																		<img src="images/No_tick.png" style="height: 15px;width: 15px;">
+																	<?php } ?> &nbsp;
+												</li> 
+												<li style="  float: left; "> 
+													In-House Kitchen : <?php if($in_house_kitchen == "Yes"){?>
+																		<img src="images/Yes_tick.gif" style="height: 20px;width: 20px;">
+																	<?php } else{?>
+																		<img src="images/No_tick.png" style="height: 15px;width: 15px;">
+																	<?php } ?> &nbsp;
+												</li> 
+											</ul>
+										</p>
+										<p>
+											<ul>
+												<li style="  float: left; "> 
+														Food : <?php echo  nl2br($meals); ?> &nbsp;
+												</li>
+												<li style="  float: left;"> 
+													Other Amenities : <?php echo  nl2br($other_amenities); ?> &nbsp;
+												</li>
+												<li style="  float: left;"> 
+													Leisure Activities : <?php echo  nl2br($leisureActivities); ?> &nbsp;
+												</li>
+											</ul> 
+										</p>
+									</div>
 							</div>
-							<p>
-								<ul>
-									<li style="float: left; "> 
-										Swimming Pool : <?php echo  nl2br($pool); ?> &nbsp;
-									</li>
-									<li style="  float: left; "> 
-										Food : <?php echo  nl2br($meals); ?> &nbsp;
-									</li>
-									<li style="  float: left; "> 
-										Internet Access  : <?php echo  nl2br($internet_access); ?> &nbsp;
-									</li> 
-								</ul>
-							</p>
-							
-							<p>
-								<ul>
-									<li style="  float: left;"> 
-										television : <?php echo  $television; ?> &nbsp;
-									</li>
-									<li style="  float: left;"> 
-										Pets Allowed : <?php echo  nl2br($pet_friendly); ?> &nbsp;
-									</li>
-									<li style="  float: left;"> 
-										Air Conditioned : <?php echo  $air_condition; ?> &nbsp;
-									</li>
-									
-									<li style="  float: left;"> 
-										In-House Kitchen : <?php echo  $in_house_kitchen; ?> &nbsp;
-									</li>
-									<li style="  float: left;"> 
-										Other Amenities : <?php echo  nl2br($other_amenities); ?> &nbsp;
-									</li>
-									<li style="  float: left;"> 
-										Leisure Activities : <?php echo  nl2br($leisureActivities); ?> &nbsp;
-									</li>
-								</ul> 
-							</p>
-						  
-							 
-						 
 						</div>
 						<!-- Description-->
 						
