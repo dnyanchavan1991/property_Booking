@@ -76,8 +76,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<ul id="hiddenresponsive" class="nav1">
 						<li><a class="active" href="Index1" data-hover="HOME">HOME</a></li>											 
 						 <!--<li><a href="" id='modal-launcher' data-toggle="modal" data-target="#login-modal" data-hover="LOGIN">LOGIN</a></li> -->
-						 <li><a  href="" id='modal-launcher' data-toggle="modal" data-target="#login-modal" data-hover="LOGIN" onClick="checkLogin('RoomAvailability')">LOGIN</a></li>
-						
+							 <li><a href="#"   data-hover="LOGIN" onClick="checkLogin('Index1')">LOGIN</a></li> 			
 					</ul>  
 				</nav>
 				<!-- script for menu -->
@@ -92,12 +91,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			<div class="social-icons">
 				<ul>
-					<li style="margin-right: 4%;"><a href="Index1/RedirectToAdmin" style="color: white;;font-size: 19px;">Admin</a></li>
 					<li><a href="#" class="f1"></a></li>
 					<li><a href="#" class="f2"></a></li>
 					<li><a href="#" class="f3"></a></li>
 					<li><a href="#" class="f4"></a></li>
-					
 				</ul>
 			</div>
 			<div class="clearfix"></div>
@@ -356,8 +353,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				ng-repeat="imageData in imageSrc">
 				<div class="gal-grid">
 					<div class="view view-fifth">
-						<div class="b-link-stripe b-animate-go thickbox" title="{{imageData.property_name}}" style="text-decoration: none;"> 
-							<img ng-src="{{imageData.image}}" alt="" class="img-responsive" style="height: 100%;width: 100%;">
+						<div
+							class="b-link-stripe b-animate-go thickbox"
+							title="{{imageData.property_name}}"
+							style="text-decoration: none;"> <img
+							ng-src="{{imageData.image}}" alt="" class="img-responsive" style="height: 100%;width: 100%;">
 							<div class="mask">
 								<h4>{{imageData.property_name}}</h4>
 								<p>{{imageData.property_description | limitTo:70}}
@@ -369,14 +369,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="clearfix"></div>
 				</div>&nbsp;
 
-				<!--<script src="js/jquery.chocolat.js"></script>
+				<script src="js/jquery.chocolat.js"></script>
 
-				<!--light-box-files 
+				<!--light-box-files -->
 				<script type="text/javascript">
 					$(function() {
 						$('.gallery a').Chocolat();
 					});
-				</script>-->
+				</script>
 			</div>
 		</div>
 		

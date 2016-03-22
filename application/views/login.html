@@ -101,6 +101,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<input type="text" id="mobileNumber" placeholder="Mobile Number" ng-model="form.mobileNumber" class="form-control login-field" required>
 					</div>
 					<div class="form-group">
+						<input type="text" id="email" placeholder="email" ng-model="form.email" class="form-control login-field" required>
+					</div>
+					<div class="form-group">
 						<input type="text" id="username" placeholder="Username" ng-model="form.username" class="form-control login-field" required>
 					</div>
 					<div class="form-group">
@@ -173,17 +176,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- //for bootstrap working -->
 <!-- smooth scrolling -->
 	<script type="text/javascript">
-	function toggleFields(){
+		function toggleFields(){
 		//alert('here');
 		$('#firstName').toggle();
 		$('#lastName').toggle();
 		$('#mobileNumber').toggle();
+		$('#email').toggle();
 		 
 		if ($('#signUp_status_text').text() == "Already have an account? Login!") {
 			$('#signUp_status_text').text("Don't have an account? Sign Up!");
 			 $("#firstName").attr("disabled", "disabled");  
 			  $("#lastName").attr("disabled", "disabled"); 
 			  $("#mobileNumber").attr("disabled", "disabled");
+			  $("#email").attr("disabled", "disabled");
 			
 			$('#lgnBtn').text("Login");
 		} else{
@@ -192,6 +197,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			 $("#firstName").removeAttr("disabled");
 	            $("#lastName").removeAttr("disabled");
 	            $("#mobileNumber").removeAttr("disabled");
+	            $("#email").removeAttr("disabled");
 	        
 			}
 	}
