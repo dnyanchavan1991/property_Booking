@@ -15,10 +15,8 @@ class Logout extends CI_Controller {
 	}
 	public function viewSite()
 	{
-		$this->session->unset_userdata('user_name');
-		$this->session->unset_userdata('access_type');
-		$this->session->unset_userdata('authenticate');
-		echo "<meta http-equiv='refresh' content='0;url=../'>";	
+		//echo "<meta http-equiv='refresh' content='0;url=../'>";	
+		header("location: ../../");
 	}
 }
 ?>

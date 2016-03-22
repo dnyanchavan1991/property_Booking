@@ -105,13 +105,13 @@
                 <!-- /.row -->
 				<div class="row" id="property_list">
                     <div class="col-lg-6">
-                        <h3>List</h3>
+                        <h3 style="display: inline-block;">List</h3><i>&nbsp;&nbsp;(The properties listed in <span style="color:red;">red</span> color are inactive)</i>
                         <div class="table-responsive">
 							<button id="viewId" class="btn btn-info" >View</button>
 							<button id="activation_flag_id" class="btn btn-success" >Inactivate</button>
 							
                             <table data-toggle="table" id="table-style" class="table table-bordered table-hover table-striped"
-							data-url="" data-show-columns="true" data-show-toggle="true" 
+							data-url="" data-show-columns="true" data-show-toggle="true" data-row-style="rowStyle"
 							data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="PropertyId" data-strict-search="true" 
 							data-sort-order="desc" data-single-select="true" data-click-to-select="true" data-maintain-selected="true">
                                 <thead>
@@ -156,6 +156,15 @@
 			$('#table-style').bootstrapTable('resetView');
 		});
 	});
+	function rowStyle( row, index) {
+		if (row.activation_flag == 'NO') {
+			return {
+				classes: 'danger',
+				css: {"color": "red"}
+			};
+		}
+		return {};
+	}
 	$(document).ready(function()
 	{
 		$("#property_list").hide();
@@ -172,6 +181,7 @@
 				$("#activation_flag_id").hide();
 			}
 		});
+		
 		var json,flag;
 		var checkedRows = [];
 		$('#table-style').bind('check.bs.table', function (e, row) {

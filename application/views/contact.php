@@ -228,21 +228,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									}?>
 								</ul>
 							</div>
-							<script>
-							$(function() {
-								var demo1 = $("#slides").slippry({
-									 transition: 'horizontal'
-									// useCSS: true,
-									// speed: 1000,
-									// pause: 3000,
-									// auto: true,
-									// preload: 'visible',
-									// autoHover: false
-								});
-							});
-							</script>
 						</div>
-					
+						<script>
+						$(document).ready(function(){
+							$("a[href='#tab2']").click(function(){
+								var demo1 = $("#slides").slippry({
+								transition: 'horizontal'
+								//useCSS: true,
+								//speed: 1000,
+								//pause: 3000,
+								//auto: true,
+								//preload: 'visible',
+								//autoHover: false
+							});
+							});
+						});
+						</script>
 						<div id="tab4" class="tab">
 						<?php 
 						foreach($rentresult as $row)

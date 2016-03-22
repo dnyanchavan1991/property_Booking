@@ -4,6 +4,7 @@ class Index1 extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('PropertyModel');
+		$this->load->library('session');
 	}
 
 	public function index() {
@@ -23,7 +24,7 @@ class Index1 extends CI_Controller {
 		echo json_encode( $list);
 	}
 	
-	public  function galleryImgFetch(){
+	public function galleryImgFetch(){
 		$getImgData = $this->PropertyModel->galleryImgFetch();
 		$i=0;
 		$list = array();
@@ -46,6 +47,13 @@ class Index1 extends CI_Controller {
 			}
 		}
 		echo json_encode( $list);
-	
+	}
+	public function RedirectToAdmin() {
+		if ($this->session->userdata('user_id') && $this->session->userdata('access_type') == 'admin') { 
+			header("location: ../Admin");
+		} else {
+			echo "<script>alert('You are not logged in');</script>";
+			echo "<meta http-equiv='refresh' content='0;url=../'>";
+		}
 	}
 }
