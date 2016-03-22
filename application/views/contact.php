@@ -551,15 +551,29 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			});
 		});
 		
-		function checkLogin() {
+	function checkLogin() {
 			var name = $("#customer_name").val();
 			if(name !='') {
 				return true;
 			} else {
 				alert("Please login to book the property...!");
-				//return false;
-				window.location.href = "Login";
+				var form = $(document.createElement('form'));
+				$(form).attr("action",login_url);
+				$(form).attr("method", "POST");
+
+				var input = $("<input>")
+				    .attr("type", "text")
+				    .attr("name", "page")
+				    .val("BookProperty" );
+
+
+				$(form).append($(input));
+
+				form.appendTo( document.body )
+
+				$(form).submit();
 				return false;
+				
 			}
 		}
 	</script>
