@@ -1,9 +1,10 @@
-public function  checkLogin(page){
+function  checkLogin(page){
+	
 	var name = '';
 	if(name !='') {
 		return true;
 	} else {
-		alert("Please login to book the property...!");
+		
 		var form = $(document.createElement('form'));
 		$(form).attr("action",login_url);
 		$(form).attr("method", "POST");
@@ -19,8 +20,11 @@ public function  checkLogin(page){
 		form.appendTo( document.body )
 
 		$(form).submit();
+		
+		
 		return false;
 		
 	}
 }
 	
+
