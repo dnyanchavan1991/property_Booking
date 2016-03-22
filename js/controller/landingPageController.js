@@ -73,9 +73,19 @@ app.controller('loginCtrl', function ($scope,$http) {
     $scope.authenticateAdmin=function()
     {
     	$scope.form.call_back_url = window.location;
+    	if($scope.form.firstName==null && $scope.form.lastName==null  && $scope.form.mobileNumber==null  && $scope.form.email==null)
+    	{
+    		var webUrl='Login/authenticate/';
+    			var successMessage='Login successful.';
+    			
+    	}
+    	else{
+    		var webUrl=' Registration/insertRegistrationData/';
+    		var successMessage='Registeration successful.';
+    	}
     	$http({
 	          method  : 'POST',
-	          url     : 'Login/authenticate/',
+	          url     : webUrl,
 	          data    : $scope.form //forms user object
 	         // datatype:"json"
 	          
@@ -85,9 +95,12 @@ app.controller('loginCtrl', function ($scope,$http) {
 	        	  if(data.count == 0){
 	        		  alert('Please Enter Valid Username & Password.');
 	        	  } else{
-					     alert('Login successful.');					     
-					    // $this->session->set_userdata('call_back_url', window.location);
-	        		     window.location.href='Redirecting';
+					     alert(successMessage);					     
+					   if($scope.form.firstName==null){
+	        		     window.location.href='Redirecting';}
+					   else{
+						   window.location.href='Index1';
+					   }
 	        	  }
 	          });
     	
