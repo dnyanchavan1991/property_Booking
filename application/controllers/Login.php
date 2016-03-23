@@ -38,7 +38,8 @@ class Login extends CI_Controller {
 				'logged_in_dateTime'=>date("y-m-d h:i:s")
 					
 			);
-			$this->PropertyModel->insertLoginData ($loginDetailsArray);
+			$last_id = $this->PropertyModel->insertLoginData ($loginDetailsArray);
+			$this->session->set_userdata('last_user_id', $last_id);
 			$this->session->set_userdata('user_id', $user_id);
 			$this->session->set_userdata('user_name', $username);
 			$this->session->set_userdata('access_type', $accesstype);

@@ -1,5 +1,4 @@
 function  checkLogin(page){
-	
 	var name = '';
 	if(name !='') {
 		return true;

@@ -368,6 +368,12 @@ class PropertyModel extends CI_Model {
 	public function insertLoginData($loginData) {
 		$loginTable = 'login';
 		$query = $this->db->insert ( $loginTable, $loginData );
+		$lastId = $this->db->insert_id ();
+		return $lastId;
+	}
+	public function deleteLoginUser($last_user_id) {
+		$this->db->where('login_id', $last_user_id);
+		$this->db->delete('login'); 
 	}
 	/* this function used to fetch proprty images randomly */
 	public function galleryImgFetch() {
