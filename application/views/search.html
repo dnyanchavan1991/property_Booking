@@ -263,9 +263,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									type
 							</a>
 								<ul>
-									<li class="subitem1"><input id="restart" type="checkbox"></input> Resort</li>
-									<li class="subitem2"><input id="restart" type="checkbox"></input> Hostel</li>
-									<li class="subitem3"><input id="restart" type="checkbox"></input>Apartment</li>
+									<li ng-repeat=" propertyTypeListLabel in propertyTypeNames"><input
+										id={{propertyTypeListLabel.propertyTypeId}} type="checkbox"
+										ng-model="propertyTypeListLabel.selected"
+										ng-change="isLabelChecked('PropertyType')">{{propertyTypeListLabel.propertyTypeName}}
+									</li>
+									
 								</ul></li>
 						</ul>
 						<!-- script for tabs -->
