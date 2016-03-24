@@ -47,7 +47,7 @@ class AddProperty extends CI_Controller {
 		{
 			$files="";
 			$temp="";
-			$path = "Property gallery/$PropertyName".mt_rand()."/";
+			$path = "Property gallery/".time()."/";
 			mkdir($path);
 			/*--upload main img--*/
 			$exetention = explode(".", $fdata_mainImg["name"]);

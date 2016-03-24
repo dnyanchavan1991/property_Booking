@@ -76,8 +76,8 @@ class UpdateProperty extends CI_Controller {
 		}
 		
 		/*-- remane directory --*/
-		$new_path = "Property gallery/$PropertyName".mt_rand()."/";
-		rename($old_path,$new_path);
+		//$new_path = "Property gallery/$PropertyName".mt_rand()."/";
+		//rename($old_path,$new_path);
 		$latitude = $_POST['latitude'];
 		$longitude = $_POST['longitude'];
 		$description = $_POST['description'];
@@ -182,7 +182,7 @@ class UpdateProperty extends CI_Controller {
 							'postal_code' => $PostalCode,
 							'star_rate' => $StarRate,
 							'state' => $State,
-							'image_path' => $new_path,
+							'image_path' => $old_path,
 							'description' => $description,
 							'how_to_reach' => $how_to_reach,
 							'property_type_id' => $property_type,
