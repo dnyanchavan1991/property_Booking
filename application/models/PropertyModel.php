@@ -46,38 +46,55 @@ class PropertyModel extends CI_Model {
 			
 			if (sizeof ( $filterData->selectedstarRateList ) != 0) {
 				
-				$where = "(";
+				$starRateWhere = "(";
 				foreach ( $filterData->selectedstarRateList as $starList ) {
 					// $this->db->or_where('property.star_rate', $starList->name);
-					$where = $where . "property.star_rate=" . $starList->name;
+						$starRateWhere = 	$starRateWhere. "property.star_rate=" . $starList->name;
 					if ($i <= (sizeof ( $filterData->selectedstarRateList ) - 2)) {
-						$where = $where . " or ";
+							$starRateWhere = 	$starRateWhere . " or ";
 					} else {
-						$where = $where . ")";
+							$starRateWhere = 	$starRateWhere . ")";
 					}
 					
 					$i ++;
 				}
-				$this->db->where ( $where );
+				$this->db->where ( 	$starRateWhere);
+			}
+			$i = 0;
+			if (sizeof ( $filterData->selectedPropertyTypeList) != 0) {
+			
+				$propertyTypewhere = "(";
+				foreach ( $filterData->selectedPropertyTypeList as $propertyTypeList ) {
+					// $this->db->or_where('property.star_rate', $starList->name);
+				$propertyTypewhere = $propertyTypewhere . "property.property_type_id=" . $propertyTypeList->propertyTypeId;
+					if ($i <= (sizeof ( $filterData->selectedPropertyTypeList ) - 2)) {
+						$propertyTypewhere = $propertyTypewhere . " or ";
+					} else {
+						$propertyTypewhere = $propertyTypewhere . ")";
+					}
+						
+					$i ++;
+				}
+				$this->db->where ( $propertyTypewhere);
 			}
 			
 			$i = 0;
 			
 			if (sizeof ( $filterData->selectedFeatureList ) != 0) {
 				
-				$where = "(";
+				$featureWhere = "(";
 				foreach ( $filterData->selectedFeatureList as $featureList ) {
 					// $this->db->or_where('property.star_rate', $starList->name);
-					$where = $where . "`propertyInfo`.`$featureList->name`='Yes'";
+			$featureWhere  = $featureWhere  . "`propertyInfo`.`$featureList->name`='Yes'";
 					if ($i <= (sizeof ( $filterData->selectedFeatureList ) - 2)) {
-						$where = $where . " or ";
+						$featureWhere  = $featureWhere  . " or ";
 					} else {
-						$where = $where . ")";
+						$featureWhere  = $featureWhere  . ")";
 					}
 					
 					$i ++;
 				}
-				$this->db->where ( $where );
+				$this->db->$featureWhere ( $featureWhere  );
 			}
 			
 			if (sizeof ( $filterData->selectedFacilityList ) != 0) {
@@ -98,8 +115,8 @@ class PropertyModel extends CI_Model {
 			}
 			if ($filterData->propertyNameList [0]->name != null) {
 				$propertyName = $filterData->propertyNameList [0]->name;
-				$where = "property_name like '$propertyName%'";
-				$this->db->where ( $where );
+				$propertyNameWhere = "property_name like '$propertyName%'";
+				$this->db->where ( $propertyNameWhere);
 			}
 			if($filterData->accomodatesList[0]->name != ""){
 				$guestCount=$filterData->accomodatesList[0]->name;
@@ -257,6 +274,22 @@ class PropertyModel extends CI_Model {
 					
 					$i ++;
 				} // echo $where;
+				$this->db->where ( $where );
+			}
+		if (sizeof ( $filterData->selectedstarRateList ) != 0) {
+				
+				$where = "(";
+				foreach ( $filterData->selectedstarRateList as $starList ) {
+					// $this->db->or_where('property.star_rate', $starList->name);
+					$where = $where . "property.star_rate=" . $starList->name;
+					if ($i <= (sizeof ( $filterData->selectedstarRateList ) - 2)) {
+						$where = $where . " or ";
+					} else {
+						$where = $where . ")";
+					}
+					
+					$i ++;
+				}
 				$this->db->where ( $where );
 			}
 			if ($filterData->propertyNameList [0]->name != null) {
