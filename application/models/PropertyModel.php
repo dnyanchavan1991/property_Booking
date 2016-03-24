@@ -26,12 +26,13 @@ class PropertyModel extends CI_Model {
 		// $this->db->where ( "res.property_id", NULL );
 		$where = "(res.property_id is Null";
 		$this->db->where ( $where );
-		$where = "(check_in <= '$checkin' AND check_in >='$checkin')";
+		$where = "(check_out >= '$checkout' AND check_in >='$checkin')";
 		$this->db->or_where ( $where );
-		$where = "(check_out <= '$checkout' AND check_out >='$checkout'))";
+		$where = "(check_out <= '$checkout' AND check_out <='$checkout'))";
 		$this->db->or_where ( $where );
 		$where = "(city  like'%$destination%' or state like '%$destination%')";
 		$this->db->where ( $where );
+		$this->db->where ('activation_flag','YES');
 		
 		if ($propertyType != '0') {
 			$where = "(property_type_id='$propertyType')";
