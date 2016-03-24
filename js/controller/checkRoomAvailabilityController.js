@@ -2,13 +2,13 @@ angular.module('checkRoomAvailabilityApp', ['angularUtils.directives.dirPaginati
 	.controller('checkRoomAvailabilityController',function($scope, $http) {
 		 $scope.guestHeadCount = ["Select","1", "2", "3", "4", "5", "6" ,"7", "8", "9", "10", "11", "12", "13", "14", "15"];
 			
-		$http.get("AccomodationType/getAccomodationType/" + 2).then(function(response) {
-			$scope.names = response.data;
+		$http.get("AccomodationType/getPropertyTypeList/").then(function(response) {
+			$scope.propertyTypeNames = response.data;
 		});
 		/*--*/
 		$scope.getRoomAvailability = function() {
 			$http.get("RoomAvailability/checkRoomAvailabilty").then(function(response) {
-				$scope.propNames = response.data.rows;
+				$scope.propertyNames = response.data.rows;
 			});
 		};
 		/*--*/
@@ -68,7 +68,8 @@ angular.module('checkRoomAvailabilityApp', ['angularUtils.directives.dirPaginati
 			selectedFacilityList : [],
 			selectedAccomodationList : [],
 			propertyNameList : [],
-			accomodatesList:[]
+			accomodatesList:[],
+			selectedPropertyTypeList:[]
 		};
 		/*--*/
 		$scope.model.propertyNameList.push({name:""});
@@ -93,11 +94,11 @@ angular.module('checkRoomAvailabilityApp', ['angularUtils.directives.dirPaginati
 				} else {
 					$scope.model.selectedFacilityList.splice(this.facilityListLabel, 1);
 				}
-			} else if (objName == 'accomodation') {
-				if (this.accomodationListLabel.selected) {
-					$scope.model.selectedAccomodationList.push(this.accomodationListLabel);
+			} else if (objName == 'PropertyType') {
+				if (this.propertyTypeListLabel.selected) {
+					$scope.model.selectedPropertyTypeList.push(this.propertyTypeListLabel);
 				} else {
-					$scope.model.selectedAccomodationList.splice(this.accomodationListLabel, 1);
+					$scope.model.selectedPropertyTypeList.splice(this.propertyTypeListLabel, 1);
 				}
 			} else if (objName == 'propertyName') {
 				$scope.model.propertyNameList.pop();
