@@ -16,6 +16,7 @@ class PropertyModel extends CI_Model {
 		$checkin = $searchArray ['checkIn'];
 		$guestCountstring = $searchArray ['guestCount'];
 		$guestCount = ( int ) substr ( $guestCountstring, 7 );
+		
 		$propertyType = $searchArray ['propertyType'];
 		$destination = $searchArray ['destination'];
 		
@@ -104,8 +105,8 @@ class PropertyModel extends CI_Model {
 				$guestCount=$filterData->accomodatesList[0]->name;
 				
 			}
-			$where = "accomodates='$guestCount'";
-				$this->db->where ( $where );
+			//$where = "accomodates='$guestCount'";
+				//$this->db->where ( $where );
 		} 
 		$this->db->group_by ( array (
 				"property.property_id" 
