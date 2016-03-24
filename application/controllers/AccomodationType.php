@@ -19,5 +19,10 @@ class AccomodationType extends CI_Controller {
 			$accomodationTypeList = $this->PropertyModel->getAccomodationType ( $propertyId );
 			echo json_encode($accomodationTypeList);
 		}
+		public  function  getPropertyTypeList(){
+			$this->load->model ( 'PropertyModel' );
+			$propertyTypeList = $this->PropertyModel->getPropertyTypeList ( );
+			echo json_encode($propertyTypeList );
+		}
 	}
 	
