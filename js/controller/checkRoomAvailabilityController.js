@@ -124,6 +124,11 @@ angular.module('checkRoomAvailabilityApp', ['angularUtils.directives.dirPaginati
 			else{
 			
 			}
+			
+			if(this.selectGuestHeadCount=='Select'){
+				$scope.model.accomodatesList.splice(0,1);
+				$scope.model.accomodatesList.push({name:""});
+			}
 
 			$http({
 				method : 'POST',
