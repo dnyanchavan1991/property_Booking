@@ -89,5 +89,10 @@ class SqlQueryModel extends CI_Model{
 	{
 		$this->db->query("update property set activation_flag = case when activation_flag = 'YES' then 'NO' when activation_flag = 'NO' then 'YES' else '' end where property_id = $action_id");
 	}
+	public function deleteLoginUser($last_user_id)
+	{
+		$this->db->where('login_id', $last_user_id);
+		$this->db->delete('login');
+	}
 }
 ?>
