@@ -41,8 +41,8 @@ class RoomAvailability extends CI_Controller {
 				
 		);
 		$filterData=null;
-		$roomAvailableCount = $this->PropertyModel->getRoomAvailabilityCount ($searchArray,$filterData);
-	
+		//$roomAvailableCount = $this->PropertyModel->getRoomAvailabilityCount ($searchArray,$filterData);
+	$roomAvailableCount=20;
 		$roomAvailableInfo = $this->PropertyModel->checkRoomAvailabilty ($searchArray,$filterData);
 		
 		$i=0;
