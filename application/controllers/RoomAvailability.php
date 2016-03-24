@@ -88,7 +88,7 @@ class RoomAvailability extends CI_Controller {
         	);
         	
         	if(sizeof($filterData->selectedstarRateList)==0 &&  sizeof($filterData->selectedFeatureList)==0 && sizeof($filterData->selectedFacilityList)==0 && sizeof($filterData->selectedAccomodationList)==0 &&  $filterData->propertyNameList[0]->name=="" && $filterData->accomodatesList
-        			[0]->name==""){
+        			[0]->name=="" && ($filterData->selectedPropertyTypeList)==0 ){
         		$filterData=NULL;
         	} 
         	$roomAvailableCount = $this->PropertyModel->getRoomAvailabilityCount ($searchArray,$filterData);
