@@ -204,18 +204,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 												</li> 
 											</ul>
 										</p>
+										<div class="clearfix"> </div>
 										<p>
-											<ul>
-												<li style="  float: left; "> 
-														Food : <?php echo  nl2br($meals); ?> &nbsp;
-												</li>
-												<li style="  float: left;"> 
-													Other Amenities : <?php echo  nl2br($other_amenities); ?> &nbsp;
-												</li>
-												<li style="  float: left;"> 
-													Leisure Activities : <?php echo  nl2br($leisureActivities); ?> &nbsp;
-												</li>
-											</ul> 
+											<div> 
+												Food : <?php if($meals){echo  nl2br($meals);} else {echo "NA";} ?> &nbsp;
+											</div>
+											<div> 
+												Other Amenities : <?php if($other_amenities){echo nl2br($other_amenities);} else {echo "NA";} ?> &nbsp;
+											</div>
+											<div> 
+												Leisure Activities : <?php if($leisureActivities){echo nl2br($leisureActivities);} else {echo "NA";} ?> &nbsp;
+											</div>
 										</p>
 									</div>
 							</div>

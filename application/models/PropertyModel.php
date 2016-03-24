@@ -478,4 +478,11 @@ class PropertyModel extends CI_Model {
 		$afftectedRows = $this->db->affected_rows();
 		return  $afftectedRows;
 	}
+	public function getBookingProperty($p_id){
+		$this->db->select("property_name,image_path");
+		$this->db->from("property");
+		$this->db->where("property_id", $p_id);
+		$query = $this->db->get();
+		return $query->row();
+	}
 }

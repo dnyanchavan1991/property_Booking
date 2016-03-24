@@ -65,12 +65,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<nav class="cl-effect-11" id="cl-effect-11">
 					<ul class="nav1">
 						<li><a class="active" href="Index1" data-hover="HOME">HOME</a></li>
-						<li><a href="About" data-hover="ABOUT">ABOUT</a></li>
-						<li><a href="Typography" data-hover="SERVICES">SERVICES</a></li>
-						<li><a href="Booking" data-hover="BOOKING">BOOKING</a></li>
-						<li><a href="Contact" data-hover="CONTACT">CONTACT</a></li>
-						<li><a href="Registration" data-hover="REGISTRATION">REGISTRATION</a></li>					  	
-						<li><button id='modal-launcher' class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login-modal">LOGIN</button></li>
 					</ul>
 				</nav>
 				<!-- script for menu -->
@@ -102,12 +96,36 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<h2 class="tittle-one">BOOKING</h2>
 			<div class="reservation-form">
 				<div class="col-md-3 reservation-left">
-					<h3>Hotels</h3>
+					<h3><?php echo $property_name;?></h3>
 					<ul>
-						<li><a href="booking.html"><img src="images/333.jpg" alt="" /></a></li>
+						<?php 
+							$files = glob('Admin/'.$image_path."*.*");
+							for ($i=1; $i<count($files); $i++)
+							{
+								$image = $files[$i];
+								$supported_file = array(
+															'gif',
+															'jpg',
+															'jpeg',
+															'png'
+														);
+								$ext = strtolower(pathinfo($image, PATHINFO_EXTENSION));
+								if (in_array($ext, $supported_file))
+								{
+									echo "<li>";
+									echo "<img src='".$image."' alt=''/>";
+									echo "</li>"; 
+								} 
+								if($i == 3) 
+								{
+									break;
+								}
+							}
+						?>
+						<!--<li><a href="booking.html"><img src="images/333.jpg" alt="" /></a></li>
 						<li><a href="booking.html"><img src="images/555.jpg" alt="" /></a></li>
 						<li><a href="booking.html"><img src="images/666.jpg" alt="" /></a></li>
-						<li><a href="booking.html"><img src="images/777.jpg" alt="" /></a></li>
+						<li><a href="booking.html"><img src="images/777.jpg" alt="" /></a></li>-->
 					</ul>
 				</div>
 				<div class="col-md-9 reservation-right">

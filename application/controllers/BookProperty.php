@@ -15,8 +15,11 @@ class BookProperty extends CI_Controller {
 		if($this->session->userdata('user_id'))
 		{
 			$get_user = $this->PropertyModel->getUser($this->session->userdata('user_id'));
+			$get_property = $this->PropertyModel->getBookingProperty($this->session->userdata('propertyId'));
 			$data['name'] = $get_user->name;
 			$data['email_address'] = $get_user->email_address;
+			$data['property_name'] = $get_property->property_name;
+			$data['image_path'] = $get_property->image_path;
 			$this->load->view ( 'booking',$data);
 		} else {
 			$this->load->view ( 'booking');
