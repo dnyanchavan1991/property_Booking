@@ -187,7 +187,7 @@ CREATE TABLE `login` (
   `logged_in_dateTime` datetime NOT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -196,7 +196,7 @@ CREATE TABLE `login` (
 
 LOCK TABLES `login` WRITE;
 /*!40000 ALTER TABLE `login` DISABLE KEYS */;
-INSERT INTO `login` VALUES ('agile','2016-03-24 04:20:46',1);
+INSERT INTO `login` VALUES ('agile','2016-03-24 04:20:46',1),('admin','2016-03-24 06:44:03',2);
 /*!40000 ALTER TABLE `login` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -471,7 +471,7 @@ CREATE TABLE `registration` (
   `access_type` enum('user','admin') DEFAULT 'user',
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `user_name_UNIQUE` (`user_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -480,7 +480,7 @@ CREATE TABLE `registration` (
 
 LOCK TABLES `registration` WRITE;
 /*!40000 ALTER TABLE `registration` DISABLE KEYS */;
-INSERT INTO `registration` VALUES (1,'admin','admin','admin','admin','admin','admin','admin','admin','admin'),(2,'agile','agile','shruti','kharge','1234567890','shruti@agile.com','pune','yes','user'),(3,'121','121','121','2121','2121','212',NULL,NULL,'user'),(4,'asas','asas','asas','asas','asas','as',NULL,NULL,'user'),(7,'asasaA','asasaA','asas','asasaA','asas','asas',NULL,NULL,'user'),(8,'wewe','wewewe','wew','ewe','wewe','wewe',NULL,NULL,'user'),(9,'sdsds','sdsdsdsd','asasa','asas','1212','shrutidfd',NULL,NULL,'user'),(10,'assassa','asasasasass','asasasas','asasasa','saasa','asasa',NULL,NULL,'user'),(11,'WWWWW','WWWWWWWW','SASAS','asaS','SASSSS','SSS',NULL,NULL,'user');
+INSERT INTO `registration` VALUES (1,'admin','admin','admin','admin','admin','admin','admin','admin','admin'),(2,'agile','agile','shruti','kharge','1234567890','shruti@agile.com','pune','yes','user'),(3,'121','121','121','2121','2121','212',NULL,NULL,'user'),(4,'asas','asas','asas','asas','asas','as',NULL,NULL,'user'),(7,'asasaA','asasaA','asas','asasaA','asas','asas',NULL,NULL,'user'),(8,'wewe','wewewe','wew','ewe','wewe','wewe',NULL,NULL,'user'),(9,'sdsds','sdsdsdsd','asasa','asas','1212','shrutidfd',NULL,NULL,'user'),(10,'assassa','asasasasass','asasasas','asasasa','saasa','asasa',NULL,NULL,'user'),(11,'WWWWW','WWWWWWWW','SASAS','asaS','SASSSS','SSS',NULL,NULL,'user'),(12,'sssss','ssss','q','qss','sssss','shrutidfd',NULL,NULL,'user');
 /*!40000 ALTER TABLE `registration` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -594,4 +594,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-03-24 17:19:58
+-- Dump completed on 2016-03-24 18:54:46
