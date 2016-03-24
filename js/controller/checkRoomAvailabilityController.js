@@ -8,7 +8,7 @@ angular.module('checkRoomAvailabilityApp', ['angularUtils.directives.dirPaginati
 		/*--*/
 		$scope.getRoomAvailability = function() {
 			$http.get("RoomAvailability/checkRoomAvailabilty").then(function(response) {
-				$scope.propertyNames = response.data.rows;
+				$scope.propNames  = response.data.rows;
 			});
 		};
 		/*--*/
