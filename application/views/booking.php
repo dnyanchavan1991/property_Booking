@@ -129,7 +129,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</ul>
 				</div>
 				<div class="col-md-9 reservation-right">
-					<form name="form" role="form" novalidate ng-controller="roomAvailabilityController" ng-submit="form.$valid && getRoomAvalabilityCount()" class="angular-msgs form-horizontal">
+					<form name="form" role="form" ng-controller="roomAvailabilityController" ng-submit="getRoomAvalabilityCount()" class="form-horizontal">
 						<h4>When would you like to come?</h4>
 							<?php if(isset($name) && isset($email_address)){?>
 							<div class="form-group">
@@ -148,49 +148,32 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="form-group">
 								<label class="control-label col-md-3">Name</label>
 								<div class="col-md-7">
-									<input type="text" class="form-control" ng-model="cust_name" ng-pattern="/^[a-zA-Z ]*$/" name="cust_name" Placeholder="Enter name" ng-required="true"/>
-									<div id="ng-error" ng-messages="form.cust_name.$error" ng-if="form.cust_name.$dirty">
-										<div ng-message="required">This field is required</div>
-										<div ng-message="pattern">Only characters & space allowed</div>
-									</div>
+									<input type="text" class="form-control" ng-model="cust_name" name="cust_name" Placeholder="Enter name" ng-required="true"/>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="control-label col-md-3">Email</label>
 								<div class="col-md-7">
-									<input type="email" class="form-control" ng-model="cust_email" ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" name="cust_email" Placeholder="Enter email" ng-required="true"/>
-									<div id="ng-error" ng-messages="form.cust_email.$error" ng-if="form.cust_email.$dirty">
-										<div ng-message="required">This field is required</div>
-										<div ng-message="pattern">Your email address is invalid</div>
-									</div>
+									<input type="email" class="form-control" ng-model="cust_email" name="cust_email" Placeholder="Enter email" ng-required="true"/>
 								</div>
 							</div>
 							<?php }?>
 							<div class="form-group">
 								<label class="control-label col-md-3">Check In</label>
 								<div class="col-md-7">
-									<input type="text" class="date form-control" id="checkin_id" ng-model="checkin" name="checkin" Placeholder="Check-In date" ng-required="true"  />
-									<div class="col-md-7 col-md-offset-3" id="ng-error" ng-messages="form.checkin.$error" ng-if="form.checkin.$dirty">
-										<div ng-message="required" style="" >This field is required</div>
-									</div>
+									<input type="text" class="date form-control" id="checkin_id" ng-model="checkin" name="checkin" Placeholder="Check-In date" required />
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="control-label col-md-3">Check Out</label>
 								<div class="col-md-7">
-									<input type="text" class="date form-control" id="checkout_id" ng-model="checkout" name="checkout" Placeholder="Check-Out date" ng-required="true" />
-									<div id="ng-error" ng-messages="form.checkout.$error" ng-if="form.checkout.$dirty">
-										<div ng-message="required" style="" >This field is required</div>
-									</div>
+									<input type="text" class="date form-control" id="checkout_id" ng-model="checkout" name="checkout" Placeholder="Check-Out date" required/>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="control-label col-md-3">Guests</label>
 								<div class="col-md-7">
-									<input type="number" class="form-control" ng-model="accomodates" name="accomodates" min="1" max="15" Placeholder="No. of guests" ng-required="true" />
-									<div id="ng-error" ng-messages="form.accomodates.$error" ng-if="form.accomodates.$dirty">
-										<div ng-message="required" style="" >This field is required</div>
-									</div>
+									<input type="number" class="form-control" ng-model="accomodates" name="accomodates" min="1" max="15" Placeholder="No. of guests" required />
 								</div>
 							</div><br>
 							<div class="form-group">
@@ -273,6 +256,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<li><a href="Typography">Services</a></li>						
 					<li><a href="Booking">Booking</a></li>
 					<li><a href="Contact">Contact</a></li>
+					<li><a href="Index1/RedirectToAdmin">Admin Panel</a></li>
 				</ul>
 			</div>
 			<div class="col-md-3 ftr_navi ftr">

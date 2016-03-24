@@ -37,7 +37,7 @@ app.controller('roomAvailabilityController', function($scope, $http) {
 	}
 	ReadCookie();
 	$scope.form = {};
-	$scope.getRoomAvalabilityCount = function() {alert();
+	$scope.getRoomAvalabilityCount = function() {
 		 $scope.formData = {};
 		
 		 $scope.formData.checkin = $scope.checkin;
@@ -61,6 +61,7 @@ app.controller('roomAvailabilityController', function($scope, $http) {
 				}).success(function(data) {
 					if(data.reservationcount='1'){
 					alert('Congrats ! Your Reservation is succesful.');
+					window.location="Index1";
 					}
 					else{
 						alert('Oops, Something went wrong in the Reservation process. Kindly try again.');  

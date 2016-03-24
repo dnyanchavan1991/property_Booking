@@ -134,22 +134,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<!-- Description-->
 						<div id="tab1" class="tab active">
 							<p><?php echo nl2br($propertyDescription);?></p>
+							<br>
 							<div class="panel panel-default">
 								<div class="panel-heading"><i class="glyphicon glyphicon-ok-circle"></i> The Property</div>
 									<div class="panel-body">
 										<p>
 											<ul>
 												<li style=" float: left"> 
-													Type : <?php echo  nl2br($property_type); ?> &nbsp;
+													<b>Type :</b> <?php echo  nl2br($property_type); ?> &nbsp;
 												</li>
 												<li style="  float: left"> 
-													Bedrooms : <?php echo  nl2br($bedrooms); ?> &nbsp;
+													<b>Bedrooms :</b> <?php echo  nl2br($bedrooms); ?> &nbsp;
 												</li>
 												<li style=" float: left"> 
-													Bathrooms : <?php echo  nl2br($bathrooms); ?> &nbsp;
+													<b>Bathrooms :</b> <?php echo  nl2br($bathrooms); ?> &nbsp;
 												</li>
 												<li style="  float: left"> 
-													Accommodates : <?php echo  $accommodates; ?> &nbsp;
+													<b>Accommodates :</b> <?php echo  $accommodates; ?> &nbsp;
 												</li>
 											</ul>
 										</p>
@@ -161,42 +162,42 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<p>
 											<ul>
 												<li style="float: left; "> 
-													Swimming Pool : <?php if($pool == "Yes"){?>
+													<b>Swimming Pool :</b> <?php if($pool == "Yes"){?>
 																		<img src="images/Yes_tick.gif" style="height: 20px;width: 20px;">
 																	<?php } else{?>
 																		<img src="images/No_tick.png" style="height: 15px;width: 15px;">
 																	<?php } ?> &nbsp;
 												</li>
 												<li style="  float: left; "> 
-													Internet Access : <?php if($internet_access == "Yes"){?>
+													<b>Internet Access :</b> <?php if($internet_access == "Yes"){?>
 																		<img src="images/Yes_tick.gif" style="height: 20px;width: 20px;">
 																	<?php } else{?>
 																		<img src="images/No_tick.png" style="height: 15px;width: 15px;">
 																	<?php } ?> &nbsp;
 												</li>
 												<li style="  float: left; "> 
-													Television : <?php if($television == "Yes"){?>
+													<b>Television :</b> <?php if($television == "Yes"){?>
 																		<img src="images/Yes_tick.gif" style="height: 20px;width: 20px;">
 																	<?php } else{?>
 																		<img src="images/No_tick.png" style="height: 15px;width: 15px;">
 																	<?php } ?> &nbsp;
 												</li> 												
 												<li style="  float: left; "> 
-													Pets Allowed : <?php if($pet_friendly == "Yes"){?>
+													<b>Pets Allowed :</b> <?php if($pet_friendly == "Yes"){?>
 																		<img src="images/Yes_tick.gif" style="height: 20px;width: 20px;">
 																	<?php } else{?>
 																		<img src="images/No_tick.png" style="height: 15px;width: 15px;">
 																	<?php } ?> &nbsp;
 												</li> 	
 												<li style="  float: left; "> 
-													Air Conditioned : <?php if($air_condition == "Yes"){?>
+													<b>Air Conditioned :</b> <?php if($air_condition == "Yes"){?>
 																		<img src="images/Yes_tick.gif" style="height: 20px;width: 20px;">
 																	<?php } else{?>
 																		<img src="images/No_tick.png" style="height: 15px;width: 15px;">
 																	<?php } ?> &nbsp;
 												</li> 
 												<li style="  float: left; "> 
-													In-House Kitchen : <?php if($in_house_kitchen == "Yes"){?>
+													<b>In-House Kitchen :</b> <?php if($in_house_kitchen == "Yes"){?>
 																		<img src="images/Yes_tick.gif" style="height: 20px;width: 20px;">
 																	<?php } else{?>
 																		<img src="images/No_tick.png" style="height: 15px;width: 15px;">
@@ -207,13 +208,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<div class="clearfix"> </div>
 										<p>
 											<div> 
-												Food : <?php if($meals){echo  nl2br($meals);} else {echo "NA";} ?> &nbsp;
+												<b>Food :</b> <?php if($meals){echo  nl2br($meals);} else {echo "NA";} ?> &nbsp;
 											</div>
 											<div> 
-												Other Amenities : <?php if($other_amenities){echo nl2br($other_amenities);} else {echo "NA";} ?> &nbsp;
+												<b>Other Amenities :</b> <?php if($other_amenities){echo nl2br($other_amenities);} else {echo "NA";} ?> &nbsp;
 											</div>
 											<div> 
-												Leisure Activities : <?php if($leisureActivities){echo nl2br($leisureActivities);} else {echo "NA";} ?> &nbsp;
+												<b>Leisure Activities :</b> <?php if($leisureActivities){echo nl2br($leisureActivities);} else {echo "NA";} ?> &nbsp;
 											</div>
 										</p>
 									</div>
@@ -512,6 +513,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<li><a href="typography.html">Services</a></li>
 					<li><a href="booking.html">Booking</a></li>
 					<li><a href="contact.html">Contact</a></li>
+					<li><a href="Index1/RedirectToAdmin">Admin Panel</a></li>
 				</ul>
 			</div>
 			<div class="col-md-3 ftr_navi ftr">
