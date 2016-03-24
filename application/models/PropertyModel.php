@@ -107,7 +107,8 @@ class PropertyModel extends CI_Model {
 			}
 			//$where = "accomodates='$guestCount'";
 				//$this->db->where ( $where );
-		} 
+		}
+		$this->db->where('activation_flag','YES'); 
 		$this->db->group_by ( array (
 				"property.property_id" 
 		) );
