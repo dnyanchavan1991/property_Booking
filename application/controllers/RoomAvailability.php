@@ -2,9 +2,10 @@
 class RoomAvailability extends CI_Controller {
 	public function __construct() {
 		parent::__construct ();
-		$this->load->library ( 'session' );
 		session_cache_limiter ( 'private, must-revalidate' );
 		session_cache_expire ( 60 );
+		$this->load->library ( 'session' );
+		//$this->load->model ( 'PropertyModel' );
 	}
 	public function index() {
 		if (isset ( $_POST ['submit'] )) {
