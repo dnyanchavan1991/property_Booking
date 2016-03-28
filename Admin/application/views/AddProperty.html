@@ -256,7 +256,7 @@
 											<label class="control-label col-md-3" for="location_map">Map Location</label>
 											<div class="col-md-7">
 												<!--<textarea class="form-control" name="location_map" placeholder="Enter location string for Google map" rows="6"></textarea>-->
-												<div class="col-lg-7" id="map_canvas" style="width:auto;height:270px;"></div>
+												<div class="col-lg-7" id="map_canvas" style="width:100%;height:270px;"></div>
 												<input class="form-control" type="hidden" name="latitude" id="latbox">
 												<input class="form-control" type="hidden" name="longitude" id="lngbox">
 												<p class="help-block">Drag & drop the marker near your location</p>
@@ -543,7 +543,11 @@
 			map: map,
 			title: "Property location"
 		});
-
+		/*$(window).resize(function() {
+		//alert();
+			// (the 'map' here is the result of the created 'var map = ...' above)
+			google.maps.event.trigger(map, "resize");
+		 });*/
 		
 		google.maps.event.addListener(marker, 'dragend', function (event) {
 			document.getElementById("latbox").value = this.getPosition().lat();

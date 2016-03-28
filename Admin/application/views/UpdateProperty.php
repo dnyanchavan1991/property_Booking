@@ -242,7 +242,7 @@
 										<div class="form-group">
 											<label class="control-label col-md-3" for="location_map">Map Location</label>
 											<div class="col-md-7">
-												<div class="col-lg-7" id="map_canvas" style="width:auto;height:270px;"></div>
+												<div class="col-lg-7" id="map_canvas" style="width:100%;height:270px;"></div>
 												<input class="form-control" type="hidden" name="latitude" id="latbox" value="<?php echo $latitude;?>">
 												<input class="form-control" type="hidden" name="longitude" id="lngbox" value="<?php echo $longitude;?>">
 												<p class="help-block">Drag & drop the marker near your location</p>
