@@ -401,8 +401,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<a href="" ng-click="togglemessagePopUp()"
 											class="best-btn">Send SMS</a>
 									</p>
-									<modal title="Enquiry via mail" visible="showModal">
-									<form name="formData" ng-submit="Contact_to_customer_enquiry(
+									<modal id="modal"  title="ff"  ng-model="model" visible="showModal">
+									
+									<form  name="formData" ng-submit="Contact_to_customer_enquiry(
 									<?php echo "'$propertyId'"; ?>)">
 										<div class="form-group">
 											<label for="email"></label> <input type="text"
@@ -436,7 +437,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										</div>
 										<div class="form-group">
 											<label for="enquiry"></label>
-											<textarea type="text" class="form-control"
+											<textarea class="form-control"
 												ng-model="form.enquiry" id="enquiry" name="enquiry"
 												placeholder="Enquiry.." required="required"></textarea>
 										</div>
