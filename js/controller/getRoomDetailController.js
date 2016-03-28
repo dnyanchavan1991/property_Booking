@@ -61,38 +61,56 @@ app.controller(
 		'popupController',
 		function($scope, $http) {
 			$scope.showModal = false;
+			var modal = $('#modal');
+			var enuiryVia="";
 
 			$scope.form = {};
 			$scope.togglemailPopUp = function() {
+				 modal.find('.modal-title').text('Enquiry via Mail');
+				 var enuiryVia="Mail";
 				$('#phone_div').hide();
-
 				$('#email_id_div').show();
+				$('#checkIn').val('');
+				$('#checkOut').val('');
+				$('#enquiry').val('');
 				$scope.form.phone = null;
 				$scope.showModal = !$scope.showModal;
 			};
 			$scope.togglemessagePopUp = function() {
+				// alert($(this).attr('id'));
+				
+				  modal.find('.modal-title').text('Enquiry via SMS');
 				$('#email_id_div').hide();
-
+				 var enuiryVia="SMS";
 				$('#phone_div').show();
 				$('#email_id').val('');
+				$('#checkIn').val('');
+				$('#checkOut').val('');
+				$('#enquiry').val('');
 				$scope.form.email_id = null;
 				$scope.showModal = !$scope.showModal;
 			};
 			$scope.Contact_to_customer_enquiry = function(propertyId) {
-
+				if($scope.form.email_id==null){
+					var enuiryVia='SMS' 
+				}
+				else{
+					var enuiryVia='Mail' 
+				
+				}
 				$http(
 						{
 							method : 'POST',
 							url : 'Contact/Contact_to_customer_enquiry/'
 									+ propertyId + '/',
-							data : $scope.form, // forms user object
-						// datatype:"json"
+							data : $scope.form, 
 
 						}).success(function(data) {
 					if (data.count == 0) {
-						alert('Cannot send message.');
+						
+						alert('Cannot send '+enuiryVia+'.');
 					} else {
-						alert('Message sent succesfuly.');
+						alert(enuiryVia+' sent succesfuly.');
 
 					}
 				});
