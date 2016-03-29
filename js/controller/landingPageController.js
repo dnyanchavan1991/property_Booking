@@ -1,5 +1,5 @@
-var app= angular.module('landingPageApp', []);
-				 app.controller('landingPageCntrl', function($scope, $http) {
+angular.module('landingPageApp', [])
+				.controller('landingPageCntrl', function($scope, $http) {
 					 $scope.displayFlag = false;
 					  $scope.accomodationType =[
 					                             { value: '0',
@@ -35,9 +35,9 @@ var app= angular.module('landingPageApp', []);
 					  
 					 
 
-				});
+				})
 
-app.controller('loginCtrl', function ($scope,$http) {
+.controller('loginCtrl', function ($scope,$http) {
 	$scope.form = {};
 	
     $scope.authenticate=function()
@@ -106,9 +106,9 @@ app.controller('loginCtrl', function ($scope,$http) {
     	
    
     }
-});
+})
 
-app.controller('galleryImgCtrl', function ($scope,$http){
+.controller('galleryImgCtrl', function ($scope,$http){
 	$scope.galleryImgFetch=function()
     {
     	$http.post("Index1/galleryImgFetch/").then(function(response){
@@ -130,4 +130,51 @@ app.controller('galleryImgCtrl', function ($scope,$http){
 		document.body.appendChild(objForm);
 		objForm.submit();
 	}
-});
+})
+.directive('wcUnique', ['dataService', function (dataService) {
+    return {
+        restrict: 'A',
+        require: 'ngModel',
+        link: function (scope, element, attrs, ngModel) {
+            element.bind('blur', function (e) {
+                if (!ngModel || !element.val()) return;
+                var keyProperty = scope.$eval(attrs.wcUnique);
+                var currentValue = element.val();
+                dataService.checkUniqueValue(keyProperty.key, keyProperty.property, currentValue)
+                    .then(function (unique) {
+                        //Ensure value that being checked hasn't changed
+                        //since the Ajax call was made
+                    
+                        if (currentValue == element.val()) { 
+                           ngModel.$setValidity('unique', false);
+                           
+                        }
+                    	//ngModel.$setValidity('unique',true);
+                    }, function () {
+                    	
+                        //Probably want a more robust way to handle an error
+                        //For this demo we'll set unique to true though
+                        ngModel.$setValidity('unique', true);
+                    });
+            });
+        }
+    }
+}])
+.factory('dataService', ['$http', function ($http) {
+    var serviceBase = 'Registration/checkUniqueValue/',
+        dataFactory = {};
+
+    dataFactory.checkUniqueValue = function (id, property, value) {
+        if (!id) id = 0;
+        return $http.get(serviceBase + id + '?property=' + 
+          property + '&value=' + escape(value)).then(
+            function (results) {
+            	
+                return results.data.status;
+            });
+    };
+
+    return dataFactory;
+
+}]);
+	 
