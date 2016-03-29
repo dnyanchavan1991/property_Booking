@@ -50,6 +50,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- start-smoth-scrolling -->
 <script type="text/javascript" src="js/move-top.js"></script>
 <script type="text/javascript" src="js/easing.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script type="text/javascript">
 	jQuery(document).ready(function($) {
 		$(".scroll").click(function(event) {
@@ -59,7 +62,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			}, 1000);
 		});
 	});
+	$(function() {
+	    $( "#datepicker,#datepicker1" ).datepicker();
+	  });
 </script>
+
+  
+ 
 <!-- start-smoth-scrolling -->
 </head>
 <body>
@@ -300,7 +309,47 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 									
 				<div class="col-md-9 ">
+				
 					<div class="search-grid-right" >
+					<form action="action_page.php">
+  
+  <input type="text" name="firstname" placeholder="Where do you want to go?" style="width:190px">
+ <select name="accomodationtype">
+  <option value="0">All</option>
+  <option value="1">Villa</option>
+  <option value="2">Dormatory</option>
+  <option value="3">Apartment</option>
+  <option value="4">Bunglow</option>
+  <option value="5">Row House</option>
+  <option value="6">Cottage</option>
+  <option value="7">Hut</option>
+  <option value="8">House boat</option>
+  <option value="9">Tree house</option>
+</select>
+<select name="guestcount">
+  <option value="0">1</option>
+  <option value="1">2</option>
+  <option value="2">3</option>
+  <option value="3">4</option>
+  <option value="4">5</option>
+  <option value="5">6</option>
+  <option value="6">7</option>
+  <option value="7">8</option>
+  <option value="8">9</option>
+  <option value="9">10</option>
+  <option value="10">11</option>
+  <option value="11">12</option>
+  <option value="12">13</option>
+  <option value="13">14</option>
+  <option value="14">15</option>
+  
+</select>
+<input type="text" id="datepicker" name="checkIn" placeholder="CheckIn" style="width:70px">
+<input type="text" id="datepicker1" name="checkOut" placeholder="CheckOut" style="width:80px">
+   <!--  <input type="text" name="checkIn" placeholder="CheckIn" style="width:70px">
+    <input type="text" name="checkOut" placeholder="CheckOut" style="width:80px">-->
+  <input type="submit" value="SEARCH">
+</form>
 						<div class="ang-dir-paginate">
 							<dir-pagination-controls
 								max-size="5"
