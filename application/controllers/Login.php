@@ -30,8 +30,12 @@ class Login extends CI_Controller {
 			$user_id = $validate->user_id;
 			$user_count = $validate->user_count;
 		}
+		
 		if($user_count == 1)
 		{
+			
+			//$this->sessionStorage->setItem("user", $username);
+			
 			$loginDetailsArray=array(
 				'user_name'=>$username,
 			   	'logged_in_dateTime'=>date("y-m-d h:i:s")

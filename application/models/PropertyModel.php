@@ -5,7 +5,7 @@ class PropertyModel extends CI_Model {
 		$this->load->database ();
 	}
 	// this function returns available rooms according to checkin &checkout date
-	public function checkRoomAvailabilty($searchArray, $filterData) {
+	public function checkRoomAvailabilty($searchArray, $filterData, $sortCriteria, $sortBCriteria) {
 		$reservationTable = 'reservation';
 		$accomodationTable = 'accomodationtype';
 		$propertyTable = 'property';
@@ -20,7 +20,7 @@ class PropertyModel extends CI_Model {
 		$propertyType = $searchArray ['propertyType'];
 		$destination = $searchArray ['destination'];
 		
-		$this->db->select ( "property.property_id as propertyId,star_rate,property.property_name as property,property.property_type_id,property.image_path as imagePath, property.star_rate, concat(property.street,',',property.city,',',property.state,',',property.postal_code)as propertyAddress,propertyInfo.accommodates,(propertyInfo.accommodates-IFNULL(sum(res.accomodates), 0)) as availableAccomodes" );
+		$this->db->select ( "property.property_id as propertyId,star_rate,property.property_name as property,property.property_type_id,property.image_path as imagePath, property.star_rate, concat(property.street,',',property.city,',',property.state,',',property.postal_code)as propertyAddress,propertyInfo.accommodates,(propertyInfo.accommodates-IFNULL(sum(res.accomodates), 0)) as availableAccomodes, propertyInfo.bedrooms,propertyInfo.bathrooms, propertyInfo.pool, propertyInfo.free_parking, propertyInfo.air_condition, propertyInfo.television_access, propertyInfo.internet_access, propertyInfo.smoking_allowd, propertyInfo.free_breakfast, propertyInfo.pet_friendly " );
 		$this->db->from ( "$propertyInfo propertyInfo" );
 		$this->db->join ( "$reservationTable res", "res.property_id=propertyInfo.property_id", "left" );
 		$this->db->join ( "$propertyTable property", "propertyInfo.property_id=property.property_id" );
@@ -85,7 +85,7 @@ class PropertyModel extends CI_Model {
 				$featureWhere = "(";
 				foreach ( $filterData->selectedFeatureList as $featureList ) {
 					// $this->db->or_where('property.star_rate', $starList->name);
-			$featureWhere  = $featureWhere  . "`propertyInfo`.`$featureList->name`='Yes'";
+			$featureWhere  = $featureWhere  . "propertyInfo.$featureList->name='Yes'";
 					if ($i <= (sizeof ( $filterData->selectedFeatureList ) - 2)) {
 						$featureWhere  = $featureWhere  . " or ";
 					} else {
@@ -94,7 +94,7 @@ class PropertyModel extends CI_Model {
 					
 					$i ++;
 				}
-				$this->db->$featureWhere ( $featureWhere  );
+				$this->db->where ( $featureWhere  );
 			}
 			
 			if (sizeof ( $filterData->selectedFacilityList ) != 0) {
@@ -111,9 +111,27 @@ class PropertyModel extends CI_Model {
 					
 					$i ++;
 				} // echo $where;
-				$this->db->where ( $where );
+				$this->db->where ( $facilityWhere );
 			}
-			if ($filterData->propertyNameList [0]->name != null) {
+			if (sizeof ( $filterData->selectedBathroomList ) != 0) {
+				
+				$bathroomWhere = "(";
+				foreach ( $filterData->selectedBathroomList as $bathroomList ) {
+					if($bathroomList->name == "5+")	
+						$bathroomWhere = 	$bathroomWhere. "propertyInfo.bathrooms >= 5";
+					else 
+						$bathroomWhere = 	$bathroomWhere. "propertyInfo.bathrooms = " . $bathroomList->name;
+					if ($i <= (sizeof ( $filterData->selectedBathroomList ) - 2)) {
+							$bathroomWhere = 	$bathroomWhere . " or ";
+					} else {
+							$bathroomWhere = 	$bathroomWhere . ")";
+					}
+					
+					$i ++;
+				} // echo $where;
+				$this->db->where ( $bathroomWhere );
+			}
+		/*	if ($filterData->propertyNameList [0]->name != null) {
 				$propertyName = $filterData->propertyNameList [0]->name;
 				$propertyNameWhere = "property_name like '$propertyName%'";
 				$this->db->where ( $propertyNameWhere);
@@ -121,15 +139,66 @@ class PropertyModel extends CI_Model {
 			if($filterData->accomodatesList[0]->name != ""){
 				$guestCount=$filterData->accomodatesList[0]->name;
 				
-			}
+			}*/
 			//$where = "accomodates='$guestCount'";
 				//$this->db->where ( $where );
 		}
-		$this->db->where('activation_flag','YES'); 
+		switch($sortBCriteria) {
+			case "1" :
+				$this->db->having ( "bedrooms = 1" );	
+				break;
+			case "2" :
+				$this->db->having ( "bedrooms = 2" );	
+				break;
+			case "3" :
+				$this->db->having ( "bedrooms = 3" );	
+				break;		
+			case "4" :
+				$this->db->having ( "bedrooms = 4" );	
+				break;
+			case "5" :
+				$this->db->having ( "bedrooms >= 5" );	
+				break;
+			case "All" :
+				$this->db->having ( "bedrooms >= 1" );	
+				break;
+			default :
+				$this->db->having ( "bedrooms >= 1" );	
+				break;	
+		}
+	//	$this->db->where('activation_flag','YES'); 
+		
+		$this->db->having ( "availableAccomodes >= $guestCount" );
+		
 		$this->db->group_by ( array (
 				"property.property_id" 
 		) );
-		$this->db->having ( "availableAccomodes>=$guestCount" );
+		switch($sortCriteria){
+			
+			case "propAToZ" :  
+				$this->db->order_by("property", "asc");	
+				break;
+			case "propZToA" :  
+				$this->db->order_by("property", "desc");	
+				break;
+			case "accLowToHigh" :  
+				$this->db->order_by("availableAccomodes", "asc");	
+				break;
+			case "accHighToLow" :  
+				$this->db->order_by("availableAccomodes", "desc");	
+				break;
+			case "bedLowToHigh" :  
+				$this->db->order_by("bedrooms", "asc");	
+				break;
+			case "bedHighToLow" :  
+				$this->db->order_by("bedrooms", "desc");	
+				break;
+			default;
+				$this->db->order_by("property", "asc");	
+				break;
+		}
+		
+		
 		$roomAvailableInfo = $this->db->get ();
 		$roomAvailableInfoResult = $roomAvailableInfo->result ();
 		
@@ -226,19 +295,38 @@ class PropertyModel extends CI_Model {
 			
 			if (sizeof ( $filterData->selectedstarRateList ) != 0) {
 				
-				$where = "(";
+				$starRateWhere = "(";
 				foreach ( $filterData->selectedstarRateList as $starList ) {
 					// $this->db->or_where('property.star_rate', $starList->name);
-					$where = $where . "property.star_rate=" . $starList->name;
+					
+					$starRateWhere = $starRateWhere . "property.star_rate=" . $starList->name;
 					if ($i <= (sizeof ( $filterData->selectedstarRateList ) - 2)) {
-						$where = $where . " or ";
+						$starRateWhere = $starRateWhere . " or ";
 					} else {
-						$where = $where . ")";
+						$starRateWhere = $starRateWhere . ")";
 					}
 					
 					$i ++;
 				}
-				$this->db->where ( $where );
+				$this->db->where ( $starRateWhere );
+			}
+			
+						$i = 0;
+			if (sizeof ( $filterData->selectedPropertyTypeList) != 0) {
+			
+				$propertyTypewhere = "(";
+				foreach ( $filterData->selectedPropertyTypeList as $propertyTypeList ) {
+					// $this->db->or_where('property.star_rate', $starList->name);
+				$propertyTypewhere = $propertyTypewhere . "property.property_type_id=" . $propertyTypeList->propertyTypeId;
+					if ($i <= (sizeof ( $filterData->selectedPropertyTypeList ) - 2)) {
+						$propertyTypewhere = $propertyTypewhere . " or ";
+					} else {
+						$propertyTypewhere = $propertyTypewhere . ")";
+					}
+						
+					$i ++;
+				}
+				$this->db->where ( $propertyTypewhere);
 			}
 			
 			$i = 0;
@@ -274,29 +362,32 @@ class PropertyModel extends CI_Model {
 					
 					$i ++;
 				} // echo $where;
-				$this->db->where ( $where );
+				$this->db->where ( $facilityWhere );
 			}
-		if (sizeof ( $filterData->selectedstarRateList ) != 0) {
+		 
+			if (sizeof ( $filterData->selectedBathroomList ) != 0) {
 				
-				$where = "(";
-				foreach ( $filterData->selectedstarRateList as $starList ) {
-					// $this->db->or_where('property.star_rate', $starList->name);
-					$where = $where . "property.star_rate=" . $starList->name;
-					if ($i <= (sizeof ( $filterData->selectedstarRateList ) - 2)) {
-						$where = $where . " or ";
+				$bathroomWhere = "(";
+				foreach ( $filterData->selectedBathroomList as $bathroomList ) {
+					if($bathroomList->name == "5+")	
+						$bathroomWhere = 	$bathroomWhere. "propertyInfo.bathrooms >= 5 ";
+					else 
+						$bathroomWhere = 	$bathroomWhere. "propertyInfo.bathrooms = " . $bathroomList->name;
+					if ($i <= (sizeof ( $filterData->selectedBathroomList ) - 2)) {
+							$bathroomWhere = 	$bathroomWhere . " or ";
 					} else {
-						$where = $where . ")";
+							$bathroomWhere = 	$bathroomWhere . ")";
 					}
 					
 					$i ++;
-				}
-				$this->db->where ( $where );
+				} // echo $where;
+				$this->db->where ( $bathroomWhere );
 			}
-			if ($filterData->propertyNameList [0]->name != null) {
+		/*	if ($filterData->propertyNameList [0]->name != null) {
 				$propertyName = $filterData->propertyNameList [0]->name;
 				$where = "property_name like '$propertyName%'";
 				$this->db->where ( $where );
-			}
+			}*/
 		} else {
 		}
 		
@@ -414,13 +505,19 @@ class PropertyModel extends CI_Model {
 	/* this function used to fetch proprty images randomly */
 	public function galleryImgFetch() {
 		$propertyTable = 'property';
-		$this->db->select ( 'property_id,image_path,property_name,description' );
-		$this->db->from ( $propertyTable );
+		$propertyInfoTable = 'property_info';
+		$currentDate = date('Y-m-d');
+		$this->db->select ( 'property.property_id,image_path,property_name,description' );
+		$this->db->from ( " $propertyTable property " );
+		$this->db->join ( " $propertyInfoTable propertyInfo", "property.property_id=propertyInfo.property_id" );
 		$this->db->where ( 'activation_flag', 'YES');
-		$this->db->order_by ( 'rand()' );
+		$this->db->where ( 'Featured', 'Yes');
+		$where = "Featured_startDate <= '$currentDate' AND Featured_endDate >='$currentDate'";
+		$this->db->where ( $where ); 
+		$this->db->order_by ( 'Featured_startDate Desc' );
 		$this->db->limit ( 6 );
 		$query = $this->db->get ();
-		
+		//echo $query;
 		return $query->result ();
 	}
 	/* this function inserts data in enquiry table */

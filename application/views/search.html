@@ -37,12 +37,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="text/javascript" src="js/dirPagination.js"></script>
 <script type="text/javascript"
 	src="js/controller/checkRoomAvailabilityController.js"></script>
-<script>
-	/*$(function() {
-		$("#checkIn,#checkOut").datepicker();
-	});*/
-</script>
-
 <!-- //js -->
 <link
 	href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic'
@@ -53,6 +47,26 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+   
+  	<script>
+	$(function() {
+		$("#checkIn").datepicker({
+			dateFormat: "dd-mm-yy", 
+			minDate:  0,
+			onClose: function(date){            
+				var date1 = $('#checkIn').datepicker('getDate');           
+				var date = new Date( Date.parse( date1 ) ); 
+				date.setDate( date.getDate() + 1 );        
+				var newDate = date.toDateString(); 
+				newDate = new Date( Date.parse( newDate ) );                      
+				$('#checkOut').datepicker("option","minDate",newDate);            
+			}
+		});
+		$('#checkOut').datepicker({
+			dateFormat: "dd-mm-yy" 
+		});
+	});
+</script>
 <script type="text/javascript">
 	jQuery(document).ready(function($) {
 		$(".scroll").click(function(event) {
@@ -64,14 +78,44 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	});
 	$(function() {
 	    $( "#datepicker,#datepicker1" ).datepicker();
+	    
+	    $("#moreFilters").click(function(){
+	    	
+	    	var target = $(this);
+		    if( target.length ) {
+		        event.preventDefault();
+		        $('html, body').animate({
+		            scrollTop: target.offset().top - 15
+		        }, 1000);
+		    }   
+	          $('#moreFilters').text('More Filters +');
+	          if($('#moreFiltersExpand').is(':hidden') == true) {	        	  
+	              
+	              $(this).slideDown('normal');
+	              $(this).text('More Filters -');
+	           } 
+			$("#moreFiltersExpand").toggle();
+			$("#clearFilters").toggle();
+			
+		})
+		
+		 $("#clearFilters").click(function(){
+			 
+			 location.reload();
+		 })
+		
 	  });
+	
+	
+	
+	
 </script>
 
   
  
 <!-- start-smoth-scrolling -->
 </head>
-<body>
+<body ng-app="checkRoomAvailabilityApp" ng-controller="checkRoomAvailabilityController" data-ng-init="getRoomAvailability()">
 	<!-- banner -->
 	<div class="banner page-head">
 		<div class="container">
@@ -110,247 +154,184 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 	<!-- //banner -->
 	<!--search-->
-	<div class="search-page" ng-app="checkRoomAvailabilityApp"
-		ng-controller="checkRoomAvailabilityController"
-		data-ng-init="getRoomAvailability()">
-		<div class="container">
-			<div class="search-grids">
-			
-				<div class="col-md-3 search-grid-left">
-					<div class="search-hotel">
-						<h3 class="sear-head">Name contains</h3>
-						<form>
-							<input type="text" placeholder="Property Name..."
-								ng-model="propertyName[0].name"
-								ng-change="isLabelChecked('propertyName')"
+			<div class="col-md-9" style="margin-top: 3%"	>
+				<form method="post" action="RoomAvailability">
+  
+					<div class="banner-bottom-search">
+						<div class="row">
+						<div class="col-md-3" id="blankdiv" style="display:none">&nbsp;</div>
+							<div class="col-md-4 fff" >
+								<input type = "text" id="inpDestination" onClick="show()" name="inpDestination" ng-model="inputDestination" placeholder="Where do you want to go?" ng-click="expandFilterOptions()" class="inputDestination" style="width: 100%; height: 3.2em; " />
+							</div>
+							<div class="col-md-1" id="aaa" style="display:inline;">
+									<select class="sel propertyType" ng-model="selectAccomodationType"  id="propertyType" name="propertyType" ng-init="selectAccomodationType=accomodationType[0]"  
+											ng-options="accomodation as accomodation.label for accomodation in accomodationType track by accomodation.value " 
+											ng-show = "inputDestination != 'Where you want to go?'" style=" padding-top: 38px; padding-bottom: 0px; margin-top: 0px;" ></select>
+							</div>
+							<div class="col-md-1" id="bbb" style="display:inline;">
+									<select class="sel guedtf" ng-model="selectGuestHeadCount" id="guestCount" name="guestCount" ng-init="selectGuestHeadCount=guestHeadCount[0] " ng-options="option as option for option in guestHeadCount" }></select>
+							</div>
+						 	<div class="col-md-2" id="ccc"  style="display:inline;">
+								<input class="date" name="checkIn" id="checkIn" ng-model="checkInDate" placeholder="checkIn" type="text" style=" width:10em; padding: 12px 0px -1px 0px !important;  border:0px;" required/>
 								
-								required=""> <input type="submit" value=" ">
-						</form>
-					</div>
-					<div class="range">
-						<h3 class="sear-head">Per night rate</h3>
-						<ul class="dropdown-menu6">
-							<li>
-								<div id="slider-range"></div> <input type="text" id="amount"
-								style="border: 0; color: #ffffff; font-weight: normal;" />
-							</li>
-						</ul>
-						<!---->
-						<script type='text/javascript'>
-							//<![CDATA[ 
-							$(window)
-									.load(
-											function() {
-												$("#slider-range")
-														.slider(
-																{
-																	range : true,
-																	min : 0,
-																	max : 9000,
-																	values : [
-																			500,
-																			10000 ],
-																	slide : function(
-																			event,
-																			ui) {
-																		$(
-																				"#amount")
-																				.val(
-																						"INR"
-																								+ ui.values[0]
-																								+ " - INR"
-																								+ ui.values[1]);
-																	}
-																});
-												$("#amount")
-														.val(
-																"INR"
-																		+ $(
-																				"#slider-range")
-																				.slider(
-																						"values",
-																						0)
-																		+ " - INR"
-																		+ $(
-																				"#slider-range")
-																				.slider(
-																						"values",
-																						1));
-
-											});//]]>
-						</script>
-					</div>
-					<div class="range-two">
-						<h3 class="sear-head">Accomodates</h3>
-						<ul class="dropdown-menu6" >
-							<li>
-					<div  id="bbb" >
-						<select class="sel guedtf" ng-model="selectGuestHeadCount" id="guestCount" name="guestCount" ng-init="selectGuestHeadCount=guestHeadCount[0] " ng-options="option as option for option in guestHeadCount"  ng-change="isLabelChecked('accomodates')"}></select>
+							</div>
+							<div class="col-md-2" id="ddd" style="display:inline;">
+								<input class="date" name="checkOut" id="checkOut" type="text" ng-model="checkOutDate" placeholder="checkOut" style="width:10em;  margin: 16px 0px 0px 8px !important;  border:0px;" required/>
+							</div>
+							<div class="col-md-2 eee"><div class="search"><input type="submit"  onClick="return allFieldsVisible()" name="submit" style="margin: 0px;" value="Filter"></div></div >
+							  
+						</div>
+						<div class="clearfix"></div><br/>
+						<div style="float: left; margin-right: 20px"> 
+							Sort by : <select ng-model="sortByFilter" ng-change="getRoomAvailability()" ng-init="sortByFilter = sortByFilter || 'propAToZ'">
+									<option value="bedLowToHigh" selected>Bedrooms : Low to High</option>
+									<option value="bedHighToLow">Bedrooms : High to Low</option>
+									<option value="accLowToHigh">Accommodates : Low to High</option>
+									<option value="accHighToLow">Accommodates : High to Low</option>
+									<option value="propAToZ">Property Name : A to Z</option>
+									<option value="propZToA">Property Name : Z to A</option>
+							</select>
+						</div>
+						
+						<div  style="float: left"> 
+							Bedrooms : <select ng-model="sortByBedrooms" ng-change="getRoomAvailability()" ng-init="sortByBedrooms = sortByBedrooms || 'All'">
+									<option value="All">All</option>
+									<option value="1">1 Bedroom</option>
+									<option value="2">2 Bedrooms</option>
+									<option value="3">3 Bedrooms</option>
+									<option value="4">4 Bedrooms</option>
+									<option value="5">5+ Bedrooms  </option>
+									
+							</select>
+						</div>
+						
+						<div class="plusMinus"  id="moreFilters"> More Filters +</div>
+						<div class="clearFilter"  id="clearFilters" style="display:none"> Clear </div>
+						<div class="clearfix"></div><br/>
+						<div id="moreFiltersExpand" style="display:none">
+							<form>
+								<div>
+									<table style="width:100%">
+										<tr >
+											<th>Ratings</th>
+											<th>Bathrooms</th>
+											<th>Feature</th>
+											<th>Facilities</th>
+											<th>Accomodation Type</th>
+										</tr>
+										<tr style="vertical-align: top">
+											<td>
+												<div ng-repeat="starRateLabel  in starRateList">
+													<input type="checkbox" id={{starRateLabel.name}} 
+														ng-model="starRateLabel.selected"
+														ng-change="isLabelChecked('starRate')"> <label
+														for={{starRateLabel.name}}> <span></span> <b><img
+															ng-src={{starRateLabel.star_image_url}} alt="" /></b>
+													</label>
+												</div>
+											</td>
+											<td>
+												 
+												<ul>
+												    <li ng-repeat="bathroom in bathroomList"  >
+												    	<input
+														id={{bathroom.name}} type="checkbox"
+														ng-model="bathroom.selected"
+														ng-click="isLabelChecked('bathroom')">{{bathroom.Label}}
+												    </li>
+												     
+												</ul>
+												
+												
+											</td>
+											<td>
+												<ul>
+													<li ng-repeat=" featureListLabel in featureList"><input
+														id={{featureListLabel.name}} type="checkbox"
+														ng-model="featureListLabel.selected"
+														ng-change="isLabelChecked('features')">{{featureListLabel.featureLabel}}
+													</li>
+												</ul>
+											</td>
+											<td>
+												<ul>
+													<li ng-repeat=" facilityListLabel in facilityList"><input
+														id={{facilityListLabel.name}} type="checkbox"
+														ng-model="facilityListLabel.selected"
+														ng-change="isLabelChecked('facility')">{{facilityListLabel.facilityLabel}}
+													</li>
+												</ul>
+											</td>
+											<td>
+												<ul>
+													<li ng-repeat=" propertyTypeListLabel in propertyTypeNames"><input
+														id={{propertyTypeListLabel.propertyTypeId}} type="checkbox"
+														ng-model="propertyTypeListLabel.selected"
+														ng-change="isLabelChecked('PropertyType')">{{propertyTypeListLabel.propertyTypeName}}
+													</li>
+													
+												</ul>
+											</td>
+										</tr>
+									</table>
+								</div>
+							</form>
+						</div>
 				</div>
-							</li>
-						</ul>
-						<!---->
-						<script type="text/javascript" src="js/jquery-ui.js"></script>
-						<script type='text/javascript'>
-							//<![CDATA[ 
-							$(window)
-									.load(
-											function() {
-												$("#slider-range1")
-														.slider(
-																{
-																	range : true,
-																	min : 0,
-																	max : 15,
-																	values : [
-																			1,
-																			15 ],
-																	slide : function(
-																			event,
-																			ui) {
-																		$(
-																				"#accomodates")
-																				.val(
-																						""
-																								+ ui.values[0]
-																								+ " - "
-																								+ ui.values[1]);
-																	}
-																});
-												$("#accomodates")
-														.val(
-																""
-																		+ $(
-																				"#slider-range1")
-																				.slider(
-																						"values",
-																						0)
-																		+ " - "
-																		+ $(
-																				"#slider-range1")
-																				.slider(
-																						"values",
-																						1));
-											});//]]>
-						</script>
-					</div>
-					<div class="single-star-bottom">
-						<h3 class="sear-head">Star rating</h3>
-						<div ng-repeat="starRateLabel  in starRateList">
-							<input type="checkbox" id={{starRateLabel.name}} value=""
-								ng-model="starRateLabel.selected"
-								ng-change="isLabelChecked('starRate')"> <label
-								for={{starRateLabel.name}}> <span></span> <b><img
-									ng-src={{starRateLabel.star_image_url}} alt="" /></b>
-							</label>
+			</form>
+		
+				
+		</div>
+		
+			<div class="gallery" id="featuredProperty" ng-controller="featuredPropertyCtrl"
+		data-ng-init="featuredPropFetch()">
+		<div class="container">
+			<h3 class="tittle">Featured Properties</h3>
+			<div class="gallery-bottom col-md-4" style="display: inline-block"
+				ng-repeat="imageData in imageSrc">
+				<div class="gal-grid">
+					<div class="view view-fifth">
+						<div
+							class="b-link-stripe b-animate-go thickbox"
+							title="{{imageData.property_name}}"
+							style="text-decoration: none;cursor:pointer;"> <img
+							ng-src="{{imageData.image}}" alt="" class="img-responsive" style="height: 100%;width: 100%;">
+							<div class="resultmedia-tag">Featured</div>
+							<div class="mask">
+								<h4 ng-click="alert(imageData.property_id);getPropertyDetails(imageData.property_id)">{{imageData.property_name}}</h4>
+								<!-- <p>{{imageData.property_description | limitTo:70}}
+								{{imageData.property_description.length > 70 ? '...' : ''}}</p>								
+								<input type="submit" ng-click="getPropertyDetails(imageData.property_id)"  value="More.." /> -->  
+							</div>
 						</div>
 					</div>
-					<div class="menu-grid">
-						<ul class="menu_drop">
-							<li class="item1"><a href="#"> <span
-									class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>Features
-							</a>
-								<ul>
-									<li ng-repeat=" featureListLabel in featureList"><input
-										id={{featureListLabel.name}} type="checkbox"
-										ng-model="featureListLabel.selected"
-										ng-change="isLabelChecked('features')">{{featureListLabel.featureLabel}}
-									</li>
-								</ul></li>
-							<li class="item2"><a href="#"> <span
-									class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>Facilities
-							</a>
-								<ul>
-									<li ng-repeat=" facilityListLabel in facilityList"><input
-										id={{facilityListLabel.name}} type="checkbox"
-										ng-model="facilityListLabel.selected"
-										ng-change="isLabelChecked('facility')">{{facilityListLabel.facilityLabel}}
-									</li>
-								</ul></li>
-							<li class="item3"><a href="#"> <span
-									class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>Accommodation
-									type
-							</a>
-								<ul>
-									<li ng-repeat=" propertyTypeListLabel in propertyTypeNames"><input
-										id={{propertyTypeListLabel.propertyTypeId}} type="checkbox"
-										ng-model="propertyTypeListLabel.selected"
-										ng-change="isLabelChecked('PropertyType')">{{propertyTypeListLabel.propertyTypeName}}
-									</li>
-									
-								</ul></li>
-						</ul>
-						<!-- script for tabs -->
-						<script type="text/javascript">
-							$(function() {
-								var menu_ul = $('.menu_drop > li > ul'), menu_a = $('.menu_drop > li > a');
-								menu_ul.hide();
-								menu_a
-										.click(function(e) {
-											e.preventDefault();
-											if (!$(this).hasClass('active')) {
-												menu_a.removeClass('active');
-												menu_ul.filter(':visible')
-														.slideUp('normal');
-												$(this).addClass('active')
-														.next()
-														.stop(true, true)
-														.slideDown('normal');
-											} else {
-												$(this).removeClass('active');
-												$(this).next().stop(true, true)
-														.slideUp('normal');
-											}
-										});
-							});
-						</script>
-						<!-- script for tabs -->
-					</div>
-				</div>
-									
-				<div class="col-md-9 ">
+					<div class="clearfix"></div>
+				</div>&nbsp;
+
+				<script src="js/jquery.chocolat.js"></script>
+
+				<!--light-box-files -->
+				<script type="text/javascript">
+					$(function() {
+						$('.gallery a').Chocolat();
+					});
+				</script>
+			</div>
+		</div>
+		
+	</div>
+		<br/>
+		
+	<div class="search-page" >
+		<div class="container">
+			<div class="search-grids" style="margin-top: 6%">
+			
+				 				
+					
+				<div class="col-md-9">
 				
 					<div class="search-grid-right" >
-					<form action="action_page.php">
-  
-  <input type="text" name="firstname" placeholder="Where do you want to go?" style="width:190px">
- <select name="accomodationtype">
-  <option value="0">All</option>
-  <option value="1">Villa</option>
-  <option value="2">Dormatory</option>
-  <option value="3">Apartment</option>
-  <option value="4">Bunglow</option>
-  <option value="5">Row House</option>
-  <option value="6">Cottage</option>
-  <option value="7">Hut</option>
-  <option value="8">House boat</option>
-  <option value="9">Tree house</option>
-</select>
-<select name="guestcount">
-  <option value="0">1</option>
-  <option value="1">2</option>
-  <option value="2">3</option>
-  <option value="3">4</option>
-  <option value="4">5</option>
-  <option value="5">6</option>
-  <option value="6">7</option>
-  <option value="7">8</option>
-  <option value="8">9</option>
-  <option value="9">10</option>
-  <option value="10">11</option>
-  <option value="11">12</option>
-  <option value="12">13</option>
-  <option value="13">14</option>
-  <option value="14">15</option>
-  
-</select>
-<input type="text" id="datepicker" name="checkIn" placeholder="CheckIn" style="width:70px">
-<input type="text" id="datepicker1" name="checkOut" placeholder="CheckOut" style="width:80px">
-   <!--  <input type="text" name="checkIn" placeholder="CheckIn" style="width:70px">
-    <input type="text" name="checkOut" placeholder="CheckOut" style="width:80px">-->
-  <input type="submit" value="SEARCH">
-</form>
-						<div class="ang-dir-paginate">
+										<div class="ang-dir-paginate">
 							<dir-pagination-controls
 								max-size="5"
 								direction-links="true"
@@ -358,77 +339,33 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								auto-hide="true">
 							</dir-pagination-controls>
 						</div>
-						<div class="hotel-left" dir-paginate="rooms in propNames | itemsPerPage:10">
-							<div style="padding:10px;">
-								<a href="" ng-click="getPropertyDetails(rooms)"> 
-									<span class="glyphicon glyphicon-bed" aria-hidden="true"></span>{{rooms.propertyName}}
-								</a>
-							
-								<div class="text-left" style="padding-left: 45px;">
-									<span style="color:red;" ng-repeat="r_cnt in strtoint(rooms.starRate)">★</span>
-								</div>
-							</div>
+						<div class="hotel-left" dir-paginate="rooms in propNames | itemsPerPage : 50">
+						
 							<div class="hotel-left-grids">
+						
 								<div class="hotel-left-one">
+								<a href="" ng-click="getPropertyDetails(rooms)"> 
+											 {{rooms.propertyName}}<span style="color:black;float:right" ng-repeat="r_cnt in strtoint(rooms.starRate)">★</span>
+										</a>
 									<a href="" ng-click="getPropertyDetails(rooms)"> 
-										<img ng-src="{{rooms.ImagePath}}" alt=""/>
+										<img ng-src="{{rooms.ImagePath}}" alt=""/>										
+										
 										<p id="text"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>{{rooms.propertyAddress}}</p>
+										 <img src='images/breakfast.png' ng-if=" rooms.free_breakfast == 'Yes' " style="width: 10%; height: 10%" title="Free Breakfast">
+									       <img src='images/pool.png' ng-if=" rooms.pool == 'Yes' " style="width: 10%; height: 10%" title="Swimming Pool">
+									       <img src='images/parking.png' ng-if=" rooms.free_parking == 'Yes' " style="width: 10%; height: 10%" title="Free Parking">
+									       <img src='images/television.png' ng-if=" rooms.television_access == 'Yes' " style="width: 10%; height: 10%" title="Television Access">
+									       <img src='images/internet.png' ng-if=" rooms.internet_access == 'Yes' " style="width: 10%; height: 10%" title="Internet Access">
+									       <img src='images/smoking.png' ng-if=" rooms.smoking_allowd == 'Yes' " style="width: 10%; height: 10%" title="Smoking Allowed">
+									       <img src='images/pet.png' ng-if=" rooms.pet_friendly == 'Yes' " style="width: 10%; height: 10%" title="Pet Friendly">
+									      
+									    
 									</a>
 								</div>
 
-								<!--<a href="">
-									<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>Diamond Street
-								</a>-->
-								<!--<p>
-									<button ng-click="togglemailPopUp()" class="btn btn-default">Send Mail</button>
-									<button ng-click="togglemessagePopUp()"	class="btn btn-default">Send SMS</button>
-								</p>
-								<modal title="Enquiry via mail" visible="showModal">
-									<form name="formData" ng-submit="contactToCustomer(rooms)">
-										<div class="form-group">
-											<label for="email"></label>
-											<input type="text" class="form-control" name="full_name" id="full_name"	ng-model="form.full_name" placeholder="Full Name" />
-										</div>
-										<div class="form-group" id="email_id_div">
-											<label for="email"></label> 
-											<input type="email"	class="form-control" name="email_id" id="email_id" ng-model="form.email_id" placeholder="Enter email" />
-										</div>
-										<div class="form-group" id="phone_div">
-											<label for="email"></label> 
-											<input type="text" class="form-control" name="phone" id="phone"	ng-model="form.phone" placeholder="Enter Phone/Mobile Number" />
-										</div>
-										<div class="form-group">
-											<label for="checkIn"></label>
-											<input class="date"	name="checkIn" id="checkIn" ng-model="form.checkIn"	ng-init="checkIn= 'CheckIn Date'" type="text"
-												style="width: 60%; height: 0px;" onfocus="this.value = '';"
-												onblur="if (this.value == '') {this.value = '';}" required />
-										</div>
-										<div class="form-group">
-											<label for="checkOut"></label>
-											<input class="date"	name="checkOut" id="checkOut" ng-model="form.checkOut" ng-init="checkOut= 'CheckIn Date'" type="text"
-												style="width: 60%; height: 0px;" onfocus="this.value = '';"
-												onblur="if (this.value == '') {this.value = '';}" required />
-										</div>
-										<div class="form-group">
-											<label for="enquiry"></label>
-											<textarea class="form-control" ng-model="form.enquiry" id="enquiry" name="enquiry" placeholder="Enquiry.." required></textarea>
-										</div>
-										<br>
-										<button type="submit" class="btn btn-default">Submit</button>
-									</form>
-									<script>
-										$(function()
-										{
-											$("#datepicker,#checkIn,#checkOut").datepicker();
-										});
-									</script>-->
-							</div>
+							 </div>
 						</div>
-						<!--<div class="hotel-right text-right">Payment via card Available-<b>Yes</b>
-							<h4><span>$8,750</span> {{rooms.basePrice}}	</h4>
-							<p>Best price</p>
-							<a href="single.html">Continue</a>
-						</div>-->
+						 
 					</div>
 				</div>
 			</div>

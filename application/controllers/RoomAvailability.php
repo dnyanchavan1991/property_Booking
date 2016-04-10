@@ -8,8 +8,10 @@ class RoomAvailability extends CI_Controller {
 		//$this->load->model ( 'PropertyModel' );
 	}
 	public function index() {
+		//echo "before submit";
+		//echo $this->session->userdata ( 'checkIn' );
 		if (isset ( $_POST ['submit'] )) {
-			
+	//	echo "post submit" ;	
 			$checkin = $_POST ['checkIn'];
 			$checkin = str_replace ( '/', '-', $checkin );
 			$checkin = date ('Y-m-d', strtotime ( $checkin ));
@@ -23,14 +25,23 @@ class RoomAvailability extends CI_Controller {
 			$this->session->set_userdata ( 'guestCount',$_POST['guestCount'] );
 			$this->session->set_userdata ( 'destination', $_POST['inpDestination'] );
 			$this->session->set_userdata ( 'propertyType',$_POST['propertyType']);
+			
+					
 		}
 	
 		
 	$this->load->view ( 'search.html' );
-	//$this->load->view ( 'search.html' );
+	
 	
 	}
 	public function checkRoomAvailabilty() {
+		$postdata = file_get_contents("php://input");
+		$request = json_decode($postdata);
+		$sortFCriteria = $request->sortByFilter;
+		$sortBCriteria = $request->sortByBedrooms;
+		//$sortByFilter = $request->sortByFilter;
+	 
+	 
 		$this->load->model ( 'PropertyModel' );
 		$searchArray=array(
 				'checkIn'=>$this->session->userdata ( 'checkIn' ),
@@ -38,13 +49,12 @@ class RoomAvailability extends CI_Controller {
 				'guestCount'=>$this->session->userdata ( 'guestCount' ),
 				'destination'=>$this->session->userdata ( 'destination' ),
 				'propertyType'=>$this->session->userdata ( 'propertyType' )
-				
-				
 		);
+		
 		$filterData=null;
-		//$roomAvailableCount = $this->PropertyModel->getRoomAvailabilityCount ($searchArray,$filterData);
-	$roomAvailableCount=20;
-		$roomAvailableInfo = $this->PropertyModel->checkRoomAvailabilty ($searchArray,$filterData);
+		$roomAvailableCount = $this->PropertyModel->getRoomAvailabilityCount ($searchArray,$filterData);
+	//$roomAvailableCount=20;
+		$roomAvailableInfo = $this->PropertyModel->checkRoomAvailabilty ($searchArray,$filterData, $sortFCriteria, $sortBCriteria);
 		
 		$i=0;
 		$response=new stdClass();
@@ -62,7 +72,12 @@ class RoomAvailability extends CI_Controller {
 						if(strpos($result ,"mainImage") !==false)
 						{
 							$get_result = "Admin/".$image_path.$result;
-							$response->rows[$i]=array('propertyId'=>$row['propertyId'],'propertyName'=>$row['property'],'ImagePath' => $get_result,'starRate'=>$row['star_rate'],'propertyAddress'=>$row['propertyAddress']);
+							$response->rows[$i]=array('propertyId'=>$row['propertyId'],'propertyName'=>$row['property'],'ImagePath' => $get_result,
+							'starRate'=>$row['star_rate'],'propertyAddress'=>$row['propertyAddress'],
+							'pool'=>$row['pool'], 'free_parking'=>$row['free_parking'], 'air_condition'=>$row['air_condition'],
+							'television_access'=>$row['television_access'], 'internet_access'=>$row['internet_access'],
+							'smoking_allowd'=>$row['smoking_allowd'], 'free_breakfast'=>$row['free_breakfast'], 'pet_friendly'=>$row['pet_friendly']
+							);
 							
 							$i++;
 						}
@@ -71,7 +86,7 @@ class RoomAvailability extends CI_Controller {
 				 
    
 		}
-		echo json_encode ( $response );
+		 echo json_encode ( $response );
         }
         public function checkFilterRoomAvailabilty() {
         	$postdata = file_get_contents("php://input");
@@ -88,12 +103,12 @@ class RoomAvailability extends CI_Controller {
         
         	);
         	
-        	if(sizeof($filterData->selectedstarRateList)==0 &&  sizeof($filterData->selectedFeatureList)==0 && sizeof($filterData->selectedFacilityList)==0 && sizeof($filterData->selectedAccomodationList)==0 &&  $filterData->propertyNameList[0]->name=="" && $filterData->accomodatesList
-        			[0]->name=="" && ($filterData->selectedPropertyTypeList)==0 ){
+        	if(sizeof($filterData->selectedstarRateList)==0 &&  sizeof($filterData->selectedFeatureList)==0 && sizeof($filterData->selectedFacilityList)==0 
+			 && ($filterData->selectedPropertyTypeList)==0 && ($filterData->selectedBathroomList)==0 ){
         		$filterData=NULL;
         	} 
         	$roomAvailableCount = $this->PropertyModel->getRoomAvailabilityCount ($searchArray,$filterData);
-        	$roomAvailableInfo = $this->PropertyModel->checkRoomAvailabilty ($searchArray,$filterData);
+        	$roomAvailableInfo = $this->PropertyModel->checkRoomAvailabilty ($searchArray, $filterData, '', '');
         	$response=new stdClass();
         	$response->records =$roomAvailableCount;
         
@@ -111,7 +126,12 @@ class RoomAvailability extends CI_Controller {
 						if(strpos($result ,"mainImage") !==false)
 						{
 							$get_result = "Admin/".$image_path.$result;
-							$response->rows[$i]=array('propertyId'=>$row['propertyId'],'starRate'=>$row['star_rate'],'propertyName'=>$row['property'],'ImagePath' => $get_result,'propertyAddress'=>$row['propertyAddress']);
+							$response->rows[$i]=array('propertyId'=>$row['propertyId'],'propertyName'=>$row['property'],'ImagePath' => $get_result,
+							'starRate'=>$row['star_rate'],'propertyAddress'=>$row['propertyAddress'],
+							'pool'=>$row['pool'], 'free_parking'=>$row['free_parking'], 'air_condition'=>$row['air_condition'],
+							'television_access'=>$row['television_access'], 'internet_access'=>$row['internet_access'],
+							'smoking_allowd'=>$row['smoking_allowd'], 'free_breakfast'=>$row['free_breakfast'], 'pet_friendly'=>$row['pet_friendly']
+							);
 							$i++;
 						}
 					}

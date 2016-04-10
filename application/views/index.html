@@ -76,12 +76,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<ul id="hiddenresponsive" class="nav1">
 						<li><a class="active" href="Index1" data-hover="HOME">HOME</a></li>											 
 						 <!--<li><a href="" id='modal-launcher' data-toggle="modal" data-target="#login-modal" data-hover="LOGIN">LOGIN</a></li> -->
-							 <li><a href="#"   data-hover="LOGIN" onClick="checkLogin('Index1')">LOGIN</a></li> 
-							 <li><a href="Logout"   data-hover="LOGOUT" >LOGOUT</a></li> 			
+						    
+								<li id="logOut"><a href="Logout"   data-hover="LOGOUT" >LOGOUT</a></li> 			
+							
+								<li id="logIn"><a href="#"   data-hover="LOGIN" onClick="checkLogin('Index1')">LOGIN</a></li> 
+							 
 					</ul>  
 				</nav>
 				<!-- script for menu -->
 				<script> 
+					//alert(sessionStorage.getItem("user"));
+					//console.log(sessionStorage);
+					
 					$( "span.menu" ).click(function() {
 					$( "ul.nav1" ).slideToggle( 300, function() {
 					 // Animation complete.
@@ -220,6 +226,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="clearfix"></div>
 		</div>
 		</form>
+		
 	</div>
 </div>
 	

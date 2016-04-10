@@ -7,19 +7,76 @@ angular.module('checkRoomAvailabilityApp', ['angularUtils.directives.dirPaginati
 		});
 		/*--*/
 		$scope.getRoomAvailability = function() {
-			$http.get("RoomAvailability/checkRoomAvailabilty").then(function(response) {
+		//	alert($scope.sortByFilter);
+			if ($scope.sortByFilter == null)
+				$scope.sortByFilter = 'propAToZ';
+			if ($scope.sortByBedrooms == null)
+				$scope.sortByBedrooms = 'All';
+			 
+	             	var data = { 
+	             				sortByFilter : $scope.sortByFilter,
+	             				sortByBedrooms : $scope.sortByBedrooms
+	             				}
+	             	
+             
+		  	 $http({url: "RoomAvailability/checkRoomAvailabilty",
+		  			 method: "post",
+		  			 data : { 
+		  				 	sortByFilter : $scope.sortByFilter,
+		  				 	sortByBedrooms : $scope.sortByBedrooms
+		  			 }
+		  	 }).then(function(response) {
 				$scope.propNames  = response.data.rows;
+            	// console.log(response);
 			});
+		 
+					
+		  	 
+					
+					
 		};
 		/*--*/
 		$scope.propertyName = [{
 			name : ""
 		} ];
 		$scope.selectGuestHeadCount= [{
-			name : "Select"
+			name : "1"
 		} ];
-		
-		
+		 $scope.displayFlag = false;
+		  $scope.accomodationType =[
+		                             { value: '0',
+		                            	 label: 'All' },
+		                               { value: '1',
+			                               label: 'Villa' },
+			                           { value: '2',
+				                           label: 'Dormatory' },
+			                           { value: '3',
+				                            label: 'Apartment' },
+			                           { value: '4',
+				                            label: 'Bunglow' },
+			                           { value: '5',
+				                            label: 'Row House' },
+			                           { value: '6',
+				                            label: 'Cottage' },
+			                           { value: '7',
+				                            label: 'Hut' },
+			                           { value : '8',
+				                             label : 'House boat' },
+		                               { value : '9',
+				                             label : 'Tree house' }						                               
+		                               ];
+		  $scope.guestHeadCount = ["1", "2", "3", "4", "5", "6" ,"7", "8", "9", "10", "11", "12", "13", "14", "15"];
+		  $scope.expandFilterOptions = function(){
+			  
+				 //  $scope.inputDestination = "";
+				   $scope.displayFlag = true;
+				 //  #scope.selectAccomodationType.hide('0');						   
+			  }
+		  
+		  $scope.reloadSortByFilterData = function(){
+			  
+			  
+		  }
 		$scope.starRateList = [{
 			name : 5,
 			star_image_url : 'images/st2.png'
@@ -41,22 +98,49 @@ angular.module('checkRoomAvailabilityApp', ['angularUtils.directives.dirPaginati
 			name : 'pool',
 			featureLabel : 'Swimming Pool'
 		}, {
-			name : 'internet_access',
+			name : 'television_access',
 			featureLabel : 'Television'
 		}, {
+			name : 'internet_access',
+			featureLabel : 'Free WIFI'
+		},{
 			name : 'air_condition',
 			featureLabel : 'Air Conditioner'
 		}];
 		
+		 
+		  
+		 $scope.bathroomList = [{
+				name : '1',
+				Label : '1 Bathroom'
+			}, {
+				name : '2',
+				Label : '2 Bathrooms'
+			}, {
+				name : '3',
+				Label : '3 Bathrooms'
+			}, {
+				name : '4',
+				Label : '4 Bathrooms'
+			},{
+				name : '5+',
+				Label : '5+ Bathrooms'
+			}];
+		 
 		$scope.facilityList = [{
+			name : 'free_breakfast',
+			facilityLabel : 'Free Breakfast'
+		},{
 			name : 'free_parking',
 			facilityLabel : 'Free Parking'
-		}, {
+		} 
+		,
+		{
 			name : 'in_house_kitchen',
 			facilityLabel : 'In House Kitchen'
 		}, {
 			name : 'smoking_allowd',
-			facilityLabel : 'Smoking Allowd'
+			facilityLabel : 'Smoking Allowed'
 		}, {
 			name : 'pet_friendly',
 			facilityLabel : 'Pet Friendly'
@@ -67,15 +151,17 @@ angular.module('checkRoomAvailabilityApp', ['angularUtils.directives.dirPaginati
 			selectedFeatureList : [],
 			selectedFacilityList : [],
 			selectedAccomodationList : [],
-			propertyNameList : [],
-			accomodatesList:[],
-			selectedPropertyTypeList:[]
+			/*propertyNameList : [],
+			accomodatesList:[],*/
+			selectedPropertyTypeList:[],
+			selectedBathroomList:[]
 		};
 		/*--*/
-		$scope.model.propertyNameList.push({name:""});
-		$scope.model.accomodatesList.push({name:"Select"});
+	/*	$scope.model.propertyNameList.push({name:""});
+		$scope.model.accomodatesList.push({name:"Select"});*/
 		/*--*/
 		$scope.isLabelChecked = function(objName) {
+			
 			if (objName == 'starRate') {
 				if (this.starRateLabel.selected) {
 					$scope.model.selectedstarRateList.push(this.starRateLabel);
@@ -100,44 +186,32 @@ angular.module('checkRoomAvailabilityApp', ['angularUtils.directives.dirPaginati
 				} else {
 					$scope.model.selectedPropertyTypeList.splice(this.propertyTypeListLabel, 1);
 				}
-			} else if (objName == 'propertyName') {
-				$scope.model.propertyNameList.pop();
-				if (this.propertyName[0].name != null) {
-					$scope.model.propertyNameList.splice(0,1);
-					$scope.model.propertyNameList.push(this.propertyName[0]);
-				}
-				else{
-					$scope.model.propertyNameList.push({name:""});
-				}
-			}
-			else if(objName=='accomodates'){
-				$scope.model.accomodatesList.pop();
-				
-				if(this.selectGuestHeadCount!='Select'){
-					$scope.model.accomodatesList.splice(0,1);
-				$scope.model.accomodatesList.push({name:this.selectGuestHeadCount[0]});
-			       }
-			else{
-				$scope.model.accomodatesList.push({name:""});	
-			   }
-					
+			} 
+			else if(objName=='bathroom'){
+				if (this.bathroom.selected) {
+					$scope.model.selectedBathroomList.push(this.bathroom);
+				} else {
+					$scope.model.selectedBathroomList.splice(this.bathroom, 1);
+				}	
 			}
 			else{
 			
 			}
 			
-			if(this.selectGuestHeadCount=='Select'){
+			
+		/*	if(this.selectGuestHeadCount=='Select'){
 				$scope.model.accomodatesList.splice(0,1);
 				$scope.model.accomodatesList.push({name:""});
-			}
+			}*/
 
-			$http({
+		 	$http({
 				method : 'POST',
 				url : 'RoomAvailability/checkFilterRoomAvailabilty/',
 				data : $scope.model // forms user object
 			}).success(function(response) {
 				$scope.propNames = response.rows;
-			});
+
+			}); 
 		};
 		/*--*/
 		// Show Div
@@ -162,5 +236,14 @@ angular.module('checkRoomAvailabilityApp', ['angularUtils.directives.dirPaginati
 			}
 			return arr;
 		};
-	});
+	})
+	.controller('featuredPropertyCtrl', function ($scope,$http){
+	$scope.featuredPropFetch=function()
+    {
+    	$http.post("Index1/galleryImgFetch/").then(function(response){
+			$scope.imageSrc = response.data;
+		});
+    }
+	 
+});
 		
