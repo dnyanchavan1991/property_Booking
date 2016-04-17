@@ -39,7 +39,7 @@ a:hover{
 }
 .eee,.fff,#aaa,#bbb,#ccc,#ddd{
 padding-right:0px !important;
-padding-left:5px !important;
+padding-left:10px !important;
 }
 .guedtf{
 width:28%;
@@ -252,16 +252,23 @@ ul.callbacks_tabs.callbacks2_tabs {
 top: 73%;
 left:46%;
 }
+.leftBanner{
+	position: absolute;
+	width: 16%;
+	margin-top: 27%;
+	height: 400px;
+}
 .plusMinus {
-    padding: 10px 4px 16px !important;
+    padding: 10px 10px 16px !important;    		 
     float:right;
     padding-right:4px;
     content:"+";
     color: white;
-    background-color: #1C69DF;
+    background-color: blueviolet;
     cursor: pointer;
     margin: 1px 0px 0px 26px !important;
     float: right;
+    border-radius: 3px;
     }
 .clearFilter {
     padding: 10px 10px 16px !important;
@@ -269,10 +276,11 @@ left:46%;
     padding-right:4px;
     content:"+";
     color: white;
-    background-color: #1C69DF;
+    background-color: blueviolet;
     cursor: pointer;
     margin: 1px 0px 0px 26px !important;
     float: right;
+    border-radius: 3px;
     }
   .resultmedia-tag {
   	padding: 2px 6px 0 4px;
@@ -577,6 +585,7 @@ float:right;
    background: rgba(236, 202, 105, 0.48); 
   padding: 25px;
     width: 100%;
+    margin-bottom: 10px;
       
 }
 .banner-info {
@@ -863,7 +872,7 @@ margin-top:30px;
 /*-- //services --*/
 /*--gallery--*/
 .gallery{
-background:#E7D6A3;
+background:#9E9FA4;
 }
 .view {
   border: 3px solid #fff;
@@ -1350,7 +1359,7 @@ label.checkbox {
 }
 /*-- about --*/
 .page-head {
-  min-height: 125px;
+  height: 0px;
 }
 /*--about-starts--*/
 .about-top {
@@ -2503,6 +2512,7 @@ font-weight:bold;
 		padding: 0px 0px 0px 0px !important;
 		font-size: 17px;
 		height: 49px !important;
+		border-radius: 3px;
 	}
 	.propertyType{
 		width:100%;
@@ -2567,6 +2577,7 @@ button, input, optgroup, select, textarea{
 	margin: -26px 0px 0px 0px !important;
 	padding: 3px 0px 0px 4px !important;
 	top: -48px !important;
+	border-radius: 3px;
 }
 .date {
 	font-size: 17px;
@@ -2591,10 +2602,11 @@ button, input, optgroup, select, textarea{
 					text-transform: uppercase;
 					border: medium none;
 					outline: medium none;
-					background: #1C69DF none repeat scroll 0% 0%;
+					background: blueviolet none repeat scroll 0% 0%;
 					color: #FFF;
 					margin: 1px 0px 0px 26px !important;
 					padding: 10px 4px 16px !important;
+					border-radius: 3px;
 				}
 	
 	}
@@ -2604,6 +2616,7 @@ button, input, optgroup, select, textarea{
 		border:0px; 
 		padding: 12px !important;
 		 margin-left: -11px !important;
+		 border-radius: 3px;
 }
 	.search input[type="submit"] {
     font-size: 15px;
@@ -2774,7 +2787,7 @@ margin: 1px -6px !important;
 	  font-size: 13px;
 	}
 	.page-head {
-	  min-height: 126px !important;
+		height: 0px !important;
 	}
 	.about-bottom h4 {
 	  font-size: 21px;
@@ -3391,7 +3404,7 @@ margin: 1px -6px !important;
 	  margin: 8px 0 0 0;
 	}
 	.page-head {
-	  min-height: 87px !important;
+	 height: 0px !important;
 	}
 	.hotel-right h4 {
 	  font-size: 19px;
@@ -3963,7 +3976,7 @@ margin: 15px 0px 0px 10px !important;*/
 	  padding: 0;
 	  }
 	.page-head {
-	  min-height: 110px !important;
+	 height: 0px !important;
 	}
 	.table td, .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
 	  padding: 10px!important;
