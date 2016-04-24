@@ -8,7 +8,7 @@ class Index1 extends CI_Controller {
 	}
 
 	public function index() {
-		$this->load->view ( 'index.html' );
+		$this->load->view ( 'index-new.php' );
 		//$this->load->view ( 'ex2.html' );
 	}
 	
