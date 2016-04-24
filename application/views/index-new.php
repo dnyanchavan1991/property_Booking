@@ -1,8 +1,7 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-<title>hotel-booking</title>
+<title>Property Booking</title>
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Pinyon+Script' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Quicksand:400,700' rel='stylesheet' type='text/css'>
@@ -15,6 +14,11 @@
 
 <!-- requried-jsfiles-for owl -->
 <link href="css/new-theme/owl.carousel.css" rel="stylesheet">
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/controller/landingPageController.js"></script>
+
+<script type="text/javascript" src="js/global/global_url_variable.js"></script>
+<script type="text/javascript" src="js/global/global_functions.js"></script>
 <script src="js/new-theme/owl.carousel.js"></script>
 <script type="text/javascript">
 	$(function() {
@@ -33,7 +37,7 @@
 </script>
 <!-- //requried-jsfiles-for owl -->
 </head>
-<body ng-app="landingPageApp" ng-controller="landingPageCntrl">
+<body ng-app="landingPageApp" >
 <!--header starts-->
 <div class="header">
 	<?php $this->load->view('common/header.html'); ?>
@@ -116,7 +120,7 @@
 		});
 	})();
 </script>
-<form method="post" action="RoomAvailability">
+<form method="post" action="RoomAvailability"  ng-controller="landingPageCntrl">
 <div class="online_reservation">
 		   <div class="b_room" id="b_room">
 			  <div class="booking_room" id="booking_room">
@@ -125,7 +129,7 @@
 						  <li  class="span1_of_1 left">
 							  <h5>Where to go?</h5>
 							  <div class="book_date" id="book_date">
-								  <input class="date" id="inpDestination" type="text" autocomplete="off" name="inpDestination" ng-model="inputDestination" value="Where do you want to go?" ng-click="expandFilterOptions()" onClick="show()" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Where do you want to go?';}">
+								  <input   id="inpDestination" type="text" autocomplete="off" name="inpDestination" ng-model="inputDestination" value="Where do you want to go?"   ng-click="expandFilterOptions()" onClick="show()" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Where do you want to go?';}">
 							  </div>
 						  </li>
 						 <li  class="span1_of_1 left">
@@ -173,14 +177,14 @@
 	 <div class="container">
 		 <h3>Gallery</h3>
 		 <p>Sed euismod sem id consequat rutrum. Ut convallis lorem a orci mollis, eu vulputate libero aliquet. Praesent egestas nisi sed purus tincidunt faucibus. Aliquam lobortis orci lacus, sed faucibus augue dapibus vitae. Ut vitae mi sapien. Phasellus a eros justo.
-		 Curabitur odio massa, tincidunt nec nibh sit amet</p>
-
-		  <div id="owl-demo" class="owl-carousel" ng-repeat="imageData in imageSrc">
+		 Curabitur odio massa, tincidunt nec nibh sit amet</p> 
+	
+		  <div id="owl-demo" class="owl-carousel" >
 			  <div class="item text-center image-grid">	
-					<ul>
-					 <li><img ng-src="{{imageData.image}}" alt="" ></li>
-					 <li><img src="images/new-theme/2.jpg" alt=""></li>
-					 <li><img src="images/new-theme/3.jpg" alt=""></li>
+					<ul > 
+					 <li ng-repeat="imageData in imageSrc"> <img ng-src="{{imageData.image}}" alt="" ></li>
+					 <!--<li><img src="images/new-theme/2.jpg" alt=""></li>
+					 <li><img src="images/new-theme/3.jpg" alt=""></li>-->
 					 </ul>
 			  </div>
 			  <div class="item text-center image-grid">	

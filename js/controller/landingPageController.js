@@ -1,6 +1,9 @@
 angular.module('landingPageApp', [])
 				.controller('landingPageCntrl', function($scope, $http) {
 					 $scope.displayFlag = false;
+					 $scope.inputDestination = "Where do you want to go?";
+					 $scope.checkInDate = "Arrival Date";
+					 $scope.checkOutDate = "Departure Date";
 					  $scope.accomodationType =[
 					                             { value: '0',
 					                            	 label: 'All' },
