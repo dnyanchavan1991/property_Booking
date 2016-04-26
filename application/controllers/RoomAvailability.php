@@ -28,9 +28,9 @@ class RoomAvailability extends CI_Controller {
 			
 					
 		}
-	
-		
-	$this->load->view ( 'search.html' );
+
+
+	$this->load->view ( 'search-new.php' );
 	
 	
 	}

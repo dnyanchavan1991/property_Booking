@@ -174,9 +174,15 @@ position: absolute;
 left: 96%;
 bottom: 48%;
 }
-/* start booking_room */
+/* start search n booking_room */
+.moreFilterExpand {
+    margin-top: 20px;
+}
 .online_reservation{
 	z-index: 999;
+}
+.container-search {
+    width: 96%;
 }
 .b_room{
 	display: inline-flex;
@@ -195,14 +201,10 @@ left:18%;
 z-index:1;
 }
 .booking_room_active {
-	left:4%
+	left:2% !important;
 }
 .b_room_active {
-	width: 92%;
-}
-.book_date_active {
-	width: 55% !important;
-	padding: 8px 8px;
+	width: 96% !important;
 }
 .booking_room h4{
 	font-size: 1.5em;
@@ -235,6 +237,11 @@ z-index:1;
 width: 24.33333%;
 margin-left: 1em;
 margin-top: 1em;
+}
+.reservation ul li.span1_of_click {
+    width: 14.333% !important;
+    margin-left: 1em !important;
+    margin-top: 1em !important;
 }
 .reservation ul li.span1_of_2{
 	width: 9.33333%;
@@ -289,6 +296,35 @@ select option{
 	-webkit-border-radius: 9px;
 	-moz-border-radius: 9px;
 	-o-border-radius: 9px;
+}
+.book_date_active input[type="text"]{
+    padding: 8px 15px !important;
+}
+.filter_btn {
+    text-transform:capitalize;
+    width: 90% !important;
+    background: #FFD700;
+    font-family: 'Open Sans', sans-serif;
+    color: #2A2E33;
+    padding: 8px;
+    border: none;
+    font-size: 14px;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    outline: none;
+    cursor: pointer;
+    font-weight:bold;
+    border-radius: 9px;
+    -webkit-border-radius: 9px;
+    -moz-border-radius: 9px;
+    -o-border-radius: 9px;
+    margin-top: 1em;
+    text-align: center;
+}
+.filter_btn:hover{
+    background: #00CCFF;
 }
 .date{
 	background:url(../../images/icon.png) no-repeat 3% 50% #FFF;
@@ -735,6 +771,17 @@ min-height:500px;
 padding:7% 0 0 0;
 border-bottom:1px solid #939597;
 }
+.filter-package {
+    min-height: 255px !important;
+    padding: 10% 0 0 0 !important;
+}
+.result-package {
+     padding: 3% 0 0 0 !important;
+ }
+.expand-package {
+    padding: 7% 0 0 0 !important;
+    border-bottom: none !important;
+}
 .package h3{
 font-family: 'Pinyon Script', cursive;
 font-size:3.5em;
@@ -811,7 +858,10 @@ background-position: -94px -4px;
 background-position: -126px -8px;
 }
 .items li a span.img6{
-background-position: -153px -7px;
+     background-position: -153px -7px;
+ }
+.items li a span.img7{
+    background-position: -153px -7px;
 }
 .items li a span:hover{
 opacity:0.6;
@@ -821,6 +871,9 @@ margin:15px 0;
 }
 .items {
 margin-top: 1.5em;
+}
+.items-filter {
+    color: #FFD700;
 }
 .fotter{
 background:#E7CB2C;
