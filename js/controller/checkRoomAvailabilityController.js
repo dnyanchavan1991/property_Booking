@@ -25,12 +25,16 @@ angular.module('checkRoomAvailabilityApp', ['angularUtils.directives.dirPaginati
 		  				 	sortByFilter : $scope.sortByFilter,
 		  				 	sortByBedrooms : $scope.sortByBedrooms
 		  			 }
-		  	 }).then(function(response) {	
-		  		// console.log(response.data.rows);
+		  	 }).then(function(response) {
 				$scope.propNames  = response.data.rows;
             	// console.log(response);
 			});
-		 
+	             	$scope.galleryImgFetch=function()
+	                {
+	                	$http.post("Index1/galleryImgFetch/").then(function(response){
+	            			$scope.imageSrc = response.data;
+	            		});
+	                }
 					
 		  	 
 					

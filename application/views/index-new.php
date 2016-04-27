@@ -160,7 +160,7 @@
 						  </li>
 						 <li class="span1_of_3">
 								<div class="date_btn">
-									<input type="submit" value="View Prices" />
+									<input type="submit" name="submit" value="View Prices" />
 								</div>
 						 </li>
 						 <div class="clearfix"></div>

@@ -238,7 +238,7 @@
 </form>
 <!---->
 <!---->
-<div id="package" class="package text-center filter-package" id="gallery" > <!-- ng-controller="galleryImgCtrl" data-ng-init="galleryImgFetch()" -->
+<div id="package" class="package text-center filter-package" id="gallery" data-ng-init="galleryImgFetch()"> <!-- ng-controller="galleryImgCtrl" data-ng-init="galleryImgFetch()" -->
     <div class="container">
         <h3>Featured Properties</h3>
 
@@ -248,20 +248,7 @@
                     <li ng-repeat="imageData in imageSrc"> <img ng-src="{{imageData.image}}" alt="" ></li>
                 </ul>
             </div>
-            <div class="item text-center image-grid">
-                <ul>
-                    <li> <img src="images/new-theme/3.jpg" alt=""></li>
-                    <li><img src="images/new-theme/4.jpg" alt=""></li>
-                    <li><img src="images/new-theme/5.jpg" alt=""></li>
-                </ul>
-            </div>
-            <div class="item text-center image-grid">
-                <ul>
-                    <li> <img src="images/new-theme/6.jpg" alt=""></li>
-                    <li><img src="images/new-theme/2.jpg" alt=""></li>
-                    <li><img src="images/new-theme/8.jpg" alt=""></li>
-                </ul>
-            </div>
+            
         </div>
     </div>
 </div>

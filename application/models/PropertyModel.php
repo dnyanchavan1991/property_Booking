@@ -19,21 +19,21 @@ class PropertyModel extends CI_Model {
 		
 		$propertyType = $searchArray ['propertyType'];
 		$destination = $searchArray ['destination'];
-		$this->db->select ( "property.property_id as propertyId,star_rate,property.property_name as property,property.property_type_id,property.image_path as imagePath, property.star_rate, concat(property.street,',',property.city,',',property.state,',',property.postal_code)as propertyAddress,propertyInfo.accommodates, propertyInfo.bedrooms,propertyInfo.bathrooms, propertyInfo.pool, propertyInfo.free_parking, propertyInfo.air_condition, propertyInfo.television_access, propertyInfo.internet_access, propertyInfo.smoking_allowd, propertyInfo.free_breakfast, propertyInfo.pet_friendly " );
-		//$this->db->select ( "property.property_id as propertyId,star_rate,property.property_name as property,property.property_type_id,property.image_path as imagePath, property.star_rate, concat(property.street,',',property.city,',',property.state,',',property.postal_code)as propertyAddress,propertyInfo.accommodates,(propertyInfo.accommodates-IFNULL(sum(res.accomodates), 0)) as availableAccomodes, propertyInfo.bedrooms,propertyInfo.bathrooms, propertyInfo.pool, propertyInfo.free_parking, propertyInfo.air_condition, propertyInfo.television_access, propertyInfo.internet_access, propertyInfo.smoking_allowd, propertyInfo.free_breakfast, propertyInfo.pet_friendly " );
-		$this->db->from ( "$propertyInfo propertyInfo" );
-	//	$this->db->join ( "$reservationTable res", "res.property_id=propertyInfo.property_id", "left" );
+		
+		$this->db->select ( "property.property_id as propertyId,star_rate,property.property_name as property,property.property_type_id,property.image_path as imagePath, property.star_rate, concat(property.street,',',property.city,',',property.state,',',property.postal_code)as propertyAddress,propertyInfo.accommodates,(propertyInfo.accommodates-IFNULL(sum(res.accomodates), 0)) as availableAccomodes, propertyInfo.bedrooms,propertyInfo.bathrooms, propertyInfo.pool, propertyInfo.free_parking, propertyInfo.air_condition, propertyInfo.television_access, propertyInfo.internet_access, propertyInfo.smoking_allowd, propertyInfo.free_breakfast, propertyInfo.pet_friendly " );
+	 
+		$this->db->from ( "$propertyInfo propertyInfo " );
+		$dateConditions = "(";
+		$dateConditions .= "( res.check_in <= '$checkin' AND ( res.check_out >= '$checkin' OR res.check_out >= '$checkout' ) )";
+		$dateConditions .= "OR ( (res.check_in >= '$checkin' AND res.check_in <= '$checkout') AND (res.check_out <='$checkout' OR res.check_out >='$checkout')) ";
+		$dateConditions .= ")";
+		$this->db->join ( "$reservationTable res", "res.property_id = propertyInfo.property_id   ", "left outer" );//and $dateConditions
+		//$this->db->having(" $dateConditions");
 		$this->db->join ( "$propertyTable property", "propertyInfo.property_id=property.property_id" );
-		// $this->db->where ( "res.property_id", NULL );
-		/*$where = ""; //res.property_id is Null
+	 
+		$where = "(city  like '%$destination%' or state like '%$destination%')";
 		$this->db->where ( $where );
-		$where = "(check_out >= '$checkout' AND check_in >='$checkin')";
-		$this->db->or_where ( $where );
-		$where = "(check_out <= '$checkout' AND check_out <='$checkout')";
-		$this->db->or_where ( $where );
-		$where = "(city  like'%$destination%' or state like '%$destination%')";
-		$this->db->where ( $where );*/
-		$this->db->where ('activation_flag','YES');
+		$this->db->where ('activation_flag','YES'); 
 		
 		if ($propertyType != '0') {
 			$where = "(property_type_id='$propertyType')";
@@ -166,9 +166,9 @@ class PropertyModel extends CI_Model {
 				$this->db->having ( "bedrooms >= 1" );	
 				break;	
 		}
-	//	$this->db->where('activation_flag','YES'); 
+		$this->db->where('activation_flag','YES'); 
 		
-	//	$this->db->having ( "availableAccomodes >= $guestCount" );
+	 	$this->db->having ( "availableAccomodes >= $guestCount" );
 		
 		$this->db->group_by ( array (
 				"property.property_id" 
@@ -198,9 +198,10 @@ class PropertyModel extends CI_Model {
 				break;
 		}
 		
-		 
+		 //return $this;
 		$roomAvailableInfo = $this->db->get ();
 		$roomAvailableInfoResult = $roomAvailableInfo->result ();
+		 
 		
 		  return ($roomAvailableInfoResult);
 	}
@@ -270,21 +271,20 @@ class PropertyModel extends CI_Model {
 		$propertyType = $searchArray ['propertyType'];
 		$destination = $searchArray ['destination'];
 		
-		$this->db->select ( "count(*) as count" );
-		//$this->db->select ( "count(*) as count,(propertyInfo.accommodates-IFNULL(sum(res.accomodates), 0)) as availableAccomodes" );
+		
+		$this->db->select ( "count(*) as count,(propertyInfo.accommodates-IFNULL(sum(res.accomodates), 0)) as availableAccomodes" );
 		$this->db->from ( "$propertyInfo propertyInfo " );
-		//$this->db->join ( "$reservationTable res", "res.property_id=propertyInfo.property_id", "left" );
-		$this->db->join ( "$propertyTable property", "propertyInfo.property_id=property.property_id" );
-		// $this->db->where ( "res.property_id", NULL );
-		//$where = "(res.property_id is Null";
-	/*	$this->db->where ( $where );
-		$where = "(check_in <= '$checkin' AND check_in >='$checkin')";
-		$this->db->or_where ( $where );
-		$where = "(check_out <= '$checkout' AND check_out >='$checkout')";
-		$this->db->or_where ( $where );
-		$where = "(city  like'%$destination%' or state like '%$destination%')";
-		$this->db->where ( $where );*/
+		$dateConditions = " ( ";
+		$dateConditions = $dateConditions . " ( res.check_in <= '$checkin' AND ( res.check_out >= '$checkin' OR res.check_out >= '$checkout' ) )";
+		$dateConditions = $dateConditions . " OR ( (res.check_in >= '$checkin' AND res.check_in <= '$checkout') AND (res.check_out <='$checkout' OR res.check_out >='$checkout')) ";
+		$dateConditions = $dateConditions . " ) ";
+		//echo $dateConditions;
+		$this->db->join ( "$reservationTable res", "res.property_id=propertyInfo.property_id   ", "left outer" );//and $dateConditions
+		$this->db->join ( "$propertyTable property", "propertyInfo.property_id=property.property_id" );	 
+		$where = "(city  like '%$destination%' or state like '%$destination%')";
+		$this->db->where ( $where );
 		$this->db->where ('activation_flag','YES');
+		
 		if ($propertyType != '0') {
 			$where = "(property_type_id='$propertyType')";
 			$this->db->where ( $where );
@@ -393,11 +393,11 @@ class PropertyModel extends CI_Model {
 		} else {
 		}
 		
-		//$this->db->having ( "availableAccomodes >= $guestCount" );
+		$this->db->having ( "availableAccomodes >= $guestCount" );
 		
 		$roomAvailableInfo = $this->db->get ();
-		 
-		$roomAvailableCount = $roomAvailableInfo->row ()->count;
+		
+		$roomAvailableCount = $roomAvailableInfo->row()->count;
 		 return $roomAvailableCount;
 	}
 	public function verifyDuplicateIPData($ip_address, $date_visited) {

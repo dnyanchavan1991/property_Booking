@@ -7,20 +7,12 @@ class RoomAvailability extends CI_Controller {
 		$this->load->library ( 'session' );
 		//$this->load->model ( 'PropertyModel' );
 	}
-	public function index() {
-		// echo "before";
-		 
+	public function index() { 
 	 	 if (isset ( $_POST ['submit'] ))  
-			{
-	 //echo "submit";
-			$checkin = $_POST ['checkIn'];
-		 	 
-			//$checkin = str_replace ( '/', '-', $checkin );
-		 	 
-			$checkin = date ('Y-m-d', strtotime ( $checkn ));
-			 
-			  
-			 
+			{ 
+			$checkin = $_POST ['checkIn']; 
+			//$checkin = str_replace ( '/', '-', $checkin ); 
+			$checkin = date ('Y-m-d', strtotime ( $checkin ));  
 			$checkout = $_POST ['checkOut'];
 		//	$checkout = str_replace ( '/', '-', $checkout );
 		 	$checkout = date ('Y-m-d', strtotime ( $checkout ));
@@ -53,15 +45,16 @@ class RoomAvailability extends CI_Controller {
 		);
 		 
 		$filterData=null;
-		 $roomAvailableCount = $this->PropertyModel->getRoomAvailabilityCount ($searchArray, $filterData);
+		
+	//	 $roomAvailableCount = $this->PropertyModel->getRoomAvailabilityCount ($searchArray, $filterData);
 		 
 		
 	
 		$roomAvailableInfo = $this->PropertyModel->checkRoomAvailabilty ($searchArray,$filterData, $sortFCriteria, $sortBCriteria);
-		
+		//echo $roomAvailableInfo;
 		$i=0;
 		$response=new stdClass();
-		$response->records =$roomAvailableCount;
+		//$response->records =$roomAvailableCount;
 		foreach($roomAvailableInfo as $row)
 		{
 				$row=(array)$row;
@@ -105,15 +98,15 @@ class RoomAvailability extends CI_Controller {
         
         
         	);
-        	
+        	//echo $searchArray;
         	if(sizeof($filterData->selectedstarRateList)==0 &&  sizeof($filterData->selectedFeatureList)==0 && sizeof($filterData->selectedFacilityList)==0 
 			 && ($filterData->selectedPropertyTypeList)==0 && ($filterData->selectedBathroomList)==0 ){
         		$filterData=NULL;
         	} 
-        	$roomAvailableCount = $this->PropertyModel->getRoomAvailabilityCount ($searchArray,$filterData);
+        //	$roomAvailableCount = $this->PropertyModel->getRoomAvailabilityCount ($searchArray,$filterData);
         	$roomAvailableInfo = $this->PropertyModel->checkRoomAvailabilty ($searchArray, $filterData, '', '');
         	$response=new stdClass();
-        	$response->records =$roomAvailableCount;
+        	//$response->records =$roomAvailableCount;
         
         	$i=0;
         	foreach($roomAvailableInfo as $row)
