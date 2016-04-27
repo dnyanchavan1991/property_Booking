@@ -175,6 +175,11 @@ left: 96%;
 bottom: 48%;
 }
 /* start search n booking_room */
+.custom-checkbox {
+    float: left;
+    margin-right: 5px;
+}
+}
 .moreFilterExpand {
     margin-top: 20px;
 }
@@ -779,7 +784,7 @@ border-bottom:1px solid #939597;
      padding: 3% 0 0 0 !important;
  }
 .expand-package {
-    padding: 7% 0 0 0 !important;
+    padding: 8% 0 0 0 !important;
     border-bottom: none !important;
 }
 .package h3{

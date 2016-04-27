@@ -29,14 +29,14 @@
                 location.reload();
             });
 
-            $("#owl-demo").owlCarousel({
+            /*$("#owl-demo").owlCarousel({
                 items : 1,
                 lazyLoad : true,
                 autoPlay : true,
                 navigation : true,
                 navigationText :  false,
                 pagination : false,
-            });
+            });*/
         });
 
     </script>
@@ -182,39 +182,34 @@
                                         <input type="checkbox" id={{starRateLabel.name}}
                                                ng-model="starRateLabel.selected"
                                                ng-change="isLabelChecked('starRate')">
-                                        <label
-                                            for={{starRateLabel.name}}> <span></span> <b><img
-                                                    ng-src={{starRateLabel.star_image_url}} alt="" /></b>
-                                        </label>
+                                        <img ng-src={{starRateLabel.star_image_url}} alt="" />
                                     </div>
                                 </div>
                                 <div class="col-md-3 room-sec">
                                     <h5>Bathrooms</h5>
                                     <div class="items items-filter" ng-repeat="bathroom in bathroomList">
-                                        <input
-                                            id={{bathroom.name}} type="checkbox"
+                                        <input id={{bathroom.name}} type="checkbox"
                                             ng-model="bathroom.selected"
-                                            ng-click="isLabelChecked('bathroom')">{{bathroom.Label}}
+                                            ng-click="isLabelChecked('bathroom')"> {{bathroom.Label}}
                                     </div>
                                 </div>
                                 <div class="col-md-3 room-sec">
                                     <h5>Feature</h5>
                                     <div class="items items-filter" ng-repeat="featureListLabel in featureList">
-                                        <input
-                                            id={{featureListLabel.name}} type="checkbox"
+                                        <input id={{featureListLabel.name}} type="checkbox"
                                             ng-model="featureListLabel.selected"
-                                            ng-change="isLabelChecked('features')">{{featureListLabel.featureLabel}}
+                                            ng-change="isLabelChecked('features')"> {{featureListLabel.featureLabel}}
                                     </div>
                                 </div>
                                 <div class="col-md-3 room-sec">
                                     <h5>Facilities</h5>
                                     <div class="items items-filter" ng-repeat="facilityListLabel in facilityList">
-                                        <input
-                                            id={{facilityListLabel.name}} type="checkbox"
+                                        <input id={{facilityListLabel.name}} type="checkbox"
                                             ng-model="facilityListLabel.selected"
-                                            ng-change="isLabelChecked('facility')">{{facilityListLabel.facilityLabel}}
+                                            ng-change="isLabelChecked('facility')"> {{facilityListLabel.facilityLabel}}
                                     </div>
                                 </div>
+                                <div class="clearfix"></div>
                                 <div class="col-md-3 room-sec">
                                     <h5>Bedrooms</h5>
                                     <div class="items items-filter">
@@ -242,14 +237,27 @@
     <div class="container">
         <h3>Featured Properties</h3>
 
-        <div id="owl-demo" class="owl-carousel" >
-            <div class="item text-center image-grid">
-                <ul >
-                    <li ng-repeat="imageData in imageSrc"> <img ng-src="{{imageData.image}}" alt="" ></li>
+        <!--<div id="owl-demo" class="owl-carousel" owl-options="owlOptions">
+            <div class="item text-center image-grid" ng-repeat="imageData in imageSrc">
+                <ul>
+                    <li ng-repeat="imageData in imageSrc.slice($index, ($index+3 > imageData.length ? imageData.length : $index+3))">
+                         <img ng-src="{{imageData.image}}" alt="" ></li>
                 </ul>
             </div>
-            
-        </div>
+
+        </div>-->
+
+        <data-owl-carousel class="owl-carousel" data-options="{navigation: true, pagination: false, autoPlay : true,}">
+
+            <div owl-carousel-item="" ng-repeat="imageData in ::imageSrc" class="item text-center image-grid">
+                <ul>
+                    <li ng-repeat="imageData in imageSrc.slice($index, ($index+3 > imageData.length ? imageData.length : $index+3))">
+                        <img ng-src="{{imageData.image}}" alt="" ></li>
+                </ul>
+
+            </div>
+
+        </data-owl-carousel>
     </div>
 </div>
 <!---->
@@ -266,11 +274,10 @@
 							</dir-pagination-controls>
 						</div>
 						 
-        <div class="room-grids" dir-paginate="rooms in propNames | itemsPerPage : 50">
+        <div class="room-grids" dir-paginate="rooms in propNames | limitTo : 50">
             <div class="col-md-4 room-sec"> 
 			
-                <h4><a href="" ng-click="getPropertyDetails(rooms)">
-                    {{rooms.propertyName}}<span style="color:black;float:right" ng-repeat="r_cnt in strtoint(rooms.starRate)">★</span>
+                <h4><a href="" ng-click="getPropertyDetails(rooms)"> {{rooms.propertyName}}<span style="color:black;float:right" ng-repeat="r_cnt in strtoint(rooms.starRate)">★</span>
                 </a></h4>
                 <a href="" ng-click="getPropertyDetails(rooms)">
                     <img ng-src="{{rooms.ImagePath}}" alt=""/>
