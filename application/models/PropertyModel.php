@@ -19,20 +19,20 @@ class PropertyModel extends CI_Model {
 		
 		$propertyType = $searchArray ['propertyType'];
 		$destination = $searchArray ['destination'];
-		
-		$this->db->select ( "property.property_id as propertyId,star_rate,property.property_name as property,property.property_type_id,property.image_path as imagePath, property.star_rate, concat(property.street,',',property.city,',',property.state,',',property.postal_code)as propertyAddress,propertyInfo.accommodates,(propertyInfo.accommodates-IFNULL(sum(res.accomodates), 0)) as availableAccomodes, propertyInfo.bedrooms,propertyInfo.bathrooms, propertyInfo.pool, propertyInfo.free_parking, propertyInfo.air_condition, propertyInfo.television_access, propertyInfo.internet_access, propertyInfo.smoking_allowd, propertyInfo.free_breakfast, propertyInfo.pet_friendly " );
+		$this->db->select ( "property.property_id as propertyId,star_rate,property.property_name as property,property.property_type_id,property.image_path as imagePath, property.star_rate, concat(property.street,',',property.city,',',property.state,',',property.postal_code)as propertyAddress,propertyInfo.accommodates, propertyInfo.bedrooms,propertyInfo.bathrooms, propertyInfo.pool, propertyInfo.free_parking, propertyInfo.air_condition, propertyInfo.television_access, propertyInfo.internet_access, propertyInfo.smoking_allowd, propertyInfo.free_breakfast, propertyInfo.pet_friendly " );
+		//$this->db->select ( "property.property_id as propertyId,star_rate,property.property_name as property,property.property_type_id,property.image_path as imagePath, property.star_rate, concat(property.street,',',property.city,',',property.state,',',property.postal_code)as propertyAddress,propertyInfo.accommodates,(propertyInfo.accommodates-IFNULL(sum(res.accomodates), 0)) as availableAccomodes, propertyInfo.bedrooms,propertyInfo.bathrooms, propertyInfo.pool, propertyInfo.free_parking, propertyInfo.air_condition, propertyInfo.television_access, propertyInfo.internet_access, propertyInfo.smoking_allowd, propertyInfo.free_breakfast, propertyInfo.pet_friendly " );
 		$this->db->from ( "$propertyInfo propertyInfo" );
-		$this->db->join ( "$reservationTable res", "res.property_id=propertyInfo.property_id", "left" );
+	//	$this->db->join ( "$reservationTable res", "res.property_id=propertyInfo.property_id", "left" );
 		$this->db->join ( "$propertyTable property", "propertyInfo.property_id=property.property_id" );
 		// $this->db->where ( "res.property_id", NULL );
-		$where = "(res.property_id is Null";
+		/*$where = ""; //res.property_id is Null
 		$this->db->where ( $where );
 		$where = "(check_out >= '$checkout' AND check_in >='$checkin')";
 		$this->db->or_where ( $where );
-		$where = "(check_out <= '$checkout' AND check_out <='$checkout'))";
+		$where = "(check_out <= '$checkout' AND check_out <='$checkout')";
 		$this->db->or_where ( $where );
 		$where = "(city  like'%$destination%' or state like '%$destination%')";
-		$this->db->where ( $where );
+		$this->db->where ( $where );*/
 		$this->db->where ('activation_flag','YES');
 		
 		if ($propertyType != '0') {
@@ -168,7 +168,7 @@ class PropertyModel extends CI_Model {
 		}
 	//	$this->db->where('activation_flag','YES'); 
 		
-		$this->db->having ( "availableAccomodes >= $guestCount" );
+	//	$this->db->having ( "availableAccomodes >= $guestCount" );
 		
 		$this->db->group_by ( array (
 				"property.property_id" 
@@ -198,11 +198,11 @@ class PropertyModel extends CI_Model {
 				break;
 		}
 		
-		
+		 
 		$roomAvailableInfo = $this->db->get ();
 		$roomAvailableInfoResult = $roomAvailableInfo->result ();
 		
-		return ($roomAvailableInfoResult);
+		  return ($roomAvailableInfoResult);
 	}
 	/* checkRoomAvailabilty ends here */
 	
@@ -270,20 +270,21 @@ class PropertyModel extends CI_Model {
 		$propertyType = $searchArray ['propertyType'];
 		$destination = $searchArray ['destination'];
 		
-		$this->db->select ( "Count(*) as count,(propertyInfo.accommodates-IFNULL(sum(res.accomodates), 0)) as availableAccomodes" );
-		$this->db->from ( "$propertyInfo propertyInfo" );
-		$this->db->join ( "$reservationTable res", "res.property_id=propertyInfo.property_id", "left" );
+		$this->db->select ( "count(*) as count" );
+		//$this->db->select ( "count(*) as count,(propertyInfo.accommodates-IFNULL(sum(res.accomodates), 0)) as availableAccomodes" );
+		$this->db->from ( "$propertyInfo propertyInfo " );
+		//$this->db->join ( "$reservationTable res", "res.property_id=propertyInfo.property_id", "left" );
 		$this->db->join ( "$propertyTable property", "propertyInfo.property_id=property.property_id" );
 		// $this->db->where ( "res.property_id", NULL );
-		$where = "(res.property_id is Null";
-		$this->db->where ( $where );
+		//$where = "(res.property_id is Null";
+	/*	$this->db->where ( $where );
 		$where = "(check_in <= '$checkin' AND check_in >='$checkin')";
 		$this->db->or_where ( $where );
-		$where = "(check_out <= '$checkout' AND check_out >='$checkout'))";
+		$where = "(check_out <= '$checkout' AND check_out >='$checkout')";
 		$this->db->or_where ( $where );
 		$where = "(city  like'%$destination%' or state like '%$destination%')";
-		$this->db->where ( $where );
-		
+		$this->db->where ( $where );*/
+		$this->db->where ('activation_flag','YES');
 		if ($propertyType != '0') {
 			$where = "(property_type_id='$propertyType')";
 			$this->db->where ( $where );
@@ -383,6 +384,7 @@ class PropertyModel extends CI_Model {
 				} // echo $where;
 				$this->db->where ( $bathroomWhere );
 			}
+
 		/*	if ($filterData->propertyNameList [0]->name != null) {
 				$propertyName = $filterData->propertyNameList [0]->name;
 				$where = "property_name like '$propertyName%'";
@@ -391,10 +393,12 @@ class PropertyModel extends CI_Model {
 		} else {
 		}
 		
-		$this->db->having ( "availableAccomodes>=$guestCount" );
+		//$this->db->having ( "availableAccomodes >= $guestCount" );
+		
 		$roomAvailableInfo = $this->db->get ();
+		 
 		$roomAvailableCount = $roomAvailableInfo->row ()->count;
-		return $roomAvailableCount;
+		 return $roomAvailableCount;
 	}
 	public function verifyDuplicateIPData($ip_address, $date_visited) {
 		$visitorTable = 'visitors_info';

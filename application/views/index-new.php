@@ -129,19 +129,19 @@
 						  <li  class="span1_of_1 left">
 							  <h5>Where to go?</h5>
 							  <div class="book_date" id="book_date">
-								  <input   id="inpDestination" type="text" autocomplete="off" name="inpDestination" ng-model="inputDestination" value="Where do you want to go?"   ng-click="expandFilterOptions()" onClick="show()" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Where do you want to go?';}">
+								  <input   id="inpDestination" type="text" autocomplete="off" name="inpDestination" ng-model="inputDestination" value=""   ng-click="expandFilterOptions()" onClick="show()" onfocus="this.value = '';" >
 							  </div>
 						  </li>
 						 <li  class="span1_of_1 left">
 							 <h5>Arrival</h5>
 							 <div class="book_date">
-								 <input class="date" id="datepicker" type="text" autocomplete="off" ng-model="checkInDate" name="checkIn" value="Arrival Date" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Arrival Date';}">
+								 <input class="date" id="datepicker" type="text" autocomplete="off" ng-model="checkInDate" name="checkIn" id="checkIn" value="" onfocus="this.value = '';" >
 							 </div>					
 						 </li>
 						 <li  class="span1_of_1 left">
 							 <h5>Depature</h5>
 							 <div class="book_date">
-								<input class="date" id="datepicker1" type="text" autocomplete="off" ng-model="checkOutDate" name="checkOut" value="Departure Date" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Departure Date';}">
+								<input class="date" id="datepicker1" type="text" autocomplete="off" ng-model="checkOutDate" name="checkOut" id="checkOut" value="" onfocus="this.value = '';" >
 						     </div>		
 						 </li>
 						  <li class="span1_of_1 left" id="aaa" style="display:none;">

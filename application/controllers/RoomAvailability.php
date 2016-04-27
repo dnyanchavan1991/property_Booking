@@ -8,28 +8,29 @@ class RoomAvailability extends CI_Controller {
 		//$this->load->model ( 'PropertyModel' );
 	}
 	public function index() {
-		//echo "before submit";
-		//echo $this->session->userdata ( 'checkIn' );
-		if (isset ( $_POST ['submit'] )) {
-	//	echo "post submit" ;	
+		// echo "before";
+		 
+	 	 if (isset ( $_POST ['submit'] ))  
+			{
+	 //echo "submit";
 			$checkin = $_POST ['checkIn'];
-			$checkin = str_replace ( '/', '-', $checkin );
-			$checkin = date ('Y-m-d', strtotime ( $checkin ));
-			
+		 	 
+			//$checkin = str_replace ( '/', '-', $checkin );
+		 	 
+			$checkin = date ('Y-m-d', strtotime ( $checkn ));
+			 
+			  
+			 
 			$checkout = $_POST ['checkOut'];
-			$checkout = str_replace ( '/', '-', $checkout );
-			$checkout = date ('Y-m-d', strtotime ( $checkout ));
-				
+		//	$checkout = str_replace ( '/', '-', $checkout );
+		 	$checkout = date ('Y-m-d', strtotime ( $checkout ));
+			 
 			$this->session->set_userdata ( 'checkIn', $checkin );
 			$this->session->set_userdata ( 'checkOut', $checkout );
 			$this->session->set_userdata ( 'guestCount',$_POST['guestCount'] );
 			$this->session->set_userdata ( 'destination', $_POST['inpDestination'] );
 			$this->session->set_userdata ( 'propertyType',$_POST['propertyType']);
-			
-					
-		}
-
-
+	 	}
 	$this->load->view ( 'search-new.php' );
 	
 	
@@ -50,10 +51,12 @@ class RoomAvailability extends CI_Controller {
 				'destination'=>$this->session->userdata ( 'destination' ),
 				'propertyType'=>$this->session->userdata ( 'propertyType' )
 		);
-		
+		 
 		$filterData=null;
-		$roomAvailableCount = $this->PropertyModel->getRoomAvailabilityCount ($searchArray,$filterData);
-	//$roomAvailableCount=20;
+		 $roomAvailableCount = $this->PropertyModel->getRoomAvailabilityCount ($searchArray, $filterData);
+		 
+		
+	
 		$roomAvailableInfo = $this->PropertyModel->checkRoomAvailabilty ($searchArray,$filterData, $sortFCriteria, $sortBCriteria);
 		
 		$i=0;
@@ -86,7 +89,7 @@ class RoomAvailability extends CI_Controller {
 				 
    
 		}
-		 echo json_encode ( $response );
+			echo json_encode ( $response );
         }
         public function checkFilterRoomAvailabilty() {
         	$postdata = file_get_contents("php://input");

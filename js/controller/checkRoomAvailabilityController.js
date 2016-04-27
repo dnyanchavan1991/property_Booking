@@ -1,4 +1,4 @@
-angular.module('checkRoomAvailabilityApp', ['angularUtils.directives.dirPagination'])
+angular.module('checkRoomAvailabilityApp', ['angularUtils.directives.dirPagination'])//
 	.controller('checkRoomAvailabilityController',function($scope, $http) {
 		 $scope.guestHeadCount = ["Select","1", "2", "3", "4", "5", "6" ,"7", "8", "9", "10", "11", "12", "13", "14", "15"];
 			
@@ -25,7 +25,8 @@ angular.module('checkRoomAvailabilityApp', ['angularUtils.directives.dirPaginati
 		  				 	sortByFilter : $scope.sortByFilter,
 		  				 	sortByBedrooms : $scope.sortByBedrooms
 		  			 }
-		  	 }).then(function(response) {
+		  	 }).then(function(response) {	
+		  		// console.log(response.data.rows);
 				$scope.propNames  = response.data.rows;
             	// console.log(response);
 			});

@@ -17,7 +17,10 @@
 
     <script type="text/javascript" src="js/global/global_url_variable.js"></script>
     <script type="text/javascript" src="js/global/global_functions.js"></script>
+	
     <script src="js/new-theme/owl.carousel.js"></script>
+	<link rel="stylesheet" href="css/jquery-ui.css" />
+<script src="js/jquery-ui.js"></script>
     <script type="text/javascript">
         $(function() {
             $( "#datepicker,#datepicker1" ).datepicker();
@@ -39,6 +42,7 @@
     </script>
     <script type="text/javascript" src="js/angular.min.js"></script>
     <script type="text/javascript" src="js/controller/checkRoomAvailabilityController.js"></script>
+	<script type="text/javascript" src="js/dirPagination.js"></script>
     <!-- //requried-jsfiles-for owl -->
 </head>
 <body ng-app="checkRoomAvailabilityApp" ng-controller="checkRoomAvailabilityController" data-ng-init="getRoomAvailability()">
@@ -48,8 +52,7 @@
 </div>
 
 <!---strat-date-piker---->
-<link rel="stylesheet" href="css/jquery-ui.css" />
-<script src="js/jquery-ui.js"></script>
+
 <script>
     function allFieldsVisible(){
 
@@ -94,7 +97,7 @@
         });
     })();
 </script>
-<form method="post" action="RoomAvailability" >
+<form method="post" action="RoomAvailability"  >
     <div class="online_reservation">
         <div class="b_room b_room_active" id="b_room">
             <div class="booking_room booking_room_active" id="booking_room">
@@ -235,7 +238,7 @@
 </form>
 <!---->
 <!---->
-<div id="package" class="package text-center filter-package" id="gallery" ng-controller="galleryImgCtrl" data-ng-init="galleryImgFetch()">
+<div id="package" class="package text-center filter-package" id="gallery" > <!-- ng-controller="galleryImgCtrl" data-ng-init="galleryImgFetch()" -->
     <div class="container">
         <h3>Featured Properties</h3>
 
@@ -266,8 +269,19 @@
 <!---->
 <div class="rooms text-center">
     <div class="container" >
+	 
+							<div class="ang-dir-paginate">
+							<dir-pagination-controls
+								max-size="5"
+								direction-links="true"
+								boundary-links="true"
+								auto-hide="true">
+							</dir-pagination-controls>
+						</div>
+						 
         <div class="room-grids" dir-paginate="rooms in propNames | itemsPerPage : 50">
-            <div class="col-md-4 room-sec">
+            <div class="col-md-4 room-sec"> 
+			
                 <h4><a href="" ng-click="getPropertyDetails(rooms)">
                     {{rooms.propertyName}}<span style="color:black;float:right" ng-repeat="r_cnt in strtoint(rooms.starRate)">★</span>
                 </a></h4>
