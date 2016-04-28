@@ -136,7 +136,7 @@ font-weight:bold;
 border-top:1px dashed rgba(255, 255, 255, 0.59);
 width:30%;
 margin:0 auto;
-padding:16px 0 23px 0;
+padding:10px 0 10px 0;
 font-size:2em;
 }
 .banner-info span{
@@ -789,7 +789,7 @@ border-bottom:1px solid #939597;
 }
 .package h3{
 font-family: 'Pinyon Script', cursive;
-font-size:3.5em;
+font-size:2.5em;
 }
 .package p{
 font-size:14px;
@@ -872,7 +872,7 @@ background-position: -126px -8px;
 opacity:0.6;
 }
 .room-sec{
-margin:15px 0;
+margin:2px 0;
 }
 .items {
 margin-top: 1.5em;
@@ -882,15 +882,15 @@ margin-top: 1.5em;
 }
 .fotter{
 background:#E7CB2C;
-min-height:150px;
+min-height:60px;
 position:relative;
 text-align: center;
 }
 .fotter h3{
 font-family: 'Quicksand', sans-serif;
 color:#fff;
-font-size:2.8em;
-margin:0.7em 0 0 1em;
+font-size:1.5em;
+margin:1em 0 0 1em;
 }
 .fotter h4{
 font-family: 'Quicksand', sans-serif;
@@ -1817,7 +1817,7 @@ border: 1px solid #E7CB2C;
 left: 74%;
 }
 .banner {
-min-height: 250px;
+min-height: 200px;
 padding: 2em 0;
 }
 .online_reservation {

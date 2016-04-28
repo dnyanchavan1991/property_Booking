@@ -1,7 +1,7 @@
 angular.module('landingPageApp', [])
 				.controller('landingPageCntrl', function($scope, $http) {
 					 $scope.displayFlag = false;
-					 $scope.inputDestination = "Where do you want to go?";
+					 $scope.inputDestination = "";
 					 $scope.checkInDate = "Arrival Date";
 					 $scope.checkOutDate = "Departure Date";
 					  $scope.accomodationType =[
@@ -118,7 +118,7 @@ angular.module('landingPageApp', [])
 			$scope.imageSrc = response.data;
 		});
     }
-	$scope.getPropertyDetails = function(property_id)
+	$scope.getPropertyDetails = function(item)
 	{
 		var objForm = document.createElement('FORM');
 		objForm.method = 'post';
@@ -127,12 +127,13 @@ angular.module('landingPageApp', [])
 		var objInput = document.createElement('INPUT');
 		objInput.type = 'hidden';
 		objInput.name = 'propertyId';
-		objInput.value = property_id;
+		objInput.value = item.property_id;
 		objForm.appendChild(objInput);
 
 		document.body.appendChild(objForm);
 		objForm.submit();
 	}
+	 
 })
 .directive('wcUnique', ['dataService', function (dataService) {
     return {

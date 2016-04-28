@@ -175,16 +175,13 @@
 <!---->
 <div class="package text-center" id="gallery" ng-controller="galleryImgCtrl" data-ng-init="galleryImgFetch()">
 	 <div class="container">
-		 <h3>Gallery</h3>
-		 <p>Sed euismod sem id consequat rutrum. Ut convallis lorem a orci mollis, eu vulputate libero aliquet. Praesent egestas nisi sed purus tincidunt faucibus. Aliquam lobortis orci lacus, sed faucibus augue dapibus vitae. Ut vitae mi sapien. Phasellus a eros justo.
-		 Curabitur odio massa, tincidunt nec nibh sit amet</p>
-
-        <data-owl-carousel class="owl-carousel" data-options="{navigation: true, pagination: false, autoPlay : true,}">
+		 <h3>Featured Properties</h3>
+		   <data-owl-carousel class="owl-carousel" data-options="{navigation: true, pagination: false, autoPlay : true,}">
 
             <div owl-carousel-item="" ng-repeat="imageData in ::imageSrc" class="item text-center image-grid">
                 <ul>
                     <li ng-repeat="imageData in imageSrc.slice($index, ($index+3 > imageData.length ? imageData.length : $index+3))">
-                        <img ng-src="{{imageData.image}}" alt="" ></li>
+                        <img ng-click="getPropertyDetails(imageData)" ng-src="{{imageData.image}}" alt="" ></li>
                 </ul>
 
             </div>

@@ -1425,7 +1425,7 @@ if ( typeof Object.create !== "function" ) {
 		stopOnHover : false,
 
 		navigation : false,
-		navigationText : ["prev","next"],
+		navigationText : ["< Prev","Next >"],
 		rewindNav : true,
 		scrollPerPage : false,
 

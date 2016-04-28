@@ -26,6 +26,7 @@ angular.module('checkRoomAvailabilityApp', ['angularUtils.directives.dirPaginati
 		  				 	sortByBedrooms : $scope.sortByBedrooms
 		  			 }
 		  	 }).then(function(response) {
+		  		 
 				$scope.propNames  = response.data.rows;
             	// console.log(response);
 			});
@@ -228,6 +229,18 @@ angular.module('checkRoomAvailabilityApp', ['angularUtils.directives.dirPaginati
 			objInput.type = 'hidden';
 			objInput.name = 'propertyId';
 			objInput.value = item.propertyId;
+			objForm.appendChild(objInput);
+			document.body.appendChild(objForm);
+			objForm.submit();
+		}
+		$scope.getImagePropertyDetails = function(item) {
+			var objForm = document.createElement('FORM');
+			objForm.method = 'post';
+			objForm.action = 'PropertyDetails';
+			var objInput = document.createElement('INPUT');
+			objInput.type = 'hidden';
+			objInput.name = 'propertyId';
+			objInput.value = item.property_id;
 			objForm.appendChild(objInput);
 			document.body.appendChild(objForm);
 			objForm.submit();

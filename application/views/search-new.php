@@ -66,6 +66,15 @@
         }
     }
     function showMoreFilters() {
+		 
+			if ($('#moreFilters:contains("+")').length > 0){
+				$('#moreFilters').html("More Filters -");	
+			} else {
+				$('#moreFilters').html("More Filters +");	
+			}
+			
+			
+		 
         /*var target = $(this);
         $('#moreFilters').text('More Filters +');
         if($('#moreFiltersExpand').is(':hidden') == true) {
@@ -106,7 +115,7 @@
                         <li  class="span1_of_click">
                             <h5>Where to go?</h5>
                             <div class="book_date book_date_active">
-                                <input   id="inpDestination" type="text" autocomplete="off" name="inpDestination" ng-model="inputDestination" value="Where do you want to go?"   ng-click="expandFilterOptions()" onClick="show()" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Where do you want to go?';}">
+                                <input   id="inpDestination" type="text" autocomplete="off" name="inpDestination" ng-model="inputDestination" value=""   ng-click="expandFilterOptions()" onClick="show()" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}">
                             </div>
                         </li>
                         <li  class="span1_of_click">
@@ -176,16 +185,16 @@
                     <div class="banner-info text-left">
                         <form>
                             <div class="room-grids">
-                                <div class="col-md-3 room-sec">
+                                <div class="col-md-2 room-sec">
                                     <h5>Ratings</h5>
                                     <div class="items items-filter" ng-repeat="starRateLabel  in starRateList">
                                         <input type="checkbox" id={{starRateLabel.name}}
                                                ng-model="starRateLabel.selected"
                                                ng-change="isLabelChecked('starRate')">
-                                        <img ng-src={{starRateLabel.star_image_url}} alt="" />
+                                        <img ng-src={{starRateLabel.star_image_url}} alt=""   ></img>
                                     </div>
                                 </div>
-                                <div class="col-md-3 room-sec">
+                                <div class="col-md-2 room-sec">
                                     <h5>Bathrooms</h5>
                                     <div class="items items-filter" ng-repeat="bathroom in bathroomList">
                                         <input id={{bathroom.name}} type="checkbox"
@@ -193,7 +202,7 @@
                                             ng-click="isLabelChecked('bathroom')"> {{bathroom.Label}}
                                     </div>
                                 </div>
-                                <div class="col-md-3 room-sec">
+                                <div class="col-md-2 room-sec">
                                     <h5>Feature</h5>
                                     <div class="items items-filter" ng-repeat="featureListLabel in featureList">
                                         <input id={{featureListLabel.name}} type="checkbox"
@@ -201,7 +210,7 @@
                                             ng-change="isLabelChecked('features')"> {{featureListLabel.featureLabel}}
                                     </div>
                                 </div>
-                                <div class="col-md-3 room-sec">
+                                <div class="col-md-2 room-sec">
                                     <h5>Facilities</h5>
                                     <div class="items items-filter" ng-repeat="facilityListLabel in facilityList">
                                         <input id={{facilityListLabel.name}} type="checkbox"
@@ -209,8 +218,8 @@
                                             ng-change="isLabelChecked('facility')"> {{facilityListLabel.facilityLabel}}
                                     </div>
                                 </div>
-                                <div class="clearfix"></div>
-                                <div class="col-md-3 room-sec">
+                                <!--<div class="clearfix"></div>-->
+                                <div class="col-md-2 room-sec">
                                     <h5>Bedrooms</h5>
                                     <div class="items items-filter">
                                     <select ng-model="sortByBedrooms" ng-change="getRoomAvailability()" ng-init="sortByBedrooms = sortByBedrooms || 'All'">
@@ -252,7 +261,7 @@
             <div owl-carousel-item="" ng-repeat="imageData in ::imageSrc" class="item text-center image-grid">
                 <ul>
                     <li ng-repeat="imageData in imageSrc.slice($index, ($index+3 > imageData.length ? imageData.length : $index+3))">
-                        <img ng-src="{{imageData.image}}" alt="" ></li>
+					<img ng-click="getImagePropertyDetails(imageData)" ng-src="{{imageData.image}}" alt="" ></li>
                 </ul>
 
             </div>
@@ -265,16 +274,9 @@
 <div class="rooms text-center">
     <div class="container" >
 	 
-							<div class="ang-dir-paginate">
-							<dir-pagination-controls
-								max-size="5"
-								direction-links="true"
-								boundary-links="true"
-								auto-hide="true">
-							</dir-pagination-controls>
-						</div>
-						 
-        <div class="room-grids" dir-paginate="rooms in propNames | limitTo : 50">
+							 
+							 
+        <div class="room-grids" dir-paginate="rooms in propNames | itemsPerPage : 50">
             <div class="col-md-4 room-sec"> 
 			
                 <h4><a href="" ng-click="getPropertyDetails(rooms)"> {{rooms.propertyName}}<span style="color:black;float:right" ng-repeat="r_cnt in strtoint(rooms.starRate)">★</span>
