@@ -106,7 +106,7 @@
         });
     })();
 </script>
-<form method="post" action="RoomAvailability"  >
+<form class = "room-availability" method="post" action="RoomAvailability"  >
     <div class="online_reservation">
         <div class="b_room b_room_active" id="b_room">
             <div class="booking_room booking_room_active" id="booking_room">
@@ -273,26 +273,23 @@
 <!---->
 <div class="rooms text-center">
     <div class="container" >
-	 
-							 
-							 
         <div class="room-grids" >
-            <div class="col-md-3 room-sec" dir-paginate="rooms in propNames | itemsPerPage : 50"> 
+            <div class="col-md-3 room-sec single-room" dir-paginate="rooms in propNames | itemsPerPage : 50">
 			
-                <h4><a href="" ng-click="getPropertyDetails(rooms)"> {{rooms.propertyName}}<span style="color:black;float:right" ng-repeat="r_cnt in strtoint(rooms.starRate)">★</span>
+                <h4><a href="" ng-click="getPropertyDetails(rooms)"> {{rooms.propertyName}}<span class = "room-star" ng-repeat="r_cnt in strtoint(rooms.starRate)">★</span>
                 </a></h4>
                 <a href="" ng-click="getPropertyDetails(rooms)">
-                    <img ng-src="{{rooms.ImagePath}}" alt=""/>
+                    <img class = "single-room-image" ng-src="{{rooms.ImagePath}}" alt=""/>
                     <p id="text"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>{{rooms.propertyAddress}}</p>
-                    <div class="items">
-                        <li><a href="#"><span class="img1"><img src='images/breakfast.png' ng-if=" rooms.free_breakfast == 'Yes' " style="width: 10%; height: 10%" title="Free Breakfast"></span></a></li>
-                        <li><a href="#"><span class="img2"><img src='images/pool.png' ng-if=" rooms.pool == 'Yes' " style="width: 10%; height: 10%" title="Swimming Pool"></span></a></li>
-                        <li><a href="#"><span class="img3"><img src='images/parking.png' ng-if=" rooms.free_parking == 'Yes' " style="width: 10%; height: 10%" title="Free Parking"></span></a></li>
-                        <li><a href="#"><span class="img4"><img src='images/television.png' ng-if=" rooms.television_access == 'Yes' " style="width: 10%; height: 10%" title="Television Access"></span></a></li>
-                        <li><a href="#"><span class="img5"><img src='images/internet.png' ng-if=" rooms.internet_access == 'Yes' " style="width: 10%; height: 10%" title="Internet Access"></span></a></li>
-                        <li><a href="#"><span class="img6"><img src='images/smoking.png' ng-if=" rooms.smoking_allowd == 'Yes' " style="width: 10%; height: 10%" title="Smoking Allowed"></span></a></li>
-                        <li><a href="#"><span class="img7"><img src='images/pet.png' ng-if=" rooms.pet_friendly == 'Yes' " style="width: 10%; height: 10%" title="Pet Friendly"></span></a></li>
-                    </div>
+                    <!--<div class="items">-->
+                        <li ng-if=" rooms.free_breakfast == 'Yes' "><img class = "feature-images" src='images/breakfast.png' title="Free Breakfast"></a></li>
+                        <li ng-if=" rooms.pool == 'Yes' "><img class = "feature-images" src='images/pool.png' title="Swimming Pool"></a></li>
+                        <li ng-if=" rooms.free_parking == 'Yes' "><img class = "feature-images" src='images/parking.png' title="Free Parking"></a></li>
+                        <li ng-if=" rooms.television_access == 'Yes' "><img class = "feature-images" src='images/television.png' title="Television Access"></a></li>
+                        <li ng-if=" rooms.internet_access == 'Yes' "><img class = "feature-images" src='images/internet.png' title="Internet Access"></a></li>
+                        <li ng-if=" rooms.smoking_allowd == 'Yes' "><img class = "feature-images" src='images/smoking.png' title="Smoking Allowed"></a></li>
+                        <li ng-if=" rooms.pet_friendly == 'Yes' "><img class = "feature-images" src='images/pet.png' title="Pet Friendly"></a></li>
+                    <!--</div>-->
                 </a>
             </div>
             <div class="clearfix"></div>

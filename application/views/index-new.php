@@ -194,72 +194,32 @@
 <div class="rooms text-center">
 	 <div class="container">
 		 <h3>Our Services</h3>
-		 <div class="room-grids">
+		 <div>
 			 <div class="col-md-4 room-sec">
 				 <img src="images/new-theme/property-search.png" alt=""/>
 				 <h4>Quick Property Search</h4>
 				 <p>Provide your travel destination, tentative travel dates and total travelers...sit back.... and choose from our best deals for you</p>
-				 <div class="items">
-					 <li><a href="#"><span class="img1"> </span></a></li>
-					 <li><a href="#"><span class="img2"> </span></a></li>
-					 <li><a href="#"><span class="img3"> </span></a></li>
-					 <li><a href="#"><span class="img4"> </span></a></li>
-					 <li><a href="#"><span class="img5"> </span></a></li>
-					 <li><a href="#"><span class="img6"> </span></a></li>
-				 </div>
 			 </div>
 			 <div class="col-md-4 room-sec">
 				 <img src="images/new-theme/notification.png" alt=""/>
 				 <h4>Notification</h4>
 				 <p>On every property enquiry and booking, we keep both Customer and Property owner informed with real time SMS feature. An Email is always accompanied by the SMS.</p>
-				 <div class="items">					
-					 <li><a href="#"><span class="img1"> </span></a></li>
-					 <li><a href="#"><span class="img2"> </span></a></li>
-					 <li><a href="#"><span class="img3"> </span></a></li>
-					 <li><a href="#"><span class="img4"> </span></a></li>
-					 <li><a href="#"><span class="img5"> </span></a></li>
-					 <li><a href="#"><span class="img6"> </span></a></li>
-				 </div>
 			 </div>
 			 <div class="col-md-4 room-sec">
 				 <img style="margin-top:1em" src="images/new-theme/payu-money.png" alt=""/>
 				 <h4 style="margin-top:2em">Secured Payment</h4>
 				 <p>We are 100% secure when it is related to payment. We have tied up with the best payment gateway, <a href="http://www.payumoney.com">payUMoney.com</a></p>
-				 <div class="items">
-					 <li><a href="#"><span class="img1"> </span></a></li>
-					 <li><a href="#"><span class="img2"> </span></a></li>
-					 <li><a href="#"><span class="img3"> </span></a></li>
-					 <li><a href="#"><span class="img4"> </span></a></li>
-					 <li><a href="#"><span class="img5"> </span></a></li>
-					 <li><a href="#"><span class="img6"> </span></a></li>
-				 </div>
 			 </div>
 			 <div class="clearfix"></div>
 			 <div class="col-md-4 room-sec">
 				 <img src="images/new-theme/map_with_pin-lb.png" alt=""/>
 				 <h4>Locate on Google MAP</h4>
 				 <p>We provide excellent feature of locating any property on google map, which will give you real feel of the location and distance of the property from the Travel origin place.</p>
-				 <div class="items">
-					 <li><a href="#"><span class="img1"> </span></a></li>
-					 <li><a href="#"><span class="img2"> </span></a></li>
-					 <li><a href="#"><span class="img3"> </span></a></li>
-					 <li><a href="#"><span class="img4"> </span></a></li>
-					 <li><a href="#"><span class="img5"> </span></a></li>
-					 <li><a href="#"><span class="img6"> </span></a></li>
-				 </div>
 			 </div>
 			 <div class="col-md-4 room-sec">
 				 <img src="images/new-theme/review.png" alt=""/>
 				 <h4>Reviews</h4>
 				 <p>We trust on "Self Experience is the Best Experience".. <br/>Visit properties and provide your reviews to help future travelers book their properties conveniently.</p>
-				 <div class="items">
-					 <li><a href="#"><span class="img1"> </span></a></li>
-					 <li><a href="#"><span class="img2"> </span></a></li>
-					 <li><a href="#"><span class="img3"> </span></a></li>
-					 <li><a href="#"><span class="img4"> </span></a></li>
-					 <li><a href="#"><span class="img5"> </span></a></li>
-					 <li><a href="#"><span class="img6"> </span></a></li>
-				 </div>
 			 </div>
 			 <div class="clearfix"></div>
 		 </div>
