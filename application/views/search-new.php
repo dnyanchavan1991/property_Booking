@@ -276,8 +276,8 @@
 	 
 							 
 							 
-        <div class="room-grids" dir-paginate="rooms in propNames | itemsPerPage : 50">
-            <div class="col-md-4 room-sec"> 
+        <div class="room-grids" >
+            <div class="col-md-3 room-sec" dir-paginate="rooms in propNames | itemsPerPage : 50"> 
 			
                 <h4><a href="" ng-click="getPropertyDetails(rooms)"> {{rooms.propertyName}}<span style="color:black;float:right" ng-repeat="r_cnt in strtoint(rooms.starRate)">★</span>
                 </a></h4>
