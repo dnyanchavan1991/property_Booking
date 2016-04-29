@@ -48,6 +48,16 @@
 <script src="js/jquery-ui.js"></script>
 <script>
   $(document).ready(function() {
+
+      $('#where_to_go').click(function(){
+          $('#aaa').show();
+          $('#bbb').show();
+          $('#booking_room_div').addClass('booking_room_active');
+          $('#b_room_div').addClass('b_room_active');
+          $('.book_date').addClass('book_date_active');
+          $('.span1_of_1').addClass('span1_of_click').removeClass('span1_of_1 left');
+      });
+
 	  var response = '';
 	  $.ajax({ type: "GET",
 		  url: "http://ipinfo.io/json",
@@ -80,8 +90,6 @@
 
 	  });
 
-
-	  $().UItoTop({ easingType: 'easeOutQuart' });
   });
 
 	  function show()
@@ -122,14 +130,14 @@
 </script>
 <form method="post" action="RoomAvailability"  ng-controller="landingPageCntrl">
 <div class="online_reservation">
-		   <div class="b_room" id="b_room">
-			  <div class="booking_room" id="booking_room">
+		   <div class="b_room" id="b_room_div">
+			  <div class="booking_room" id="booking_room_div">
 				  <div class="reservation">
 					  <ul>
 						  <li  class="span1_of_1 left">
 							  <h5>Where to go?</h5>
-							  <div class="book_date" id="book_date">
-								  <input   id="inpDestination" type="text" autocomplete="off" name="inpDestination" ng-model="inputDestination" value=""   ng-click="expandFilterOptions()" onClick="show()" onfocus="this.value = '';" >
+							  <div class="book_date" id="where_to_go">
+								  <input   id="inpDestination" type="text" autocomplete="off" name="inpDestination" ng-model="inputDestination" value=""   ng-click="expandFilterOptions()" onfocus="this.value = '';" >
 							  </div>
 						  </li>
 						 <li  class="span1_of_1 left">

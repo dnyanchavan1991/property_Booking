@@ -339,7 +339,7 @@ select option{
 	background:url(../../images/icon.png) no-repeat 3% 50% #FFF;
 }
 .date_btn{
-	margin:22px 0 0 0px;
+	margin:26px 0 0 0px;
 }
 .date_btn input[type="submit"] {
 	text-transform:capitalize;
@@ -814,7 +814,7 @@ display:inline-block;
 margin:1%;
 }
 .room-grids {
-
+    float:left;
 }
 .room-star {
     color:#00CCFF;
