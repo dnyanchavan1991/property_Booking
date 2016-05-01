@@ -31,6 +31,163 @@ a:hover, a:focus {
 color:none;
 text-decoration: none;
 }
+/*-----start-property-detail-and-tabs------*/
+ul.nav-tabs {
+    /*width: inherit !important;
+    display: flex;*/
+    width: 220px;
+    margin-top: 20px;
+    border-radius: 4px;
+    background: #fff;
+    z-index: 999;
+    border: 1px solid #ddd;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
+    position: fixed;
+}
+ul.nav-tabs li {
+    margin: 0;
+    border-top: 1px solid #ddd;
+    width: inherit;
+}
+ul.nav-tabs li:first-child {
+    border-top: none;
+}
+ul.nav-tabs li a {
+    margin: 0;
+    padding: 8px 16px;
+    border-radius: 0;
+}
+ul.nav-tabs li.active a, ul.nav-tabs li.active a:hover {
+    color: #fff;
+    background: #0088cc;
+    border: 1px solid #0088cc;
+}
+ul.nav-tabs li:first-child a {
+    border-radius: 4px 4px 0 0;
+}
+ul.nav-tabs li:last-child a {
+    border-radius: 0 0 4px 4px;
+}
+ul.nav-tabs.affix {
+    top: 0px; /* set the top position of pinned element */
+}
+.detailed-row {
+    text-align: left;
+    margin-top: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0px 0px 2px 2px #ccc;
+    margin-bottom: 30px !important;
+}
+.detailed-row p {
+    margin-bottom: 2px;
+    margin-left: 5px;
+}
+.detailed-row h2 {
+    margin-bottom: 18px;
+    margin-left: 5px;
+    text-align: center;
+    margin-top: 10px;
+}
+.panel-body li {
+    list-style: none;
+}
+.property-details {
+    float: left;
+}
+.detailed-contact-form {
+    margin-left: 5px;
+}
+.detailed-contact-form input[type="text"], .detailed-contact-form textarea{
+    width: 75% !important;
+    color: #858585 !important;
+    font-size: 0.8725em !important;
+    padding: 8px 30px !important;
+    outline: none !important;
+    font-family: 'Open Sans', sans-serif !important;
+    border: 1px solid #DFDFDF !important;
+    box-shadow: inset 0 0 2px rgb(236, 236, 236) !important;
+    -webkit-box-shadow: inset 0 0 2px rgb(236, 236, 236) !important;
+    -moz-box-shadow: inset 0 0 2px rgb(236, 236, 236) !important;
+    -o-box-shadow: inset 0 0 2px rgb(236, 236, 236) !important;
+    -webkit-appearance: none !important;
+    border-radius: 9px !important;
+    -webkit-border-radius: 9px !important;
+    -moz-border-radius: 9px !important;
+    -o-border-radius: 9px !important;
+}
+.detailed-contact-form textarea {
+    height: 110px !important;
+}
+.detailed-contact-form input[type="submit"] {
+    text-transform:capitalize;
+    width: 90% !important;
+    background: #FFD700;
+    font-family: 'Open Sans', sans-serif;
+    color: #2A2E33;
+    padding: 8px;
+    border: none;
+    font-size: 14px;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    outline: none;
+    cursor: pointer;
+    font-weight:bold;
+    border-radius: 9px;
+    -webkit-border-radius: 9px;
+    -moz-border-radius: 9px;
+    -o-border-radius: 9px;
+    margin-top: 1em;
+}
+.detailed-contact-form input[type="submit"]:hover{
+    background: #00CCFF;
+}
+.detailed-contact-form form input[type="submit"] {
+    text-transform:capitalize;
+    width: 90% !important;
+    background: #FFD700;
+    font-family: 'Open Sans', sans-serif;
+    color: #2A2E33;
+    padding: 8px;
+    border: none;
+    font-size: 14px;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    outline: none;
+    cursor: pointer;
+    font-weight:bold;
+    border-radius: 9px;
+    -webkit-border-radius: 9px;
+    -moz-border-radius: 9px;
+    -o-border-radius: 9px;
+    margin-top: 1em;
+}
+.date_btn form input[type="submit"]:hover{
+    background: #00CCFF;
+}
+.property-grid img{
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 0% !important;
+}
+.property-grid li {
+    list-style: none;
+}
+@media screen and (min-width: 992px) and (max-width: 1199px){
+    ul.nav-tabs{
+        width: 180px; /* set nav width on medium devices */
+    }
+}
+@media screen and (min-width: 1200px){
+    ul.nav-tabs{
+        width: 220px; /* set nav width on large devices */
+    }
+}
+/*-----end-property-detail-and-tabs------*/
 /*-----start-header----*/
 .top-header{
 background:#2A2E33;
@@ -816,6 +973,9 @@ margin:1%;
 .room-grids {
     float:left;
 }
+.booking-grid {
+    float: right;
+}
 .room-star {
     color:#00CCFF;
     float:right
@@ -851,7 +1011,7 @@ margin:1%;
 .single-room #text {
     color: #000000;
     font-weight: bold;
-    background-color:#858585;
+    /*background-color:#858585;*/
     opacity:0.5;
     width: 255px;
     margin-left: 8px;
@@ -865,6 +1025,13 @@ margin:1%;
      height: 10%;
     float: left;
  }
+.map-marker {
+    position: relative;
+    display: inline-block;
+    background-image: url(../../images/new-theme/map-marker.png);
+    width: 24px;
+    height: 24px;
+}
 .rooms{
 background:url(../../images/new-theme/rooms.jpg) repeat-y 0px 0px;
 background-size:cover;

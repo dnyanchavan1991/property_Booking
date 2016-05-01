@@ -70,6 +70,6 @@ class PropertyDetails extends CI_Controller {
 			$data['name'] = $get_user->name;
 			$data['email_address'] = $get_user->email_address;
 		}
-		$this->load->view ( 'contact',$data );
+		$this->load->view ( 'contact-new',$data );
 	}
 }

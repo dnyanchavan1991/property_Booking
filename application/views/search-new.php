@@ -28,15 +28,6 @@
             $("#clearFilters").click(function(){
                 location.reload();
             });
-
-            /*$("#owl-demo").owlCarousel({
-                items : 1,
-                lazyLoad : true,
-                autoPlay : true,
-                navigation : true,
-                navigationText :  false,
-                pagination : false,
-            });*/
         });
 
     </script>
@@ -242,32 +233,8 @@
 </form>
 <!---->
 <!---->
-<div id="package" class="package text-center filter-package" id="gallery" data-ng-init="galleryImgFetch()"> <!-- ng-controller="galleryImgCtrl" data-ng-init="galleryImgFetch()" -->
-    <div class="container">
-        <h3>Featured Properties</h3>
-
-        <!--<div id="owl-demo" class="owl-carousel" owl-options="owlOptions">
-            <div class="item text-center image-grid" ng-repeat="imageData in imageSrc">
-                <ul>
-                    <li ng-repeat="imageData in imageSrc.slice($index, ($index+3 > imageData.length ? imageData.length : $index+3))">
-                         <img ng-src="{{imageData.image}}" alt="" ></li>
-                </ul>
-            </div>
-
-        </div>-->
-
-        <data-owl-carousel class="owl-carousel" data-options="{navigation: true, pagination: false, autoPlay : true,}">
-
-            <div owl-carousel-item="" ng-repeat="imageData in ::imageSrc" class="item text-center image-grid">
-                <ul>
-                    <li ng-repeat="imageData in imageSrc.slice($index, ($index+3 > imageData.length ? imageData.length : $index+3))">
-					<img ng-click="getImagePropertyDetails(imageData)" ng-src="{{imageData.image}}" alt="" ></li>
-                </ul>
-
-            </div>
-
-        </data-owl-carousel>
-    </div>
+<div id="package" class="package text-center filter-package" id="gallery" data-ng-init="galleryImgFetch()">
+    <?php $this->load->view('common/featured-property.html'); ?>
 </div>
 <!---->
 <!---->
@@ -288,7 +255,7 @@
                 </a></h4>
                 <a href="" ng-click="getPropertyDetails(rooms)">
                     <img class = "single-room-image" ng-src="{{rooms.ImagePath}}" alt=""/>
-                    <p id="text"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>{{rooms.propertyAddress}}</p>
+                    <p id="text"><span class="map-marker"></span>{{rooms.propertyAddress}}</p>
                     <!--<div class="items">-->
                         <li ng-if=" rooms.free_breakfast == 'Yes' "><img class = "feature-images" src='images/breakfast.png' title="Free Breakfast"></a></li>
                         <li ng-if=" rooms.pool == 'Yes' "><img class = "feature-images" src='images/pool.png' title="Swimming Pool"></a></li>

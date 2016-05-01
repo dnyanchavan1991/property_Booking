@@ -91,18 +91,6 @@
 	  });
 
   });
-
-	  function show()
-	  {
-		  document.getElementById('aaa').style.display="inline" ;
-		  document.getElementById('bbb').style.display="inline" ;
-		  document.getElementById('ccc').style.display="inline" ;
-		  document.getElementById('ddd').style.display="inline" ;
-		  document.getElementById('blankdiv').style.display="none" ;
-		  document.getElementById('booking_room').classList.add("booking_room_active");
-		  document.getElementById('b_room').classList.add("b_room_active");
-		  document.getElementById('book_date').classList.add("book_date_active");
-	  }
 	  function allFieldsVisible(){
 
 		  var elm = $('#aaa');
@@ -182,20 +170,7 @@
 </form>
 <!---->
 <div class="package text-center" id="gallery" ng-controller="galleryImgCtrl" data-ng-init="galleryImgFetch()">
-	 <div class="container">
-		 <h3>Featured Properties</h3>
-		   <data-owl-carousel class="owl-carousel" data-options="{navigation: true, pagination: false, autoPlay : true,}">
-
-            <div owl-carousel-item="" ng-repeat="imageData in ::imageSrc" class="item text-center image-grid">
-                <ul>
-                    <li ng-repeat="imageData in imageSrc.slice($index, ($index+3 > imageData.length ? imageData.length : $index+3))">
-                        <img ng-click="getPropertyDetails(imageData)" ng-src="{{imageData.image}}" alt="" ></li>
-                </ul>
-
-            </div>
-
-        </data-owl-carousel>
-	 </div>
+    <?php $this->load->view('common/featured-property.html'); ?>
 </div>
 <!---->
 <!---->
