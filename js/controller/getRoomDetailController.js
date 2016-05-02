@@ -1,22 +1,20 @@
-var app = angular.module('getRoomDetailApp', ['angularUtils.directives.dirPagination','ngMessages']);
+var app = angular.module('getRoomDetailApp', ['angularUtils.directives.dirPagination']); //,'ngMessages'
 
 app.controller('getRoomDetailController',function($scope, $http){
 	
 	$scope.getRoomDetail = function() {
-		console.log("before getReviews");
+	
 		$http.get("propertyDetails/getRoomDetail").then(function(response){
 			$scope.names = response.data;			
 		});
 		
-		getReviews();
+		//getReviews();
 	};
 	$scope.getReviews = function()
-    {
-		console.log("getReviews()");
+    {		
 		$http.get("json/ReviewsPerProperty.json").success(function(data){ 
 			$scope.reviews = data;
-			//alert();
-			alert($scope.reviews);
+	
 		});
 	};
 	$scope.strtoint = function(num)
@@ -53,7 +51,8 @@ app.controller('getRoomDetailController',function($scope, $http){
 });
   
 
-app.controller(
+var appMessage = angular.module('getRoomDetailAppMessage', ['ngMessages']); //,
+appMessage.controller(
 		'popupController',
 		function($scope, $http) {
 			$scope.showModal = false;
@@ -115,7 +114,7 @@ app.controller(
 			};
 
 		})
-app.directive(
+appMessage.directive(
 		'modal',
 		function() {
 			return {

@@ -25,7 +25,7 @@
     <script type="text/javascript" src="js/dirPagination.js"></script>
 </head>
 
-<body ng-app="getRoomDetailApp" ng-controller="getRoomDetailController"	ng-init="getRoomDetail()" data-spy="scroll" data-target="#myScrollspy">
+<body  data-spy="scroll" data-target="#myScrollspy">
 <!--header starts-->
 <div class="header">
     <?php $this->load->view('common/header.html'); ?>
@@ -48,11 +48,7 @@
 </script>
 
 <script type="text/javascript">
-    (function() {
-        JC.init({
-            domainKey: ''
-        });
-    })();
+    
 	function toggleSections(elem, caller)
 	{
 		// Remove all active class, and hide all sections first
@@ -76,7 +72,7 @@
     </ul>
 </div>
     <div class="container" style="margin-top: 3%">
-        <div class="room-grids col-sm-9" >
+        <div class="room-grids col-sm-9" ng-app="getRoomDetailApp" ng-controller="getRoomDetailController"	ng-init="getRoomDetail()" >
                 <div class="col-sm-12">
                     <div id="section1" class="detailed-row">
                       <!--  <h2>Description</h2>-->
@@ -281,7 +277,7 @@
                                 <br/><br/>
                             </form>
                         </div>
-                        <div class="other-comments"    >
+                        <div class="other-comments"   data-ng-init = "getReviews()" >
                             <div class="comments-head">
                                 <div><h3>Reviews</h3></div>
                                 <div>
@@ -320,7 +316,7 @@
             <p class="best-pri"></p>
 
             <a class="best-btn" onclick=" return checkLogin()" href="BookProperty">Book Now</a>
-            <div class="hotel-left-two" ng-controller="popupController">
+            <div class="hotel-left-two" ng-app="getRoomDetailAppMessage" ng-controller="popupController">
 
                 <p>
                     <a href="" ng-click="togglemailPopUp()" class="best-btn">Send
