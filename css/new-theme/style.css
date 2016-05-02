@@ -32,17 +32,29 @@ color:none;
 text-decoration: none;
 }
 /*-----start-property-detail-and-tabs------*/
+h2.tittle-one{
+    margin-bottom:50px;
+    color:#0088cc;
+    font-size:60px;
+    font-family: 'Pinyon Script', cursive !important;
+    text-align:center;
+    text-transform: capitalize;
+}
 ul.nav-tabs {
-    /*width: inherit !important;
-    display: flex;*/
-    width: 220px;
-    margin-top: 20px;
+    width: 100% !important;
+    display: flex;
+    position: absolute;
     border-radius: 4px;
-    background: #fff;
-    z-index: 999;
     border: 1px solid #ddd;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
+    /*width: 220px;
+    margin-top: 20px;
     position: fixed;
+    background: #fff;
+    z-index: 999;*/
+}
+.myScrollspy {
+    margin-bottom: 70px;
 }
 ul.nav-tabs li {
     margin: 0;
@@ -97,7 +109,7 @@ ul.nav-tabs.affix {
     float: left;
 }
 .detailed-contact-form {
-    margin-left: 5px;
+    margin-left: 10px;
 }
 .detailed-contact-form input[type="text"], .detailed-contact-form textarea{
     width: 75% !important;
@@ -116,6 +128,31 @@ ul.nav-tabs.affix {
     -webkit-border-radius: 9px !important;
     -moz-border-radius: 9px !important;
     -o-border-radius: 9px !important;
+}
+.other-comments {
+    margin-left: 10px;
+}
+.comments-head h3 {
+    font-family: inherit !important;
+    font-size: 2em !important;
+    color: #0088cc;;
+}
+.comments-bot {
+    border-top: 1px dashed #0088cc;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.review-star {
+    color: #00CCFF;
+    float: left;
+}
+.visited-during {
+    float: right;
+    font-size: 12px;
+    display: inline-block;
+}
+.review {
+    position: absolute;
 }
 .detailed-contact-form textarea {
     height: 110px !important;
@@ -147,7 +184,7 @@ ul.nav-tabs.affix {
 }
 .detailed-contact-form form input[type="submit"] {
     text-transform:capitalize;
-    width: 90% !important;
+    width: 15% !important;
     background: #FFD700;
     font-family: 'Open Sans', sans-serif;
     color: #2A2E33;
