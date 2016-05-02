@@ -243,13 +243,13 @@
         <div class="room-grids" >
             <div class="ang-dir-paginate">
                 <dir-pagination-controls
-                    max-size="5"
+                    max-size="20"
                     direction-links="true"
                     boundary-links="true"
                     auto-hide="true">
                 </dir-pagination-controls>
             </div>
-            <div class="col-md-3 room-sec single-room" dir-paginate="rooms in propNames | itemsPerPage : 5">
+            <div class="col-md-3 room-sec single-room" dir-paginate="rooms in propNames | itemsPerPage : 20">
 			
                 <h4><a href="" ng-click="getPropertyDetails(rooms)"> {{rooms.propertyName}}<span class = "room-star" ng-repeat="r_cnt in strtoint(rooms.starRate)">★</span>
                 </a></h4>

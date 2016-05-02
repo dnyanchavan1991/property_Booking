@@ -49,6 +49,7 @@ ul.nav-tabs li {
     border-top: 1px solid #ddd;
     width: inherit;
 }
+
 ul.nav-tabs li:first-child {
     border-top: none;
 }
@@ -184,7 +185,7 @@ ul.nav-tabs.affix {
 }
 @media screen and (min-width: 1200px){
     ul.nav-tabs{
-        width: 220px; /* set nav width on large devices */
+        width: 400px; /* set nav width on large devices */
     }
 }
 /*-----end-property-detail-and-tabs------*/

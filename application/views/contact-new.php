@@ -53,23 +53,33 @@
             domainKey: ''
         });
     })();
+	function toggleSections(elem, caller)
+	{
+		// Remove all active class, and hide all sections first
+		$(".container").find(".detailed-row").hide();
+		$(".nav-tabs li").attr("class", "");
+		// show only required section, and add active class to the caller link
+		$(".container").find("#"+elem).show();
+		$(caller).parent().attr("class", "active");
+	}
+	
 </script>
 <!---->
 <div class="rooms text-center">
 <div class="" id="myScrollspy">
-    <ul class="nav nav-tabs nav-stacked" data-offset-top="120" data-spy="affix">
-        <li class="active"><a href="#section1">Description</a></li>
-        <li><a href="#section2">Gallery</a></li>
-        <li><a href="#section3">Charges</a></li>
-        <li><a href="#section4">How to Reach</a></li>
-        <li><a href="#section5">Reviews</a></li>
+    <ul class="nav nav-tabs nav-stacked" data-offset-top="120" data-spy="affix" style="width: 700px; position: absolute; margin-left: 10%; margin-top: 0%">
+        <li class="active" style="float: left; width: 20%"><a href="#section1" onclick="javascript: toggleSections('section1', this)">Description</a></li>
+        <li style="float: left; width: 20%"><a href="#section2" onclick="javascript: toggleSections('section2', this)">Gallery</a></li>
+        <li style="float: left; width: 20%"><a href="#section3" onclick="javascript: toggleSections('section3', this)">Charges</a></li>
+        <li style="float: left; width: 20%"><a href="#section4" onclick="javascript: toggleSections('section4', this)">How to Reach</a></li>
+        <li style="float: left; width: 20%"><a href="#section5" onclick="javascript: toggleSections('section5', this)">Reviews</a></li>
     </ul>
 </div>
-    <div class="container" >
+    <div class="container" style="margin-top: 3%">
         <div class="room-grids col-sm-9" >
                 <div class="col-sm-12">
                     <div id="section1" class="detailed-row">
-                        <h2>Description</h2>
+                      <!--  <h2>Description</h2>-->
                         <p><?php echo nl2br($propertyDescription);?></p>
                         <br>
                         <div class="panel panel-default">
@@ -158,8 +168,8 @@
                         </div>
                     </div>
                     <hr>
-                    <div id="section2" class="detailed-row">
-                        <h2>Gallery</h2>
+                    <div id="section2" class="detailed-row" style="display: none">
+                      <!--  <h2>Gallery</h2> -->
                         <div id="owl-demo" class="owl-carousel">
                             <?php
                             $files = glob('Admin/'.$imagePath."*.*");
@@ -190,8 +200,8 @@
                         </div>
                     </div>
                     <hr>
-                    <div id="section3" class="detailed-row">
-                        <h2>Charges</h2>
+                    <div id="section3" class="detailed-row"  style="display: none">
+                      <!--   <h2>Charges</h2>-->
                         <?php
                         foreach($rentresult as $row)
                         {
@@ -206,15 +216,15 @@
                         ?>
                     </div>
                     <hr>
-                    <div id="section4" class="detailed-row">
-                        <h2>How To Reach</h2>
+                    <div id="section4" class="detailed-row" style="display: none">
+                     <!--   <h2>How To Reach</h2> -->
                         <p><?php echo nl2br($way_to_reach); ?></p>
                     </div>
                     <hr>
-                    <div id="section5" class="detailed-row">
-                        <h2>Reviews</h2>
+                    <div id="section5" class="detailed-row" style="display: none">
+                     <!--   <h2>Reviews</h2>-->
                         <div class="contact-form detailed-contact-form">
-                            <form name="form" novalidate ng-submit="form.$valid && processForm()" ng-controller="reviewCtrl" class="angular-msgs">
+                            <form name="form" novalidate ng-submit="form.$valid && processForm()"   class="angular-msgs">
 
                                 <?php if(isset($name) && isset($email_address)){?>
                                     <input type="text" id="customer_name" ng-model="customer_name" placeholder="Name" ng-init="customer_name='<?php echo $name;?>'" readonly>
@@ -271,7 +281,7 @@
                                 <br/><br/>
                             </form>
                         </div>
-                        <div class="other-comments" ng-controller="paginateReview" ng-init="getReviews()">
+                        <div class="other-comments"    >
                             <div class="comments-head">
                                 <div><h3>Reviews</h3></div>
                                 <div>

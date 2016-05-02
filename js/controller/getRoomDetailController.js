@@ -3,20 +3,20 @@ var app = angular.module('getRoomDetailApp', ['angularUtils.directives.dirPagina
 app.controller('getRoomDetailController',function($scope, $http){
 	
 	$scope.getRoomDetail = function() {
+		console.log("before getReviews");
 		$http.get("propertyDetails/getRoomDetail").then(function(response){
-			$scope.names = response.data;
-			
+			$scope.names = response.data;			
 		});
+		
+		getReviews();
 	};
-});
-/*--paginate review*/
-app.controller('paginateReview',function($scope,$http){
 	$scope.getReviews = function()
     {
+		console.log("getReviews()");
 		$http.get("json/ReviewsPerProperty.json").success(function(data){ 
 			$scope.reviews = data;
 			//alert();
-			//alert($scope.reviews);
+			alert($scope.reviews);
 		});
 	};
 	$scope.strtoint = function(num)
@@ -27,10 +27,6 @@ app.controller('paginateReview',function($scope,$http){
 		}
 		return arr;
 	};
-});
-/*--//paginate review*/
-/*--submit review*/
-app.controller('reviewCtrl',  function ($scope, $http) {
 	$scope.processForm = function()
     { 	
 		 $scope.formData = {};
@@ -55,7 +51,7 @@ app.controller('reviewCtrl',  function ($scope, $http) {
 		});
     };
 });
-/*--//submit review*/
+  
 
 app.controller(
 		'popupController',
