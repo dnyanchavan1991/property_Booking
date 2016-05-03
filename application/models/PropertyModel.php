@@ -209,7 +209,7 @@ class PropertyModel extends CI_Model {
 	
 	/* this function gets property detail on click on particular property of search.html */
 	public function getPropertyDetail($propertyId) {
-		$this->db->select ( 'property_name as propertyName,description,image_path as imagePath,how_to_reach as Direction, ' );
+		$this->db->select ( 'property_name as propertyName,description,image_path as imagePath,concat(street,\',\',city,\',\',state,\',\',postal_code) as propertyAddress,how_to_reach as Direction, ' );
 		$query = $this->db->get_where ( 'property', array (
 				'property_id' => $propertyId 
 		) );

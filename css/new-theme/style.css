@@ -33,7 +33,7 @@ text-decoration: none;
 }
 /*-----start-property-detail-and-tabs------*/
 h2.tittle-one{
-    margin-bottom:50px;
+    margin-bottom:20px;
     color:#0088cc;
     font-size:60px;
     font-family: 'Pinyon Script', cursive !important;
@@ -112,7 +112,9 @@ ul.nav-tabs.affix {
     margin-left: 10px;
 }
 .detailed-contact-form input[type="text"], .detailed-contact-form textarea{
-    width: 75% !important;
+    width: 45% !important;
+    float: left;
+    margin-left: 2%;
     color: #858585 !important;
     font-size: 0.8725em !important;
     padding: 8px 30px !important;
@@ -128,6 +130,10 @@ ul.nav-tabs.affix {
     -webkit-border-radius: 9px !important;
     -moz-border-radius: 9px !important;
     -o-border-radius: 9px !important;
+}
+.detailed-contact-form textarea {
+	width: 75% !important;
+	
 }
 .other-comments {
     margin-left: 10px;
@@ -2015,6 +2021,7 @@ padding-bottom: 6em;
 }
 .contact-form div{
 	padding:5px 0;
+	margin-left: 2%;
 }
 .contact-form span{
 	display: block;

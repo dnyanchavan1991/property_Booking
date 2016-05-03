@@ -35,6 +35,7 @@ class PropertyDetails extends CI_Controller {
 		$data['propertyDescription']=$propertyDetailInfo->row()->description;
 		$data['imagePath']=$propertyDetailInfo->row()->imagePath;
 		$data['way_to_reach']=$propertyDetailInfo->row()->Direction;
+		$data['propertyAddress'] =$propertyDetailInfo->row()->propertyAddress;
 		/* //general info*/
 		/* Property Other Info */
 		$property_type=$propertyOtherInfo->row()->property_type_id;

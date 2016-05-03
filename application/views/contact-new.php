@@ -34,6 +34,8 @@
     <script>
         $(function() {
             $( "#datepicker,#datepicker1" ).datepicker();
+			
+			
         });
         window.onload = function() {
             $("#owl-demo").owlCarousel({
@@ -44,6 +46,9 @@
                 navigationText :  false,
                 pagination : false,
             });
+			(function(){								
+				$(".banner").hide();	
+			})();
         };
     </script>
 
@@ -65,6 +70,8 @@
         <div class="container">
         <h2 class="tittle-one">
             <?php echo $propertyName;  ?>
+			
+			<h3 style="font-size: 2em !important"><?php echo nl2br($propertyAddress);?></h4>
         </h2>
         <div class="col-sm-9 myScrollspy" id="myScrollspy">
             <ul class="nav nav-tabs nav-stacked" data-offset-top="120" data-spy="affix">
@@ -80,6 +87,7 @@
                         <div id="section1" class="detailed-row">
                           <!--  <h2>Description</h2>-->
                             <p><?php echo nl2br($propertyDescription);?></p>
+							
                             <br>
                             <div class="panel panel-default">
                                 <div class="panel-heading"><i class="glyphicon glyphicon-ok-circle"></i> The Property</div>
@@ -169,7 +177,7 @@
                         <hr>
                         <div id="section2" class="detailed-row" style="display: none">
                           <!--  <h2>Gallery</h2> -->
-                            <div id="owl-demo" class="owl-carousel">
+                          <!--  <div id="owl-demo" class="owl-carousel">-->
                                 <?php
                                 $i=1;
                                 $count=1;
@@ -179,7 +187,7 @@
                                 <div class="item text-center image-grid property-grid">
                                     <ul>
                                         <?php
-                                            for ($count=1; $count<3; $count++)
+                                            for ($count=1; $count<6; $count++)
                                             {
                                                 if($i<count($files)){
                                                     $image = $files[$i];
@@ -230,7 +238,7 @@
                                         continue;
                                     }
                                 }*/?>
-                            </div>
+                            <!--</div>-->
                         </div>
                         <hr>
                         <div id="section3" class="detailed-row"  style="display: none">
@@ -293,11 +301,11 @@
 
                                     <div>Rating:</div>
                                     <div class="acidjs-rating-stars">
-                                        <input type="radio" ng-model="rating_given" id="group-2-0" value="5" /><label for="group-2-0"></label>
-                                        <input type="radio" ng-model="rating_given" id="group-2-1" value="4" /><label for="group-2-1"></label>
-                                        <input type="radio" ng-model="rating_given" id="group-2-2" ng-init="rating_given=3" ng-selected="true" value="3" /><label for="group-2-2"></label>
-                                        <input type="radio" ng-model="rating_given" id="group-2-3" value="2" /><label for="group-2-3"></label>
-                                        <input type="radio" ng-model="rating_given" id="group-2-4" value="1" /><label for="group-2-4"></label>
+                                        <input type="radio" ng-model="rating_given" id="group-2-0" value="5" /><label style="font-weight: normal" for="group-2-0">Excellent</label>&nbsp;&nbsp;
+                                        <input type="radio" ng-model="rating_given" id="group-2-1" value="4" /><label style="font-weight: normal" for="group-2-1">Very Good</label>&nbsp;&nbsp;
+                                        <input type="radio" ng-model="rating_given" id="group-2-2" ng-init="rating_given=3" ng-selected="true" value="3" /><label style="font-weight: normal" for="group-2-2">Good</label>&nbsp;&nbsp;
+                                        <input type="radio" ng-model="rating_given" id="group-2-3" value="2" /><label style="font-weight: normal" for="group-2-3">Average</label>&nbsp;&nbsp;
+                                        <input type="radio" ng-model="rating_given" id="group-2-4" value="1" /><label style="font-weight: normal" for="group-2-4">Bad</label>
                                     </div>
 
                                     <textarea ng-model="review_given" ng-minlength="100" ng-maxlength="1000" name="review_given"  placeholder="Content...(max 1000)" required></textarea>
@@ -319,23 +327,23 @@
                                     <div><h3>Reviews</h3></div>
                                     <div>
                                         <dir-pagination-controls
-                                            max-size="1"
+                                            max-size="10"
                                             direction-links="true"
                                             boundary-links="true"
                                             auto-hide="true">
                                         </dir-pagination-controls>
                                     </div>
-                                    <div class="comments-bot" dir-paginate="reviews_count in reviews|itemsPerPage:1">
+                                    <div class="comments-bot" dir-paginate="reviews_count in reviews|itemsPerPage:10">
                                         <div class="col-sm-2">
-                                            {{reviews_count.customer_name}
+                                            <strong>{{reviews_count.customer_name}} </strong><br/><span class="review-star" ng-repeat="r_cnt in strtoint(reviews_count.star_rating)">★</span>
                                         </div>
                                         <div class="col-sm-10">
                                             <div>
-                                            <span class="review-star" ng-repeat="r_cnt in strtoint(reviews_count.star_rating)">★</span>
+                                            
                                                 <div class="visited-during">
-                                                    Visited property during {{reviews_count.check_in}} - {{reviews_count.check_out}}
+                                                   <strong> Visited property during {{reviews_count.check_in}} - {{reviews_count.check_out}}</strong>
                                                 </div>
-                                            </div>
+                                            </div><br/>
                                             <div class="review">
                                                 <p>{{reviews_count.review_text}}</p>
                                             </div>
@@ -348,8 +356,9 @@
                                             {{reviews_count.customer_name}} <br/>
                                             <p>Visited property during {{reviews_count.check_in}} - {{reviews_count.check_out}}</p>
                                         </h4>-->
+										 <div class="clearfix"></div>
                                     </div>
-                                    <div class="clearfix"></div>
+                                   
                                 </div>
                             </div>
                         </div>
