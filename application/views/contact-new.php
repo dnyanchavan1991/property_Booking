@@ -361,20 +361,19 @@
                     </div>
             </div>
             <div class="booking-grid col-sm-3">
-                <h4>Availability : <?php echo $avail_accomodates;?></h4>
-                <p class="best-pri"></p>
+                <div class="panel-heading description-heading"> <h4> Availability : <?php echo $avail_accomodates;?> </h4> </div>
+                <!--<h4>Availability : <?php /*echo $avail_accomodates;*/?></h4>-->
 
                 <a class="best-btn" onclick=" return checkLogin()" href="BookProperty">Book Now</a>
                 <div class="hotel-left-two" ng-app="getRoomDetailAppMessage" ng-controller="popupController">
 
-                    <p>
-                        <a href="" onclick="togglemailPopUp()" ng-click="togglemailPopUp()" class="best-btn">Send
-                            Mail</a>
-                        <a href="" onclick="togglemessagePopUp()" ng-click="togglemessagePopUp()" class="best-btn">Send SMS</a>
-                    </p>
+                    <p> Send </p>
+                    <p> <label onclick="togglemailPopUp()" >Mail</label> | <label onclick="togglemessagePopUp()" >SMS</label> </p>
+                    <!--<p onclick="togglemailPopUp()" >Send Mail</p>
+                    <p onclick="togglemessagePopUp()">Send SMS</p>-->
                     <modal id="modal"  ng-model="model" visible="showModal">
 
-                        <form  name="formData" class="contact-form detailed-contact-form" ng-submit="Contact_to_customer_enquiry(
+                        <form  name="formData" class="contact-form detailed-contact-form enquiry-form" ng-submit="Contact_to_customer_enquiry(
                                             <?php echo "'$propertyId'"; ?>)">
                             <div class="" id="name" style="display:none;">
                                 <label for="email"></label> <input type="text"
@@ -393,14 +392,14 @@
                                                                    placeholder="Enter Phone/Mobile Number" />
                             </div>
                             <div class="" id="inTime" style="display:none;">
-                                <label for="checkIn"></label><input class="date"
+                                <label for="checkIn"></label><input class="date" placeholder="CheckIn Date"
                                                                     name="checkIn" id="checkIn" ng-model="form.checkIn"
                                                                     ng-init="checkIn= 'CheckIn Date'" type="text"
                                                                     onfocus="this.value = '';"
                                                                     onblur="if (this.value == '') {this.value = '';}" required>
                             </div>
                             <div class="" id="outTime" style="display:none;">
-                                <label for="checkOut"></label><input class="date"
+                                <label for="checkOut"></label><input class="date" placeholder="CheckOut Date"
                                                                      name="checkOut" id="checkOut" ng-model="form.checkOut"
                                                                      ng-init="checkOut= 'CheckOut Date'" type="text"
                                                                      onfocus="this.value = '';"

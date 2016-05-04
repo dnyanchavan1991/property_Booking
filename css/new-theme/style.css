@@ -128,7 +128,7 @@ ul.nav-tabs.affix {
     margin-left: 10px;
 }
 .detailed-contact-form input[type="text"], .detailed-contact-form textarea{
-    /*width: 45% !important;*/
+    width: 45% !important;
     float: left;
     margin-left: 2%;
     color: #858585 !important;
@@ -146,6 +146,10 @@ ul.nav-tabs.affix {
     -webkit-border-radius: 9px !important;
     -moz-border-radius: 9px !important;
     -o-border-radius: 9px !important;
+    margin-top: 15px !important;
+}
+.enquiry-form input[type="text"], .enquiry-form textarea {
+    width: 98% !important;
 }
 .detailed-contact-form textarea {
 	width: 75% !important;
