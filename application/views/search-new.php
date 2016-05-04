@@ -175,7 +175,7 @@
                 <div class="reservation">
                     <div class="banner-info text-left">
                         <form>
-                            <div class="room-grids">
+                            <div class="room-grids filter-options">
                                 <div class="col-md-2 room-sec">
                                     <h5>Ratings</h5>
                                     <div class="items items-filter" ng-repeat="starRateLabel  in starRateList">
@@ -209,7 +209,6 @@
                                             ng-change="isLabelChecked('facility')"> {{facilityListLabel.facilityLabel}}
                                     </div>
                                 </div>
-                                <!--<div class="clearfix"></div>-->
                                 <div class="col-md-2 room-sec">
                                     <h5>Bedrooms</h5>
                                     <div class="items items-filter">

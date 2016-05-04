@@ -95,6 +95,7 @@ ul.nav-tabs.affix {
 .detailed-row p {
     margin-bottom: 2px;
     margin-left: 5px;
+    margin-top: 10px;
 }
 .detailed-row h2 {
     margin-bottom: 18px;
@@ -105,14 +106,29 @@ ul.nav-tabs.affix {
 .panel-body li {
     list-style: none;
 }
+.property-details b {
+    color: #0088cc !important;
+}
+.description-heading {
+    color: #0088cc !important;
+    font-weight: bold;
+}
+.decription-icon-text {
+    margin-top: 5px;
+    font-weight: normal;
+}
 .property-details {
     float: left;
+    color: #0088cc !important;
+    font-weight: bold;
+    margin-right: 20px;
+    text-align: center;
 }
 .detailed-contact-form {
     margin-left: 10px;
 }
 .detailed-contact-form input[type="text"], .detailed-contact-form textarea{
-    width: 45% !important;
+    /*width: 45% !important;*/
     float: left;
     margin-left: 2%;
     color: #858585 !important;
@@ -133,7 +149,6 @@ ul.nav-tabs.affix {
 }
 .detailed-contact-form textarea {
 	width: 75% !important;
-	
 }
 .other-comments {
     margin-left: 10px;
@@ -153,12 +168,19 @@ ul.nav-tabs.affix {
     float: left;
 }
 .visited-during {
-    float: right;
+    /*float: right;*/
     font-size: 12px;
     display: inline-block;
 }
 .review {
-    position: absolute;
+    /*position: absolute;*/
+    margin-top: 10px;
+}
+.customer-name {
+    float: left;
+}
+.review-details {
+    float: right;
 }
 .detailed-contact-form textarea {
     height: 110px !important;
@@ -1016,6 +1038,9 @@ margin:1%;
 }
 .room-grids {
     float:left;
+}
+.filter-options {
+    width: 100%;
 }
 .booking-grid {
     float: right;

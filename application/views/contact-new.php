@@ -34,8 +34,6 @@
     <script>
         $(function() {
             $( "#datepicker,#datepicker1" ).datepicker();
-			
-			
         });
         window.onload = function() {
             $("#owl-demo").owlCarousel({
@@ -64,6 +62,28 @@
             $(caller).parent().attr("class", "active");
         }
 
+        function togglemailPopUp()
+        {
+            $('#phone_div').hide();
+            $('#email_id_div').show();
+            $('#name').show('');
+            $('#inTime').show('');
+            $('#outTime').show('');
+            $('#enquiry_div').show('');
+            $('#submit_div').show('');
+        }
+
+        function togglemessagePopUp()
+        {
+            $('#phone_div').show();
+            $('#email_id_div').hide();
+            $('#name').show('');
+            $('#inTime').show('');
+            $('#outTime').show('');
+            $('#enquiry_div').show('');
+            $('#submit_div').show('');
+        }
+
     </script>
     <!---->
     <div class="rooms text-center">
@@ -71,7 +91,7 @@
         <h2 class="tittle-one">
             <?php echo $propertyName;  ?>
 			
-			<h3 style="font-size: 2em !important"><?php echo nl2br($propertyAddress);?></h4>
+			<h3 style="font-size: 2em !important"><?php echo nl2br($propertyAddress);?></h3>
         </h2>
         <div class="col-sm-9 myScrollspy" id="myScrollspy">
             <ul class="nav nav-tabs nav-stacked" data-offset-top="120" data-spy="affix">
@@ -85,92 +105,104 @@
             <div class="room-grids col-sm-9" ng-app="getRoomDetailApp" ng-controller="getRoomDetailController"	ng-init="getRoomDetail()" >
                     <div class="col-sm-12">
                         <div id="section1" class="detailed-row">
-                          <!--  <h2>Description</h2>-->
-                            <p><?php echo nl2br($propertyDescription);?></p>
-							
-                            <br>
                             <div class="panel panel-default">
-                                <div class="panel-heading"><i class="glyphicon glyphicon-ok-circle"></i> The Property</div>
+                                <div class="panel-heading description-heading"> About</div>
+                                <div class="panel-body">
+                                    <p><?php echo nl2br($propertyDescription);?></p>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading description-heading"> The Property</div>
                                 <div class="panel-body">
                                     <p>
                                     <ul>
-                                        <li class="property-details">
-                                            <b>Type :</b> <?php echo  nl2br($property_type); ?> &nbsp;
+                                        <li class="col-sm-2 property-details">
+                                            <div class="decription-icon"><img src="images/new-theme/type.png"></div>
+                                            <div class="decription-icon-text"><?php echo  nl2br($property_type); ?> </div>
                                         </li>
-                                        <li class="property-details">
-                                            <b>Bedrooms :</b> <?php echo  nl2br($bedrooms); ?> &nbsp;
+                                        <li class="col-sm-2 property-details">
+                                            <div class="decription-icon"><img src="images/new-theme/bedroom.png"></div>
+                                            <div class="decription-icon-text"><?php echo  nl2br($bedrooms); ?> Bedrooms</div>
                                         </li>
-                                        <li class="property-details">
-                                            <b>Bathrooms :</b> <?php echo  nl2br($bathrooms); ?> &nbsp;
+                                        <li class="col-sm-2 property-details">
+                                            <div class="decription-icon"><img src="images/new-theme/bathroom.png"></div>
+                                            <div class="decription-icon-text"><?php echo  nl2br($bathrooms); ?> Bathrooms</div>
                                         </li>
-                                        <li class="property-details">
-                                            <b>Accommodates :</b> <?php echo  $accommodates; ?> &nbsp;
+                                        <li class="col-sm-2 property-details">
+                                            <div class="decription-icon"><img src="images/new-theme/guest.png"></div>
+                                            <div class="decription-icon-text"><?php echo  $accommodates; ?> Guests</div>
                                         </li>
                                     </ul>
                                     </p>
                                 </div>
                             </div>
                             <div class="panel panel-default">
-                                <div class="panel-heading"><i class="glyphicon glyphicon-ok-circle"></i> Amenities</div>
+                                <div class="panel-heading description-heading"> Amenities</div>
                                 <div class="panel-body">
                                     <p>
                                     <ul>
-                                        <li style="float: left; ">
-                                            <b>Swimming Pool :</b> <?php if($pool == "Yes"){?>
-                                                <img src="images/Yes_tick.gif" style="height: 20px;width: 20px;">
-                                            <?php } else{?>
-                                                <img src="images/No_tick.png" style="height: 15px;width: 15px;">
-                                            <?php } ?> &nbsp;
-                                        </li>
-                                        <li style="  float: left; ">
-                                            <b>Internet Access :</b> <?php if($internet_access == "Yes"){?>
-                                                <img src="images/Yes_tick.gif" style="height: 20px;width: 20px;">
-                                            <?php } else{?>
-                                                <img src="images/No_tick.png" style="height: 15px;width: 15px;">
-                                            <?php } ?> &nbsp;
-                                        </li>
-                                        <li style="  float: left; ">
-                                            <b>Television :</b> <?php if($television == "Yes"){?>
-                                                <img src="images/Yes_tick.gif" style="height: 20px;width: 20px;">
-                                            <?php } else{?>
-                                                <img src="images/No_tick.png" style="height: 15px;width: 15px;">
-                                            <?php } ?> &nbsp;
-                                        </li>
-                                        <li style="  float: left; ">
-                                            <b>Pets Allowed :</b> <?php if($pet_friendly == "Yes"){?>
-                                                <img src="images/Yes_tick.gif" style="height: 20px;width: 20px;">
-                                            <?php } else{?>
-                                                <img src="images/No_tick.png" style="height: 15px;width: 15px;">
-                                            <?php } ?> &nbsp;
-                                        </li>
-                                        <li style="  float: left; ">
-                                            <b>Air Conditioned :</b> <?php if($air_condition == "Yes"){?>
-                                                <img src="images/Yes_tick.gif" style="height: 20px;width: 20px;">
-                                            <?php } else{?>
-                                                <img src="images/No_tick.png" style="height: 15px;width: 15px;">
-                                            <?php } ?> &nbsp;
-                                        </li>
-                                        <li style="  float: left; ">
-                                            <b>In-House Kitchen :</b> <?php if($in_house_kitchen == "Yes"){?>
-                                                <img src="images/Yes_tick.gif" style="height: 20px;width: 20px;">
-                                            <?php } else{?>
-                                                <img src="images/No_tick.png" style="height: 15px;width: 15px;">
-                                            <?php } ?> &nbsp;
-                                        </li>
+                                        <?php if($pool == "Yes"){?>
+                                            <li class="col-sm-2 property-details">
+                                                <div class="decription-icon"><img src="images/new-theme/swimming.png"></div>
+                                                <div class="decription-icon-text">Swimming Pool </div>
+                                            </li>
+                                        <?php }?>
+                                        <?php if($internet_access == "Yes"){?>
+                                            <li class="col-sm-2 property-details">
+                                                <div class="decription-icon"><img src="images/new-theme/wifi.png"></div>
+                                                <div class="decription-icon-text">Internet Acces </div>
+                                            </li>
+                                        <?php }?>
+                                        <?php if($television == "Yes"){?>
+                                            <li class="col-sm-2 property-details">
+                                                <div class="decription-icon"><img src="images/new-theme/television.png"></div>
+                                                <div class="decription-icon-text">Television </div>
+                                            </li>
+                                        <?php }?>
+                                        <?php if($pet_friendly == "Yes"){?>
+                                            <li class="col-sm-2 property-details">
+                                                <div class="decription-icon"><img src="images/new-theme/pets.png"></div>
+                                                <div class="decription-icon-text">Pets Allowed </div>
+                                            </li>
+                                        <?php }?>
+                                        <?php if($air_condition == "Yes"){?>
+                                            <li class="col-sm-2 property-details">
+                                                <div class="decription-icon"><img src="images/new-theme/conditioner.png"></div>
+                                                <div class="decription-icon-text">Air Conditioned </div>
+                                            </li>
+                                        <?php }?>
+                                        <?php if($in_house_kitchen == "Yes"){?>
+                                            <li class="col-sm-2 property-details">
+                                                <div class="decription-icon"><img src="images/new-theme/kitchen.png"></div>
+                                                <div class="decription-icon-text">In-House Kitchen </div>
+                                            </li>
+                                        <?php }?>
                                     </ul>
-                                    </p>
                                     <div class="clearfix"> </div>
-                                    <p>
-                                    <div>
-                                        <b>Food :</b> <?php if($meals){echo  nl2br($meals);} else {echo "NA";} ?> &nbsp;
-                                    </div>
-                                    <div>
-                                        <b>Other Amenities :</b> <?php if($other_amenities){echo nl2br($other_amenities);} else {echo "NA";} ?> &nbsp;
-                                    </div>
-                                    <div>
-                                        <b>Leisure Activities :</b> <?php if($leisureActivities){echo nl2br($leisureActivities);} else {echo "NA";} ?> &nbsp;
-                                    </div>
-                                    </p>
+                                    <?php if($meals){ ?>
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading description-heading"> Food</div>
+                                            <div class="panel-body">
+                                                <p><?php echo nl2br($meals);?></p>
+                                            </div>
+                                        </div>
+                                    <?php } ?>
+                                    <?php if($other_amenities){ ?>
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading description-heading"> Other Amenities</div>
+                                            <div class="panel-body">
+                                                <p><?php echo nl2br($other_amenities);?></p>
+                                            </div>
+                                        </div>
+                                    <?php } ?>
+                                    <?php if($leisureActivities){ ?>
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading description-heading"> Leisure Activities</div>
+                                            <div class="panel-body">
+                                                <p><?php echo nl2br($leisureActivities);?></p>
+                                            </div>
+                                        </div>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>
@@ -212,32 +244,7 @@
                                         }?>
                                     </ul>
                                 </div>
-                                 <?php   }
-
-                                /*for ($i=1; $i<count($files); $i++)
-                                {
-                                    $image = $files[$i];
-                                    $supported_file = array(
-                                        'gif',
-                                        'jpg',
-                                        'jpeg',
-                                        'png'
-                                    );
-                                    $ext = strtolower(pathinfo($image, PATHINFO_EXTENSION));
-                                    if (in_array($ext, $supported_file))
-                                    {*/?><!--
-                                        <div class="item text-center image-grid property-grid">
-                                            <ul>
-                                                <li><img src="<?php /*echo $image;*/?>" alt=""></li>
-                                            </ul>
-                                        </div>
-                                    --><?php
-    /*                                }
-                                    else
-                                    {
-                                        continue;
-                                    }
-                                }*/?>
+                                 <?php   } ?>
                             <!--</div>-->
                         </div>
                         <hr>
@@ -301,11 +308,11 @@
 
                                     <div>Rating:</div>
                                     <div class="acidjs-rating-stars">
-                                        <input type="radio" ng-model="rating_given" id="group-2-0" value="5" /><label style="font-weight: normal" for="group-2-0">Excellent</label>&nbsp;&nbsp;
-                                        <input type="radio" ng-model="rating_given" id="group-2-1" value="4" /><label style="font-weight: normal" for="group-2-1">Very Good</label>&nbsp;&nbsp;
-                                        <input type="radio" ng-model="rating_given" id="group-2-2" ng-init="rating_given=3" ng-selected="true" value="3" /><label style="font-weight: normal" for="group-2-2">Good</label>&nbsp;&nbsp;
-                                        <input type="radio" ng-model="rating_given" id="group-2-3" value="2" /><label style="font-weight: normal" for="group-2-3">Average</label>&nbsp;&nbsp;
-                                        <input type="radio" ng-model="rating_given" id="group-2-4" value="1" /><label style="font-weight: normal" for="group-2-4">Bad</label>
+                                        <input style="margin-right: 5px" type="radio" ng-model="rating_given" id="group-2-0" value="5" /><label style="font-weight: normal" for="group-2-0">Excellent</label>&nbsp;&nbsp;
+                                        <input style="margin-right: 5px" type="radio" ng-model="rating_given" id="group-2-1" value="4" /><label style="font-weight: normal" for="group-2-1">Very Good</label>&nbsp;&nbsp;
+                                        <input style="margin-right: 5px" type="radio" ng-model="rating_given" id="group-2-2" ng-init="rating_given=3" ng-selected="true" value="3" /><label style="font-weight: normal" for="group-2-2">Good</label>&nbsp;&nbsp;
+                                        <input style="margin-right: 5px" type="radio" ng-model="rating_given" id="group-2-3" value="2" /><label style="font-weight: normal" for="group-2-3">Average</label>&nbsp;&nbsp;
+                                        <input style="margin-right: 5px" type="radio" ng-model="rating_given" id="group-2-4" value="1" /><label style="font-weight: normal" for="group-2-4">Bad</label>
                                     </div>
 
                                     <textarea ng-model="review_given" ng-minlength="100" ng-maxlength="1000" name="review_given"  placeholder="Content...(max 1000)" required></textarea>
@@ -334,33 +341,22 @@
                                         </dir-pagination-controls>
                                     </div>
                                     <div class="comments-bot" dir-paginate="reviews_count in reviews|itemsPerPage:10">
-                                        <div class="col-sm-2">
+                                        <div class="col-sm-2 customer-name">
                                             <strong>{{reviews_count.customer_name}} </strong><br/><span class="review-star" ng-repeat="r_cnt in strtoint(reviews_count.star_rating)">★</span>
                                         </div>
-                                        <div class="col-sm-10">
-                                            <div>
-                                            
-                                                <div class="visited-during">
+                                        <div class="col-sm-10 review-details">
+                                            <div class="visited-during">
                                                    <strong> Visited property during {{reviews_count.check_in}} - {{reviews_count.check_out}}</strong>
-                                                </div>
-                                            </div><br/>
+                                            </div>
                                             <div class="review">
                                                 <p>{{reviews_count.review_text}}</p>
                                             </div>
                                         </div>
-                                        <!--<p>{{reviews_count.review_text}}</p>
-                                        <div class="text-left" >
-                                            <span class="red-star" ng-repeat="r_cnt in strtoint(reviews_count.star_rating)">★</span>
-                                        </div>
-                                        <h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-                                            {{reviews_count.customer_name}} <br/>
-                                            <p>Visited property during {{reviews_count.check_in}} - {{reviews_count.check_out}}</p>
-                                        </h4>-->
 										 <div class="clearfix"></div>
                                     </div>
-                                   
                                 </div>
                             </div>
+                            <div style="clear: both"></div>
                         </div>
                     </div>
             </div>
@@ -372,46 +368,45 @@
                 <div class="hotel-left-two" ng-app="getRoomDetailAppMessage" ng-controller="popupController">
 
                     <p>
-                        <a href="" ng-click="togglemailPopUp()" class="best-btn">Send
+                        <a href="" onclick="togglemailPopUp()" ng-click="togglemailPopUp()" class="best-btn">Send
                             Mail</a>
-                        <a href="" ng-click="togglemessagePopUp()"
-                           class="best-btn">Send SMS</a>
+                        <a href="" onclick="togglemessagePopUp()" ng-click="togglemessagePopUp()" class="best-btn">Send SMS</a>
                     </p>
-                    <modal id="modal"  title="ff"  ng-model="model" visible="showModal">
+                    <modal id="modal"  ng-model="model" visible="showModal">
 
                         <form  name="formData" class="contact-form detailed-contact-form" ng-submit="Contact_to_customer_enquiry(
                                             <?php echo "'$propertyId'"; ?>)">
-                            <div class="">
+                            <div class="" id="name" style="display:none;">
                                 <label for="email"></label> <input type="text"
                                                                    class="form-control" name="full_name" id="full_name"
                                                                    ng-model="form.full_name" placeholder="Full Name" />
                             </div>
-                            <div class="" id="email_id_div">
+                            <div class="" id="email_id_div" style="display:none;">
                                 <label for="email"></label> <input type="text"
                                                                    class="form-control" name="email_id" id="email_id"
                                                                    ng-model="form.email_id" placeholder="Enter email" />
                             </div>
-                            <div class="" id="phone_div">
+                            <div class="" id="phone_div" style="display:none;">
                                 <label for="email"></label> <input type="text"
                                                                    class="form-control" name="phone" id="phone"
                                                                    ng-model="form.phone"
                                                                    placeholder="Enter Phone/Mobile Number" />
                             </div>
-                            <div class="">
+                            <div class="" id="inTime" style="display:none;">
                                 <label for="checkIn"></label><input class="date"
                                                                     name="checkIn" id="checkIn" ng-model="form.checkIn"
                                                                     ng-init="checkIn= 'CheckIn Date'" type="text"
-                                                                    style="width: 70%; padding: 15px !important; margin: 0px !important;  height: 0px;  " onfocus="this.value = '';"
+                                                                    onfocus="this.value = '';"
                                                                     onblur="if (this.value == '') {this.value = '';}" required>
                             </div>
-                            <div class="">
+                            <div class="" id="outTime" style="display:none;">
                                 <label for="checkOut"></label><input class="date"
                                                                      name="checkOut" id="checkOut" ng-model="form.checkOut"
                                                                      ng-init="checkOut= 'CheckOut Date'" type="text"
-                                                                     style="width: 70%; padding: 15px !important; margin: 0px !important; height: 0px;" onfocus="this.value = '';"
+                                                                     onfocus="this.value = '';"
                                                                      onblur="if (this.value == '') {this.value = '';}" required>
                             </div>
-                            <div class="">
+                            <div class="" id="enquiry_div" style="display:none;">
                                 <label for="enquiry"></label>
                                 <textarea class="form-control"
                                           ng-model="form.enquiry" id="enquiry" name="enquiry"
@@ -419,8 +414,7 @@
                             </div>
 
                             <br>
-
-                            <button type="submit" class="btn btn-default">Submit</button>
+                            <input type="submit" id="submit_div" style="display:none;" value="Submit">
                         </form>
                         <script src="js/jquery-ui.js"></script>
                         <script>
