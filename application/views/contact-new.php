@@ -13,6 +13,7 @@
         <script src="js/new-theme/bootstrap.js"></script>
         <script src="js/new-theme/bootstrap.min.js"></script>
         <script src="js/new-theme/owl.carousel.js"></script>
+        <script src="js/new-theme/jquery.magnific-popup.js"></script>
         <script type="text/javascript" src="js/global/global_url_variable.js"></script>
         <script type="text/javascript" src="js/global/global_functions.js"></script>
 
@@ -32,6 +33,49 @@
     </div>
 
     <script>
+        $(document).ready(function () {
+
+            $('.send-mail').click(function() {
+                $('#phone_div').hide();
+                $('#email_id_div').show();
+            });
+            $('.send-mail').magnificPopup({
+                type: 'inline',
+
+                fixedContentPos: false,
+                fixedBgPos: true,
+
+                overflowY: 'auto',
+
+                closeBtnInside: true,
+                preloader: false,
+
+                midClick: true,
+                removalDelay: 300,
+                mainClass: 'my-mfp-zoom-in'
+            });
+
+            $('.send-sms').click(function() {
+                $('#phone_div').show();
+                $('#email_id_div').hide();
+            });
+            $('.send-sms').magnificPopup({
+                type: 'inline',
+
+                fixedContentPos: false,
+                fixedBgPos: true,
+
+                overflowY: 'auto',
+
+                closeBtnInside: true,
+                preloader: false,
+
+                midClick: true,
+                removalDelay: 300,
+                mainClass: 'my-mfp-zoom-in'
+            });
+
+        });
         $(function() {
             $( "#datepicker,#datepicker1" ).datepicker();
         });
@@ -62,7 +106,7 @@
             $(caller).parent().attr("class", "active");
         }
 
-        function togglemailPopUp()
+        /*function togglemailPopUp()
         {
             $('#phone_div').hide();
             $('#email_id_div').show();
@@ -82,7 +126,7 @@
             $('#outTime').show('');
             $('#enquiry_div').show('');
             $('#submit_div').show('');
-        }
+        }*/
 
     </script>
     <!---->
@@ -368,44 +412,45 @@
                 <div class="hotel-left-two" ng-app="getRoomDetailAppMessage" ng-controller="popupController">
 
                     <p> Send </p>
-                    <p> <label onclick="togglemailPopUp()" >Mail</label> | <label onclick="togglemessagePopUp()" >SMS</label> </p>
-                    <!--<p onclick="togglemailPopUp()" >Send Mail</p>
-                    <p onclick="togglemessagePopUp()">Send SMS</p>-->
-                    <modal id="modal"  ng-model="model" visible="showModal">
+                    <!--<p> <label onclick="togglemailPopUp()" >Mail</label> | <label onclick="togglemessagePopUp()" >SMS</label> </p>-->
+                    <a class = "send-mail" href="#send-form" >Send Mail</a>
+                    <a class = "send-sms" href="#send-form">Send SMS</a>
 
+                    <div id="send-form" class="zoom-anim-dialog mfp-hide">
+                    <modal id="modal"  ng-model="model" visible="showModal">
                         <form  name="formData" class="contact-form detailed-contact-form enquiry-form" ng-submit="Contact_to_customer_enquiry(
                                             <?php echo "'$propertyId'"; ?>)">
-                            <div class="" id="name" style="display:none;">
+                            <div class="" id="name">
                                 <label for="email"></label> <input type="text"
                                                                    class="form-control" name="full_name" id="full_name"
                                                                    ng-model="form.full_name" placeholder="Full Name" />
                             </div>
-                            <div class="" id="email_id_div" style="display:none;">
+                            <div class="" id="email_id_div">
                                 <label for="email"></label> <input type="text"
                                                                    class="form-control" name="email_id" id="email_id"
                                                                    ng-model="form.email_id" placeholder="Enter email" />
                             </div>
-                            <div class="" id="phone_div" style="display:none;">
+                            <div class="" id="phone_div">
                                 <label for="email"></label> <input type="text"
                                                                    class="form-control" name="phone" id="phone"
                                                                    ng-model="form.phone"
                                                                    placeholder="Enter Phone/Mobile Number" />
                             </div>
-                            <div class="" id="inTime" style="display:none;">
-                                <label for="checkIn"></label><input class="date" placeholder="CheckIn Date"
+                            <div class="" id="inTime">
+                                <label for="checkIn"></label><input class="date" placeholder="CheckIn Date" autocomplete="false"
                                                                     name="checkIn" id="checkIn" ng-model="form.checkIn"
                                                                     ng-init="checkIn= 'CheckIn Date'" type="text"
                                                                     onfocus="this.value = '';"
                                                                     onblur="if (this.value == '') {this.value = '';}" required>
                             </div>
-                            <div class="" id="outTime" style="display:none;">
-                                <label for="checkOut"></label><input class="date" placeholder="CheckOut Date"
+                            <div class="" id="outTime">
+                                <label for="checkOut"></label><input class="date" placeholder="CheckOut Date" autocomplete="false"
                                                                      name="checkOut" id="checkOut" ng-model="form.checkOut"
                                                                      ng-init="checkOut= 'CheckOut Date'" type="text"
                                                                      onfocus="this.value = '';"
                                                                      onblur="if (this.value == '') {this.value = '';}" required>
                             </div>
-                            <div class="" id="enquiry_div" style="display:none;">
+                            <div class="" id="enquiry_div">
                                 <label for="enquiry"></label>
                                 <textarea class="form-control"
                                           ng-model="form.enquiry" id="enquiry" name="enquiry"
@@ -413,7 +458,7 @@
                             </div>
 
                             <br>
-                            <input type="submit" id="submit_div" style="display:none;" value="Submit">
+                            <input type="submit" id="submit_div" value="Submit">
                         </form>
                         <script src="js/jquery-ui.js"></script>
                         <script>
@@ -423,6 +468,7 @@
                             });
                         </script>
                     </modal>
+                    </div>
                 </div>
                 <div class="map-gd">
                     <div id="map_canvas" style="width:100%;height:270px;"></div>
