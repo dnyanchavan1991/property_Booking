@@ -33,6 +33,21 @@
 			navigationText :  false,
 			pagination : false,
 		});
+		
+		// Vish - trying to keep search bar fixed if vertical scroll happens
+		var offset = $('.online_reservation').offset();
+		$(window).on('scroll', function() {
+			var st = $(this).scrollTop();
+			event.stopPropagation();
+			if (offset.top <= st){				
+				$('#where_to_go').click();				
+				$('.reservation>ul').addClass("container-fluid");
+				
+			} else {
+				$('.reservation>ul').removeClass("container-fluid");
+			}
+		}); 
+					 
 	});
 </script>
 <!-- //requried-jsfiles-for owl -->
@@ -114,10 +129,11 @@
 		JC.init({
 			domainKey: ''
 		});
+		
 	})();
 </script>
-<form method="post" action="RoomAvailability"  ng-controller="landingPageCntrl">
-<div class="online_reservation">
+<form method="post" action="RoomAvailability" id="frmCntrl" ng-controller="landingPageCntrl">
+<div class="online_reservation" >
 		   <div class="b_room" id="b_room_div">
 			  <div class="booking_room" id="booking_room_div">
 				  <div class="reservation">

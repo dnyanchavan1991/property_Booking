@@ -29,6 +29,23 @@
                 location.reload();
             });
         });
+		$(document).ready(function() {
+		
+		// Vish - trying to keep search bar fixed if vertical scroll happens
+		var offset = $('.online_reservation').offset();
+		$(window).on('scroll', function() {
+			var st = $(this).scrollTop();
+			event.stopPropagation();
+			if (offset.top <= st){				
+				$('#where_to_go').click();				
+				$('.reservation>ul').addClass("container-fluid-search");
+			} else {
+				$('.reservation>ul').removeClass("container-fluid-search");
+				//$('.reservation').removeClass("container-fluid-moreFilters");
+			}
+		}); 
+		});
+		
 
     </script>
     <script type="text/javascript" src="js/angular.min.js"></script>
@@ -63,8 +80,11 @@
 			} else {
 				$('#moreFilters').html("More Filters +");	
 			}
-			
-			
+		 	
+			var offset = $('.online_reservation').offset();
+			$('html, body').animate({
+				scrollTop: $(".online_reservation").offset().top + 5 
+			}, 500);
 		 
         /*var target = $(this);
         $('#moreFilters').text('More Filters +');
@@ -83,6 +103,11 @@
             $("#package-expand").addClass('expand-package');
         }
     }
+	function applyFilters () {
+		$("#moreFiltersExpand").hide();
+		$('#moreFilters').html("More Filters +");	
+			 		 
+	}
 </script>
 <!---/End-date-piker---->
 <link type="text/css" rel="stylesheet" href="css/new-theme/JFGrid.css" />
@@ -156,6 +181,10 @@
                         </li>
                         <li class="span1_of_3" style="margin-top: 26px;">
                             <div class="filter_btn" id="moreFilters" onclick="showMoreFilters()">More Filters +
+                            </div>
+                        </li>
+						<li class="span1_of_3" style="margin-top: 26px;float: right;">
+                            <div class="filter_btn" style="background:#244a96; color: #fff; width: 50% !important" id="moreFilters" onclick="applyFilters()">Apply Filters
                             </div>
                         </li>
                         <div class="clearfix"></div>
