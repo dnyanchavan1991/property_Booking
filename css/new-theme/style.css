@@ -628,7 +628,7 @@ z-index:1;
  .container-fluid-search {
 	z-index: 1000;
 	top: 0px;
-	height: 25%;
+	height: 22%;
 	width: 95%;	
 	background-color:#2A2E33;
 	position: fixed;	 
@@ -701,7 +701,7 @@ select {
 	width: 100%;
 	color: #858585;
 	font-size: 0.8725em;
-	padding: 7px;
+	padding: 4px;
 	outline: none;
 	font-family: 'Open Sans', sans-serif;
 	background: #ffffff;
@@ -738,16 +738,17 @@ select option{
 	-moz-border-radius: 5px;
 	-o-border-radius: 5px;
 }
+
 .book_date_active input[type="text"]{
-    padding: 8px 15px !important;
+    padding: 4px 10px !important;
 }
 .filter_btn {
     text-transform:capitalize;
-    width: 90% !important;
+    width: 60% !important;
     background: #FFD700;
     font-family: 'Open Sans', sans-serif;
     color: #2A2E33;
-    padding: 8px;
+    padding: 4px;
     border: none;
     font-size: 14px;
     transition: 0.5s all;
@@ -775,11 +776,11 @@ select option{
 }
 .date_btn input[type="submit"] {
 	text-transform:capitalize;
-	width: 90% !important;
+	width: 60% !important;
 	background: #FFD700;
 	font-family: 'Open Sans', sans-serif;
 	color: #2A2E33;
-	padding: 8px;
+	padding: 4px;
 	border: none;
 	font-size: 14px;
 	transition: 0.5s all;
@@ -1220,7 +1221,7 @@ border-bottom:1px solid #939597;
      padding: 3% 0 0 0 !important;
  }
 .expand-package {
-    padding: 10% 0 0 0 !important;
+    padding: 8.25% 0 0 0 !important;
     border-bottom: none !important;
 }
 .package h3{
