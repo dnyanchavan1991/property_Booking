@@ -27,6 +27,12 @@ class PropertyModel extends CI_Model {
 		$dateConditions .= "( res.check_in <= '$checkin' AND ( res.check_out >= '$checkin' OR res.check_out >= '$checkout' ) )";
 		$dateConditions .= "OR ( (res.check_in >= '$checkin' AND res.check_in <= '$checkout') AND (res.check_out <='$checkout' OR res.check_out >='$checkout')) ";
 		$dateConditions .= ")";
+		//select * from
+ // reservation res 
+//where (
+//( res.check_in <= '2016-03-05' AND ( (res.check_out >= '2016-03-05' AND res.check_out <= '2016-03-11') OR res.check_out >= '2016-03-11' ) )
+//OR ( (res.check_in >= '2016-03-05' AND res.check_in <= '2016-03-11') AND ( (res.check_out >= '2016-03-05' AND res.check_out <= '2016-03-11') OR res.check_out >= '2016-03-11' ) )
+//)
 		$this->db->join ( "$reservationTable res", "res.property_id = propertyInfo.property_id   ", "left outer" );//and $dateConditions
 		//$this->db->having(" $dateConditions");
 		$this->db->join ( "$propertyTable property", "propertyInfo.property_id=property.property_id" );
@@ -201,11 +207,34 @@ class PropertyModel extends CI_Model {
 		 //return $this;
 		$roomAvailableInfo = $this->db->get ();
 		$roomAvailableInfoResult = $roomAvailableInfo->result ();
-		 
-		
-		  return ($roomAvailableInfoResult);
+		return ($roomAvailableInfoResult);
 	}
 	/* checkRoomAvailabilty ends here */
+	
+	/* Check properties which are booked during the selected time frame - STARTS */
+	public function checkRoomBooked($searchArray) {
+		$reservationTable = 'reservation';				
+		$checkout = $searchArray ['checkOut'];
+		$checkin = $searchArray ['checkIn'];
+	//	$guestCountstring = $searchArray ['guestCount'];
+		//$guestCount = ( int ) substr ( $guestCountstring, 7 );
+		//return $checkin." " . $checkout . $reservationTable  ;
+		$this->db->select ( " property_id, sum(accomodates) as booked " );	 
+		$this->db->from ( " $reservationTable res " );
+		$dateConditions = " (";
+		$dateConditions .= "( res.check_in <= '$checkin' AND ( (res.check_out >= '$checkin' AND res.check_out <= '$checkout') OR res.check_out >= '$checkout' ))";
+		$dateConditions .= " OR ( (res.check_in >= '$checkin' AND res.check_in <= '$checkout') AND ( (res.check_out >= '$checkin' AND res.check_out <= '$checkout') OR res.check_out >= '$checkout' ) ) ";
+		$dateConditions .= ") ";
+		
+		//$this->db->having(" $dateConditions");
+		$this->db->where ( $dateConditions );
+				
+		$roomAvailableInfo = $this->db->get ();
+		$roomAvailableInfoResult = $roomAvailableInfo->result ();		 
+		
+		return $roomAvailableInfoResult;
+	}
+	/* Check properties which are booked during the selected time frame - ENDS */
 	
 	/* this function gets property detail on click on particular property of search.html */
 	public function getPropertyDetail($propertyId) {
@@ -511,6 +540,7 @@ class PropertyModel extends CI_Model {
 		$propertyTable = 'property';
 		$propertyInfoTable = 'property_info';
 		$currentDate = date('Y-m-d');
+		
 		$this->db->select ( 'property.property_id,image_path,property_name,description' );
 		$this->db->from ( " $propertyTable property " );
 		$this->db->join ( " $propertyInfoTable propertyInfo", "property.property_id=propertyInfo.property_id" );
@@ -519,10 +549,10 @@ class PropertyModel extends CI_Model {
 		$where = "Featured_startDate <= '$currentDate' AND Featured_endDate >='$currentDate'";
 		$this->db->where ( $where ); 
 		$this->db->order_by ( 'Featured_startDate Desc' );
-		$this->db->limit ( 6 );
-		$query = $this->db->get ();
-		//echo $query;
-		return $query->result ();
+		//$this->db->limit ( 6 );
+		$query = $this->db->get();
+		
+		return $query->result();
 	}
 	/* this function inserts data in enquiry table */
 	public function insertEnquiryData($enquiryData) {

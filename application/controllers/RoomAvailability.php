@@ -34,24 +34,40 @@ class RoomAvailability extends CI_Controller {
 		$sortBCriteria = $request->sortByBedrooms;
 		//$sortByFilter = $request->sortByFilter;
 	 
+	 //echo $request->inputDestination . " -- " . $this->session->userdata ( 'guestCount' );
 	 
 		$this->load->model ( 'PropertyModel' );
+		/*$destination =  $request->inputDestination == '' ? $this->session->userdata ( 'destination' ) : $request->inputDestination;
+		$guestCount = $request->selectGuestHeadCount == '' ? $this->session->userdata ( 'guestCount' ) : $request->selectGuestHeadCount;
+		$propertyType = $request->selectAccomodationType == '' ? $this->session->userdata ( 'propertyType' ) : $request->selectAccomodationType;
+		$checkIn = $request->checkInDate == '' ? $this->session->userdata ( 'checkIn' ) : $request->checkInDate;
+		$checkOut = $request->checkOutDate == '' ? $this->session->userdata ( 'checkOut' ) : $request->checkOutDate;*/
+		$destination =  $this->session->userdata ( 'destination' ) ;
+		$guestCount =   $this->session->userdata ( 'guestCount' );
+		$propertyType =  $this->session->userdata ( 'propertyType' ) ;
+		$checkIn = 		$this->session->userdata ( 'checkIn' ) ;
+		$checkOut = $this->session->userdata ( 'checkOut' )  ;
+		/*echo $destination;
+		echo $guestCount;
+		echo $propertyType;
+		echo $checkIn;
+		echo $checkOut;*/
 		$searchArray=array(
-				'checkIn'=>$this->session->userdata ( 'checkIn' ),
-				'checkOut'=>$this->session->userdata ( 'checkOut' ),
-				'guestCount'=>$this->session->userdata ( 'guestCount' ),
-				'destination'=>$this->session->userdata ( 'destination' ),
-				'propertyType'=>$this->session->userdata ( 'propertyType' )
+				'checkIn'=>$checkIn,
+				'checkOut'=>$checkOut,
+				'guestCount'=>$guestCount,
+				'destination'=>$destination,
+				'propertyType'=>$propertyType
 		);
-		 
+		
 		$filterData=null;
 		
 	//	 $roomAvailableCount = $this->PropertyModel->getRoomAvailabilityCount ($searchArray, $filterData);
 		 
+		$roomBooked = $this->PropertyModel->checkRoomBooked ($searchArray);
 		
-	
 		$roomAvailableInfo = $this->PropertyModel->checkRoomAvailabilty ($searchArray,$filterData, $sortFCriteria, $sortBCriteria);
-		//echo $roomAvailableInfo;
+		 
 		$i=0;
 		$response=new stdClass();
 		//$response->records =$roomAvailableCount;
@@ -79,10 +95,8 @@ class RoomAvailability extends CI_Controller {
 						}
 					}
 				}
-				 
-   
 		}
-			echo json_encode ( $response );
+			echo json_encode ( $response ); 
         }
         public function checkFilterRoomAvailabilty() {
         	$postdata = file_get_contents("php://input");

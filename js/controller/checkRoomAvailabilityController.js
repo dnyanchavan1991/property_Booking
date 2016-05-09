@@ -12,18 +12,38 @@ angular.module('checkRoomAvailabilityApp', ['angularUtils.directives.dirPaginati
 				$scope.sortByFilter = 'propAToZ';
 			if ($scope.sortByBedrooms == null)
 				$scope.sortByBedrooms = 'All';
+			if ($scope.inputDestination == null)
+				$scope.inputDestination = '';
+			if ($scope.checkInDate == null)
+				$scope.checkInDate = '';
+			if ($scope.checkOutDate == null)
+				$scope.checkOutDate = '';
+			if ($scope.selectAccomodationType == null)
+				$scope.selectAccomodationType = '';
+			if ($scope.selectGuestHeadCount == null)
+				$scope.selectGuestHeadCount = 'string:1';
 			 
 	             	var data = { 
-	             				sortByFilter : $scope.sortByFilter,
-	             				sortByBedrooms : $scope.sortByBedrooms
+		             				sortByFilter : $scope.sortByFilter,
+		             				sortByBedrooms : $scope.sortByBedrooms,
+		             				location : $scope.inputDestination,
+		             				checkInDate : $scope.checkInDate,
+		             				checkOutDate : $scope.checkOutDate,
+		             				accomodationType : $scope.selectAccomodationType,
+		             				guests : $scope.selectGuestHeadCount
 	             				}
 	             	
              
 		  	 $http({url: "RoomAvailability/checkRoomAvailabilty",
 		  			 method: "post",
 		  			 data : { 
-		  				 	sortByFilter : $scope.sortByFilter,
-		  				 	sortByBedrooms : $scope.sortByBedrooms
+		  				sortByFilter : $scope.sortByFilter,
+         				sortByBedrooms : $scope.sortByBedrooms,
+         				inputDestination : $scope.inputDestination,
+         				checkInDate : $scope.checkInDate,
+         				checkOutDate : $scope.checkOutDate,
+         				selectAccomodationType : $scope.selectAccomodationType,
+         				selectGuestHeadCount : $scope.selectGuestHeadCount
 		  			 }
 		  	 }).then(function(response) {
 		  		 

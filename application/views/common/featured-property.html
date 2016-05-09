@@ -4,7 +4,7 @@
 
         <div owl-carousel-item="" ng-repeat="imageData in ::imageSrc" class="item text-center image-grid">
             <ul>
-                <li ng-repeat="imageData in imageSrc.slice($index, ($index+3 > imageData.length ? imageData.length : $index+3))">
+                <li ng-repeat="imageData in imageSrc.slice($index, ($index+5 > imageData.length ? imageData.length : $index+5))">
                 	<span class="resultmedia-tag">Featured</span>
                     <img ng-click="getImagePropertyDetails(imageData)" ng-src="{{imageData.image}}" alt="" >
                     <br/>{{imageData.property_name}}
