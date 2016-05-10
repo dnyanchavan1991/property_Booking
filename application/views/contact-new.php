@@ -106,27 +106,31 @@
             $(caller).parent().attr("class", "active");
         }
 
-        /*function togglemailPopUp()
-        {
-            $('#phone_div').hide();
-            $('#email_id_div').show();
-            $('#name').show('');
-            $('#inTime').show('');
-            $('#outTime').show('');
-            $('#enquiry_div').show('');
-            $('#submit_div').show('');
-        }
+        function checkLogin() {
+            var name = $("#customer_name").val();
+            if(name !='') {
+                return true;
+            } else {
+                alert("Please login to book the property...!");
+                var form = $(document.createElement('form'));
+                $(form).attr("action",login_url);
+                $(form).attr("method", "POST");
 
-        function togglemessagePopUp()
-        {
-            $('#phone_div').show();
-            $('#email_id_div').hide();
-            $('#name').show('');
-            $('#inTime').show('');
-            $('#outTime').show('');
-            $('#enquiry_div').show('');
-            $('#submit_div').show('');
-        }*/
+                var input = $("<input>")
+                    .attr("type", "text")
+                    .attr("name", "page")
+                    .val("BookProperty" );
+
+
+                $(form).append($(input));
+
+                form.appendTo( document.body )
+
+                $(form).submit();
+                return false;
+
+            }
+        }
 
     </script>
     <!---->
@@ -408,13 +412,13 @@
                 <div class="panel-heading description-heading"> <h4> Availability : <?php echo $avail_accomodates;?> </h4> </div>
                 <!--<h4>Availability : <?php /*echo $avail_accomodates;*/?></h4>-->
 
-                <a class="best-btn" onclick=" return checkLogin()" href="BookProperty">Book Now</a>
+                <b><a class="best-btn" onclick=" return checkLogin()" href="BookProperty">Book Now</a></b>
                 <div class="hotel-left-two" ng-app="getRoomDetailAppMessage" ng-controller="popupController">
 
                     <p> Send </p>
                     <!--<p> <label onclick="togglemailPopUp()" >Mail</label> | <label onclick="togglemessagePopUp()" >SMS</label> </p>-->
-                    <a class = "send-mail" href="#send-form" >Send Mail</a>
-                    <a class = "send-sms" href="#send-form">Send SMS</a>
+                    <a class = "send-mail" href="#send-form" >Mail</a> |
+                    <a class = "send-sms" href="#send-form">SMS</a>
 
                     <div id="send-form" class="zoom-anim-dialog mfp-hide">
                     <modal id="modal"  ng-model="model" visible="showModal">

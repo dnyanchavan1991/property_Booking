@@ -170,6 +170,15 @@ ul.nav-tabs.affix {
     -o-border-radius: 9px !important;
     margin-top: 15px !important;
 }
+.hotel-left-two {
+    padding-top: 15px;
+}
+.hotel-left-two p {
+    padding-bottom: 10px;
+}
+.map-gd {
+    padding-top: 10px;
+}
 #send-form {
     background: white;
     padding: 20px 30px;
@@ -350,7 +359,7 @@ button.mfp-arrow, button.mfp-close {
 }
 .review-star {
     color: #00CCFF;
-    float: left;
+    /*float: left;*/
 }
 .visited-during {
     /*float: right;*/

@@ -22,7 +22,7 @@ class BookProperty extends CI_Controller {
 			$data['image_path'] = $get_property->image_path;
 			$this->load->view ( 'booking',$data);
 		} else {
-			$this->load->view ( 'booking');
+			$this->load->view ( 'booking-new');
 		}
 	}
 	public function booking(){
