@@ -39,9 +39,11 @@
 			if (offset.top <= st){				
 				$('#where_to_go').click();				
 				$('.reservation>ul').addClass("container-fluid-search");
+				//$('.book_date_active input[type="text"]').parent().addClass("shrink");
 			} else {
 				$('.reservation>ul').removeClass("container-fluid-search");
 				//$('.reservation').removeClass("container-fluid-moreFilters");
+				//$('.book_date_active input[type="text"]').removeClass("shrink");
 			}
 		}); 
 		});
@@ -179,11 +181,11 @@
                                 </select>
                             </div>
                         </li>
-                        <li class="span1_of_3" style="margin-top: 26px;">
+                        <li class="span1_of_3" style="margin-top: 1em;">
                             <div class="filter_btn" id="moreFilters" onclick="showMoreFilters()">More Filters +
                             </div>
                         </li>
-						<li class="span1_of_3" style="margin-top: 26px;float: right;">
+						<li class="span1_of_3" style="margin-top: 1em;float: right;">
                             <div class="filter_btn" style="background:#244a96; color: #fff; width: 50% !important" id="moreFilters" onclick="applyFilters()">Apply Filters
                             </div>
                         </li>
