@@ -17,6 +17,9 @@ body a{
 	-o-transition:0.5s all;
 	-ms-transition:0.5s all;
 }
+body {
+    line-height: 1 !important;
+}
 h1,h2,h3,h4,h5,h6{
 	margin:0;			   
 }	
@@ -39,6 +42,14 @@ h2.tittle-one{
     font-family: 'Pinyon Script', cursive !important;
     text-align:center;
     text-transform: capitalize;
+}
+h4.tittle-one{
+    color:#0088cc;
+    font-size:40px;
+    font-family: 'Pinyon Script', cursive !important;
+    text-align:center;
+    text-transform: capitalize;
+    border-bottom: 2px dotted;
 }
 ul.nav-tabs {
     width: 100% !important;
@@ -91,9 +102,14 @@ ul.nav-tabs.affix {
     border-radius: 4px;
     box-shadow: 0px 0px 2px 2px #ccc;
     margin-bottom: 30px !important;
+
+    /*position: absolute;
+    block: inline;
+    overflow: hidden;
+    width: 100%;*/
 }
 .detailed-row p {
-    margin-bottom: 2px;
+    margin-bottom: 10px;
     margin-left: 5px;
     margin-top: 10px;
 }
@@ -106,15 +122,25 @@ ul.nav-tabs.affix {
 .panel-body li {
     list-style: none;
 }
+.panel-default {
+    width: 96%;
+    margin-left: 15px;
+    margin-top: 10px;
+    margin-bottom: 0px !important;
+}
+.panel-body {
+    padding: 10px !important;
+}
 .property-details b {
     color: #0088cc !important;
 }
 .description-heading {
     color: #0088cc !important;
     font-weight: bold;
+    padding: 10px !important;
 }
 .decription-icon-text {
-     margin-top: 5px;
+     margin-top: 2px;
      font-weight: normal;
  }
 .decription-icon img {
@@ -126,6 +152,30 @@ ul.nav-tabs.affix {
     font-weight: bold;
     margin-right: 20px;
     text-align: center;
+    /*vertical-align: middle;
+    overflow: hidden;
+    position: absolute;*/
+}
+.best-btn {
+    color: #2B2A1F;
+    background: #E7CB2C;
+    font-size: 12px;
+    padding: 4px 17px;
+    font-weight: bold;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    margin-top: 1em;
+    width: 41% !important;
+    outline: none;
+    border: 2px solid #E7CB2C;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
 }
 .resultmedia-tag {
 	
@@ -341,6 +391,12 @@ button.mfp-arrow, button.mfp-close {
 .enquiry-form input[type="text"], .enquiry-form textarea {
     width: 98% !important;
 }
+.enquiry-form input[type="submit"] {
+    width: 50% !important;
+    background: #FFD700 !important;
+    color: #2A2E33 !important;
+    margin-left: 13px !important;
+}
 .detailed-contact-form textarea {
 	width: 75% !important;
 }
@@ -425,6 +481,9 @@ button.mfp-arrow, button.mfp-close {
     -moz-border-radius: 9px;
     -o-border-radius: 9px;
     margin-top: 1em;
+}
+.review-rating {
+    padding-top: 15px;
 }
 .date_btn form input[type="submit"]:hover{
     background: #00CCFF;
@@ -749,7 +808,7 @@ select option{
 }
 
 .book_date_active input[type="text"]{
-    padding: 4px 10px !important;
+    padding: 9px 10px !important;
 }
 .filter_btn {
     text-transform:capitalize;
@@ -781,7 +840,8 @@ select option{
 	background:url(../../images/icon.png) no-repeat 3% 50% #FFF;
 }
 .date_btn{
-	margin:1em 0 0 0px;
+	/*margin:1em 0 0 0px;*/
+    padding-top: 10px;
 }
 .date_btn input[type="submit"] {
 	text-transform:capitalize;
@@ -1257,12 +1317,22 @@ margin:1%;
 }
 .room-grids {
     float:left;
+    position: absolute;
+    block: inline;
+    width: 56%;
+    margin-top: 3em;
+}
+.room-detail {
+
 }
 .filter-options {
     width: 100%;
 }
 .booking-grid {
     float: right;
+    border-radius: 4px;
+    box-shadow: 0px 0px 2px 2px #ccc;
+    margin-right: 1em;
 }
 .room-star {
     color:#00CCFF;
@@ -1329,7 +1399,7 @@ background-size:cover;
 -webkit-background-size: cover;
 -moz-background-size: cover;
 -o-background-size: cover;
-min-height:788px;
+min-height:1024px;
 padding:2% 0 8% 0;
 }
 .rooms h3{

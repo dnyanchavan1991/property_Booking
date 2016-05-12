@@ -150,6 +150,7 @@
                 <li><a href="#section5" onclick="javascript: toggleSections('section5', this)">Reviews</a></li>
             </ul>
         </div>
+        <div class="room-detail">
             <div class="room-grids col-sm-9" ng-app="getRoomDetailApp" ng-controller="getRoomDetailController"	ng-init="getRoomDetail()" >
                     <div class="col-sm-12">
                         <div id="section1" class="detailed-row">
@@ -162,7 +163,6 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading description-heading"> The Property</div>
                                 <div class="panel-body">
-                                    <p>
                                     <ul>
                                         <li class="col-sm-2 property-details">
                                             <div class="decription-icon"><img src="images/new-theme/type.png"></div>
@@ -170,59 +170,58 @@
                                         </li>
                                         <li class="col-sm-2 property-details">
                                             <div class="decription-icon"><img src="images/new-theme/bedroom.png"></div>
-                                            <div class="decription-icon-text"><?php echo  nl2br($bedrooms); ?> Bedrooms</div>
+                                            <div class="decription-icon-text"><?php echo  nl2br($bedrooms); ?> Bedroom</div>
                                         </li>
                                         <li class="col-sm-2 property-details">
                                             <div class="decription-icon"><img src="images/new-theme/bathroom.png"></div>
-                                            <div class="decription-icon-text"><?php echo  nl2br($bathrooms); ?> Bathrooms</div>
+                                            <div class="decription-icon-text"><?php echo  nl2br($bathrooms); ?> Bathroom</div>
                                         </li>
                                         <li class="col-sm-2 property-details">
                                             <div class="decription-icon"><img src="images/new-theme/guest.png"></div>
-                                            <div class="decription-icon-text"><?php echo  $accommodates; ?> Guests</div>
+                                            <div class="decription-icon-text"><?php echo  $accommodates; ?> Guest</div>
                                         </li>
                                     </ul>
-                                    </p>
                                 </div>
                             </div>
                             <div class="panel panel-default">
                                 <div class="panel-heading description-heading"> Amenities</div>
                                 <div class="panel-body">
-                                    <p>
                                     <ul>
                                         <?php if($pool == "Yes"){?>
                                             <li class="col-sm-2 property-details">
-                                                <div class="decription-icon"><img src="images/new-theme/swimming.png"></div>
-                                                <div class="decription-icon-text">Swimming Pool </div>
+                                                <div class="decription-icon"><img src="images/new-theme/pool.png"></div>
+                                                <div class="decription-icon-text">Pool</div>
                                             </li>
                                         <?php }?>
                                         <?php if($internet_access == "Yes"){?>
                                             <li class="col-sm-2 property-details">
                                                 <div class="decription-icon"><img src="images/new-theme/wifi.png"></div>
-                                                <div class="decription-icon-text">Internet Acces </div>
+                                                <div class="decription-icon-text">Internet</div>
                                             </li>
                                         <?php }?>
                                         <?php if($television == "Yes"){?>
                                             <li class="col-sm-2 property-details">
                                                 <div class="decription-icon"><img src="images/new-theme/television.png"></div>
-                                                <div class="decription-icon-text">Television </div>
+                                                <div class="decription-icon-text">Television</div>
                                             </li>
                                         <?php }?>
                                         <?php if($pet_friendly == "Yes"){?>
                                             <li class="col-sm-2 property-details">
                                                 <div class="decription-icon"><img src="images/new-theme/pets.png"></div>
-                                                <div class="decription-icon-text">Pets Allowed </div>
+                                                <div class="decription-icon-text"> Allowed</div>
                                             </li>
                                         <?php }?>
                                         <?php if($air_condition == "Yes"){?>
                                             <li class="col-sm-2 property-details">
                                                 <div class="decription-icon"><img src="images/new-theme/conditioner.png"></div>
-                                                <div class="decription-icon-text">Air Conditioned </div>
+                                                <div class="decription-icon-text"> Conditioner</div>
                                             </li>
                                         <?php }?>
+                                        <div class="clearfix"> </div>
                                         <?php if($in_house_kitchen == "Yes"){?>
-                                            <li class="col-sm-2 property-details">
+                                            <li class="col-sm-2 property-details" style="margin-top: 10px">
                                                 <div class="decription-icon"><img src="images/new-theme/kitchen.png"></div>
-                                                <div class="decription-icon-text">In-House Kitchen </div>
+                                                <div class="decription-icon-text">In-House</div>
                                             </li>
                                         <?php }?>
                                     </ul>
@@ -354,7 +353,7 @@
 
                                     <div class="clearfix"> </div>
 
-                                    <div>Rating:</div>
+                                    <div class="review-rating">Rating:</div>
                                     <div class="acidjs-rating-stars">
                                         <input style="margin-right: 5px" type="radio" ng-model="rating_given" id="group-2-0" value="5" /><label style="font-weight: normal" for="group-2-0">Excellent</label>&nbsp;&nbsp;
                                         <input style="margin-right: 5px" type="radio" ng-model="rating_given" id="group-2-1" value="4" /><label style="font-weight: normal" for="group-2-1">Very Good</label>&nbsp;&nbsp;
@@ -422,8 +421,9 @@
 
                     <div id="send-form" class="zoom-anim-dialog mfp-hide">
                     <modal id="modal"  ng-model="model" visible="showModal">
-                        <form  name="formData" class="contact-form detailed-contact-form enquiry-form" ng-submit="Contact_to_customer_enquiry(
+                        <form  name="formData" class="enquiry-form contact-form detailed-contact-form" ng-submit="Contact_to_customer_enquiry(
                                             <?php echo "'$propertyId'"; ?>)">
+                            <h4 class="tittle-one"><?php echo $propertyName;  ?></h4>
                             <div class="" id="name">
                                 <label for="email"></label> <input type="text"
                                                                    class="form-control" name="full_name" id="full_name"
@@ -462,7 +462,7 @@
                             </div>
 
                             <br>
-                            <input type="submit" id="submit_div" value="Submit">
+                            <input style="width: 50% !important;" type="submit" id="submit_div" value="Submit">
                         </form>
                         <script src="js/jquery-ui.js"></script>
                         <script>
@@ -498,6 +498,7 @@
                         /* - map end - */
                     </script>
                 </div>
+        </div>
         </div>
         </div>
     </div>
