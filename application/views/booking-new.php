@@ -9,22 +9,25 @@
     <link href="css/new-theme/style.css" rel="stylesheet" type="text/css" media="all"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <link rel="stylesheet" href="css/jquery-ui.css" />
+    <script src="js/jquery-ui.js"></script>
     <script src="js/new-theme/jquery.min.js"></script>
     <script src="js/new-theme/bootstrap.js"></script>
 
     <!-- requried-jsfiles-for owl -->
     <link href="css/new-theme/owl.carousel.css" rel="stylesheet">
     <script type="text/javascript" src="js/angular.min.js"></script>
-    <script type="text/javascript" src="js/controller/landingPageController.js"></script>
+    <script type="text/javascript" src="js/angular-messages.min.js"></script>
+    <script type="text/javascript" src="js/controller/accomodationController.js"></script>
 
     <script type="text/javascript" src="js/global/global_url_variable.js"></script>
     <script type="text/javascript" src="js/global/global_functions.js"></script>
     <script src="js/new-theme/owl.carousel.js"></script>
     <script type="text/javascript">
-        $(function() {
+        /*$(function() {
             $( "#datepicker,#datepicker1" ).datepicker();
-        });
-        $(document).ready(function() {
+        });*/
+        window.onload = function() {
             $("#owl-demo").owlCarousel({
                 items : 1,
                 lazyLoad : true,
@@ -35,7 +38,7 @@
             });
 
             // Vish - trying to keep search bar fixed if vertical scroll happens
-            var offset = $('.online_reservation').offset();
+            /*var offset = $('.online_reservation').offset();
             $(window).on('scroll', function() {
                 var st = $(this).scrollTop();
                 event.stopPropagation();
@@ -46,21 +49,18 @@
                 } else {
                     $('.reservation>ul').removeClass("container-fluid");
                 }
-            });
+            });*/
 
-        });
+        };
     </script>
-    <!-- //requried-jsfiles-for owl -->
 </head>
-<body ng-app="landingPageApp" >
+<body ng-app="accomodationApp" >
 <!--header starts-->
 <div class="header">
     <?php $this->load->view('common/header.html'); ?>
 </div>
 
 <!---strat-date-piker---->
-<link rel="stylesheet" href="css/jquery-ui.css" />
-<script src="js/jquery-ui.js"></script>
 <script>
     $(function() {
         $("#checkin_id").datepicker({
@@ -98,13 +98,47 @@
 
 <div class="rooms text-center">
     <div class="container">
-        <h2 class="tittle-one">Booking</h2>
+        <h4 class="booking-title">Booking for </h4><h3 class="tittle-one"><?php echo $property_name;?></h3>
         <div class="reservation-form">
             <div class="col-md-3 reservation-left">
-                <h3><?php echo $property_name;?></h3>
-                <ul>
+                <?php
+                $i=1;
+                $count=1;
+                $files = glob('Admin/'.$image_path."*.*");
+                foreach ($files as $image_files) {
+                    ?>
+                    <div class="item text-center image-grid property-grid">
+                        <ul>
+                            <?php
+                            for ($count=1; $count<2; $count++)
+                            {
+                                if($i<count($files)){
+                                    $image = $files[$i];
+                                    $supported_file = array(
+                                        'gif',
+                                        'jpg',
+                                        'jpeg',
+                                        'png'
+                                    );
+                                    $ext = strtolower(pathinfo($image, PATHINFO_EXTENSION));
+                                    if (in_array($ext, $supported_file))
+                                    { ?>
+                                        <li><img src="<?php echo $image;?>" alt=""></li>
+                                        <?php
+                                        $i++;
+                                    }
+                                    else
+                                    {
+                                        continue;
+                                    }
+                                }
+                            }?>
+                        </ul>
+                    </div>
+                <?php   } ?>
+                <!--<ul>
                     <?php
-                    $files = glob('Admin/'.$image_path."*.*");
+/*                    $files = glob('Admin/'.$image_path."*.*");
                     for ($i=1; $i<count($files); $i++)
                     {
                         $image = $files[$i];
@@ -126,8 +160,8 @@
                             break;
                         }
                     }
-                    ?>
-                </ul>
+                    */?>
+                </ul>-->
             </div>
             <div class="col-md-9 reservation-right">
                 <form name="form" role="form" ng-controller="roomAvailabilityController" ng-submit="getRoomAvalabilityCount()" class="form-horizontal">

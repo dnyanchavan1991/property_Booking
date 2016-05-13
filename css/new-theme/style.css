@@ -43,6 +43,14 @@ h2.tittle-one{
     text-align:center;
     text-transform: capitalize;
 }
+h3.tittle-one{
+    color:#0088cc;
+    /*font-size:40px;*/
+    font-family: 'Pinyon Script', cursive !important;
+    text-align:center;
+    text-transform: capitalize;
+    /*border-bottom: 2px dotted*/;
+}
 h4.tittle-one{
     color:#0088cc;
     font-size:40px;
@@ -50,6 +58,13 @@ h4.tittle-one{
     text-align:center;
     text-transform: capitalize;
     border-bottom: 2px dotted;
+}
+h4.booking-title {
+    font-family: 'Open Sans', sans-serif !important;
+    font-size: 26px;
+    margin-bottom: 10px;
+    border-bottom: 1px dashed;
+    padding-bottom: 10px;
 }
 ul.nav-tabs {
     width: 100% !important;

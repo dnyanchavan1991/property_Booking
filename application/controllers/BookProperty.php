@@ -20,7 +20,7 @@ class BookProperty extends CI_Controller {
 			$data['email_address'] = $get_user->email_address;
 			$data['property_name'] = $get_property->property_name;
 			$data['image_path'] = $get_property->image_path;
-			$this->load->view ( 'booking',$data);
+			$this->load->view ( 'booking-new',$data);
 		} else {
 			$this->load->view ( 'booking-new');
 		}
