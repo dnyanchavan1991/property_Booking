@@ -1316,6 +1316,13 @@ display:inline-block;
 margin:1%;
 }
 .room-grids {
+     /*float:left;
+     position: absolute;
+     block: inline;
+     width: 56%;*/
+     margin-top: 3em;
+ }
+.property-grids {
     float:left;
     position: absolute;
     block: inline;
