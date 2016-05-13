@@ -1323,11 +1323,12 @@ margin:1%;
      margin-top: 3em;
  }
 .property-grids {
-    float:left;
+    /*float:left;
     position: absolute;
     block: inline;
     width: 56%;
-    margin-top: 3em;
+    margin-top: 3em;*/
+    width: 72%;
 }
 .room-detail {
 
