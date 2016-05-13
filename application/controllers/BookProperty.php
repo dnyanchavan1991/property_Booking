@@ -36,13 +36,14 @@ class BookProperty extends CI_Controller {
 		$checkout = date ( 'Y-m-d', strtotime ( $checkout ) );
 		$accomodates=$post->accomodates;
 		$reservationArray=array(
-				'accomodates'=>$accomodates,
+				'accomodates'=>$accomodates,				
 				'check_in'=>$checkin,
 				'check_out'=>$checkout,
 				'property_id'=>$this->session->userdata ( 'propertyId' ),
-				'customer_id'=>'1',
+				'customer_id'=>1,
 				'reservation_date'=>date('Y-m-d')
 		);
+		//echo $reservationArray;
 		$reservationAffectedRow= $this->PropertyModel->booking( $reservationArray);
 		$response=array('reservationcount'=>$reservationAffectedRow);
 		echo json_encode($response);

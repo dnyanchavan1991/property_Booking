@@ -65,9 +65,11 @@ class PropertyDetails extends CI_Controller {
 		/* //available accomodates*/
 		$data['rentresult']=$roomDetailInfo;
 		$data['property_id']=$this->session->userdata ( 'propertyId' );
+		 
 		if($this->session->userdata('user_id'))
-		{
+		{		 
 			$get_user = $this->PropertyModel->getUser($this->session->userdata('user_id'));
+		 
 			$data['name'] = $get_user->name;
 			$data['email_address'] = $get_user->email_address;
 		}

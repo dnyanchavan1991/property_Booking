@@ -1,8 +1,5 @@
 function  checkLogin(page){
-	var name = '';
-	if(name !='') {
-		return true;
-	} else {
+ 
 		
 		var form = $(document.createElement('form'));
 		$(form).attr("action",login_url);
@@ -22,8 +19,23 @@ function  checkLogin(page){
 		
 		
 		return false;
-		
-	}
+	 
+}
+
+function  checkLogout(page){
+	 
+	
+	var form = $(document.createElement('form'));
+	$(form).attr("action",logout_url);
+	$(form).attr("method", "POST");
+
+	form.appendTo( document.body )
+
+	$(form).submit();
+	
+	
+	return false;
+ 
 }
 	
 

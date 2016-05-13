@@ -39,6 +39,7 @@ class Login extends CI_Controller {
 			
 			$loginDetailsArray=array(
 				'user_name'=>$username,
+				'password'=>$password,
 			   	'logged_in_dateTime'=>date("y-m-d h:i:s")
 					
 			);
