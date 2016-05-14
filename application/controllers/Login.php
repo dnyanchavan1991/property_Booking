@@ -33,15 +33,11 @@ class Login extends CI_Controller {
 		}
 		
 		if($user_count == 1)
-		{
-			
-			//$this->sessionStorage->setItem("user", $username);
-			
+		{ 	
 			$loginDetailsArray=array(
 				'user_name'=>$username,
 				'password'=>$password,
-			   	'logged_in_dateTime'=>date("y-m-d h:i:s")
-					
+			   	'logged_in_dateTime'=>date("y-m-d h:i:s") 
 			);
 			$last_id = $this->PropertyModel->insertLoginData ($loginDetailsArray);
 			$this->session->set_userdata('last_user_id', $last_id);

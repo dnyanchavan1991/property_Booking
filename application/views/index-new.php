@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Property Booking</title>
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Pinyon+Script' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Quicksand:400,700' rel='stylesheet' type='text/css'>
-<link href="css/new-theme/bootstrap.css" rel='stylesheet' type='text/css'/>
-<link href="css/new-theme/style.css" rel="stylesheet" type="text/css" media="all"/>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Property Booking</title>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Pinyon+Script' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Quicksand:400,700' rel='stylesheet' type='text/css'>
+	<link href="css/new-theme/bootstrap.css" rel='stylesheet' type='text/css'/>
+	<link href="css/new-theme/style.css" rel="stylesheet" type="text/css" media="all"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<script src="js/new-theme/jquery.min.js"></script>
-<script src="js/new-theme/bootstrap.js"></script>
+	<script src="js/new-theme/jquery.min.js"></script>
+	<script src="js/new-theme/bootstrap.js"></script>
 
-<!-- requried-jsfiles-for owl -->
-<link href="css/new-theme/owl.carousel.css" rel="stylesheet">
-<script type="text/javascript" src="js/angular.min.js"></script>
-<script type="text/javascript" src="js/controller/landingPageController.js"></script>
+	<!-- requried-jsfiles-for owl -->
+	<link href="css/new-theme/owl.carousel.css" rel="stylesheet">
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="js/controller/landingPageController.js"></script>
 
-<script type="text/javascript" src="js/global/global_url_variable.js"></script>
-<script type="text/javascript" src="js/global/global_functions.js"></script>
-<script src="js/new-theme/owl.carousel.js"></script>
-<script type="text/javascript">
+	<script type="text/javascript" src="js/global/global_url_variable.js"></script>
+	<script type="text/javascript" src="js/global/global_functions.js"></script>
+	<script src="js/new-theme/owl.carousel.js"></script>
+	<script type="text/javascript">
 	$(function() {
 		$( "#datepicker,#datepicker1" ).datepicker();
 	});
@@ -165,7 +165,7 @@
 							  </div>
 						  </li>
 						  <li class="span1_of_1" style="display:none;" id="bbb">
-							  <h5>No. of Guests</h5>
+							  <h5>No. of Guests</h5>	
 							  <div class="section_room">
 								  <select class="frm-field required" ng-model="selectGuestHeadCount" id="guestCount" name="guestCount" ng-init="selectGuestHeadCount=guestHeadCount[0] " ng-options="option as option for option in guestHeadCount"></select>
 							  </div>

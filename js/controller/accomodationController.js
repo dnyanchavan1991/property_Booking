@@ -69,7 +69,7 @@ app.controller('roomAvailabilityController', function($scope, $http) {
 				})
 			}
 			else{
-				alert('Sorry Available seats are'+data.count);  
+				alert('Sorry, Only ' + data.count + " seats are available.");  
 			}
 		});
 	};

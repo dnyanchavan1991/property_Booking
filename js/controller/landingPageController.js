@@ -99,10 +99,12 @@ angular.module('landingPageApp', [])
 	        		  alert('Please Enter Valid Username & Password.');
 	        	  } else{
 					     alert(successMessage);					     
-					   if($scope.form.firstName==null){
-	        		     window.location.href='Redirecting';}
+					   if($scope.form.firstName == null || $scope.form.username != ""){
+						 	window.location.href='Redirecting';
+	        		     }
 					   else{
-						   window.location.href='Index1';
+						     window.location.href='Index1';
+						   // window.location.href=$this->session->userdata('call_back_url');
 					   }
 	        	  }
 	          });
@@ -130,6 +132,18 @@ angular.module('landingPageApp', [])
 		objInput.value = item.property_id;
 		objForm.appendChild(objInput);
 
+		document.body.appendChild(objForm);
+		objForm.submit();
+	}
+	$scope.getImagePropertyDetails = function(item) {
+		var objForm = document.createElement('FORM');
+		objForm.method = 'post';
+		objForm.action = 'PropertyDetails';
+		var objInput = document.createElement('INPUT');
+		objInput.type = 'hidden';
+		objInput.name = 'propertyId';
+		objInput.value = item.property_id;
+		objForm.appendChild(objInput);
 		document.body.appendChild(objForm);
 		objForm.submit();
 	}

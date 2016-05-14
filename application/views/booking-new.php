@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="css/jquery-ui.css" />
     <script src="js/jquery-ui.js"></script>
     <script src="js/new-theme/jquery.min.js"></script>
+	
     <script src="js/new-theme/bootstrap.js"></script>
 
     <!-- requried-jsfiles-for owl -->
@@ -24,9 +25,7 @@
     <script type="text/javascript" src="js/global/global_functions.js"></script>
     <script src="js/new-theme/owl.carousel.js"></script>
     <script type="text/javascript">
-        /*$(function() {
-            $( "#datepicker,#datepicker1" ).datepicker();
-        });*/
+         
         window.onload = function() {
             $("#owl-demo").owlCarousel({
                 items : 1,
@@ -61,8 +60,9 @@
 </div>
 
 <!---strat-date-piker---->
-<script>
-    $(function() {
+<script src="js/new-theme/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function() { 
         $("#checkin_id").datepicker({
             dateFormat: "dd/mm/yy",
             minDate:  0,
@@ -74,10 +74,7 @@
                 newDate = new Date( Date.parse( newDate ) );
                 $('#checkout_id').datepicker("option","minDate",newDate);
             }
-        });
-        $('#checkout_id').datepicker({
-            dateFormat: "dd/mm/yy"
-        });
+        }); 
     });
 
 </script>
@@ -228,6 +225,8 @@
     <?php $this->load->view('common/footer.html'); ?>
 </div>
 <!---->
+<script>
 
+</script>
 </body>
 </html>

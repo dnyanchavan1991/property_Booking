@@ -1,8 +1,14 @@
 <?php
 class Registration extends CI_Controller {
-
+	function __construct()
+	{
+		parent::__construct();
+		$this->load->library('session');
+	}
 	public function index() {
 		$this->load->view ( 'registration.html' );
+		if(isset($_POST['page']))
+            $this->session->set_userdata ( 'controller', $_POST['page']);
 	}
 	public function insertRegistrationData() {
 	
@@ -22,15 +28,16 @@ class Registration extends CI_Controller {
 		);
 		$this->load->model ( 'PropertyModel' );
 		$registerInfo = $this->PropertyModel->insertRegistrationData ( $registerInfo );
+		$this->session->set_userdata('call_back_url',$post->call_back_url);
 		session_cache_limiter ( 'private, must-revalidate' );
 		//session_cache_expire ( 60 );
-		$this->load->library ( 'session' );
+		
 		
 		if ($post->username != '' && $post->username != null )
-		{
+		{ 
 			$validate = $this->PropertyModel->authenticate($post->username,$post->password,'user');
 			$user_id = $validate->user_id;
-			$user_count = $validate->user_count;
+			$user_count = $validate->user_count;			 
 		}
 		
 		if($user_count == 1)
@@ -45,9 +52,10 @@ class Registration extends CI_Controller {
 			$this->session->set_userdata('last_user_id', $last_id);
 			$this->session->set_userdata('user_id', $user_id);
 			$this->session->set_userdata('user_name', $post->username);
-			$this->session->set_userdata('access_type', 'user');
-			
+			$this->session->set_userdata('access_type', 'user'); 
 		}
+		$response=array('count'=>$user_count);
+		echo json_encode($response); 
 	
 	}
 }
