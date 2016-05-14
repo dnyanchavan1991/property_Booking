@@ -51,16 +51,17 @@ app.controller('getRoomDetailController',function($scope, $http){
 });
   
 
-var appMessage = angular.module('getRoomDetailAppMessage', ['ngMessages']); //,
-appMessage.controller(
-		'popupController',
-		function($scope, $http) {
+//var appMessage = angular.module('getRoomDetailAppMessage', ['ngMessages']); 
+app.controller('popupController', function($scope, $http) {
 			$scope.showModal = false;
 			var modal = $('#modal');
 			var enuiryVia="";
-
+			$scope.test = function () {
+				alert("hi 60");
+			}
 			$scope.form = {};
 			$scope.togglemailPopUp = function() {
+				
 				 modal.find('.modal-title').text('Enquiry via Mail');
 				 var enuiryVia="Mail";
 				$('#phone_div').hide();
@@ -86,6 +87,7 @@ appMessage.controller(
 				$scope.showModal = !$scope.showModal;
 			};
 			$scope.Contact_to_customer_enquiry = function(propertyId) {
+				alert("getRoomDetailController.js #88");
 				if($scope.form.email_id==null){
 					var enuiryVia='SMS' 
 				}
@@ -114,10 +116,10 @@ appMessage.controller(
 			};
 
 		})
-appMessage.directive(
+app.directive(
 		'modal',
 		function() {
-			return {
+			return { 
 				template : '<div class="modal fade">'
 						+ '<div class="modal-dialog">'
 						+ '<div class="modal-content">'
@@ -133,12 +135,12 @@ appMessage.directive(
 				scope : true,
 				link : function postLink(scope, element, attrs) {
 					scope.title = attrs.title;
-
+					 console.log(element[0]);
 					scope.$watch(attrs.visible, function(value) {
 						if (value == true)
-							$(element).modal('show');
+							$(element).show();
 						else
-							$(element).modal('hide');
+							$(element).hide();
 					});
 
 					$(element).on('shown.bs.modal', function() {

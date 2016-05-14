@@ -56,10 +56,11 @@
             });
 
             $('.send-sms').click(function() {
+				alert('here');
                 $('#phone_div').show();
                 $('#email_id_div').hide();
             });
-            $('.send-sms').magnificPopup({
+           /* $('.send-sms').magnificPopup({
                 type: 'inline',
 
                 fixedContentPos: false,
@@ -73,7 +74,7 @@
                 midClick: true,
                 removalDelay: 300,
                 mainClass: 'my-mfp-zoom-in'
-            });
+            });*/
 
         });
         $(function() {
@@ -208,20 +209,20 @@
                                             <?php if($pet_friendly == "Yes"){?>
                                                 <li class="col-sm-2 property-details">
                                                     <div class="decription-icon"><img src="images/new-theme/pets.png"></div>
-                                                    <div class="decription-icon-text"> Allowed</div>
+                                                    <div class="decription-icon-text"> Pets Allowed</div>
                                                 </li>
                                             <?php }?>
                                             <?php if($air_condition == "Yes"){?>
                                                 <li class="col-sm-2 property-details">
                                                     <div class="decription-icon"><img src="images/new-theme/conditioner.png"></div>
-                                                    <div class="decription-icon-text"> Conditioner</div>
+                                                    <div class="decription-icon-text"> Air Conditioner</div>
                                                 </li>
                                             <?php }?>
                                             <div class="clearfix"> </div>
                                             <?php if($in_house_kitchen == "Yes"){?>
                                                 <li class="col-sm-2 property-details" style="margin-top: 10px">
                                                     <div class="decription-icon"><img src="images/new-theme/kitchen.png"></div>
-                                                    <div class="decription-icon-text">In-House</div>
+                                                    <div class="decription-icon-text">In-House Kitchen</div>
                                                 </li>
                                             <?php }?>
                                         </ul>
@@ -412,17 +413,16 @@
                     <!--<h4>Availability : <?php /*echo $avail_accomodates;*/?></h4>-->
 
                     <b><a class="best-btn" onclick=" return checkLogin()" href="BookProperty">Book Now</a></b>
-                    <div class="hotel-left-two" ng-app="getRoomDetailAppMessage" ng-controller="popupController">
+                    <div class="hotel-left-two" ng-app="getRoomDetailApp" ng-controller="popupController">
 
                         <p> Send </p>
                         <!--<p> <label onclick="togglemailPopUp()" >Mail</label> | <label onclick="togglemessagePopUp()" >SMS</label> </p>-->
-                        <a class = "send-mail" href="#send-form" >Mail</a> |
-                        <a class = "send-sms" href="#send-form">SMS</a>
+                        <a class = "send-mail" href="#send-form" >Email</a> |
+                        <a class = "send-sms" ng-click="test()" href="#send-form">SMS</a>
 
                         <div id="send-form" class="zoom-anim-dialog mfp-hide">
-                        <modal id="modal"  ng-model="model" visible="showModal">
-                            <form  name="formData" class="enquiry-form contact-form detailed-contact-form" ng-submit="Contact_to_customer_enquiry(
-                                                <?php echo "'$propertyId'"; ?>)">
+                      <!--  <modal id="modal"  ng-model="model" visible="showModal">-->
+                            <form  name="formData" class="enquiry-form contact-form detailed-contact-form" ng-submit="Contact_to_customer_enquiry(<?php echo "'$propertyId'"; ?>)">
                                 <h4 class="tittle-one"><?php echo $propertyName;  ?></h4>
                                 <div class="" id="name">
                                     <label for="email"></label> <input type="text"
@@ -471,7 +471,7 @@
                                         .datepicker();
                                 });
                             </script>
-                        </modal>
+                        <!--</modal>-->
                         </div>
                     </div>
                     <div class="map-gd">
