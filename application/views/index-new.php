@@ -55,7 +55,7 @@
 <body ng-app="landingPageApp" >
 <!--header starts-->
 <div class="header">
-	<?php $this->load->view('common/header.html'); ?>
+	<?php $this->load->view('common/header-new.php'); ?>
 </div>
 
 <!---strat-date-piker---->
@@ -139,25 +139,25 @@
 				  <div class="reservation">
 					  <ul>
 						  <li  class="span1_of_1 left">
-							  <h5>Where to go?</h5>
+							<!--  <h5>Where to go?</h5>-->
 							  <div class="book_date" id="where_to_go">
 								  <input   id="inpDestination" type="text" autocomplete="off" name="inpDestination" ng-model="inputDestination" value=""   ng-click="expandFilterOptions()" onfocus="this.value = '';" >
 							  </div>
 						  </li>
 						 <li  class="span1_of_1 left">
-							 <h5>Arrival</h5>
+							 <!--<h5>Arrival</h5>-->
 							 <div class="book_date">
 								 <input class="date" id="datepicker" type="text" autocomplete="off" ng-model="checkInDate" name="checkIn" id="checkIn" value="" onfocus="this.value = '';" >
 							 </div>					
 						 </li>
 						 <li  class="span1_of_1 left">
-							 <h5>Depature</h5>
+							<!-- <h5>Depature</h5>-->
 							 <div class="book_date">
 								<input class="date" id="datepicker1" type="text" autocomplete="off" ng-model="checkOutDate" name="checkOut" id="checkOut" value="" onfocus="this.value = '';" >
 						     </div>		
 						 </li>
 						  <li class="span1_of_1 left" id="aaa" style="display:none;">
-							  <h5>Accomodation type</h5>
+							<!--  <h5>Accomodation type</h5>-->
 							  <div>
 								  <select class="frm-field required" ng-model="selectAccomodationType"  id="propertyType" name="propertyType" ng-init="selectAccomodationType=accomodationType[0]"
 										  ng-options="accomodation as accomodation.label for accomodation in accomodationType track by accomodation.value "
@@ -165,7 +165,7 @@
 							  </div>
 						  </li>
 						  <li class="span1_of_1" style="display:none;" id="bbb">
-							  <h5>No. of Guests</h5>	
+							<!--  <h5>No. of Guests</h5>	-->
 							  <div class="section_room">
 								  <select class="frm-field required" ng-model="selectGuestHeadCount" id="guestCount" name="guestCount" ng-init="selectGuestHeadCount=guestHeadCount[0] " ng-options="option as option for option in guestHeadCount"></select>
 							  </div>

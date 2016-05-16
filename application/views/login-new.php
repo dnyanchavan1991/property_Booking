@@ -24,7 +24,7 @@
 <body ng-app="landingPageApp" >
 <!--header starts-->
 <div class="header">
-    <?php $this->load->view('common/header.html'); ?>
+    <?php $this->load->view('common/header-new.php'); ?>
 </div>
 
 <!---strat-date-piker---->

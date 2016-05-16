@@ -36,10 +36,10 @@ text-decoration: none;
 }
 /*-----start-property-detail-and-tabs------*/
 h2.tittle-one{
-    margin-bottom:20px;
-    color:#0088cc;
+    margin-bottom:40px;
+    color:#1d924c;
     font-size:60px;
-    font-family: 'Pinyon Script', cursive !important;
+    font-family: "Roboto Slab",Arial,"Helvetica Neue",Helvetica,sans-serif !important;
     text-align:center;
     text-transform: capitalize;
 }
@@ -633,6 +633,7 @@ width:30%;
 margin:0 auto;
 padding:10px 0 10px 0;
 font-size:2em;
+font-family: "Palatino Linotype",palatino,serif;
 }
 .banner-info span{
 display:block;
@@ -650,6 +651,7 @@ display:block;
 color:#fff;
 font-weight:100;
 margin:1em;
+font-family: "Palatino Linotype",palatino,serif;
 }
 i.line{
 display:block;
@@ -772,7 +774,7 @@ margin-left: 1em;
 }
 .reservation ul li.span1_of_3{
 	width: 18.33333%;
-	margin-left: 20px;
+	margin-left: 1emx;
 }
 .reservation h5{
 	font-size: 15px;
@@ -807,7 +809,7 @@ select option{
 	width: 100% !important;
 	color: #858585;
 	font-size: 0.8725em;
-	padding: 8px 30px;
+	padding: 8px 10px;
 	outline: none;
 	font-family: 'Open Sans', sans-serif;
 	border: 1px solid #DFDFDF;
@@ -1426,8 +1428,8 @@ min-height:1024px;
 padding:2% 0 8% 0;
 }
 .rooms h3{
-font-family: 'Pinyon Script', cursive;
-font-size:3em;
+font-family: Verdana,sans-serif;
+font-size:1.5em;
 margin-bottom:20px;
 }
 .room-sec h4{

@@ -29,7 +29,7 @@
     <body  data-spy="scroll" data-target="#myScrollspy">
     <!--header starts-->
     <div class="header">
-        <?php $this->load->view('common/header.html'); ?>
+        <?php $this->load->view('common/header-new.php'); ?>
     </div>
 
     <script>
