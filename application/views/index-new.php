@@ -55,7 +55,7 @@
 <body ng-app="landingPageApp" >
 <!--header starts-->
 <div class="header">
-	<?php $this->load->view('common/header-new.php'); ?>
+	<?php $this->load->view('common/header.php'); ?>
 </div>
 
 <!---strat-date-piker---->
@@ -170,9 +170,9 @@
 								  <select class="frm-field required" ng-model="selectGuestHeadCount" id="guestCount" name="guestCount" ng-init="selectGuestHeadCount=guestHeadCount[0] " ng-options="option as option for option in guestHeadCount"></select>
 							  </div>
 						  </li>
-						 <li class="span1_of_3">
+						 <li class="span1_of_3 left">
 								<div class="date_btn">
-									<input type="submit" name="submit" value="View Prices" />
+									<input style="margin-top: 0px !important;" type="submit" name="submit" value="View Prices" />
 								</div>
 						 </li>
 						 <div class="clearfix"></div>

@@ -58,7 +58,7 @@
 <body ng-app="checkRoomAvailabilityApp" ng-controller="checkRoomAvailabilityController" data-ng-init="getRoomAvailability()">
 <!--header starts-->
 <div class="header">
-    <?php $this->load->view('common/header-new.php'); ?>
+    <?php $this->load->view('common/header.php'); ?>
 </div>
 
 <!---strat-date-piker---->
@@ -162,7 +162,7 @@
                                 <select class="frm-field required" ng-model="selectGuestHeadCount" id="guestCount" name="guestCount" ng-init="selectGuestHeadCount=guestHeadCount[0] " ng-options="option as option for option in guestHeadCount"></select>
                             </div>
                         </li>
-                        <li class="span1_of_3">
+                        <li class="span1_of_3 left">
                             <h5></h5>
                             <div class="date_btn">
                                 <input type="submit" value="View Prices" />
@@ -182,7 +182,7 @@
                                 </select>
                             </div>
                         </li>
-                        <li class="span1_of_3" style="margin-top: 1em;">
+                        <li class="span1_of_3 left" style="margin-top: 1em;">
                             <div class="filter_btn" id="moreFilters" onclick="showMoreFilters()">More Filters +
                             </div>
                         </li>

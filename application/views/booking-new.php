@@ -35,28 +35,13 @@
                 navigationText :  false,
                 pagination : false,
             });
-
-            // Vish - trying to keep search bar fixed if vertical scroll happens
-            /*var offset = $('.online_reservation').offset();
-            $(window).on('scroll', function() {
-                var st = $(this).scrollTop();
-                event.stopPropagation();
-                if (offset.top <= st){
-                    $('#where_to_go').click();
-                    $('.reservation>ul').addClass("container-fluid");
-
-                } else {
-                    $('.reservation>ul').removeClass("container-fluid");
-                }
-            });*/
-
         };
     </script>
 </head>
 <body ng-app="accomodationApp" >
 <!--header starts-->
 <div class="header">
-    <?php $this->load->view('common/header-new.php'); ?>
+    <?php $this->load->view('common/header.php'); ?>
 </div>
 
 <!---strat-date-piker---->
