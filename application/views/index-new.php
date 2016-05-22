@@ -19,7 +19,7 @@
 
 	<script type="text/javascript" src="js/global/global_url_variable.js"></script>
 	<script type="text/javascript" src="js/global/global_functions.js"></script>
-	<script src="js/new-theme/owl.carousel.js"></script>
+	
 	<script type="text/javascript">
 	$(function() {
 		$( "#datepicker,#datepicker1" ).datepicker();

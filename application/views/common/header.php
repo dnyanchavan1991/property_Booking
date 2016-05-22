@@ -1,5 +1,7 @@
 <script type="text/javascript" src="js/new-theme/jquery-1.11.3.min.js"></script>
+
 <script type="text/javascript" src="js/new-theme/jssor.slider.mini.js"></script>
+<script src="js/new-theme/owl.carousel.js"></script>
 <script>
     jQuery(document).ready(function ($) {
 
@@ -77,14 +79,14 @@
 <div id="jssor_1" style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 1500px; height: 300px; overflow: hidden; visibility: hidden;" class="banner">
     <div data-u="loading" style="position: absolute; top: 0px; left: 0px;">
         <div style="filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
-        <div style="position:absolute;display:block;background:url('../../../images/new-theme/loading.gif') no-repeat center center;top:0px;left:0px;width:100%;height:100%;"></div>
+        <div style="position:absolute;display:block;background:url('images/new-theme/loading.gif') no-repeat center center;top:0px;left:0px;width:100%;height:100%;"></div>
     </div>
     <div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 0px; width: 1500px; height: 300px; overflow: hidden;">
         <div data-p="112.50" style="display: none;">
-            <img data-u="image" src="../../../images/new-theme/hotel1.jpg" />
+            <img data-u="image" src="images/new-theme/hotel1.jpg" />
         </div>
         <div data-p="112.50" style="display: none;">
-            <img data-u="image" src="../../../images/new-theme/hotel2.jpg" />
+            <img data-u="image" src="images/new-theme/hotel2.jpg" />
         </div>
     </div>
     <!-- Bullet Navigator -->
@@ -96,7 +98,7 @@
     <span data-u="arrowleft" class="jssora12l" style="top:0px;left:0px;width:30px;height:46px;" data-autocenter="2"></span>
     <span data-u="arrowright" class="jssora12r" style="top:0px;right:0px;width:30px;height:46px;" data-autocenter="2"></span>
     <div class="banner-info text-center">
-        <h1>PROPERTY BOOKING</h1>
+        <h1>True Holidays</h1>
         <span></span>
         <ul>
             <li><a class="scroll" href="#">SEARCH</a><i class="line"></i></li>

@@ -48,7 +48,7 @@ angular.module('checkRoomAvailabilityApp', ['angularUtils.directives.dirPaginati
 		  	 }).then(function(response) {
 		  		 
 				$scope.propNames  = response.data.rows;
-            	// console.log(response);
+            	 
 			});
 	             	$scope.galleryImgFetch=function()
 	                {

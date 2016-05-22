@@ -20,25 +20,21 @@ class PropertyModel extends CI_Model {
 		$propertyType = $searchArray ['propertyType'];
 		$destination = $searchArray ['destination'];
 		
-		$this->db->select ( "property.property_id as propertyId,star_rate,property.property_name as property,property.property_type_id,property.image_path as imagePath, property.star_rate, concat(property.street,',',property.city,',',property.state,',',property.postal_code)as propertyAddress,propertyInfo.accommodates,(propertyInfo.accommodates-IFNULL(sum(res.accomodates), 0)) as availableAccomodes, propertyInfo.bedrooms,propertyInfo.bathrooms, propertyInfo.pool, propertyInfo.free_parking, propertyInfo.air_condition, propertyInfo.television_access, propertyInfo.internet_access, propertyInfo.smoking_allowd, propertyInfo.free_breakfast, propertyInfo.pet_friendly " );
-	 
+		$this->db->select ( "property.property_id as propertyId,star_rate,property.property_name as property,property.property_type_id,property.image_path as imagePath, property.star_rate, concat(property.street,',',property.city,',',property.state,',',property.postal_code)as propertyAddress,propertyInfo.accommodates,(propertyInfo.accommodates) as availableAccomodes, propertyInfo.bedrooms,propertyInfo.bathrooms, propertyInfo.pool, propertyInfo.free_parking, propertyInfo.air_condition, propertyInfo.television_access, propertyInfo.internet_access, propertyInfo.smoking_allowd, propertyInfo.free_breakfast, propertyInfo.pet_friendly " );
+	 //(propertyInfo.accommodates-IFNULL(sum(res.accomodates), 0)) as availableAccomodes
 		$this->db->from ( "$propertyInfo propertyInfo " );
-		$dateConditions = "(";
+	/*	$dateConditions = "(";
 		$dateConditions .= "( res.check_in <= '$checkin' AND ( res.check_out >= '$checkin' OR res.check_out >= '$checkout' ) )";
 		$dateConditions .= "OR ( (res.check_in >= '$checkin' AND res.check_in <= '$checkout') AND (res.check_out <='$checkout' OR res.check_out >='$checkout')) ";
 		$dateConditions .= ")";
-		//select * from
- // reservation res 
-//where (
-//( res.check_in <= '2016-03-05' AND ( (res.check_out >= '2016-03-05' AND res.check_out <= '2016-03-11') OR res.check_out >= '2016-03-11' ) )
-//OR ( (res.check_in >= '2016-03-05' AND res.check_in <= '2016-03-11') AND ( (res.check_out >= '2016-03-05' AND res.check_out <= '2016-03-11') OR res.check_out >= '2016-03-11' ) )
-//)
+	 */
 		$this->db->join ( "$reservationTable res", "res.property_id = propertyInfo.property_id   ", "left outer" );//and $dateConditions
+		
 		//$this->db->having(" $dateConditions");
-		$this->db->join ( "$propertyTable property", "propertyInfo.property_id=property.property_id" );
+		$this->db->join ( "$propertyTable property ", "propertyInfo.property_id=property.property_id" );
 	 
-		$where = "(city  like '%$destination%' or state like '%$destination%')";
-		$this->db->where ( $where );
+	 	$where = "(city  like '%$destination%' or state like '%$destination%')";
+		 $this->db->where ( $where );
 		$this->db->where ('activation_flag','YES'); 
 		
 		if ($propertyType != '0') {

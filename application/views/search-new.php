@@ -14,13 +14,15 @@
 
     <!-- requried-jsfiles-for owl -->
     <link href="css/new-theme/owl.carousel.css" rel="stylesheet">
-
+	   <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/controller/checkRoomAvailabilityController.js"></script>
+	
     <script type="text/javascript" src="js/global/global_url_variable.js"></script>
     <script type="text/javascript" src="js/global/global_functions.js"></script>
 	
-    <script src="js/new-theme/owl.carousel.js"></script>
-	<link rel="stylesheet" href="css/jquery-ui.css" />
-<script src="js/jquery-ui.js"></script>
+    
+	
+
     <script type="text/javascript">
         $(function() {
             $( "#datepicker,#datepicker1" ).datepicker();
@@ -50,8 +52,7 @@
 		
 
     </script>
-    <script type="text/javascript" src="js/angular.min.js"></script>
-    <script type="text/javascript" src="js/controller/checkRoomAvailabilityController.js"></script>
+ 
 	<script type="text/javascript" src="js/dirPagination.js"></script>
     <!-- //requried-jsfiles-for owl -->
 </head>
@@ -62,7 +63,8 @@
 </div>
 
 <!---strat-date-piker---->
-
+<link rel="stylesheet" href="css/jquery-ui.css" />
+<script src="js/jquery-ui.js"></script>
 <script>
     function allFieldsVisible(){
 
