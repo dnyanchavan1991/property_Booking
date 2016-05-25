@@ -5,7 +5,8 @@ License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 --*/
 html, body{
-  	font-family: 'Open Sans', sans-serif;
+  	/*font-family: 'Open Sans', sans-serif;*/
+    font-family: "Roboto",Arial,"Helvetica Neue",Helvetica,sans-serif;
     font-size: 100%;
   	background: #FFf;
 	
@@ -18,7 +19,7 @@ body a{
 	-ms-transition:0.5s all;
 }
 body {
-    line-height: 1 !important;
+    line-height: 1.5 !important;
 }
 h1,h2,h3,h4,h5,h6{
 	margin:0;			   
@@ -81,9 +82,9 @@ text-decoration: none;
 .jssora12r.jssora12rdn { background-position: -315px -37px; }
 /*-----start-property-detail-and-tabs------*/
 h2.tittle-one{
-    margin-bottom:40px;
+    margin-bottom:18px;/*40px;*/
     color:#1d924c;
-    font-size:60px;
+    font-size:45px;
     font-family: "Roboto Slab",Arial,"Helvetica Neue",Helvetica,sans-serif !important;
     text-align:center;
     text-transform: capitalize;
@@ -91,7 +92,7 @@ h2.tittle-one{
 h3.tittle-one{
     color:#0088cc;
     /*font-size:40px;*/
-    font-family: 'Pinyon Script', cursive !important;
+    font-family: "Roboto Slab",Arial,"Helvetica Neue",Helvetica,sans-serif !important;
     text-align:center;
     text-transform: capitalize;
     /*border-bottom: 2px dotted*/;
@@ -99,13 +100,13 @@ h3.tittle-one{
 h4.tittle-one{
     color:#0088cc;
     font-size:40px;
-    font-family: 'Pinyon Script', cursive !important;
+    font-family: "Roboto Slab",Arial,"Helvetica Neue",Helvetica,sans-serif !important;
     text-align:center;
     text-transform: capitalize;
     border-bottom: 2px dotted;
 }
 h4.booking-title {
-    font-family: 'Open Sans', sans-serif !important;
+    font-family: "Roboto Slab",Arial,"Helvetica Neue",Helvetica,sans-serif !important;
     font-size: 26px;
     margin-bottom: 10px;
     border-bottom: 1px dashed;
@@ -118,6 +119,7 @@ ul.nav-tabs {
     border-radius: 4px;
     border: 1px solid #ddd;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
+    font-size: 15px;
     /*width: 220px;
     margin-top: 20px;
     position: fixed;
@@ -172,6 +174,7 @@ ul.nav-tabs.affix {
     margin-bottom: 10px;
     margin-left: 5px;
     margin-top: 10px;
+    font-size: 14px;
 }
 .detailed-row h2 {
     margin-bottom: 18px;
@@ -198,10 +201,12 @@ ul.nav-tabs.affix {
     color: #0088cc !important;
     font-weight: bold;
     padding: 10px !important;
+    font-size: 16px;
 }
 .decription-icon-text {
      margin-top: 2px;
      font-weight: normal;
+    font-size: 14px;
  }
 .decription-icon img {
     height: 30px;
@@ -267,7 +272,7 @@ ul.nav-tabs.affix {
     font-size: 0.8725em !important;
     padding: 8px 30px !important;
     outline: none !important;
-    font-family: 'Open Sans', sans-serif !important;
+    font-family: "Roboto Slab",Arial,"Helvetica Neue",Helvetica,sans-serif !important;
     border: 1px solid #DFDFDF !important;
     box-shadow: inset 0 0 2px rgb(236, 236, 236) !important;
     -webkit-box-shadow: inset 0 0 2px rgb(236, 236, 236) !important;
@@ -284,7 +289,7 @@ ul.nav-tabs.affix {
     padding-top: 15px;
 }
 .hotel-left-two p {
-    padding-bottom: 10px;
+    /*padding-bottom: 10px;*/
 }
 .map-gd {
     padding-top: 10px;
@@ -370,7 +375,7 @@ button.mfp-arrow, button.mfp-close {
     color: #FFF;
     font-style: normal;
     font-size: 28px;
-    font-family: Arial,Baskerville,monospace;
+    font-family: "Roboto Slab",Arial,"Helvetica Neue",Helvetica,sans-serif;
 }
 .mfp-bg {
     top: 0;
@@ -464,9 +469,10 @@ button.mfp-arrow, button.mfp-close {
     margin-left: 10px;
 }
 .comments-head h3 {
-    font-family: inherit !important;
-    font-size: 2em !important;
-    color: #0088cc;;
+    font-family: "Roboto",Arial,"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 26px !important; /*2em !important;*/
+    color: #0088cc;
+    margin-bottom: 0px !important;
 }
 .comments-bot {
     border-top: 1px dashed #0088cc;
@@ -499,7 +505,7 @@ button.mfp-arrow, button.mfp-close {
     text-transform:capitalize;
     width: 90% !important;
     background: #FFD700;
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Roboto Slab",Arial,"Helvetica Neue",Helvetica,sans-serif;
     color: #2A2E33;
     padding: 8px;
     border: none;
@@ -524,7 +530,7 @@ button.mfp-arrow, button.mfp-close {
     text-transform:capitalize;
     width: 15% !important;
     background: #FFD700;
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Roboto Slab",Arial,"Helvetica Neue",Helvetica,sans-serif;
     color: #2A2E33;
     padding: 8px;
     border: none;
@@ -655,7 +661,7 @@ border-top:2px solid #FFD700;
 }
 .room-availability {
     /*background:#00CCFF;*/
-    font-family: 'Pinyon Script', cursive;
+    font-family: "Roboto Slab",Arial,"Helvetica Neue",Helvetica,sans-serif;
 }
 .banner{
 background:#00CCFF;
@@ -678,13 +684,15 @@ width:30%;
 margin:0 auto;
 padding:10px 0 10px 0;
 font-size:2em;
-font-family: "Palatino Linotype",palatino,serif;
+font-family: "Roboto Slab",Arial,"Helvetica Neue",Helvetica,sans-serif;
+position: relative;
 }
 .banner-info span{
 display:block;
 border-top:1px dashed rgba(255, 255, 255, 0.59);
 width:20%;
 margin:0 auto;
+position: relative;
 }
 .banner-info ul li{
 display:inline-block;
@@ -696,13 +704,13 @@ display:block;
 color:#fff;
 font-weight:100;
 margin:1em;
-font-family: "Palatino Linotype",palatino,serif;
+font-family: "Roboto Slab",Arial,"Helvetica Neue",Helvetica,sans-serif;
 }
 i.line{
 display:block;
 background: rgba(255, 255, 255, 0.7);
 min-height: 1px;
-width: 13%;
+width: 15%;
 position: absolute;
 left: 96%;
 bottom: 48%;
@@ -711,7 +719,8 @@ i.line2{
 display:block;
 background: rgba(255, 255, 255, 0.7);
 min-height: 1px;
-width: 8%;
+/*width: 8%;*/
+width: 15%;
 position: absolute;
 left: 96%;
 bottom: 48%;
@@ -790,7 +799,7 @@ z-index:1;
 	line-height: 1.8em;
 }
 .reservation{
-	font-family: 'Open Sans', sans-serif;
+	font-family: "Roboto Slab",Arial,"Helvetica Neue",Helvetica,sans-serif;
 	padding:10px 10px;
 	float: left;
 	width:100%;
@@ -833,7 +842,7 @@ select {
 	font-size: 0.8725em;
 	padding: 4px;
 	outline: none;
-	font-family: 'Open Sans', sans-serif;
+	font-family: "Roboto Slab",Arial,"Helvetica Neue",Helvetica,sans-serif;
 	background: #ffffff;
 	border: 1px solid #DFDFDF;
 	border-radius: 5px;
@@ -854,9 +863,9 @@ select option{
 	width: 100% !important;
 	color: #858585;
 	font-size: 0.8725em;
-	padding: 8px 10px;
+	padding: 5px 10px;
 	outline: none;
-	font-family: 'Open Sans', sans-serif;
+	font-family: "Roboto Slab",Arial,"Helvetica Neue",Helvetica,sans-serif;
 	border: 1px solid #DFDFDF;
 	box-shadow: inset 0 0 2px rgb(236, 236, 236);
 	-webkit-box-shadow: inset 0 0 2px rgb(236, 236, 236);
@@ -870,15 +879,15 @@ select option{
 }
 
 .book_date_active input[type="text"]{
-    padding: 9px 10px !important;
+    padding: 5px 10px !important;
 }
 .filter_btn {
     text-transform:capitalize;
     width: 60% !important;
     background: #FFD700;
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Roboto Slab",Arial,"Helvetica Neue",Helvetica,sans-serif;
     color: #2A2E33;
-    padding: 10px;
+    padding: 5px;
     border: none;
     font-size: 14px;
     transition: 0.5s all;
@@ -909,9 +918,9 @@ select option{
 	text-transform:capitalize;
 	width: 60% !important;
 	background: #FFD700;
-	font-family: 'Open Sans', sans-serif;
+	font-family: "Roboto Slab",Arial,"Helvetica Neue",Helvetica,sans-serif;
 	color: #2A2E33;
-	padding: 10px;
+	padding: 5px;
 	border: none;
 	font-size: 14px;
 	transition: 0.5s all;
@@ -934,7 +943,7 @@ select option{
 	text-transform:capitalize;
 	width: 90% !important;
 	background: #FFD700;
-	font-family: 'Open Sans', sans-serif;
+	font-family: "Roboto Slab",Arial,"Helvetica Neue",Helvetica,sans-serif;
 	color: #2A2E33;
 	padding: 8px;
 	border: none;
@@ -1318,7 +1327,7 @@ p.para{
 	text-transform: capitalize;
 	width: 25% !important;
 	background: #32A2E3;
-	font-family: 'Open Sans', sans-serif;
+	font-family: "Roboto Slab",Arial,"Helvetica Neue",Helvetica,sans-serif;
 	color: #FFF;
 	padding: 15px;
 	border: none;
@@ -1346,17 +1355,17 @@ border-bottom:1px solid #939597;
 }
 .filter-package {
     min-height: 255px !important;
-    padding: 7% 0 0 0 !important;
+    padding: 6% 0 0 0 !important;
 }
 .result-package {
      padding: 10% 0 0 0 !important;
  }
 .expand-package {
-    padding: 10% 0 0 0 !important;
+    padding: 7% 0 0 0 !important;
     border-bottom: none !important;
 }
 .package h3{
-font-family: 'Pinyon Script', cursive;
+font-family: "Roboto Slab",Arial,"Helvetica Neue",Helvetica,sans-serif;
 font-size:2.5em;
 }
 .package p{
@@ -1425,6 +1434,7 @@ margin:1%;
     margin-bottom: 13px;
     margin-left: 10px;
     font-weight: 500 !important;
+    font-size: 17px !important;
 }
 .single-room li {
     list-style-type: none;
@@ -1445,9 +1455,10 @@ margin:1%;
     margin-left: 8px;
     border-radius: 4px;
     margin-bottom: 15px;
+    font-size: 12px !important;
 }
 .single-room-image {
-    width: 255px;
+    width: 240px;
 	border-radius: 5px;
 }
 .feature-images {
@@ -1473,8 +1484,8 @@ min-height:1024px;
 padding:2% 0 8% 0;
 }
 .rooms h3{
-font-family: Verdana,sans-serif;
-font-size:1.5em;
+/*font-family: Verdana,sans-serif;*/
+font-size:30px;
 margin-bottom:20px;
 }
 .room-sec h4{
@@ -1541,13 +1552,13 @@ position:relative;
 text-align: center;
 }
 .fotter h3{
-font-family: 'Quicksand', sans-serif;
+font-family: "Roboto Slab",Arial,"Helvetica Neue",Helvetica,sans-serif;
 color:#fff;
 font-size:1.5em;
 margin:1em 0 0 1em;
 }
 .fotter h4{
-font-family: 'Quicksand', sans-serif;
+font-family: "Roboto Slab",Arial,"Helvetica Neue",Helvetica,sans-serif;
 color:rgba(255, 255, 255, 0.72);
 font-size:16px;
 font-style:italic;
@@ -1582,7 +1593,7 @@ font-size:13px;
 color:rgba(237, 237, 237, 0.87);
 margin-bottom:12px;
 font-weight:100;
-font-family: 'Quicksand', sans-serif;
+font-family: "Roboto Slab",Arial,"Helvetica Neue",Helvetica,sans-serif;
 line-height:1.5em;
 }
 .news{
@@ -1599,7 +1610,7 @@ margin-bottom:1.2em;
 color:rgba(237, 237, 237, 0.87);
 font-size:13px;
 word-spacing: 1px;
-font-family: 'Quicksand', sans-serif;
+font-family: "Roboto Slab",Arial,"Helvetica Neue",Helvetica,sans-serif;
 }
 .news a{
 color:#FFFFFF;
@@ -1626,7 +1637,7 @@ font-size:13px;
 color:rgba(237, 237, 237, 0.87);
 margin-bottom:10px;
 font-weight:100;
-font-family: 'Quicksand', sans-serif;
+font-family: "Roboto Slab",Arial,"Helvetica Neue",Helvetica,sans-serif;
 line-height:1.5em;
 }
 .join a {
@@ -2229,7 +2240,7 @@ font-size:22px;
 }
 .grid-flex{
 	margin:10px 0 20px 0;
-	font-family: 'Roboto', sans-serif;
+    font-family: "Roboto Slab",Arial,"Helvetica Neue",Helvetica,sans-serif;
 }
 .nbs-flexisel-item > img {
 	cursor: pointer;
@@ -2247,7 +2258,7 @@ background-size: cover;
 padding:2em 0;
 }
 .booking h3 {
-font-family: 'Pinyon Script', cursive;
+font-family: "Roboto Slab",Arial,"Helvetica Neue",Helvetica,sans-serif;
 font-size: 3.5em;
 text-align:center;
 }
@@ -2257,7 +2268,7 @@ select.arrival{
 	font-size: 0.8725em;
 	padding: 7px;
 	outline: none;
-	font-family: 'Open Sans', sans-serif;
+	font-family: "Roboto Slab",Arial,"Helvetica Neue",Helvetica,sans-serif;
 	background: #ffffff;
 	border:1px solid rgba(42, 46, 51, 0.4);
 	border-radius: 0px;
@@ -2280,7 +2291,7 @@ margin: 15px 0 2px 0;
 width:30%;
 }
 .booking-form input[type="text"],.booking-form textarea {
-font-family: 'Open Sans', sans-serif;
+font-family: "Roboto Slab",Arial,"Helvetica Neue",Helvetica,sans-serif;
 padding: 7px;
 display: block;
 width: 98%;
@@ -2303,7 +2314,7 @@ width:10%;
 }
 .booking-form input[type="submit"],.booking-form input[type="reset"] {
 margin-top: 25px;
-font-family: 'Open Sans', sans-serif;
+font-family: "Roboto Slab",Arial,"Helvetica Neue",Helvetica,sans-serif;
 cursor: pointer;
 background: #242424;
 border: 1px solid #242424;
@@ -2409,6 +2420,7 @@ padding-bottom: 6em;
 .contact-form div{
 	padding:5px 0;
 	margin-left: 2%;
+    font-size: 14px;
 }
 .contact-form span{
 	display: block;
@@ -2418,7 +2430,7 @@ padding-bottom: 6em;
 	font-size: 0.7825em;
 }
 .contact-form input[type="text"],.contact-form textarea{
-	font-family: 'Open Sans', sans-serif;
+	font-family: "Roboto Slab",Arial,"Helvetica Neue",Helvetica,sans-serif;
 	margin-top: 5px;
 	padding: 10px;
 	display: block;
@@ -2443,7 +2455,7 @@ border:1px solid #FFD700;
 }
 .contact-form input[type="submit"]{
 	margin-top: 10px;
-	font-family: 'Open Sans', sans-serif;
+	font-family: "Roboto Slab",Arial,"Helvetica Neue",Helvetica,sans-serif;
 	cursor: pointer;
 	background: #242424;
 	border: 1px solid #242424;

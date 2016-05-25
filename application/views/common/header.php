@@ -1,7 +1,7 @@
 <script type="text/javascript" src="js/new-theme/jquery-1.11.3.min.js"></script>
 
 <script type="text/javascript" src="js/new-theme/jssor.slider.mini.js"></script>
-<script src="js/new-theme/owl.carousel.js"></script>
+<!--<script src="js/new-theme/owl.carousel.js"></script>-->
 <script>
     jQuery(document).ready(function ($) {
 

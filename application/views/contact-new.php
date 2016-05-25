@@ -10,10 +10,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <script src="js/new-theme/jquery.min.js"></script>
-        <script src="js/new-theme/bootstrap.js"></script>
-        <script src="js/new-theme/bootstrap.min.js"></script>
-        <script src="js/new-theme/owl.carousel.js"></script>
+       <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
         <script src="js/new-theme/jquery.magnific-popup.js"></script>
+        <!--<script src="js/new-theme/bootstrap.js"></script>
+        <script src="js/new-theme/bootstrap.min.js"></script>-->
+        <script src="js/new-theme/owl.carousel.js"></script>
         <script type="text/javascript" src="js/global/global_url_variable.js"></script>
         <script type="text/javascript" src="js/global/global_functions.js"></script>
 
@@ -29,16 +30,12 @@
     <body  data-spy="scroll" data-target="#myScrollspy">
     <!--header starts-->
     <div class="header">
-        <?php $this->load->view('common/header.php'); ?>
+        <?php $this->load->view('common/header-bar.php'); ?>
     </div>
 
     <script>
         $(document).ready(function () {
 
-            $('.send-mail').click(function() {
-                $('#phone_div').hide();
-                $('#email_id_div').show();
-            });
             $('.send-mail').magnificPopup({
                 type: 'inline',
 
@@ -55,12 +52,16 @@
                 mainClass: 'my-mfp-zoom-in'
             });
 
+            $('.send-mail').click(function() {
+                $('#phone_div').hide();
+                $('#email_id_div').show();
+            });
+
             $('.send-sms').click(function() {
-				alert('here');
                 $('#phone_div').show();
                 $('#email_id_div').hide();
             });
-           /* $('.send-sms').magnificPopup({
+           $('.send-sms').magnificPopup({
                 type: 'inline',
 
                 fixedContentPos: false,
@@ -74,7 +75,7 @@
                 midClick: true,
                 removalDelay: 300,
                 mainClass: 'my-mfp-zoom-in'
-            });*/
+            });
 
         });
         $(function() {
@@ -140,7 +141,7 @@
             <h2 class="tittle-one">
                 <?php echo $propertyName;  ?>
 
-                <h3 style="font-size: 2em !important"><?php echo nl2br($propertyAddress);?></h3>
+                <h3 style="font-size: 26px !important"><?php echo nl2br($propertyAddress);?></h3>
             </h2>
             <div class="col-sm-9 myScrollspy" id="myScrollspy">
                 <ul class="nav nav-tabs nav-stacked" data-offset-top="120" data-spy="affix">
@@ -171,15 +172,15 @@
                                             </li>
                                             <li class="col-sm-2 property-details">
                                                 <div class="decription-icon"><img src="images/new-theme/bedroom.png"></div>
-                                                <div class="decription-icon-text"><?php echo  nl2br($bedrooms); ?> Bedroom</div>
+                                                <div class="decription-icon-text"><?php echo  nl2br($bedrooms); ?> Bedrooms</div>
                                             </li>
                                             <li class="col-sm-2 property-details">
                                                 <div class="decription-icon"><img src="images/new-theme/bathroom.png"></div>
-                                                <div class="decription-icon-text"><?php echo  nl2br($bathrooms); ?> Bathroom</div>
+                                                <div class="decription-icon-text"><?php echo  nl2br($bathrooms); ?> Bathrooms</div>
                                             </li>
                                             <li class="col-sm-2 property-details">
                                                 <div class="decription-icon"><img src="images/new-theme/guest.png"></div>
-                                                <div class="decription-icon-text"><?php echo  $accommodates; ?> Guest</div>
+                                                <div class="decription-icon-text"><?php echo  $accommodates; ?> Guests</div>
                                             </li>
                                         </ul>
                                     </div>
@@ -197,7 +198,7 @@
                                             <?php if($internet_access == "Yes"){?>
                                                 <li class="col-sm-2 property-details">
                                                     <div class="decription-icon"><img src="images/new-theme/wifi.png"></div>
-                                                    <div class="decription-icon-text">Internet</div>
+                                                    <div class="decription-icon-text">Internet Access</div>
                                                 </li>
                                             <?php }?>
                                             <?php if($television == "Yes"){?>
@@ -257,7 +258,7 @@
                             <hr>
                             <div id="section2" class="detailed-row" style="display: none">
                               <!--  <h2>Gallery</h2> -->
-                              <!--  <div id="owl-demo" class="owl-carousel">-->
+                              <!--<div id="owl-demo" class="owl-carousel">-->
                                     <?php
                                     $i=1;
                                     $count=1;
@@ -418,7 +419,7 @@
                         <p> Send </p>
                         <!--<p> <label onclick="togglemailPopUp()" >Mail</label> | <label onclick="togglemessagePopUp()" >SMS</label> </p>-->
                         <a class = "send-mail" href="#send-form" >Email</a> |
-                        <a class = "send-sms" ng-click="test()" href="#send-form">SMS</a>
+                        <a class = "send-sms" href="#send-form">SMS</a>
 
                         <div id="send-form" class="zoom-anim-dialog mfp-hide">
                       <!--  <modal id="modal"  ng-model="model" visible="showModal">-->
@@ -462,7 +463,7 @@
                                 </div>
 
                                 <br>
-                                <input style="width: 50% !important;" type="submit" id="submit_div" value="Submit">
+                                <input style="width: 32% !important;" type="submit" id="submit_div" value="Submit">
                             </form>
                             <script src="js/jquery-ui.js"></script>
                             <script>
