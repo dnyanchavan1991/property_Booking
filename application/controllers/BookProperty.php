@@ -8,10 +8,13 @@ class BookProperty extends CI_Controller {
 		$this->load->model('PropertyModel');
 	}
 	public function index() {
-		$this->bookingProperty();
+				$checkin = $this->session->userdata ( 'checkIn'); 							
+				$checkout = $this->session->userdata ( 'checkOut');			
+				 
+		$this->bookingProperty($checkin, $checkout);
 	
 	}
-	public function bookingProperty(){
+	public function bookingProperty($checkin, $checkout){
 		if($this->session->userdata('user_id'))
 		{
 			$get_user = $this->PropertyModel->getUser($this->session->userdata('user_id'));
@@ -20,6 +23,8 @@ class BookProperty extends CI_Controller {
 			$data['email_address'] = $get_user->email_address;
 			$data['property_name'] = $get_property->property_name;
 			$data['image_path'] = $get_property->image_path;
+			$data['checkin'] = $checkin;
+			$data['checkout'] = $checkout;
 			$this->load->view ( 'booking-new',$data);
 		} else {
 			$this->load->view ( 'booking-new');

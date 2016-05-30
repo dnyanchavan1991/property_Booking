@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="css/jquery-ui.css" />
     <link href="css/new-theme/owl.carousel.css" rel="stylesheet">
 
-    <script src="js/jquery-ui.js"></script>
+    
     <script src="js/new-theme/jquery.min.js"></script>
     <script src="js/new-theme/owl.carousel.js"></script>
 	
@@ -35,6 +35,27 @@
                 pagination : false,
             });
         };
+		    $(function() { 
+         $("#datepicker").datepicker({
+				numberOfMonths: 2,
+				
+				minDate: new Date(),
+				onSelect: function (selected) {
+					var dt = new Date(selected);
+					dt.setDate(dt.getDate() + 1);
+					$("#datepicker1").datepicker("option", "minDate", dt);
+				}
+			});
+			$("#datepicker1").datepicker({
+				numberOfMonths: 2,
+				minDate : new Date(),
+				onSelect: function (selected) {
+					var dt = new Date(selected);
+					dt.setDate(dt.getDate() - 1);
+					$("#datepicker").datepicker("option", "maxDate", dt);
+				}
+			});
+    });
     </script>
 </head>
 <body ng-app="accomodationApp" >
@@ -44,22 +65,10 @@
 </div>
 
 <!---strat-date-piker---->
-<script src="js/new-theme/jquery.min.js"></script>
+
+<script src="js/jquery-ui.js"></script>
 <script type="text/javascript">
-    $(function() { 
-        $("#checkin_id").datepicker({
-            dateFormat: "dd/mm/yy",
-            minDate:  0,
-            onClose: function(date){
-                var date1 = $('#checkin_id').datepicker('getDate');
-                var date = new Date( Date.parse( date1 ) );
-                date.setDate( date.getDate() + 1 );
-                var newDate = date.toDateString();
-                newDate = new Date( Date.parse( newDate ) );
-                $('#checkout_id').datepicker("option","minDate",newDate);
-            }
-        }); 
-    });
+
 
 </script>
 <!---/End-date-piker---->
@@ -177,13 +186,15 @@
                     <div class="form-group">
                         <label class="control-label col-md-3">Check In</label>
                         <div class="col-md-7">
-                            <input type="text" class="date form-control" id="checkin_id" ng-model="checkin" name="checkin" Placeholder="Check-In date" required />
+                            <input type="text" class="date form-control" id="datepicker" ng-model="checkin" name="checkin" Placeholder="Check-In date" required disabled=true/>
+							<input type="hidden" name="hdnDate1" id="hdnDate1" value = "<?php echo $checkin?>" />
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-md-3">Check Out</label>
                         <div class="col-md-7">
-                            <input type="text" class="date form-control" id="checkout_id" ng-model="checkout" name="checkout" Placeholder="Check-Out date" required/>
+                            <input type="text" class="date form-control" id="datepicker1" ng-model="checkout" name="checkout" Placeholder="Check-Out date" required disabled=true/>
+							<input type="hidden" name="hdnDate2" id="hdnDate2" value = "<?php echo $checkout?>" />
                         </div>
                     </div>
                     <div class="form-group">

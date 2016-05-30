@@ -11,6 +11,8 @@ var app = angular.module('accomodationApp', ['ngMessages']);
 });*/
 
 app.controller('roomAvailabilityController', function($scope, $http) {
+	$scope.checkin = $("#hdnDate1").val();
+	$scope.checkout = $("#hdnDate2").val();
 	
 	//$scope.form={};
 	function ReadCookie()

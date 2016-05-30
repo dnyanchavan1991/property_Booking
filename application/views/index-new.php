@@ -22,8 +22,55 @@
 	
 	<script type="text/javascript">
 	$(function() {
-		$( "#datepicker,#datepicker1" ).datepicker();
+		    $("#datepicker").datepicker({
+				numberOfMonths: 2,
+				
+				minDate: new Date(),
+				onSelect: function (selected) {
+					var dt = new Date(selected);
+					dt.setDate(dt.getDate() + 1);
+					$("#datepicker1").datepicker("option", "minDate", dt);
+				}
+			});
+			$("#datepicker1").datepicker({
+				numberOfMonths: 2,
+				minDate : new Date(),
+				onSelect: function (selected) {
+					var dt = new Date(selected);
+					dt.setDate(dt.getDate() - 1);
+					$("#datepicker").datepicker("option", "maxDate", dt);
+				}
+			});
+			
+			
+		
 	});
+	function validateForm(){			
+			var ret_flag = true;
+				if($("#inpDestination").val() == "")
+				{
+					if(confirm("Would you like to visit all Destination Properties?")){
+						ret_flag = true;
+					} else {
+						ret_flag = false;
+					}					
+				} 
+				if($("#datepicker").val() == "Arrival Date" || $("#datepicker").val() == "")
+				{
+					alert("Please provide Tentative Travel Start Date");
+					ret_flag = false;
+				}
+				if($("#datepicker1").val() == "Departure Date" || $("#datepicker1").val() == "")
+				{
+					alert("Please provide Tentative Travel End Date");
+					ret_flag = false;
+				}
+			
+				if (ret_flag === false)
+					return false;
+				else 
+					return true;
+			}
 	$(document).ready(function() {
 		$("#owl-demo").owlCarousel({
 			items : 1,
@@ -147,13 +194,13 @@
 						 <li  class="span1_of_1 left">
 							 <!--<h5>Arrival</h5>-->
 							 <div class="book_date">
-								 <input class="date" id="datepicker" type="text" autocomplete="off" ng-model="checkInDate" name="checkIn" id="checkIn" value="" onfocus="this.value = '';" >
+								 <input class="date" id="datepicker" type="text" autocomplete="off" ng-model="checkInDate" name="checkIn"  value="" onfocus="this.value = '';" >
 							 </div>					
 						 </li>
 						 <li  class="span1_of_1 left">
 							<!-- <h5>Depature</h5>-->
 							 <div class="book_date">
-								<input class="date" id="datepicker1" type="text" autocomplete="off" ng-model="checkOutDate" name="checkOut" id="checkOut" value="" onfocus="this.value = '';" >
+								<input class="date" id="datepicker1" type="text" autocomplete="off" ng-model="checkOutDate" name="checkOut"  value="" onfocus="this.value = '';" >
 						     </div>		
 						 </li>
 						  <li class="span1_of_1 left" id="aaa" style="display:none;">
@@ -172,7 +219,7 @@
 						  </li>
 						 <li class="span1_of_3 left">
 								<div class="date_btn">
-									<input style="margin-top: 0px !important;" type="submit" name="submit" value="View Prices" />
+									<input style="margin-top: 0px !important;" type="submit" name="submit" value="View Prices"  onclick="return validateForm();"/>
 								</div>
 						 </li>
 						 <div class="clearfix"></div>

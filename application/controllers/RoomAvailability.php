@@ -10,8 +10,7 @@ class RoomAvailability extends CI_Controller {
 	public function index() { 
 	 	 if (isset ( $_POST ['submit'] ))  
 			{ 
-			$checkin = $_POST ['checkIn']; 
-			//$checkin = str_replace ( '/', '-', $checkin ); 
+			$checkin = $_POST ['checkIn']; 			
 			$checkin = date ('Y-m-d', strtotime ( $checkin ));  
 			$checkout = $_POST ['checkOut'];
 		//	$checkout = str_replace ( '/', '-', $checkout );
@@ -22,8 +21,18 @@ class RoomAvailability extends CI_Controller {
 			$this->session->set_userdata ( 'guestCount',$_POST['guestCount'] );
 			$this->session->set_userdata ( 'destination', $_POST['inpDestination'] );
 			$this->session->set_userdata ( 'propertyType',$_POST['propertyType']);
+			
+			$data1 = array(
+				'inpDestination' => $_POST['inpDestination'],
+				'checkIn' => $checkin,
+				'checkOut'=> $checkout,
+				'guestCount' =>$_POST['guestCount'],
+				'propertyType'=>$_POST['propertyType']
+				
+			);
+			
 	 	}
-	$this->load->view ( 'search-new.php' );
+	$this->load->view ( 'search-new.php', $data1 );
 	
 	
 	}

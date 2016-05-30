@@ -6,6 +6,12 @@ angular.module('checkRoomAvailabilityApp', ['angularUtils.directives.dirPaginati
 			$scope.propertyTypeNames = response.data;
 		});
 		/*--*/
+		$scope.inputDestination = $("#hdnDest").val();
+		$scope.checkInDate = $("#hdnDate1").val();
+		$scope.checkOutDate = $("#hdnDate2").val();
+		$scope.selectAccomodationTYpe = $("#hdnProp").val();
+		$scope.selectGuestHeadCount = $("#hdnGuest").val();
+		
 		$scope.getRoomAvailability = function() {
 		//	alert($scope.sortByFilter);
 			if ($scope.sortByFilter == null)
