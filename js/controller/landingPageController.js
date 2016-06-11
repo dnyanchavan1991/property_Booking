@@ -1,4 +1,4 @@
-angular.module('landingPageApp', [])
+angular.module('landingPageApp', ['ngMessages'])
 				.controller('landingPageCntrl', function($scope, $http) {
 					 $scope.displayFlag = false;
 					 $scope.inputDestination = "";
@@ -54,10 +54,11 @@ angular.module('landingPageApp', [])
 	         })
 	          .success(function(data) {
 				  if(data.count==0){
-					  alert('Please Enter Valid Username & Password.');
+                       form.error = 'Please Enter Valid Username & Password.';
+					  //alert('Please Enter Valid Username & Password.');
 	        	  }
 	        		  else{
-						   alert('Login successful.');
+						   //alert('Login successful.');
 						  function WriteCookie()
 	        	            {
 	        	             
@@ -96,9 +97,10 @@ angular.module('landingPageApp', [])
 	          .success(function(data) { 
 	        	
 	        	  if(data.count == 0){
-	        		  alert('Please Enter Valid Username & Password.');
+	        		  //alert('Please Enter Valid Username & Password.');
+                      form.error = 'Please Enter Valid Username & Password.';
 	        	  } else{
-					     alert(successMessage);					     
+					     //alert(successMessage);
 					   if($scope.form.firstName == null || $scope.form.username != ""){
 						 	window.location.href='Redirecting';
 	        		     }

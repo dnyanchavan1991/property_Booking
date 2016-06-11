@@ -15,6 +15,7 @@
     <!-- requried-jsfiles-for owl -->
     <link href="css/new-theme/owl.carousel.css" rel="stylesheet">
     <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/angular-messages.min.js"></script>
     <script type="text/javascript" src="js/controller/landingPageController.js"></script>
 
     <script type="text/javascript" src="js/global/global_url_variable.js"></script>
@@ -109,24 +110,33 @@
     <div class="container col-md-5 col-md-offset-3">
         <h3 id="loginTitle">Sign Up</h3>
         <div ng-controller="loginCtrl">
+            <div ng-if="form.error" class="alert alert-danger">{{form.error}}</div>
             <form ng-submit="authenticateAdmin()">
                 <div class="form-group">
                     <input type="text" id="firstName" placeholder="First Name" ng-model="form.firstName" class="form-control login-field" required>
+                    <span ng-show="form.firstName.$touched && form.firstName.$invalid">First name is required</span>
                 </div>
                 <div class="form-group">
                     <input type="text" id="lastName" placeholder="Last Name" ng-model="form.lastName" class="form-control login-field" required>
+                    <span ng-show="form.lastName.$dirty && form.lastName.$error.required">Last name is required</span>
                 </div>
                 <div class="form-group">
-                    <input type="text" id="mobileNumber" placeholder="Mobile Number" ng-model="form.mobileNumber" class="form-control login-field" required>
+                    <input type="text" id="mobileNumber" placeholder="Mobile Number" ng-model="form.mobileNumber" class="form-control login-field" ng-pattern="/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/" required>
+                    <span ng-show="form.mobileNumber.$dirty && form.mobileNumber.$error.required">Mobile number is required</span>
+                    <span ng-show="form.mobileNumber.$dirty && form.mobileNumber.$error.pattern">Must be a valid 10 digit phone number</span>
                 </div>
                 <div class="form-group">
                     <input type="text" id="email" placeholder="Email" ng-model="form.email" class="form-control login-field" required>
+                    <span ng-show="form.email.$dirty && form.email.$error.required">Email Address is required</span>
+                    <span ng-show="form.email.$dirty && form.email.$error.email">Your email address is invalid</span>
                 </div>
                 <div class="form-group">
                     <input type="text" id="username" placeholder="Username" ng-model="form.username" class="form-control login-field" required>
+                    <span ng-show="form.username.$dirty && form.username.$error.required">Username is required</span>
                 </div>
                 <div class="form-group">
                     <input type="password" id="login-pass" placeholder="Password" ng-model="form.password" class="form-control login-field" required>
+                    <span ng-show="form.password.$dirty && form.password.$error.required">Password is required</span>
                 </div>
                 <div class="form-group">
                     <input type="hidden" name="access_type" id="access_type" ng-model="form.access_type" ng_init="form.access_type='user'">
@@ -164,7 +174,7 @@
             <div class="modal-body login-modal">
                 <div class="clearfix"></div>
                 <div id='social-icons-conatainer'>
-                    <div class='modal-body-left'ng-controller="loginCtrl">
+                    <div class='modal-body-left' ng-controller="loginCtrl">
                         <h3 style="text-align: center; margin-top: 0px;">Admin</h3>
                         <div class="form-group">
                             <input type="text" id="username" placeholder="Username" ng-model="form.username" class="form-control login-field">
