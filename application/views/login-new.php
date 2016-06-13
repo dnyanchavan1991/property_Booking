@@ -39,12 +39,21 @@
         $('#mobileNumber').toggle();
         $('#email').toggle();
 
+        $('#firstNameLabel').toggle();
+        $('#lastNameLabel').toggle();
+        $('#mobileNumberLabel').toggle();
+        $('#emailLabel').toggle();
+
         if ($('#signUp_status_text').text() == "Already have an account? Login!") {
             $('#signUp_status_text').text("Don't have an account? Sign Up!");
             $("#firstName").attr("disabled", "disabled");
             $("#lastName").attr("disabled", "disabled");
             $("#mobileNumber").attr("disabled", "disabled");
             $("#email").attr("disabled", "disabled");
+            $("#firstNameLabel").attr("disabled", "disabled");
+            $("#lastNameLabel").attr("disabled", "disabled");
+            $("#mobileNumberLabel").attr("disabled", "disabled");
+            $("#emailLabel").attr("disabled", "disabled");
             $('#lgnBtn').text("Login");
             $('#loginTitle').text("Login");
         } else{
@@ -55,6 +64,10 @@
             $("#lastName").removeAttr("disabled");
             $("#mobileNumber").removeAttr("disabled");
             $("#email").removeAttr("disabled");
+            $("#firstNameLabel").removeAttr("disabled");
+            $("#lastNameLabel").removeAttr("disabled");
+            $("#mobileNumberLabel").removeAttr("disabled");
+            $("#emailLabel").removeAttr("disabled");
 
         }
     }
@@ -113,7 +126,8 @@
             <div ng-if="form.error" class="alert alert-danger">{{form.error}}</div>
             <form novalidate ng-submit="form.$valid && authenticateAdmin()" class="angular-msgs">
                 <div class="form-group">
-                    <input type="text" id="firstName" name="firstName" ng-pattern="/^[a-zA-Z ]*$/" placeholder="First Name" ng-model="firstName" class="form-control login-field" required>
+                    <div id="firstNameLabel" class="loginLabel">First Name:</div>
+                    <input type="text" id="firstName" name="firstName" ng-pattern="/^[a-zA-Z ]*$/" placeholder="First Name" ng-model="firstName" class="form-control login-field loginField" required>
                     <div id="ng-error" ng-messages="form.firstName.$error" ng-if="form.firstName.$dirty">
                         <div ng-message="required">This field is required</div>
                         <div ng-message="pattern">Only characters & space allowed</div>
@@ -121,7 +135,8 @@
                     <!--<span ng-show="form.firstName.$touched && form.firstName.$invalid">First name is required</span>-->
                 </div>
                 <div class="form-group">
-                    <input type="text" id="lastName" name="lastName" ng-pattern="/^[a-zA-Z ]*$/" placeholder="Last Name" ng-model="lastName" class="form-control login-field" required>
+                    <div id="lastNameLabel" class="loginLabel">Last Name:</div>
+                    <input type="text" id="lastName" name="lastName" ng-pattern="/^[a-zA-Z ]*$/" placeholder="Last Name" ng-model="lastName" class="form-control login-field loginField" required>
                     <div id="ng-error" ng-messages="form.lastName.$error" ng-if="form.lastName.$dirty">
                         <div ng-message="required">This field is required</div>
                         <div ng-message="pattern">Only characters & space allowed</div>
@@ -129,12 +144,14 @@
                     <!--<span ng-show="form.lastName.$dirty && form.lastName.$error.required">Last name is required</span>-->
                 </div>
                 <div class="form-group">
-                    <input type="text" id="mobileNumber" placeholder="Mobile Number" ng-model="mobileNumber" class="form-control login-field" ng-pattern="/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/" required>
+                    <div id="mobileNumberLabel" class="loginLabel">Mobile Number:</div>
+                    <input type="text" id="mobileNumber" placeholder="Mobile Number" ng-model="mobileNumber" class="form-control login-field loginField" ng-pattern="/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/" required>
                     <span ng-show="form.mobileNumber.$dirty && form.mobileNumber.$error.required">Mobile number is required</span>
                     <span ng-show="form.mobileNumber.$dirty && form.mobileNumber.$error.pattern">Must be a valid 10 digit phone number</span>
                 </div>
                 <div class="form-group">
-                    <input type="text" id="email" name="email" ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" placeholder="Email" ng-model="email" class="form-control login-field" required>
+                    <div id="emailLabel" class="loginLabel">Email:</div>
+                    <input type="text" id="email" name="email" ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" placeholder="Email" ng-model="email" class="form-control login-field loginField" required>
                     <div id="ng-error" ng-messages="form.email.$error" ng-if="form.email.$dirty">
                         <div ng-message="required">This field is required</div>
                         <div ng-message="pattern">Your email address is invalid</div>
@@ -143,12 +160,20 @@
                     <span ng-show="form.email.$dirty && form.email.$error.email">Your email address is invalid</span>-->
                 </div>
                 <div class="form-group">
-                    <input type="text" id="username" placeholder="Username" ng-model="username" class="form-control login-field" required>
-                    <span ng-show="form.username.$dirty && form.username.$error.required">Username is required</span>
+                    <div class="loginLabel">UserName:</div>
+                    <input type="text" id="username" placeholder="Username" ng-model="username" class="form-control login-field loginField" required>
+                    <div id="ng-error" ng-messages="form.username.$error" ng-if="form.username.$dirty">
+                        <div ng-message="required">This field is required</div>
+                    </div>
+                    <!--<span ng-show="form.username.$dirty && form.username.$error.required">Username is required</span>-->
                 </div>
                 <div class="form-group">
-                    <input type="password" id="login-pass" placeholder="Password" ng-model="password" class="form-control login-field" required>
-                    <span ng-show="form.password.$dirty && form.password.$error.required">Password is required</span>
+                    <div class="loginLabel">Password:</div>
+                    <input type="password" id="login-pass" placeholder="Password" ng-model="password" class="form-control login-field loginField" required>
+                    <div id="ng-error" ng-messages="form.password.$error" ng-if="form.password.$dirty">
+                        <div ng-message="required">This field is required</div>
+                    </div>
+                    <!--<span ng-show="form.password.$dirty && form.password.$error.required">Password is required</span>-->
                 </div>
                 <div class="form-group">
                     <input type="hidden" name="access_type" id="access_type" ng-model="access_type" ng_init="access_type='user'">
@@ -189,15 +214,15 @@
                     <div class='modal-body-left' ng-controller="loginCtrl">
                         <h3 style="text-align: center; margin-top: 0px;">Admin</h3>
                         <div class="form-group">
-                            <input type="text" id="username" placeholder="Username" ng-model="form.username" class="form-control login-field">
+                            <input type="text" id="username" placeholder="Username" ng-model="form.username" class="form-control login-field loginField">
                         </div>
 
                         <div class="form-group">
-                            <input type="password" id="login-pass" placeholder="Password" ng-model="form.password" class="form-control login-field">
+                            <input type="password" id="login-pass" placeholder="Password" ng-model="form.password" class="form-control login-field loginField">
                         </div>
 
                         <div class="form-group">
-                            <input type="hidden" name="access_type" id="access_type"  ng-model="form.access_type" value="user" ng_init="form.access_type='user'" class="form-control login-field">
+                            <input type="hidden" name="access_type" id="access_type"  ng-model="form.access_type" value="user" ng_init="form.access_type='user'" class="form-control login-field loginField">
                         </div>
 
                         <div class="form-group">

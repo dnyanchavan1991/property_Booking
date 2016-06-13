@@ -828,7 +828,7 @@ margin-left: 1em;
 }
 .reservation ul li.span1_of_3{
 	width: 18.33333%;
-	margin-left: 1emx;
+	margin-left: 1em;
 }
 .reservation h5{
 	font-size: 15px;
@@ -1501,6 +1501,14 @@ color: #6A6B6C;
 width: 100%;
 margin: 10px 0;
 line-height:1.5em;
+}
+.loginLabel {
+    text-align: left !important;
+    width: 20%;
+    float: left;
+}
+.loginField {
+    width: 75% !important;
 }
 .items li{
 display: inline-block;
