@@ -72,14 +72,14 @@
 					return true;
 			}
 	$(document).ready(function() {
-		$("#owl-demo").owlCarousel({
+		/*$("#owl-demo").owlCarousel({
 			items : 1,
 			lazyLoad : true,
 			autoPlay : true,
 			navigation : true,
 			navigationText :  false,
 			pagination : false,
-		});
+		});*/
 		
 		// Vish - trying to keep search bar fixed if vertical scroll happens
 		var offset = $('.online_reservation').offset();

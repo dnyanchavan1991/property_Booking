@@ -1,4 +1,4 @@
-angular.module('landingPageApp', ['ngMessages'])
+angular.module('landingPageApp', [])
 				.controller('landingPageCntrl', function($scope, $http) {
 					 $scope.displayFlag = false;
 					 $scope.inputDestination = "";
@@ -76,21 +76,26 @@ angular.module('landingPageApp', ['ngMessages'])
       }
     $scope.authenticateAdmin=function()
     {
-    	$scope.form.call_back_url = window.location;
-    	if($scope.form.firstName==null && $scope.form.lastName==null  && $scope.form.mobileNumber==null  && $scope.form.email==null)
+    	$scope.call_back_url = window.location;
+    	 var data = null;
+    	 var successMessage = null;
+    	if($scope.firstName == null && $scope.lastName == null  && $scope.mobileNumber == null  && $scope.email == null)
     	{
+    		//alert("login started");
     		var webUrl='Login/authenticate/';
-    			var successMessage='Login successful.';
-    			
+    		successMessage='Login successful.';
+    			 data = {username: $scope.username,password: $scope.password, access_type: $scope.access_type, call_back_url: $scope.call_back_url};
     	}
     	else{
+    		//alert("registration started");
     		var webUrl=' Registration/insertRegistrationData/';
-    		var successMessage='Registeration successful.';
+    		 successMessage='Registeration successful.';
+    		data = {username: $scope.username, password: $scope.password, firstName: $scope.firstName, lastName: $scope.lastName, mobileNumber: $scope.mobileNumber, email: $scope.email, call_back_url: $scope.call_back_url};
     	}
     	$http({
 	          method  : 'POST',
 	          url     : webUrl,
-	          data    : $scope.form //forms user object
+	          data    : data //forms user object
 	         // datatype:"json"
 	          
 	         })
@@ -100,12 +105,12 @@ angular.module('landingPageApp', ['ngMessages'])
 	        		  //alert('Please Enter Valid Username & Password.');
                       form.error = 'Please Enter Valid Username & Password.';
 	        	  } else{
-					     //alert(successMessage);
-					   if($scope.form.firstName == null || $scope.form.username != ""){
-						 	window.location.href='Redirecting';
+					//    alert(successMessage);
+					   if($scope.firstName == null ){
+						   window.location.href='Redirecting';
 	        		     }
 					   else{
-						     window.location.href='Index1';
+						    window.location.href='Index1';
 						   // window.location.href=$this->session->userdata('call_back_url');
 					   }
 	        	  }

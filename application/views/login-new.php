@@ -123,56 +123,58 @@
     <div class="container col-md-5 col-md-offset-3">
         <h3 id="loginTitle">Sign Up</h3>
         <div ng-controller="loginCtrl">
-            <div ng-if="form.error" class="alert alert-danger">{{form.error}}</div>
-            <form novalidate ng-submit="form.$valid && authenticateAdmin()" class="angular-msgs">
+            
+            <form  novalidate="" ng-submit="authenticateAdmin()" class="angular-msgs">
+			 
                 <div class="form-group">
                     <div id="firstNameLabel" class="loginLabel">First Name:</div>
                     <input type="text" id="firstName" name="firstName" ng-pattern="/^[a-zA-Z ]*$/" placeholder="First Name" ng-model="firstName" class="form-control login-field loginField" required>
-                    <div id="ng-error" ng-messages="form.firstName.$error" ng-if="form.firstName.$dirty">
+                  <!--  <div id="ng-error" ng-messages="form.firstName.$error" >
                         <div ng-message="required">This field is required</div>
                         <div ng-message="pattern">Only characters & space allowed</div>
-                    </div>
+                    </div > -->
                     <!--<span ng-show="form.firstName.$touched && form.firstName.$invalid">First name is required</span>-->
                 </div>
                 <div class="form-group">
                     <div id="lastNameLabel" class="loginLabel">Last Name:</div>
                     <input type="text" id="lastName" name="lastName" ng-pattern="/^[a-zA-Z ]*$/" placeholder="Last Name" ng-model="lastName" class="form-control login-field loginField" required>
-                    <div id="ng-error" ng-messages="form.lastName.$error" ng-if="form.lastName.$dirty">
+                  <!--  <div id="ng-error" ng-messages="form.lastName.$error" ng-if="form.lastName.$dirty">
                         <div ng-message="required">This field is required</div>
                         <div ng-message="pattern">Only characters & space allowed</div>
-                    </div>
+                    </div>-->
                     <!--<span ng-show="form.lastName.$dirty && form.lastName.$error.required">Last name is required</span>-->
                 </div>
                 <div class="form-group">
                     <div id="mobileNumberLabel" class="loginLabel">Mobile Number:</div>
                     <input type="text" id="mobileNumber" placeholder="Mobile Number" ng-model="mobileNumber" class="form-control login-field loginField" ng-pattern="/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/" required>
-                    <span ng-show="form.mobileNumber.$dirty && form.mobileNumber.$error.required">Mobile number is required</span>
-                    <span ng-show="form.mobileNumber.$dirty && form.mobileNumber.$error.pattern">Must be a valid 10 digit phone number</span>
+                  
+<!--				  <span ng-show="form.mobileNumber.$dirty && form.mobileNumber.$error.required">Mobile number is required</span>
+                    <span ng-show="form.mobileNumber.$dirty && form.mobileNumber.$error.pattern">Must be a valid 10 digit phone number</span>-->
                 </div>
                 <div class="form-group">
                     <div id="emailLabel" class="loginLabel">Email:</div>
                     <input type="text" id="email" name="email" ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" placeholder="Email" ng-model="email" class="form-control login-field loginField" required>
-                    <div id="ng-error" ng-messages="form.email.$error" ng-if="form.email.$dirty">
+                  <!--  <div id="ng-error" ng-messages="form.email.$error" ng-if="form.email.$dirty">
                         <div ng-message="required">This field is required</div>
                         <div ng-message="pattern">Your email address is invalid</div>
-                    </div>
+                    </div>-->
                     <!--<span ng-show="form.email.$dirty && form.email.$error.required">Email Address is required</span>
                     <span ng-show="form.email.$dirty && form.email.$error.email">Your email address is invalid</span>-->
                 </div>
                 <div class="form-group">
                     <div class="loginLabel">UserName:</div>
                     <input type="text" id="username" placeholder="Username" ng-model="username" class="form-control login-field loginField" required>
-                    <div id="ng-error" ng-messages="form.username.$error" ng-if="form.username.$dirty">
+                <!--    <div id="ng-error" ng-messages="form.username.$error" ng-if="form.username.$dirty">
                         <div ng-message="required">This field is required</div>
-                    </div>
+                    </div>-->
                     <!--<span ng-show="form.username.$dirty && form.username.$error.required">Username is required</span>-->
                 </div>
                 <div class="form-group">
                     <div class="loginLabel">Password:</div>
                     <input type="password" id="login-pass" placeholder="Password" ng-model="password" class="form-control login-field loginField" required>
-                    <div id="ng-error" ng-messages="form.password.$error" ng-if="form.password.$dirty">
+                 <!--   <div id="ng-error" ng-messages="form.password.$error" ng-if="form.password.$dirty">
                         <div ng-message="required">This field is required</div>
-                    </div>
+                    </div>-->
                     <!--<span ng-show="form.password.$dirty && form.password.$error.required">Password is required</span>-->
                 </div>
                 <div class="form-group">
