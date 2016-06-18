@@ -10,12 +10,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <script src="js/new-theme/jquery.min.js"></script>
-    <script src="js/new-theme/bootstrap.js"></script>
+    <script src="js/new-theme/jquery.validate.js"></script>
 
     <!-- requried-jsfiles-for owl -->
     <link href="css/new-theme/owl.carousel.css" rel="stylesheet">
     <script type="text/javascript" src="js/angular.min.js"></script>
-    <script type="text/javascript" src="js/angular-messages.min.js"></script>
     <script type="text/javascript" src="js/controller/landingPageController.js"></script>
 
     <script type="text/javascript" src="js/global/global_url_variable.js"></script>
@@ -32,6 +31,69 @@
 <link rel="stylesheet" href="css/jquery-ui.css" />
 <script src="js/jquery-ui.js"></script>
 <script>
+
+    $().ready(function() {
+        // validate signup form on keyup and submit
+        $("#signupForm").validate({
+            rules: {
+                firstName: {
+                    required: true,
+                    minlength: 2
+                },
+                lastName: {
+                    required: true,
+                    minlength: 2
+                },
+                mobileNumber: {
+                    required: true,
+                    digits: true,
+                    minlength: 10
+                },
+                username: {
+                    required: true,
+                    minlength: 2
+                },
+                password: {
+                    required: true,
+                    minlength: 5
+                },
+                email: {
+                    required: true,
+                    email: true
+                }
+            },
+            messages: {
+                firstName: {
+                    required: "Please enter a first name",
+                    minlength: "Your first name must consist of at least 2 characters"
+                },
+                lastName: {
+                    required: "Please enter a last name",
+                    minlength: "Your last name must consist of at least 2 characters"
+                },
+                mobileNumber: {
+                    required: "Please enter a last name",
+                    digit: "Only numbers are allowed",
+                    minlength: "Your number must be at least 10 numbers long"
+                },
+                username: {
+                    required: "Please enter a username",
+                    minlength: "Your username must consist of at least 2 characters"
+                },
+                password: {
+                    required: "Please provide a password",
+                    minlength: "Your password must be at least 5 characters long"
+                },
+                email: {
+                    required: "Please enter a email",
+                    email: "Please enter a valid email address"
+                }
+            },
+            submitHandler: function(form) {
+            }
+        });
+    });
+
     function toggleFields(){
         //alert('here');
         $('#firstName').toggle();
@@ -124,58 +186,31 @@
         <h3 id="loginTitle">Sign Up</h3>
         <div ng-controller="loginCtrl">
             
-            <form  novalidate="" ng-submit="authenticateAdmin()" class="angular-msgs">
+            <form id="signupForm" ng-submit="authenticateAdmin()">
 			 
                 <div class="form-group">
                     <div id="firstNameLabel" class="loginLabel">First Name:</div>
-                    <input type="text" id="firstName" name="firstName" ng-pattern="/^[a-zA-Z ]*$/" placeholder="First Name" ng-model="firstName" class="form-control login-field loginField" required>
-                  <!--  <div id="ng-error" ng-messages="form.firstName.$error" >
-                        <div ng-message="required">This field is required</div>
-                        <div ng-message="pattern">Only characters & space allowed</div>
-                    </div > -->
-                    <!--<span ng-show="form.firstName.$touched && form.firstName.$invalid">First name is required</span>-->
+                    <input type="text" id="firstName" name="firstName" placeholder="First Name" ng-model="firstName" class="form-control login-field loginField" required>
                 </div>
                 <div class="form-group">
                     <div id="lastNameLabel" class="loginLabel">Last Name:</div>
-                    <input type="text" id="lastName" name="lastName" ng-pattern="/^[a-zA-Z ]*$/" placeholder="Last Name" ng-model="lastName" class="form-control login-field loginField" required>
-                  <!--  <div id="ng-error" ng-messages="form.lastName.$error" ng-if="form.lastName.$dirty">
-                        <div ng-message="required">This field is required</div>
-                        <div ng-message="pattern">Only characters & space allowed</div>
-                    </div>-->
-                    <!--<span ng-show="form.lastName.$dirty && form.lastName.$error.required">Last name is required</span>-->
+                    <input type="text" id="lastName" name="lastName" placeholder="Last Name" ng-model="lastName" class="form-control login-field loginField" required>
                 </div>
                 <div class="form-group">
                     <div id="mobileNumberLabel" class="loginLabel">Mobile Number:</div>
-                    <input type="text" id="mobileNumber" placeholder="Mobile Number" ng-model="mobileNumber" class="form-control login-field loginField" ng-pattern="/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/" required>
-                  
-<!--				  <span ng-show="form.mobileNumber.$dirty && form.mobileNumber.$error.required">Mobile number is required</span>
-                    <span ng-show="form.mobileNumber.$dirty && form.mobileNumber.$error.pattern">Must be a valid 10 digit phone number</span>-->
+                    <input type="text" name="mobileNumber" id="mobileNumber" placeholder="Mobile Number" ng-model="mobileNumber" class="form-control login-field loginField" required>
                 </div>
                 <div class="form-group">
                     <div id="emailLabel" class="loginLabel">Email:</div>
-                    <input type="text" id="email" name="email" ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" placeholder="Email" ng-model="email" class="form-control login-field loginField" required>
-                  <!--  <div id="ng-error" ng-messages="form.email.$error" ng-if="form.email.$dirty">
-                        <div ng-message="required">This field is required</div>
-                        <div ng-message="pattern">Your email address is invalid</div>
-                    </div>-->
-                    <!--<span ng-show="form.email.$dirty && form.email.$error.required">Email Address is required</span>
-                    <span ng-show="form.email.$dirty && form.email.$error.email">Your email address is invalid</span>-->
+                    <input type="text" id="email" name="email" placeholder="Email" ng-model="email" class="form-control login-field loginField" required>
                 </div>
                 <div class="form-group">
                     <div class="loginLabel">UserName:</div>
                     <input type="text" id="username" placeholder="Username" ng-model="username" class="form-control login-field loginField" required>
-                <!--    <div id="ng-error" ng-messages="form.username.$error" ng-if="form.username.$dirty">
-                        <div ng-message="required">This field is required</div>
-                    </div>-->
-                    <!--<span ng-show="form.username.$dirty && form.username.$error.required">Username is required</span>-->
                 </div>
                 <div class="form-group">
                     <div class="loginLabel">Password:</div>
-                    <input type="password" id="login-pass" placeholder="Password" ng-model="password" class="form-control login-field loginField" required>
-                 <!--   <div id="ng-error" ng-messages="form.password.$error" ng-if="form.password.$dirty">
-                        <div ng-message="required">This field is required</div>
-                    </div>-->
-                    <!--<span ng-show="form.password.$dirty && form.password.$error.required">Password is required</span>-->
+                    <input type="password" id="password" placeholder="Password" ng-model="password" class="form-control login-field loginField" required>
                 </div>
                 <div class="form-group">
                     <input type="hidden" name="access_type" id="access_type" ng-model="access_type" ng_init="access_type='user'">

@@ -1510,6 +1510,13 @@ line-height:1.5em;
 .loginField {
     width: 75% !important;
 }
+#signupForm label.error {
+    width: 60%;
+    color: red;
+    text-align: left;
+    font-size: 14px;
+    font-weight: unset;
+}
 .items li{
 display: inline-block;
 list-style-type: none;

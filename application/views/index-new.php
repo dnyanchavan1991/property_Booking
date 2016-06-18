@@ -10,11 +10,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<script src="js/new-theme/jquery.min.js"></script>
-	<script src="js/new-theme/bootstrap.js"></script>
+	<script src="js/bootstrap.js"></script>
 
 	<!-- requried-jsfiles-for owl -->
+    <script src="js/new-theme/owl.carousel.js"></script>
 	<link href="css/new-theme/owl.carousel.css" rel="stylesheet">
 	<script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/angular-messages.min.js"></script>
 	<script type="text/javascript" src="js/controller/landingPageController.js"></script>
 
 	<script type="text/javascript" src="js/global/global_url_variable.js"></script>

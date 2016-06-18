@@ -97,10 +97,10 @@ angular.module('landingPageApp', [])
 	          url     : webUrl,
 	          data    : data //forms user object
 	         // datatype:"json"
-	          
+
 	         })
-	          .success(function(data) { 
-	        	
+	          .success(function(data) {
+
 	        	  if(data.count == 0){
 	        		  //alert('Please Enter Valid Username & Password.');
                       form.error = 'Please Enter Valid Username & Password.';
@@ -115,8 +115,8 @@ angular.module('landingPageApp', [])
 					   }
 	        	  }
 	          });
-    	
-   
+
+
     }
 })
 

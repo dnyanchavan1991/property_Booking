@@ -1,4 +1,4 @@
-var app = angular.module('getRoomDetailApp', ['angularUtils.directives.dirPagination']); //,'ngMessages'
+var app = angular.module('getRoomDetailApp', ['angularUtils.directives.dirPagination,ngMessages']); //,'ngMessages'
 
 app.controller('getRoomDetailController',function($scope, $http){
 	
