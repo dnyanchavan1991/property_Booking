@@ -90,6 +90,8 @@
                 }
             },
             submitHandler: function(form) {
+                /*alert('is good');
+                return false;*/
             }
         });
     });

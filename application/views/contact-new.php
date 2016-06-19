@@ -11,7 +11,6 @@
 
         <script src="js/new-theme/jquery.min.js"></script>
         <script src="js/new-theme/jquery.validate.js"></script>
-       <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
         <script src="js/new-theme/jquery.magnific-popup.js"></script>
         <!--<script src="js/new-theme/bootstrap.js"></script>
         <script src="js/new-theme/bootstrap.min.js"></script>-->
@@ -143,7 +142,7 @@
                 autoPlay : true,
                 navigation : true,
                 navigationText :  false,
-                pagination : false,
+                pagination : false
             });
 			(function(){
 				$(".banner").hide();
@@ -376,35 +375,20 @@
                             <div id="section5" class="detailed-row" style="display: none">
                              <!--   <h2>Reviews</h2>-->
                                 <div class="contact-form detailed-contact-form">
-                                    <form name="reviewForm" novalidate ng-submit="reviewForm.$valid && processForm()" class="angular-msgs">
+                                    <form name="reviewForm" ng-submit="processForm()">
 
                                         <?php if(isset($name) && isset($email_address)){?>
                                             <input type="text" id="customer_name" ng-model="customer_name" placeholder="Name" ng-init="customer_name='<?php echo $name;?>'" readonly>
                                             <input type="text" ng-model="customer_email" placeholder="Email" ng-init="customer_email='<?php echo $email_address;?>'" readonly>
                                         <?php } else{?>
-
-                                            <input type="text" id="customer_name" ng-model="customer_name" name="customer_name" ng-pattern="/^[a-zA-Z ]*$/" placeholder="Name" ng-value="" required>
-                                            <!--<div ng-messages="reviewForm.customer_name.$error" ng-show="reviewForm.$submitted || reviewForm.customer_name.$dirty" role="alert">
-                                                <div ng-message="required">This field is required</div>
-                                                <div ng-message="pattern">Only characters & space allowed</div>
-                                            </div>-->
-                                            <input type="text" ng-model="customer_email" name="customer_email" ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" placeholder="Email" ng-value="" required>
-                                            <!--<div id="ng-error" ng-messages="reviewForm.customer_email.$error" ng-if="reviewForm.customer_email.$dirty">
-                                                <div ng-message="required">This field is required</div>
-                                                <div ng-message="pattern">Your email address is invalid</div>
-                                            </div>-->
+                                            <input type="text" id="customer_name" ng-model="customer_name" name="customer_name" placeholder="Name" required />
+                                            <input type="text" ng-model="customer_email" name="customer_email" placeholder="Email" required />
                                         <?php }?>
 
                                         <div class="clearfix"> </div>
 
-                                        <input class="date" id="datepicker" type="text" autocomplete="off" ng-model="review_checkin" name="review_checkin" id="review_checkin" placeholder="Check-In date" value="Check-In date" onfocus="this.value = '';" >
-                                        <!--<div id="ng-error" ng-messages="reviewForm.review_checkin.$error" ng-if="reviewForm.review_checkin.$dirty">
-                                            <div ng-message="required" >This field is required</div>
-                                        </div>-->
-                                        <input class="date" id="datepicker1" type="text" autocomplete="off" ng-model="review_checkout" name="review_checkout" id="review_checkout" placeholder="Check-Out date" value="Check-Out date" onfocus="this.value = '';" >
-                                        <!--<div id="ng-error" ng-messages="reviewForm.review_checkout.$error" ng-if="reviewForm.review_checkout.$dirty">
-                                            <div ng-message="required" >This field is required</div>
-                                        </div>-->
+                                        <input class="date" id="datepicker" type="text" autocomplete="off" ng-model="review_checkin" name="review_checkin" placeholder="Check-In date" value="Check-In date" onfocus="this.value = '';" >
+                                        <input class="date" id="datepicker1" type="text" autocomplete="off" ng-model="review_checkout" name="review_checkout" placeholder="Check-Out date" value="Check-Out date" onfocus="this.value = '';" >
 
                                         <div class="clearfix"> </div>
 
@@ -418,11 +402,6 @@
                                         </div>
 
                                         <textarea ng-model="review_given" ng-minlength="100" ng-maxlength="1000" name="review_given"  placeholder="Content...(max 1000)" required></textarea>
-                                        <!--<div id="ng-error" ng-messages="reviewForm.review_given.$error" ng-if="reviewForm.review_given.$dirty" >
-                                            <div ng-message="required">This field is required</div>
-                                            <div ng-message="minlength">Review must be over 100 characters</div>
-                                            <div ng-message="maxlength">Review must not exceed 1000 characters</div>
-                                        </div>-->
 
                                         <div class="clearfix"> </div>
 
@@ -488,10 +467,10 @@
                                                                        class="form-control" name="email_id" id="email_id"
                                                                        ng-model="form.email_id"
                                                                        ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" placeholder="Enter email" required />
-                                    <div id="ng-error" ng-messages="form.email_id.$error" ng-if="form.email_id.$dirty">
+                                    <!--<div id="ng-error" ng-messages="form.email_id.$error" ng-if="form.email_id.$dirty">
                                         <div ng-message="required">This field is required</div>
                                         <div ng-message="pattern">Your email address is invalid</div>
-                                    </div>
+                                    </div>-->
                                 </div>
                                 <div class="" id="phone_div">
                                     <label for="email"></label> <input type="text"
@@ -499,10 +478,10 @@
                                                                        ng-model="form.phone"
                                                                        placeholder="Enter Phone/Mobile Number"
                                                                        ng-pattern="/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/" required />
-                                    <div id="ng-error" ng-messages="form.phone.$error" ng-if="form.phone.$dirty">
+                                    <!--<div id="ng-error" ng-messages="form.phone.$error" ng-if="form.phone.$dirty">
                                         <div ng-message="required">This field is required</div>
                                         <div ng-message="pattern">Must be a valid 10 digit phone number</div>
-                                    </div>
+                                    </div>-->
                                 </div>
                                 <div class="" id="inTime">
                                     <label for="checkIn"></label><input class="date" placeholder="CheckIn Date" autocomplete="false"
@@ -528,7 +507,7 @@
                                 <br>
                                 <input style="width: 32% !important;" type="submit" id="submit_div" value="Submit">
                             </form>
-                            <script src="js/jquery-ui.js"></script>
+                            <!--<script src="js/jquery-ui.js"></script>-->
                             <script>
                                 $(function() {
                                     $("#datepicker,#checkIn,#checkOut")
