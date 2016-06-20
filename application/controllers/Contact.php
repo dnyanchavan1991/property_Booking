@@ -55,6 +55,7 @@ class Contact extends CI_Controller {
 					
 			);
 			$mailStatus=$this->sendMail($mailDetailArray);
+            return $mailStatus;
 			
 			
 	/*	$header = 'MIME-Version: 1.0' . "\r\n";

@@ -87,34 +87,28 @@ app.controller('popupController', function($scope, $http) {
 				$scope.showModal = !$scope.showModal;
 			};
 			$scope.Contact_to_customer_enquiry = function(propertyId) {
-				alert("getRoomDetailController.js #88");
+                window.alert("hi!");
 				if($scope.form.email_id==null){
 					var enuiryVia='SMS' 
 				}
 				else{
-					var enuiryVia='Mail' 
-				
+					var enuiryVia='Mail'
 				}
 				$http(
 						{
 							method : 'POST',
 							url : 'Contact/Contact_to_customer_enquiry/'
 									+ propertyId + '/',
-							data : $scope.form, 
-
+							data : $scope.form
 						}).success(function(data) {
 					if (data.count == 0) {
-						
 						alert('Cannot send '+enuiryVia+'.');
 					} else {
 						alert(enuiryVia+' sent succesfuly.');
-
 					}
 				});
-
 				$scope.showModal = !$scope.showModal;
 			};
-
 		})
 app.directive(
 		'modal',

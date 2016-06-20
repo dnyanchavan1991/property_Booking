@@ -107,7 +107,7 @@
             });
 
             $('.send-mail').click(function() {
-                $('#phone_div').hide();
+                $('#phone_div').show();
                 $('#email_id_div').show();
             });
 
@@ -449,13 +449,11 @@
                     <div class="hotel-left-two" ng-app="getRoomDetailApp" ng-controller="popupController">
 
                         <p> Send </p>
-                        <!--<p> <label onclick="togglemailPopUp()" >Mail</label> | <label onclick="togglemessagePopUp()" >SMS</label> </p>-->
                         <a class = "send-mail" href="#send-form" >Email</a> |
                         <a class = "send-sms" href="#send-form">SMS</a>
 
                         <div id="send-form" class="zoom-anim-dialog mfp-hide">
-                      <!--  <modal id="modal"  ng-model="model" visible="showModal">-->
-                            <form  name="formData" class="enquiry-form contact-form detailed-contact-form" ng-submit="Contact_to_customer_enquiry(<?php echo "'$propertyId'"; ?>)">
+                            <form  name="formData" method="post" class="enquiry-form contact-form detailed-contact-form" ng-submit="Contact_to_customer_enquiry(<?php echo "'$propertyId'"; ?>)">
                                 <h4 class="tittle-one"><?php echo $propertyName;  ?></h4>
                                 <div class="" id="name">
                                     <label for="email"></label> <input type="text"
@@ -465,23 +463,13 @@
                                 <div class="" id="email_id_div">
                                     <label for="email"></label> <input type="text"
                                                                        class="form-control" name="email_id" id="email_id"
-                                                                       ng-model="form.email_id"
-                                                                       ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" placeholder="Enter email" required />
-                                    <!--<div id="ng-error" ng-messages="form.email_id.$error" ng-if="form.email_id.$dirty">
-                                        <div ng-message="required">This field is required</div>
-                                        <div ng-message="pattern">Your email address is invalid</div>
-                                    </div>-->
+                                                                       ng-model="form.email_id" placeholder="Enter email" required />
                                 </div>
                                 <div class="" id="phone_div">
                                     <label for="email"></label> <input type="text"
                                                                        class="form-control" name="phone" id="phone"
                                                                        ng-model="form.phone"
-                                                                       placeholder="Enter Phone/Mobile Number"
-                                                                       ng-pattern="/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/" required />
-                                    <!--<div id="ng-error" ng-messages="form.phone.$error" ng-if="form.phone.$dirty">
-                                        <div ng-message="required">This field is required</div>
-                                        <div ng-message="pattern">Must be a valid 10 digit phone number</div>
-                                    </div>-->
+                                                                       placeholder="Enter Phone/Mobile Number" required />
                                 </div>
                                 <div class="" id="inTime">
                                     <label for="checkIn"></label><input class="date" placeholder="CheckIn Date" autocomplete="false"
@@ -507,7 +495,6 @@
                                 <br>
                                 <input style="width: 32% !important;" type="submit" id="submit_div" value="Submit">
                             </form>
-                            <!--<script src="js/jquery-ui.js"></script>-->
                             <script>
                                 $(function() {
                                     $("#datepicker,#checkIn,#checkOut")
