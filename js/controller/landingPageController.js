@@ -90,7 +90,7 @@ angular.module('landingPageApp', [])
     		//alert("registration started");
     		var webUrl=' Registration/insertRegistrationData/';
     		 successMessage='Registeration successful.';
-    		data = {username: $scope.username, password: $scope.password, firstName: $scope.firstName, lastName: $scope.lastName, mobileNumber: $scope.mobileNumber, email: $scope.email, call_back_url: $scope.call_back_url};
+    		data = {username: $scope.username, password: $scope.password, firstName: $scope.firstName, lastName: $scope.lastName, mobileNumber: $scope.mobileNumber, email: $scope.email, gender: $scope.gender, date_of_birth: $scope.date_of_birth, call_back_url: $scope.call_back_url};
     	}
     	$http({
 	          method  : 'POST',

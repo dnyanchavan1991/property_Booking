@@ -33,6 +33,9 @@
 <script>
 
     $().ready(function() {
+        $(function() {
+            $( "#datepicker" ).datepicker();
+        });
         // validate signup form on keyup and submit
         $("#signupForm").validate({
             rules: {
@@ -102,11 +105,15 @@
         $('#lastName').toggle();
         $('#mobileNumber').toggle();
         $('#email').toggle();
+        $('#gender').toggle();
+        $('#datepicker').toggle();
 
         $('#firstNameLabel').toggle();
         $('#lastNameLabel').toggle();
         $('#mobileNumberLabel').toggle();
         $('#emailLabel').toggle();
+        $('#genderLabel').toggle();
+        $('#birthDateLabel').toggle();
 
         if ($('#signUp_status_text').text() == "Already have an account? Login!") {
             $('#signUp_status_text').text("Don't have an account? Sign Up!");
@@ -114,10 +121,14 @@
             $("#lastName").attr("disabled", "disabled");
             $("#mobileNumber").attr("disabled", "disabled");
             $("#email").attr("disabled", "disabled");
+            $("#gender").attr("disabled", "disabled");
+            $("#datepicker").attr("disabled", "disabled");
             $("#firstNameLabel").attr("disabled", "disabled");
             $("#lastNameLabel").attr("disabled", "disabled");
             $("#mobileNumberLabel").attr("disabled", "disabled");
             $("#emailLabel").attr("disabled", "disabled");
+            $("#genderLabel").attr("disabled", "disabled");
+            $("#birthDateLabel").attr("disabled", "disabled");
             $('#lgnBtn').text("Login");
             $('#loginTitle').text("Login");
         } else{
@@ -128,11 +139,14 @@
             $("#lastName").removeAttr("disabled");
             $("#mobileNumber").removeAttr("disabled");
             $("#email").removeAttr("disabled");
+            $("#gender").removeAttr("disabled");
+            $("#datepicker").removeAttr("disabled");
             $("#firstNameLabel").removeAttr("disabled");
             $("#lastNameLabel").removeAttr("disabled");
             $("#mobileNumberLabel").removeAttr("disabled");
             $("#emailLabel").removeAttr("disabled");
-
+            $("#genderLabel").removeAttr("disabled");
+            $("#birthDateLabel").removeAttr("disabled");
         }
     }
     $(document).ready(function() {
@@ -213,6 +227,18 @@
                 <div class="form-group">
                     <div class="loginLabel">Password:</div>
                     <input type="password" id="password" placeholder="Password" ng-model="password" class="form-control login-field loginField" required>
+                </div>
+                <div class="form-group">
+                    <div id="birthDateLabel" class="loginLabel">Date of Birth:</div>
+                    <input id="datepicker" type="text" autocomplete="off" ng-model="date_of_birth" name="date_of_birth" placeholder="Date of Birth" value="Date of Birth" onfocus="this.value = '';" class="form-control login-field loginField">
+                </div>
+                <div class="form-group">
+                    <div id="genderLabel" class="loginLabel">Gender:</div>
+                    <select id="gender" ng-model="gender" class="form-control login-field loginField">
+                        <option value="0">None</option>
+                        <option value="1">Male</option>
+                        <option value="2">Female</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <input type="hidden" name="access_type" id="access_type" ng-model="access_type" ng_init="access_type='user'">

@@ -35,7 +35,20 @@
     </div>
 
     <script>
+
         $().ready(function() {
+            var $remaining = $('#remaining'),
+                $messages = $remaining.next();
+
+            $('#enquiry').keyup(function(){
+                var chars = this.value.length,
+                    messages = Math.ceil(chars / 160),
+                    remaining = messages * 160 - (chars % (messages * 160) || messages * 160);
+
+                $remaining.text(remaining + ' characters remaining');
+                $messages.text(messages + ' message(s)');
+            });
+
             // validate review form on keyup and submit
             $("#reviewForm").validate({
                 rules: {
@@ -73,7 +86,7 @@
                     review_given: {
                         required: "Please provide your valuable review",
                         minlength: "Your review must be at least 100 characters long",
-                        maxlength: "Your review must be at least 100 characters long"
+                        maxlength: "Your review must be at least 1000 characters long"
                     },
                     customer_email: {
                         required: "Please enter a email",
@@ -104,8 +117,8 @@
                     },
                     enquiry: {
                         required: true,
-                        minlength: 100,
-                        maxlength: 1000
+                        minlength: 50,
+                        maxlength: 340
                     },
                     email_id: {
                         required: true,
@@ -123,18 +136,15 @@
                         minlength: "Your number must be at least 10 numbers long"
                     },
                     checkIn: {
-                        required: "Please enter a last name",
-                        minlength: "Your last name must consist of at least 2 characters"
+                        required: "Please enter check-in date"
                     },
                     checkOut: {
-                        required: "Please enter a last name",
-                        digit: "Only numbers are allowed",
-                        minlength: "Your number must be at least 10 numbers long"
+                        required: "Please enter check-out date"
                     },
                     enquiry: {
                         required: "Please provide your enquiry",
-                        minlength: "Your review must be at least 100 characters long",
-                        maxlength: "Your review must be at least 100 characters long"
+                        minlength: "Your review must be at least 50 characters long",
+                        maxlength: "Your review can't be more than 340 characters long"
                     },
                     email_id: {
                         required: "Please enter a email",
@@ -548,6 +558,7 @@
                                     <textarea class="form-control"
                                               ng-model="form.enquiry" id="enquiry" name="enquiry"
                                               placeholder="Enquiry.." required="required"></textarea>
+                                    <p><span id="remaining">160 characters remaining</span> <span id="messages">1 message(s)</span></p>
                                 </div>
 
                                 <br>

@@ -50,13 +50,13 @@
         <div class="top-menu">
             <?php $accessType = $this->session->userdata('acessType'); ?>
             <ul>
-                <li class="active"><a href="Index1">Home</a></li>
 				<?php 
              	if ($this->session->userdata ('user_id') == ""  ) { ?>
                 	<li id="logIn"><a href="#" data-hover="LOGIN" onClick="checkLogin('Index1')">Login</a></li>
 				<?php } else { ?>
                 	<li id="logOut"><a href="#" data-hover="LOGOUT" onClick="checkLogout('Index1')">Logout</a></li>
 				<?php } ?>
+                <li class="active"><a href="Index1">Home</a></li>
             </ul>
         </div>
         <span class="menu"> </span>

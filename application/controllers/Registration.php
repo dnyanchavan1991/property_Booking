@@ -14,7 +14,10 @@ class Registration extends CI_Controller {
 	
 		$postdata = file_get_contents("php://input");
 		$post= json_decode($postdata);
-	
+        $date_of_birth = $post->date_of_birth;
+        $date_of_birth = str_replace ( '/', '-', $date_of_birth );
+        $date_of_birth = date ( 'Y-m-d', strtotime ( $date_of_birth ) );
+
 		$registerInfo = array (
 				'customer_id' => '1',
 				'user_name' => $post->username,
@@ -23,6 +26,8 @@ class Registration extends CI_Controller {
 				'last_name' => $post->lastName,
 				'mobile_number'=>$post->mobileNumber,
 				'email_address'=>$post->email,
+                'gender'=>$post->gender,
+                'date_of_birth'=>$date_of_birth,
 				'account_active'=>'yes'
 				 
 		);
@@ -52,7 +57,8 @@ class Registration extends CI_Controller {
 			$this->session->set_userdata('last_user_id', $last_id);
 			$this->session->set_userdata('user_id', $user_id);
 			$this->session->set_userdata('user_name', $post->username);
-			$this->session->set_userdata('access_type', 'user'); 
+			$this->session->set_userdata('access_type', 'user');
+            $this->session->set_userdata('gender', 'gender');
 		}
 		$response=array('count'=>$user_count);
 		echo json_encode($response); 
