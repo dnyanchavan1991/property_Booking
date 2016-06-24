@@ -265,9 +265,9 @@ ul.nav-tabs.affix {
     margin-left: 10px;
 }
 .detailed-contact-form input[type="text"], .detailed-contact-form textarea{
-    width: 45% !important;
-    float: left;
-    margin-left: 2%;
+    width: 55% !important; /*45% !important;*/
+    /*float: left;
+    margin-left: 2%;*/
     color: #858585 !important;
     font-size: 0.8725em !important;
     padding: 8px 30px !important;

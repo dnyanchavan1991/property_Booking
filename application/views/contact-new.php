@@ -65,13 +65,10 @@
                         minlength: "Your first name must consist of at least 2 characters"
                     },
                     review_checkin: {
-                        required: "Please enter a last name",
-                        minlength: "Your last name must consist of at least 2 characters"
+                        required: "Please enter check-in date"
                     },
                     review_checkout: {
-                        required: "Please enter a last name",
-                        digit: "Only numbers are allowed",
-                        minlength: "Your number must be at least 10 numbers long"
+                        required: "Please enter check-out date"
                     },
                     review_given: {
                         required: "Please provide your valuable review",
@@ -79,6 +76,67 @@
                         maxlength: "Your review must be at least 100 characters long"
                     },
                     customer_email: {
+                        required: "Please enter a email",
+                        email: "Please enter a valid email address"
+                    }
+                },
+                submitHandler: function(form) {
+                }
+            });
+
+            // validate send mail/sms form on keyup and submit
+            $("#mail-sms-form").validate({
+                rules: {
+                    full_name: {
+                        required: true,
+                        minlength: 2
+                    },
+                    phone: {
+                        required: true,
+                        digits: true,
+                        minlength: 10
+                    },
+                    checkIn: {
+                        required: true
+                    },
+                    checkOut: {
+                        required: true
+                    },
+                    enquiry: {
+                        required: true,
+                        minlength: 100,
+                        maxlength: 1000
+                    },
+                    email_id: {
+                        required: true,
+                        email: true
+                    }
+                },
+                messages: {
+                    full_name: {
+                        required: "Please enter a first name",
+                        minlength: "Your first name must consist of at least 2 characters"
+                    },
+                    phone: {
+                        required: "Please enter a last name",
+                        digit: "Only numbers are allowed",
+                        minlength: "Your number must be at least 10 numbers long"
+                    },
+                    checkIn: {
+                        required: "Please enter a last name",
+                        minlength: "Your last name must consist of at least 2 characters"
+                    },
+                    checkOut: {
+                        required: "Please enter a last name",
+                        digit: "Only numbers are allowed",
+                        minlength: "Your number must be at least 10 numbers long"
+                    },
+                    enquiry: {
+                        required: "Please provide your enquiry",
+                        minlength: "Your review must be at least 100 characters long",
+                        maxlength: "Your review must be at least 100 characters long"
+                    },
+                    email_id: {
                         required: "Please enter a email",
                         email: "Please enter a valid email address"
                     }
@@ -107,7 +165,7 @@
             });
 
             $('.send-mail').click(function() {
-                $('#phone_div').show();
+                $('#phone_div').hide();
                 $('#email_id_div').show();
             });
 
@@ -375,7 +433,7 @@
                             <div id="section5" class="detailed-row" style="display: none">
                              <!--   <h2>Reviews</h2>-->
                                 <div class="contact-form detailed-contact-form">
-                                    <form name="reviewForm" ng-submit="processForm()">
+                                    <form id="reviewForm" name="reviewForm" ng-submit="processForm()">
 
                                         <?php if(isset($name) && isset($email_address)){?>
                                             <input type="text" id="customer_name" ng-model="customer_name" placeholder="Name" ng-init="customer_name='<?php echo $name;?>'" readonly>
@@ -453,7 +511,7 @@
                         <a class = "send-sms" href="#send-form">SMS</a>
 
                         <div id="send-form" class="zoom-anim-dialog mfp-hide">
-                            <form  name="formData" method="post" class="enquiry-form contact-form detailed-contact-form" ng-submit="Contact_to_customer_enquiry(<?php echo "'$propertyId'"; ?>)">
+                            <form id="mail-sms-form" novalidate="novalidate" name="formData" method="post" class="enquiry-form contact-form detailed-contact-form" ng-submit="Contact_to_customer_enquiry(<?php echo "'$propertyId'"; ?>)">
                                 <h4 class="tittle-one"><?php echo $propertyName;  ?></h4>
                                 <div class="" id="name">
                                     <label for="email"></label> <input type="text"
