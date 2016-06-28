@@ -3,6 +3,13 @@
 <script type="text/javascript" src="js/new-theme/jssor.slider.mini.js"></script>
 <!--<script src="js/new-theme/owl.carousel.js"></script>-->
 <script>
+    $(document).ready(function(){
+        //$('div.active').hide();
+        $('li.image-li').on('click', function() {
+            alert("jhdjmdc");
+            $('li.image-li').toggle();
+        });
+    });
     jQuery(document).ready(function ($) {
 
         var jssor_1_SlideshowTransitions = [
@@ -49,14 +56,23 @@
     <div class="container">
         <div class="top-menu">
             <?php $accessType = $this->session->userdata('acessType'); ?>
-            <ul>
-				<?php 
-             	if ($this->session->userdata ('user_id') == ""  ) { ?>
-                	<li id="logIn"><a href="#" data-hover="LOGIN" onClick="checkLogin('Index1')">Login</a></li>
-				<?php } else { ?>
-                	<li id="logOut"><a href="#" data-hover="LOGOUT" onClick="checkLogout('Index1')">Logout</a></li>
-				<?php } ?>
+            <ul class="top-level-menu">
                 <li class="active"><a href="Index1">Home</a></li>
+				<?php 
+             	if ($this->session->userdata ('user_id') == "") { ?>
+                	<li id="logIn"><a href="#" data-hover="LOGIN" onClick="checkLogin('Index1')">Login</a></li>
+				<?php } else {
+                    if ($this->session->userdata ('gender') == "1") { ?>
+                    <li id="logOut"><img src="images/new-theme/male.png" alt=""/>
+                    <?php } else { ?>
+                    <li id="logOut"><img src="images/new-theme/female.png" alt=""/>
+                    <?php } ?>
+                    <ul class="second-level-menu"><li class="image-li">
+                        <a href="#" data-hover="LOGOUT" onClick="checkLogout('Index1')">Logout</a>
+                    </li></ul>
+                    </li>
+                	<!--<li id="logOut"><a href="#" data-hover="LOGOUT" onClick="checkLogout('Index1')">Logout</a></li>-->
+				<?php } ?>
             </ul>
         </div>
         <span class="menu"> </span>
