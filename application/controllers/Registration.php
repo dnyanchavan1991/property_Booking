@@ -19,15 +19,15 @@ class Registration extends CI_Controller {
         $date_of_birth = date ( 'Y-m-d', strtotime ( $date_of_birth ) );
 
 		$registerInfo = array (
-				'customer_id' => '1',
+			//	'customer_id' => '1',
 				'user_name' => $post->username,
 				'password' => $post->password,
 				'first_name' => $post->firstName,
 				'last_name' => $post->lastName,
 				'mobile_number'=>$post->mobileNumber,
 				'email_address'=>$post->email,
-                'gender'=>$post->gender,
-                'date_of_birth'=>$date_of_birth,
+              //  'gender'=>$post->gender,
+            //    'date_of_birth'=>$date_of_birth,
 				'account_active'=>'yes'
 				 
 		);
