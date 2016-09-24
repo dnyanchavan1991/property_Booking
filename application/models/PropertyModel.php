@@ -542,13 +542,13 @@ class PropertyModel extends CI_Model {
 		$this->db->join ( " $propertyInfoTable propertyInfo", "property.property_id=propertyInfo.property_id" );
 		$this->db->where ( 'activation_flag', 'YES');
 		$this->db->where ( 'Featured', 'Yes');
-		$where = "Featured_startDate <= '$currentDate' AND Featured_endDate >='$currentDate'";
+		$where = " ( Featured_startDate <= '$currentDate' and Featured_endDate >='$currentDate' )";
 		$this->db->where ( $where ); 
-		$this->db->order_by ( 'Featured_startDate Desc' );
+		 $this->db->order_by ( 'Featured_startDate Desc' );
 		//$this->db->limit ( 6 );
 		$query = $this->db->get();
-		
-		return $query->result();
+		 
+		 return $query->result();
 	}
 	/* this function inserts data in enquiry table */
 	public function insertEnquiryData($enquiryData) {
@@ -561,6 +561,19 @@ class PropertyModel extends CI_Model {
 		$this->db->select ( 'user_name,email_address,mobile_number' );
 		$this->db->from ( $registrationTable );
 		$this->db->where ( 'user_name', $user_name );
+		$query = $this->db->get ();
+		
+		return $query->result ();
+	}
+	
+	/* Get Destination details based on text entered by user on index1 screen */
+	public function destinationFetch($dest){
+		$registrationTable = 'property';	
+		$this->db->select ( 'property_name, street, city, state' );
+		$this->db->from ( $registrationTable );
+		
+		$where = " ( property_name like '%$dest%' or street like '%$dest%' or city like '%$dest%' or state like '%$dest%' )";
+		$this->db->where ($where );
 		$query = $this->db->get ();
 		
 		return $query->result ();

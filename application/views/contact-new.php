@@ -575,7 +575,7 @@
                     </div>
                     <div class="map-gd">
                         <div id="map_canvas" style="width:100%;height:270px;"></div>
-                        <script src="http://maps.googleapis.com/maps/api/js"></script>
+                        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAw7GwLP6e0viGPXOtxAHtYCOVeRFkEbsw&libraries=places&sensor=false"></script>
                         <script>
                             /* - map - */
                             var map;

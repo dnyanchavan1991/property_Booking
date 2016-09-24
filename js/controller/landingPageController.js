@@ -1,9 +1,10 @@
-angular.module('landingPageApp', [])
+angular.module('landingPageApp',['ngAutocomplete'])
 				.controller('landingPageCntrl', function($scope, $http) {
 					 $scope.displayFlag = false;
 					 $scope.inputDestination = "";
 					 $scope.checkInDate = "Arrival Date";
 					 $scope.checkOutDate = "Departure Date";
+					 var inputMin = 3;
 					  $scope.accomodationType =[
 					                             { value: '0',
 					                            	 label: 'All' },
@@ -28,14 +29,36 @@ angular.module('landingPageApp', [])
 					                               ];
 					  
 					  $scope.guestHeadCount = ["1", "2", "3", "4", "5", "6" ,"7", "8", "9", "10", "11", "12", "13", "14", "15"];
-					//  $scope.inputDestination = "Where do you want to go?";
+				  $scope.inputDestination = "Where do you want to go?";
 					  $scope.expandFilterOptions = function(){
 						  
 						 //  $scope.inputDestination = "";
 						   $scope.displayFlag = true;
 						 //  #scope.selectAccomodationType.hide('0');						   
 					  }
-					  
+					  $scope.textChanged = function(){
+						  
+						  if($scope.inputDestination.length > inputMin){
+							
+							  $http({
+						          method  : 'POST',
+						          url     : "Index1/destinationFetch/",
+						          data    : {inputDestination : $scope.inputDestination}
+						         })
+						          .success(function(data) {
+						        	  console.log(data);
+						        	  
+						          });
+
+							  
+						  }
+					  }
+					  $scope.result1 = '';
+					    $scope.options1 = {
+					    		country : 'in'
+					    }
+					    $scope.details1 = '';
+
 					 
 
 				})
@@ -95,15 +118,14 @@ angular.module('landingPageApp', [])
     	$http({
 	          method  : 'POST',
 	          url     : webUrl,
-	          data    : data //forms user object
-	         // datatype:"json"
+	          data    : data  
 
 	         })
 	          .success(function(data) {
 
 	        	  if(data.count == 0){
-	        		  //alert('Please Enter Valid Username & Password.');
-                      form.error = 'Please Enter Valid Username & Password.';
+	        		  alert('Please Enter Valid Username & Password.');
+                    //   form.error = 'Please Enter Valid Username & Password.';
 	        	  } else{
 					//    alert(successMessage);
 					   if($scope.firstName == null ){
@@ -124,6 +146,7 @@ angular.module('landingPageApp', [])
 	$scope.galleryImgFetch=function()
     {
     	$http.post("Index1/galleryImgFetch/").then(function(response){
+    		console.log(response.data);
 			$scope.imageSrc = response.data;
 		});
     }

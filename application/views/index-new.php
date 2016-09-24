@@ -18,15 +18,17 @@
 	<script type="text/javascript" src="js/angular.min.js"></script>
     <script type="text/javascript" src="js/angular-messages.min.js"></script>
 	<script type="text/javascript" src="js/controller/landingPageController.js"></script>
-
+	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAw7GwLP6e0viGPXOtxAHtYCOVeRFkEbsw&libraries=places&sensor=false"></script>
 	<script type="text/javascript" src="js/global/global_url_variable.js"></script>
 	<script type="text/javascript" src="js/global/global_functions.js"></script>
+	  
+	<style>
 	
+	</style>
 	<script type="text/javascript">
 	$(function() {
 		    $("#datepicker").datepicker({
-				numberOfMonths: 2,
-				
+				numberOfMonths: 1,				
 				minDate: new Date(),
 				onSelect: function (selected) {
 					var dt = new Date(selected);
@@ -35,7 +37,7 @@
 				}
 			});
 			$("#datepicker1").datepicker({
-				numberOfMonths: 2,
+				numberOfMonths: 1,
 				minDate : new Date(),
 				onSelect: function (selected) {
 					var dt = new Date(selected);
@@ -47,8 +49,15 @@
 			
 		
 	});
-	function validateForm(){			
-			var ret_flag = true;
+	function validateForm(){
+	var alertFlag = false;			
+	var ret_flag = true;
+			
+			if ($("#inpDestination").val() == "Where do you want to go?"){
+				alert("Please provide Travel Destination");
+				ret_flag = false;
+				alertFlag = true;
+			}
 				if($("#inpDestination").val() == "")
 				{
 					if(confirm("Would you like to visit all Destination Properties?")){
@@ -57,15 +66,17 @@
 						ret_flag = false;
 					}					
 				} 
-				if($("#datepicker").val() == "Arrival Date" || $("#datepicker").val() == "")
+				if(($("#datepicker").val() == "Arrival Date" || $("#datepicker").val() == "" ) && !alertFlag)
 				{
 					alert("Please provide Tentative Travel Start Date");
 					ret_flag = false;
+					alertFlag = true;
 				}
-				if($("#datepicker1").val() == "Departure Date" || $("#datepicker1").val() == "")
+				if(($("#datepicker1").val() == "Departure Date" || $("#datepicker1").val() == "") && !alertFlag)
 				{
 					alert("Please provide Tentative Travel End Date");
 					ret_flag = false;
+					alertFlag = true;
 				}
 			
 				if (ret_flag === false)
@@ -110,6 +121,7 @@
 <!---strat-date-piker---->
 <link rel="stylesheet" href="css/jquery-ui.css" />
 <script src="js/jquery-ui.js"></script>
+<script src="js/ngAutocomplete.js"></script>
 <script>
   $(document).ready(function() {
 
@@ -190,13 +202,16 @@
 						  <li  class="span1_of_1 left">
 							<!--  <h5>Where to go?</h5>-->
 							  <div class="book_date" id="where_to_go">
-								  <input   id="inpDestination" type="text" autocomplete="off" name="inpDestination" ng-model="inputDestination" value=""   ng-click="expandFilterOptions()" onfocus="this.value = '';" >
+								  <input   id="inpDestination" type="text"   name="inpDestination" ng-model="inputDestination" value=""  ng-autocomplete="result1" details="details1" options="options1" onfocus="this.value = '';" ><!--  ng-click="expandFilterOptions()" ng-change="textChanged()"-->
 							  </div>
+							  
+    						<div>result: {{result}}</div>
 						  </li>
 						 <li  class="span1_of_1 left">
 							 <!--<h5>Arrival</h5>-->
 							 <div class="book_date">
 								 <input class="date" id="datepicker" type="text" autocomplete="off" ng-model="checkInDate" name="checkIn"  value="" onfocus="this.value = '';" >
+								 
 							 </div>					
 						 </li>
 						 <li  class="span1_of_1 left">
@@ -221,7 +236,7 @@
 						  </li>
 						 <li class="span1_of_3 left">
 								<div class="date_btn">
-									<input style="margin-top: 0px !important;" type="submit" name="submit" value="View Prices"  onclick="return validateForm();"/>
+									<input style="margin-top: 0px !important;" type="submit" name="submit" value="Search"  onclick="return validateForm();"/>
 								</div>
 						 </li>
 						 <div class="clearfix"></div>

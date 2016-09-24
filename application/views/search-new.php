@@ -216,7 +216,7 @@
                         <li class="span1_of_3 left">
                             <h5></h5>
                             <div class="date_btn">
-                                <input type="submit" name="submit" value="View Prices" onclick="return validateForm();" />
+                                <input type="submit" name="submit" value="Search" onclick="return validateForm();" />
                             </div>
                         </li>
                         <div class="clearfix"></div>

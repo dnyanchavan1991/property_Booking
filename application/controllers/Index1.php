@@ -23,9 +23,23 @@ class Index1 extends CI_Controller {
 		}
 		echo json_encode( $list);
 	}
+	public function destinationFetch(){ 
+		$postdata = file_get_contents("php://input");
+		$post= json_decode($postdata);
+		$dest=$post->inputDestination;
+		
+		$getDestinationData = $this->PropertyModel->destinationFetch($dest);
+		
+		 
+		$response=array('filterDestinations'=>$getDestinationData);
+		echo json_encode($response); 
+		
+	}
+	
 	
 	public function galleryImgFetch(){
 		$getImgData = $this->PropertyModel->galleryImgFetch();
+		
 		$i=0;
 		$list = array();
 		foreach($getImgData as $row)
