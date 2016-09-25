@@ -542,8 +542,10 @@ class PropertyModel extends CI_Model {
 		$this->db->join ( " $propertyInfoTable propertyInfo", "property.property_id=propertyInfo.property_id" );
 		$this->db->where ( 'activation_flag', 'YES');
 		$this->db->where ( 'Featured', 'Yes');
-		$where = " ( Featured_startDate <= '$currentDate' and Featured_endDate >='$currentDate' )";
-		$this->db->where ( $where ); 
+
+		$d=date("y-m-d");
+			$where = " ( Featured_startDate <= '$d' and Featured_endDate >='$d' )";
+	    $this->db->where ( $where ); 
 		 $this->db->order_by ( 'Featured_startDate Desc' );
 		//$this->db->limit ( 6 );
 		$query = $this->db->get();

@@ -13,7 +13,9 @@ class Contact extends CI_Controller {
 	public function index() {
 		$this->load->view ( 'contact.html' );
 	}
+	
 	public function  Contact_to_customer_enquiry($propertyId){
+	alert("hi");
 		$this->load->model('PropertyModel');
 		$postdata = file_get_contents("php://input");
 		$post= json_decode($postdata);
