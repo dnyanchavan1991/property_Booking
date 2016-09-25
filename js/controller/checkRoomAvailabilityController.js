@@ -1,4 +1,4 @@
-angular.module('checkRoomAvailabilityApp', ['angularUtils.directives.dirPagination'])//
+angular.module('checkRoomAvailabilityApp', ['angularUtils.directives.dirPagination', 'ngAutocomplete'])//,['ngAutocomplete']
 	.controller('checkRoomAvailabilityController',function($scope, $http) {
 		 $scope.guestHeadCount = ["Select","1", "2", "3", "4", "5", "6" ,"7", "8", "9", "10", "11", "12", "13", "14", "15"];
 			
@@ -11,6 +11,12 @@ angular.module('checkRoomAvailabilityApp', ['angularUtils.directives.dirPaginati
 		$scope.checkOutDate = $("#hdnDate2").val();
 		$scope.selectAccomodationTYpe = $("#hdnProp").val();
 		$scope.selectGuestHeadCount = $("#hdnGuest").val();
+		
+		  $scope.result1 = '';
+		    $scope.options1 = {
+		    		country : 'in'
+		    }
+		    $scope.details1 = '';
 		
 		$scope.getRoomAvailability = function() {
 		//	alert($scope.sortByFilter);

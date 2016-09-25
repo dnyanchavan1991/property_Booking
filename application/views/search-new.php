@@ -5,6 +5,7 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Pinyon+Script' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Quicksand:400,700' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAw7GwLP6e0viGPXOtxAHtYCOVeRFkEbsw&libraries=places&sensor=false"></script>
     <link href="css/new-theme/bootstrap.css" rel='stylesheet' type='text/css'/>
     <link href="css/new-theme/style.css" rel="stylesheet" type="text/css" media="all"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,7 +27,7 @@
     <script type="text/javascript">
         $(function() {
          		  $("#datepicker").datepicker({
-				numberOfMonths: 2,
+				numberOfMonths: 1,
 				
 				minDate: new Date(),
 				onSelect: function (selected) {
@@ -36,7 +37,7 @@
 				}
 			});
 			$("#datepicker1").datepicker({
-				numberOfMonths: 2,
+				numberOfMonths: 1,
 				minDate : new Date(),
 				onSelect: function (selected) {
 					var dt = new Date(selected);
@@ -83,6 +84,7 @@
 <!---strat-date-piker---->
 <link rel="stylesheet" href="css/jquery-ui.css" />
 <script src="js/jquery-ui.js"></script>
+<script src="js/ngAutocomplete.js"></script>
 <script>
     function allFieldsVisible(){
 
@@ -179,8 +181,9 @@
                         <li  class="span1_of_click">
                             <h5>Where to go?</h5>
                             <div class="book_date book_date_active">
-                                <input   id="inpDestination" type="text" autocomplete="off" name="inpDestination" ng-model="inputDestination" value=""   ng-click="expandFilterOptions()" onClick="show()" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}">
+                                <input   id="inpDestination" type="text" ng-autocomplete="result1" details="details1" options="options1"  name="inpDestination" ng-model="inputDestination" value=""   ng-click="expandFilterOptions()"   onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}">
 								<input type="hidden" name="hdnDest" id="hdnDest" value = "<?php echo $inpDestination?>" />
+								<div>result: {{result}}</div>
                             </div>
                         </li>
                         <li  class="span1_of_click">

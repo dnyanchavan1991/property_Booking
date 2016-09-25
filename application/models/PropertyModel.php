@@ -33,7 +33,9 @@ class PropertyModel extends CI_Model {
 		//$this->db->having(" $dateConditions");
 		$this->db->join ( "$propertyTable property ", "propertyInfo.property_id=property.property_id" );
 	 
-	 	$where = "(city  like '%$destination%' or state like '%$destination%')";
+	 //	$where = "(city  like '%$destination%' or state like '%$destination%')";
+	 	$where = " CONCAT(TRIM(city), ', ', TRIM(state),', ',TRIM(country)) LIKE '%$destination%' ";
+	 
 		 $this->db->where ( $where );
 		$this->db->where ('activation_flag','YES'); 
 		
@@ -201,6 +203,7 @@ class PropertyModel extends CI_Model {
 		}
 		
 		 //return $this;
+		  
 		$roomAvailableInfo = $this->db->get ();
 		$roomAvailableInfoResult = $roomAvailableInfo->result ();
 		return ($roomAvailableInfoResult);
