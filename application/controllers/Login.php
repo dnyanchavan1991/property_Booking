@@ -18,6 +18,7 @@ class Login extends CI_Controller {
 		$username=$post->username;
 		$password=$post->password;
 		$accesstype=$post->access_type;
+		 
 		$this->session->set_userdata ( 'acessType',$post->access_type);
 		$this->session->set_userdata('call_back_url',$post->call_back_url);
 		$user_count = 0;
@@ -44,6 +45,7 @@ class Login extends CI_Controller {
 			$this->session->set_userdata('user_id', $user_id);
 			$this->session->set_userdata('user_name', $username);
 			$this->session->set_userdata('access_type', $accesstype);
+			$this->session->set_userdata('gender', $validate->Gender);
 		}
 		$response=array('count'=>$user_count);
 		echo json_encode($response); 

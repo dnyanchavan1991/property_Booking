@@ -507,7 +507,7 @@ class PropertyModel extends CI_Model {
 	/* this function checks registration table for username and password availability */
 	public function authenticate($username, $password, $accestype) {
 		$registrationTable = 'registration';
-		$this->db->select ( 'count(*) as user_count,user_id' );
+		$this->db->select ( 'count(*) as user_count,user_id, Gender ' );
 		$this->db->from ( $registrationTable );
 		$this->db->where ( 'user_name', $username );
 		$this->db->where ( 'password', $password );

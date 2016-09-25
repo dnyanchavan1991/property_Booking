@@ -26,8 +26,8 @@ class Registration extends CI_Controller {
 				'last_name' => $post->lastName,
 				'mobile_number'=>$post->mobileNumber,
 				'email_address'=>$post->email,
-              //  'gender'=>$post->gender,
-            //    'date_of_birth'=>$date_of_birth,
+             	'Gender'=>$post->gender,
+            	'DOB'=>$date_of_birth,
 				'account_active'=>'yes'
 				 
 		);
@@ -58,7 +58,7 @@ class Registration extends CI_Controller {
 			$this->session->set_userdata('user_id', $user_id);
 			$this->session->set_userdata('user_name', $post->username);
 			$this->session->set_userdata('access_type', 'user');
-            $this->session->set_userdata('gender', 'gender');
+            $this->session->set_userdata('gender', $post->gender);
 		}
 		$response=array('count'=>$user_count);
 		echo json_encode($response); 
