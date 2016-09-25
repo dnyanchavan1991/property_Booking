@@ -15,7 +15,7 @@
     <!-- requried-jsfiles-for owl -->
     <link href="css/new-theme/owl.carousel.css" rel="stylesheet">
     <script type="text/javascript" src="js/angular.min.js"></script>
-    <script type="text/javascript" src="js/controller/landingPageController.js"></script>
+    <script type="text/javascript" src="js/controller/loginController.js"></script>
 
     <script type="text/javascript" src="js/global/global_url_variable.js"></script>
     <script type="text/javascript" src="js/global/global_functions.js"></script>

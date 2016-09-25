@@ -24,18 +24,23 @@ function  checkLogin(page){
 
 function  checkLogout(page){
 	 
-	
-	var form = $(document.createElement('form'));
-	$(form).attr("action",logout_url);
-	$(form).attr("method", "POST");
+	if(confirm("Do you want to Logout?")){
+		var form = $(document.createElement('form'));
+		$(form).attr("action",logout_url);
+		$(form).attr("method", "POST");
 
-	form.appendTo( document.body )
+		form.appendTo( document.body )
 
-	$(form).submit();
-	
-	
-	return false;
- 
+		$(form).submit();
+		
+		
+		return false;
+
+	} else {
+		
+		return false;
+	}
+	 
 }
 	
 

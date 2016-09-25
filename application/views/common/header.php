@@ -6,7 +6,7 @@
     $(document).ready(function(){
         //$('div.active').hide();
         $('li.image-li').on('click', function() {
-            alert("jhdjmdc");
+             //alert("User Logged Out !");
             $('li.image-li').toggle();
         });
     });
