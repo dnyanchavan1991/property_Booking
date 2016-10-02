@@ -58,7 +58,7 @@
 			var st = $(this).scrollTop();
 			event.stopPropagation();
 			if (offset.top <= st){				
-				$('#where_to_go').click();				
+				//$('#where_to_go').click();				
 				$('.reservation>ul').addClass("container-fluid-search");
 				//$('.book_date_active input[type="text"]').parent().addClass("shrink");
 			} else {
@@ -67,6 +67,7 @@
 				//$('.book_date_active input[type="text"]').removeClass("shrink");
 			}
 		}); 
+		
 		});
 		
 
@@ -179,29 +180,29 @@
                 <div class="reservation">
                     <ul>
                         <li  class="span1_of_click">
-                            <h5>Where to go?</h5>
+                            <!--<h5>Where to go?</h5>-->
                             <div class="book_date book_date_active">
                                 <input   id="inpDestination" type="text" ng-autocomplete="result1" details="details1" options="options1"  name="inpDestination" ng-model="inputDestination" value=""   ng-click="expandFilterOptions()"   onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}">
 								<input type="hidden" name="hdnDest" id="hdnDest" value = "<?php echo $inpDestination?>" />
-								<div>result: {{result}}</div>
+								<div style="color:darkgray">result: {{result}}</div>
                             </div>
                         </li>
                         <li  class="span1_of_click">
-                            <h5>Arrival</h5>
+                            <!--<h5>Arrival</h5>-->
                             <div class="book_date book_date_active">
                                 <input class="date" id="datepicker" type="text" autocomplete="off" ng-model="checkInDate" name="checkIn" value="Arrival Date" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Arrival Date';}">
 								<input type="hidden" name="hdnDate1" id="hdnDate1" value = "<?php echo $checkIn?>" />
                             </div>
                         </li>
                         <li  class="span1_of_click">
-                            <h5>Depature</h5>
+                            <!--<h5>Depature</h5>-->
                             <div class="book_date book_date_active">
                                 <input class="date" id="datepicker1" type="text" autocomplete="off" ng-model="checkOutDate" name="checkOut" value="Departure Date" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Departure Date';}">
 								<input type="hidden" name="hdnDate2" id="hdnDate2" value = "<?php echo $checkOut?>" />
                             </div>
                         </li>
                         <li class="span1_of_click" id="aaa">
-                            <h5>Accomodation type</h5>
+                            <!--<h5>Accomodation type</h5>-->
                             <div>
                                 <select class="frm-field required" ng-model="selectAccomodationType"  id="propertyType" name="propertyType" ng-init="selectAccomodationType=accomodationType[0]"
                                         ng-options="accomodation as accomodation.label for accomodation in accomodationType track by accomodation.value "
@@ -210,14 +211,14 @@
                             </div>
                         </li>
                         <li class="span1_of_click" id="bbb">
-                            <h5>No. of Guests</h5>
+                            <!--<h5>No. of Guests</h5>-->
                             <div class="section_room">
                                 <select class="frm-field required" ng-model="selectGuestHeadCount" id="guestCount" name="guestCount" ng-init="selectGuestHeadCount=guestHeadCount[0] " ng-options="option as option for option in guestHeadCount"></select>
 								<input type="hidden" name="hdnGuest" id="hdnGuest" value = "<?php echo $guestCount?>" />
                             </div>
                         </li>
                         <li class="span1_of_3 left">
-                            <h5></h5>
+                            
                             <div class="date_btn">
                                 <input type="submit" name="submit" value="Search" onclick="return validateForm();" />
                             </div>

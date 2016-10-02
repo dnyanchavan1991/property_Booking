@@ -7,7 +7,7 @@ angular.module('landingPageApp',['ngAutocomplete'])
 					 var inputMin = 3;
 					  $scope.accomodationType =[
 					                             { value: '0',
-					                            	 label: 'All' },
+					                            	 label: 'Property Types' },
 					                               { value: '1',
 						                               label: 'Villa' },
 						                           { value: '2',
@@ -27,8 +27,42 @@ angular.module('landingPageApp',['ngAutocomplete'])
 					                               { value : '9',
 							                             label : 'Tree house' }						                               
 					                               ];
+					  $scope.guestHeadCount =[
+												{ value: '0',
+													 label: 'Guests' },
+					                             { value: '1',
+					                            	 label: '1' },
+					                               { value: '2',
+						                               label: '2' },
+						                           { value: '3',
+							                           label: '3' },
+						                           { value: '4',
+							                            label: '4' },
+						                           { value: '5',
+							                            label: '5' },
+						                           { value: '6',
+							                            label: '6' },
+						                           { value: '7',
+							                            label: '7' },
+						                           { value: '8',
+							                            label: '8' },
+						                           { value : '9',
+							                             label : '9' },
+					                               { value : '10',
+						                             label : '10' },
+					                             { value: '11',
+							                            label: '11' },
+						                           { value: '12',
+							                            label: '12' },
+						                           { value: '13',
+							                            label: '13' },
+						                           { value: '14',
+							                            label: '14' },
+						                           { value : '15',
+							                             label : '15+' }
+					                               ];
+					 // $scope.guestHeadCount = ["1", "2", "3", "4", "5", "6" ,"7", "8", "9", "10", "11", "12", "13", "14", "15+"];
 					  
-					  $scope.guestHeadCount = ["1", "2", "3", "4", "5", "6" ,"7", "8", "9", "10", "11", "12", "13", "14", "15"];
 				  $scope.inputDestination = "Where do you want to go?";
 					  $scope.expandFilterOptions = function(){
 						  
@@ -63,7 +97,7 @@ angular.module('landingPageApp',['ngAutocomplete'])
 	$scope.galleryImgFetch=function()
     {
     	$http.post("Index1/galleryImgFetch/").then(function(response){
-    		console.log(response.data);
+    		
 			$scope.imageSrc = response.data;
 		});
     }

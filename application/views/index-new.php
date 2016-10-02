@@ -195,48 +195,49 @@
 </script>
 <form method="post" action="RoomAvailability" id="frmCntrl" ng-controller="landingPageCntrl">
 <div class="online_reservation" >
-		   <div class="b_room" id="b_room_div">
-			  <div class="booking_room" id="booking_room_div">
+		   <div class="b_room b_room_active" id="b_room_div">
+			  <div class="booking_room booking_room_active" id="booking_room_div">
 				  <div class="reservation">
 					  <ul>
-						  <li  class="span1_of_1 left">
+						  <li  class="span1_of_click">
 							<!--  <h5>Where to go?</h5>-->
-							  <div class="book_date" id="where_to_go">
+							  <div class="book_date book_date_active" id="where_to_go">
 								  <input   id="inpDestination" type="text"   name="inpDestination" ng-model="inputDestination" value=""  ng-autocomplete="result1" details="details1" options="options1" onfocus="this.value = '';" ><!--  ng-click="expandFilterOptions()" ng-change="textChanged()"-->
 							  </div>
 							  
-    						<div>result: {{result}}</div>
+    						<div style="color:darkgray">result: {{result}}</div>
 						  </li>
-						 <li  class="span1_of_1 left">
+						 <li  class="span1_of_click">
 							 <!--<h5>Arrival</h5>-->
-							 <div class="book_date">
+							 <div class="book_date book_date_active">
 								 <input class="date" id="datepicker" type="text" autocomplete="off" ng-model="checkInDate" name="checkIn"  value="" onfocus="this.value = '';" >
 								 
 							 </div>					
 						 </li>
-						 <li  class="span1_of_1 left">
+						 <li  class="span1_of_click">
 							<!-- <h5>Depature</h5>-->
-							 <div class="book_date">
+							 <div class="book_date book_date_active">
 								<input class="date" id="datepicker1" type="text" autocomplete="off" ng-model="checkOutDate" name="checkOut"  value="" onfocus="this.value = '';" >
 						     </div>		
 						 </li>
-						  <li class="span1_of_1 left" id="aaa" style="display:none;">
+						  <li class="span1_of_click" id="aaa"  >
 							<!--  <h5>Accomodation type</h5>-->
 							  <div>
 								  <select class="frm-field required" ng-model="selectAccomodationType"  id="propertyType" name="propertyType" ng-init="selectAccomodationType=accomodationType[0]"
 										  ng-options="accomodation as accomodation.label for accomodation in accomodationType track by accomodation.value "
-										  ng-show = "inputDestination != 'Where you want to go?'" ></select>
+										  ng-show = "inputDestination != 'Where you want to go?'" style="height: 32px"></select>
 							  </div>
 						  </li>
-						  <li class="span1_of_1" style="display:none;" id="bbb">
+						  <li class="span1_of_click"   id="bbb">
 							<!--  <h5>No. of Guests</h5>	-->
 							  <div class="section_room">
-								  <select class="frm-field required" ng-model="selectGuestHeadCount" id="guestCount" name="guestCount" ng-init="selectGuestHeadCount=guestHeadCount[0] " ng-options="option as option for option in guestHeadCount"></select>
+								  <select class="frm-field required" ng-model="selectGuestHeadCount" id="guestCount" name="guestCount" ng-init="selectGuestHeadCount=guestHeadCount[0] " 
+								  ng-options="option as option.label for option in guestHeadCount" style="height: 32px"></select>
 							  </div>
 						  </li>
 						 <li class="span1_of_3 left">
 								<div class="date_btn">
-									<input style="margin-top: 0px !important;" type="submit" name="submit" value="Search"  onclick="return validateForm();"/>
+									<input style="margin-top: 0.5em !important;" type="submit" name="submit" value="Search"  onclick="return validateForm();"/>
 								</div>
 						 </li>
 						 <div class="clearfix"></div>
