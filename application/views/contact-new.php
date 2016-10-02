@@ -255,6 +255,12 @@
 
             }
         }
+        function blinker() {
+        //alert("hi");
+			$('.blinking').fadeOut(500);
+			$('.blinking').fadeIn(500);
+		}
+		setInterval(blinker, 1000);
 
     </script>
     <!---->
@@ -516,9 +522,9 @@
                     <b><a class="best-btn" onclick=" return checkLogin()" href="BookProperty">Book Now</a></b>
                     <div class="hotel-left-two" ng-app="getRoomDetailApp" ng-controller="popupController">
 
-                        <p> Send </p>
-                        <a class = "send-mail" href="#send-form" >Email</a> |
-                        <a class = "send-sms" href="#send-form">SMS</a>
+                        <!-- <p> Send </p> -->
+                        <a class = "send-mail blinking" href="#send-form" >Send Email</a> |
+                        <a class = "send-sms blinking" href="#send-form">Send SMS</a>
 
                         <div id="send-form" class="zoom-anim-dialog mfp-hide">
                             <form id="mail-sms-form" novalidate="novalidate" name="formData" method="post" class="enquiry-form contact-form detailed-contact-form" ng-submit="Contact_to_customer_enquiry(<?php echo "'$propertyId'"; ?>)">

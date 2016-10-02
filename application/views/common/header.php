@@ -52,7 +52,7 @@
         //responsive code end
     });
 </script>
-<div class="top-header">
+<div class="top-header" > <!--style="position: fixed; width: 100%; z-index: 1"-->
     <div class="container">
         <div class="top-menu">
             <?php $accessType = $this->session->userdata('acessType'); ?>
@@ -62,7 +62,7 @@
              	if ($this->session->userdata ('user_id') == "") { ?>
                 	<li id="logIn"><a href="#" data-hover="LOGIN" onClick="checkLogin('Index1')">Login</a></li>
 				<?php } else {
-                    if ($this->session->userdata ('gender') == "1") { ?>
+				     if ($this->session->userdata ('gender') == "1") { ?>
                     <li id="logOut"><img src="images/new-theme/male.png" alt=""/>
                     <?php } else { ?>
                     <li id="logOut"><img src="images/new-theme/female.png" alt=""/>

@@ -17,7 +17,7 @@
 /* Styling Next and Prev buttons */
 
 .owl-theme .owl-controls .owl-buttons div{
-	color: black;
+	color: transparent;
 	display: inline-block;
 	zoom: 1;
 	margin: 5px;
