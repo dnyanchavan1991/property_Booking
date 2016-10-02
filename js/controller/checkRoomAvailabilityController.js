@@ -1,7 +1,41 @@
 angular.module('checkRoomAvailabilityApp', ['angularUtils.directives.dirPagination', 'ngAutocomplete'])//,['ngAutocomplete']
 	.controller('checkRoomAvailabilityController',function($scope, $http) {
-		 $scope.guestHeadCount = ["Select","1", "2", "3", "4", "5", "6" ,"7", "8", "9", "10", "11", "12", "13", "14", "15"];
-			
+		// $scope.guestHeadCount = ["Select","1", "2", "3", "4", "5", "6" ,"7", "8", "9", "10", "11", "12", "13", "14", "15"];
+		  $scope.guestHeadCount =[
+									{ value: '0',
+										 label: 'Guests' },
+		                             { value: '1',
+		                            	 label: '1' },
+		                               { value: '2',
+			                               label: '2' },
+			                           { value: '3',
+				                           label: '3' },
+			                           { value: '4',
+				                            label: '4' },
+			                           { value: '5',
+				                            label: '5' },
+			                           { value: '6',
+				                            label: '6' },
+			                           { value: '7',
+				                            label: '7' },
+			                           { value: '8',
+				                            label: '8' },
+			                           { value : '9',
+				                             label : '9' },
+		                               { value : '10',
+			                             label : '10' },
+		                             { value: '11',
+				                            label: '11' },
+			                           { value: '12',
+				                            label: '12' },
+			                           { value: '13',
+				                            label: '13' },
+			                           { value: '14',
+				                            label: '14' },
+			                           { value : '15',
+				                             label : '15+' }
+		                               ];
+	
 		$http.get("AccomodationType/getPropertyTypeList/").then(function(response) {
 			$scope.propertyTypeNames = response.data;
 		});
@@ -60,7 +94,7 @@ angular.module('checkRoomAvailabilityApp', ['angularUtils.directives.dirPaginati
 		  	 }).then(function(response) {
 		  		 
 				$scope.propNames  = response.data.rows;
-            	 
+				$scope.totalRecords =  " Best Deals found : " + (response.data.rows).length + " rentals";
 			});
 	             	$scope.galleryImgFetch=function()
 	                {
@@ -103,7 +137,7 @@ angular.module('checkRoomAvailabilityApp', ['angularUtils.directives.dirPaginati
 		                               { value : '9',
 				                             label : 'Tree house' }						                               
 		                               ];
-		  $scope.guestHeadCount = ["1", "2", "3", "4", "5", "6" ,"7", "8", "9", "10", "11", "12", "13", "14", "15"];
+		//  $scope.guestHeadCount = ["1", "2", "3", "4", "5", "6" ,"7", "8", "9", "10", "11", "12", "13", "14", "15"];
 		  $scope.expandFilterOptions = function(){
 			  
 				 //  $scope.inputDestination = "";
@@ -248,7 +282,9 @@ angular.module('checkRoomAvailabilityApp', ['angularUtils.directives.dirPaginati
 				data : $scope.model // forms user object
 			}).success(function(response) {
 				$scope.propNames = response.rows;
-
+				//$scope.totalRecords = (response.rows).length;
+				$scope.totalRecords =  " Best Deals found : " + (response.rows).length + " rentals";
+				// $scope.totalRecords = (response.data.rows).length;
 			}); 
 		};
 		/*--*/
@@ -296,7 +332,7 @@ angular.module('checkRoomAvailabilityApp', ['angularUtils.directives.dirPaginati
     }
 	 
 })
-    .directive("owlCarousel", function() {
+    /*.directive("owlCarousel", function() {
 
         return {
 
@@ -326,7 +362,7 @@ angular.module('checkRoomAvailabilityApp', ['angularUtils.directives.dirPaginati
 
                     // init carousel
 
-                    $(element).owlCarousel(defaultOptions);
+                     $(element).owlCarousel(defaultOptions);
 
                 };
 
@@ -358,6 +394,6 @@ angular.module('checkRoomAvailabilityApp', ['angularUtils.directives.dirPaginati
 
         };
 
-    }]);
+    }]);*/
 
 		

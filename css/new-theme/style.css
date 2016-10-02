@@ -927,6 +927,7 @@ select option{
     padding: 5px 30px 5px !important;
 }
 .filter_btn {
+	margin-top: -0.5em !important;
     text-transform:capitalize;
     width: 60% !important;
     background: #FFD700;

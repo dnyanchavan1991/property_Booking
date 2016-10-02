@@ -134,7 +134,7 @@
 		 	
 			var offset = $('.online_reservation').offset();
 			$('html, body').animate({
-				scrollTop: $(".online_reservation").offset().top + 5 
+				scrollTop: $(".online_reservation").offset().top + 100 
 			}, 500);
 		 
         /*var target = $(this);
@@ -182,8 +182,9 @@
                         <li  class="span1_of_click">
                             <!--<h5>Where to go?</h5>-->
                             <div class="book_date book_date_active">
-                                <input   id="inpDestination" type="text" ng-autocomplete="result1" details="details1" options="options1"  name="inpDestination" ng-model="inputDestination" value=""   ng-click="expandFilterOptions()"   onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}">
+                                <input   id="inpDestination" type="text" ng-autocomplete="result1" details="details1" options="options1"  name="inpDestination" ng-model="inputDestination" value=""   ng-click="expandFilterOptions()"   onfocus="this.value = '';"  >
 								<input type="hidden" name="hdnDest" id="hdnDest" value = "<?php echo $inpDestination?>" />
+								
 								<div style="color:darkgray">result: {{result}}</div>
                             </div>
                         </li>
@@ -213,19 +214,19 @@
                         <li class="span1_of_click" id="bbb">
                             <!--<h5>No. of Guests</h5>-->
                             <div class="section_room">
-                                <select class="frm-field required" ng-model="selectGuestHeadCount" id="guestCount" name="guestCount" ng-init="selectGuestHeadCount=guestHeadCount[0] " ng-options="option as option for option in guestHeadCount"></select>
+                                <select class="frm-field required" ng-model="selectGuestHeadCount" id="guestCount" name="guestCount" ng-init="selectGuestHeadCount=guestHeadCount[0] " ng-options="option as option.label for option in guestHeadCount"></select>
 								<input type="hidden" name="hdnGuest" id="hdnGuest" value = "<?php echo $guestCount?>" />
                             </div>
                         </li>
                         <li class="span1_of_3 left">
                             
                             <div class="date_btn">
-                                <input type="submit" name="submit" value="Search" onclick="return validateForm();" />
+                                <input type="submit" name="submit" style="margin-top: 0.5em !important;width: 335px;" value="Search" onclick="return validateForm();" />
                             </div>
                         </li>
                         <div class="clearfix"></div>
                         <li class="span1_of_click" id="bbb">
-                            <h5>Sort By:</h5>
+                            <!--<h5>Sort By:</h5>-->
                             <div class="section_room">
                                 <select class="frm-field required" ng-model="sortByFilter" ng-change="getRoomAvailability()" ng-init="sortByFilter = sortByFilter || 'propAToZ'"">
                                     <option value="bedLowToHigh" selected>Bedrooms : Low to High</option>
@@ -324,8 +325,11 @@
 </div>
 <!---->
 <!---->
-<div class="rooms text-center">
+<div class="rooms text-center"> <Strong style="text-align: left;float: left;padding-left: 1em;font-family: -webkit-pictograph;font-size: 32px;"> 
+<!--<?php echo $inpDestination == ""  ? "All Destinations " : $inputDestination; ?>--> <span ng-bind="totalRecords" id="totalRecords"> </span> </Strong>  
+    
     <div class="container" >
+   
         <div class="room-grids" >
             <div class="ang-dir-paginate">
                 <dir-pagination-controls
