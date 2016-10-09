@@ -806,7 +806,8 @@ z-index:1;
 	height: 12%;
 	width: 100%;	
 	background-color:darkgray;
-	position: fixed;	 
+	position: fixed;
+	opacity: 0.8;	 
  }
  .container-fluid-search {
 	z-index: 1000;
@@ -814,7 +815,8 @@ z-index:1;
 	/*height: 30%;*/ 
 	width: 100%;	
 	background-color:darkgray;
-	position: fixed;	 
+	position: fixed;
+	opacity: 0.8;	 
  }
  .container-fluid-moreFilters {
 	z-index: 1000;
@@ -849,6 +851,7 @@ z-index:1;
 	width:100%;
 	background: darkgray;
 	/*box-shadow: 2px 26px 37px -12px;*/
+	
 }
 .reservation ul li{
 	float: left;

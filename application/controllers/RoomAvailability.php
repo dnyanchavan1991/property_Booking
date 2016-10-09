@@ -27,8 +27,7 @@ class RoomAvailability extends CI_Controller {
 				'checkIn' => $checkin,
 				'checkOut'=> $checkout,
 				'guestCount' =>$_POST['guestCount'],
-				'propertyType'=>$_POST['propertyType']
-				
+				'propertyType'=>$_POST['propertyType']				
 			);
 			
 	 	}
@@ -51,6 +50,7 @@ class RoomAvailability extends CI_Controller {
 		$propertyType = $request->selectAccomodationType == '' ? $this->session->userdata ( 'propertyType' ) : $request->selectAccomodationType;
 		$checkIn = $request->checkInDate == '' ? $this->session->userdata ( 'checkIn' ) : $request->checkInDate;
 		$checkOut = $request->checkOutDate == '' ? $this->session->userdata ( 'checkOut' ) : $request->checkOutDate;*/
+		
 		$destination =  $this->session->userdata ( 'destination' ) ;
 		$guestCount =   $this->session->userdata ( 'guestCount' );
 		$propertyType =  $this->session->userdata ( 'propertyType' ) ;
@@ -98,6 +98,7 @@ class RoomAvailability extends CI_Controller {
 							'pool'=>$row['pool'], 'free_parking'=>$row['free_parking'], 'air_condition'=>$row['air_condition'],
 							'television_access'=>$row['television_access'], 'internet_access'=>$row['internet_access'],
 							'smoking_allowd'=>$row['smoking_allowd'], 'free_breakfast'=>$row['free_breakfast'], 'pet_friendly'=>$row['pet_friendly']
+							, 'Featured'=>$row['Featured']
 							);
 							
 							$i++;
@@ -150,6 +151,7 @@ class RoomAvailability extends CI_Controller {
 							'pool'=>$row['pool'], 'free_parking'=>$row['free_parking'], 'air_condition'=>$row['air_condition'],
 							'television_access'=>$row['television_access'], 'internet_access'=>$row['internet_access'],
 							'smoking_allowd'=>$row['smoking_allowd'], 'free_breakfast'=>$row['free_breakfast'], 'pet_friendly'=>$row['pet_friendly']
+							, 'Featured'=>$row['Featured']
 							);
 							$i++;
 						}

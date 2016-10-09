@@ -45,7 +45,7 @@ angular.module('checkRoomAvailabilityApp', ['angularUtils.directives.dirPaginati
 		$scope.checkOutDate = $("#hdnDate2").val();
 		$scope.selectAccomodationTYpe = $("#hdnProp").val();
 		$scope.selectGuestHeadCount = $("#hdnGuest").val();
-		
+	
 		  $scope.result1 = '';
 		    $scope.options1 = {
 		    		country : 'in'
@@ -92,9 +92,15 @@ angular.module('checkRoomAvailabilityApp', ['angularUtils.directives.dirPaginati
          				selectGuestHeadCount : $scope.selectGuestHeadCount
 		  			 }
 		  	 }).then(function(response) {
-		  		 
-				$scope.propNames  = response.data.rows;
-				$scope.totalRecords =  " Best Deals found : " + (response.data.rows).length + " rentals";
+		  		 if (response.data.rows != null && response.data.rows != "")
+		  			 {
+			  			$scope.propNames  = response.data.rows;
+						$scope.totalRecords =  " Best Deals found : " + (response.data.rows).length + " rentals";
+		  			 } else {
+		  				$scope.propNames  = ""; 
+		  				$scope.totalRecords = "No match Found !";
+		  			 }
+				
 			});
 	             	$scope.galleryImgFetch=function()
 	                {
@@ -281,10 +287,17 @@ angular.module('checkRoomAvailabilityApp', ['angularUtils.directives.dirPaginati
 				url : 'RoomAvailability/checkFilterRoomAvailabilty/',
 				data : $scope.model // forms user object
 			}).success(function(response) {
-				$scope.propNames = response.rows;
-				//$scope.totalRecords = (response.rows).length;
-				$scope.totalRecords =  " Best Deals found : " + (response.rows).length + " rentals";
-				// $scope.totalRecords = (response.data.rows).length;
+				
+				 if (response.rows != null && response.rows != ""){
+					 	$scope.propNames = response.rows;
+						//$scope.totalRecords = (response.rows).length;
+						$scope.totalRecords =  " Best Deals found : " + (response.rows).length + " rentals";
+						// $scope.totalRecords = (response.data.rows).length;
+				 } else {
+						$scope.totalRecords = "No match Found !";
+						$scope.propNames = "";
+				 }
+				
 			}); 
 		};
 		/*--*/
