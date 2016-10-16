@@ -341,7 +341,7 @@
                 </dir-pagination-controls>
             </div>
            
-            <div id="abc" class="col-md-3 room-sec single-room" style="background-color:red" dir-paginate="rooms in propNames | itemsPerPage : 20">
+            <div id="abc" class="col-md-3 room-sec single-room"   dir-paginate="rooms in propNames | itemsPerPage : 20"  data-ng-class="{'grey-background':rooms.Featured == 'Yes'}">
 			
                 <h4><a href="" ng-click="getPropertyDetails(rooms)"> {{rooms.propertyName}}<span class = "room-star" ng-repeat="r_cnt in strtoint(rooms.starRate)">★</span>
                 </a></h4>
@@ -349,15 +349,14 @@
                     <img class = "single-room-image" ng-src="{{rooms.ImagePath}}" alt=""/>
                     <p id="text"><span class="map-marker"></span>{{rooms.propertyAddress}}</p>
                     <!--<div class="items">-->
-                        <li ng-if=" rooms.free_breakfast == 'Yes' "><img class = "feature-images" src='images/breakfast.png' title="Free Breakfast"></a></li>
-                        <li ng-if=" rooms.pool == 'Yes' "><img class = "feature-images" src='images/pool.png' title="Swimming Pool"></a></li> 
-                        <li ng-if=" rooms.Featured == 'Yes' "><script> $("#abc").css('backgroundColor','blue'); </script></li>
-                        <li ng-if=" rooms.Featured == 'No' "><script> $("#abc").css('backgroundColor','red'); </script></li>
-                         <li ng-if=" rooms.free_parking == 'Yes' "><img class = "feature-images" src='images/parking.png' title="Free Parking"></a></li>
-                        <li ng-if=" rooms.television_access == 'Yes' "><img class = "feature-images" src='images/television.png' title="Television Access"></a></li>
-                        <li ng-if=" rooms.internet_access == 'Yes' "><img class = "feature-images" src='images/internet.png' title="Internet Access"></a></li>
-                        <li ng-if=" rooms.smoking_allowd == 'Yes' "><img class = "feature-images" src='images/smoking.png' title="Smoking Allowed"></a></li>
-                        <li ng-if=" rooms.pet_friendly == 'Yes' "><img class = "feature-images" src='images/pet.png' title="Pet Friendly"></a></li>
+                        <li ng-if=" rooms.free_breakfast == 'Yes' "><img class = "feature-images" src='images/breakfast.png' title="Free Breakfast"></li>
+                        <li ng-if=" rooms.pool == 'Yes' "><img class = "feature-images" src='images/pool.png' title="Swimming Pool"></li> 
+                                             
+                        <li ng-if=" rooms.free_parking == 'Yes' "><img class = "feature-images" src='images/parking.png' title="Free Parking"></li>
+                        <li ng-if=" rooms.television_access == 'Yes' "><img class = "feature-images" src='images/television.png' title="Television Access"></li>
+                        <li ng-if=" rooms.internet_access == 'Yes' "><img class = "feature-images" src='images/internet.png' title="Internet Access"></li>
+                        <li ng-if=" rooms.smoking_allowd == 'Yes' "><img class = "feature-images" src='images/smoking.png' title="Smoking Allowed"></li>
+                        <li ng-if=" rooms.pet_friendly == 'Yes' "><img class = "feature-images" src='images/pet.png' title="Pet Friendly"></li>
                     <!--</div>-->
                 </a>
             </div>
@@ -369,6 +368,10 @@
     <?php $this->load->view('common/footer.html'); ?>
 </div>
 <!---->
-
+<style>
+    .grey-background{
+        background-color: darkgrey;
+    }
+</style>
 </body>
 </html>

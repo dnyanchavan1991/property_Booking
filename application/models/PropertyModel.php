@@ -20,7 +20,17 @@ class PropertyModel extends CI_Model {
 		$propertyType = $searchArray ['propertyType'];
 		$destination = $searchArray ['destination'];
 		
-		$this->db->select ( "property.property_id as propertyId,star_rate,property.property_name as property,property.property_type_id,property.image_path as imagePath, property.star_rate, concat(property.street,',',property.city,',',property.state,',',property.postal_code)as propertyAddress,propertyInfo.accommodates,(propertyInfo.accommodates) as availableAccomodes, propertyInfo.bedrooms,propertyInfo.bathrooms, propertyInfo.pool, propertyInfo.free_parking, propertyInfo.air_condition, propertyInfo.television_access, propertyInfo.internet_access, propertyInfo.smoking_allowd, propertyInfo.free_breakfast, propertyInfo.pet_friendly, propertyInfo.Featured " );
+		$d=date("y-m-d");
+			//$where = " ( Featured_startDate <= '$d' and Featured_endDate >='$d' )";
+	    //if(propertyInfo.Featured )
+	    
+		$this->db->select ( "property.property_id as propertyId,star_rate,property.property_name as property,property.property_type_id,property.image_path as imagePath, property.star_rate, concat(property.street,',',property.city,',',property.state,',',property.postal_code)as propertyAddress,propertyInfo.accommodates,(propertyInfo.accommodates) as availableAccomodes, propertyInfo.bedrooms,propertyInfo.bathrooms, propertyInfo.pool, propertyInfo.free_parking, propertyInfo.air_condition, propertyInfo.television_access, propertyInfo.internet_access,
+		 propertyInfo.smoking_allowd, propertyInfo.free_breakfast, propertyInfo.pet_friendly,
+		 IF((Featured_startDate <= '$d' and Featured_endDate >='$d'), 'Yes', 'No') as Featured ");
+		 	 
+		   
+		 
+		
 	 //(propertyInfo.accommodates-IFNULL(sum(res.accomodates), 0)) as availableAccomodes
 		$this->db->from ( "$propertyInfo propertyInfo " );
 	/*	$dateConditions = "(";
