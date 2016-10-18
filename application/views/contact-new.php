@@ -527,7 +527,7 @@
                         <a class = "send-sms blinking" href="#send-form">Send SMS</a>
 
                         <div id="send-form" class="zoom-anim-dialog mfp-hide">
-                            <form id="mail-sms-form" novalidate="novalidate" name="formData" method="post" class="enquiry-form contact-form detailed-contact-form" ng-submit="Contact_to_customer_enquiry(<?php echo "'$propertyId'"; ?>)">
+                            <form id="mail-sms-form" novalidate="novalidate" name="formData" method="post" class="enquiry-form contact-form detailed-contact-form"  > 
                                 <h4 class="tittle-one"><?php echo $propertyName;  ?></h4>
                                 <div class="" id="name">
                                     <label for="email"></label> <input type="text"
@@ -568,11 +568,65 @@
                                 </div>
 
                                 <br>
-                                <input style="width: 32% !important;" type="submit" id="submit_div" value="Submit">
+                                <input style="width: 32% !important;" type="submit" id="submit_div" value="Submit"  onclick="Contact_to_customer_enquiry(<?php echo "'$propertyId'"; ?>, $('#full_name').val(), $('#email_id').val(), $('#phone').val(), $('#checkIn').val(), $('#checkOut').val(), $('#enquiry').val()  )">
                             </form>
                             <script>
+                                function Contact_to_customer_enquiry(id, name, email, phone, checkIn, checkOut, enquiry){
+								    	
+								    	var objForm = document.createElement('FORM');
+										objForm.method = 'post';
+										objForm.action = 'Contact';
+										
+										var objInput1 = document.createElement('INPUT');
+										objInput1.type = 'hidden';
+										objInput1.name = 'propertyId';
+										objInput1.value = id;
+										
+										var objInput2 = document.createElement('INPUT');
+										objInput2.type = 'hidden';
+										objInput2.name = 'full_name';
+										objInput2.value = name;
+										
+										
+										var objInput3 = document.createElement('INPUT');
+										objInput3.type = 'hidden';
+										objInput3.name = 'email';
+										objInput3.value = email;
+										
+										var objInput4 = document.createElement('INPUT');
+										objInput4.type = 'hidden';
+										objInput4.name = 'phone';
+										objInput4.value = phone;
+										
+										var objInput5 = document.createElement('INPUT');
+										objInput5.type = 'hidden';
+										objInput5.name = 'checkIn';
+										objInput5.value = checkIn;
+										
+										var objInput6 = document.createElement('INPUT');
+										objInput6.type = 'hidden';
+										objInput6.name = 'checkOut';
+										objInput6.value = checkOut;
+										
+										var objInput7 = document.createElement('INPUT');
+										objInput7.type = 'hidden';
+										objInput7.name = 'enquiry';
+										objInput7.value = enquiry;
+										
+										
+										objForm.appendChild(objInput1);
+										objForm.appendChild(objInput2);
+										objForm.appendChild(objInput3);
+										objForm.appendChild(objInput4);
+										objForm.appendChild(objInput5);
+										objForm.appendChild(objInput6);
+										objForm.appendChild(objInput7);
+										document.body.appendChild(objForm);
+										objForm.submit();
+								    }
+                                
                                 $(function() {
-                                    $("#datepicker,#checkIn,#checkOut")
+                                   $("#datepicker,#checkIn,#checkOut")
                                         .datepicker();
                                 });
                             </script>
@@ -612,6 +666,10 @@
         <?php $this->load->view('common/footer.html'); ?>
     </div>
     <!---->
+    <script>
+    
+    </script>
+    
 
     </body>
     </html>

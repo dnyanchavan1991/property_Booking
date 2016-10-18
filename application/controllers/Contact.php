@@ -11,27 +11,33 @@ class Contact extends CI_Controller {
 	
 	}
 	public function index() {
-		$this->load->view ( 'contact.html' );
+		//$this->load->view ( 'contact.html' );
+		$this->Contact_to_customer_enquiry($_POST ['propertyId'], $_POST ['full_name'], $_POST ['email'], $_POST ['phone'], $_POST ['checkIn'], $_POST ['checkOut'], $_POST ['enquiry']);
 	}
 	
-	public function  Contact_to_customer_enquiry($propertyId){
-	alert("hi");
+	public function  Contact_to_customer_enquiry($propertyId, $fullName, $email, $phone, $checkIn, $checkOut, $enquiry){
+	echo($propertyId);
+	echo($fullName);
+	echo($email);
+	echo($phone);
+	echo($checkIn);
+	echo($checkOut);
+	echo($enquiry);
 		$this->load->model('PropertyModel');
-		$postdata = file_get_contents("php://input");
-		$post= json_decode($postdata);
-		$checkin = $post->checkIn;
+		
+		$checkin = $checkIn;//$post->checkIn;
 		$checkin = str_replace ( '/', '-', $checkin );
-		$checkout = $post->checkOut;
+		$checkout = $checkOut;//$post->checkOut;
 		$checkout = str_replace ( '/', '-', $checkout );
 		$checkin = date ( 'Y-m-d', strtotime ( $checkin ) );
 		$checkout = date ( 'Y-m-d', strtotime ( $checkout ) );
-		$full_name=$post->full_name;
+		$full_name = $fullName;//$post->full_name;
 	//	$guestCount = $post->guestCount;
-		if($post->phone==null){
-			$contactInfo=$post->email_id;
+		if($phone == null ){//$post->phone==null
+			$contactInfo = $email; //$post->email_id;
 		}
 		else{
-			$contactInfo=$post->phone;
+			$contactInfo = $phone; //$post->phone;
 		}
 		$contactArray=array(
 		'checkIn'=>$checkin,
@@ -42,7 +48,7 @@ class Contact extends CI_Controller {
 		$messageContentQuery=$this->PropertyModel->getmessageContent('Enq');
 		$dbMessageContent=$messageContentQuery->row()->message_content;
 	
-		if($post->phone==null){
+		if($phone == null){//$post->phone==null
 			
 			$propertyOwnerInfo=$this->PropertyModel->getOwnerDetail($propertyId);
 			$recepient=$propertyOwnerInfo->row()->email.','.$contactInfo;
@@ -78,40 +84,58 @@ class Contact extends CI_Controller {
 			 			//'guest_count'=>$guestcount
 				);
 			 	$this->PropertyModel->insertEnquiryData ($enquiryDetailsArray);
-			}
+			}*/
 		}
-		else if($post->phone!=null){
+		else if( $phone != null ){ //$post->phone!=null
+			echo "<br/> else block : $propertyId<br/>";	
 			
-			$propertyOwnerInfo=$this->PropertyModel->getOwnerDetail($propertyId);
-			$recepient=$propertyOwnerInfo->row()->phone.','.$contactInfo;
+			
+			///
+			
+			$SMSURL="http://bhashsms.com/api/sendmsg.php?user=8796151636&pass=tabrez&sender=KDHLTH&phone=8796151636&text=PROPERTY BOOKED&priority=sdnd&stype=normal";
+					 //http://bhashsms.com/api/sendmsg.php?user=8796151636&pass=tabrez&sender=KDHLTH&phone=8796151636&text=PROPERTY BOOKED&priority=sdnd&stype=normal
+			//"http://bhashsms.com/api/sendmsg.php?user={0}&pass={1}&sender={2}&phone={3}&text={4}&priority=sdnd&stype=normal";
+		     $ch = curl_init();
+		     curl_setopt($ch, CURLOPT_URL, $SMSURL);
+			curl_setopt($ch, CURLOPT_HEADER, 0);
+		        curl_exec($ch);
+		        
+		        //Open the URL to send the message
+		        $response = httpRequest($SMSURL);
+			////
+			$propertyOwnerInfo = $this->PropertyModel->getOwnerDetail($propertyId);
+			print_r($propertyOwnerInfo);
+			$recepient = $propertyOwnerInfo->row()->phone . ',' . $contactInfo;
+			echo "<br/>"; echo $recepient;
 			$subject=$messageContent.'for'.$propertyOwnerInfo->row()->propertyName;
 				
 			$message = $messageContent.'for'.$propertyOwnerInfo->row()->propertyName.'from'.$checkin.'to'.$checkout;
-			if(sendMsg ($recepient, $message, $debug=false)){
+			if(sendMsg ($recepient, $message, $debug=false))
+			{
 				
-		$SMSURL="http://bhashsms.com/api/sendmsg.php?user={0}&pass={1}&sender=&phone={2}&text={3}&priority=sdnd&stype=normal";
-        $SMSUser="Test";
-        $SMSPassword="Test";
-        $url = 'username='. $SMSUser;
-        $url.= '&password='.$SMSPassword;
-        $url.= '&action=sendmessage';
-        $url.= '&messagetype=SMS:TEXT';
-        $url.= '&recepient='.urlencode($phone);
-        $url.= '&messagedata='.urlencode($message);
-        $urltouse =  $SMSURL.$url;
-        if ($debug) { echo "Request: <br>$urltouse<br><br>"; }
-        
-        //Open the URL to send the message
-        $response = httpRequest($urltouse);
-                
-        	return($response);
-        }
-				}
-	
-		else{
-			echo 'message  not sent';
+				$SMSURL="http://bhashsms.com/api/sendmsg.php?user={0}&pass={1}&sender=&phone={2}&text={3}&priority=sdnd&stype=normal";
+		        $SMSUser="Test";
+		        $SMSPassword="Test";
+		        $url = 'username='. $SMSUser;
+		        $url.= '&password='.$SMSPassword;
+		        $url.= '&action=sendmessage';
+		        $url.= '&messagetype=SMS:TEXT';
+		        $url.= '&recepient='.urlencode($phone);
+		        $url.= '&messagedata='.urlencode($message);
+		        $urltouse =  $SMSURL.$url;
+		        if ($debug) { echo "Request: <br>$urltouse<br><br>"; }
+		        
+		        //Open the URL to send the message
+		        $response = httpRequest($urltouse);
+		                
+		        	return($response);
+	         
+			}
+		
+			else{
+				echo 'message  not sent';
+			}
 		}
-		*/}
 	}
 	public function  sendMail($mailDetailArray) {
 		$header = 'MIME-Version: 1.0' . "\r\n";

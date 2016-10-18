@@ -87,13 +87,14 @@ app.controller('popupController', function($scope, $http) {
 				$scope.showModal = !$scope.showModal;
 			};
 			$scope.Contact_to_customer_enquiry = function(propertyId) {
-                //window.alert("hi!");
-				if($scope.form.email_id==null){
+                alert("hi!");
+				/*if($scope.form.email_id==null){
 					var enuiryVia='SMS' 
 				}
 				else{
 					var enuiryVia='Mail'
 				}
+				
 				$http(
 						{
 							method : 'POST',
@@ -107,7 +108,7 @@ app.controller('popupController', function($scope, $http) {
 						alert(enuiryVia+' sent succesfuly.');
 					}
 				});
-				$scope.showModal = !$scope.showModal;
+				$scope.showModal = !$scope.showModal;*/
 			};
 		})
 app.directive(
