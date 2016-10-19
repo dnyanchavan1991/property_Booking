@@ -16,13 +16,13 @@ class Contact extends CI_Controller {
 	}
 	
 	public function  Contact_to_customer_enquiry($propertyId, $fullName, $email, $phone, $checkIn, $checkOut, $enquiry){
-	echo($propertyId);
+	/*echo($propertyId);
 	echo($fullName);
 	echo($email);
 	echo($phone);
 	echo($checkIn);
 	echo($checkOut);
-	echo($enquiry);
+	echo($enquiry); */
 		$this->load->model('PropertyModel');
 		
 		$checkin = $checkIn;//$post->checkIn;
@@ -87,12 +87,12 @@ class Contact extends CI_Controller {
 			}*/
 		}
 		else if( $phone != null ){ //$post->phone!=null
-			echo "<br/> else block : $propertyId<br/>";	
+		//	echo "<br/> else block : $propertyId<br/>";	
 			
 			
 			///
 			
-			$SMSURL="http://bhashsms.com/api/sendmsg.php?user=8796151636&pass=tabrez&sender=KDHLTH&phone=8796151636&text=PROPERTY BOOKED&priority=sdnd&stype=normal";
+		/*	$SMSURL="http://bhashsms.com/api/sendmsg.php?user=8796151636&pass=tabrez&sender=KDHLTH&phone=8796151636&text=PROPERTY BOOKED&priority=sdnd&stype=normal";
 					 //http://bhashsms.com/api/sendmsg.php?user=8796151636&pass=tabrez&sender=KDHLTH&phone=8796151636&text=PROPERTY BOOKED&priority=sdnd&stype=normal
 			//"http://bhashsms.com/api/sendmsg.php?user={0}&pass={1}&sender={2}&phone={3}&text={4}&priority=sdnd&stype=normal";
 		     $ch = curl_init();
@@ -101,42 +101,91 @@ class Contact extends CI_Controller {
 		        curl_exec($ch);
 		        
 		        //Open the URL to send the message
-		        $response = httpRequest($SMSURL);
+		        $response = httpRequest($SMSURL); */
 			////
 			$propertyOwnerInfo = $this->PropertyModel->getOwnerDetail($propertyId);
-			print_r($propertyOwnerInfo);
+		//	print_r($propertyOwnerInfo->row()->phone);
 			$recepient = $propertyOwnerInfo->row()->phone . ',' . $contactInfo;
-			echo "<br/>"; echo $recepient;
-			$subject=$messageContent.'for'.$propertyOwnerInfo->row()->propertyName;
+		//	echo "<br/>"; echo $recepient;
+		//	$subject=$messageContent.'for'.$propertyOwnerInfo->row()->propertyName;
+			
+			$subject='Enquiry from:'.$fullName.' For: '.$propertyOwnerInfo->row()->propertyName;
+			$message = $subject.' From: '.$checkIn.' To: '.$checkOut.' Message:'.$enquiry;
+					
+	//		$message = $messageContent.'for'.$propertyOwnerInfo->row()->propertyName.'from'.$checkin.'to'.$checkout;
+//			if(sendMsg ($recepient, $message, $debug=false))
+//			{
 				
-			$message = $messageContent.'for'.$propertyOwnerInfo->row()->propertyName.'from'.$checkin.'to'.$checkout;
-			if(sendMsg ($recepient, $message, $debug=false))
-			{
-				
-				$SMSURL="http://bhashsms.com/api/sendmsg.php?user={0}&pass={1}&sender=&phone={2}&text={3}&priority=sdnd&stype=normal";
-		        $SMSUser="Test";
-		        $SMSPassword="Test";
-		        $url = 'username='. $SMSUser;
-		        $url.= '&password='.$SMSPassword;
-		        $url.= '&action=sendmessage';
-		        $url.= '&messagetype=SMS:TEXT';
-		        $url.= '&recepient='.urlencode($phone);
-		        $url.= '&messagedata='.urlencode($message);
-		        $urltouse =  $SMSURL.$url;
-		        if ($debug) { echo "Request: <br>$urltouse<br><br>"; }
+//				$SMSURL="http://bhashsms.com/api/sendmsg.php?user={0}&pass={1}&sender=&phone={2}&text={3}&priority=sdnd&stype=normal";
+//		        $SMSUser="Test";
+//		        $SMSPassword="Test";
+//		        $url = 'username='. $SMSUser;
+//		        $url.= '&password='.$SMSPassword;
+//		        $url.= '&action=sendmessage';
+//		        $url.= '&messagetype=SMS:TEXT';
+//		        $url.= '&recepient='.urlencode($phone);
+//		        $url.= '&messagedata='.urlencode($message);
+//		        $urltouse =  $SMSURL.$url;
+//		        if ($debug) { echo "Request: <br>$urltouse<br><br>"; }
 		        
 		        //Open the URL to send the message
-		        $response = httpRequest($urltouse);
-		                
-		        	return($response);
+		         
+		         
+//		        $response = httpRequest($urltouse);
+			$method="POST";
+			$data="false";
+				//$url="http://bhashsms.com/api/sendmsg.php?user=8796151636&pass=tabrez&sender=KDHLTH&phone=7249612636&text=hello1Hi&priority=sdnd&stype=normal";
+			
+			$this->sendSMS($method,$data,$propertyOwnerInfo->row()->phone,$message);
+			$this->sendSMS($method,$data,$phone,"Enquiry Has Been Sent!!!");
+			
+			//echo $url;
+			        	return("$response"); 
 	         
-			}
+//			}
 		
-			else{
-				echo 'message  not sent';
-			}
+//			else{
+//				echo 'message  not sent';
+//			}
 		}
 	}
+	public function sendSMS($method,$data,$phone,$message)
+	{
+		$url="http://bhashsms.com/api/sendmsg.php?user=8796151636&pass=tabrez&sender=KDHLTH&phone=".$phone."&text=".urlencode($message)."&priority=sdnd&stype=normal";
+		
+		 $curl = curl_init();
+
+		    switch ($method)
+		    {
+		        case "POST":
+		            curl_setopt($curl, CURLOPT_POST, 1);
+
+		            if ($data)
+		                curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+		            break;
+		        case "PUT":
+		            curl_setopt($curl, CURLOPT_PUT, 1);
+		            break;
+		        default:
+		            if ($data)
+		                $url = sprintf("%s?%s", $url, http_build_query($data));
+		    }
+
+		    // Optional Authentication:
+		    curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+		    curl_setopt($curl, CURLOPT_USERPWD, "username:password");
+
+		    curl_setopt($curl, CURLOPT_URL, $url);
+		    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+
+		    curl_exec($curl);
+
+		    curl_close($curl);
+
+
+
+	}
+	
 	public function  sendMail($mailDetailArray) {
 		$header = 'MIME-Version: 1.0' . "\r\n";
 		$header .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
