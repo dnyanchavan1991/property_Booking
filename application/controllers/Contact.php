@@ -135,12 +135,13 @@ class Contact extends CI_Controller {
 			$method="POST";
 			$data="false";
 				//$url="http://bhashsms.com/api/sendmsg.php?user=8796151636&pass=tabrez&sender=KDHLTH&phone=7249612636&text=hello1Hi&priority=sdnd&stype=normal";
-			
-			$this->sendSMS($method,$data,$propertyOwnerInfo->row()->phone,$message);
-			$this->sendSMS($method,$data,$phone,"Enquiry Has Been Sent!!!");
+			$phone1= $propertyOwnerInfo->row()->phone;
+			$this->sendSMS($method,$data,$phone1,$message);
+			$message1="Enquiry has been sent.";
+			$this->sendSMS($method,$data,$phone,$message1);
 			
 			//echo $url;
-			        	return("$response"); 
+			        //	return("$response"); 
 	         
 //			}
 		
