@@ -3,10 +3,14 @@ class Contact extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct();
+		session_cache_limiter ( 'private, must-revalidate' );
+		session_cache_expire ( 60 );
 		$this->load->library('session');
+		$this->load->model('PropertyModel');
+		ini_set('max_execution_time', 600);
 		if (!$this->session->userdata('user') && !$this->session->userdata('password'))
 		{
-			$this->load->view ( 'index.html' );
+			$this->load->view ( 'index-new.php' );
 		}
 	
 	}
@@ -16,6 +20,7 @@ class Contact extends CI_Controller {
 	}
 	
 	public function  Contact_to_customer_enquiry($propertyId, $fullName, $email, $phone, $checkIn, $checkOut, $enquiry){
+	
 	/*echo($propertyId);
 	echo($fullName);
 	echo($email);
@@ -23,7 +28,7 @@ class Contact extends CI_Controller {
 	echo($checkIn);
 	echo($checkOut);
 	echo($enquiry); */
-		$this->load->model('PropertyModel');
+		
 		
 		$checkin = $checkIn;//$post->checkIn;
 		$checkin = str_replace ( '/', '-', $checkin );
@@ -45,10 +50,10 @@ class Contact extends CI_Controller {
 		'full_name'=>$full_name,
 		'contact'=>$contactInfo
 		);
-		$messageContentQuery=$this->PropertyModel->getmessageContent('Enq');
-		$dbMessageContent=$messageContentQuery->row()->message_content;
 	
 		if($phone == null){//$post->phone==null
+			$dbMessageContent=$this->PropertyModel->getmessageContent('Enq');
+			//$dbMessageContent=$messageContentQuery->row()->message_content;
 			
 			$propertyOwnerInfo=$this->PropertyModel->getOwnerDetail($propertyId);
 			$recepient=$propertyOwnerInfo->row()->email.','.$contactInfo;
@@ -102,15 +107,16 @@ class Contact extends CI_Controller {
 		        
 		        //Open the URL to send the message
 		        $response = httpRequest($SMSURL); */
-			////
+			//// 
 			$propertyOwnerInfo = $this->PropertyModel->getOwnerDetail($propertyId);
+		//	print_r($propertyOwnerInfo);
 		//	print_r($propertyOwnerInfo->row()->phone);
 			$recepient = $propertyOwnerInfo->row()->phone . ',' . $contactInfo;
 		//	echo "<br/>"; echo $recepient;
 		//	$subject=$messageContent.'for'.$propertyOwnerInfo->row()->propertyName;
 			
-			$subject='Enquiry from:'.$fullName.' For: '.$propertyOwnerInfo->row()->propertyName;
-			$message = $subject.' From: '.$checkIn.' To: '.$checkOut.' Message:'.$enquiry;
+			$subject= $fullName. '-' .$phone . '  interested in renting property "'.$propertyOwnerInfo->row()->propertyName;
+			$message = $subject.'" From: '.$checkIn.' To: '.$checkOut.' Message:'.$enquiry;
 					
 	//		$message = $messageContent.'for'.$propertyOwnerInfo->row()->propertyName.'from'.$checkin.'to'.$checkout;
 //			if(sendMsg ($recepient, $message, $debug=false))
@@ -137,11 +143,13 @@ class Contact extends CI_Controller {
 				//$url="http://bhashsms.com/api/sendmsg.php?user=8796151636&pass=tabrez&sender=KDHLTH&phone=7249612636&text=hello1Hi&priority=sdnd&stype=normal";
 			$phone1= $propertyOwnerInfo->row()->phone;
 			$this->sendSMS($method,$data,$phone1,$message);
-			$message1="Enquiry has been sent.";
+			
+			$message1="Your Enquiry has been sent to property owner for Property '" . $propertyOwnerInfo->row()->propertyName . "' Thanks for using our services-TrueHolidays.co.in";
 			$this->sendSMS($method,$data,$phone,$message1);
 			
 			//echo $url;
 			        //	return("$response"); 
+	       //  $this->load->view ( 'index-new.php' );
 	         
 //			}
 		

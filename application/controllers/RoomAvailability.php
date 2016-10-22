@@ -7,9 +7,11 @@ class RoomAvailability extends CI_Controller {
 		$this->load->library ( 'session' );
 		//$this->load->model ( 'PropertyModel' );
 	}
-	public function index() { 
-	 	 if (isset ( $_POST ['submit'] ))  
+	public function index() {
+		
+	 	 if (isset ( $_POST ['submit'] ) )  
 			{ 
+		 	
 			$checkin = $_POST ['checkIn']; 			
 			$checkin = date ('Y-m-d', strtotime ( $checkin ));  
 			$checkout = $_POST ['checkOut'];
@@ -30,7 +32,25 @@ class RoomAvailability extends CI_Controller {
 				'propertyType'=>$_POST['propertyType']				
 			);
 			
+			
+	 	} else { // Page accessed via Quick Search MENU
+	 	 
+	 		$this->session->set_userdata ( 'checkIn', '2016-01-01' );
+	 		$this->session->set_userdata ( 'checkOut', '2020-12-31' );
+	 		$this->session->set_userdata ( 'guestCount','1' );
+	 		$this->session->set_userdata ( 'destination', $_POST['inpDestination'] );
+	 		$this->session->set_userdata ( 'propertyType','0');
+	 		
+	 		$data1 = array(
+	 				'inpDestination' => $_POST['inpDestination'],
+	 				'checkIn' => "2016-01-01",
+	 				'checkOut'=> "2020-12-31",
+	 				'guestCount' => "1",
+	 				'propertyType'=> "0"
+	 		);
+	 		
 	 	}
+	 	
 	$this->load->view ( 'search-new.php', $data1 );
 	
 	

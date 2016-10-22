@@ -58,14 +58,14 @@
 				ret_flag = false;
 				alertFlag = true;
 			}
-				if($("#inpDestination").val() == "")
+				/*if($("#inpDestination").val() == "")
 				{
 					if(confirm("Would you like to visit all Destination Properties?")){
 						ret_flag = true;
 					} else {
 						ret_flag = false;
 					}					
-				} 
+				} */
 				if(($("#datepicker").val() == "Arrival Date" || $("#datepicker").val() == "" ) && !alertFlag)
 				{
 					alert("Please provide Tentative Travel Start Date");
@@ -232,7 +232,7 @@
 							<!--  <h5>No. of Guests</h5>	-->
 							  <div class="section_room">
 								  <select class="frm-field required" ng-model="selectGuestHeadCount" id="guestCount" name="guestCount" ng-init="selectGuestHeadCount=guestHeadCount[0] " 
-								  ng-options="option as option.label for option in guestHeadCount" style="height: 32px"></select>
+								  ng-options="option as option.label for option in guestHeadCount track by option.value " style="height: 32px"></select>
 							  </div>
 						  </li>
 						 <li class="span1_of_3 left">

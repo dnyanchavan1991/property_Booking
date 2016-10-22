@@ -481,9 +481,9 @@ class PropertyModel extends CI_Model {
 	public function getOwnerDetail($propertyId) {
 		$ownerInfoTable = 'property_owner_info';
 		$propertyTable = 'property';
-		$this->db->select ( "owner_name as name,phone,email,property_name as propertyName" );
+		$this->db->select ( " owner_name as name,phone,email,property_name as propertyName " );
 		$this->db->from ( " $ownerInfoTable  owner" );
-		$this->db->join ( "$propertyTable property", "owner.property_id=property.property_id" );
+		$this->db->join ( " $propertyTable property", " owner.property_id=property.property_id " );
 		$this->db->where ( 'owner.property_id', $propertyId );
 		$query = $this->db->get ();
 		return $query;

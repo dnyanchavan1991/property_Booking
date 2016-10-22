@@ -31,7 +31,7 @@
     <body  data-spy="scroll" data-target="#myScrollspy">
     <!--header starts-->
     <div class="header">
-        <?php $this->load->view('common/header-bar.php'); ?>
+        <?php $this->load->view('common/header.php'); ?>
     </div>
 
     <script>
@@ -170,7 +170,7 @@
                 preloader: false,
 
                 midClick: true,
-                removalDelay: 300,
+                removalDelay: 3000,
                 mainClass: 'my-mfp-zoom-in'
             });
 
@@ -195,7 +195,7 @@
                 preloader: false,
 
                 midClick: true,
-                removalDelay: 300,
+                removalDelay: 3000,
                 mainClass: 'my-mfp-zoom-in'
             });
 
@@ -257,10 +257,11 @@
         }
         function blinker() {
         //alert("hi");
-			$('.blinking').fadeOut(500);
-			$('.blinking').fadeIn(500);
+			$('.blinking').fadeOut(1000);
+			
+			$('.blinking').fadeIn(2500);
 		}
-		setInterval(blinker, 1000);
+		setInterval(blinker, 4000);
 
     </script>
     <!---->
@@ -523,8 +524,8 @@
                     <div class="hotel-left-two" ng-app="getRoomDetailApp" ng-controller="popupController">
 
                         <!-- <p> Send </p> -->
-                        <a class = "send-mail blinking" href="#send-form" >Send Email</a> |
-                        <a class = "send-sms blinking" href="#send-form">Send SMS</a>
+                        <a class = "send-mail blinking" href="#send-form" style="color: blueviolet">Send Email</a> |
+                        <a class = "send-sms blinking" href="#send-form" style="color: blueviolet">Send SMS</a>
 
                         <div id="send-form" class="zoom-anim-dialog mfp-hide">
                             <form id="mail-sms-form" novalidate="novalidate" name="formData" method="post" class="enquiry-form contact-form detailed-contact-form"  > 
@@ -633,8 +634,8 @@
                         <!--</modal>-->
                         </div>
                     </div>
-                    <div class="map-gd">
-                        <div id="map_canvas" style="width:100%;height:270px;"></div>
+                    <div class="map-gd" style="height: 23em">
+                        <div id="map_canvas" style="width:100%;height:100%;"></div>
                         <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAw7GwLP6e0viGPXOtxAHtYCOVeRFkEbsw&libraries=places&sensor=false"></script>
                         <script>
                             /* - map - */

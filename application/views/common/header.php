@@ -11,7 +11,12 @@
         });
     });
     jQuery(document).ready(function ($) {
-
+    	var lastPart = window.location.href.split("/").pop();
+    	   
+    	  if (lastPart == "Index1") {
+				$("#jssor_1").toggleClass();
+        	  }
+    	 
         var jssor_1_SlideshowTransitions = [
             {$Duration:1200,$Opacity:2}
         ];
@@ -50,30 +55,65 @@
         $(window).bind("resize", ScaleSlider);
         $(window).bind("orientationchange", ScaleSlider);
         //responsive code end
+        
+        $("#search").click(function(){
+        	$("#subSearch" ).toggleClass();
+        		$("#QuickSearch_Mh").click(function(){
+        			$("#subSearchM" ).toggleClass();
+        		});
+        	});
     });
+    
 </script>
-<div class="top-header" > <!--style="position: fixed; width: 100%; z-index: 1"-->
+<div class="top-header"> <!--style="position: fixed; width: 100%; z-index: 1"-->
     <div class="container">
         <div class="top-menu">
+        <form method="post" action="RoomAvailability" id="frmCntrl">
             <?php $accessType = $this->session->userdata('acessType'); ?>
-            <ul class="top-level-menu">
+            <input type="hidden" name="inpDestination" id="inpDestination" value=""> 
+            <ul class="top-level-menu" >
                 <li class="active"><a href="Index1">Home</a></li>
+                <li class="active" id="search"> <a href="#"> Quick Search </a>
+                	<ul class="hide" id="subSearch" style="position: absolute; z-index: 100" >
+                		<li> <a href="#" onclick="$('#inpDestination').val('Maharashtra');$('#frmCntrl').submit();" id="QuickSearch" > Maharashtra </a> </li>
+                		<!--	<ul class="hide subMenu" id="subSearchM" style="position: absolute; z-index: 100">
+                			<li> <a href="subSearchM_1" > Ratnagiri </a> </li>
+                			<li> <a href="subSearchM_2"> Malvan </a> </li>
+                			<li> <a href="subSearchM_3"> Chiplun </a> </li>
+                			<li> <a href="subSearchM_4"> Kolhapur </a> </li>
+                			<li> <a href="subSearchM_5"> Pune </a> </li>
+                			</ul>-->
+                		<li> <a href="#" onclick="$('#inpDestination').val('Goa');$('#frmCntrl').submit();"> Goa </a> </li>
+                			<!--<ul class="hide subMenu" id="subSearchG" style="position: absolute; z-index: 100">
+                			<li> <a href="subSearchG_1"> Goa </a> </li>
+                			<li> <a href="subSearchG_2"> Maharashtra </a> </li>
+                			<li> <a href="subSearchG_3"> Goa </a> </li>
+                			<li> <a href="subSearchG_4"> Maharashtra </a> </li>
+                			<li> <a href="subSearchG_5"> Goa </a> </li>
+                			</ul>-->
+                		 
+                		
+                	</ul>
+                </li>
 				<?php 
              	if ($this->session->userdata ('user_id') == "") { ?>
-                	<li id="logIn"><a href="#" data-hover="LOGIN" onClick="checkLogin('Index1')">Login</a></li>
+                	<li id="logIn" class="active"><a href="#" data-hover="LOGIN" onClick="checkLogin('Index1')">Login</a></li>
 				<?php } else {
 				     if ($this->session->userdata ('gender') == "1") { ?>
                     <li id="logOut"><img src="images/new-theme/male.png" alt=""/>
                     <?php } else { ?>
                     <li id="logOut"><img src="images/new-theme/female.png" alt=""/>
                     <?php } ?>
-                    <ul class="second-level-menu"><li class="image-li">
-                        <a href="#" data-hover="LOGOUT" onClick="checkLogout('Index1')">Logout</a>
-                    </li></ul>
+                    <!-- <ul class="second-level-menu"> -->
+                    <li class="image-li">
+                        <a href="#" class="active" data-hover="LOGOUT" onClick="checkLogout('Index1')">Logout</a>
+                    </li>
+                    <!-- </ul> -->
                     </li>
                 	<!--<li id="logOut"><a href="#" data-hover="LOGOUT" onClick="checkLogout('Index1')">Logout</a></li>-->
 				<?php } ?>
             </ul>
+            </form>
         </div>
         <span class="menu"> </span>
         <div class="m-clear"></div>
@@ -93,7 +133,7 @@
         <div class="clearfix"></div>
     </div>
 </div>
-<div id="jssor_1" style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 1500px; height: 300px; overflow: hidden; visibility: hidden;" class="banner">
+<div class="hide" id="jssor_1" style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 1500px; height: 300px; overflow: hidden; visibility: hidden;" class="banner">
     <div data-u="loading" style="position: absolute; top: 0px; left: 0px;">
         <div style="filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
         <div style="position:absolute;display:block;background:url('images/new-theme/loading.gif') no-repeat center center;top:0px;left:0px;width:100%;height:100%;"></div>

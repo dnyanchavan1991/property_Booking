@@ -177,7 +177,7 @@
 <form class = "room-availability" method="post" action="RoomAvailability"  >
     <div class="online_reservation">
         <div class="b_room b_room_active" id="b_room">
-            <div class="booking_room booking_room_active" id="booking_room">
+            <div class="booking_room booking_room_active" id="booking_room" style="top: 0em !important">
                 <div class="reservation">
                     <ul>
                         <li  class="span1_of_click">
