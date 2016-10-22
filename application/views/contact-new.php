@@ -394,7 +394,7 @@
                                     $files = glob('Admin/'.$imagePath."*.*");
                                     foreach ($files as $image_files) {
                                     ?>
-                                    <div class="item text-center image-grid property-grid">
+                                    <div class="item text-center image-grid property-grid" >
                                         <ul>
                                             <?php
                                                 for ($count=1; $count<6; $count++)
@@ -410,7 +410,7 @@
                                                         $ext = strtolower(pathinfo($image, PATHINFO_EXTENSION));
                                                         if (in_array($ext, $supported_file))
                                                         { ?>
-                                                            <li><img src="<?php echo $image;?>" alt=""></li>
+                                                            <li><img src="<?php echo $image;?>" alt="" style="width: 30em !important"></li>
                                                         <?php
                                                             $i++;
                                                         }
