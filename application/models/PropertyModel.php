@@ -485,14 +485,17 @@ class PropertyModel extends CI_Model {
 	}
 	/* this function gives owner detail particular to proprty */
 	public function getOwnerDetail($propertyId) {
+		$pid = $propertyId;
 		$ownerInfoTable = 'property_owner_info';
 		$propertyTable = 'property';
 		$this->db->select ( " owner_name as name,phone,email,property_name as propertyName " );
 		$this->db->from ( " $ownerInfoTable  owner" );
 		$this->db->join ( " $propertyTable property ", " owner.property_id=property.property_id " );
-		$this->db->where ( 'owner.property_id', $propertyId );
-		$query = $this->db->get ();
-		return $query;
+		$this->db->where ( "property.property_id = '". $pid ."'" );
+		 $query 	= $this->db->get ();
+		 $retVal = $query->result ();
+		return ($retVal);
+		 
 	}
 	/* this function gives message content from db depending upon message type */
 	public function getmessageContent($messageType) {

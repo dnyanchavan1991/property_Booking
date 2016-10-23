@@ -13,7 +13,7 @@
     jQuery(document).ready(function ($) {
     	var lastPart = window.location.href.split("/").pop();
     	   
-    	  if (lastPart == "Index1") {
+    	  if (lastPart == "Index1" || lastPart == "" || lastPart == "Contact") {
 				$("#jssor_1").toggleClass();
         	  }
     	 

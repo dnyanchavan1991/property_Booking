@@ -108,14 +108,15 @@ class Contact extends CI_Controller {
 		        //Open the URL to send the message
 		        $response = httpRequest($SMSURL); */
 			//// 
+		 
 			$propertyOwnerInfo = $this->PropertyModel->getOwnerDetail($propertyId);
-		//	print_r($propertyOwnerInfo);
+		
 		//	print_r($propertyOwnerInfo->row()->phone);
-			$recepient = $propertyOwnerInfo->row()->phone . ',' . $contactInfo;
+			$recepient = $propertyOwnerInfo[0]->phone . ',' . $contactInfo;
 		//	echo "<br/>"; echo $recepient;
 		//	$subject=$messageContent.'for'.$propertyOwnerInfo->row()->propertyName;
 			
-			$subject= $fullName. '-' .$phone . '  interested in renting property "'.$propertyOwnerInfo->row()->propertyName;
+			$subject= $fullName. '-' .$phone . '  interested in renting property "'.$propertyOwnerInfo[0]->propertyName;
 			$message = $subject.'" From: '.$checkIn.' To: '.$checkOut.' Message:'.$enquiry;
 					
 	//		$message = $messageContent.'for'.$propertyOwnerInfo->row()->propertyName.'from'.$checkin.'to'.$checkout;
@@ -141,11 +142,11 @@ class Contact extends CI_Controller {
 			$method="POST";
 			$data="false";
 				//$url="http://bhashsms.com/api/sendmsg.php?user=8796151636&pass=tabrez&sender=KDHLTH&phone=7249612636&text=hello1Hi&priority=sdnd&stype=normal";
-			$phone1= $propertyOwnerInfo->row()->phone;
-			$this->sendSMS($method,$data,$phone1,$message);
+			$phone1= $propertyOwnerInfo[0]->phone;
+		 	$this->sendSMS($method,$data,$phone1,$message);
 			
-			$message1="Your Enquiry has been sent to property owner for Property '" . $propertyOwnerInfo->row()->propertyName . "' Thanks for using our services-TrueHolidays.co.in";
-			$this->sendSMS($method,$data,$phone,$message1);
+			$message1="Your Enquiry has been sent to property owner for Property '" . $propertyOwnerInfo[0]->propertyName . "' Thanks for using our services-TrueHolidays.co.in";
+			 $this->sendSMS($method,$data,$phone,$message1);
 			
 			//echo $url;
 			        //	return("$response"); 
