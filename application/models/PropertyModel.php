@@ -19,6 +19,7 @@ class PropertyModel extends CI_Model {
 		
 		$propertyType = $searchArray ['propertyType'];
 		$destination = $searchArray ['destination'];
+		$featured    =  $searchArray ['featured'];
 		
 		$d=date("y-m-d");
 			//$where = " ( Featured_startDate <= '$d' and Featured_endDate >='$d' )";
@@ -27,8 +28,6 @@ class PropertyModel extends CI_Model {
 		$this->db->select ( "property.property_id as propertyId,star_rate,property.property_name as property,property.property_type_id,property.image_path as imagePath, property.star_rate, concat(property.street,',',property.city,',',property.state,',',property.postal_code)as propertyAddress,propertyInfo.accommodates,(propertyInfo.accommodates) as availableAccomodes, propertyInfo.bedrooms,propertyInfo.bathrooms, propertyInfo.pool, propertyInfo.free_parking, propertyInfo.air_condition, propertyInfo.television_access, propertyInfo.internet_access,
 		 propertyInfo.smoking_allowd, propertyInfo.free_breakfast, propertyInfo.pet_friendly,
 		 IF((Featured_startDate <= '$d' and Featured_endDate >='$d'), 'Yes', 'No') as Featured ");
-		 	 
-		   
 		 
 		
 	 //(propertyInfo.accommodates-IFNULL(sum(res.accomodates), 0)) as availableAccomodes
@@ -47,7 +46,14 @@ class PropertyModel extends CI_Model {
 	 	$where = " CONCAT(TRIM(city), ', ', TRIM(state),', ',TRIM(country)) LIKE '%$destination%' ";
 	 
 		 $this->db->where ( $where );
-		$this->db->where ('activation_flag','YES'); 
+		$this->db->where ('activation_flag','YES');
+		
+		if ($featured == "Featured") {
+			
+			$where = " Featured_startDate <= '$d' and Featured_endDate >='$d' ";
+			$this->db->where (  $where );
+		}  
+		
 		
 		if ($propertyType != '0') {
 			$where = "(property_type_id='$propertyType')";
@@ -483,7 +489,7 @@ class PropertyModel extends CI_Model {
 		$propertyTable = 'property';
 		$this->db->select ( " owner_name as name,phone,email,property_name as propertyName " );
 		$this->db->from ( " $ownerInfoTable  owner" );
-		$this->db->join ( " $propertyTable property", " owner.property_id=property.property_id " );
+		$this->db->join ( " $propertyTable property ", " owner.property_id=property.property_id " );
 		$this->db->where ( 'owner.property_id', $propertyId );
 		$query = $this->db->get ();
 		return $query;

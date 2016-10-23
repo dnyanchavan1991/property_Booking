@@ -23,31 +23,58 @@ class RoomAvailability extends CI_Controller {
 			$this->session->set_userdata ( 'guestCount',$_POST['guestCount'] );
 			$this->session->set_userdata ( 'destination', $_POST['inpDestination'] );
 			$this->session->set_userdata ( 'propertyType',$_POST['propertyType']);
+			$this->session->set_userdata ( 'featured', '');
 			
 			$data1 = array(
 				'inpDestination' => $_POST['inpDestination'],
 				'checkIn' => $checkin,
 				'checkOut'=> $checkout,
 				'guestCount' =>$_POST['guestCount'],
-				'propertyType'=>$_POST['propertyType']				
+				'propertyType'=>$_POST['propertyType'],
+				'featured' => ""
 			);
 			
 			
 	 	} else { // Page accessed via Quick Search MENU
+	 		 
+	 		if ($_POST['inpDestination'] == "Featured"){
+	 			
+	 			  
+	 			$this->session->set_userdata ( 'checkIn', '' );
+	 			$this->session->set_userdata ( 'checkOut', '' );
+	 			$this->session->set_userdata ( 'guestCount','1' );
+	 			$this->session->set_userdata ( 'destination', '' );
+	 			$this->session->set_userdata ( 'propertyType','0');
+	 			$this->session->set_userdata ( 'featured', $_POST['inpDestination']);
+	 			
+	 			$data1 = array(
+	 					'inpDestination' => '',
+	 					'checkIn' => "",
+	 					'checkOut'=> "",
+	 					'guestCount' => "1",
+	 					'propertyType'=> "0",
+	 					'featured' => $_POST['inpDestination']
+	 			);
+	 		} else {
+	 			
+	 			$this->session->set_userdata ( 'checkIn', '2016-01-01' );
+	 			$this->session->set_userdata ( 'checkOut', '2020-12-31' );
+	 			$this->session->set_userdata ( 'guestCount','1' );
+	 			$this->session->set_userdata ( 'destination', $_POST['inpDestination'] );
+	 			$this->session->set_userdata ( 'propertyType','0');
+	 			$this->session->set_userdata ( 'featured', '');
+	 			
+	 			$data1 = array(
+	 					'inpDestination' => $_POST['inpDestination'],
+	 					'checkIn' => "2016-01-01",
+	 					'checkOut'=> "2020-12-31",
+	 					'guestCount' => "1",
+	 					'propertyType'=> "0",
+	 					'featured' => ""
+	 			);
+	 		}
 	 	 
-	 		$this->session->set_userdata ( 'checkIn', '2016-01-01' );
-	 		$this->session->set_userdata ( 'checkOut', '2020-12-31' );
-	 		$this->session->set_userdata ( 'guestCount','1' );
-	 		$this->session->set_userdata ( 'destination', $_POST['inpDestination'] );
-	 		$this->session->set_userdata ( 'propertyType','0');
 	 		
-	 		$data1 = array(
-	 				'inpDestination' => $_POST['inpDestination'],
-	 				'checkIn' => "2016-01-01",
-	 				'checkOut'=> "2020-12-31",
-	 				'guestCount' => "1",
-	 				'propertyType'=> "0"
-	 		);
 	 		
 	 	}
 	 	
@@ -76,6 +103,7 @@ class RoomAvailability extends CI_Controller {
 		$propertyType =  $this->session->userdata ( 'propertyType' ) ;
 		$checkIn = 		$this->session->userdata ( 'checkIn' ) ;
 		$checkOut = $this->session->userdata ( 'checkOut' )  ;
+		$featured = $this->session->userdata ( 'featured' )  ;
 		/*echo $destination;
 		echo $guestCount;
 		echo $propertyType;
@@ -86,7 +114,8 @@ class RoomAvailability extends CI_Controller {
 				'checkOut'=>$checkOut,
 				'guestCount'=>$guestCount,
 				'destination'=>$destination,
-				'propertyType'=>$propertyType
+				'propertyType'=>$propertyType,
+				'featured'=>$featured,
 		);
 		
 		$filterData=null;
@@ -138,7 +167,8 @@ class RoomAvailability extends CI_Controller {
         			'checkOut'=>$this->session->userdata ( 'checkOut' ),
         			'guestCount'=>$this->session->userdata ( 'guestCount' ),
         			'destination'=>$this->session->userdata ( 'destination' ),
-        			'propertyType'=>$this->session->userdata ( 'propertyType' )
+        			'propertyType'=>$this->session->userdata ( 'propertyType' ),
+        			'featured' => $this->session->userdata ( 'featured' )  
         
         
         	);

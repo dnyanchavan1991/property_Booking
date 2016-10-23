@@ -73,7 +73,12 @@
             <input type="hidden" name="inpDestination" id="inpDestination" value=""> 
             <ul class="top-level-menu" >
                 <li class="active"><a href="Index1">Home</a></li>
-                <li class="active" id="search"> <a href="#"> Quick Search </a>
+                 <li class="active" id="featured"> 
+                 	<a href="#" onclick="$('#inpDestination').val('Featured');$('#frmCntrl').submit();"> Featured  </a> 
+                 </li>
+                <li class="active" id="search"> 
+                	<a href="#" > Quick Search </a>
+                
                 	<ul class="hide" id="subSearch" style="position: absolute; z-index: 100" >
                 		<li> <a href="#" onclick="$('#inpDestination').val('Maharashtra');$('#frmCntrl').submit();" id="QuickSearch" > Maharashtra </a> </li>
                 		<!--	<ul class="hide subMenu" id="subSearchM" style="position: absolute; z-index: 100">
