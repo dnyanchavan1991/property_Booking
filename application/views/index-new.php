@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="keywords" content="Holidays in Goa, Goa Holidays, Rantal Properties in Pune, Villas in Konkan">
 	<title>Property Booking</title>
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Pinyon+Script' rel='stylesheet' type='text/css'>
@@ -21,11 +22,11 @@
 	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAw7GwLP6e0viGPXOtxAHtYCOVeRFkEbsw&libraries=places&sensor=false"></script>
 	<script type="text/javascript" src="js/global/global_url_variable.js"></script>
 	<script type="text/javascript" src="js/global/global_functions.js"></script>
-	  
 	<style>
 	
 	</style>
 	<script type="text/javascript">
+
 	$(function() {
 		    $("#datepicker").datepicker({
 				numberOfMonths: 1,				
@@ -123,7 +124,8 @@
 <script src="js/jquery-ui.js"></script>
 <script src="js/ngAutocomplete.js"></script>
 <script>
-  $(document).ready(function() {
+
+$(document).ready(function() {
 
       $('#where_to_go').click(function(){
           $('#aaa').show();
@@ -178,6 +180,7 @@
 			  show();
 		  }
 	  }
+	   
 </script>
 <!---/End-date-piker---->
 <link type="text/css" rel="stylesheet" href="css/new-theme/JFGrid.css" />
@@ -250,8 +253,10 @@
 </div>
 </form>
 <!---->
+
 <div class="package text-center" id="gallery" ng-controller="galleryImgCtrl" data-ng-init="galleryImgFetch()">
-    <?php $this->load->view('common/featured-property.html'); ?>
+
+<?php $this->load->view('common/featured-property.html'); ?>
 </div>
 <!---->
 <!---->
