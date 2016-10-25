@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="keywords" content="Holidays in Goa, Goa Holidays, Rantal Properties in Pune, Villas in Konkan",
+"vacation rentals by owner, trueholidays,trueholiday, rent by owner, vacation by owner, vacation rentals, vacation homes for rent, vacation rental by owner, villas for rent, villa rentals, apartment rentals,  holiday rentals, hotels, family vacation, family travel, group travel, cheap rentals by owner, cheap vacation rental homes">
+
 <title>Classic Hotel a Hotel Category Flat Bootstrap Responsive
 	Website Template | Contact :: w3layouts</title>
 <!-- for-mobile-apps -->

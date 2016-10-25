@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="keywords" content="Holidays in Goa, Goa Holidays, Rantal Properties in Pune, Villas in Konkan">
+<meta name="keywords" content="Holidays in Goa, Goa Holidays, Rantal Properties in Pune, Villas in Konkan",
+		"vacation rentals by owner, trueholidays,trueholiday, rent by owner, vacation by owner, vacation rentals, vacation homes for rent, vacation rental by owner, villas for rent, villa rentals, apartment rentals,  holiday rentals, hotels, family vacation, family travel, group travel, cheap rentals by owner, cheap vacation rental homes">
 	<title>Property Booking</title>
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Pinyon+Script' rel='stylesheet' type='text/css'>
@@ -205,7 +206,7 @@ $(document).ready(function() {
 						  <li  class="span1_of_click">
 							<!--  <h5>Where to go?</h5>-->
 							  <div class="book_date book_date_active" id="where_to_go">
-								  <input   id="inpDestination" type="text"   name="inpDestination" ng-model="inputDestination" value=""  ng-autocomplete="result1" details="details1" options="options1" onfocus="this.value = '';" ><!--  ng-click="expandFilterOptions()" ng-change="textChanged()"-->
+								  <input   id="inpDestination" type="text"   name="inpDestination" ng-model="inputDestination" value=""  ng-autocomplete="result1" details="details1" options="options1" onFocus="this.value = '';" ><!--  ng-click="expandFilterOptions()" ng-change="textChanged()"-->
 							  </div>
 							  
     						<div style="color:darkgray">result: {{result}}</div>
@@ -213,14 +214,14 @@ $(document).ready(function() {
 						 <li  class="span1_of_click">
 							 <!--<h5>Arrival</h5>-->
 							 <div class="book_date book_date_active">
-								 <input class="date" id="datepicker" type="text" autocomplete="off" ng-model="checkInDate" name="checkIn"  value="" onfocus="this.value = '';" >
+								 <input class="date" id="datepicker" type="text" autocomplete="off" ng-model="checkInDate" name="checkIn"  value="" onFocus="this.value = '';" >
 								 
 							 </div>					
 						 </li>
 						 <li  class="span1_of_click">
 							<!-- <h5>Depature</h5>-->
 							 <div class="book_date book_date_active">
-								<input class="date" id="datepicker1" type="text" autocomplete="off" ng-model="checkOutDate" name="checkOut"  value="" onfocus="this.value = '';" >
+								<input class="date" id="datepicker1" type="text" autocomplete="off" ng-model="checkOutDate" name="checkOut"  value="" onFocus="this.value = '';" >
 						     </div>		
 						 </li>
 						  <li class="span1_of_click" id="aaa"  >
@@ -253,10 +254,31 @@ $(document).ready(function() {
 </div>
 </form>
 <!---->
-
 <div class="package text-center" id="gallery" ng-controller="galleryImgCtrl" data-ng-init="galleryImgFetch()">
+<form method="post" action="RoomAvailability" id="frmCntrl">
+<input type="hidden" name="inpDestination" id="inpDestination" value=""> 
 
+<div id='Banner'  style="background-color: #ffff00;display: inline;padding: 5px;margin:20px"> <a href="#" onclick="$('#inpDestination').val('Featured');$('#frmCntrl').submit();"> Featured Property  </a></div>
+</form>
+<script type="text/javascript">
+var i = 1,timer;
+window.onload=function() {
+timer = setInterval('blink()', 500);
+
+}
+function blink() {
+	 if (i == 1) {
+		
+	    	document.getElementById('Banner').style.backgroundColor = '#ff0000';
+
+	 } else {
+	
+	      document.getElementById('Banner').style.backgroundColor = '#ffff00';
+	  }
+	 if(i == 1) i = 0; else i = 1;
+	}</script>
 <?php $this->load->view('common/featured-property.html'); ?>
+</div>
 </div>
 <!---->
 <!---->

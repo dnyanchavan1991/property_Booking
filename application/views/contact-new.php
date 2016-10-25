@@ -255,13 +255,31 @@
 
             }
         }
-        function blinker() {
+     //   function blinker() {
         //alert("hi");
-			$('.blinking').fadeOut(1000);
+        	var i = 1,timer;
+        	window.onload=function() {
+        	timer = setInterval('blink()', 500);
+
+        	}
+        	function blink() {
+        		 if (i == 1) {
+        			
+        		    	document.getElementById('Blink').style.color = '#ff0000';
+        		    	document.getElementById('Blink1').style.color = '#ff0000';
+
+        		 } else {
+        		
+        		      document.getElementById('Blink').style.color = 'blueviolet';
+        		      document.getElementById('Blink1').style.color = 'blueviolet';
+         		             		  }
+        		 if(i == 1) i = 0; else i = 1;
+        		}
+		//	$('.blinking').fadeOut(1000);
 			
-			$('.blinking').fadeIn(2500);
-		}
-		setInterval(blinker, 4000);
+	//		$('.blinking').fadeIn(2500);
+	//	}
+		//setInterval(blinker, 4000);
 
     </script>
     <!---->
@@ -524,8 +542,8 @@
                     <div class="hotel-left-two" ng-app="getRoomDetailApp" ng-controller="popupController">
 
                         <!-- <p> Send </p> -->
-                        <a class = "send-mail blinking" href="#send-form" style="color: blueviolet">Send Email</a> |
-                        <a class = "send-sms blinking" href="#send-form" style="color: blueviolet">Send SMS</a>
+                        <a class = "send-mail" href="#send-form" style="color: blueviolet;font-size:20px" id="Blink1">Send Email</a> |
+                        <a class = "send-sms " href="#send-form" style="color: blueviolet;font-size:20px" id="Blink">Send SMS</a>
 
                         <div id="send-form" class="zoom-anim-dialog mfp-hide">
                             <form id="mail-sms-form" novalidate="novalidate" name="formData" method="post" class="enquiry-form contact-form detailed-contact-form"  > 
