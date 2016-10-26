@@ -351,7 +351,7 @@
                 </a></h4>
                 <a href="" ng-click="getPropertyDetails(rooms)">
                     <img class = "single-room-image" ng-src="{{rooms.ImagePath}}" alt=""/>
-                    <p id="text"><span class="map-marker"></span>{{rooms.propertyAddress}}</p>
+                    <p id="text" style="overflow:hidden; white-space: nowrap;"><span class="map-marker"></span>{{rooms.propertyAddress}}</p>
                     <!--<div class="items">-->
                         <li ng-if=" rooms.free_breakfast == 'Yes' "><img class = "feature-images" src='images/breakfast.png' title="Free Breakfast"></li>
                         <li ng-if=" rooms.pool == 'Yes' "><img class = "feature-images" src='images/pool.png' title="Swimming Pool"></li> 
@@ -371,7 +371,7 @@
                 <h4><a href="" ng-click="getPropertyDetails(rooms)"> {{rooms.propertyName}}<span class = "room-star" ng-repeat="r_cnt in strtoint(rooms.starRate)">★</span>
                 </a></h4>
                 <a href="" ng-click="getPropertyDetails(rooms)">
-                    <img class = "single-room-image" ng-src="{{rooms.ImagePath}}" alt=""/>
+                    <img class = "single-room-image" ng-src="{{rooms.ImagePath}}" alt=""/> 
                     <p id="text"><span class="map-marker"></span>{{rooms.propertyAddress}}</p>
                     <!--<div class="items">-->
                         <li ng-if=" rooms.free_breakfast == 'Yes' "><img class = "feature-images" src='images/breakfast.png' title="Free Breakfast"></li>
