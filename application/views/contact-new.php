@@ -155,7 +155,11 @@
                 }
             });
         });
-
+        $(document).ready(function(){
+        	 $("img").click(function(){
+        	  alert("it works!");
+        	 });
+        	});
         $(document).ready(function () {
 
             $('.send-mail').magnificPopup({
@@ -292,18 +296,60 @@
             </h2>
             <div class="col-sm-9 myScrollspy" id="myScrollspy">
                 <ul class="nav nav-tabs nav-stacked" data-offset-top="120" data-spy="affix">
-                    <li class="active"><a href="#section1" onclick="javascript: toggleSections('section1', this)">Description</a></li>
-                    <li><a href="#section2" onclick="javascript: toggleSections('section2', this)">Gallery</a></li>
-                    <li><a href="#section3" onclick="javascript: toggleSections('section3', this)">Charges</a></li>
-                    <li><a href="#section4" onclick="javascript: toggleSections('section4', this)">How to Reach</a></li>
-                    <li><a href="#section5" onclick="javascript: toggleSections('section5', this)">Reviews</a></li>
+                    <li class="active"><a href="#section1" onClick="javascript: toggleSections('section1', this)">Description</a></li>
+                  <!--  <li><a href="#section2" onClick="javascript: toggleSections('section2', this)">Gallery</a></li> -->
+                    <li><a href="#section3" onClick="javascript: toggleSections('section3', this)">Charges</a></li>
+                    <li><a href="#section4" onClick="javascript: toggleSections('section4', this)">How to Reach</a></li>
+                    <li><a href="#section5" onClick="javascript: toggleSections('section5', this)">Reviews</a></li>
                 </ul>
             </div>
             <div class="room-detail">
                 <div class="property-grids col-sm-9" ng-app="getRoomDetailApp" ng-controller="getRoomDetailController"	ng-init="getRoomDetail()" >
                         <div class="col-sm-12">
                             <div id="section1" class="detailed-row">
-                                <div class="panel panel-default">
+                            <div class="panel panel-default">
+                            <div class="panel-heading description-heading"> Gallery</div>
+                            <div class="panel-body">
+                            <?php
+                                    $i=1;
+                                    $count=1;
+                                    $files = glob('Admin/'.$imagePath."*.*");
+                                    foreach ($files as $image_files) {
+                                    ?>
+                                    <div class="item text-center image-grid property-grid" >
+                                        <ul>
+                                            <?php
+                                                for ($count=1; $count<6; $count++)
+                                                {
+                                                    if($i<count($files)){
+                                                        $image = $files[$i];
+                                                        $supported_file = array(
+                                                            'gif',
+                                                            'jpg',
+                                                            'jpeg',
+                                                            'png'
+                                                        );
+                                                        $ext = strtolower(pathinfo($image, PATHINFO_EXTENSION));
+                                                        if (in_array($ext, $supported_file))
+                                                        { ?>
+                                                            <li><img src="<?php echo $image;?>" alt="" style="width: 10em !important"></li>
+                                                        
+                                                            <?php
+                                                            $i++;
+                                                        }
+                                                        else
+                                                        {
+                                                            continue;
+                                                        }
+                                                }
+                                            }?>
+                                        </ul>
+                                    </div>
+                                     <?php   } ?>
+                                
+                            </div>
+                        </div>
+                            <div class="panel panel-default">
                                     <div class="panel-heading description-heading"> About</div>
                                     <div class="panel-body">
                                         <p><?php echo nl2br($propertyDescription);?></p>
@@ -480,8 +526,8 @@
 
                                         <div class="clearfix"> </div>
 
-                                        <input class="date" id="datepicker" type="text" autocomplete="off" ng-model="review_checkin" name="review_checkin" placeholder="Check-In date" value="Check-In date" onfocus="this.value = '';" >
-                                        <input class="date" id="datepicker1" type="text" autocomplete="off" ng-model="review_checkout" name="review_checkout" placeholder="Check-Out date" value="Check-Out date" onfocus="this.value = '';" >
+                                        <input class="date" id="datepicker" type="text" autocomplete="off" ng-model="review_checkin" name="review_checkin" placeholder="Check-In date" value="Check-In date" onFocus="this.value = '';" >
+                                        <input class="date" id="datepicker1" type="text" autocomplete="off" ng-model="review_checkout" name="review_checkout" placeholder="Check-Out date" value="Check-Out date" onFocus="this.value = '';" >
 
                                         <div class="clearfix"> </div>
 
@@ -538,7 +584,7 @@
                     <div class="panel-heading description-heading"> <h4> Availability : <?php echo $avail_accomodates;?> </h4> </div>
                     <!--<h4>Availability : <?php /*echo $avail_accomodates;*/?></h4>-->
 
-                    <b><a class="best-btn" onclick=" return checkLogin()" href="BookProperty">Book Now</a></b>
+                    <b><a class="best-btn" onClick=" return checkLogin()" href="BookProperty">Book Now</a></b>
                     <div class="hotel-left-two" ng-app="getRoomDetailApp" ng-controller="popupController">
 
                         <!-- <p> Send </p> -->
