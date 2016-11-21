@@ -52,11 +52,18 @@ class Contact extends CI_Controller {
 		);
 	
 		if($phone == null){//$post->phone==null
-			$dbMessageContent=$this->PropertyModel->getmessageContent('Enq');
+	 //    	$dbMessageContent=$this->PropertyModel->getmessageContent('Enq');
 			//$dbMessageContent=$messageContentQuery->row()->message_content;
+			 
+			$propertyOwnerInfo = $this->PropertyModel->getOwnerDetail($propertyId);
+		
+			$recepient = $propertyOwnerInfo[0]->email;
+			$subject= $fullName. '-' .$recepient . '  interested in renting property "'.$propertyOwnerInfo[0]->propertyName;
+			$message = '" From: '.$checkIn.' To: '.$checkOut.' Message:'.$enquiry;
 			
-			$propertyOwnerInfo=$this->PropertyModel->getOwnerDetail($propertyId);
-			$recepient=$propertyOwnerInfo->row()->email.','.$contactInfo;
+		//	$propertyOwnerInfo=$this->PropertyModel->getOwnerDetail($propertyId);
+		//	$recepient = $propertyOwnerInfo[0]->email . ',' . $contactInfo;
+	/*		$recepient=$propertyOwnerInfo->row()->email.','.$contactInfo;
 			$subject=$dbMessageContent.' for '.$propertyOwnerInfo->row()->propertyName;
 			$replacableString=array("propertyname", "user", "checkin _date","checkout_date");
 			$originalContentString=array($propertyOwnerInfo->row()->propertyName,$full_name,$checkin,$checkout);
@@ -67,10 +74,11 @@ class Contact extends CI_Controller {
 					'message'=>$originalMessageContent
 					
 			);
+			
 			$mailStatus=$this->sendMail($mailDetailArray);
             return $mailStatus;
-			
-			
+		*/	
+			$this->sendMail($recepient,$subject,$message);
 	/*	$header = 'MIME-Version: 1.0' . "\r\n";
 		$header .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 		$header .= "From:vilasgalave14@gmail.com \r\n";
@@ -196,8 +204,29 @@ class Contact extends CI_Controller {
 
 	}
 	
-	public function  sendMail($mailDetailArray) {
-		$header = 'MIME-Version: 1.0' . "\r\n";
+	public function  sendMail1($mailDetailArray) {
+		echo $mailDetailArray;
+	}
+	public function  sendMail($recepient,$subject,$message) {
+	
+		
+		 //Email information
+		  $admin_email = "someone@example.com";
+		  $email = $recepient;
+		  $subject = $subject;
+		  $comment =$message;
+		  
+		  //send email
+		  if(mail($admin_email, "$subject", $comment, "From:" . $email))
+		  {
+			  return 'success';
+		  }
+		  else
+		  {
+			  return 'fail';
+		  }
+		  
+/*		$header = 'MIME-Version: 1.0' . "\r\n";
 		$header .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 		$header .= "From:vilasgalave14@gmail.com \r\n";
 		
@@ -207,7 +236,7 @@ class Contact extends CI_Controller {
 		else{
 			return 'fail';
 		}
-		
+	*/	
 	}
 	
 }
