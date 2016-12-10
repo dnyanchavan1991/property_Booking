@@ -258,7 +258,7 @@ $(document).ready(function() {
 <form method="post" action="RoomAvailability" id="frmCntrl">
 <input type="hidden" name="inpDestination" id="inpDestination" value=""> 
 
-<div id='Banner'  style="background-color: #ffff00;display: inline;padding: 5px;margin:20px"> <a href="#" onclick="$('#inpDestination').val('Featured');$('#frmCntrl').submit();"> Featured Property  </a></div>
+<div id='Banner'  style="background-color: #ffff00;display: inline;padding: 5px;margin:20px"> <a href="#" onclick="$('#inpDestination').val('Featured');$('#frmCntrl').submit();" ><font size="5" face="vollkorn"> Featured Property </font> </a></div>
 </form>
 <script type="text/javascript">
 var i = 1,timer;
