@@ -12,6 +12,7 @@
         <script src="js/new-theme/jquery.min.js"></script>
         <script src="js/new-theme/jquery.validate.js"></script>
         <script src="js/new-theme/jquery.magnific-popup.js"></script>
+        <script src="js/new-theme/simple-lightbox.min.js"></script>
         <!--<script src="js/new-theme/bootstrap.js"></script>
         <script src="js/new-theme/bootstrap.min.js"></script>-->
         <script src="js/new-theme/owl.carousel.js"></script>
@@ -19,6 +20,7 @@
         <script type="text/javascript" src="js/global/global_functions.js"></script>
 
         <link rel="stylesheet" href="css/jquery-ui.css" />
+        <link rel="stylesheet" href="css/new-theme/simplelightbox.min.css" />
         <link href="css/new-theme/owl.carousel.css" rel="stylesheet">
 
         <script src="js/jquery-ui.js"></script>
@@ -155,11 +157,7 @@
                 }
             });
         });
-        $(document).ready(function(){
-        	 $("img").click(function(){
-        	  alert("it works!");
-        	 });
-        	});
+
         $(document).ready(function () {
 
             $('.send-mail').magnificPopup({
@@ -284,7 +282,6 @@
 	//		$('.blinking').fadeIn(2500);
 	//	}
 		//setInterval(blinker, 4000);
-
     </script>
     <!---->
     <div class="rooms text-center">
@@ -294,23 +291,7 @@
 
                 <h3 style="font-size: 26px !important"><?php echo nl2br($propertyAddress);?></h3>
             </h2>
-            <div class="col-sm-9 myScrollspy" id="myScrollspy">
-                <ul class="nav nav-tabs nav-stacked" data-offset-top="120" data-spy="affix">
-                    <li class="active"><a href="#section1" onClick="javascript: toggleSections('section1', this)">Description</a></li>
-                  <!--  <li><a href="#section2" onClick="javascript: toggleSections('section2', this)">Gallery</a></li> -->
-                    <li><a href="#section3" onClick="javascript: toggleSections('section3', this)">Charges</a></li>
-                    <li><a href="#section4" onClick="javascript: toggleSections('section4', this)">How to Reach</a></li>
-                    <li><a href="#section5" onClick="javascript: toggleSections('section5', this)">Reviews</a></li>
-                </ul>
-            </div>
-            <div class="room-detail">
-                <div class="property-grids col-sm-9" ng-app="getRoomDetailApp" ng-controller="getRoomDetailController"	ng-init="getRoomDetail()" >
-                        <div class="col-sm-12">
-                            <div id="section1" class="detailed-row">
-                            <div class="panel panel-default">
-                            <div class="panel-heading description-heading"> Gallery</div>
-                            <div class="panel-body">
-                            <?php
+            <?php
                                     $i=1;
                                     $count=1;
                                     $files = glob('Admin/'.$imagePath."*.*");
@@ -332,9 +313,8 @@
                                                         $ext = strtolower(pathinfo($image, PATHINFO_EXTENSION));
                                                         if (in_array($ext, $supported_file))
                                                         { ?>
-                                                            <li><img src="<?php echo $image;?>" alt="" style="width: 10em !important"></li>
-                                                        
-                                                            <?php
+                                                            <li><a href="<?php echo $image;?>"><img src="<?php echo $image;?>" alt="" style="width: 10em !important"/></a></li>
+                                                        <?php
                                                             $i++;
                                                         }
                                                         else
@@ -346,10 +326,21 @@
                                         </ul>
                                     </div>
                                      <?php   } ?>
-                                
-                            </div>
-                        </div>
-                            <div class="panel panel-default">
+            <div class="col-sm-9 myScrollspy" id="myScrollspy">
+                <ul class="nav nav-tabs nav-stacked" data-offset-top="120" data-spy="affix">
+                    <li class="active"><a href="#section1" onclick="javascript: toggleSections('section1', this)">Description</a></li>
+                   <!--  <li><a href="#section2" onclick="javascript: toggleSections('section2', this)">Gallery</a></li> -->
+                    <li><a href="#section3" onclick="javascript: toggleSections('section3', this)">Charges</a></li>
+                    <li><a href="#section4" onclick="javascript: toggleSections('section4', this)">How to Reach</a></li>
+                    <li><a href="#section5" onclick="javascript: toggleSections('section5', this)">Reviews</a></li>
+                </ul>
+            </div>
+               
+            <div class="room-detail">
+                <div class="property-grids col-sm-9" ng-app="getRoomDetailApp" ng-controller="getRoomDetailController"	ng-init="getRoomDetail()" >
+                        <div class="col-sm-12">
+                            <div id="section1" class="detailed-row">
+                                <div class="panel panel-default">
                                     <div class="panel-heading description-heading"> About</div>
                                     <div class="panel-body">
                                         <p><?php echo nl2br($propertyDescription);?></p>
@@ -452,6 +443,7 @@
                             <div id="section2" class="detailed-row" style="display: none">
                               <!--  <h2>Gallery</h2> -->
                               <!--<div id="owl-demo" class="owl-carousel">-->
+                              	
                                     <?php
                                     $i=1;
                                     $count=1;
@@ -526,8 +518,8 @@
 
                                         <div class="clearfix"> </div>
 
-                                        <input class="date" id="datepicker" type="text" autocomplete="off" ng-model="review_checkin" name="review_checkin" placeholder="Check-In date" value="Check-In date" onFocus="this.value = '';" >
-                                        <input class="date" id="datepicker1" type="text" autocomplete="off" ng-model="review_checkout" name="review_checkout" placeholder="Check-Out date" value="Check-Out date" onFocus="this.value = '';" >
+                                        <input class="date" id="datepicker" type="text" autocomplete="off" ng-model="review_checkin" name="review_checkin" placeholder="Check-In date" value="Check-In date" onfocus="this.value = '';" >
+                                        <input class="date" id="datepicker1" type="text" autocomplete="off" ng-model="review_checkout" name="review_checkout" placeholder="Check-Out date" value="Check-Out date" onfocus="this.value = '';" >
 
                                         <div class="clearfix"> </div>
 
@@ -584,7 +576,7 @@
                     <div class="panel-heading description-heading"> <h4> Availability : <?php echo $avail_accomodates;?> </h4> </div>
                     <!--<h4>Availability : <?php /*echo $avail_accomodates;*/?></h4>-->
 
-                    <b><a class="best-btn" onClick=" return checkLogin()" href="BookProperty">Book Now</a></b>
+                    <b><a class="best-btn" onclick=" return checkLogin()" href="BookProperty">Book Now</a></b>
                     <div class="hotel-left-two" ng-app="getRoomDetailApp" ng-controller="popupController">
 
                         <!-- <p> Send </p> -->
@@ -698,7 +690,7 @@
                         <!--</modal>-->
                         </div>
                     </div>
-                    <div class="map-gd" style="height: 23em">
+                    <div class="map-gd" style="height: 22em">
                         <div id="map_canvas" style="width:100%;height:100%;"></div>
                         <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAw7GwLP6e0viGPXOtxAHtYCOVeRFkEbsw&libraries=places&sensor=false"></script>
                         <script>
@@ -732,7 +724,10 @@
     </div>
     <!---->
     <script>
-    
+
+	$(function(){
+			var gallery = $('.image-grid a').simpleLightbox({navText:		['&lsaquo;','&rsaquo;']});
+		});
     </script>
     
 
