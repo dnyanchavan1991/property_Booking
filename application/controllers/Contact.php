@@ -53,10 +53,10 @@ class Contact extends CI_Controller {
 			 
 	 		$this->sendMail($recepient,$subject,$message);
 	 		
-	 		$subject1 = "Enquiry for Property - " .$propertyOwnerInfo[0]->propertyName;
-	 		$message1 = " Hello " . $fullName ." /n <br/> Your enquiry for renting this property has been sent to The Property Owner. They will contact you soon. /n Thanks for using our services /n Team, TrueHolidays";
+	 		//$subject1 = "Enquiry for Property - " .$propertyOwnerInfo[0]->propertyName;
+	 		$message2 = " Hello " . $fullName ." \n Your enquiry for renting this property has been sent to The Property Owner. They will contact you soon. \n Thanks for using our services \n Team, TrueHolidays";
 	 		
-	 		$this->sendMail($email,$subject1,$message1);
+	 		$this->sendMail($email,$subject,$message2);
 	 		
 	 		
 	 	}
@@ -72,7 +72,7 @@ class Contact extends CI_Controller {
 			$data="false";
 				//$url="http://bhashsms.com/api/sendmsg.php?user=8796151636&pass=tabrez&sender=KDHLTH&phone=7249612636&text=hello1Hi&priority=sdnd&stype=normal";
 			$phone1= $propertyOwnerInfo[0]->phone;
-		 	$this->sendSMS($method,$data,$phone1,$message);
+			$this->sendSMS($method,$data,$phone1,$message);
 			
 			$message1="Your Enquiry has been sent to property owner for Property '" . $propertyOwnerInfo[0]->propertyName . "' Thanks for using our services-TrueHolidays.co.in";
 			 $this->sendSMS($method,$data,$phone,$message1);
