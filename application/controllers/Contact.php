@@ -20,16 +20,7 @@ class Contact extends CI_Controller {
 	}
 	
 	public function  Contact_to_customer_enquiry($propertyId, $fullName, $email, $phone, $checkIn, $checkOut, $enquiry){
-	
-	/*echo($propertyId);
-	echo($fullName);
-	echo($email);
-	echo($phone);
-	echo($checkIn);
-	echo($checkOut);
-	echo($enquiry); */
-		
-		
+	 	
 		$checkin = $checkIn;//$post->checkIn;
 		$checkin = str_replace ( '/', '-', $checkin );
 		$checkout = $checkOut;//$post->checkOut;
@@ -37,8 +28,8 @@ class Contact extends CI_Controller {
 		$checkin = date ( 'Y-m-d', strtotime ( $checkin ) );
 		$checkout = date ( 'Y-m-d', strtotime ( $checkout ) );
 		$full_name = $fullName;//$post->full_name;
-	//	$guestCount = $post->guestCount;
-		if($phone == null ){//$post->phone==null
+	 
+	 	if($phone == null ){//$post->phone==null
 			$contactInfo = $email; //$post->email_id;
 		}
 		else{
@@ -52,101 +43,31 @@ class Contact extends CI_Controller {
 		);
 	
 		if($phone == null){//$post->phone==null
-	 //    	$dbMessageContent=$this->PropertyModel->getmessageContent('Enq');
-			//$dbMessageContent=$messageContentQuery->row()->message_content;
-			 
+	  		 
 			$propertyOwnerInfo = $this->PropertyModel->getOwnerDetail($propertyId);
 		
 			$recepient = $propertyOwnerInfo[0]->email;
-			$subject= $fullName. '-' .$recepient . '  interested in renting property "'.$propertyOwnerInfo[0]->propertyName;
-			$message = '" From: '.$checkIn.' To: '.$checkOut.' Message:'.$enquiry;
-			
-		//	$propertyOwnerInfo=$this->PropertyModel->getOwnerDetail($propertyId);
-		//	$recepient = $propertyOwnerInfo[0]->email . ',' . $contactInfo;
-	/*		$recepient=$propertyOwnerInfo->row()->email.','.$contactInfo;
-			$subject=$dbMessageContent.' for '.$propertyOwnerInfo->row()->propertyName;
-			$replacableString=array("propertyname", "user", "checkin _date","checkout_date");
-			$originalContentString=array($propertyOwnerInfo->row()->propertyName,$full_name,$checkin,$checkout);
-			$originalMessageContent=str_replace($replacableString,$originalContentString, $dbMessageContent);
-			$mailDetailArray=array(
-				'recepient'	=>$recepient,
-					'subject'=>$subject,
-					'message'=>$originalMessageContent
-					
-			);
-			
-			$mailStatus=$this->sendMail($mailDetailArray);
-            return $mailStatus;
-		*/	
-			$this->sendMail($recepient,$subject,$message);
-	/*	$header = 'MIME-Version: 1.0' . "\r\n";
-		$header .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-		$header .= "From:vilasgalave14@gmail.com \r\n";
-		
-		if( mail ($recepient,$subject,$originalMessageContent,$header)){
-			echo 'message sent';
-			$templateId=$messageContentQuery->row()->template_id;
-			 function insertEnquiryData ($enquiryData){
-			 	$enquiryDetailsArray=array(
-			 			'user_name'=>$username,
-			 			'property_id'=>$this->session->userdata( 'propertyId' ),
-			 			'sent_date'=>date("y-m-d h:i:s"),
-			 			'template_id'=>$templateId,
-			 			'check_in'=>date("y-m-d h:i:s"),
-			 			'check_out'=>date("y-m-d h:i:s"),
-			 			//'guest_count'=>$guestcount
-				);
-			 	$this->PropertyModel->insertEnquiryData ($enquiryDetailsArray);
-			}*/
-		}
+			$subject = " Enquiry for Property - ".$propertyOwnerInfo[0]->propertyName;			
+			$message = $fullName. ' - ' .$email . '  is interested in renting property "'.$propertyOwnerInfo[0]->propertyName;
+			$message .= '" From: '.$checkIn.' To: '.$checkOut.' Message:'.$enquiry;
+			 
+	 		$this->sendMail($recepient,$subject,$message);
+	 		
+	 		$subject1 = "Enquiry for Property - " .$propertyOwnerInfo[0]->propertyName;
+	 		$message1 = " Hello " . $fullName ." /n <br/> Your enquiry for renting this property has been sent to The Property Owner. They will contact you soon. /n Thanks for using our services /n Team, TrueHolidays";
+	 		
+	 		$this->sendMail($email,$subject1,$message1);
+	 		
+	 		
+	 	}
 		else if( $phone != null ){ //$post->phone!=null
-		//	echo "<br/> else block : $propertyId<br/>";	
-			
-			
-			///
-			
-		/*	$SMSURL="http://bhashsms.com/api/sendmsg.php?user=8796151636&pass=tabrez&sender=KDHLTH&phone=8796151636&text=PROPERTY BOOKED&priority=sdnd&stype=normal";
-					 //http://bhashsms.com/api/sendmsg.php?user=8796151636&pass=tabrez&sender=KDHLTH&phone=8796151636&text=PROPERTY BOOKED&priority=sdnd&stype=normal
-			//"http://bhashsms.com/api/sendmsg.php?user={0}&pass={1}&sender={2}&phone={3}&text={4}&priority=sdnd&stype=normal";
-		     $ch = curl_init();
-		     curl_setopt($ch, CURLOPT_URL, $SMSURL);
-			curl_setopt($ch, CURLOPT_HEADER, 0);
-		        curl_exec($ch);
-		        
-		        //Open the URL to send the message
-		        $response = httpRequest($SMSURL); */
-			//// 
-		 
+	 	 
 			$propertyOwnerInfo = $this->PropertyModel->getOwnerDetail($propertyId);
-		
-		//	print_r($propertyOwnerInfo->row()->phone);
 			$recepient = $propertyOwnerInfo[0]->phone . ',' . $contactInfo;
-		//	echo "<br/>"; echo $recepient;
-		//	$subject=$messageContent.'for'.$propertyOwnerInfo->row()->propertyName;
 			
 			$subject= $fullName. '-' .$phone . '  interested in renting property "'.$propertyOwnerInfo[0]->propertyName;
 			$message = $subject.'" From: '.$checkIn.' To: '.$checkOut.' Message:'.$enquiry;
-					
-	//		$message = $messageContent.'for'.$propertyOwnerInfo->row()->propertyName.'from'.$checkin.'to'.$checkout;
-//			if(sendMsg ($recepient, $message, $debug=false))
-//			{
-				
-//				$SMSURL="http://bhashsms.com/api/sendmsg.php?user={0}&pass={1}&sender=&phone={2}&text={3}&priority=sdnd&stype=normal";
-//		        $SMSUser="Test";
-//		        $SMSPassword="Test";
-//		        $url = 'username='. $SMSUser;
-//		        $url.= '&password='.$SMSPassword;
-//		        $url.= '&action=sendmessage';
-//		        $url.= '&messagetype=SMS:TEXT';
-//		        $url.= '&recepient='.urlencode($phone);
-//		        $url.= '&messagedata='.urlencode($message);
-//		        $urltouse =  $SMSURL.$url;
-//		        if ($debug) { echo "Request: <br>$urltouse<br><br>"; }
-		        
-		        //Open the URL to send the message
-		         
-		         
-//		        $response = httpRequest($urltouse);
+ 
 			$method="POST";
 			$data="false";
 				//$url="http://bhashsms.com/api/sendmsg.php?user=8796151636&pass=tabrez&sender=KDHLTH&phone=7249612636&text=hello1Hi&priority=sdnd&stype=normal";
@@ -155,16 +76,7 @@ class Contact extends CI_Controller {
 			
 			$message1="Your Enquiry has been sent to property owner for Property '" . $propertyOwnerInfo[0]->propertyName . "' Thanks for using our services-TrueHolidays.co.in";
 			 $this->sendSMS($method,$data,$phone,$message1);
-			
-			//echo $url;
-			        //	return("$response"); 
-	       //  $this->load->view ( 'index-new.php' );
-	         
-//			}
-		
-//			else{
-//				echo 'message  not sent';
-//			}
+		 
 		}
 	}
 	public function sendSMS($method,$data,$phone,$message)
@@ -204,39 +116,30 @@ class Contact extends CI_Controller {
 
 	}
 	
-	public function  sendMail1($mailDetailArray) {
+	/*public function  sendMail1($mailDetailArray) {
 		echo $mailDetailArray;
-	}
+	}*/
 	public function  sendMail($recepient,$subject,$message) {
 	
-		
+		//echo "Inside sendMail function ";
 		 //Email information
-		  $admin_email = "someone@example.com";
+		  $admin_email = "admin@trueholidays.co.in";
 		  $email = $recepient;
-		  $subject = $subject;
+		  $subject1 = $subject;
 		  $comment =$message;
 		  
 		  //send email
-		  if(mail($admin_email, "$subject", $comment, "From:" . $email))
+ 		   mail($email, "$subject1", $comment, "From:" . $admin_email);
+		//   mail("vishu.awate@gmail.com", "HI VISH", $comment, "From:vishwanath.awate@klouddata.com");
+		  /*if(mail($admin_email, "$subject", $comment, "From:" . $email))
 		  {
 			  return 'success';
 		  }
 		  else
 		  {
 			  return 'fail';
-		  }
+		  }*/
 		  
-/*		$header = 'MIME-Version: 1.0' . "\r\n";
-		$header .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-		$header .= "From:vilasgalave14@gmail.com \r\n";
-		
-		if( mail ($mailDetailArray['recepient'],$mailDetailArray['subject'],$mailDetailArray['message'],$header)){
-			return 'success';
-		}
-		else{
-			return 'fail';
-		}
-	*/	
-	}
+ 	}
 	
 }
