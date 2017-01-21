@@ -7,8 +7,8 @@
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Pinyon+Script' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Quicksand:400,700' rel='stylesheet' type='text/css'>
-	<!-- <link href="css/new-theme/bootstrap.css" rel='stylesheet' type='text/css'/>-->
-	<link href="css/new-theme/style.css" rel="stylesheet" type="text/css" media="all"/> 
+	<!-- <link href="css/new-theme/bootstrap.css" rel='stylesheet' type='text/css'/>
+	<link href="css/new-theme/style.css" rel="stylesheet" type="text/css" media="all"/>--> 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- --> <script src="js/new-theme/jquery.min.js"></script>
