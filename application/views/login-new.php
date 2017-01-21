@@ -5,31 +5,67 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Pinyon+Script' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Quicksand:400,700' rel='stylesheet' type='text/css'>
-    <link href="css/new-theme/bootstrap.css" rel='stylesheet' type='text/css'/>
-    <link href="css/new-theme/style.css" rel="stylesheet" type="text/css" media="all"/>
+   <!--  <link href="css/new-theme/bootstrap.css" rel='stylesheet' type='text/css'/>
+    <link href="css/new-theme/style.css" rel="stylesheet" type="text/css" media="all"/> --> 
+      <!-- css --
+<link href="css/css/bootstrap.min.css" rel="stylesheet" />
+<link href="css/css/fancybox/jquery.fancybox.css" rel="stylesheet">
+<link href="css/css/jcarousel.css" rel="stylesheet" />
+<link href="css/css/menu-color.css" rel="stylesheet" />
+<link href="css/css/flexslider.css" rel="stylesheet" />
+<link href="css/css/style.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <script src="js/new-theme/jquery.min.js"></script>
+  <!--<script src="js/new-theme/jquery.min.js"></script> --> 
     <script src="js/new-theme/jquery.validate.js"></script>
-
+ 
     <!-- requried-jsfiles-for owl -->
     <link href="css/new-theme/owl.carousel.css" rel="stylesheet">
     <script type="text/javascript" src="js/angular.min.js"></script>
-    <script type="text/javascript" src="js/controller/loginController.js"></script>
+    <script type="text/javascript" src="js/controller/loginController.js"></script><!----> 
 
     <script type="text/javascript" src="js/global/global_url_variable.js"></script>
-    <script type="text/javascript" src="js/global/global_functions.js"></script>
+    <script type="text/javascript" src="js/global/global_functions.js"></script> 
+
+
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize1.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style1.css" type="text/css" rel="stylesheet" media="screen,projection"/> <!-- 
+  <link href="css/ghpages-materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/> 
+  <link href="css/prism.css" type="text/css" rel="stylesheet" media="screen,projection"/> 
+   -->
+ <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/js/materialize1.js"></script>
+  <script src="js/js/init1.js"></script><!-- 
+   <script src="js/js/prism.js"></script> -->
+     
+   <script type="text/javascript">
+       $(document).ready(function() {
+    $('select').material_select();
+});
+        $(document).ready(function(){
+      $('.carousel.carousel-slider').carousel({full_width: true});
+    });
+       
+
+      /*  $('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 15 // Creates a dropdown of 15 years to control year
+  });*/
+   </script>
 
 </head>
 <body ng-app="landingPageApp" >
 <!--header starts-->
-<div class="header">
-    <?php $this->load->view('common/header.php'); ?>
+<div class="navbar navbar-inverse">
+    <?php $this->load->view('common/header1.php'); ?>
 </div>
+<!---strat-date-piker-->
 
-<!---strat-date-piker---->
+
 <link rel="stylesheet" href="css/jquery-ui.css" />
-<script src="js/jquery-ui.js"></script>
+<script src="js/jquery-ui.js"></script> 
 <script>
 
     $().ready(function() {
@@ -184,9 +220,9 @@
 
     });
 </script>
-<!---/End-date-piker---->
+<!---/End-date-piker
 <link type="text/css" rel="stylesheet" href="css/new-theme/JFGrid.css" />
-<link type="text/css" rel="stylesheet" href="css/new-theme/JFFormStyle-1.css" />
+<link type="text/css" rel="stylesheet" href="css/new-theme/JFFormStyle-1.css" />-->
 <script type="text/javascript" src="js/new-theme/JFCore.js"></script>
 <script type="text/javascript" src="js/new-theme/JFForms.js"></script>
 <!-- Set here the key for your domain in order to hide the watermark on the web server -->
@@ -197,13 +233,14 @@
         });
     })();
 </script>
-<div class="rooms text-center">
+<br><br><br>
+<!-- <div class="rooms text-center">
     <div class="container col-md-5 col-md-offset-3">
         <h3 id="loginTitle">Sign Up</h3>
         <div ng-controller="loginCtrl">
             
-            <form id="signupForm" ng-submit="authenticateAdmin()">
-			 
+            <form id="signupForm" ng-submit="authenticateAdmin()" role="form" style="color: #000">
+			  <div class="row">
                 <div class="form-group">
                     <div id="firstNameLabel" class="loginLabel">First Name:</div>
                     <input type="text" id="firstName" name="firstName" placeholder="First Name" ng-model="firstName" class="form-control login-field loginField" required>
@@ -249,11 +286,98 @@
                 <div class="form-group">
                     <a id="signUp_status_text" onClick="toggleFields()" style="cursor: pointer;">Already have an account? Login!</a>
                 </div>
+                </div>
             </form>
+
+            
+
+
+        
+
         </div>
     </div>
-</div>
+</div> -->
 <!---->
+<div class="container">
+<div class="row">
+<div ng-controller="loginCtrl">
+    <form class="col s12" id="signupForm" ng-submit="authenticateAdmin()" role="form">
+      <div class="row">
+        <div class="input-field col s12  m12 l6">
+          <input  type="text" id="firstName" name="firstName" placeholder="" ng-model="firstName"  class="validate">
+          <label for="last_name">First Name</label>
+        </div>
+        <div class="input-field col s12  m12 l6">
+          <input type="text" id="lastName" name="lastName" placeholder="" ng-model="lastName"  class="validate">
+          <label for="last_name">Last Name</label>
+        </div>
+      </div>
+      <div class="row">
+       <div class="input-field col s12  m12 l6">
+          <input type="number" name="mobileNumber" id="mobileNumber" placeholder="" ng-model="mobileNumber" class="validate">
+          <label for="last_name">Mobile No</label>
+        </div>
+        <div class="input-field col s12  m12 l6">
+          <input type="text" id="email" name="email" placeholder="" ng-model="email" class="validate">
+          <label for="email">Email</label>
+        </div>
+        
+      </div>
+      <div class="row">
+            <div class="input-field col s12  m12 l6">
+              <input type="text" id="username" placeholder="Username" ng-model="username" class="validate">
+              <label for="last_name">User Name</label>
+            </div>
+            <div class="input-field col s12  m12 l6">
+              <input type="password" id="password" placeholder="Password" ng-model="password" class="validate">
+              <label for="password">Password</label>
+            </div>      
+      </div>
+       <div class="row">
+
+            <div class="input-field col s12  m12 l6">
+            
+                <input type="date" class="datepicker" ng-model="date_of_birth" name="date_of_birth" placeholder="" 
+                value="" onfocus="this.value = '';" >
+                 <label for="last_name">Select Date Of Birth</label>
+            </div>
+
+
+            <div class="input-field col s12  m12 l6">
+                <select id="gender" ng-model="gender">
+                  <option value="" selected>Choose Gender</option>
+                  <option value="0">Other</option>
+                  <option value="1">Male</option>
+                  <option value="2">Female</option>
+                  
+                </select>
+                <label>Select Gender</label>
+              </div>  
+        </div>
+      <div class="row">
+        <input type="hidden" name="access_type" id="access_type" ng-model="access_type" ng_init="access_type='user'"
+         class="validate">
+      </div>
+      <div class="row">
+          <button class="btn waves-effect waves-light modal-login-btn"  id="lgnBtn" name="action" onclick="alert('login-new.php')">Submit 1
+           <!--  <i class="material-icons right">send</i> -->
+          </button>
+        <a id="signUp_status_text" onClick="toggleFields()" style="cursor: pointer;">Already have an account? Login!</a>
+      </div>
+
+
+    </form>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
 <div class="fotter">
     <div class="container">
         <h3>Today's Unique Visitors : <span id="visitCount"></span></h3>
@@ -261,9 +385,11 @@
 </div>
 <!---->
 <div class="fotter-info">
-    <?php $this->load->view('common/footer.html'); ?>
+    <?php $this->load->view('common/footer1.html'); ?>
 </div>
-<!---->
+<a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
+
+<!--
 <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -309,6 +435,20 @@
             </div>
         </div>
     </div>
-</div>
+</div>-->
+
+<!-- Placed at the end of the document so the pages load faster -->
+<!-- <script src="js/jquery.js"></script>
+<script src="js/jquery.easing.1.3.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.fancybox.pack.js"></script>
+<script src="js/jquery.fancybox-media.js"></script> 
+<script src="js/portfolio/jquery.quicksand.js"></script>
+<script src="js/portfolio/setting.js"></script>
+<script src="js/jquery.flexslider.js"></script>
+<script src="js/animate.js"></script>
+<script src="js/custom.js"></script>
+<script src="js/validate.js"></script> -->
+
 </body>
 </html>

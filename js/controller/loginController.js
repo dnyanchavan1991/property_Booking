@@ -52,8 +52,9 @@ angular.module('landingPageApp',[])
     					 };
     	}
     	else{
-    		//alert("registration started");
-    		var webUrl=' Registration/insertRegistrationData/';
+    		alert("registration started");
+    		var webUrl='Registration/insertRegistrationData/';
+    		alert(webUrl);
     		 successMessage='Registeration successful.';
     		data = {
     				username: $scope.username, 
@@ -66,7 +67,9 @@ angular.module('landingPageApp',[])
     				date_of_birth: $scope.date_of_birth, 
     				call_back_url: $scope.call_back_url
     				};
+    				
     	}
+    	
     	$http({
 	          method  : 'POST',
 	          url     : webUrl,
