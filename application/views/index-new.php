@@ -12,7 +12,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- --> <script src="js/new-theme/jquery.min.js"></script>
-	<script src="js/bootstrap.js"></script>
+	<!-- <script src="js/bootstrap.js"></script> -->
 
 	<!-- requried-jsfiles-for owl-->
     <script src="js/new-theme/owl.carousel.js"></script>
@@ -24,19 +24,20 @@
 	<script type="text/javascript" src="js/global/global_url_variable.js"></script>
 	<script type="text/javascript" src="js/global/global_functions.js"></script> 
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
- <!--  <link href="css/materialize1.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="css/style1.css" type="text/css" rel="stylesheet" media="screen,projection"/>  --><!-- 
+  <link href="css/materialize1.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style1.css" type="text/css" rel="stylesheet" media="screen,projection"/> 
   <link href="css/ghpages-materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/> 
   <link href="css/prism.css" type="text/css" rel="stylesheet" media="screen,projection"/> 
-   -->
-<link href="css/materialize1.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="css/style1.css" type="text/css" rel="stylesheet" media="screen,projection"/> <!-- 
+  
+<!-- <link href="css/materialize1.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style1.css" type="text/css" rel="stylesheet" media="screen,projection"/> --> <!-- 
   <link href="css/ghpages-materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/> 
   <link href="css/prism.css" type="text/css" rel="stylesheet" media="screen,projection"/> 
    -->
  <!-- <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script> -->
   <script src="js/js/materialize1.js"></script>
-  <script src="js/js/init1.js"></script><!-- 
+  <script src="js/js/init1.js"></script>
+  <!-- 
    <script src="js/js/prism.js"></script> -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -200,8 +201,8 @@
 
 <!---strat-date-piker--
 <link rel="stylesheet" href="css/jquery-ui.css" />
-<!-- <script src="js/jquery-ui.js"></script> -->
-<script src="js/ngAutocomplete.js"></script>
+<!-- <script src="js/jquery-ui.js"></script> 
+<script src="js/ngAutocomplete.js"></script>-->
 <script>
 
 $(document).ready(function() {
@@ -342,13 +343,13 @@ $(document).ready(function() {
 			   <div class="b_room b_room_active" id="b_room_div">
 				  <div class="booking_room booking_room_active" id="booking_room_div">
 					  	<div class="reservation ">
-						    <div class=" col s6 " style="border: 0px solid;">
+						    <div class=" col s12 m12 l6 " style="border: 0px solid;">
 						            <div class="input-field col s12  m12 l4 book_date book_date_active" id="where_to_go">
 						              <input type="text" id="inpDestination"  name="inpDestination" ng-model="inputDestination" value=""  ng-autocomplete="result1" details="details1" options="options1" onFocus="this.value = '';" class="validate" required="true">
 						              <label for="last_name">Enter Location</label>
 						             <!--  <div style="color:darkgray">result: {{result}}</div> -->
 						            </div>      
-							      	<div class="input-field col s12  m12 l4 book_date book_date_active">
+							      	<div class="input-field col s12 m12 l4 book_date book_date_active">
 							             	<input type="date" class="datepicker"  id="datepicker" type="text" autocomplete="off" ng-model="checkInDate" name="checkIn"  value="" onFocus="this.value = '';" required="true">
 							                 <label for="last_name">Arrival Date</label>
 							        </div>
@@ -357,7 +358,7 @@ $(document).ready(function() {
 							                 <label for="last_name">Departure Date</label>
 							        </div>
 							</div>
-							<div class=" col l6" style="border:0px solid;">
+							<div class=" col s12 m12 l6" style="border:0px solid;">
 						      		<div class="input-field col s12  m12 l4 section_room" id="aaa">
 						                <select   ng-model="selectAccomodationType"  id="propertyType" name="propertyType" 
 						                		  ng-init="selectAccomodationType=accomodationType[0]"
