@@ -1,23 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="keywords" content="Holidays in Goa, Goa Holidays, Rantal Properties in Pune, Villas in Konkan",
-		"vacation rentals by owner, trueholidays,trueholiday, rent by owner, vacation by owner, vacation rentals, vacation homes for rent, vacation rental by owner, villas for rent, villa rentals, apartment rentals,  holiday rentals, hotels, family vacation, family travel, group travel, cheap rentals by owner, cheap vacation rental homes">
+ 
 	<title>Property Booking</title>
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Pinyon+Script' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Quicksand:400,700' rel='stylesheet' type='text/css'>
-	<!-- <link href="css/new-theme/bootstrap.css" rel='stylesheet' type='text/css'/>
-	<link href="css/new-theme/style.css" rel="stylesheet" type="text/css" media="all"/>--> 
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<!-- --> <script src="js/new-theme/jquery.min.js"></script>
-	<!-- <script src="js/bootstrap.js"></script> -->
+ <link rel="stylesheet" href="css/jquery-ui.css" />
+      <script src="js/new-theme/jquery-1.11.3.min.js"></script> 
+       <script src="js/jquery-ui.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.js"></script>
 
 	<!-- requried-jsfiles-for owl-->
     <script src="js/new-theme/owl.carousel.js"></script>
 	<link href="css/new-theme/owl.carousel.css" rel="stylesheet">
-	<script type="text/javascript" src="js/angular.min.js"></script>
+	<!-- <script type="text/javascript" src="js/angular.min.js"></script>- -->
     <script type="text/javascript" src="js/angular-messages.min.js"></script>
 	<script type="text/javascript" src="js/controller/landingPageController.js"></script>
 	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAw7GwLP6e0viGPXOtxAHtYCOVeRFkEbsw&libraries=places&sensor=false"></script>
@@ -28,58 +27,16 @@
   <link href="css/style1.css" type="text/css" rel="stylesheet" media="screen,projection"/> 
   <link href="css/ghpages-materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/> 
   <link href="css/prism.css" type="text/css" rel="stylesheet" media="screen,projection"/> 
-  
-<!-- <link href="css/materialize1.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="css/style1.css" type="text/css" rel="stylesheet" media="screen,projection"/> --> <!-- 
-  <link href="css/ghpages-materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/> 
-  <link href="css/prism.css" type="text/css" rel="stylesheet" media="screen,projection"/> 
-   -->
- <!-- <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script> -->
-  <script src="js/js/materialize1.js"></script>
+   <script src="js/js/materialize1.js"></script>
   <script src="js/js/init1.js"></script>
-  <!-- 
-   <script src="js/js/prism.js"></script> -->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+      
 
-        <!--Import jQuery before materialize.js--
-        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-
-        <!-- Compiled and minified JavaScript --
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
-
-        <!--Materializecss Slider-->
-        <script>
-            $(document).ready(function () {
-                $('.slider').slider({full_width: true});
-            });
-        </script>    
-<!-- //requried-jsfiles-for owl -->
 	<script type="text/javascript">
-
-	$(function() {
-		    $("#datepicker").datepicker({
-				numberOfMonths: 1,				
-				minDate: new Date(),
-				onSelect: function (selected) {
-					var dt = new Date(selected);
-					dt.setDate(dt.getDate() + 1);
-					$("#datepicker1").datepicker("option", "minDate", dt);
-				}
-			});
-			$("#datepicker1").datepicker({
-				numberOfMonths: 1,
-				minDate : new Date(),
-				onSelect: function (selected) {
-					var dt = new Date(selected);
-					dt.setDate(dt.getDate() - 1);
-					$("#datepicker").datepicker("option", "maxDate", dt);
-				}
-			});
-			
-			
-		
-	});
+	 
+	
+	 
 	function validateForm(){
 	var alertFlag = false;			
 	var ret_flag = true;
@@ -199,12 +156,9 @@
 
 
 
-<!---strat-date-piker--
-<link rel="stylesheet" href="css/jquery-ui.css" />
-<!-- <script src="js/jquery-ui.js"></script> 
-<script src="js/ngAutocomplete.js"></script>-->
+<!--   <script src="js/jquery-ui.js"></script>--> 
+<script src="js/ngAutocomplete.js"></script>  
 <script>
-
 $(document).ready(function() {
 
       $('#where_to_go').click(function(){
@@ -268,15 +222,7 @@ $(document).ready(function() {
 <script type="text/javascript" src="js/new-theme/JFCore.js"></script>
 <script type="text/javascript" src="js/new-theme/JFForms.js"></script>-->
 <!-- Set here the key for your domain in order to hide the watermark on the web server -->
-<script type="text/javascript">
-	(function() {
-		JC.init({
-			domainKey: ''
-		});
-		
-	})();
-</script>
-<!-- <form method="post" action="RoomAvailability" id="frmCntrl" ng-controller="landingPageCntrl">
+ <!-- <form method="post" action="RoomAvailability" id="frmCntrl" ng-controller="landingPageCntrl">
 <div class="online_reservation" >
 		   <div class="b_room b_room_active" id="b_room_div">
 			  <div class="booking_room booking_room_active" id="booking_room_div">
@@ -350,11 +296,11 @@ $(document).ready(function() {
 						             <!--  <div style="color:darkgray">result: {{result}}</div> -->
 						            </div>      
 							      	<div class="input-field col s12 m12 l4 book_date book_date_active">
-							             	<input type="date" class="datepicker"  id="datepicker" type="text" autocomplete="off" ng-model="checkInDate" name="checkIn"  value="" onFocus="this.value = '';" required="true">
+							             	<input type="text" class="datepicker"  id="datepicker" type="text" autocomplete="off" ng-model="checkInDate" name="checkIn"  value="" onFocus="this.value = '';" required="true">
 							                 <label for="last_name">Arrival Date</label>
 							        </div>
 							        <div class="input-field col s12  m12 l4">
-							             	<input type="date" class="datepicker" id="datepicker1" type="text" autocomplete="off" ng-model="checkOutDate" name="checkOut"  value="" onFocus="this.value = '';" required="true" >
+							             	<input type="text" class="datepicker" id="datepicker1" type="text" autocomplete="off" ng-model="checkOutDate" name="checkOut"  value="" onFocus="this.value = '';" required="true" >
 							                 <label for="last_name">Departure Date</label>
 							        </div>
 							</div>
@@ -396,28 +342,11 @@ $(document).ready(function() {
 	<div id='Banner'>
 	 <a href="#" onclick="$('#inpDestination').val('Featured');$('#frmCntrl').submit();" >
 	 <font size="5" face="vollkorn"> Featured Property </font> </a></div>
-</form>
-<script type="text/javascript">
-/*var i = 1,timer;
-window.onload=function() {
-timer = setInterval('blink()', 500);
 
-}
-function blink() {
-	 if (i == 1) {
-		
-	    	document.getElementById('Banner').style.backgroundColor = '#ff0000';
-
-	 } else {
-	   document.getElementById('Banner').style.backgroundColor = '#ffff00';
-	  }
-	 if(i == 1) i = 0; else i = 1;
-	}*/ </script>
 <?php $this->load->view('common/featured-property.html'); ?>
-</div>
-</div>
-<!---->
-<!---->
+ 
+</form>
+  </div>
 <!-- <div class="rooms text-center">
 	 <div class="container">
 		 <h3>Our Services</h3>
