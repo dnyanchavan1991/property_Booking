@@ -10,13 +10,13 @@
 
  <link rel="stylesheet" href="css/jquery-ui.css" />
       <script src="js/new-theme/jquery-1.11.3.min.js"></script> 
-       <script src="js/jquery-ui.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.js"></script>
-
+       <!-- <script src="js/jquery-ui.js"></script> -->
+	 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.js"></script>
+ 
 	<!-- requried-jsfiles-for owl-->
-    <script src="js/new-theme/owl.carousel.js"></script>
-	<link href="css/new-theme/owl.carousel.css" rel="stylesheet">
-	<!-- <script type="text/javascript" src="js/angular.min.js"></script>- -->
+ <!--    <script src="js/new-theme/owl.carousel.js"></script>
+	<link href="css/new-theme/owl.carousel.css" rel="stylesheet"> -->
+	<!-- <script type="text/javascript" src="js/angular.min.js"></script> -->
     <script type="text/javascript" src="js/angular-messages.min.js"></script>
 	<script type="text/javascript" src="js/controller/landingPageController.js"></script>
 	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAw7GwLP6e0viGPXOtxAHtYCOVeRFkEbsw&libraries=places&sensor=false"></script>
@@ -335,18 +335,37 @@ $(document).ready(function() {
 </div>
 
 <!---->
-<div class="package text-center" id="gallery" ng-controller="galleryImgCtrl" data-ng-init="galleryImgFetch()">
+
+<div class="package text-center row container" id="gallery" ng-controller="galleryImgCtrl" data-ng-init="galleryImgFetch()">
 <form method="post" action="RoomAvailability" id="frmCntrl">
-	<input type="hidden" name="inpDestination" id="inpDestination" value=""> 
+<!-- 	<input type="hidden" name="inpDestination" id="inpDestination" value=""> 
 
-	<div id='Banner'>
+	<div id='Banner' style="text-align: center;">
 	 <a href="#" onclick="$('#inpDestination').val('Featured');$('#frmCntrl').submit();" >
-	 <font size="5" face="vollkorn"> Featured Property </font> </a></div>
-
-<?php $this->load->view('common/featured-property.html'); ?>
- 
-</form>
+	 <h2 class="card"> Featured Property </h2> </a></div>
+ -->
+<!-- <?php /*$this->load->view('common/featured_property.php');*/ ?> -->
+<center><h2>Featured Property</h2></center>
+ <div class="carousel " style="border: 0px solid; box-shadow: 0px 0px 5px 5px #494949;">
+ <?php 
+$con=@mysql_connect("localhost","root","") or die ("server not found");
+@mysql_select_db("agileso1_propertybook",$con) or die ("database not found");
+$query="select image_path from property";
+$res=mysql_query($query);
+while($result=mysql_fetch_row($res))
+{
+	/*echo$result[0];*/
+  echo'
+    <a class="carousel-item" href="#one!"><img src="Admin/'.$result[0].'mainImage.jpg" alt="imge not found" height="200" width="200"></a>
+  ';
+}
+  
+  ?>
+  	
   </div>
+</form>  <!-- 
+
+  </div> -->
 <!-- <div class="rooms text-center">
 	 <div class="container">
 		 <h3>Our Services</h3>
@@ -381,7 +400,6 @@ $(document).ready(function() {
 		 </div>
 	 </div>
 </div> -->
-<hr>
 <!-- Our Services Start -->
 <div class="container">
 	<div class="row">
