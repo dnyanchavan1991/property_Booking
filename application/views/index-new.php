@@ -52,7 +52,7 @@
 	#email:hover,#room:hover,#checkin:hover,#checkout:hover
 	{
 		/*border: 2px solid;*/
-		box-shadow: 0px 0px 5px 2px #000;
+		box-shadow: 0px 0px 5px 1px #DCDCDC;
 		color: #000;
 	}
   /*.fix
@@ -188,7 +188,7 @@
 <div class="container-fluid" >
 <header>
 
- <div class="navbar yamm navbar-default container-fluid" id="sticky"  style="box-shadow: 0px 5px 10px 1px ;">
+ <div class="navbar yamm navbar-default container-fluid" id="sticky"  style="box-shadow: 0px 2px 10px 1px ;">
  <div class="container">
       <div class="navbar-header"><br>
        <button type="button" data-toggle="collapse" data-target="#navbar-collapse-grid1" class="navbar-toggle"> 
