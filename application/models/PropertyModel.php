@@ -558,7 +558,6 @@ class PropertyModel extends CI_Model {
 		$propertyTable = 'property';
 		$propertyInfoTable = 'property_info';
 		$currentDate = date('Y-m-d');
-		
 		$this->db->select ( 'property.property_id,image_path,property_name,description' );
 		$this->db->from ( " $propertyTable property " );
 		$this->db->join ( " $propertyInfoTable propertyInfo", "property.property_id=propertyInfo.property_id" );
