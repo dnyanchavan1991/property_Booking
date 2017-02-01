@@ -102,19 +102,13 @@
                 </li>
 				<?php 
              	if ($this->session->userdata ('user_id') == "") { ?>
-                	<li id="logIn" class="active"><a href="#" data-hover="LOGIN" style="font-size: 40px" onClick="checkLogin('Index1')">Login</a></li>
-				<?php } 
-                else 
-                {
-				     if ($this->session->userdata ('gender') == "1")
-                      { ?>
-                         <li id="logOut"><img src="images/new-theme/male.png" alt=""/>
-                    <?php
-                     } 
-                     else
-                      { ?>
-                        <li id="logOut"><img src="images/new-theme/female.png" alt=""/>
-                <?php } ?>
+                	<li id="logIn" class="active"><a href="#" data-hover="LOGIN" onClick="checkLogin('Index1')">Login</a></li>
+				<?php } else {
+				     if ($this->session->userdata ('gender') == "1") { ?>
+                    <li id="logOut"><img src="images/new-theme/male.png" alt=""/>
+                    <?php } else { ?>
+                    <li id="logOut"><img src="images/new-theme/female.png" alt=""/>
+                    <?php } ?>
                     <!-- <ul class="second-level-menu"> -->
                     <li class="image-li">
                         <a href="#" class="active" data-hover="LOGOUT" onClick="checkLogout('Index1')">Logout</a>

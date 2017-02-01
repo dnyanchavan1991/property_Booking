@@ -254,10 +254,10 @@ class PropertyModel extends CI_Model {
 	/* this function gets property detail on click on particular property of search.html */
 	public function getPropertyDetail($propertyId) {
 		$this->db->select ( 'property_name as propertyName,description,image_path as imagePath,concat(street,\',\',city,\',\',state,\',\',postal_code) as propertyAddress,how_to_reach as Direction, ' );
-		$query = $this->db->get_where ( 'property', array (
-				'property_id' => $propertyId 
-		) );
-		return $query;
+		$this->db->from('property');
+        $this->db->where("property_id = $propertyId ");
+        $query = $this->db->get();
+        return $query->result();
 	}
 	public function getPropertyInfoDetail($propertyId) {
 		$this->db->select ( 'property_type_id, bedrooms, bathrooms, pool, meals, internet_access, television_access as television, pet_friendly, air_condition, in_house_kitchen, other_amenities, leisureActivities, accommodates,   ' );
@@ -265,7 +265,7 @@ class PropertyModel extends CI_Model {
 		$this->db->join ( "property_info", "property.property_id = property_info.property_id" );
 		$this->db->where("property_info.property_id = $propertyId");
 		$query = $this->db->get();
-		return $query;
+        return $query->result();
 	}
 	public function getPropertyType($property_type) {
 		$this->db->select ("property_type_name");
@@ -557,7 +557,6 @@ class PropertyModel extends CI_Model {
 	public function galleryImgFetch() {
 		$propertyTable = 'property';
 		$propertyInfoTable = 'property_info';
-		$currentDate = date('Y-m-d');
 		$this->db->select ( 'property.property_id,image_path,property_name,description' );
 		$this->db->from ( " $propertyTable property " );
 		$this->db->join ( " $propertyInfoTable propertyInfo", "property.property_id=propertyInfo.property_id" );
@@ -691,4 +690,10 @@ class PropertyModel extends CI_Model {
 			$query = $this->db->get ();
 			return $query->result ();
 	}
+	public function getPropertyListing(){
+        $this->db->select ( 'property_type_name,property_type_id' );
+        $this->db->from ( "property_type" );
+        $query = $this->db->get ();
+        return $query->result ();
+    }
 }

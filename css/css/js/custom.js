@@ -35,7 +35,7 @@ jQuery(document).ready(function () {
     // Owl sliders
     if (jQuery().owlCarousel) {
         jQuery("#owl-gallery").owlCarousel({
-            autoPlay: 3000,
+            autoPlay: 15000,
             //Set AutoPlay to 3 seconds
             items: 3,
             itemsDesktop: [1199, 3],

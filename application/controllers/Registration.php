@@ -15,7 +15,6 @@ class Registration extends CI_Controller {
 		$postdata = file_get_contents("php://input");
 		$post= json_decode($postdata);
         $date_of_birth = $post->date_of_birth;
-        alert($date_of_birth);
         $date_of_birth = str_replace ( '/', '-', $date_of_birth );
         $date_of_birth = date ( 'Y-m-d', strtotime ( $date_of_birth ) );
 
