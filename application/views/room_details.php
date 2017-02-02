@@ -92,7 +92,14 @@
                     <li class="dropdown active"> <a href="<?php echo base_url() ?>">Home</a>
                     </li>
                     <li> <a href="#">Featured</a></li>
-                    <li> <a href="#">Quick Search</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Quick Search
+                            <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Maharashtra</a></li>
+                            <li><a href="#">Goa</a></li>
+                        </ul>
+                    </li>
                     <li> <a href="#">Login</a></li>
                 </ul>
             </div>
@@ -288,9 +295,7 @@
         </div>
     </div>
 </footer>
-
 <!-- Go-top Button -->
 <div id="go-top"><i class="fa fa-angle-up fa-2x"></i></div>
-
 </body>
 </html>
