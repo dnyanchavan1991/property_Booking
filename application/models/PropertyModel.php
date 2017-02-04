@@ -696,4 +696,85 @@ class PropertyModel extends CI_Model {
         $query = $this->db->get ();
         return $query->result ();
     }
+
+//    public function getQuickSearchCount($name){
+//        $propertyTable = 'property';
+//        $this->db->select ( '*' );
+//        $this->db->from ( " $propertyTable property " );
+//        $this->db->where ( 'state', $name);
+//        $query = $this->db->get ();
+//        return $query->result ();
+//    }
+//
+//    public function getQuickSearchData($limit,$id,$name){
+//        $propertyTable = 'property';
+//        $propertyInfoTable = 'property_info';
+//        $this->db->select ( '*' );
+//        $this->db->from ( " $propertyTable property " );
+//        $this->db->join ( " $propertyInfoTable propertyInfo", "property.property_id=propertyInfo.property_id" );
+//        $this->db->limit($limit);
+//        $this->db->where ('property_type_id',$id);
+//        $query = $this->db->get ();
+//        return $query->result ();
+//    }
+    public function getQuickSearchCount($name){
+        $propertyTable = 'property';
+        $propertyInfo = 'property_info';
+        $this->db->select( '*' );
+        $this->db->from(" $propertyTable property ");
+        $this->db->join ( "$propertyInfo propertyInfo", "property.property_id = propertyInfo.property_id", "left" );
+        $this->db->where( 'state', $name);
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function getQuickSearchData($limit=null,$offset=NULL,$name){
+//        $query = $this->db->get('property', $limit, $offset);
+//        return $query->result_array();
+        $propertyTable = 'property';
+        $propertyInfo = 'property_info';
+        $this->db->select( '*' );
+        $this->db->from(" $propertyTable property ");
+        $this->db->join ( "$propertyInfo propertyInfo", "property.property_id = propertyInfo.property_id", "left" );
+        $this->db->limit($limit, $offset);
+        $this->db->where( 'state', $name);
+        $query = $this->db->get();
+        return $query->result();
+    }
+    public function getFeaturedSearchCount(){
+        $propertyTable = 'property';
+        $propertyInfoTable = 'property_info';
+        $this->db->select( '* ' );
+        $this->db->from( " $propertyTable property " );
+        $this->db->join( " $propertyInfoTable propertyInfo", "property.property_id = propertyInfo.property_id" );
+        $this->db->where( 'activation_flag', 'YES');
+        $this->db->where( 'Featured', 'Yes');
+        $d = date("y-m-d");
+        $where = " ( Featured_startDate <= '$d' and Featured_endDate >='$d' )";
+        $this->db->where ( $where );
+        $this->db->order_by ( 'Featured_startDate Desc' );
+        //$this->db->limit ( 6 );
+        $query = $this->db->get();
+
+        return $query->result();
+
+    }
+    public function getFeaturedSearchData($limit=null,$offset=NULL){
+        $propertyTable = 'property';
+        $propertyInfoTable = 'property_info';
+        $this->db->select( '* ' );
+        $this->db->from( " $propertyTable property " );
+        $this->db->join( " $propertyInfoTable propertyInfo", "property.property_id = propertyInfo.property_id" );
+        $this->db->where( 'activation_flag', 'YES');
+        $this->db->where( 'Featured', 'Yes');
+        $d = date("y-m-d");
+        $where = " ( Featured_startDate <= '$d' and Featured_endDate >='$d' )";
+        $this->db->where ( $where );
+        $this->db->order_by ( 'Featured_startDate Desc' );
+        $this->db->limit($limit, $offset);
+        $query = $this->db->get();
+
+        return $query->result();
+
+    }
 }

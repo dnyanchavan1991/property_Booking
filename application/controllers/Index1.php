@@ -5,6 +5,7 @@ class Index1 extends CI_Controller {
 		parent::__construct();
 		$this->load->model('PropertyModel');
 		$this->load->library('session');
+        $this->load->helper('url');
 	}
 
 	public function index() {
@@ -70,10 +71,5 @@ class Index1 extends CI_Controller {
 	    $propertyDetails = $this->PropertyModel->getPropertyDetail($id);
         $propertyInfoDetails = $this->PropertyModel->getPropertyInfoDetail($id);
 	    $this->load->view('room_details.php',array('propertyDetails'=>$propertyDetails[0],'propertyInfoDetails' => $propertyInfoDetails[0]));
-    }
-    public function QuickSearch(){
-
-        $this->load->view('quick_search.php');
-
     }
 }

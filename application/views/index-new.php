@@ -1,5 +1,4 @@
 <!DOCTYPE HTML>
-<?php $con=mysqli_connect("localhost","root","","agileso1_propertybook"); ?>
 <html>
 <head>
 	<meta charset="utf-8">
@@ -200,13 +199,13 @@
 				<ul class="nav navbar-nav">
 					<li class="dropdown active"> <a href="<?php echo base_url() ?>">Home</a>
 					</li>
-					<li> <a href="#">Featured</a></li>
+					<li> <a href="<?php echo base_url()?>index.php/Search/FeaturedSearch">Featured</a></li>
 					<li class="dropdown">
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Quick Search
 							<span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="<?php echo base_url()?>index.php/Index1/QuickSearch">Maharashtra</a></li>
-							<li><a href="<?php echo  base_url()?>index.php/Index1/QuickSearch">Goa</a></li>
+							<li><a href="<?php echo base_url()?>index.php/Search/QuickSearch/Maharashtra">Maharashtra</a></li>
+							<li><a href="<?php echo  base_url()?>index.php/Search/QuickSearch/Pradesh">Goa</a></li>
 						</ul>
 					</li>
 					<li> <a href="#">Login</a></li>
@@ -387,7 +386,7 @@
 			<?php
 				foreach($galleryImages as $galleryImage){
 			?>
-					<div class="item">
+			<div class="item">
 				<div class="col-sm-12 col-md-12 col-lg-6 ">
 					<div class="room-thumb"><img src="<?php echo $galleryImage['image'] ?>" alt="room 3"
 												 class="img-responsive" data-rel="prettyPhoto[gallery2]"/>
@@ -473,49 +472,7 @@
 
 
 <!-- Footer -->
-<footer>
-	<div class="container">
-		<div class="row">
-			<div class="col-md-3 col-sm-3">
-				<h4>About Us</h4>
-				<p>Suspendisse erat mi, tincidunt sit amet massa quis, commodo fermentum diam. Sed nec dui nec nunc tempor interdum.<br>
-					<br>
-					Ut vulputate augue urna, ut porta dolor imperdiet a. Vestibulum nec leo eu magna aliquam ornare.</p>
-			</div>
-
-			<div class="col-md-3 col-sm-3">
-				<h4>FACILITIES</h4>
-				<p> Quick Property Search</p>
-				<p>Online Payment</p>
-				<p>Reviews</p>
-				<p> Google Map</p>
-			</div>
-			<div class="col-md-3 col-sm-3">
-				<h4>Address</h4>
-				<address>
-					<strong></strong><br>
-					<br>
-					<br>
-					<abbr title="Phone">Phone:</abbr> <a href="#">(123) 456-7890</a><br>
-					<abbr title="Email">Email:</abbr> <a href="#">mail@example.com</a><br>
-					<abbr title="Website">Web:</abbr> <a href="#">www.slashdown.nl</a><br>
-				</address>
-			</div>
-		</div>
-	</div>
-	<div class="footer-bottom">
-		<div class="container">
-			<div class="row">
-				<div class="col-xs-6"> &copy; 2016 design and develop by Operand Technology. </div>
-				<div class="col-xs-6 text-right">
-					<ul>
-						<li><a href="contact-01.html">Contact Us</a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-</footer>
+<?php include('includes/footer.php'); ?>
 
 <!-- Go-top Button -->
 <div id="go-top"><i class="fa fa-angle-up fa-2x"></i></div>
