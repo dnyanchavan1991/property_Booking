@@ -691,8 +691,11 @@ class PropertyModel extends CI_Model {
 			return $query->result ();
 	}
 	public function getPropertyListing(){
-        $this->db->select ( 'property_type_name,property_type_id' );
-        $this->db->from ( "property_type" );
+        $propertyTable = 'property';
+        $propertyInfoTable = 'property_info';
+        $this->db->select( '* ' );
+        $this->db->from( " $propertyTable property " );
+        $this->db->join( " $propertyInfoTable propertyInfo", "property.property_id = propertyInfo.property_id" );
         $query = $this->db->get ();
         return $query->result ();
     }

@@ -7,13 +7,13 @@
                     <div class="th-item"> <a href="#"><i class="fa fa-envelope"></i> MAIL@STARHOTEL.COM </a></div>
                 </div>
             </div>
-            <div class="col-xs-6">
+            <!--<div class="col-xs-6">
                 <div class="th-text pull-right">
                     <div class="th-item">
                         <div class="social-icons"> <a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i class="fa fa-google-plus"></i></a> <a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i class="fa fa-youtube-play"></i></a> </div>
                     </div>
                 </div>
-            </div>
+            </div>-->
         </div>
     </div>
 </div>

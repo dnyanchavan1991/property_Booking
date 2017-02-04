@@ -92,13 +92,13 @@
 					<div class="th-item"> <a href="#"><i class="fa fa-envelope"></i> MAIL@STARHOTEL.COM </a></div>
 				</div>
 			</div>
-			<div class="col-xs-6">
+			<!--<div class="col-xs-6">
 				<div class="th-text pull-right">
 					<div class="th-item">
 						<div class="social-icons"> <a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i class="fa fa-google-plus"></i></a> <a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i class="fa fa-youtube-play"></i></a> </div>
 					</div>
 				</div>
-			</div>
+			</div>-->
 			<div class="col-xs-6 visible-xs">
 				<div class="" style="float:right;font-size:20px">
 						<div class="social-icons"> <a href="#" class="do"><i class="fa fa-search" style="font-size:28px;padding-right:10px;padding-bottom:10px"></i></a> </div>
@@ -384,36 +384,35 @@
 		</div>
 		<div id="owl-gallery" class="owl-carousel" style="box-shadow: 0px 0px 3px 2px #494949;">
 			<?php
-				foreach($galleryImages as $galleryImage){
+				foreach($propertyType as $propertyTypes){
 			?>
 			<div class="item">
-				<div class="col-sm-12 col-md-12 col-lg-6 ">
-					<div class="room-thumb"><img src="<?php echo $galleryImage['image'] ?>" alt="room 3"
+				<div class="col-sm-12 col-md-12 col-lg-6 feature-main">
+					<div class="room-thumb"><img src="<?php echo base_url().'Admin/'.$propertyTypes->image_path.'mainImage.jpg' ?>" alt="room 3"
 												 class="img-responsive" data-rel="prettyPhoto[gallery2]"/>
 						<div class="mask">
 							<div class="main" style="background: #494949;">
-								<h5 style="color:#fff;"><?php echo $galleryImage['property_name']; ?></h5>
+								<h5 style="color:#fff;"><?php echo $propertyTypes->property_name ?></h5>
 								<!--<div class="price">&euro; 120<span>a night</span></div>-->
 							</div>
 							<div class="content">
-								<p><span><?php substr($galleryImage['property_description'], 0, 150) ?></p>
+								<p><span><?php substr($propertyTypes->description, 0, 150) ?></p>
 								<div class="row">
 									<div class="col-sm-12 col-md-6 col-lg-6">
 										<ul class="list-unstyled">
-											<li><i class="fa fa-check-circle"></i> Incl. breakfast</li>
-											<li><i class="fa fa-check-circle"></i> Private balcony</li>
-											<li><i class="fa fa-check-circle"></i> Sea view</li>
+											<li><i class="fa fa-check-circle"></i>Bedrooms - <?php echo $propertyTypes->bedrooms ?></li>
+											<li><i class="fa fa-check-circle"></i>Free Wi-Fi - <?php echo $propertyTypes->internet_access ?></li>
+											<li><i class="fa fa-check-circle"></i> AC - <?php echo $propertyTypes->air_condition ?> </li>
 										</ul>
 									</div>
 									<div class=" col-sm-12 col-md-6 col-lg-6">
 										<ul class="list-unstyled">
-											<li><i class="fa fa-check-circle"></i> Free Wi-Fi</li>
-											<li><i class="fa fa-check-circle"></i> Incl. breakfast</li>
-											<li><i class="fa fa-check-circle"></i> Bathroom</li>
+											<li><i class="fa fa-check-circle"></i>Pool - <?php echo $propertyTypes->pool ?></li>
+											<li><i class="fa fa-check-circle"></i>Bathroom - <?php echo $propertyTypes->bathrooms ?></li>
 										</ul>
 									</div>
 								</div>
-								<a href="<?php echo base_url('/index.php/Index1/PropertyDetails/'.$galleryImage["property_id"].'') ?>" class="btn btn-primary btn-sm btn-block">Read
+								<a href="<?php echo base_url('/index.php/Index1/PropertyDetails/'.$propertyTypes->property_id.'') ?>" class="btn btn-primary btn-sm btn-block">Read
 									More</a>
 							</div>
 						</div>

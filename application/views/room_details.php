@@ -17,6 +17,9 @@
 <div class="container mt50">
     <div class="row">
         <!-- Slider -->
+       <!-- <div class="col-sm-12">
+            <h3><?php /*echo $propertyDetails->property_name */?></h3>
+        </div>-->
         <section class="standard-slider room-slider">
             <div class="col-sm-12 col-md-8">
                 <div id="owl-standard" class="owl-carousel">

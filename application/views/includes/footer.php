@@ -33,7 +33,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-6">  Design and Developed By <a href="http://www.operandtechnologies.com" target="_blank">Operand Technologies</a> & IT Solutions LLP. </div>
-                <div class="col-xs-6 text-right">
+                <!--<div class="col-xs-6 text-right">
                     <ul>
                         <li>
                             <a href="http://facebook.com" target="_blank"><i class="fa fa-facebook"></i></a>
@@ -45,7 +45,7 @@
                             <a href="https://accounts.google.com/Login" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
                         </li>
                     </ul>
-                </div>
+                </div>-->
             </div>
         </div>
     </div>

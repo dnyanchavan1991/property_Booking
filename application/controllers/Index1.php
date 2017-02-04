@@ -31,7 +31,7 @@ class Index1 extends CI_Controller {
             }
         }
 
-		$this->load->view ( 'index-new.php',array('propertyTypes'=>$property_type,'galleryImages'=>$gallery_img) );
+		$this->load->view ( 'index-new.php',array('propertyType'=>$property_type,'galleryImages'=>$gallery_img) );
 		//$this->load->view ( 'ex2.html' );
 	}
 	
