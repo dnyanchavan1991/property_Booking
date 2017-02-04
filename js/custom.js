@@ -35,11 +35,11 @@ jQuery(document).ready(function () {
     // Owl sliders
     if (jQuery().owlCarousel) {
         jQuery("#owl-gallery").owlCarousel({
-            autoPlay: 3000,
+            autoPlay: 7000,
             //Set AutoPlay to 3 seconds
-            items: 3,
-            itemsDesktop: [1199, 3],
-            itemsDesktopSmall: [979, 3],
+            items: 4,
+            itemsDesktop: [1199, 4],
+            itemsDesktopSmall: [979, 4],
             pagination: false
         });
 

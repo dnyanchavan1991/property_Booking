@@ -930,7 +930,7 @@ header #logo {
 -------------------------------------------------- */
 /* Room Thumbnails */
 .room-thumb {
-	width: 356px;
+	width: 250px;
 	height: 283px;
 	float: left;
 	overflow: hidden;
@@ -942,7 +942,7 @@ header #logo {
 	-webkit-perspective: 5000;
 }
 .room-thumb .mask {
-	width: 356px;
+	width: 250px;
 	height: 281px;
 	position: absolute;
 	overflow: hidden;
@@ -950,6 +950,7 @@ header #logo {
 	left: 0
 }
 .room-thumb img {
+	padding-top:25px;
 	display: block;
 	position: relative;
 	width: 100%;
@@ -958,6 +959,10 @@ header #logo {
 .room-thumb .main {
 	border-bottom: 1px solid #ebebeb;
 	height: 55px;
+}
+.feature-main{
+	padding-bottom:30px;
+	padding-top:10px;
 }
 .room-thumb .main h5 {
 	font-size: 14px;

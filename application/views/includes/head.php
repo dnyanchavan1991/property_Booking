@@ -37,6 +37,7 @@
     <script type="text/javascript" src="<?php echo base_url() ?>assets/js/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url() ?>assets/js/custom.js"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgN3bxU8ANT6CpiuyCu__jyuWZ3sXcrF4&libraries=places"></script>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
