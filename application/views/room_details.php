@@ -9,17 +9,17 @@
 
 <!--head-->
 <?php include('includes/head.php'); ?>
-
+ <script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery.sticky.js"></script>
 <body>
 
 <!-- Top header -->
 <?php include('includes/header.php'); ?>
 <div class="container mt50">
+    <div class="col-sm-12 detail-name" >
+        <h3><?php echo $propertyDetails->propertyName ?></h3>
+    </div>
     <div class="row">
         <!-- Slider -->
-       <!-- <div class="col-sm-12">
-            <h3><?php /*echo $propertyDetails->property_name */?></h3>
-        </div>-->
         <section class="standard-slider room-slider">
             <div class="col-sm-12 col-md-8">
                 <div id="owl-standard" class="owl-carousel">

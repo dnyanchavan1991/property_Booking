@@ -1,85 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<meta charset="utf-8">
-	<title>Starhotel - SHARED ON THEMELOCK.COM</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<!--	<link rel="shortcut icon" href="favicon.ico">-->
-
-	<!-- Stylesheets -->
-	<link rel="stylesheet" href="css/animate.css">
-	<link rel="stylesheet" href="css/bootstrap.css">
-	<link rel="stylesheet" href="css/font-awesome.min.css">
-	<link rel="stylesheet" href="css/owl.carousel.css">
-	<link rel="stylesheet" href="css/owl.theme.css">
-	<link rel="stylesheet" href="css/prettyPhoto.css">
-	<link rel="stylesheet" href="css/smoothness/jquery-ui-1.10.4.custom.min.css">
-	<link rel="stylesheet" href="js/rs-plugin/css/settings.css">
-	<link rel="stylesheet" href="css/theme.css">
-	<link rel="stylesheet" href="css/colors/turquoise.css">
-	<link rel="stylesheet" href="css/responsive.css">
-	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600,700">
-
-	<!-- Javascripts -->
-	<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
-	<script type="text/javascript" src="js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="js/bootstrap-hover-dropdown.min.js"></script>
-	<script type="text/javascript" src="js/owl.carousel.min.js"></script>
-	<script type="text/javascript" src="js/jquery.parallax-1.1.3.js"></script>
-	<script type="text/javascript" src="js/jquery.nicescroll.js"></script>
-	<script type="text/javascript" src="js/jquery.prettyPhoto.js"></script>
-	<script type="text/javascript" src="js/jquery-ui-1.10.4.custom.min.js"></script>
-	<script type="text/javascript" src="js/jquery.jigowatt.js"></script>
-	<script type="text/javascript" src="js/waypoints.min.js"></script>
-	<script type="text/javascript" src="js/jquery.isotope.min.js"></script>
-	<script type="text/javascript" src="js/jquery.gmap.min.js"></script>
-<!--	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>-->
-	<script type="text/javascript" src="js/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
-	<script type="text/javascript" src="js/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
-	<script type="text/javascript" src="js/custom.js"></script>
-	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgN3bxU8ANT6CpiuyCu__jyuWZ3sXcrF4&libraries=places"></script>
-	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-	<!--[if lt IE 9]>
-	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-	<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-	<![endif]-->
-	<style>
-	
-
-#sticky.stick {
-    margin-top: 0 !important;
-    position: fixed;
-    top: 0;
-    z-index: 10000;
-    width:100%;
-	padding:0;
-}
-#sticky.stick {
-   
-    width:100%;
-	
-}
-#sticky.stick .tp{
-   
-    width:70%;
-	 margin: 0 auto; 
-}
-#sticky.stick label {
-	display:none;
-}
-#sticky.stick i {
-	display:none;
-}
-#sticky.stick .popover-icon{
-	display:none;
-}
-#sticky.stick .btn-block{
-	margin-top:0px!important;
-}
-	</style>
-</head>
-
+	<?php include('includes/head.php') ?>
 <body>
 
 <!-- Top header -->
@@ -110,20 +32,20 @@
 <div class="search-popup" style="display:none;padding:10px;">
 <div class="row" style="z-index:2000">
 			<div class="col-md-12">
-				<form class="form-inline reservation-horizontal clearfix" role="form" method="post" action="php/reservation.php" name="reservationform" id="reservationform">
+				<form class="form-inline reservation-horizontal clearfix" role="form" method="post" action="<?php echo base_url()?>/index.php/RoomAvailability/checkRoomAvailabilty" name="reservationform" id="reservationform">
 					<div id="message"></div><!-- Error message display -->
 					<div class="row tp">
 						<div class="col-sm-3">
 							<div class="form-group">
 								<label for="email" accesskey="E">Location</label>
-								<input name="email" type="text" id="location" value="" class="form-control" placeholder="Please enter your Location"/>
+								<input name="location" type="text" id="location-mobile" value="" class="form-control location-mobile" placeholder="Please enter your Location"/>
 							</div>
 						</div>
 						<div class="col-sm-2">
 							<div class="form-group">
 								<label for="room">Property Type</label>
 
-								<select class="form-control" name="room" id="room">
+								<select class="form-control" name="propertyType" id="room">
 									<option selected="selected" disabled="disabled">Property types</option>
 									<?php
 									foreach($propertyTypes as $propertyType){
@@ -138,7 +60,7 @@
 								<label for="checkin">Check-in</label>
 								<div class="popover-icon" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Check-In is from 11:00"> <i class="fa fa-info-circle fa-lg"> </i> </div>
 								<i class="fa fa-calendar infield"></i>
-								<input name="checkin" type="text" id="checkin" value="" class="form-control" placeholder="Check-in"/>
+								<input name="checkIn" type="text" <!--id="checkin"--> value="" class="form-control" placeholder="Check-in"/>
 							</div>
 						</div>
 						<div class="col-sm-2">
@@ -146,7 +68,7 @@
 								<label for="checkout">Check-out</label>
 								<div class="popover-icon" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Check-out is from 12:00"> <i class="fa fa-info-circle fa-lg"> </i> </div>
 								<i class="fa fa-calendar infield"></i>
-								<input name="checkout" type="text" id="checkout" value="" class="form-control" placeholder="Check-out"/>
+								<input name="checkOut" type="text" <!--id="checkout"--> value="" class="form-control" placeholder="Check-out"/>
 							</div>
 						</div>
 						<div class="col-sm-1">
@@ -155,7 +77,7 @@
 									<label>Guests</label>
 
 
-									<select class="form-control" name="room" id="room">
+									<select class="form-control" name="guestCount" id="room">
 										<option selected="selected" disabled="disabled">1</option>
 										<option value="Single">2</option>
 										<option value="Double">3</option>
@@ -292,20 +214,20 @@
 	<div class="container hidden-xs" id="sticky">
 		<div class="row">
 			<div class="col-md-12">
-				<form class="form-inline reservation-horizontal clearfix" role="form" method="post" action="php/reservation.php" name="reservationform" id="reservationform">
+				<form class="form-inline reservation-horizontal clearfix" role="form" method="post" action="<?php echo base_url()?>index.php/RoomAvailability/checkRoomAvailabilty" name="reservationform" id="reservationform">
 					<div id="message"></div><!-- Error message display -->
 					<div class="row tp">
 						<div class="col-sm-3">
 							<div class="form-group">
 								<label for="email" accesskey="E">Location</label>
-								<input name="email" type="text" id="location" value="" class="form-control" placeholder="Please enter your Location"/>
+								<input name="location" type="text" id="location" value="" class="form-control location" placeholder="Please enter your Location"/>
 							</div>
 						</div>
 						<div class="col-sm-2">
 							<div class="form-group">
 								<label for="room">Property Type</label>
 
-								<select class="form-control" name="room" id="room">
+								<select class="form-control" name="propertyType" id="room">
 									<option selected="selected" disabled="disabled">Property types</option>
 									<option value="Single">Villa</option>
 									<option value="Double">Dormatory</option>
@@ -324,7 +246,7 @@
 								<label for="checkin">Check-in</label>
 								<div class="popover-icon" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Check-In is from 11:00"> <i class="fa fa-info-circle fa-lg"> </i> </div>
 								<i class="fa fa-calendar infield"></i>
-								<input name="checkin" type="text" id="checkin" value="" class="form-control" placeholder="Check-in"/>
+								<input name="checkIn" type="text" id="checkin" value="" class="form-control" placeholder="Check-in"/>
 							</div>
 						</div>
 						<div class="col-sm-2">
@@ -332,7 +254,7 @@
 								<label for="checkout">Check-out</label>
 								<div class="popover-icon" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Check-out is from 12:00"> <i class="fa fa-info-circle fa-lg"> </i> </div>
 								<i class="fa fa-calendar infield"></i>
-								<input name="checkout" type="text" id="checkout" value="" class="form-control" placeholder="Check-out"/>
+								<input name="checkOut" type="text" id="checkout" value="" class="form-control" placeholder="Check-out"/>
 							</div>
 						</div>
 						<div class="col-sm-1">
@@ -382,7 +304,7 @@
 				</div>
 			</div>
 		</div>
-		<div id="owl-gallery" class="owl-carousel" style="box-shadow: 0px 0px 3px 2px #494949;">
+		<div id="owl-gallery" class="owl-carousel index-gallery" style="box-shadow: 0px 0px 3px 2px #494949;">
 			<?php
 				foreach($propertyType as $propertyTypes){
 			?>
@@ -476,31 +398,7 @@
 <!-- Go-top Button -->
 <div id="go-top"><i class="fa fa-angle-up fa-2x"></i></div>
 <script>
-	$(document).ready(function () {
-		$location_input = $("#location");
-		autocomplete = new google.maps.places.Autocomplete($location_input.get(0));
-		function sticky_relocate() {
-    var window_top = $(window).scrollTop();
-    var div_top = $('#sticky-anchor').offset().top;
-    if (window_top > div_top) {
-        $('#sticky').addClass('stick');
-        $('#sticky-anchor').height($('#sticky').outerHeight());
-		jQuery("body").trigger("click")
-    } else {
-        $('#sticky').removeClass('stick');
-        $('#sticky-anchor').height(0);
-    }
-}
 
-$(function() {
-    $(window).scroll(sticky_relocate);
-    sticky_relocate();
-});
-$(".do").click(function(){
-        $(".search-popup").slideToggle();
-    });
-
-	});
 </script>
 </body>
 </html>

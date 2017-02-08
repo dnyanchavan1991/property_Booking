@@ -14,6 +14,88 @@
                     </div>
                 </div>
             </div>-->
+            <div class="col-xs-6 visible-xs">
+                <div class="" style="float:right;font-size:20px">
+                    <div class="social-icons"> <a href="#" class="do"><i class="fa fa-search" style="font-size:28px;padding-right:10px;padding-bottom:10px"></i></a> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-popup" style="display:none;padding:10px;">
+    <div class="row" style="z-index:2000">
+        <div class="col-md-12">
+            <form class="form-inline reservation-horizontal clearfix" role="form" method="post" action="php/reservation.php" name="reservationform" id="reservationform">
+                <div id="message"></div><!-- Error message display -->
+                <div class="row tp">
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label for="email" accesskey="E">Location</label>
+                            <input name="email" type="text" id="location-mobile" value="" class="form-control location-mobile" placeholder="Please enter your Location"/>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <label for="room">Property Type</label>
+
+                            <select class="form-control" name="room" id="room">
+                                <option selected="selected" disabled="disabled">Property types</option>
+                                <?php
+                                foreach($propertyTypes as $propertyType){
+                                    echo'<option value='.$propertyType->property_type_id.'>'.$propertyType->property_type_name.'</option>';
+                                }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <label for="checkin">Check-in</label>
+                            <div class="popover-icon" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Check-In is from 11:00"> <i class="fa fa-info-circle fa-lg"> </i> </div>
+                            <i class="fa fa-calendar infield"></i>
+                            <input name="checkin" type="text" id="checkin" value="" class="form-control" placeholder="Check-in"/>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <label for="checkout">Check-out</label>
+                            <div class="popover-icon" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Check-out is from 12:00"> <i class="fa fa-info-circle fa-lg"> </i> </div>
+                            <i class="fa fa-calendar infield"></i>
+                            <input name="checkout" type="text" id="checkout" value="" class="form-control" placeholder="Check-out"/>
+                        </div>
+                    </div>
+                    <div class="col-sm-1">
+                        <div class="form-group">
+                            <div class="guests-select">
+                                <label>Guests</label>
+
+
+                                <select class="form-control" name="room" id="room">
+                                    <option selected="selected" disabled="disabled">1</option>
+                                    <option value="Single">2</option>
+                                    <option value="Double">3</option>
+                                    <option value="Deluxe">4</option>
+                                    <option value="Deluxe">5</option>
+                                    <option value="Deluxe">6</option>
+                                    <option value="Deluxe">7</option>
+                                    <option value="Deluxe">8</option>
+                                    <option value="Deluxe">9</option>
+                                    <option value="Deluxe">10</option>
+                                    <option value="Deluxe">11</option>
+                                    <option value="Deluxe">12</option>
+                                    <option value="Deluxe">13</option>
+                                    <option value="Deluxe">14</option>
+                                    <option value="Deluxe">15+</option>
+
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <button type="submit" class="btn btn-primary btn-block">Book Now</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>
@@ -21,7 +103,7 @@
 <!-- Header -->
 <header>
     <!-- Navigation -->
-    <div class="navbar yamm navbar-default" id="sticky">
+    <div class="navbar yamm navbar-default">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" data-toggle="collapse" data-target="#navbar-collapse-grid" class="navbar-toggle"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
