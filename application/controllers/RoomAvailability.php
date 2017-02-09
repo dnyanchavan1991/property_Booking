@@ -87,8 +87,8 @@ class RoomAvailability extends CI_Controller {
 
 //        $postdata = file_get_contents("php://input");
 //        $request = json_decode($postdata);
-        $sortFCriteria = null;
         $sortBCriteria = null;
+        $sortFCriteria = null;
         //$sortByFilter = $request->sortByFilter;
 
         //echo $request->inputDestination . " -- " . $this->session->userdata ( 'guestCount' );
@@ -100,17 +100,27 @@ class RoomAvailability extends CI_Controller {
         $checkIn = $request->checkInDate == '' ? $this->session->userdata ( 'checkIn' ) : $request->checkInDate;
         $checkOut = $request->checkOutDate == '' ? $this->session->userdata ( 'checkOut' ) : $request->checkOutDate;*/
 
-        $destination =  $_POST['location'];
-        $guestCount =   $_POST['room'];
-        $propertyType = $_POST['propertyType'];
-        $checkIn = 		$_POST['checkIn'];
-        $checkOut = $_POST['checkOut'];
-        $featured = '';
-        /*echo $destination;
-        echo $guestCount;
-        echo $propertyType;
-        echo $checkIn;
-        echo $checkOut;*/
+
+        if($_SERVER['REQUEST_METHOD'] === 'POST')
+        {
+            if(isset($_POST['changeFilter'])){
+                $sortFCriteria = $_POST['changeFilter'] != "" ? $_POST['changeFilter'] : null;
+            }
+            $this->session->set_userdata ( 'checkIn',$_POST['checkIn']);
+            $this->session->set_userdata ( 'checkOut',$_POST['checkOut']);
+            $this->session->set_userdata ( 'guestCount','1' );
+            $this->session->set_userdata ( 'location',$_POST['location']);
+            $this->session->set_userdata ( 'propertyType','0');
+            $this->session->set_userdata ( 'featured', '');
+
+        }
+        $destination =  $this->session->userdata('location');
+        $guestCount =   1;
+        $propertyType = 0;
+        $checkIn = 		$this->session->userdata('checkIn');
+        $checkOut = $this->session->userdata('checkOut');
+        $featured = $this->session->userdata('featured');
+
         $searchArray=array(
             'checkIn'=>$checkIn,
             'checkOut'=>$checkOut,
@@ -126,40 +136,44 @@ class RoomAvailability extends CI_Controller {
 
         //$roomBooked = $this->PropertyModel->checkRoomBooked ($searchArray);
 
-        $roomAvailableInfo = $this->PropertyModel->checkRoomAvailabilty ($searchArray,$filterData, $sortFCriteria, $sortBCriteria);
-        var_dump($roomAvailableInfo);
-        exit;
-        $i=0;
-        $response=new stdClass();
-        //$response->records =$roomAvailableCount;
-        foreach($roomAvailableInfo as $row)
-        {
-            $row=(array)$row;
-            $image_path = $row['imagePath'];
-            $directory_path = './Admin/'.$image_path;
-            $map = directory_map($directory_path);
-            if($map)
-            {
-                foreach ($map as $result)
-                {
-                    if(strpos($result ,"mainImage") !==false)
-                    {
-                        $get_result = "Admin/".$image_path.$result;
-                        $response->rows[$i]=array('propertyId'=>$row['propertyId'],'propertyName'=>$row['property'],'ImagePath' => $get_result,
-                            'starRate'=>$row['star_rate'],'propertyAddress'=>$row['propertyAddress'],
-                            'pool'=>$row['pool'], 'free_parking'=>$row['free_parking'], 'air_condition'=>$row['air_condition'],
-                            'television_access'=>$row['television_access'], 'internet_access'=>$row['internet_access'],
-                            'smoking_allowd'=>$row['smoking_allowd'], 'free_breakfast'=>$row['free_breakfast'], 'pet_friendly'=>$row['pet_friendly']
-                        , 'Featured'=>$row['Featured']
-                        );
+        //var_dump($roomAvailableInfo);
+        $this->load->library('pagination');
+        $config['base_url']= base_url().'index.php/RoomAvailability/checkRoomAvailabilty/';
+        $config['total_rows'] = count($this->PropertyModel->checkRoomAvailabiltyCount($searchArray,$filterData, $sortFCriteria, $sortBCriteria));
+        $config['per_page'] = 3;
+        $config["full_tag_open"] = '<ul class="pagination">';
+        $config["full_tag_close"] = '</ul>';
+        $config["first_link"] = "&laquo;";
+        $config["first_tag_open"] = "<li>";
+        $config["first_tag_close"] = "</li>";
+        $config["last_link"] = "&raquo;";
+        $config["last_tag_open"] = "<li>";
+        $config["last_tag_close"] = "</li>";
+        $config['next_link'] = '&gt;';
+        $config['next_tag_open'] = '<li>';
+        $config['next_tag_close'] = '<li>';
+        $config['prev_link'] = '&lt;';
+        $config['prev_tag_open'] = '<li>';
+        $config['prev_tag_close'] = '<li>';
+        $config['cur_tag_open'] = '<li class="active"><a href="#">';
+        $config['cur_tag_close'] = '</a></li>';
+        $config['num_tag_open'] = '<li>';
+        $config['num_tag_close'] = '</li>';
+        $this->pagination->initialize($config);
 
-                        $i++;
-                    }
-                }
-            }
+        if($this->uri->segment(3)){
+            $page = ($this->uri->segment(3)) ;
         }
-        echo json_encode ( $response );
+        else{
+            $page = 1;
+        }
+        $this->pagination->initialize($config);
+        $property_type = $this->PropertyModel->getPropertyTypeList();
+        $roomAvailableInfo = $this->PropertyModel->checkRoomAvailabilty ($searchArray,$filterData, $sortFCriteria, $sortBCriteria,$config['per_page'], $page);
+        $this->load->view('quick_search.php',array('data' => $roomAvailableInfo,'count' => $config['total_rows'],'formData'=>$searchArray,'propertyTypes'=>$property_type));
+
     }
+
     public function checkFilterRoomAvailabilty() {
         $postdata = file_get_contents("php://input");
         $filterData= json_decode($postdata);
@@ -172,8 +186,6 @@ class RoomAvailability extends CI_Controller {
             'destination'=>$this->session->userdata ( 'destination' ),
             'propertyType'=>$this->session->userdata ( 'propertyType' ),
             'featured' => $this->session->userdata ( 'featured' )
-
-
         );
         //echo $searchArray;
         if(sizeof($filterData->selectedstarRateList)==0 &&  sizeof($filterData->selectedFeatureList)==0 && sizeof($filterData->selectedFacilityList)==0

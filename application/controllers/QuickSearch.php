@@ -9,9 +9,6 @@ class QuickSearch extends CI_Controller {
     }
     public function search($name){
 
-
-
-
         $this->load->view('quick_search.php');
 
     }

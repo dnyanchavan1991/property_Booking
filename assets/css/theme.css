@@ -929,17 +929,25 @@ header #logo {
 /* Rooms
 -------------------------------------------------- */
 /* Room Thumbnails */
+.detail-name{
+	padding:0;
+	border-bottom:2px solid lightgrey;
+	margin-bottom:20px;
+}
 .room-thumb {
 	width: 356px;
 	height: 283px;
 	float: left;
 	overflow: hidden;
 	position: relative;
-	border: 1px solid #ebebeb;
+	/*border: 1px solid #ebebeb;*/
 	-webkit-box-shadow: 0 2px 0 0 #e0e0e0;
 	box-shadow: 0 2px 0 0 #e0e0e0;
 	-webkit-backface-visibility: hidden;
 	-webkit-perspective: 5000;
+}
+.feature-main{
+	padding-bottom:30px;
 }
 .room-thumb .mask {
 	width: 356px;
@@ -956,9 +964,45 @@ header #logo {
 	border-bottom: 1px solid #ebebeb;
 }
 .room-thumb .main {
+	/*border-bottom: 1px solid #ebebeb;*/
+	height: 55px;
+}
+
+
+.index-gallery .room-thumb {
+	width: 250px;
+	height: 283px;
+	float: left;
+	overflow: hidden;
+	position: relative;
+	/*border: 1px solid #ebebeb;*/
+	-webkit-box-shadow: 0 2px 0 0 #e0e0e0;
+	box-shadow: 0 2px 0 0 #e0e0e0;
+	-webkit-backface-visibility: hidden;
+	-webkit-perspective: 5000;
+}
+.index-gallery .room-thumb .mask {
+	width: 250px;
+	height: 281px;
+	position: absolute;
+	overflow: hidden;
+	top: 0;
+	left: 0
+}
+
+.index-gallery .room-thumb img {
+	padding-top:25px;
+	display: block;
+	position: relative;
+	width: 100%;
+	border-bottom: 1px solid #ebebeb;
+}
+.index-gallery .room-thumb .main {
 	border-bottom: 1px solid #ebebeb;
 	height: 55px;
 }
+
+
 .room-thumb .main h5 {
 	font-size: 14px;
 	font-weight: bold;
@@ -2078,4 +2122,53 @@ border: 1px solid;
 }
 #map img {
 	max-width: none !important;
+}
+
+
+#sticky.stick {
+	margin-top: 0 !important;
+	position: fixed;
+	top: 0;
+	z-index: 10000;
+	width:100%;
+	padding:0;
+}
+#sticky.stick {
+
+	width:100%;
+
+}
+#sticky.stick .tp{
+
+	width:100%;
+	margin: 0 auto;
+}
+#sticky.stick label {
+	display:none;
+}
+#sticky.stick .fa-calendar{
+	display:none;
+}
+#sticky.stick .popover-icon{
+	display:none;
+}
+#sticky.stick .btn-block{
+	margin-top:0px!important;
+}
+
+.stick-main{
+	top:60px;
+	padding-bottom:30px;
+}
+.stick-sub{
+	top:0!important;
+}
+.more-filter .star i{
+	font-size:17px;
+}
+.more-filter{
+	font-size:15px;
+}
+.more-filter input{
+	width:16px;
 }

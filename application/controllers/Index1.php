@@ -10,6 +10,7 @@ class Index1 extends CI_Controller {
 
 	public function index() {
 	    $property_type = $this->PropertyModel->getPropertyListing();
+        $property_list_type = $this->PropertyModel->getPropertyTypeList();
         $gallery_img_data = $this->PropertyModel->galleryImgFetch();
         $gallery_img = array();
         foreach($gallery_img_data as $row)
@@ -30,8 +31,7 @@ class Index1 extends CI_Controller {
                 }
             }
         }
-
-		$this->load->view ( 'index-new.php',array('propertyType'=>$property_type,'galleryImages'=>$gallery_img) );
+		$this->load->view ( 'index-new.php',array('propertyType'=>$property_type,'propertyListTypes'=>$property_list_type,'galleryImages'=>$gallery_img) );
 		//$this->load->view ( 'ex2.html' );
 	}
 	

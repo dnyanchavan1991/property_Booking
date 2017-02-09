@@ -35,11 +35,11 @@ jQuery(document).ready(function () {
     // Owl sliders
     if (jQuery().owlCarousel) {
         jQuery("#owl-gallery").owlCarousel({
-            autoPlay: 3000,
+            autoPlay: 7000,
             //Set AutoPlay to 3 seconds
-            items: 3,
-            itemsDesktop: [1199, 3],
-            itemsDesktopSmall: [979, 3],
+            items: 4,
+            itemsDesktop: [1199, 4],
+            itemsDesktopSmall: [979, 4],
             pagination: false
         });
 
@@ -391,5 +391,43 @@ jQuery(document).ready(function () {
             jQuery(".guests-select .total").html(total);
         });
 
+});
+
+$(document).ready(function () {
+    $location_input = $(".location");
+    autocomplete = new google.maps.places.Autocomplete($location_input.get(0));
+
+    $location_mobile = $(".location-mobile");
+    autocomplete1 = new google.maps.places.Autocomplete($location_mobile.get(0));
+
+    function sticky_relocate() {
+        var window_top = $(window).scrollTop();
+        var div_top = $('#sticky-anchor').offset().top;
+        if (window_top > div_top) {
+            $('#sticky').addClass('stick');
+            $('#sticky-anchor').height($('#sticky').outerHeight());
+            $('#sticky .stick-main').addClass('stick-sub');
+            // $('.more-filter').hide();
+            jQuery("body").trigger("click")
+        } else {
+            $('#sticky').removeClass('stick');
+            $('#sticky .stick-main').removeClass('stick-sub');
+            $('#sticky-anchor').height(0);
+        }
+    }
+
+    $(function() {
+        $(window).scroll(sticky_relocate);
+        sticky_relocate();
+    });
+
+
+    $(".do").click(function(){
+        $(".search-popup").slideToggle();
+    });
+    
+        $(document).on('click', '.more-filters-btn', function () {
+        $(".more-filter").slideToggle();
+    });
 
 });

@@ -220,7 +220,7 @@
 						<div class="col-sm-3">
 							<div class="form-group">
 								<label for="email" accesskey="E">Location</label>
-								<input name="location" type="text" id="location" value="" class="form-control location" placeholder="Please enter your Location"/>
+								<input name="location" type="text" id="location" value="" class="form-control location" placeholder="Please enter your Location" required="required"/>
 							</div>
 						</div>
 						<div class="col-sm-2">
@@ -228,16 +228,12 @@
 								<label for="room">Property Type</label>
 
 								<select class="form-control" name="propertyType" id="room">
-									<option selected="selected" disabled="disabled">Property types</option>
-									<option value="Single">Villa</option>
-									<option value="Double">Dormatory</option>
-									<option value="Deluxe">Apartment</option>
-									<option value="Deluxe">Bunglow</option>
-									<option value="Deluxe">Row House</option>
-									<option value="Deluxe">Cottage</option>
-									<option value="Deluxe">Hut</option>
-									<option value="Deluxe">House Boat</option>
-									<option value="Deluxe">Tree House</option>
+									<option selected="selected" disabled="disabled" value ="0">Property types</option>
+									<?php
+									foreach($propertyListTypes as $propertyListType){
+										echo'<option value='.$propertyListType->propertyTypeId.'>'.$propertyListType->propertyTypeName.'</option>';
+									}
+									?>
 								</select>
 							</div>
 						</div>
@@ -246,7 +242,7 @@
 								<label for="checkin">Check-in</label>
 								<div class="popover-icon" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Check-In is from 11:00"> <i class="fa fa-info-circle fa-lg"> </i> </div>
 								<i class="fa fa-calendar infield"></i>
-								<input name="checkIn" type="text" id="checkin" value="" class="form-control" placeholder="Check-in"/>
+								<input name="checkIn" type="text" id="checkin" value="" class="form-control" placeholder="Check-in" required="required" />
 							</div>
 						</div>
 						<div class="col-sm-2">
@@ -254,7 +250,7 @@
 								<label for="checkout">Check-out</label>
 								<div class="popover-icon" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Check-out is from 12:00"> <i class="fa fa-info-circle fa-lg"> </i> </div>
 								<i class="fa fa-calendar infield"></i>
-								<input name="checkOut" type="text" id="checkout" value="" class="form-control" placeholder="Check-out"/>
+								<input name="checkOut" type="text" id="checkout" value="" class="form-control" placeholder="Check-out" required="required"/>
 							</div>
 						</div>
 						<div class="col-sm-1">
@@ -263,7 +259,7 @@
 									<label>Guests</label>
 
 
-									<select class="form-control" name="room" id="room">
+									<select class="form-control" name="abc" id="room">
 										<option selected="selected" disabled="disabled">1</option>
 										<option value="Single">2</option>
 										<option value="Double">3</option>

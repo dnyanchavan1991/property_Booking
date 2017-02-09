@@ -1,6 +1,8 @@
 <!DOCTYPE HTML>
 <html>
-
+<?php
+//var_dump($propertyTypes);
+//?>
 <!--head-->
 <?php include('includes/head.php'); ?>
 
@@ -12,6 +14,7 @@
     <div id="sticky-anchor"></div>
     <div class="container hidden-xs" id="sticky" style="width:100%;padding:0">
         <div class="row">
+            <form method="post" action="<?php echo base_url()?>index.php/RoomAvailability/checkRoomAvailabilty" id="roomAvailable">
             <div class="col-md-12 stick-main">
                 <div class="form-inline reservation-horizontal clearfix" role="form"   name="reservationform" id="reservationform" style="padding:20px;">
                     <div id="message"></div><!-- Error message display -->
@@ -19,7 +22,7 @@
                         <div class="col-sm-3">
                             <div class="form-group">
                                 <label for="email" accesskey="E">Location</label>
-                                <input name="email" type="text" id="location" value="" class="form-control location" placeholder="Please enter your Location"/>
+                                <input name="location" required="required" type="text" id="location" value="<?php  echo $formData ? $formData['destination']:'' ?>" class="form-control location" placeholder="Please enter your Location"/>
                             </div>
                         </div>
                         <div class="col-sm-2">
@@ -27,25 +30,21 @@
                                 <label for="room">Property Type</label>
 
                                 <select class="form-control" name="room" id="room">
-                                    <option selected="selected" disabled="disabled">Property types</option>
-                                    <option value="Single">Villa</option>
-                                    <option value="Double">Dormatory</option>
-                                    <option value="Deluxe">Apartment</option>
-                                    <option value="Deluxe">Bunglow</option>
-                                    <option value="Deluxe">Row House</option>
-                                    <option value="Deluxe">Cottage</option>
-                                    <option value="Deluxe">Hut</option>
-                                    <option value="Deluxe">House Boat</option>
-                                    <option value="Deluxe">Tree House</option>
+                                    <option selected="selected" disabled="disabled" value="0">Property types</option>
+                                    <?php
+                                    foreach($propertyTypes as $propertyType){
+                                        echo'<option value='.$propertyType->propertyTypeId.'>'.$propertyType->propertyTypeName.'</option>';
+                                    }
+                                    ?>
                                 </select>
                             </div>
                         </div>
                         <div class="col-sm-2">
                             <div class="form-group">
                                 <label for="checkin">Check-in</label>
-                                <div class="popover-icon" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Check-In is from 11:00"> <i class="fa fa-info-circle fa-lg"> </i> </div>
+                                <div class="popover-icon" data-container="body"  data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Check-In is from 11:00"> <i class="fa fa-info-circle fa-lg"> </i> </div>
                                 <i class="fa fa-calendar infield"></i>
-                                <input name="checkin" type="text" id="checkin" value="" class="form-control" placeholder="Check-in"/>
+                                <input name="checkIn"  required="required" type="text" id="checkin" value="<?php  echo $formData ? $formData['checkIn']:'' ?>" class="form-control" placeholder="Check-in"/>
                             </div>
                         </div>
                         <div class="col-sm-2">
@@ -53,7 +52,7 @@
                                 <label for="checkout">Check-out</label>
                                 <div class="popover-icon" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Check-out is from 12:00"> <i class="fa fa-info-circle fa-lg"> </i> </div>
                                 <i class="fa fa-calendar infield"></i>
-                                <input name="checkout" type="text" id="checkout" value="" class="form-control" placeholder="Check-out"/>
+                                <input name="checkOut" type="text"   required="required" id="checkout" value="<?php  echo $formData ? $formData['checkOut']:'' ?>" class="form-control" placeholder="Check-out"/>
                             </div>
                         </div>
                         <div class="col-sm-1">
@@ -90,21 +89,21 @@
                             <div class="row">
                                 <div class="col-sm-3">
                                     <div class="form-group">
-                                        <select class="form-control" name="room" id="room">
-                                            <option selected="selected" disabled="disabled">Property types</option>
-                                            <option value="Single">Bedrooms : Low to High</option>
-                                            <option value="Double">Bedrooms : High to Low</option>
-                                            <option value="Deluxe">Accommodates : Low to High</option>
-                                            <option value="Deluxe">Accommodates : High to Low</option>
-                                            <option value="Deluxe">Property Name : A to Z</option>
-                                            <option value="Deluxe">Property Name : Z to A</option>
+                                        <select class="form-control" name="changeFilter" id="room">
+                                            <option selected="selected" value="0">Sorting types</option>
+                                            <option value="bedLowToHigh">Bedrooms : Low to High</option>
+                                            <option value="bedHighToLow">Bedrooms : High to Low</option>
+                                            <option value="accLowToHigh">Accommodates : Low to High</option>
+                                            <option value="accHighToLow">Accommodates : High to Low</option>
+                                            <option value="propAToZ">Property Name : A to Z</option>
+                                            <option value="propZToA">Property Name : Z to A</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class=" col-sm-8">
                                     <div class="form-group">
-                                        <button  class="btn btn-primary more-filters-btn">More Filters <span class="caret"></span></button>
-                                        <button type="submit" class="btn btn-primary ">Apply</button>
+                                        <a href="#" class="btn btn-primary more-filters-btn">More Filters <span class="caret"></span></a>
+                                        <a href="#" type="submit" class="btn btn-primary apply">Apply</a>
                                     </div>
                                 </div>
                             </div>
@@ -300,4 +299,18 @@
 <div id="go-top"><i class="fa fa-angle-up fa-2x"></i></div>
 
 </body>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>-->
+<script>
+        $(document).on('click', '.apply', function () {
+        $.ajax({
+            url: '<?php echo base_url()?>index.php/RoomAvailability/checkRoomAvailabilty',
+            type: 'POST',
+            data: $('#roomAvailable').serialize(),
+            success: function(data) {
+                document.body.innerHTML=data;
+                $(".container .appear").css("opacity","1");
+            }
+        });
+    });
+</script
 </html>

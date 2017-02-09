@@ -206,6 +206,7 @@ a:hover, a:focus, .box-icon a:hover, .usp a:hover i {
 }
 .mt50 {
 	margin-top: 50px;
+	border:1px solid red;
 }
 .mt100 {
 	margin-top: 100px;
@@ -949,6 +950,7 @@ header #logo {
 	top: 0;
 	left: 0
 }
+
 .room-thumb img {
 	padding-top:25px;
 	display: block;
@@ -959,10 +961,6 @@ header #logo {
 .room-thumb .main {
 	border-bottom: 1px solid #ebebeb;
 	height: 55px;
-}
-.feature-main{
-	padding-bottom:30px;
-	padding-top:10px;
 }
 .room-thumb .main h5 {
 	font-size: 14px;

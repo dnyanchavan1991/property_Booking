@@ -53,7 +53,7 @@
                             <label for="checkin">Check-in</label>
                             <div class="popover-icon" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Check-In is from 11:00"> <i class="fa fa-info-circle fa-lg"> </i> </div>
                             <i class="fa fa-calendar infield"></i>
-                            <input name="checkin" type="text" id="checkin" value="" class="form-control" placeholder="Check-in"/>
+                            <input name="checkin" type="text" id="checkin1" value="" class="form-control" placeholder="Check-in"/>
                         </div>
                     </div>
                     <div class="col-sm-2">
@@ -61,7 +61,7 @@
                             <label for="checkout">Check-out</label>
                             <div class="popover-icon" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Check-out is from 12:00"> <i class="fa fa-info-circle fa-lg"> </i> </div>
                             <i class="fa fa-calendar infield"></i>
-                            <input name="checkout" type="text" id="checkout" value="" class="form-control" placeholder="Check-out"/>
+                            <input name="checkout" type="text" id="checkout1" value="" class="form-control" placeholder="Check-out"/>
                         </div>
                     </div>
                     <div class="col-sm-1">

@@ -41,9 +41,9 @@ class Search extends CI_Controller {
             $page = 1;
         }
         $this->pagination->initialize($config);
-
+        $property_type = $this->PropertyModel->getPropertyTypeList();
         $data['result'] = $this->PropertyModel->getQuickSearchData($config['per_page'], $page,$name);
-        $this->load->view('quick_search.php',array('data' => $data['result'],'count' => $config['total_rows']));
+        $this->load->view('quick_search.php',array('data' => $data['result'],'count' => $config['total_rows'],'formData' => null,'propertyTypes'=>$property_type));
 
     }
 
@@ -79,10 +79,10 @@ class Search extends CI_Controller {
             $page = 1;
         }
         $this->pagination->initialize($config);
-
+        $property_type = $this->PropertyModel->getPropertyTypeList();
         $data['result'] = $this->PropertyModel->getFeaturedSearchData($config['per_page'], $page);
         
-        $this->load->view('quick_search.php',array('data' => $data['result'],'count' => $config['total_rows']));
+        $this->load->view('quick_search.php',array('data' => $data['result'],'count' => $config['total_rows'],'formData' => null,'propertyTypes'=>$property_type));
     }
 
 }
