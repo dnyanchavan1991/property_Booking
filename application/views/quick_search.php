@@ -1,8 +1,13 @@
 <!DOCTYPE HTML>
 <html>
 <?php
-//var_dump($propertyTypes);
-//?>
+//if(isset($filterData)){
+//    var_dump($filterData);
+////    foreach($filterData['selectedBathroomList'] as $aa ){
+////        var_dump($aa);
+////    }
+//}
+////?>
 <!--head-->
 <?php include('includes/head.php'); ?>
 
@@ -109,12 +114,12 @@
                             </div>
                         </div>
                     </div>
-                </form>
                 <div class="more-filter" style="min-height:260px;height:auto;display:none;background-color:#f2f2f2;margin-top:10px;">
                         <div class="col-xs-3 col-md-2 star" style="min-height:200px;:100px;">
                             <h4>Ratings</h4>
+
                             <div class="checkbox">
-                                <input type="checkbox" value="">
+                                <input type="checkbox" value="5" name="rating[]" class="other-rating">
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star" aria-hidden="true"></i>
@@ -124,7 +129,7 @@
                             <br>
                             <br>
                             <div class="checkbox" style="padding-bottom:5px;">
-                                <input type="checkbox" value="">
+                                <input type="checkbox" value="4" name="rating[]" class="other-rating">
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star" aria-hidden="true"></i>
@@ -133,7 +138,7 @@
                             <br>
                             <br>
                             <div class="checkbox" style="padding-bottom:5px;">
-                               <input type="checkbox" value="">
+                               <input type="checkbox" value="3" name="rating[]" class="other-rating">
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star" aria-hidden="true"></i>
@@ -141,108 +146,109 @@
                             <br>
                             <br>
                             <div class="checkbox" style="padding-bottom:5px;">
-                                <input type="checkbox" value="">
+                                <input type="checkbox" value="2" name="rating[]" class="other-rating">
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star" aria-hidden="true"></i>
                             </div>
                             <br><br>
                             <div class="checkbox" style="padding-bottom:5px;">
-                                <input type="checkbox" value=""><i class="fa fa-star" aria-hidden="true"></i>
+                                <input type="checkbox" value="1" name="rating[]" class="other-rating"><i class="fa fa-star" aria-hidden="true"></i>
                             </div>
                         </div>
                     <div class="col-xs-2 col-md-2 star" style="min-height:200px;:">
                         <h4>Bathrooms</h4>
                         <div class="checkbox">
-                            <input type="checkbox" value="">1 Bathroom
+                            <input type="checkbox" value="1" name="bathrooms[]" class="other-rating">1 Bathroom
                         </div>
                         <br>
                         <br>
                         <div class="checkbox" style="padding-bottom:5px;">
-                            <input type="checkbox" value="">2 Bathrooms
+                            <input type="checkbox" value="2" name="bathrooms[]" class="other-rating">2 Bathrooms
                         </div>
                         <br>
                         <br>
                         <div class="checkbox" style="padding-bottom:5px;">
-                            <input type="checkbox" value="">3 Bathrooms
+                            <input type="checkbox" value="3" name="bathrooms[]" class="other-rating">3 Bathrooms
                         </div>
                         <br>
                         <br>
                         <div class="checkbox" style="padding-bottom:5px;">
-                            <input type="checkbox" value="">4 Bathrooms
+                            <input type="checkbox" value="4" name="bathrooms[]" class="other-rating">4 Bathrooms
                         </div>
                         <br><br>
                         <div class="checkbox" style="padding-bottom:5px;">
-                            <input type="checkbox" value="">5+ Bathrooms
+                            <input type="checkbox" value="5" name="bathrooms[]" class="other-rating">5+ Bathrooms
                         </div>
                     </div>
                         <div class="col-xs-2 col-md-2" style="min-height:200px;">
                             <h4>Features</h4>
                             <div class="checkbox">
-                                <input type="checkbox" value="">Swimming Pool
+                                <input type="checkbox" value="pool" name="featured[]" class="other-rating">Swimming Pool
                             </div>
                             <br>
                             <br>
                             <div class="checkbox" style="padding-bottom:5px;">
-                                <input type="checkbox" value="">Television
+                                <input type="checkbox" value="television_access" name="featured[]" class="other-rating">Television
                             </div>
                             <br>
                             <br>
                             <div class="checkbox" style="padding-bottom:5px;">
-                                <input type="checkbox" value="">Free WIFI
+                                <input type="checkbox" value="internet_access" name="featured[]" class="other-rating" >Free WIFI
                             </div>
                             <br>
                             <br>
                             <div class="checkbox" style="padding-bottom:5px;">
-                                <input type="checkbox" value="">Air Conditioner
+                                <input type="checkbox" value="air_condition" name="featured[]" class="other-rating">Air Conditioner
                             </div>
                         </div>
                         <div class="col-xs-3 col-md-2" style="min-height:200px;">
                             <h4>Facilities</h4>
                             <div class="checkbox">
-                               <input type="checkbox" value="">Free Breakfast
+                               <input type="checkbox" value="free_breakfast" name="facility[]" class="other-rating">Free Breakfast
                             </div>
                             <br>
                             <br>
                             <div class="checkbox" style="padding-bottom:5px;">
-                                <input type="checkbox" value="">Free Parking
+                                <input type="checkbox" value="free_parking" name="facility[]" class="other-rating">Free Parking
                             </div>
                             <br>
                             <br>
                             <div class="checkbox" style="padding-bottom:5px;">
-                                <input type="checkbox" value="">In House Kitchen
+                                <input type="checkbox" value="in_house_kitchen" name="facility[]" class="other-rating">In House Kitchen
                             </div>
                             <br>
                             <br>
                             <div class="checkbox" style="padding-bottom:5px;">
-                                <input type="checkbox" value="">Smoking Allowed
+                                <input type="checkbox" value="smoking_allowd" name="facility[]" class="other-rating">Smoking Allowed
                             </div>
                             <br><br>
                             <div class="checkbox" style="padding-bottom:5px;">
-                                <input type="checkbox" value="">Pet Friendly
+                                <input type="checkbox" value="pet_friendly" name="facility[]" class="other-rating">Pet Friendly
                             </div>
                         </div>
                         <div class="col-xs-2 col-md-3" style="min-height:200px;">
                             <div class="col-sm-12">
                                 <h4>Bedroooms</h4>
 
-                                    <select class="form-control" name="room" id="room">
-                                        <option selected="selected" disabled="disabled">All</option>
-                                        <option value="Single">1 Bedroom</option>
-                                        <option value="Double">2 Bedrooms</option>
-                                        <option value="Deluxe">3 Bedrooms</option>
-                                        <option value="Deluxe">4 Bedrooms</option>
-                                        <option value="Deluxe">5+ Bedrooms</option>
+                                    <select class="form-control changeFilters" name="bedrooms-filter">
+                                        <option selected="selected"  value="All">All</option>
+                                        <option value="1">1 Bedroom</option>
+                                        <option value="2">2 Bedrooms</option>
+                                        <option value="3">3 Bedrooms</option>
+                                        <option value="4">4 Bedrooms</option>
+                                        <option value="5">5+ Bedrooms</option>
                                     </select>
 
                             </div>
                         </div>
                 </div>
+              </form>
             </div>
         </div>
     </div>
 </section>
 <section class="rooms mt100">
-    <div class="container">
+    <div class="container" id="load-result">
         <div class="row room-list fadeIn appear">
         <div class="row" style="width:100%">
             <div class="col-sm-12" style="border-bottom:2px solid lightgrey;margin-bottom:20px;width:100%">
@@ -312,5 +318,31 @@
             }
         });
     });
+        $(document).on('change', '.changeFilters', function () {
+            //("working");
+            $.ajax({
+                url: '<?php echo base_url()?>index.php/RoomAvailability/checkRoomAvailabilty',
+                type: 'POST',
+                data: $('#roomAvailable').serialize(),
+                success: function(data) {
+                    document.body.innerHTML=data;
+                    $(".container .appear").css("opacity","1");
+                }
+            });
+        });
+
+        $(document).on('click', '.other-rating', function () {
+           // alert("working");
+            $.ajax({
+                url: '<?php echo base_url()?>index.php/RoomAvailability/checkFilterRoomAvailabilty',
+                type: 'POST',
+                data: $('#roomAvailable').serialize(),
+                success: function(data) {
+                    document.body.innerHTML=data;
+//                    $('#load-result').html(data);
+                    $(".container .appear").css("opacity","1");
+                }
+            });
+        });
 </script
 </html>
