@@ -72,4 +72,46 @@ class Index1 extends CI_Controller {
         $propertyInfoDetails = $this->PropertyModel->getPropertyInfoDetail($id);
 	    $this->load->view('room_details.php',array('propertyDetails'=>$propertyDetails[0],'propertyInfoDetails' => $propertyInfoDetails[0]));
     }
+
+    public function Login(){
+        $this->load->view('login.php');
+    }
+
+    public function Registration(){
+        $this->load->view('registration.php');
+    }
+    public function LoginCheck(){
+        $this->load->model('PropertyModel');
+        $result = $this->PropertyModel->LoginCheck();
+        if(! $result){
+            $this->session->set_flashdata('login_check', 'Wrong email or password, please try again.');
+            $this->Login();
+
+        }else{
+           $this->index();
+        }
+
+    }
+    public function Logout(){
+        $this->session->sess_destroy();
+        redirect(base_url().'/index.php/Index1/index');
+    }
+    public function registrationAction(){
+        $this->load->model('PropertyModel');
+        $result = $this->PropertyModel->registrationAction();
+        if(!$result){
+            $this->session->set_flashdata('registration_check', 'There was a problem registering, please try again later!');
+            $this->Registration();
+        }else{
+            $this->index();
+        }
+    }
+
+    public function  sendEmail()
+    {
+        echo "hello";
+        exit;
+
+
+    }
 }

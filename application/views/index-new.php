@@ -2,6 +2,8 @@
 <html>
 <head>
 	<?php include('includes/head.php') ?>
+
+<?php //var_dump($this->session->userdata()['user_id']) ?>
 <body>
 
 <!-- Top header -->
@@ -60,7 +62,7 @@
 								<label for="checkin">Check-in</label>
 								<div class="popover-icon" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Check-In is from 11:00"> <i class="fa fa-info-circle fa-lg"> </i> </div>
 								<i class="fa fa-calendar infield"></i>
-								<input name="checkIn" type="text" <!--id="checkin"--> value="" class="form-control" placeholder="Check-in"/>
+								<input name="checkIn" type="text"  value="" class="form-control" placeholder="Check-in"/>
 							</div>
 						</div>
 						<div class="col-sm-2">
@@ -68,7 +70,7 @@
 								<label for="checkout">Check-out</label>
 								<div class="popover-icon" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Check-out is from 12:00"> <i class="fa fa-info-circle fa-lg"> </i> </div>
 								<i class="fa fa-calendar infield"></i>
-								<input name="checkOut" type="text" <!--id="checkout"--> value="" class="form-control" placeholder="Check-out"/>
+								<input name="checkOut" type="text" value="" class="form-control" placeholder="Check-out"/>
 							</div>
 						</div>
 						<div class="col-sm-1">
@@ -115,7 +117,7 @@
 				<button type="button" data-toggle="collapse" data-target="#navbar-collapse-grid" class="navbar-toggle"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
 				<a href="<?php echo base_url() ?>" class="navbar-brand">
 					<!-- Logo -->
-					<div id="logo"> <img id="default-logo" src="images/logo.jpeg" alt="Starhotel" style="height:44px;"> <img id="retina-logo" src="images/logo.jpeg" alt="Starhotel" style="height:44px;"> </div>
+					<div id="logo"> <img id="default-logo" src="images/logo.png" alt="Starhotel" style="height:44px;"> <img id="retina-logo" src="images/logo-retina.png" alt="Starhotel" style="height:44px;"> </div>
 				</a> </div>
 			<div id="navbar-collapse-grid" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
@@ -130,8 +132,12 @@
 							<li><a href="<?php echo  base_url()?>index.php/Search/QuickSearch/Pradesh">Goa</a></li>
 						</ul>
 					</li>
-					<li> <a href="#">Login</a></li>
-				</ul>
+                    <?php if(isset($this->session->userdata()['user_id'])){ ?>
+                        <li> <a href="<?php echo  base_url()?>index.php/Index1/Logout">Logout</a></li>
+				    <?php }else{?>
+                        <li> <a href="<?php echo  base_url()?>index.php/Index1/Login">Login</a></li>
+                    <?php }?>
+                </ul>
 			</div>
 		</div>
 	</div>

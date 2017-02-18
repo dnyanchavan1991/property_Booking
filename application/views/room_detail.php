@@ -24,24 +24,24 @@
 <link rel="stylesheet" href="css/css/css/responsive.css">
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600,700">
 
-<!-- Javascripts --> 
-<script type="text/javascript" src="css/css/js/jquery-1.11.0.min.js"></script> 
-<script type="text/javascript" src="css/css/js/bootstrap.min.js"></script> 
-<script type="text/javascript" src="css/css/js/bootstrap-hover-dropdown.min.js"></script> 
-<script type="text/javascript" src="css/css/js/owl.carousel.min.js"></script> 
+<!-- Javascripts -->
+<script type="text/javascript" src="css/css/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="css/css/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="css/css/js/bootstrap-hover-dropdown.min.js"></script>
+<script type="text/javascript" src="css/css/js/owl.carousel.min.js"></script>
 <script type="text/javascript" src="css/css/js/jquery.parallax-1.1.3.js"></script>
-<script type="text/javascript" src="css/css/js/jquery.nicescroll.js"></script>  
-<script type="text/javascript" src="css/css/js/jquery.prettyPhoto.js"></script> 
-<script type="text/javascript" src="css/css/js/jquery-ui-1.10.4.custom.min.js"></script> 
-<script type="text/javascript" src="css/css/js/jquery.jigowatt.js"></script> 
-<script type="text/javascript" src="css/css/js/jquery.sticky.js"></script> 
-<script type="text/javascript" src="css/css/js/waypoints.min.js"></script> 
-<script type="text/javascript" src="css/css/js/jquery.isotope.min.js"></script> 
-<script type="text/javascript" src="css/css/js/jquery.gmap.min.js"></script> 
+<script type="text/javascript" src="css/css/js/jquery.nicescroll.js"></script>
+<script type="text/javascript" src="css/css/js/jquery.prettyPhoto.js"></script>
+<script type="text/javascript" src="css/css/js/jquery-ui-1.10.4.custom.min.js"></script>
+<script type="text/javascript" src="css/css/js/jquery.jigowatt.js"></script>
+<script type="text/javascript" src="css/css/js/jquery.sticky.js"></script>
+<script type="text/javascript" src="css/css/js/waypoints.min.js"></script>
+<script type="text/javascript" src="css/css/js/jquery.isotope.min.js"></script>
+<script type="text/javascript" src="css/css/js/jquery.gmap.min.js"></script>
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-<script type="text/javascript" src="css/css/rs-plugin/js/jquery.themepunch.plugins.min.js"></script> 
-<script type="text/javascript" src="css/css/rs-plugin/js/jquery.themepunch.revolution.min.js"></script> 
-<script type="text/javascript" src="css/css/js/custom.js"></script> 
+<script type="text/javascript" src="css/css/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+<script type="text/javascript" src="css/css/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+<script type="text/javascript" src="css/css/js/custom.js"></script>
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -56,9 +56,9 @@
       $("#hidelocation").css( "color", "white" );
       $("#hideproperty").css( "color", "white" );
       $("#hidecheckin").css( "color", "white" );
-     
+
       $("#hidecheckout").css( "color", "white" );
-     
+
       $("#hideguest").css( "color", "white" );
       $("#Search").css( "color", "white" );
     }
@@ -126,7 +126,7 @@ window.onscroll=testScroll
     <div class="container">
       <div class="navbar-header">
         <button type="button" data-toggle="collapse" data-target="#navbar-collapse-grid" class="navbar-toggle"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-        <a href="index.html" class="navbar-brand">         
+        <a href="index.html" class="navbar-brand">
         <!-- Logo -->
         <div id="logo"> Logo</div>
         </a> </div>
@@ -149,65 +149,65 @@ window.onscroll=testScroll
     <div class="banner">
       <ul>
         <!-- Slide 1 -->
-        <li data-transition="fade" data-slotamount="7" data-masterspeed="1500" > 
-          <!-- Main Image --> 
-          <img src="css/css/images/slides/3.jpg" style="opacity:0;" alt="image not found"  data-bgfit="cover" data-bgposition="left bottom" data-bgrepeat="no-repeat"> 
-          <!-- Layers -->           
+        <li data-transition="fade" data-slotamount="7" data-masterspeed="1500" >
+          <!-- Main Image -->
+          <img src="css/css/images/slides/3.jpg" style="opacity:0;" alt="image not found"  data-bgfit="cover" data-bgposition="left bottom" data-bgrepeat="no-repeat">
+          <!-- Layers -->
           <!-- Layer 1 -->
-          <div class="caption sft revolution-starhotel bigtext"  
-          				data-x="505" 
-                        data-y="30" 
-                        data-speed="700" 
-                        data-start="1700" 
-                        data-easing="easeOutBack"> 
+          <div class="caption sft revolution-starhotel bigtext"
+          				data-x="505"
+                        data-y="30"
+                        data-speed="700"
+                        data-start="1700"
+                        data-easing="easeOutBack">
 						<span><i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i></span> A Five Star Hotel <span><i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i></span></div>
           <!-- Layer 2 -->
-          <div class="caption sft revolution-starhotel smalltext"  
-          				data-x="605" 
-                        data-y="105" 
-                        data-speed="800" 
-                        data-start="1700" 
+          <div class="caption sft revolution-starhotel smalltext"
+          				data-x="605"
+                        data-y="105"
+                        data-speed="800"
+                        data-start="1700"
                         data-easing="easeOutBack">
 						<span>And we like to keep it that way!</span></div>
         <!-- Layer 3 -->
-                  <!-- <div class="caption sft"  
-          				data-x="775" 
-                        data-y="175" 
-                        data-speed="1000" 
-                        data-start="1900" 
+                  <!-- <div class="caption sft"
+          				data-x="775"
+                        data-y="175"
+                        data-speed="1000"
+                        data-start="1900"
                         data-easing="easeOutBack">
-						<a href="room-list.html" class="button btn btn-purple btn-lg">See rooms</a> 
+						<a href="room-list.html" class="button btn btn-purple btn-lg">See rooms</a>
                   </div> -->
         </li>
 		<!-- Slide 2 -->
-        <li data-transition="boxfade" data-slotamount="7" data-masterspeed="1000" > 
-          <!-- Main Image --> 
-          <img src="css/css/images/slides/2.jpg"  alt="darkblurbg"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat"> 
-          <!-- Layers -->           
+        <li data-transition="boxfade" data-slotamount="7" data-masterspeed="1000" >
+          <!-- Main Image -->
+          <img src="css/css/images/slides/2.jpg"  alt="darkblurbg"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+          <!-- Layers -->
           <!-- Layer 1 -->
-          <div class="caption sft revolution-starhotel bigtext"  
-          				data-x="585" 
-                        data-y="30" 
-                        data-speed="700" 
-                        data-start="1700" 
-                        data-easing="easeOutBack"> 
+          <div class="caption sft revolution-starhotel bigtext"
+          				data-x="585"
+                        data-y="30"
+                        data-speed="700"
+                        data-start="1700"
+                        data-easing="easeOutBack">
 						<span><i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i></span> Double room <span><i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i></span></div>
           <!-- Layer 2 -->
-          <div class="caption sft revolution-starhotel smalltext"  
-          				data-x="682" 
-                        data-y="105" 
-                        data-speed="800" 
-                        data-start="1700" 
+          <div class="caption sft revolution-starhotel smalltext"
+          				data-x="682"
+                        data-y="105"
+                        data-speed="800"
+                        data-start="1700"
                         data-easing="easeOutBack">
 						<span>a night this summer</span></div>
         <!-- Layer 3 -->
-                  <div class="caption sft"  
-          				data-x="785" 
-                        data-y="175" 
-                        data-speed="1000" 
-                        data-start="1900" 
+                  <div class="caption sft"
+          				data-x="785"
+                        data-y="175"
+                        data-speed="1000"
+                        data-start="1900"
                         data-easing="easeOutBack">
-						<a href="room-detail.html" class="button btn btn-purple btn-lg">Book this room</a> 
+						<a href="room-detail.html" class="button btn btn-purple btn-lg">Book this room</a>
                   </div>
         </li>
       </ul>
@@ -222,13 +222,13 @@ window.onscroll=testScroll
  <div class="navbar yamm navbar-default container-fluid" id="sticky"  style="box-shadow: 0px 2px 10px 1px ;">
  <div class="container">
       <div class="navbar-header"><br>
-       <button type="button" data-toggle="collapse" data-target="#navbar-collapse-grid1" class="navbar-toggle"> 
+       <button type="button" data-toggle="collapse" data-target="#navbar-collapse-grid1" class="navbar-toggle">
        <span class="fa fa-search"></span></button>
-     
+
 <section id="navbar-collapse-grid1"   class="navbar-collapse collapse">
   <div class="container">
     <div class="row">
-      <div class="col-sm-12 col-md-12 col-lg-12" >           
+      <div class="col-sm-12 col-md-12 col-lg-12" >
         <form class="form-inline reservation-horizontal clearfix" role="form" method="post" action="php/reservation.php" name="reservationform" id="reservationform" >
         <div id="message"></div><!-- Error message display -->
           <div class="row" >
@@ -241,15 +241,15 @@ window.onscroll=testScroll
             <div class="col-sm-2">
               <div class="form-group">
                 <label for="room" id="hideproperty">Property Type</label>
-                  <?php 
+                  <?php
                  echo"<select class='form-control' name='room' id='room'>
                   <option selected='selected'>Property types</option>";
 
                  echo $query="select * from property_type";
-                  $res=mysqli_query($con,$query); 
+                  $res=mysqli_query($con,$query);
                   while($row=mysqli_fetch_row($res))
                   {
-                    
+
                     echo"<option value=".$row[0].">".$row[1]."</option>";
                   }
                   ?>
@@ -274,8 +274,8 @@ window.onscroll=testScroll
               <div class="form-group">
                 <div class="guests-select">
                   <label id="hideguest">Guests</label>
-                 
-                 
+
+
                   <select class="form-control" name="room" id="room">
                   <option selected="selected" disabled="disabled">1</option>
                   <option value="Single">2</option>
@@ -328,13 +328,13 @@ window.onscroll=testScroll
           <br>
           Ut vulputate augue urna, ut porta dolor imperdiet a. Vestibulum nec leo eu magna aliquam ornare.</p>
       </div>
-      
+
       <div class="col-md-3 col-sm-3">
         <h4>FACILITIES</h4>
        <p> Quick Property Search</p>
        <p>Online Payment</p>
        <p>Reviews</p>
-       <p> Google Map</p> 
+       <p> Google Map</p>
       </div>
       <div class="col-md-3 col-sm-3">
         <h4>Address</h4>

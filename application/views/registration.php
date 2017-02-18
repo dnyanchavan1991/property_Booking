@@ -1,3 +1,10 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <?php include('includes/head.php') ?>
+<body>
+
+<!-- Top header -->
 <div id="top-header">
     <div class="container">
         <div class="row">
@@ -25,20 +32,20 @@
 <div class="search-popup" style="display:none;padding:10px;">
     <div class="row" style="z-index:2000">
         <div class="col-md-12">
-            <form class="form-inline reservation-horizontal clearfix" role="form" method="post" action="php/reservation.php" name="reservationform" id="reservationform">
+            <form class="form-inline reservation-horizontal clearfix" role="form" method="post" action="<?php echo base_url()?>/index.php/RoomAvailability/checkRoomAvailabilty" name="reservationform" id="reservationform">
                 <div id="message"></div><!-- Error message display -->
                 <div class="row tp">
                     <div class="col-sm-3">
                         <div class="form-group">
                             <label for="email" accesskey="E">Location</label>
-                            <input name="email" type="text" id="location-mobile" value="" class="form-control location-mobile" placeholder="Please enter your Location"/>
+                            <input name="location" type="text" id="location-mobile" value="" class="form-control location-mobile" placeholder="Please enter your Location"/>
                         </div>
                     </div>
                     <div class="col-sm-2">
                         <div class="form-group">
                             <label for="room">Property Type</label>
 
-                            <select class="form-control" name="room" id="room">
+                            <select class="form-control" name="propertyType" id="room">
                                 <option selected="selected" disabled="disabled">Property types</option>
                                 <?php
                                 foreach($propertyTypes as $propertyType){
@@ -53,7 +60,7 @@
                             <label for="checkin">Check-in</label>
                             <div class="popover-icon" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Check-In is from 11:00"> <i class="fa fa-info-circle fa-lg"> </i> </div>
                             <i class="fa fa-calendar infield"></i>
-                            <input name="checkin" type="text" id="checkin1" value="" class="form-control" placeholder="Check-in"/>
+                            <input name="checkIn" type="text" <!--id="checkin"--> value="" class="form-control" placeholder="Check-in"/>
                         </div>
                     </div>
                     <div class="col-sm-2">
@@ -61,7 +68,7 @@
                             <label for="checkout">Check-out</label>
                             <div class="popover-icon" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Check-out is from 12:00"> <i class="fa fa-info-circle fa-lg"> </i> </div>
                             <i class="fa fa-calendar infield"></i>
-                            <input name="checkout" type="text" id="checkout1" value="" class="form-control" placeholder="Check-out"/>
+                            <input name="checkOut" type="text" <!--id="checkout"--> value="" class="form-control" placeholder="Check-out"/>
                         </div>
                     </div>
                     <div class="col-sm-1">
@@ -70,7 +77,7 @@
                                 <label>Guests</label>
 
 
-                                <select class="form-control" name="room" id="room">
+                                <select class="form-control" name="guestCount" id="room">
                                     <option selected="selected" disabled="disabled">1</option>
                                     <option value="Single">2</option>
                                     <option value="Double">3</option>
@@ -99,7 +106,6 @@
         </div>
     </div>
 </div>
-
 <!-- Header -->
 <header>
     <!-- Navigation -->
@@ -109,7 +115,7 @@
                 <button type="button" data-toggle="collapse" data-target="#navbar-collapse-grid" class="navbar-toggle"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
                 <a href="<?php echo base_url() ?>" class="navbar-brand">
                     <!-- Logo -->
-                    <div id="logo"> <img id="default-logo" src="<?php echo base_url() ?>assets/images/logo.png" alt="Starhotel" style="height:44px;"> <img id="retina-logo" src="images/logo-retina.png" alt="Starhotel" style="height:44px;"> </div>
+                    <div id="logo"> <img id="default-logo" src="images/logo.png" alt="Starhotel" style="height:44px;"> <img id="retina-logo" src="images/logo-retina.png" alt="Starhotel" style="height:44px;"> </div>
                 </a> </div>
             <div id="navbar-collapse-grid" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -124,13 +130,103 @@
                             <li><a href="<?php echo  base_url()?>index.php/Search/QuickSearch/Pradesh">Goa</a></li>
                         </ul>
                     </li>
-                    <?php if(isset($this->session->userdata()['user_id'])){ ?>
-                        <li> <a href="<?php echo  base_url()?>index.php/Index1/Logout">Logout</a></li>
-                    <?php }else{?>
-                        <li> <a href="<?php echo  base_url()?>index.php/Index1/Login">Login</a></li>
-                    <?php }?>
+                    <li> <a href="#">Login</a></li>
                 </ul>
             </div>
         </div>
     </div>
 </header>
+        <div style="padding:10px">
+        <div class="row">
+            <div class="col-md-6 col-md-push-3" style="text-align: center">
+                <h2 class="tittle-one">REGISTRATION</h2>
+                <?php if($this->session->flashdata('registration_check')){ ?>
+                    <div class="alert alert-danger text-center" ng-show="has_error">
+                        <h5><?php echo $this->session->flashdata('registration_check'); ?></h5>
+                    </div>
+                <?php } ?>
+                    <form method="post" action="<?php echo  base_url()?>index.php/Index1/RegistrationAction">
+                        <div class="form-group" >
+                            <input type="text" class="form-control" ng-model="formModel.username"ng-pattern="/^[A-Za-z0-9_]{1,32}$/"
+                                   ng-minlength="5"  id="username" name="username" placeholder="User Name" required="required" >
+                        </div >
+                        <div class="form-group" >
+
+                            <input type="password" class="form-control"   ng-model="formModel.password"  id="password" placeholder="Password"
+                                   required="required" name="password" ng-minlength="5">
+                        </div >
+                        <div class="form-group" >
+                            <input type="text" class="form-control" ng-model="formModel.fname"  name="fname" id="name" placeholder="First Name"  required="required" >
+                        </div >
+                        <div class="form-group" >
+
+                            <input type="text"  class="form-control" ng-model="formModel.lname" name="lname" id="lname" placeholder="Last Name"  required="required" >
+                        </div >
+                        <div class="form-group" >
+                            <select name="gender" class="form-control">
+                                <option value="1">Male</option>
+                                <option value="0">Female</option>
+                            </select>
+                        </div >
+                        <div class="form-group">
+                            <input name="dob" type="text" id="checkin" value="" class="form-control" placeholder="DOB"/>
+                        </div >
+                        <div class="form-group">
+                        <input type="text"
+                                   class="form-control"
+                                   ng-model="formModel.phone"
+                                   id="phone" name="phone" placeholder="Mobile Number"
+                                   required="required" >
+                        </div >
+                        <div class="form-group">
+
+                            <input type="email"
+                                   class="form-control"
+                                   ng-model="formModel.email"
+                                   id="email" name="email" placeholder="Email"
+                                   required="required" >
+                        </div >
+
+                        <div class="form-group">
+
+									<textarea type="text"
+                                              class="form-control"
+                                              ng-model="formModel.address"
+                                              id="address" name="address" placeholder="Address.."
+                                              required="required" ></textarea>
+                        </div >
+
+
+
+                        <div class="form-group">
+                            <button class="btn btn-primary"
+                                    type="submit" style="width:60% ">
+                                <span ng-show="!submitting">Register</span>
+                            </button>
+                        </div>
+                        <div class="row">
+                            <a href="<?php echo  base_url()?>index.php/Index1/Login">Already have an account? Login!</a>
+                        </div>
+                    </form >
+
+                </div>
+
+            <div class="clearfix"></div>
+        </div>
+
+</div>
+<!-- Parallax Effect -->
+
+<!-- Gallery -->
+
+
+<!-- Footer -->
+<?php include('includes/footer.php'); ?>
+
+<!-- Go-top Button -->
+<div id="go-top"><i class="fa fa-angle-up fa-2x"></i></div>
+<script>
+
+</script>
+</body>
+</html>

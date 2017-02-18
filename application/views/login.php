@@ -1,3 +1,10 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <?php include('includes/head.php') ?>
+<body>
+
+<!-- Top header -->
 <div id="top-header">
     <div class="container">
         <div class="row">
@@ -25,20 +32,20 @@
 <div class="search-popup" style="display:none;padding:10px;">
     <div class="row" style="z-index:2000">
         <div class="col-md-12">
-            <form class="form-inline reservation-horizontal clearfix" role="form" method="post" action="php/reservation.php" name="reservationform" id="reservationform">
+            <form class="form-inline reservation-horizontal clearfix" role="form" method="post" action="<?php echo base_url()?>/index.php/RoomAvailability/checkRoomAvailabilty" name="reservationform" id="reservationform">
                 <div id="message"></div><!-- Error message display -->
                 <div class="row tp">
                     <div class="col-sm-3">
                         <div class="form-group">
                             <label for="email" accesskey="E">Location</label>
-                            <input name="email" type="text" id="location-mobile" value="" class="form-control location-mobile" placeholder="Please enter your Location"/>
+                            <input name="location" type="text" id="location-mobile" value="" class="form-control location-mobile" placeholder="Please enter your Location"/>
                         </div>
                     </div>
                     <div class="col-sm-2">
                         <div class="form-group">
                             <label for="room">Property Type</label>
 
-                            <select class="form-control" name="room" id="room">
+                            <select class="form-control" name="propertyType" id="room">
                                 <option selected="selected" disabled="disabled">Property types</option>
                                 <?php
                                 foreach($propertyTypes as $propertyType){
@@ -53,7 +60,7 @@
                             <label for="checkin">Check-in</label>
                             <div class="popover-icon" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Check-In is from 11:00"> <i class="fa fa-info-circle fa-lg"> </i> </div>
                             <i class="fa fa-calendar infield"></i>
-                            <input name="checkin" type="text" id="checkin1" value="" class="form-control" placeholder="Check-in"/>
+                            <input name="checkIn" type="text" <!--id="checkin"--> value="" class="form-control" placeholder="Check-in"/>
                         </div>
                     </div>
                     <div class="col-sm-2">
@@ -61,7 +68,7 @@
                             <label for="checkout">Check-out</label>
                             <div class="popover-icon" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Check-out is from 12:00"> <i class="fa fa-info-circle fa-lg"> </i> </div>
                             <i class="fa fa-calendar infield"></i>
-                            <input name="checkout" type="text" id="checkout1" value="" class="form-control" placeholder="Check-out"/>
+                            <input name="checkOut" type="text" <!--id="checkout"--> value="" class="form-control" placeholder="Check-out"/>
                         </div>
                     </div>
                     <div class="col-sm-1">
@@ -70,7 +77,7 @@
                                 <label>Guests</label>
 
 
-                                <select class="form-control" name="room" id="room">
+                                <select class="form-control" name="guestCount" id="room">
                                     <option selected="selected" disabled="disabled">1</option>
                                     <option value="Single">2</option>
                                     <option value="Double">3</option>
@@ -99,7 +106,6 @@
         </div>
     </div>
 </div>
-
 <!-- Header -->
 <header>
     <!-- Navigation -->
@@ -109,7 +115,7 @@
                 <button type="button" data-toggle="collapse" data-target="#navbar-collapse-grid" class="navbar-toggle"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
                 <a href="<?php echo base_url() ?>" class="navbar-brand">
                     <!-- Logo -->
-                    <div id="logo"> <img id="default-logo" src="<?php echo base_url() ?>assets/images/logo.png" alt="Starhotel" style="height:44px;"> <img id="retina-logo" src="images/logo-retina.png" alt="Starhotel" style="height:44px;"> </div>
+                    <div id="logo"> <img id="default-logo" src="images/logo.png" alt="Starhotel" style="height:44px;"> <img id="retina-logo" src="images/logo-retina.png" alt="Starhotel" style="height:44px;"> </div>
                 </a> </div>
             <div id="navbar-collapse-grid" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -124,13 +130,64 @@
                             <li><a href="<?php echo  base_url()?>index.php/Search/QuickSearch/Pradesh">Goa</a></li>
                         </ul>
                     </li>
-                    <?php if(isset($this->session->userdata()['user_id'])){ ?>
-                        <li> <a href="<?php echo  base_url()?>index.php/Index1/Logout">Logout</a></li>
-                    <?php }else{?>
-                        <li> <a href="<?php echo  base_url()?>index.php/Index1/Login">Login</a></li>
-                    <?php }?>
+                    <li> <a href="<?php echo  base_url()?>index.php/Index1/Login">Login</a></li>
                 </ul>
             </div>
         </div>
     </div>
 </header>
+<!-- Revolution Slider -->
+
+<!-- USP's -->
+<!--<section class="usp mt100">-->
+<!--    <div class="container">-->
+<!--        <div class="row" style="border:1px solid red">-->
+<!---->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
+<section id="login">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-4 col-md-push-4">
+                <div class="form-wrap">
+                    <h1>Login</h1>
+                    <form role="form" method="post" action="<?php echo  base_url()?>index.php/Index1/LoginCheck" id="login-form" autocomplete="off">
+                        <?php if($this->session->flashdata('login_check')){ ?>
+                            <div class="alert alert-danger text-center" ng-show="has_error">
+                                <h5><?php echo $this->session->flashdata('login_check'); ?></h5>
+                            </div>
+                        <?php } ?>
+                        <div class="form-group">
+                            <label for="email" class="sr-only">Email</label>
+                            <input type="email" name="email" id="email" class="form-control" placeholder="somebody@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="key" class="sr-only">Password</label>
+                            <input type="password" name="password" id="key" class="form-control" placeholder="Password" required>
+                        </div>
+
+                        <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="Log in" style="background-color:#75c5cf;border-color:#35929e ">
+                    </form>
+                    <div style="text-align: center"><a href="<?php echo  base_url()?>index.php/Index1/Registration" >Don't have an account? Sign Up!</a></div>
+                    <hr>
+                </div>
+            </div> <!-- /.col-xs-12 -->
+        </div> <!-- /.row -->
+    </div> <!-- /.container -->
+</section>
+<!-- Parallax Effect -->
+
+<!-- Gallery -->
+
+
+<!-- Footer -->
+<?php include('includes/footer.php'); ?>
+
+<!-- Go-top Button -->
+<div id="go-top"><i class="fa fa-angle-up fa-2x"></i></div>
+<script>
+
+</script>
+</body>
+</html>

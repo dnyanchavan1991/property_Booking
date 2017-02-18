@@ -1,9 +1,3 @@
-<?php
-//print_r($propertyDetails);
-//echo $propertyDetails->propertyName;
-//print_r($propertyInfoDetails);
-//echo $propertyInfoDetails->meals;
-?>
 <!DOCTYPE HTML>
 <html>
 
@@ -33,66 +27,32 @@
         <section id="reservation-form" class="mt50 clearfix">
             <div class="col-sm-12 col-md-4">
                 <form class="reservation-vertical clearfix" role="form" method="post" action="php/reservation.php" name="reservationform" id="reservationform">
-                    <h2 class="lined-heading"><span>Reservation</span></h2>
-                    <div class="price">
-                        <h4>Double Room</h4>
-                        &euro; 99,-<span> a night</span></div>
-                    <div id="message"></div>
-                    <!-- Error message display -->
-                    <div class="form-group">
-                        <label for="email" accesskey="E">E-mail</label>
-                        <input name="email" type="text" id="email" value="" class="form-control" placeholder="Please enter your E-mail"/>
-                    </div>
-                    <div class="form-group">
-                        <select class="hidden" name="room" id="room" disabled="disabled">
-                            <option selected="selected">Double Room</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="checkin">Check-in</label>
-                        <div class="popover-icon" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Check-In is from 11:00"> <i class="fa fa-info-circle fa-lg"> </i> </div>
-                        <i class="fa fa-calendar infield"></i>
-                        <input name="checkin" type="text" id="checkin" value="" class="form-control" placeholder="Check-in"/>
-                    </div>
-                    <div class="form-group">
-                        <label for="checkout">Check-out</label>
-                        <div class="popover-icon" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Check-out is from 12:00"> <i class="fa fa-info-circle fa-lg"> </i> </div>
-                        <i class="fa fa-calendar infield"></i>
-                        <input name="checkout" type="text" id="checkout" value="" class="form-control" placeholder="Check-out"/>
-                    </div>
-                    <div class="form-group">
-                        <div class="guests-select">
-                            <label>Guests</label>
-                            <i class="fa fa-user infield"></i>
-                            <div class="total form-control" id="test">1</div>
-                            <div class="guests">
-                                <div class="form-group adults">
-                                    <label for="adults">Adults</label>
-                                    <div class="popover-icon" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="+18 years"> <i class="fa fa-info-circle fa-lg"> </i> </div>
-                                    <select name="adults" id="adults" class="form-control">
-                                        <option value="1">1 adult</option>
-                                        <option value="2">2 adults</option>
-                                        <option value="3">3 adults</option>
-                                    </select>
-                                </div>
-                                <div class="form-group children">
-                                    <label for="children">Children</label>
-                                    <div class="popover-icon" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="0 till 18 years"> <i class="fa fa-info-circle fa-lg"> </i> </div>
-                                    <select name="children" id="children" class="form-control">
-                                        <option value="0">0 children</option>
-                                        <option value="1">1 child</option>
-                                        <option value="2">2 children</option>
-                                        <option value="3">3 children</option>
-                                    </select>
-                                </div>
-                                <button type="button" class="btn btn-default button-save btn-block">Save</button>
+                    <div class="log">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <a href="#" class="btn btn-primary btn-block">Book Now</a>
                             </div>
                         </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-block">Book Now</button>
+                         <div class="row" style="padding-top:10px;">
+                            <div class="col-md-6">
+                                <button class="btn btn-primary btn-block" type="button" data-backdrop="static" data-toggle="modal" data-target="#sendEmail">Send Email</button>
+                            </div>
+                            <div class="col-md-6">
+                                <button class="btn btn-primary btn-block" type="button" data-toggle="modal" data-backdrop="static" data-target="#sendSms">Send SMS</button>
+                            </div>
+                         </div>
+                     </div>
                 </form>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="map" style="width:100%;height:300px;overflow:hidden;border:1px solid red"></div>
+                    </div>
+                </div>
             </div>
         </section>
+<!--        <section id="reservation-form" class="mt50 clearfix" style="z-index:-99999">-->
+
+<!--        </section>-->
 
         <!-- Room Content -->
         <section>
@@ -156,5 +116,158 @@
 
 <!-- Go-top Button -->
 <div id="go-top"><i class="fa fa-angle-up fa-2x"></i></div>
+<!--<div class="col-sm-12 col-md-6" style="z-index: -99999">
+    <div id="map" style="width:100%;height:100%;overflow:hidden;border:1px solid red"></div>
+</div>-->
+<div class="modal fade" id="sendEmail" role="dialog" style="z-index:99999">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><?php echo $propertyDetails->propertyName ?></h4>
+            </div>
+            <div class="modal-body">
+                <div id="emailalert" style="text-align: center;color: green"></div>
+                <form id="sendEmailForm" method="post">
+                    <input type="hidden" name="property_id" value="<?php echo $propertyDetails->property_id ?>">
+                    <div class="" id="name">
+                    <label for="email"></label> <input type="text"
+                                                       class="form-control" name="full_name" id="full_name"
+                                                       ng-model="form.full_name" placeholder="Full Name" />
+                </div>
+                <div class="" id="email_id_div">
+                    <label for="email"></label> <input type="text"
+                                                       class="form-control" name="email" id="email_id"
+                                                       ng-model="form.email_id" placeholder="Enter email" required />
+                </div>
+                    <div class="" id="email_id_div"  style="padding-top:20px;">
+                        <input name="checkIn" type="text" id="checkin1" value="" class="form-control checkin" placeholder="Check-in" required="required" />
+                    </div>
+                    <div class="" id="email_id_div"  style="padding-top:20px;">
+                        <input name="checkOut" type="text" id="checkout1" value="" class="form-control checkout" placeholder="Check-out"/>
+                    </div>
+                <div class="" id="enquiry_div">
+                    <label for="enquiry"></label>
+                    <textarea class="form-control"
+                              ng-model="form.enquiry" id="enquiry" name="enquiry"
+                              placeholder="Enquiry.." required="required"></textarea>
+                    <p><span id="remaining">160 characters remaining</span> <span id="messages">1 message(s)</span></p>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary"  style="float:left">Send</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+<div class="modal fade" id="sendSms" role="dialog" style="z-index:99999">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><?php echo $propertyDetails->propertyName ?></h4>
+            </div>
+            <div class="modal-body">
+                <div id="smsalert" style="text-align: center;color: green"></div>
+                <form id="sendSmsForm" method="post">
+                    <input type="hidden" name="property_id" value="<?php echo $propertyDetails->property_id ?>">
+
+                <div class="" id="name">
+                    <label for="email"></label> <input type="text"
+                                                       class="form-control" name="full_name" id="full_name"
+                                                       ng-model="form.full_name" placeholder="Full Name" />
+                </div>
+                <div class="" id="email_id_div">
+                    <label for="email"></label> <input type="text"
+                                                       class="form-control" name="phone" id="email_id"
+                                                       ng-model="form.email_id" placeholder="Enter Number" required />
+                </div>
+                    <div class="" id="email_id_div"  style="padding-top:20px;">
+                        <input name="checkIn" type="text" id="checkin" value="" class="form-control checkin" placeholder="Check-in" required="required" />
+                    </div>
+                    <div class="" id="email_id_div"  style="padding-top:20px;">
+                        <input name="checkOut" type="text" id="checkout" value="" class="form-control checkout" placeholder="Check-out"/>
+                    </div>
+                <div class="" id="enquiry_div">
+                    <label for="enquiry"></label>
+                    <textarea class="form-control"
+                              ng-model="form.enquiry" id="enquiry" name="enquiry"
+                              placeholder="Enquiry.." required="required"></textarea>
+                    <p><span id="remaining">160 characters remaining</span> <span id="messages">1 message(s)</span></p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary"  style="float:left">Send</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+            </form>
+        </div>
+        </div>
+    </div>
+</div>
+</div>
 </body>
 </html>
+
+<script>
+    function initMap() {
+        var LatLang = {lat:<?php echo $propertyInfoDetails->latitude; ?>, lng:<?php echo $propertyInfoDetails->longitude; ?>};
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 1,
+            center: LatLang
+        });
+        map.setOptions({draggable: false});
+        var contentString = 'hello';
+
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString
+        });
+
+        var marker = new google.maps.Marker({
+            position: LatLang,
+            map: map,
+            title: 'Property Location'
+        });
+        marker.addListener('click', function() {
+            infowindow.open(map, marker);
+        });
+    }
+
+    $('#sendSmsForm').on('submit', function (e) {
+         e.preventDefault();
+        $.ajax({
+            url: '<?php echo base_url()?>index.php/Contact/sendEmail',
+            type: 'POST',
+            data: $('#sendSmsForm').serialize(),
+            success: function(data) {
+                console.log(data);
+                document.getElementById('smsalert').innerHTML=data;
+            }
+        });
+    });
+
+    $('#checkin1').on('click',function () {
+
+        alert('working');
+    });
+
+    $('#sendEmailForm').on('submit', function (e) {
+        e.preventDefault();
+        $.ajax({
+            url: '<?php echo base_url()?>index.php/Contact/sendEmail',
+            type: 'POST',
+            data: $('#sendEmailForm').serialize(),
+            success: function(data) {
+                document.getElementById('emailalert').innerHTML=data;
+            }
+        });
+    });
+
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAu-o4j9HgniWL-rU5x_fR5X8jxsTsLRj4&callback=initMap"></script>t>
+</script>

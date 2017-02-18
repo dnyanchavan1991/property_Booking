@@ -7,77 +7,69 @@ class Contact extends CI_Controller {
 		session_cache_expire ( 60 );
 		$this->load->library('session');
 		$this->load->model('PropertyModel');
-		ini_set('max_execution_time', 600);
-		if (!$this->session->userdata('user') && !$this->session->userdata('password'))
-		{
-			$this->load->view ( 'index-new.php' );
-		}
-	
+		ini_set('max_execution_time', 6000);
+//		if (!$this->session->userdata('user') && !$this->session->userdata('password'))
+//		{
+//			$this->load->view ( 'index-new.php' );
+//		}
+
 	}
-	public function index() {
-		//$this->load->view ( 'contact.html' );
-		$this->Contact_to_customer_enquiry($_POST ['propertyId'], $_POST ['full_name'], $_POST ['email'], $_POST ['phone'], $_POST ['checkIn'], $_POST ['checkOut'], $_POST ['enquiry']);
-	}
-	
-	public function  Contact_to_customer_enquiry($propertyId, $fullName, $email, $phone, $checkIn, $checkOut, $enquiry){
-	 	
-		$checkin = $checkIn;//$post->checkIn;
-		$checkin = str_replace ( '/', '-', $checkin );
-		$checkout = $checkOut;//$post->checkOut;
-		$checkout = str_replace ( '/', '-', $checkout );
-		$checkin = date ( 'Y-m-d', strtotime ( $checkin ) );
-		$checkout = date ( 'Y-m-d', strtotime ( $checkout ) );
-		$full_name = $fullName;//$post->full_name;
-	 
-	 	if($phone == null ){//$post->phone==null
-			$contactInfo = $email; //$post->email_id;
-		}
-		else{
-			$contactInfo = $phone; //$post->phone;
-		}
-		$contactArray=array(
-		'checkIn'=>$checkin,
-		'checkOut'=>$checkout,
-		'full_name'=>$full_name,
-		'contact'=>$contactInfo
-		);
-	
+//	public function index() {
+//		//$this->load->view ( 'contact.html' );
+//		$this->Contact_to_customer_enquiry($_POST ['propertyId'], $_POST ['full_name'], $_POST ['email'], $_POST ['phone'], $_POST ['checkIn'], $_POST ['checkOut'], $_POST ['enquiry']);
+//	}
+
+	public function sendEmail(){
+	    $email = null;
+        $phone = null;
+        $propertyId = $_POST['property_id'];
+        $full_name = $_POST['full_name'];
+        $checkin = $_POST['checkIn'];
+        $checkout = $_POST['checkOut'];
+        $enquiry = $_POST['enquiry'];
+        if(isset($_POST['phone'])){
+            $phone = $_POST['phone'] ? $_POST['phone'] : null;
+        }
+        if(isset($_POST['email'])){
+            $email = $_POST['email'] ? $_POST['email'] : null;
+        }
+
 		if($phone == null){//$post->phone==null
-	  		 
-			$propertyOwnerInfo = $this->PropertyModel->getOwnerDetail($propertyId);
-		
-			$recepient = $propertyOwnerInfo[0]->email;
-			$subject = " Enquiry for Property - ".$propertyOwnerInfo[0]->propertyName;			
-			$message = $fullName. ' - ' .$email . '  is interested in renting property "'.$propertyOwnerInfo[0]->propertyName;
-			$message .= '" From: '.$checkIn.' To: '.$checkOut.' Message:'.$enquiry;
-			 
-	 		$this->sendMail($recepient,$subject,$message);
-	 		
-	 		//$subject1 = "Enquiry for Property - " .$propertyOwnerInfo[0]->propertyName;
-	 		$message2 = " Hello " . $fullName ." \n Your enquiry for renting this property has been sent to The Property Owner. They will contact you soon. \n Thanks for using our services \n Team, TrueHolidays";
-	 		
-	 		$this->sendMail($email,$subject,$message2);
-	 		
-	 		
-	 	}
+
+            $propertyOwnerInfo = $this->PropertyModel->getOwnerDetail($propertyId);
+
+//            $recepient = $propertyOwnerInfo[0]->email;
+            $recepient = 'shubhamkamat83352@gmial.com';
+            $subject = " Enquiry for Property - ".$propertyOwnerInfo[0]->propertyName;
+            $message = $full_name. ' - ' .$email . '  is interested in renting property "'.$propertyOwnerInfo[0]->propertyName;
+            $message .= '" From: '.$checkin.' To: '.$checkout.' Message:'.$enquiry;
+
+            $this->sendMail($recepient,$subject,$message);
+
+            //$subject1 = "Enquiry for Property - " .$propertyOwnerInfo[0]->propertyName;
+            $message2 = " Hello " .$full_name ." \n Your enquiry for renting this property has been sent to The Property Owner. They will contact you soon. \n Thanks for using our services \n Team, TrueHolidays";
+
+            $this->sendMail($email,$subject,$message2);
+//            redirect(base_url().'/index.php/Index1/PropertyDetails/'.$propertyId);
+        }
 		else if( $phone != null ){ //$post->phone!=null
-	 	 
-			$propertyOwnerInfo = $this->PropertyModel->getOwnerDetail($propertyId);
-			$recepient = $propertyOwnerInfo[0]->phone . ',' . $contactInfo;
-			
-			$subject= $fullName. '-' .$phone . '  interested in renting property "'.$propertyOwnerInfo[0]->propertyName;
-			$message = $subject.'" From: '.$checkIn.' To: '.$checkOut.' Message:'.$enquiry;
- 
-			$method="POST";
-			$data="false";
-				//$url="http://bhashsms.com/api/sendmsg.php?user=8796151636&pass=tabrez&sender=KDHLTH&phone=7249612636&text=hello1Hi&priority=sdnd&stype=normal";
-			$phone1= $propertyOwnerInfo[0]->phone;
-			$this->sendSMS($method,$data,$phone1,$message);
-			
-			$message1="Your Enquiry has been sent to property owner for Property '" . $propertyOwnerInfo[0]->propertyName . "' Thanks for using our services-TrueHolidays.co.in";
-			 $this->sendSMS($method,$data,$phone,$message1);
-		 
+            $propertyOwnerInfo = $this->PropertyModel->getOwnerDetail($propertyId);
+            $subject= $full_name. '-' .$phone . '  interested in renting property "'.$propertyOwnerInfo[0]->propertyName;
+            $message = $subject.'" From: '.$checkin.' To: '.$checkout.' Message:'.$enquiry;
+
+            $method="POST";
+            $data="false";
+            //$url="http://bhashsms.com/api/sendmsg.php?user=8796151636&pass=tabrez&sender=KDHLTH&phone=7249612636&text=hello1Hi&priority=sdnd&stype=normal";
+//            $phone1= $propertyOwnerInfo[0]->phone;
+            $phone1= '8793762012';
+            $this->sendSMS($method,$data,$phone1,$message);
+
+            $message1="Your Enquiry has been sent to property owner for Property '" . $propertyOwnerInfo[0]->propertyName . "' Thanks for using our services-TrueHolidays.co.in";
+            $this->sendSMS($method,$data,$phone,$message1);
+//            redirect(base_url().'/index.php/Index1/PropertyDetails/'.$propertyId);
 		}
+        $msg = "Thank you..Your Request has been send";
+        echo json_encode($msg);
 	}
 	public function sendSMS($method,$data,$phone,$message)
 	{

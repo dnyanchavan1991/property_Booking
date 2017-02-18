@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="keywords" content="Holidays in Goa, Goa Holidays, Rantal Properties in Pune, Villas in Konkan",
+<metaï¿½name="keywords"ï¿½content="Holidays in Goa, Goa Holidays, Rantal Properties in Pune, Villas in Konkan",
 "vacation rentals by owner, trueholidays,trueholiday, rent by owner, vacation by owner, vacation rentals, vacation homes for rent, vacation rental by owner, villas for rent, villa rentals, apartment rentals,  holiday rentals, hotels, family vacation, family travel, group travel, cheap rentals by owner, cheap vacation rental homes">
 
     <title>Property Booking</title>
@@ -20,18 +20,18 @@
     <link href="css/new-theme/owl.carousel.css" rel="stylesheet">
 	   <script type="text/javascript" src="js/angular.min.js"></script>
     <script type="text/javascript" src="js/controller/checkRoomAvailabilityController.js"></script>
-	
+
     <script type="text/javascript" src="js/global/global_url_variable.js"></script>
     <script type="text/javascript" src="js/global/global_functions.js"></script>
-	
-    
-	
+
+
+
 
     <script type="text/javascript">
         $(function() {
          		  $("#datepicker").datepicker({
 				numberOfMonths: 1,
-				
+
 				minDate: new Date(),
 				onSelect: function (selected) {
 					var dt = new Date(selected);
@@ -54,14 +54,14 @@
             });
         });
 		$(document).ready(function() {
-		
+
 		// Vish - trying to keep search bar fixed if vertical scroll happens
 		var offset = $('.online_reservation').offset();
 		$(window).on('scroll', function() {
 			var st = $(this).scrollTop();
 			event.stopPropagation();
-			if (offset.top <= st){				
-				//$('#where_to_go').click();				
+			if (offset.top <= st){
+				//$('#where_to_go').click();
 				$('.reservation>ul').addClass("container-fluid-search");
 				//$('.book_date_active input[type="text"]').parent().addClass("shrink");
 			} else {
@@ -69,13 +69,13 @@
 				//$('.reservation').removeClass("container-fluid-moreFilters");
 				//$('.book_date_active input[type="text"]').removeClass("shrink");
 			}
-		}); 
-		
 		});
-		
+
+		});
+
 
     </script>
- 
+
 	<script type="text/javascript" src="js/dirPagination.js"></script>
     <!-- //requried-jsfiles-for owl -->
 </head>
@@ -101,7 +101,7 @@
             show();
         }
     }
-	function validateForm(){			
+	function validateForm(){
 			var ret_flag = true;
 				if($("#inpDestination").val() == "")
 				{
@@ -109,8 +109,8 @@
 						ret_flag = true;
 					} else {
 						ret_flag = false;
-					}					
-				} 
+					}
+				}
 				if($("#datepicker").val() == "Arrival Date" || $("#datepicker").val() == "")
 				{
 					alert("Please provide Tentative Travel Start Date");
@@ -121,25 +121,25 @@
 					alert("Please provide Tentative Travel End Date");
 					ret_flag = false;
 				}
-			
+
 				if (ret_flag === false)
 					return false;
-				else 
+				else
 					return true;
 			}
     function showMoreFilters() {
-		 
+
 			if ($('#moreFilters:contains("+")').length > 0){
-				$('#moreFilters').html("More Filters -");	
+				$('#moreFilters').html("More Filters -");
 			} else {
-				$('#moreFilters').html("More Filters +");	
+				$('#moreFilters').html("More Filters +");
 			}
-		 	
+
 			var offset = $('.online_reservation').offset();
 			$('html, body').animate({
-				scrollTop: $(".online_reservation").offset().top + 100 
+				scrollTop: $(".online_reservation").offset().top + 100
 			}, 500);
-		 
+
         /*var target = $(this);
         $('#moreFilters').text('More Filters +');
         if($('#moreFiltersExpand').is(':hidden') == true) {
@@ -159,10 +159,10 @@
     }
 	function applyFilters () {
 		$("#moreFiltersExpand").hide();
-		$('#moreFilters').html("More Filters +");	
-			 		 
+		$('#moreFilters').html("More Filters +");
+
 	}
-	
+
 </script>
 <!---/End-date-piker---->
 <link type="text/css" rel="stylesheet" href="css/new-theme/JFGrid.css" />
@@ -188,7 +188,7 @@
                             <div class="book_date book_date_active">
                                 <input   id="inpDestination" type="text" ng-autocomplete="result1" details="details1" options="options1"  name="inpDestination" ng-model="inputDestination" value=""   ng-click="expandFilterOptions()"   onfocus="this.value = '';"  >
 								<input type="hidden" name="hdnDest" id="hdnDest" value = "<?php echo $inpDestination?>" />
-								
+
 								<div style="color:darkgray">result: {{result}}</div>
                             </div>
                         </li>
@@ -223,7 +223,7 @@
                             </div>
                         </li>
                         <li class="span1_of_3 left">
-                            
+
                             <div class="date_btn">
                                 <input type="submit" name="submit" style="margin-top: 0.5em !important;width: 335px;" value="Search" onclick="return validateForm();" />
                             </div>
@@ -329,11 +329,11 @@
 </div>
 <!---->
 <!---->
-<div class="rooms text-center"> <Strong style="text-align: left;float: left;padding-left: 1em;font-family: -webkit-pictograph;font-size: 32px;"> 
-<!--<?php echo $inpDestination == ""  ? "All Destinations " : $inputDestination; ?>--> <span ng-bind="totalRecords" id="totalRecords"> </span> </Strong>  
-    
+<div class="rooms text-center"> <Strong style="text-align: left;float: left;padding-left: 1em;font-family: -webkit-pictograph;font-size: 32px;">
+<!--<?php echo $inpDestination == ""  ? "All Destinations " : $inputDestination; ?>--> <span ng-bind="totalRecords" id="totalRecords"> </span> </Strong>
+
     <div class="container" >
-   
+
         <div class="room-grids" >
             <div class="ang-dir-paginate">
                 <dir-pagination-controls
@@ -343,10 +343,10 @@
                     auto-hide="true">
                 </dir-pagination-controls>
             </div>
-            
-           <?php if ( $featured != "Featured" ) { ?> 
+
+           <?php if ( $featured != "Featured" ) { ?>
             <div id="abc" class="col-md-3 room-sec single-room"   dir-paginate="rooms in propNames | itemsPerPage : 10"  data-ng-class="{'grey-background':rooms.Featured == 'Yes' }">
-			
+
                 <h4><a href="" ng-click="getPropertyDetails(rooms)"> {{rooms.propertyName}}<span class = "room-star" ng-repeat="r_cnt in strtoint(rooms.starRate)">â˜…</span>
                 </a></h4>
                 <a href="" ng-click="getPropertyDetails(rooms)">
@@ -354,8 +354,8 @@
                     <p id="text" style="overflow:hidden; white-space: nowrap;"><span class="map-marker"></span>{{rooms.propertyAddress}}</p>
                     <!--<div class="items">-->
                         <li ng-if=" rooms.free_breakfast == 'Yes' "><img class = "feature-images" src='images/breakfast.png' title="Free Breakfast"></li>
-                        <li ng-if=" rooms.pool == 'Yes' "><img class = "feature-images" src='images/pool.png' title="Swimming Pool"></li> 
-                                             
+                        <li ng-if=" rooms.pool == 'Yes' "><img class = "feature-images" src='images/pool.png' title="Swimming Pool"></li>
+
                         <li ng-if=" rooms.free_parking == 'Yes' "><img class = "feature-images" src='images/parking.png' title="Free Parking"></li>
                         <li ng-if=" rooms.television_access == 'Yes' "><img class = "feature-images" src='images/television.png' title="Television Access"></li>
                         <li ng-if=" rooms.internet_access == 'Yes' "><img class = "feature-images" src='images/internet.png' title="Internet Access"></li>
@@ -365,18 +365,18 @@
                 </a>
             </div>
             <?php } else { ?>
-            
+
             <div id="abc" class="col-md-3 room-sec single-room"   dir-paginate="rooms in propNames | itemsPerPage : 10"  data-ng-class="{'grey-background':rooms.Featured == 'Yes', 'hide' : rooms.Featured == 'No'}">
-			
+
                 <h4><a href="" ng-click="getPropertyDetails(rooms)"> {{rooms.propertyName}}<span class = "room-star" ng-repeat="r_cnt in strtoint(rooms.starRate)">â˜…</span>
                 </a></h4>
                 <a href="" ng-click="getPropertyDetails(rooms)">
-                    <img class = "single-room-image" ng-src="{{rooms.ImagePath}}" alt=""/> 
+                    <img class = "single-room-image" ng-src="{{rooms.ImagePath}}" alt=""/>
                     <p id="text"><span class="map-marker"></span>{{rooms.propertyAddress}}</p>
                     <!--<div class="items">-->
                         <li ng-if=" rooms.free_breakfast == 'Yes' "><img class = "feature-images" src='images/breakfast.png' title="Free Breakfast"></li>
-                        <li ng-if=" rooms.pool == 'Yes' "><img class = "feature-images" src='images/pool.png' title="Swimming Pool"></li> 
-                                             
+                        <li ng-if=" rooms.pool == 'Yes' "><img class = "feature-images" src='images/pool.png' title="Swimming Pool"></li>
+
                         <li ng-if=" rooms.free_parking == 'Yes' "><img class = "feature-images" src='images/parking.png' title="Free Parking"></li>
                         <li ng-if=" rooms.television_access == 'Yes' "><img class = "feature-images" src='images/television.png' title="Television Access"></li>
                         <li ng-if=" rooms.internet_access == 'Yes' "><img class = "feature-images" src='images/internet.png' title="Internet Access"></li>

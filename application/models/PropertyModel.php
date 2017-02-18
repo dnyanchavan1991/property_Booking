@@ -478,14 +478,14 @@ class PropertyModel extends CI_Model {
 
     /* this function gets property detail on click on particular property of search.html */
     public function getPropertyDetail($propertyId) {
-        $this->db->select ( 'property_name as propertyName,description,image_path as imagePath,concat(street,\',\',city,\',\',state,\',\',postal_code) as propertyAddress,how_to_reach as Direction, ' );
+        $this->db->select ( 'property_id,property_name as propertyName,description,image_path as imagePath,concat(street,\',\',city,\',\',state,\',\',postal_code) as propertyAddress,how_to_reach as Direction, ' );
         $this->db->from('property');
         $this->db->where("property_id = $propertyId ");
         $query = $this->db->get();
         return $query->result();
     }
     public function getPropertyInfoDetail($propertyId) {
-        $this->db->select ( 'property_type_id, bedrooms, bathrooms, pool, meals, internet_access, television_access as television, pet_friendly, air_condition, in_house_kitchen, other_amenities, leisureActivities, accommodates,   ' );
+        $this->db->select ( 'property_type_id, bedrooms, bathrooms, pool, meals, internet_access, television_access as television, pet_friendly, air_condition, in_house_kitchen, other_amenities, leisureActivities, accommodates,latitude,longitude   ' );
         $this->db->from ( "property" );
         $this->db->join ( "property_info", "property.property_id = property_info.property_id" );
         $this->db->where("property_info.property_id = $propertyId");
@@ -1003,6 +1003,56 @@ class PropertyModel extends CI_Model {
         $query = $this->db->get();
 
         return $query->result();
+
+    }
+
+    public function LoginCheck(){
+        $username = $this->security->xss_clean($this->input->post('email'));
+        $password = $this->security->xss_clean($this->input->post('password'));
+        $this->db->select( '* ' );
+        $this->db->from( "registration" );
+        $this->db->where( 'user_name',$username);
+        $this->db->where( 'password',$password);
+        $query = $this->db->get();
+        //var_dump($query->result());
+        if(count($query->result())== 1)
+        {
+            $results = $query->result();
+            foreach($results as $result){
+                $data = array(
+                'user_id' => $result->user_id,
+                'email' => $result->user_name,
+            );
+            }
+
+            $this->session->set_userdata($data);
+            return true;
+        }
+        return false;
+    }
+    public function registrationAction(){
+        $data = array(
+            'user_name' => $this->security->xss_clean($this->input->post('username')),
+            'password' => $this->security->xss_clean($this->input->post('password')),
+            'first_name' => $this->security->xss_clean($this->input->post('fname')),
+            'last_name' => $this->security->xss_clean($this->input->post('lname')),
+            'mobile_number' => $this->security->xss_clean($this->input->post('phone')),
+            'email_address' => $this->security->xss_clean($this->input->post('email')),
+            'address' => $this->security->xss_clean($this->input->post('address')),
+            'Gender' => $this->security->xss_clean($this->input->post('gender')),
+            'DOB' => $this->security->xss_clean($this->input->post('dob')),
+        );
+        $this->db->insert('registration', $data);
+        if($this->db->affected_rows() != 1){
+            return false;
+        }else{
+            $data1 = array(
+                'user_id' => $this->db->insert_id(),
+                'email' => $this->security->xss_clean($this->input->post('username')),
+            );
+            $this->session->set_userdata($data1);
+            return true;
+        }
 
     }
 }
