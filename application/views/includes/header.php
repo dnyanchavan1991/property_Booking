@@ -51,7 +51,7 @@
                     <div class="col-sm-2">
                         <div class="form-group">
                             <label for="checkin">Check-in</label>
-                            <div class="popover-icon" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Check-In is from 11:00"> <i class="fa fa-info-circle fa-lg"> </i> </div>
+                            <div class="popover-icon" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right"> <i class="fa fa-info-circle fa-lg"> </i> </div>
                             <i class="fa fa-calendar infield"></i>
                             <input name="checkin" type="text" id="checkin1" value="" class="form-control" placeholder="Check-in"/>
                         </div>
@@ -59,7 +59,7 @@
                     <div class="col-sm-2">
                         <div class="form-group">
                             <label for="checkout">Check-out</label>
-                            <div class="popover-icon" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Check-out is from 12:00"> <i class="fa fa-info-circle fa-lg"> </i> </div>
+                            <div class="popover-icon" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right"> <i class="fa fa-info-circle fa-lg"> </i> </div>
                             <i class="fa fa-calendar infield"></i>
                             <input name="checkout" type="text" id="checkout1" value="" class="form-control" placeholder="Check-out"/>
                         </div>
@@ -109,7 +109,7 @@
                 <button type="button" data-toggle="collapse" data-target="#navbar-collapse-grid" class="navbar-toggle"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
                 <a href="<?php echo base_url() ?>" class="navbar-brand">
                     <!-- Logo -->
-                    <div id="logo"> <img id="default-logo" src="<?php echo base_url() ?>assets/images/logo.png" alt="Starhotel" style="height:44px;"> <img id="retina-logo" src="images/logo-retina.png" alt="Starhotel" style="height:44px;"> </div>
+                    <div id="logo"> <img id="default-logo" src="<?php echo base_url() ?>assets/images/logo.jpg" alt="Starhotel" style="height:44px;"> <img id="retina-logo" src="images/logo-retina.png" alt="Starhotel" style="height:44px;"> </div>
                 </a> </div>
             <div id="navbar-collapse-grid" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">

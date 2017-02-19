@@ -35,10 +35,10 @@
                         </div>
                          <div class="row" style="padding-top:10px;">
                             <div class="col-md-6">
-                                <button class="btn btn-primary btn-block" type="button" data-backdrop="static" data-toggle="modal" data-target="#sendEmail">Send Email</button>
+                                <button class="btn btn-primary btn-block" id="sendEmailbtn" type="button" data-backdrop="static" data-toggle="modal" data-target="#sendEmail">Send Email</button>
                             </div>
                             <div class="col-md-6">
-                                <button class="btn btn-primary btn-block" type="button" data-toggle="modal" data-backdrop="static" data-target="#sendSms">Send SMS</button>
+                                <button class="btn btn-primary btn-block" id="sendSmsbtn" type="button" data-toggle="modal" data-backdrop="static" data-target="#sendEmail">Send SMS</button>
                             </div>
                          </div>
                      </div>
@@ -59,8 +59,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-7 mt50">
-                        <h2 class="lined-heading"><span>Room Details</span></h2>
-                        <h3 class="mt50">Table overview</h3>
+                        <h2 class="lined-heading"><span>About the Property</span></h2>
+                        <h3 class="mt50">Overview</h3>
                         <table class="table table-striped mt30">
                             <tbody>
                             <tr>
@@ -135,57 +135,16 @@
                                                        class="form-control" name="full_name" id="full_name"
                                                        ng-model="form.full_name" placeholder="Full Name" />
                 </div>
-                <div class="" id="email_id_div">
+                <div class="email_div" id="email_id_div" style="display:none">
                     <label for="email"></label> <input type="text"
                                                        class="form-control" name="email" id="email_id"
-                                                       ng-model="form.email_id" placeholder="Enter email" required />
+                                                       ng-model="form.email_id" placeholder="Enter email"  />
                 </div>
-                    <div class="" id="email_id_div"  style="padding-top:20px;">
-                        <input name="checkIn" type="text" id="checkin1" value="" class="form-control checkin" placeholder="Check-in" required="required" />
-                    </div>
-                    <div class="" id="email_id_div"  style="padding-top:20px;">
-                        <input name="checkOut" type="text" id="checkout1" value="" class="form-control checkout" placeholder="Check-out"/>
-                    </div>
-                <div class="" id="enquiry_div">
-                    <label for="enquiry"></label>
-                    <textarea class="form-control"
-                              ng-model="form.enquiry" id="enquiry" name="enquiry"
-                              placeholder="Enquiry.." required="required"></textarea>
-                    <p><span id="remaining">160 characters remaining</span> <span id="messages">1 message(s)</span></p>
-                </div>
-
+                    <div class="phone_number_div" id="email_id_div" style="display:none">
+                <label for="email"></label> <input type="text"
+                                                   class="form-control" name="phone" id="email_id"
+                                                   ng-model="form.email_id" placeholder="Enter Number"  />
             </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-primary"  style="float:left">Send</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-            </form>
-        </div>
-    </div>
-</div>
-</div>
-<div class="modal fade" id="sendSms" role="dialog" style="z-index:99999">
-    <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title"><?php echo $propertyDetails->propertyName ?></h4>
-            </div>
-            <div class="modal-body">
-                <div id="smsalert" style="text-align: center;color: green"></div>
-                <form id="sendSmsForm" method="post">
-                    <input type="hidden" name="property_id" value="<?php echo $propertyDetails->property_id ?>">
-
-                <div class="" id="name">
-                    <label for="email"></label> <input type="text"
-                                                       class="form-control" name="full_name" id="full_name"
-                                                       ng-model="form.full_name" placeholder="Full Name" />
-                </div>
-                <div class="" id="email_id_div">
-                    <label for="email"></label> <input type="text"
-                                                       class="form-control" name="phone" id="email_id"
-                                                       ng-model="form.email_id" placeholder="Enter Number" required />
-                </div>
                     <div class="" id="email_id_div"  style="padding-top:20px;">
                         <input name="checkIn" type="text" id="checkin" value="" class="form-control checkin" placeholder="Check-in" required="required" />
                     </div>
@@ -199,6 +158,7 @@
                               placeholder="Enquiry.." required="required"></textarea>
                     <p><span id="remaining">160 characters remaining</span> <span id="messages">1 message(s)</span></p>
                 </div>
+
             </div>
             <div class="modal-footer">
                 <button type="submit" class="btn btn-primary"  style="float:left">Send</button>
@@ -206,22 +166,22 @@
             </div>
             </form>
         </div>
-        </div>
     </div>
+</div>
 </div>
 </div>
 </body>
 </html>
-
+<!--<script src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>-->
 <script>
     function initMap() {
         var LatLang = {lat:<?php echo $propertyInfoDetails->latitude; ?>, lng:<?php echo $propertyInfoDetails->longitude; ?>};
         var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 1,
+            zoom: 10,
             center: LatLang
         });
-        map.setOptions({draggable: false});
-        var contentString = 'hello';
+//        map.setOptions({draggable: false});
+        var contentString = '<?php echo $propertyDetails->propertyName ?>';
 
         var infowindow = new google.maps.InfoWindow({
             content: contentString
@@ -236,6 +196,21 @@
             infowindow.open(map, marker);
         });
     }
+    $('#sendEmailbtn').on('click',function(){
+        $('.phone_number_div').hide();
+        $('.email_div').show();
+        $('.email_div input').prop('required',true);
+
+//        $('.email_div input').attr('required',true);​​​​​
+    });
+
+    $('#sendSmsbtn').on('click',function() {
+        $('.phone_number_div').show();
+        $('.email_div').hide();
+        $('.phone_number_div input').prop('required',true);
+//        $('.phone_number_div input').attr('required',true);
+
+    });
 
     $('#sendSmsForm').on('submit', function (e) {
          e.preventDefault();
@@ -248,11 +223,6 @@
                 document.getElementById('smsalert').innerHTML=data;
             }
         });
-    });
-
-    $('#checkin1').on('click',function () {
-
-        alert('working');
     });
 
     $('#sendEmailForm').on('submit', function (e) {
@@ -269,5 +239,5 @@
 
 
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAu-o4j9HgniWL-rU5x_fR5X8jxsTsLRj4&callback=initMap"></script>t>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmt-QMYNXcRMQMQil1v5ZBEmsuvZtLWS0&callback=initMap"></script>t>
 </script>

@@ -135,16 +135,10 @@ class RoomAvailability extends CI_Controller {
         );
 
         $filterData=null;
-
-        //	 $roomAvailableCount = $this->PropertyModel->getRoomAvailabilityCount ($searchArray, $filterData);
-
-        //$roomBooked = $this->PropertyModel->checkRoomBooked ($searchArray);
-
-        //var_dump($roomAvailableInfo);
         $this->load->library('pagination');
         $config['base_url']= base_url().'index.php/RoomAvailability/checkRoomAvailabilty/';
         $config['total_rows'] = count($this->PropertyModel->checkRoomAvailabiltyCount($searchArray,$filterData,$this->session->userdata('sortFCriteria'),$this->session->userdata('sortBCriteria')));
-        $config['per_page'] = 3;
+        $config['per_page'] = 9;
         $config["full_tag_open"] = '<ul class="pagination">';
         $config["full_tag_close"] = '</ul>';
         $config["first_link"] = "&laquo;";
@@ -171,19 +165,14 @@ class RoomAvailability extends CI_Controller {
         else{
             $page = 1;
         }
-//        $this->PropertyModel->checkRoomAvailabiltyCount($searchArray,$filterData, $sortFCriteria, $sortBCriteria));
         $this->pagination->initialize($config);
         $property_type = $this->PropertyModel->getPropertyTypeList();
         $roomAvailableInfo = $this->PropertyModel->checkRoomAvailabilty ($searchArray,$filterData,$this->session->userdata('sortFCriteria'),$this->session->userdata('sortBCriteria'),$config['per_page'], $page);
-//        var_dump($roomAvailableInfo);
         $this->load->view('quick_search.php',array('data' => $roomAvailableInfo,'count' => $config['total_rows'],'formData'=>$searchArray,'propertyTypes'=>$property_type));
 
     }
 
     public function checkFilterRoomAvailabilty() {
-//        $postdata = file_get_contents("php://input");
-//        $filterData= json_decode($postdata);
-        //echo sizeof($post->selectedFeatureList);
         $this->load->model ( 'PropertyModel' );
         $searchArray=array(
             'checkIn'=>$this->session->userdata ( 'checkIn' ),
@@ -206,72 +195,9 @@ class RoomAvailability extends CI_Controller {
         if($filterData['selectedstarRateList'] == 0 && $filterData['selectedFeatureList'] == 0 && $filterData['selectedFacilityList'] == 0 && $filterData['selectedBathroomList'] == 0  ){
             $filterData=NULL;
         }
-        //var_dump($this->session->userdata('filterData'));
-        $this->load->library('pagination');
-        $config['base_url']= base_url().'index.php/RoomAvailability/checkRoomAvailabilty/';
-        $config['total_rows'] = count($this->PropertyModel->checkRoomAvailabiltyCount($searchArray,$this->session->userdata('filterData'),'',''));
-        $config['per_page'] = 3;
-        $config["full_tag_open"] = '<ul class="pagination">';
-        $config["full_tag_close"] = '</ul>';
-        $config["first_link"] = "&laquo;";
-        $config["first_tag_open"] = "<li>";
-        $config["first_tag_close"] = "</li>";
-        $config["last_link"] = "&raquo;";
-        $config["last_tag_open"] = "<li>";
-        $config["last_tag_close"] = "</li>";
-        $config['next_link'] = '&gt;';
-        $config['next_tag_open'] = '<li>';
-        $config['next_tag_close'] = '<li>';
-        $config['prev_link'] = '&lt;';
-        $config['prev_tag_open'] = '<li>';
-        $config['prev_tag_close'] = '<li>';
-        $config['cur_tag_open'] = '<li class="active"><a href="#">';
-        $config['cur_tag_close'] = '</a></li>';
-        $config['num_tag_open'] = '<li>';
-        $config['num_tag_close'] = '</li>';
-        $this->pagination->initialize($config);
+        $roomAvailableInfo = $this->PropertyModel->checkRoomAvailabilty ($searchArray, $this->session->userdata('filterData'), '', '');
 
-        if($this->uri->segment(3)){
-            $page = ($this->uri->segment(3)) ;
-        }
-        else{
-            $page = 1;
-        }
-//        $this->PropertyModel->checkRoomAvailabiltyCount($searchArray,$filterData, $sortFCriteria, $sortBCriteria));
-        $this->pagination->initialize($config);
-        //	$roomAvailableCount = $this->PropertyModel->getRoomAvailabilityCount ($searchArray,$filterData);
-        $roomAvailableInfo = $this->PropertyModel->checkRoomAvailabilty ($searchArray, $this->session->userdata('filterData'), '', '',$config['per_page'], $page);
-       // echo count($this->PropertyModel->checkRoomAvailabiltyCount($searchArray,$this->session->userdata('filterData'),'',''));
-        $this->load->view('quick_search.php',array('data' => $roomAvailableInfo,'count' => $config['total_rows'],'formData'=>$searchArray,'filterData'=>$this->session->userdata('filterData')));
-//        $response=new stdClass();
-//        //$response->records =$roomAvailableCount;
-//
-//        $i=0;
-//        foreach($roomAvailableInfo as $row)
-//        {
-//            $row=(array)$row;
-//            $image_path = $row['imagePath'];
-//            $directory_path = './Admin/'.$image_path;
-//            $map = directory_map($directory_path);
-//            if($map)
-//            {
-//                foreach ($map as $result)
-//                {
-//                    if(strpos($result ,"mainImage") !==false)
-//                    {
-//                        $get_result = "Admin/".$image_path.$result;
-//                        $response->rows[$i]=array('propertyId'=>$row['propertyId'],'propertyName'=>$row['property'],'ImagePath' => $get_result,
-//                            'starRate'=>$row['star_rate'],'propertyAddress'=>$row['propertyAddress'],
-//                            'pool'=>$row['pool'], 'free_parking'=>$row['free_parking'], 'air_condition'=>$row['air_condition'],
-//                            'television_access'=>$row['television_access'], 'internet_access'=>$row['internet_access'],
-//                            'smoking_allowd'=>$row['smoking_allowd'], 'free_breakfast'=>$row['free_breakfast'], 'pet_friendly'=>$row['pet_friendly']
-//                        , 'Featured'=>$row['Featured']
-//                        );
-//                        $i++;
-//                    }
-//                }
-//            }
-//        }
-//        echo json_encode ( $response );
+        $count = count($this->PropertyModel->checkRoomAvailabiltyCount($searchArray,$this->session->userdata('filterData'),'',''));
+        $this->load->view('load_filters.php',array('data' => $roomAvailableInfo,'count' => $count,'formData'=>$searchArray,'filterData'=>$this->session->userdata('filterData')));
     }
 }

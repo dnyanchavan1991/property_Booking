@@ -32,7 +32,7 @@
     <script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery.jigowatt.js"></script>
     <script type="text/javascript" src="<?php echo base_url() ?>assets/js/waypoints.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery.isotope.min.js"></script>
-    <script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery.gmap.min.js"></script>
+<!--    <script type="text/javascript" src="--><?php //echo base_url() ?><!--assets/js/jquery.gmap.min.js"></script>-->
     <script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery.sticky.js"></script>
     	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
     <script type="text/javascript" src="<?php echo base_url() ?>assets/js/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>

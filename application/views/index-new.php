@@ -60,7 +60,7 @@
 						<div class="col-sm-2">
 							<div class="form-group">
 								<label for="checkin">Check-in</label>
-								<div class="popover-icon" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Check-In is from 11:00"> <i class="fa fa-info-circle fa-lg"> </i> </div>
+								<div class="popover-icon" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right"> <i class="fa fa-info-circle fa-lg"> </i> </div>
 								<i class="fa fa-calendar infield"></i>
 								<input name="checkIn" type="text"  value="" class="form-control" placeholder="Check-in"/>
 							</div>
@@ -68,7 +68,7 @@
 						<div class="col-sm-2">
 							<div class="form-group">
 								<label for="checkout">Check-out</label>
-								<div class="popover-icon" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Check-out is from 12:00"> <i class="fa fa-info-circle fa-lg"> </i> </div>
+								<div class="popover-icon" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right"> <i class="fa fa-info-circle fa-lg"> </i> </div>
 								<i class="fa fa-calendar infield"></i>
 								<input name="checkOut" type="text" value="" class="form-control" placeholder="Check-out"/>
 							</div>
@@ -101,7 +101,7 @@
 							</div>
 						</div>
 						<div class="col-sm-2">
-							<button type="submit" class="btn btn-primary btn-block">Book Now</button>
+							<button type="submit" class="btn btn-primary btn-block">Search</button>
 						</div>
 					</div>
 				</form>
@@ -198,7 +198,7 @@
 						 data-speed="800"
 						 data-start="1700"
 						 data-easing="easeOutBack">
-						<span>€ 99,- a night this summer</span></div>
+<!--						<span>€ 99,- a night this summer</span></div>-->
 					<!-- Layer 3 -->
 					<div class="caption sft"
 						 data-x="785"
@@ -246,7 +246,7 @@
 						<div class="col-sm-2">
 							<div class="form-group">
 								<label for="checkin">Check-in</label>
-								<div class="popover-icon" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Check-In is from 11:00"> <i class="fa fa-info-circle fa-lg"> </i> </div>
+								<div class="popover-icon" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right"> <i class="fa fa-info-circle fa-lg"> </i> </div>
 								<i class="fa fa-calendar infield"></i>
 								<input name="checkIn" type="text" id="checkin" value="" class="form-control" placeholder="Check-in" required="required" />
 							</div>
@@ -254,7 +254,7 @@
 						<div class="col-sm-2">
 							<div class="form-group">
 								<label for="checkout">Check-out</label>
-								<div class="popover-icon" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Check-out is from 12:00"> <i class="fa fa-info-circle fa-lg"> </i> </div>
+								<div class="popover-icon" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right"> <i class="fa fa-info-circle fa-lg"> </i> </div>
 								<i class="fa fa-calendar infield"></i>
 								<input name="checkOut" type="text" id="checkout" value="" class="form-control" placeholder="Check-out" required="required"/>
 							</div>
@@ -287,7 +287,7 @@
 							</div>
 						</div>
 						<div class="col-sm-2">
-							<button type="submit" class="btn btn-primary btn-block">Book Now</button>
+							<button type="submit" class="btn btn-primary btn-block">Search</button>
 						</div>
 					</div>
 				</form>
@@ -302,7 +302,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					<h2 class="lined-heading"><span>Featured Property</span></h2>
+					<h2 class="lined-heading"><span>Featured Properties</span></h2>
 				</div>
 			</div>
 		</div>

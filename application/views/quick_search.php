@@ -47,7 +47,7 @@
                         <div class="col-sm-2">
                             <div class="form-group">
                                 <label for="checkin">Check-in</label>
-                                <div class="popover-icon" data-container="body"  data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Check-In is from 11:00"> <i class="fa fa-info-circle fa-lg"> </i> </div>
+                                <div class="popover-icon" data-container="body"  data-toggle="popover" data-trigger="hover" data-placement="right"> <i class="fa fa-info-circle fa-lg"> </i> </div>
                                 <i class="fa fa-calendar infield"></i>
                                 <input name="checkIn"  required="required" type="text" id="checkin" value="<?php  echo $formData ? $formData['checkIn']:'' ?>" class="form-control" placeholder="Check-in"/>
                             </div>
@@ -55,7 +55,7 @@
                         <div class="col-sm-2">
                             <div class="form-group">
                                 <label for="checkout">Check-out</label>
-                                <div class="popover-icon" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Check-out is from 12:00"> <i class="fa fa-info-circle fa-lg"> </i> </div>
+                                <div class="popover-icon" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right"> <i class="fa fa-info-circle fa-lg"> </i> </div>
                                 <i class="fa fa-calendar infield"></i>
                                 <input name="checkOut" type="text"   required="required" id="checkout" value="<?php  echo $formData ? $formData['checkOut']:'' ?>" class="form-control" placeholder="Check-out"/>
                             </div>
@@ -94,7 +94,7 @@
                             <div class="row">
                                 <div class="col-sm-3">
                                     <div class="form-group">
-                                        <select class="form-control" name="changeFilter" id="room">
+                                        <select class="form-control applyChange" name="changeFilter" id="room" >
                                             <option selected="selected" value="0">Sorting types</option>
                                             <option value="bedLowToHigh">Bedrooms : Low to High</option>
                                             <option value="bedHighToLow">Bedrooms : High to Low</option>
@@ -248,8 +248,9 @@
     </div>
 </section>
 <section class="rooms mt100">
-    <div class="container" id="load-result">
-        <div class="row room-list fadeIn appear">
+    <div  id="load-result">
+    <div class="container">
+        <div class="row room-list fadeIn appear" >
         <div class="row" style="width:100%">
             <div class="col-sm-12" style="border-bottom:2px solid lightgrey;margin-bottom:20px;width:100%">
                 <h3>Best Deals found : <?php echo $count ?> rentals</h3>
@@ -296,6 +297,7 @@
     <div class="col-md-12" style="text-align:center">
         <?php echo $this->pagination->create_links();?>
     </div>
+        </div>
 </section>
 
 
@@ -307,7 +309,11 @@
 </body>
 <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>-->
 <script>
-        $(document).on('click', '.apply', function () {
+
+    $(".apply").click(function(){
+        $(".more-filter").hide();
+    });
+        $(document).on('change', '.applyChange', function () {
         $.ajax({
             url: '<?php echo base_url()?>index.php/RoomAvailability/checkRoomAvailabilty',
             type: 'POST',
@@ -338,8 +344,9 @@
                 type: 'POST',
                 data: $('#roomAvailable').serialize(),
                 success: function(data) {
-                    document.body.innerHTML=data;
-//                    $('#load-result').html(data);
+                    console.log(data);
+//                    document.body.innerHTML=data;
+                    $('#load-result').html(data);
                     $(".container .appear").css("opacity","1");
                 }
             });
