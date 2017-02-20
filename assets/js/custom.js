@@ -334,26 +334,28 @@ jQuery(document).ready(function () {
     // Reservation Form	
     //jQueryUI - Datepicker
     if (jQuery().datepicker) {
-        jQuery('#checkin').datepicker({
+        jQuery('#checkin,#checkin1').datepicker({
             showAnim: "drop",
             dateFormat: "dd/mm/yy",
             minDate: "-0D",
         });
 
-        jQuery('#checkout').datepicker({
+        jQuery('#checkout,#checkout1').datepicker({
             showAnim: "drop",
             dateFormat: "dd/mm/yy",
             minDate: "-0D",
             beforeShow: function () {
-                var a = jQuery("#checkin").datepicker('getDate');
+                var a = jQuery("#checkin,#checkin1").datepicker('getDate');
                 if (a) return {
                     minDate: a
                 }
             }
         });
-        jQuery('#checkin, #checkout').on('focus', function () {
+        jQuery('#checkin, #checkout,#checkin1, #checkout1').on('focus', function () {
             jQuery(this).blur();
         }); // Remove virtual keyboard on touch devices
+
+
     }
 
 
@@ -429,5 +431,9 @@ $(document).ready(function () {
         $(document).on('click', '.more-filters-btn', function () {
         $(".more-filter").slideToggle();
     });
+    $(".apply").click(function(){
+        $(".search-popup").hide();
+    });
 
 });
+

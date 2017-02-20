@@ -880,7 +880,7 @@ header #logo {
 }
 /* Button */
 #reservation-form .col-sm-2 button {
-	margin-top: 25px;
+	margin-top: 23px;
 }
 /* Guests */
 #reservation-form .guests-select {
@@ -2113,16 +2113,16 @@ border: 1px solid;
 	z-index: 1;
 }
 /* Gmap */
-#map {
-	width: 100%;
-	height: 300px;
-	overflow: visible !important;
-	border: 1px solid;
-	margin-top: -1px;
-}
-#map img {
-	max-width: none !important;
-}
+/*#map {*/
+	/*width: 100%;*/
+	/*height: 300px;*/
+	/*overflow: visible !important;*/
+	/*border: 1px solid;*/
+	/*margin-top: -1px;*/
+/*}*/
+/*#map img {*/
+	/*max-width: none !important;*/
+/*}*/
 
 
 #sticky.stick {
@@ -2171,4 +2171,57 @@ border: 1px solid;
 }
 .more-filter input{
 	width:16px;
+}
+
+
+#login h1 {
+	font-size: 18px;
+	text-align: center;
+	font-weight: bold;
+	padding-bottom: 20px;
+}
+#login .form-group {
+	margin-bottom: 25px;
+}
+#login .btn.btn-custom {
+	font-size: 14px;
+	margin-bottom: 20px;
+}
+#login .forget {
+	font-size: 13px;
+	text-align: center;
+	display: block;
+}
+
+/*    --------------------------------------------------
+	:: Inputs & Buttons
+	-------------------------------------------------- */
+.form-control {
+	color: #212121;
+}
+.btn-custom {
+	color: #fff;
+	background-color: #1fa67b;
+}
+.btn-custom:hover,
+.btn-custom:focus {
+	color: #fff;
+}
+
+
+
+
+/*#map_container{*/
+    /*position: relative;*/
+/*}*/
+/*#map{*/
+    /*height: 0;*/
+    /*overflow: hidden;*/
+    /*padding-bottom: 22.25%;*/
+    /*padding-top: 30px;*/
+    /*position: relative;*/
+/*}*/
+
+.ui-datepicker{
+	z-index:999999!important;
 }
