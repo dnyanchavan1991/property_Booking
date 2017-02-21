@@ -173,7 +173,7 @@
             </div>
             <div class="modal-body">
                 <div id="emailalert" style="text-align: center;color: green"></div>
-                <form id="sendEmailForm" method="post">
+                <form id="sendSmsForm" method="post">
                     <input type="hidden" name="property_id" value="<?php echo $propertyDetails->property_id ?>">
                     <div class="" id="name">
                     <label for="email"></label> <input type="text"
@@ -320,7 +320,7 @@
 
     });
 
-    $('#sendSmsForm').on('submit', function (e) {
+    $('#sendSmsForm').on('submit', function (e) { 
          e.preventDefault();
         $.ajax({
             url: '<?php echo base_url()?>index.php/Contact/sendEmail',
@@ -329,6 +329,7 @@
             success: function(data) {
                 document.getElementById('smsalert').innerHTML=data;
                 document.getElementById("sendSmsForm").reset();
+                
             }
         });
     });
@@ -342,6 +343,7 @@
             success: function(data) {
                 document.getElementById('emailalert').innerHTML=data;
                 document.getElementById("sendEmailForm").reset();
+                
             }
         });
     });
@@ -355,11 +357,12 @@
             success: function(data) {
                 document.getElementById('review-msg').innerHTML=data;
                 document.getElementById("review_form").reset();
+                
             }
         });
     });
 
 
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmt-QMYNXcRMQMQil1v5ZBEmsuvZtLWS0&callback=initMap"></script>t>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmt-QMYNXcRMQMQil1v5ZBEmsuvZtLWS0&callback=initMap"></script>
 </script>

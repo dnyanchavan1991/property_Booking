@@ -246,7 +246,7 @@
 						<div class="col-sm-2">
 							<div class="form-group">
 								<label for="checkin">Check-in</label>
-								<div class="popover-icon" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right"> <i class="fa fa-info-circle fa-lg"> </i> </div>
+								<div class="popover-icon" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right">   </div>
 								<i class="fa fa-calendar infield"></i>
 								<input name="checkIn" type="text" id="checkin" value="" class="form-control" placeholder="Check-in" required="required" />
 							</div>
@@ -254,7 +254,7 @@
 						<div class="col-sm-2">
 							<div class="form-group">
 								<label for="checkout">Check-out</label>
-								<div class="popover-icon" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right"> <i class="fa fa-info-circle fa-lg"> </i> </div>
+								<div class="popover-icon" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right">   </div>
 								<i class="fa fa-calendar infield"></i>
 								<input name="checkOut" type="text" id="checkout" value="" class="form-control" placeholder="Check-out" required="required"/>
 							</div>
@@ -265,22 +265,22 @@
 									<label>Guests</label>
 
 
-									<select class="form-control" name="abc" id="room">
-										<option selected="selected" disabled="disabled">1</option>
-										<option value="Single">2</option>
-										<option value="Double">3</option>
-										<option value="Deluxe">4</option>
-										<option value="Deluxe">5</option>
-										<option value="Deluxe">6</option>
-										<option value="Deluxe">7</option>
-										<option value="Deluxe">8</option>
-										<option value="Deluxe">9</option>
-										<option value="Deluxe">10</option>
-										<option value="Deluxe">11</option>
-										<option value="Deluxe">12</option>
-										<option value="Deluxe">13</option>
-										<option value="Deluxe">14</option>
-										<option value="Deluxe">15+</option>
+									<select class="form-control" name="room" id="room">
+										<option selected="selected" value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+										<option value="6">6</option>
+										<option value="7">7</option>
+										<option value="8">8</option>
+										<option value="9">9</option>
+										<option value="10">10</option>
+										<option value="11">11</option>
+										<option value="12">12</option>
+										<option value="13">13</option>
+										<option value="14">14</option>
+										<option value="15">15+</option>
 
 									</select>
 								</div>

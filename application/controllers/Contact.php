@@ -38,8 +38,8 @@ class Contact extends CI_Controller {
 
             $propertyOwnerInfo = $this->PropertyModel->getOwnerDetail($propertyId);
 
-//            $recepient = $propertyOwnerInfo[0]->email;
-            $recepient = 'shubhamkamat83352@gmial.com';
+            $recepient = $propertyOwnerInfo[0]->email;
+ //           $recepient = 'shubhamkamat83352@gmial.com';
             $subject = " Enquiry for Property - ".$propertyOwnerInfo[0]->propertyName;
             $message = $full_name. ' - ' .$email . '  is interested in renting property "'.$propertyOwnerInfo[0]->propertyName;
             $message .= '" From: '.$checkin.' To: '.$checkout.' Message:'.$enquiry;
@@ -60,8 +60,8 @@ class Contact extends CI_Controller {
             $method="POST";
             $data="false";
             //$url="http://bhashsms.com/api/sendmsg.php?user=8796151636&pass=tabrez&sender=KDHLTH&phone=7249612636&text=hello1Hi&priority=sdnd&stype=normal";
-//            $phone1= $propertyOwnerInfo[0]->phone;
-            $phone1= '9404920014';
+            $phone1= $propertyOwnerInfo[0]->phone;
+//            $phone1= '9404920014';
             $this->sendSMS($method,$data,$phone1,$message);
 
             $message1="Your Enquiry has been sent to property owner for Property '" . $propertyOwnerInfo[0]->propertyName . "' Thanks for using our services-TrueHolidays.co.in";

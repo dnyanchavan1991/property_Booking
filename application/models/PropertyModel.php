@@ -26,7 +26,7 @@ class PropertyModel extends CI_Model {
         //$where = " ( Featured_startDate <= '$d' and Featured_endDate >='$d' )";
         //if(propertyInfo.Featured )
 
-        $this->db->select ( "property.property_id,description,star_rate,property.property_name as property_name,property.property_type_id,property.image_path as image_path, property.star_rate, concat(property.street,',',property.city,',',property.state,',',property.postal_code)as propertyAddress,propertyInfo.accommodates,(propertyInfo.accommodates) as accommodates, propertyInfo.bedrooms,propertyInfo.bathrooms, propertyInfo.pool, propertyInfo.free_parking, propertyInfo.air_condition, propertyInfo.television_access, propertyInfo.internet_access,
+        $this->db->select ( "property.property_id,description,star_rate,property.property_name as property_name,property.property_type_id,property.image_path as image_path, property.star_rate, concat(property.street,',',property.city,',',property.state)as propertyAddress,propertyInfo.accommodates,(propertyInfo.accommodates) as accommodates, propertyInfo.bedrooms,propertyInfo.bathrooms, propertyInfo.pool, propertyInfo.free_parking, propertyInfo.air_condition, propertyInfo.television_access, propertyInfo.internet_access,
 		 propertyInfo.smoking_allowd, propertyInfo.free_breakfast, propertyInfo.pet_friendly,
 		 IF((Featured_startDate <= '$d' and Featured_endDate >='$d'), 'Yes', 'No') as Featured ");
 
@@ -959,15 +959,24 @@ class PropertyModel extends CI_Model {
     public function getQuickSearchData($limit=null,$offset=NULL,$name){
 //        $query = $this->db->get('property', $limit, $offset);
 //        return $query->result_array();
-        $propertyTable = 'property';
-        $propertyInfo = 'property_info';
-        $this->db->select( '*' );
-        $this->db->from(" $propertyTable property ");
-        $this->db->join ( "$propertyInfo propertyInfo", "property.property_id = propertyInfo.property_id", "left" );
-        $this->db->limit($limit, $offset);
-        $this->db->where( 'state', $name);
-        $query = $this->db->get();
-        return $query->result();
+    	$propertyTable = 'property';
+    	$propertyInfo = 'property_info';
+    	$this->db->select ( "property.property_id,description,star_rate,property.property_name as property_name,property.property_type_id,property.image_path as image_path, property.star_rate, concat(property.street,',',property.city,',',property.state)as propertyAddress,propertyInfo.accommodates,(propertyInfo.accommodates) as accommodates, propertyInfo.bedrooms,propertyInfo.bathrooms, propertyInfo.pool, propertyInfo.free_parking, propertyInfo.air_condition, propertyInfo.television_access, propertyInfo.internet_access,
+		 propertyInfo.smoking_allowd, propertyInfo.free_breakfast, propertyInfo.pet_friendly ");
+    	$this->db->from ( "$propertyInfo propertyInfo " );
+    	$this->db->join ( "$propertyTable property ", "propertyInfo.property_id=property.property_id" );
+    	$this->db->where ('activation_flag','YES');
+    	$this->db->where( 'state', $name);
+    	$this->db->order_by ( 'Featured_startDate Desc' );
+    	$this->db->group_by ( array (
+    			"property.property_id"
+    	) );
+    	$this->db->limit($limit,$offset);
+    	$roomAvailableInfo = $this->db->get ();
+    	$roomAvailableInfoResult = $roomAvailableInfo->result ();
+    	return ($roomAvailableInfoResult);
+    	
+        
     }
     public function getFeaturedSearchCount(){
         $propertyTable = 'property';
@@ -988,21 +997,25 @@ class PropertyModel extends CI_Model {
 
     }
     public function getFeaturedSearchData($limit=null,$offset=NULL){
+      		 
         $propertyTable = 'property';
-        $propertyInfoTable = 'property_info';
-        $this->db->select( '* ' );
-        $this->db->from( " $propertyTable property " );
-        $this->db->join( " $propertyInfoTable propertyInfo", "property.property_id = propertyInfo.property_id" );
-        $this->db->where( 'activation_flag', 'YES');
-        $this->db->where( 'Featured', 'Yes');
-        $d = date("y-m-d");
+        $propertyInfo = 'property_info';
+        $this->db->select ( "property.property_id,description,star_rate,property.property_name as property_name,property.property_type_id,property.image_path as image_path, property.star_rate, concat(property.street,',',property.city,',',property.state)as propertyAddress,propertyInfo.accommodates,(propertyInfo.accommodates) as accommodates, propertyInfo.bedrooms,propertyInfo.bathrooms, propertyInfo.pool, propertyInfo.free_parking, propertyInfo.air_condition, propertyInfo.television_access, propertyInfo.internet_access,
+		 propertyInfo.smoking_allowd, propertyInfo.free_breakfast, propertyInfo.pet_friendly ");
+        $this->db->from ( "$propertyInfo propertyInfo " );
+        $this->db->join ( "$propertyTable property ", "propertyInfo.property_id=property.property_id" );
+        $this->db->where ('activation_flag','YES');
+		$d = date("y-m-d");
         $where = " ( Featured_startDate <= '$d' and Featured_endDate >='$d' )";
-        $this->db->where ( $where );
+		$this->db->where ( $where );        
         $this->db->order_by ( 'Featured_startDate Desc' );
-        $this->db->limit($limit, $offset);
-        $query = $this->db->get();
-
-        return $query->result();
+        $this->db->group_by ( array (
+            "property.property_id"
+        ) );
+        $this->db->limit($limit,$offset);
+        $roomAvailableInfo = $this->db->get ();
+        $roomAvailableInfoResult = $roomAvailableInfo->result ();
+        return ($roomAvailableInfoResult);
 
     }
 
