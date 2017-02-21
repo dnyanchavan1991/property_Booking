@@ -29,8 +29,10 @@
                 <form class="reservation-vertical clearfix" role="form" method="post" action="php/reservation.php" name="reservationform" id="reservationform">
                     <div class="log">
                         <div class="row">
+<!--                            --><?php //var_dump($this->session->userdata()['user_id']) ?>
+                            <input type="hidden" id="login_check_field" value="<?php echo isset($this->session->userdata()['user_id']) ? $this->session->userdata()['user_id'] : '' ?>">
                             <div class="col-md-12">
-                                <a href="#" class="btn btn-primary btn-block">Book Now</a>
+                                <a href="#" id="booknowbtn" class="btn btn-primary btn-block" data-toggle="modal">Book Now</a>
                             </div>
                         </div>
                          <div class="row" style="padding-top:10px;">
@@ -95,6 +97,7 @@
                             <li class="active"><a href="#overview" data-toggle="tab">Overview</a></li>
                             <li><a href="#facilities" data-toggle="tab">Address</a></li>
                             <li><a href="#extra" data-toggle="tab">Direction</a></li>
+                            <li><a href="#review" data-toggle="tab">Review</a></li>
                         </ul>
                         <!-- Tab panes -->
                         <div class="tab-content">
@@ -104,6 +107,48 @@
                             </div>
                             <div class="tab-pane fade" id="facilities"><?php echo $propertyDetails->propertyAddress ?></div>
                             <div class="tab-pane fade" id="extra"><?php echo $propertyDetails->Direction ?></div>
+                            <div class="tab-pane fade" id="review">
+                                <form method="post" id="review_form">
+                                    <input type="hidden" name="property_id" value="<?php echo $propertyDetails->property_id ?>">
+                                    <div class="row">
+                                        <div class="email_div" id="email_id_div" >
+                                            <label for="email"></label> <input type="text"
+                                                                               class="form-control" name="review_name" id="email_id"
+                                                                               ng-model="form.email_id" placeholder="Enter Name" required />
+                                        </div>
+                                        <div class="email_div" id="email_id_div">
+                                            <label for="email"></label> <input type="email"
+                                                                               class="form-control" name="review_email" id="email_id"
+                                                                               ng-model="form.email_id" placeholder="Enter Email" required />
+                                        </div>
+                                      <div class="" id="email_id_div"  style="padding-top:20px;">
+                                            <input name="review_checkin" type="text" id="" value="" class="form-control datepicker" placeholder="Check-in" required />
+                                        </div>
+                                        <div class="" id="email_id_div"  style="padding-top:20px;">
+                                            <input name="review_checkout" type="text" id="" value="" class="form-control datepicker" placeholder="Check-out" required />
+                                        </div>
+                                        <div class="" id="email_id_div"  style="padding-top:20px;">
+                                            Rating:
+                                        </div>
+                                        <div class="" id="email_id_div"  style="padding-top:20px;">
+                                            <input name="rating_given" type="radio" value="5" required />Excellent &nbsp;
+                                            <input name="rating_given" type="radio" value="4" required />Very Good &nbsp;
+                                            <input name="rating_given" type="radio" value="3" required />Good &nbsp;
+                                            <input name="rating_given" type="radio" value="2" required />Average &nbsp;
+                                            <input name="rating_given" type="radio" value="1" required />Bad &nbsp;
+                                        </div>
+                                        <div class="" id="enquiry_div">
+                                            <label for="enquiry"></label>
+                                            <textarea class="form-control"
+                                                      ng-model="form.enquiry" id="enquiry" name="review_given"
+                                                      placeholder="Enquiry.." required="required"></textarea>
+                                            <p><span id="remaining">160 characters remaining</span> <span id="messages">1 message(s)</span></p>
+                                        </div>
+                                        <div id="review-msg" style="padding:10px;color:green"></div>
+                                        <button type="submit" class="btn btn-primary"  style="float:left">Send</button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -168,12 +213,75 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="bookNow" role="dialog" style="z-index:99999">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><?php echo $propertyDetails->propertyName ?></h4>
+            </div>
+            <div class="modal-body">
+                <div id="emailalert" style="text-align: center;color: green"></div>
+                <form id="sendEmailForm" method="post">
+                    <input type="hidden" name="property_id" value="<?php echo $propertyDetails->property_id ?>">
+                    <div class="" id="name">
+                        <label for="email"></label> <input type="text"
+                                                           class="form-control" name="full_name" id="full_name"
+                                                           ng-model="form.full_name" placeholder="Full Name" />
+                    </div>
+                    <div class="email_div" id="email_id_div" style="display:none">
+                        <label for="email"></label> <input type="text"
+                                                           class="form-control" name="email" id="email_id"
+                                                           ng-model="form.email_id" placeholder="Enter email"  />
+                    </div>
+                    <div class="phone_number_div" id="email_id_div" style="display:none">
+                        <label for="email"></label> <input type="text"
+                                                           class="form-control" name="phone" id="email_id"
+                                                           ng-model="form.email_id" placeholder="Enter Number"  />
+                    </div>
+                    <div class="" id="email_id_div"  style="padding-top:20px;">
+                        <input name="checkIn" type="text" id="checkin" value="" class="form-control checkin" placeholder="Check-in" required="required" />
+                    </div>
+                    <div class="" id="email_id_div"  style="padding-top:20px;">
+                        <input name="checkOut" type="text" id="checkout" value="" class="form-control checkout" placeholder="Check-out"/>
+                    </div>
+                    <div class="" id="enquiry_div">
+                        <label for="enquiry"></label>
+                        <textarea class="form-control"
+                                  ng-model="form.enquiry" id="enquiry" name="enquiry"
+                                  placeholder="Enquiry.." required="required"></textarea>
+                        <p><span id="remaining">160 characters remaining</span> <span id="messages">1 message(s)</span></p>
+                    </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary"  style="float:left">Send</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
 </div>
 </div>
 </body>
 </html>
+<!--<script src="https://code.jquery.com/jquery-1.12.4.js"></script>-->
+<!--<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>-->
 <!--<script src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>-->
 <script>
+    $( function() {
+        $( ".datepicker" ).datepicker();
+        var login_check_field = $('#login_check_field').val();
+        $('#booknowbtn').on('click',function () {
+            if(login_check_field == ''){
+                alert('Please Login before Reservation')
+            }else{
+                $('#bookNow').modal('show');
+            }
+        });
+
+    } );
     function initMap() {
         var LatLang = {lat:<?php echo $propertyInfoDetails->latitude; ?>, lng:<?php echo $propertyInfoDetails->longitude; ?>};
         var map = new google.maps.Map(document.getElementById('map'), {
@@ -219,8 +327,8 @@
             type: 'POST',
             data: $('#sendSmsForm').serialize(),
             success: function(data) {
-                console.log(data);
                 document.getElementById('smsalert').innerHTML=data;
+                document.getElementById("sendSmsForm").reset();
             }
         });
     });
@@ -233,6 +341,20 @@
             data: $('#sendEmailForm').serialize(),
             success: function(data) {
                 document.getElementById('emailalert').innerHTML=data;
+                document.getElementById("sendEmailForm").reset();
+            }
+        });
+    });
+
+    $('#review_form').on('submit', function (e) {
+        e.preventDefault();
+        $.ajax({
+            url: '<?php echo base_url() ?>/index.php/Review/sendReview',
+            type: 'POST',
+            data: $('#review_form').serialize(),
+            success: function(data) {
+                document.getElementById('review-msg').innerHTML=data;
+                document.getElementById("review_form").reset();
             }
         });
     });

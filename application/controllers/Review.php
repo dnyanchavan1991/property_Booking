@@ -10,17 +10,17 @@ class Review extends CI_Controller {
 				
 	}
 	public function sendReview() {
-		$postdata = file_get_contents("php://input");
-		$post = json_decode($postdata);
-		$property_id= $post->property_id;
-		$customer_name= $post->customer_name;
-		$customer_email = $post->customer_email;
-		$rating_given = $post->rating_given;
-		$review_given = $post->review_given;
-		$review_checkin = str_replace( '/', '-', $post->review_checkin);
+		$property_id= $_POST['property_id'];
+		$customer_name= $_POST['review_name'];
+
+		$customer_email = $_POST['review_email'];
+		$rating_given = $_POST['rating_given'];
+		$review_given = $_POST['review_given'];
+
+		$review_checkin = str_replace( '/', '-', $_POST['review_checkin']);
 		$review_checkin = date ('Y-m-d', strtotime($review_checkin));
-		$review_checkout = str_replace( '/', '-', $post->review_checkout);
-		$review_checkout = date ('Y-m-d', strtotime($review_checkout));
+		$review_checkout = str_replace( '/', '-', $_POST['review_checkout']);
+		 $review_checkout = date ('Y-m-d', strtotime($review_checkout));
 		
 		$reviewArray = array(
 							'property_id'=>$property_id,
@@ -32,20 +32,22 @@ class Review extends CI_Controller {
 							'review_text'=>$review_given
 						);
 		$send_review = $this->PropertyModel->submitReview($reviewArray);
-		
-		$propertyDetailInfo = $this->PropertyModel->getPropertyDetail ( $this->session->userdata ( 'propertyId' ) );
-		$data['propertyName']=$propertyDetailInfo->row()->propertyName;
-		$data['propertyDescription']=$propertyDetailInfo->row()->description;
-		$data['imagePath']=$propertyDetailInfo->row()->imagePath;
-		$data['way_to_reach']=$propertyDetailInfo->row()->Direction;
-		$data['rentresult']=$roomDetailInfo;
-		if($this->session->userdata('user_id'))
-		{
-			$get_user = $this->PropertyModel->getUser($this->session->userdata('user_id'));
-			$data['name'] = $get_user->name;
-			$data['email_address'] = $get_user->email_address;
-		}
-		//$this->load->view ('index.html');
-		//header("location: ../../");
+        $msg = "Thank you..Your Review has been send";
+        echo json_encode($msg);
+//		exit;
+//		$propertyDetailInfo = $this->PropertyModel->getPropertyDetail ( $this->session->userdata ( 'propertyId' ) );
+//		$data['propertyName']=$propertyDetailInfo->row()->propertyName;
+//		$data['propertyDescription']=$propertyDetailInfo->row()->description;
+//		$data['imagePath']=$propertyDetailInfo->row()->imagePath;
+//		$data['way_to_reach']=$propertyDetailInfo->row()->Direction;
+//		$data['rentresult']=$roomDetailInfo;
+//		if($this->session->userdata('user_id'))
+//		{
+//			$get_user = $this->PropertyModel->getUser($this->session->userdata('user_id'));
+//			$data['name'] = $get_user->name;
+//			$data['email_address'] = $get_user->email_address;
+//		}
+//		//$this->load->view ('index.html');
+//		//header("location: ../../");
 	}
 }
