@@ -173,7 +173,7 @@
             </div>
             <div class="modal-body">
                 <div id="emailalert" style="text-align: center;color: green"></div>
-                <form id="sendSmsForm" method="post">
+                <form id="sendEmailForm" method="post">
                     <input type="hidden" name="property_id" value="<?php echo $propertyDetails->property_id ?>">
                     <div class="" id="name">
                     <label for="email"></label> <input type="text"
@@ -222,40 +222,35 @@
             </div>
             <div class="modal-body">
                 <div id="emailalert" style="text-align: center;color: green"></div>
-                <form id="sendEmailForm" method="post">
+                <form id="bookNowForm" method="post">
                     <input type="hidden" name="property_id" value="<?php echo $propertyDetails->property_id ?>">
+                    <input type="hidden" name="customer_id" value="<?php echo isset($this->session->userdata()['user_id']) ? $this->session->userdata()['user_id'] : '' ?>">
                     <div class="" id="name">
-                        <label for="email"></label> <input type="text"
-                                                           class="form-control" name="full_name" id="full_name"
-                                                           ng-model="form.full_name" placeholder="Full Name" />
+                        <select name="accomodates" class="form-control" required>
+                            <option value="">Guest</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
                     </div>
-                    <div class="email_div" id="email_id_div" style="display:none">
+                    <div class="email_div">
                         <label for="email"></label> <input type="text"
-                                                           class="form-control" name="email" id="email_id"
-                                                           ng-model="form.email_id" placeholder="Enter email"  />
-                    </div>
-                    <div class="phone_number_div" id="email_id_div" style="display:none">
-                        <label for="email"></label> <input type="text"
-                                                           class="form-control" name="phone" id="email_id"
-                                                           ng-model="form.email_id" placeholder="Enter Number"  />
+                                                           class="form-control" name="booking_email" id="email_id"
+                                                           ng-model="form.email_id" placeholder="Enter email" value="<?php echo isset($this->session->userdata()['email']) ? $this->session->userdata()['email'] : '' ?>" />
                     </div>
                     <div class="" id="email_id_div"  style="padding-top:20px;">
-                        <input name="checkIn" type="text" id="checkin" value="" class="form-control checkin" placeholder="Check-in" required="required" />
+                        <input name="booking_checkin" type="text" id="txtCheckin" value="" class="form-control" placeholder="Check-in" required="required" />
                     </div>
                     <div class="" id="email_id_div"  style="padding-top:20px;">
-                        <input name="checkOut" type="text" id="checkout" value="" class="form-control checkout" placeholder="Check-out"/>
-                    </div>
-                    <div class="" id="enquiry_div">
-                        <label for="enquiry"></label>
-                        <textarea class="form-control"
-                                  ng-model="form.enquiry" id="enquiry" name="enquiry"
-                                  placeholder="Enquiry.." required="required"></textarea>
-                        <p><span id="remaining">160 characters remaining</span> <span id="messages">1 message(s)</span></p>
+                        <input name="booking_checkout" type="text" id="txtCheckout" value="" class="form-control" placeholder="Check-out" required />
                     </div>
 
             </div>
+            <div id="book-msg" style="padding:15px;text-align: center;color:green"></div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary"  style="float:left">Send</button>
+                <button type="submit" class="btn btn-primary"  style="float:left">Book</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
             </form>
@@ -264,6 +259,8 @@
 </div>
 </div>
 </div>
+<input type="text" id="txtCheckin">
+<input type="text" id="txtCheckout">
 </body>
 </html>
 <!--<script src="https://code.jquery.com/jquery-1.12.4.js"></script>-->
@@ -320,7 +317,7 @@
 
     });
 
-    $('#sendSmsForm').on('submit', function (e) { 
+    $('#sendSmsForm').on('submit', function (e) {
          e.preventDefault();
         $.ajax({
             url: '<?php echo base_url()?>index.php/Contact/sendEmail',
@@ -329,7 +326,6 @@
             success: function(data) {
                 document.getElementById('smsalert').innerHTML=data;
                 document.getElementById("sendSmsForm").reset();
-                
             }
         });
     });
@@ -343,7 +339,6 @@
             success: function(data) {
                 document.getElementById('emailalert').innerHTML=data;
                 document.getElementById("sendEmailForm").reset();
-                
             }
         });
     });
@@ -357,12 +352,47 @@
             success: function(data) {
                 document.getElementById('review-msg').innerHTML=data;
                 document.getElementById("review_form").reset();
-                
+            }
+        });
+    });
+    $('#bookNowForm').on('submit', function (e) {
+        e.preventDefault();
+        $.ajax({
+            url: '<?php echo base_url() ?>/index.php/BookProperty/booking',
+            type: 'POST',
+            data: $('#bookNowForm').serialize(),
+            success: function(data) {
+                document.getElementById('book-msg').innerHTML=data;
+                document.getElementById("bookNowForm").reset();
             }
         });
     });
 
+    $(document).ready(function () {
+        $("#txtCheckin").datepicker({
+            dateFormat: "dd/mm/yy",
+            onSelect: function (date) {
+                var date2 = $('#txtCheckin').datepicker('getDate');
+                date2.setDate(date2.getDate());
+                $('#txtCheckout').datepicker('setDate', date2);
+                //sets minDate to dateofbirth date + 1
+                $('#txtCheckout').datepicker('option', 'minDate', date2);
+            }
+        });
+        $('#txtCheckout').datepicker({
+            dateFormat: "dd/mm/yy",
+            onClose: function () {
+                var dt1 = $('#txtCheckin').datepicker('getDate');
+                console.log(dt1);
+                var dt2 = $('#txtCheckout').datepicker('getDate');
+                if (dt2 <= dt1) {
+                    var minDate = $('#txtCheckout').datepicker('option', 'minDate');
+                    $('#txtCheckout').datepicker('setDate', minDate);
+                }
+            }
+        });
+    });
 
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmt-QMYNXcRMQMQil1v5ZBEmsuvZtLWS0&callback=initMap"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmt-QMYNXcRMQMQil1v5ZBEmsuvZtLWS0&callback=initMap"></script>t>
 </script>

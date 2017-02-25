@@ -31,26 +31,32 @@ class BookProperty extends CI_Controller {
 		}
 	}
 	public function booking(){
-	$postdata = file_get_contents("php://input");
-		$post= json_decode($postdata);
-		$checkin = $post->checkin;
+		$checkin = $_POST['booking_checkin'];
 		$checkin = str_replace ( '/', '-', $checkin );
-		$checkout = $post->checkout;
+		$checkout = $_POST['booking_checkout'];
 		$checkout = str_replace ( '/', '-', $checkout );
 		$checkin = date ( 'Y-m-d', strtotime ( $checkin ) );
 		$checkout = date ( 'Y-m-d', strtotime ( $checkout ) );
-		$accomodates=$post->accomodates;
+		$accomodates = $_POST['accomodates'];
+        $property_id = $_POST['property_id'];
+        $customer_id = $_POST['customer_id'];
+
 		$reservationArray=array(
 				'accomodates'=>$accomodates,				
 				'check_in'=>$checkin,
 				'check_out'=>$checkout,
-				'property_id'=>$this->session->userdata ( 'propertyId' ),
-				'customer_id'=>1,
+				'property_id'=>$property_id,
+				'customer_id'=>$customer_id,
 				'reservation_date'=>date('Y-m-d')
 		);
+
 		//echo $reservationArray;
-		$reservationAffectedRow= $this->PropertyModel->booking( $reservationArray);
-		$response=array('reservationcount'=>$reservationAffectedRow);
-		echo json_encode($response);
+		$reservationAffectedRow = $this->PropertyModel->booking($reservationArray);
+        if($reservationAffectedRow == 1){
+            $msg = "Thank you..Your Request has been send";
+        }else{
+            $msg = "Please try again";
+        }
+        echo json_encode($msg);
 	}
 }

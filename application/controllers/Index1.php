@@ -9,6 +9,9 @@ class Index1 extends CI_Controller {
 	}
 
 	public function index() {
+	    $getPropertyListingSlider = $this->PropertyModel->getPropertyListingSlider();
+//        var_dump($getPropertyListingSlider);
+//        exit;
 	    $property_type = $this->PropertyModel->getPropertyListing();
         $property_list_type = $this->PropertyModel->getPropertyTypeList();
         $gallery_img_data = $this->PropertyModel->galleryImgFetch();
@@ -31,7 +34,7 @@ class Index1 extends CI_Controller {
                 }
             }
         }
-		$this->load->view ( 'index-new.php',array('propertyType'=>$property_type,'propertyListTypes'=>$property_list_type,'galleryImages'=>$gallery_img) );
+		$this->load->view ( 'index-new.php',array('propertyType'=>$property_type,'propertyListTypes'=>$property_list_type,'galleryImages'=>$gallery_img,'sliderImages' => $getPropertyListingSlider) );
 		//$this->load->view ( 'ex2.html' );
 	}
 	
@@ -88,13 +91,15 @@ class Index1 extends CI_Controller {
             $this->Login();
 
         }else{
-           $this->index();
+            redirect(base_url());
+           //$this->index();
         }
 
     }
     public function Logout(){
         $this->session->sess_destroy();
-        redirect(base_url().'/index.php/Index1/index');
+        redirect(base_url());
+        //redirect(base_url().'/index.php/Index1/index');
     }
     public function registrationAction(){
         $this->load->model('PropertyModel');

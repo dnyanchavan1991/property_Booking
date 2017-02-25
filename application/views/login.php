@@ -115,7 +115,7 @@
                 <button type="button" data-toggle="collapse" data-target="#navbar-collapse-grid" class="navbar-toggle"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
                 <a href="<?php echo base_url() ?>" class="navbar-brand">
                     <!-- Logo -->
-                    <div id="logo"> <img id="default-logo" src="images/logo.png" alt="Starhotel" style="height:44px;"> <img id="retina-logo" src="images/logo-retina.png" alt="Starhotel" style="height:44px;"> </div>
+                    <div id="logo"> <img id="default-logo" src="<?php echo base_url() ?>assets/images/F3.jpg" alt="Starhotel" style="height:44px;"> <img id="retina-logo" src="images/logo-retina.png" alt="Starhotel" style="height:44px;"> </div>
                 </a> </div>
             <div id="navbar-collapse-grid" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -160,7 +160,7 @@
                         <?php } ?>
                         <div class="form-group">
                             <label for="email" class="sr-only">Email</label>
-                            <input type="email" name="email" id="email" class="form-control" placeholder="somebody@example.com" required>
+                            <input type="text" name="email" id="email" class="form-control" placeholder="Username" required>
                         </div>
                         <div class="form-group">
                             <label for="key" class="sr-only">Password</label>
