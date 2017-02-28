@@ -3,6 +3,12 @@
 
 <!--head-->
 <?php include('includes/head.php'); ?>
+<?php
+$full_name = null;
+if(isset($this->session->userdata()['first_name']) && $this->session->userdata()['last_name']){
+   $full_name = $this->session->userdata()['first_name'].' '.$this->session->userdata()['last_name'];
+}
+?>
  <script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery.sticky.js"></script>
 <body>
 
@@ -112,12 +118,10 @@
                                     <input type="hidden" name="property_id" value="<?php echo $propertyDetails->property_id ?>">
                                     <div class="row">
                                         <div class="email_div" id="email_id_div" >
-                                            <label for="email"></label> <input type="text"
-                                                                               class="form-control" name="review_name" id="email_id"
-                                                                               ng-model="form.email_id" placeholder="Enter Name" required />
+                                            <label for="email"></label> <input type="text" class="form-control" name="review_name" id="email_id" ng-model="form.email_id" placeholder="Enter Name" value="<?php echo $full_name ?>" required />
                                         </div>
                                         <div class="email_div" id="email_id_div">
-                                            <label for="email"></label> <input type="email"
+                                            <label for="email"></label> <input type="email" value="<?php echo isset($this->session->userdata()['email']) ? $this->session->userdata()['email'] : '' ?>"
                                                                                class="form-control" name="review_email" id="email_id"
                                                                                ng-model="form.email_id" placeholder="Enter Email" required />
                                         </div>
@@ -176,17 +180,16 @@
                 <form id="sendEmailForm" method="post">
                     <input type="hidden" name="property_id" value="<?php echo $propertyDetails->property_id ?>">
                     <div class="" id="name">
-                    <label for="email"></label> <input type="text"
-                                                       class="form-control" name="full_name" id="full_name"
+                    <label for="email"></label> <input type="text" value="<?php echo $full_name ?>"                                                       class="form-control" name="full_name" id="full_name"
                                                        ng-model="form.full_name" placeholder="Full Name" />
                 </div>
                 <div class="email_div" id="email_id_div" style="display:none">
-                    <label for="email"></label> <input type="text"
+                    <label for="email"></label> <input type="text" value="<?php echo isset($this->session->userdata()['email']) ? $this->session->userdata()['email'] : '' ?>"
                                                        class="form-control" name="email" id="email_id"
                                                        ng-model="form.email_id" placeholder="Enter email"  />
                 </div>
                     <div class="phone_number_div" id="email_id_div" style="display:none">
-                <label for="email"></label> <input type="text"
+                <label for="email"></label> <input type="text" value="<?php echo isset($this->session->userdata()['mobile']) ? $this->session->userdata()['mobile'] : '' ?>"
                                                    class="form-control" name="phone" id="email_id"
                                                    ng-model="form.email_id" placeholder="Enter Number"  />
             </div>
@@ -272,7 +275,8 @@
         var login_check_field = $('#login_check_field').val();
         $('#booknowbtn').on('click',function () {
             if(login_check_field == ''){
-                alert('Please Login before Reservation')
+//                alert('Please Login before Reservation')
+                window.location = "<?php echo base_url()?>/index.php/Index1/Login";
             }else{
                 $('#bookNow').modal('show');
             }
@@ -339,6 +343,7 @@
             success: function(data) {
                 document.getElementById('emailalert').innerHTML=data;
                 document.getElementById("sendEmailForm").reset();
+                setTimeout(function() { $('#sendEmail').modal('hide'); }, 1500);
             }
         });
     });

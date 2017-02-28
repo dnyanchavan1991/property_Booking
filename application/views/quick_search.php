@@ -47,7 +47,6 @@
                         <div class="col-sm-2">
                             <div class="form-group">
                                 <label for="checkin">Check-in</label>
-                                <div class="popover-icon" data-container="body"  data-toggle="popover" data-trigger="hover" data-placement="right">  </div>
                                 <i class="fa fa-calendar infield"></i>
                                 <input name="checkIn"  required="required" type="text" id="checkin" value="<?php  echo $formData ? $formData['checkIn']:'' ?>" class="form-control" placeholder="Check-in"/>
                             </div>
@@ -55,7 +54,6 @@
                         <div class="col-sm-2">
                             <div class="form-group">
                                 <label for="checkout">Check-out</label>
-                                <div class="popover-icon" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right">   </div>
                                 <i class="fa fa-calendar infield"></i>
                                 <input name="checkOut" type="text"   required="required" id="checkout" value="<?php  echo $formData ? $formData['checkOut']:'' ?>" class="form-control" placeholder="Check-out"/>
                             </div>
@@ -67,28 +65,28 @@
 
 
                                     <select class="form-control" name="room" id="room">
-                                        <option selected="selected" value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
-                                        <option value="11">11</option>
-                                        <option value="12">12</option>
-                                        <option value="13">13</option>
-                                        <option value="14">14</option>
-                                        <option value="15">15+</option>
+                                        <option selected="selected" disabled="disabled">1</option>
+                                        <option value="Single">2</option>
+                                        <option value="Double">3</option>
+                                        <option value="Deluxe">4</option>
+                                        <option value="Deluxe">5</option>
+                                        <option value="Deluxe">6</option>
+                                        <option value="Deluxe">7</option>
+                                        <option value="Deluxe">8</option>
+                                        <option value="Deluxe">9</option>
+                                        <option value="Deluxe">10</option>
+                                        <option value="Deluxe">11</option>
+                                        <option value="Deluxe">12</option>
+                                        <option value="Deluxe">13</option>
+                                        <option value="Deluxe">14</option>
+                                        <option value="Deluxe">15+</option>
 
                                     </select>
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-2">
-                            <button type="submit" class="btn btn-primary btn-block">Search</button>
+                            <button type="submit" class="btn btn-primary btn-block">Book Now</button>
                         </div>
                         <div class="col-md-12" style="padding-top:10px;">
                             <div class="row">
@@ -261,13 +259,12 @@
                 }
              ?>
             <!-- Room -->
-            <?php foreach($data as $result){   ?>
-            
+            <?php foreach($data as $result){ ?>
                 <div class="col-sm-4">
                     <div class="room-thumb"> <img src="<?php echo base_url().'Admin/'.$result->image_path.'mainImage.jpg' ?>" alt="room 1" class="img-responsive" />
                         <div class="mask">
                             <div class="main">
-                                <h5><?php echo $result->property_name ?></h5>,<h10><?php echo $result->propertyAddress?></h10> 
+                                <h5><?php echo $result->property_name ?></h5>
                                 <!-- <div class="price">&euro; 99<span>a night</span></div>-->
                             </div>
                             <div class="content">

@@ -111,7 +111,7 @@ class RoomAvailability extends CI_Controller {
             }
             $this->session->set_userdata ( 'checkIn',$_POST['checkIn']);
             $this->session->set_userdata ( 'checkOut',$_POST['checkOut']);
-            $this->session->set_userdata ( 'guestCount',$_POST['room'] );
+            $this->session->set_userdata ( 'guestCount','1' );
             $this->session->set_userdata ( 'location',$_POST['location']);
             $this->session->set_userdata ( 'propertyType','0');
             $this->session->set_userdata ( 'featured', '');

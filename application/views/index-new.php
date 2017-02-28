@@ -3,7 +3,6 @@
 <head>
 	<?php include('includes/head.php') ?>
 
-<?php //var_dump($this->session->userdata()['user_id']) ?>
 <body>
 
 <!-- Top header -->
@@ -60,7 +59,6 @@
 						<div class="col-sm-2">
 							<div class="form-group">
 								<label for="checkin">Check-in</label>
-								<div class="popover-icon" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right"> <i class="fa fa-info-circle fa-lg"> </i> </div>
 								<i class="fa fa-calendar infield"></i>
 								<input name="checkIn" type="text"  value="" class="form-control" placeholder="Check-in"/>
 							</div>
@@ -68,7 +66,6 @@
 						<div class="col-sm-2">
 							<div class="form-group">
 								<label for="checkout">Check-out</label>
-								<div class="popover-icon" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right"> <i class="fa fa-info-circle fa-lg"> </i> </div>
 								<i class="fa fa-calendar infield"></i>
 								<input name="checkOut" type="text" value="" class="form-control" placeholder="Check-out"/>
 							</div>
@@ -117,7 +114,7 @@
 				<button type="button" data-toggle="collapse" data-target="#navbar-collapse-grid" class="navbar-toggle"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
 				<a href="<?php echo base_url() ?>" class="navbar-brand">
 					<!-- Logo -->
-					<div id="logo"> <img id="default-logo" src="images/logo.png" alt="Starhotel" style="height:44px;"> <img id="retina-logo" src="images/logo-retina.png" alt="Starhotel" style="height:44px;"> </div>
+					<div id="logo"> <img id="default-logo" src="images/F3.jpg" alt="Starhotel" style="height:44px;"> <img id="retina-logo" src="images/logo-retina.png" alt="Starhotel" style="height:44px;"> </div>
 				</a> </div>
 			<div id="navbar-collapse-grid" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
@@ -148,36 +145,49 @@
 		<div class="banner">
 			<ul>
 				<!-- Slide 1 -->
-				<li data-transition="fade" data-slotamount="7" data-masterspeed="1500" >
-					<!-- Main Image -->
-					<img src="images/slides/3.jpg" style="opacity:0;" alt="image not found"  data-bgfit="cover" data-bgposition="left bottom" data-bgrepeat="no-repeat">
-					<!-- Layers -->
-					<!-- Layer 1 -->
-					<div class="caption sft revolution-starhotel bigtext"
-						 data-x="505"
-						 data-y="30"
-						 data-speed="700"
-						 data-start="1700"
-						 data-easing="easeOutBack">
-						<span><i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i></span> A Five Star Hotel <span><i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i></span></div>
-					<!-- Layer 2 -->
-					<div class="caption sft revolution-starhotel smalltext"
-						 data-x="605"
-						 data-y="105"
-						 data-speed="800"
-						 data-start="1700"
-						 data-easing="easeOutBack">
-						<span>And we like to keep it that way!</span></div>
-					<!-- Layer 3 -->
-					<div class="caption sft"
-						 data-x="775"
-						 data-y="175"
-						 data-speed="1000"
-						 data-start="1900"
-						 data-easing="easeOutBack">
-						<a href="room-list.html" class="button btn btn-purple btn-lg">See rooms</a>
-					</div>
-				</li>
+				<?php
+                foreach($sliderImages as $sliderImage) {
+						?>
+<!--						--><?php //echo base_url().'Admin/'.$propertyTypes->image_path.'mainImage.jpg' ?>
+						<li data-transition="fade" data-slotamount="7" data-masterspeed="1500">
+							<!-- Main Image -->
+							<img src="<?php echo base_url().'Admin/'.$sliderImage->image_path.'mainImage.jpg'; ?>" style="opacity:0;" alt="image not found" data-bgfit="cover"
+<!--								 data-bgposition="left bottom" data-bgrepeat="no-repeat">-->
+							<!-- Layers -->
+							<!-- Layer 1 -->
+							<div class="caption sft revolution-starhotel bigtext"
+								 data-x="505"
+								 data-y="30"
+								 data-speed="700"
+								 data-start="1700"
+								 data-easing="easeOutBack">
+								<span><i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i
+										class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i
+										class="fa fa-star-o"></i></span> A Five Star Hotel <span><i
+										class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i
+										class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i
+										class="fa fa-star-o"></i></span></div>
+							<!-- Layer 2 -->
+							<div class="caption sft revolution-starhotel smalltext"
+								 data-x="605"
+								 data-y="105"
+								 data-speed="800"
+								 data-start="1700"
+								 data-easing="easeOutBack">
+								<span>And we like to keep it that way!</span></div>
+							<!-- Layer 3 -->
+							<div class="caption sft"
+								 data-x="775"
+								 data-y="175"
+								 data-speed="1000"
+								 data-start="1900"
+								 data-easing="easeOutBack">
+								<a href="room-list.html" class="button btn btn-purple btn-lg">See rooms</a>
+							</div>
+						</li>
+						<?php
+					}
+				?>
 				<!-- Slide 2 -->
 				<li data-transition="boxfade" data-slotamount="7" data-masterspeed="1000" >
 					<!-- Main Image -->
@@ -246,7 +256,6 @@
 						<div class="col-sm-2">
 							<div class="form-group">
 								<label for="checkin">Check-in</label>
-								<div class="popover-icon" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right">   </div>
 								<i class="fa fa-calendar infield"></i>
 								<input name="checkIn" type="text" id="checkin" value="" class="form-control" placeholder="Check-in" required="required" />
 							</div>
@@ -254,7 +263,6 @@
 						<div class="col-sm-2">
 							<div class="form-group">
 								<label for="checkout">Check-out</label>
-								<div class="popover-icon" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right">   </div>
 								<i class="fa fa-calendar infield"></i>
 								<input name="checkOut" type="text" id="checkout" value="" class="form-control" placeholder="Check-out" required="required"/>
 							</div>
@@ -265,22 +273,22 @@
 									<label>Guests</label>
 
 
-									<select class="form-control" name="room" id="room">
-										<option selected="selected" value="1">1</option>
-										<option value="2">2</option>
-										<option value="3">3</option>
-										<option value="4">4</option>
-										<option value="5">5</option>
-										<option value="6">6</option>
-										<option value="7">7</option>
-										<option value="8">8</option>
-										<option value="9">9</option>
-										<option value="10">10</option>
-										<option value="11">11</option>
-										<option value="12">12</option>
-										<option value="13">13</option>
-										<option value="14">14</option>
-										<option value="15">15+</option>
+									<select class="form-control" name="abc" id="room">
+										<option selected="selected" disabled="disabled">1</option>
+										<option value="Single">2</option>
+										<option value="Double">3</option>
+										<option value="Deluxe">4</option>
+										<option value="Deluxe">5</option>
+										<option value="Deluxe">6</option>
+										<option value="Deluxe">7</option>
+										<option value="Deluxe">8</option>
+										<option value="Deluxe">9</option>
+										<option value="Deluxe">10</option>
+										<option value="Deluxe">11</option>
+										<option value="Deluxe">12</option>
+										<option value="Deluxe">13</option>
+										<option value="Deluxe">14</option>
+										<option value="Deluxe">15+</option>
 
 									</select>
 								</div>

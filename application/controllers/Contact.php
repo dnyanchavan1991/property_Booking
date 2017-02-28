@@ -39,7 +39,7 @@ class Contact extends CI_Controller {
             $propertyOwnerInfo = $this->PropertyModel->getOwnerDetail($propertyId);
 
             $recepient = $propertyOwnerInfo[0]->email;
- //           $recepient = 'shubhamkamat83352@gmial.com';
+            //$recepient = 'shubhamkamat83352@gmial.com';
             $subject = " Enquiry for Property - ".$propertyOwnerInfo[0]->propertyName;
             $message = $full_name. ' - ' .$email . '  is interested in renting property "'.$propertyOwnerInfo[0]->propertyName;
             $message .= '" From: '.$checkin.' To: '.$checkout.' Message:'.$enquiry;
