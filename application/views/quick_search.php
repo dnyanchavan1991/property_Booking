@@ -264,7 +264,7 @@
                     <div class="room-thumb"> <img src="<?php echo base_url().'Admin/'.$result->image_path.'mainImage.jpg' ?>" alt="room 1" class="img-responsive" />
                         <div class="mask">
                             <div class="main">
-                                <h5><?php echo $result->property_name ?></h5>
+                                <h5><?php echo $result->property_name ?></h5>,<h10><?php echo $result->propertyAddress?></h10> 
                                 <!-- <div class="price">&euro; 99<span>a night</span></div>-->
                             </div>
                             <div class="content">
