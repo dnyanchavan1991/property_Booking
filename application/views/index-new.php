@@ -121,6 +121,7 @@
 					<li class="dropdown active"> <a href="<?php echo base_url() ?>">Home</a>
 					</li>
 					<li> <a href="<?php echo base_url()?>index.php/Search/FeaturedSearch">Featured</a></li>
+					<li> <a href="<?php echo base_url()?>trueholidays">ADMIN</a></li>
 					<li class="dropdown">
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Quick Search
 							<span class="caret"></span></a>
@@ -146,12 +147,14 @@
 			<ul>
 				<!-- Slide 1 -->
 				<?php
+
                 foreach($sliderImages as $sliderImage) {
+					$img = str_replace(' ', '%20', $sliderImage->image_path);
 						?>
-<!--						--><?php //echo base_url().'Admin/'.$propertyTypes->image_path.'mainImage.jpg' ?>
+<!--						--><?php //echo base_url().'images/slides'.$img.'mainImage.jpg' ?>
 						<li data-transition="fade" data-slotamount="7" data-masterspeed="1500">
 							<!-- Main Image -->
-							<img src="<?php echo base_url().'Admin/'.$sliderImage->image_path.'mainImage.jpg'; ?>" style="opacity:0;" alt="image not found" data-bgfit="cover"
+							<img src="<?php echo base_url().'images/slides/'.$img.'mainImage.jpg' ?>" style="" alt="image not found" data-bgfit="cover"
 <!--								 data-bgposition="left bottom" data-bgrepeat="no-repeat">-->
 							<!-- Layers -->
 							<!-- Layer 1 -->
@@ -163,7 +166,7 @@
 								 data-easing="easeOutBack">
 								<span><i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i
 										class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i
-										class="fa fa-star-o"></i></span> A Five Star Hotel <span><i
+										class="fa fa-star-o"></i> </span> <?php echo $sliderImage->property_name ?> <span> <i
 										class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i
 										class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i
 										class="fa fa-star-o"></i></span></div>
@@ -182,43 +185,15 @@
 								 data-speed="1000"
 								 data-start="1900"
 								 data-easing="easeOutBack">
-								<a href="room-list.html" class="button btn btn-purple btn-lg">See rooms</a>
+								<a href="<?php echo base_url('/index.php/Index1/PropertyDetails/'.$sliderImage->property_id.'') ?>" class="button btn btn-purple btn-lg">
+									See rooms
+								</a>
 							</div>
 						</li>
 						<?php
 					}
 				?>
-				<!-- Slide 2 -->
-				<li data-transition="boxfade" data-slotamount="7" data-masterspeed="1000" >
-					<!-- Main Image -->
-					<img src="images/slides/2.jpg"  alt="darkblurbg"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
-					<!-- Layers -->
-					<!-- Layer 1 -->
-					<div class="caption sft revolution-starhotel bigtext"
-						 data-x="585"
-						 data-y="30"
-						 data-speed="700"
-						 data-start="1700"
-						 data-easing="easeOutBack">
-						<span><i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i></span> Double room <span><i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i></span></div>
-					<!-- Layer 2 -->
-					<div class="caption sft revolution-starhotel smalltext"
-						 data-x="682"
-						 data-y="105"
-						 data-speed="800"
-						 data-start="1700"
-						 data-easing="easeOutBack">
-<!--						<span>€ 99,- a night this summer</span></div>-->
-					<!-- Layer 3 -->
-					<div class="caption sft"
-						 data-x="785"
-						 data-y="175"
-						 data-speed="1000"
-						 data-start="1900"
-						 data-easing="easeOutBack">
-						<a href="room-detail.html" class="button btn btn-purple btn-lg">Book this room</a>
-					</div>
-				</li>
+
 			</ul>
 		</div>
 	</div>

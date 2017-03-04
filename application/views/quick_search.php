@@ -323,7 +323,6 @@
         });
     });
         $(document).on('change', '.changeFilters', function () {
-            //("working");
             $.ajax({
                 url: '<?php echo base_url()?>index.php/RoomAvailability/checkRoomAvailabilty',
                 type: 'POST',
@@ -342,7 +341,6 @@
                 type: 'POST',
                 data: $('#roomAvailable').serialize(),
                 success: function(data) {
-                    console.log(data);
 //                    document.body.innerHTML=data;
                     $('#load-result').html(data);
                     $(".container .appear").css("opacity","1");

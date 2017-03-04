@@ -73,7 +73,8 @@ class Index1 extends CI_Controller {
 	public function PropertyDetails($id){
 	    $propertyDetails = $this->PropertyModel->getPropertyDetail($id);
         $propertyInfoDetails = $this->PropertyModel->getPropertyInfoDetail($id);
-	    $this->load->view('room_details.php',array('propertyDetails'=>$propertyDetails[0],'propertyInfoDetails' => $propertyInfoDetails[0]));
+        $property_review = $this->PropertyModel->getPropertyReview($id);
+	    $this->load->view('room_details.php',array('propertyDetails'=>$propertyDetails[0],'propertyInfoDetails' => $propertyInfoDetails[0],'review' => $property_review));
     }
 
     public function Login(){
@@ -112,11 +113,4 @@ class Index1 extends CI_Controller {
         }
     }
 
-    public function  sendEmail()
-    {
-        echo "hello";
-        exit;
-
-
-    }
 }

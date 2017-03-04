@@ -10,7 +10,7 @@ class Review extends CI_Controller {
 				
 	}
 	public function sendReview() {
-		$property_id= $_POST['property_id'];
+		$property_id = $_POST['property_id'];
 		$customer_name= $_POST['review_name'];
 
 		$customer_email = $_POST['review_email'];
@@ -32,8 +32,8 @@ class Review extends CI_Controller {
 							'review_text'=>$review_given
 						);
 		$send_review = $this->PropertyModel->submitReview($reviewArray);
-        $msg = "Thank you..Your Review has been send";
-        echo json_encode($msg);
+        $property_review = $this->PropertyModel->getPropertyReview($property_id);
+        $this->load->view('review_result.php',array('review' => $property_review));
 //		exit;
 //		$propertyDetailInfo = $this->PropertyModel->getPropertyDetail ( $this->session->userdata ( 'propertyId' ) );
 //		$data['propertyName']=$propertyDetailInfo->row()->propertyName;

@@ -485,7 +485,7 @@ class PropertyModel extends CI_Model {
         return $query->result();
     }
     public function getPropertyInfoDetail($propertyId) {
-        $this->db->select ( 'property_type_id, bedrooms, bathrooms, pool, meals, internet_access, television_access as television, pet_friendly, air_condition, in_house_kitchen, other_amenities, leisureActivities, accommodates,latitude,longitude   ' );
+        $this->db->select ( 'property_type_id, bedrooms, bathrooms, pool, meals, internet_access, television_access as television, pet_friendly, air_condition, in_house_kitchen, other_amenities, leisureActivities, accommodates,latitude,longitude,property_price   ' );
         $this->db->from ( "property" );
         $this->db->join ( "property_info", "property.property_id = property_info.property_id" );
         $this->db->where("property_info.property_id = $propertyId");
@@ -1078,6 +1078,17 @@ class PropertyModel extends CI_Model {
             $this->session->set_userdata($data1);
             return true;
         }
+
+    }
+    public function getPropertyReview($id){
+        $customerReview = 'customer_reviews';
+        $this->db->select( '* ' );
+        $this->db->from( " $customerReview " );
+        $this->db->where( 'property_id', $id);
+        $this->db->order_by( 'review_id', 'desc');
+        //$this->db->limit ( 6 );
+        $query = $this->db->get();
+        return $query->result();
 
     }
 }

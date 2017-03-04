@@ -32,11 +32,14 @@ if(isset($this->session->userdata()['first_name']) && $this->session->userdata()
         <!-- Reservation form -->
         <section id="reservation-form" class="mt50 clearfix">
             <div class="col-sm-12 col-md-4">
-                <form class="reservation-vertical clearfix" role="form" method="post" action="php/reservation.php" name="reservationform" id="reservationform">
+                <form class="reservation-vertical clearfix" role="form" method="post"  name="reservationform" id="reservationform">
                     <div class="log">
                         <div class="row">
 <!--                            --><?php //var_dump($this->session->userdata()['user_id']) ?>
                             <input type="hidden" id="login_check_field" value="<?php echo isset($this->session->userdata()['user_id']) ? $this->session->userdata()['user_id'] : '' ?>">
+                            <div class="col-md-12" style="text-align:center;font-size:15px;font-weight:bold;margin-top:-15px;padding-bottom:10px;">
+                                Price : Rs.<?php echo $propertyInfoDetails->property_price ?>
+                            </div>
                             <div class="col-md-12">
                                 <a href="#" id="booknowbtn" class="btn btn-primary btn-block" data-toggle="modal">Book Now</a>
                             </div>
@@ -93,7 +96,31 @@ if(isset($this->session->userdata()['first_name']) && $this->session->userdata()
                             </tr>
                             </tbody>
                         </table>
-                        <p class="mt50">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ligula nibh, cursus id euismod non, scelerisque nec nibh. Nam semper, ligula a rhoncus fermentum, libero lacus vulputate felis, id auctor mauris urna quis diam.</p>
+                        <div class="col-sm-11 mt50" id="review_result" style="padding:0;margin-top: -5px;">
+
+                            <h3>Reviews</h3>
+
+                            <?php
+                                if(isset($review) && !empty($review)){
+                                    foreach ($review as $reviews) {
+                            ?>
+                                <div class="row" style="border-bottom: 1px solid #ccc;padding-bottom:15px;">
+                                    <div class="col-sm-12">
+                                        <h4><?php echo $reviews->customer_name ?></h4>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <?php echo $reviews->review_text ?>
+                                    </div>
+                                </div>
+                            <?php
+                                    }
+                            }else{
+                                echo "<h4>No Reviews</h4>";
+                                }
+                            ?>
+
+                        </div>
+
                     </div>
                     <div class="col-sm-5 mt50">
                         <h2 class="lined-heading"><span>Location</span></h2>
@@ -262,8 +289,6 @@ if(isset($this->session->userdata()['first_name']) && $this->session->userdata()
 </div>
 </div>
 </div>
-<input type="text" id="txtCheckin">
-<input type="text" id="txtCheckout">
 </body>
 </html>
 <!--<script src="https://code.jquery.com/jquery-1.12.4.js"></script>-->
@@ -355,7 +380,8 @@ if(isset($this->session->userdata()['first_name']) && $this->session->userdata()
             type: 'POST',
             data: $('#review_form').serialize(),
             success: function(data) {
-                document.getElementById('review-msg').innerHTML=data;
+                document.getElementById('review-msg').innerHTML = "Thank you..Your Review has been send";
+                $('#review_result').html(data);
                 document.getElementById("review_form").reset();
             }
         });
@@ -399,5 +425,4 @@ if(isset($this->session->userdata()['first_name']) && $this->session->userdata()
     });
 
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmt-QMYNXcRMQMQil1v5ZBEmsuvZtLWS0&callback=initMap"></script>t>
-</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmt-QMYNXcRMQMQil1v5ZBEmsuvZtLWS0&callback=initMap"></script>
