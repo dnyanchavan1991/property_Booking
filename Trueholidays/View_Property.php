@@ -3,14 +3,15 @@
      ob_start();
     //error_reporting(0); 
     session_start();
+	
     if(isset( $_SESSION['TrueHolidays']))
     {
-            
+    
     }
     else
     {
         echo"<script>window.location.href='Login.php';</script>";
-        
+    
     }
 ?>
 <?php
@@ -21,11 +22,11 @@ if(isset($_GET['id']))
         if($_GET['name']=="YES")
         { 
              
-                mysql_query("UPDATE  property SET activation_flag='NO' where property_id='".$_GET['id']."'");
+                mysqli_query($con, "UPDATE  property SET activation_flag='NO' where property_id='".$_GET['id']."'");
         }
         if($_GET['name']=="NO")
         {   
-                mysql_query("UPDATE  property SET activation_flag='YES' where property_id='".$_GET['id']."'");
+                mysqli_query($con, "UPDATE  property SET activation_flag='YES' where property_id='".$_GET['id']."'");
         }
 
     }
@@ -292,14 +293,14 @@ if(isset($_GET['id']))
                                         <tbody>
                                          <?php 
                                         $query="select * from property";
-                                        $res=mysql_query($query);
+                                        $res=mysqli_query($con,$query);
                                        $c=0;
-                                        while($row=mysql_fetch_row($res))
+                                        while($row=mysqli_fetch_row($res))
                                         {
                                             $c++;
                                          $query1="select * from property_owner_info where property_id='".$row[0]."'";
-                                                    $res1=mysql_query($query1);
-                                                    $row1=mysql_fetch_row($res1);
+                                                    $res1=mysqli_query($con,$query1);
+                                                    $row1=mysqli_fetch_row($res1);
                                                     
                                                         
                                                                         

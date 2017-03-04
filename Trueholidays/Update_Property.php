@@ -231,8 +231,8 @@
                         <!-- end row -->
                         <?php 
                             $query="select * from property where property_id='".$id."'";
-                            $res=mysql_query($query);
-                            $row=mysql_fetch_row($res);
+                            $res=mysqli_query($con,$query);
+                            $row=mysqli_fetch_row($res);
                         ?>
 
                 <!-- end page title end breadcrumb -->
@@ -252,12 +252,12 @@
                                                     <option value="0">Select Property</option>
                                                         <?PHP
                                                             $query11="select * from property_type  where property_type_id='".$row[11]."'";
-                                                            $res11=mysql_query($query11);
-                                                            $row11=mysql_fetch_row($res11);
+                                                            $res11=mysqli_query($con,$query11);
+                                                            $row11=mysqli_fetch_row($res11);
                                                               echo"<option value=".$row11[0]." selected>".$row11[1]."</option>";
                                                             $query1="select * from property_type";
-                                                            $res1=mysql_query($query1);
-                                                            while ($row1=mysql_fetch_row($res1)) 
+                                                            $res1=mysqli_query($con,$query1);
+                                                            while ($row1=mysqli_fetch_row($res1)) 
                                                             {
                                                                  echo"<option value=".$row1[0].">".$row1[1]."</option>";
                                                             }
@@ -413,8 +413,8 @@
                                     <hr>
                                     <?php 
                                                 $querypropertyinfo="select * from property_info where property_id='".$id."'";
-                                                $respropertyinfo=mysql_query($querypropertyinfo);
-                                                $rowpropertyinfo=mysql_fetch_row($respropertyinfo);
+                                                $respropertyinfo=mysqli_query($con,$querypropertyinfo);
+                                                $rowpropertyinfo=mysqli_fetch_row($respropertyinfo);
                                         ?>
                                     <div class="form-group">
                                             <label for="message" class="col-md-3 col-md-offset-1 control-label">Map Location :</label>
@@ -851,8 +851,8 @@
         <!-- END wrapper -->
         <?php 
 $querypropertyinfo="select * from property_info where property_id='".$id."'";
-$respropertyinfo=mysql_query($querypropertyinfo);
-$rowpropertyinfo=mysql_fetch_row($respropertyinfo);
+$respropertyinfo=mysqli_query($con,$querypropertyinfo);
+$rowpropertyinfo=mysqli_fetch_row($respropertyinfo);
         ?>
 <script>
       var map;
@@ -1021,8 +1021,8 @@ $rowpropertyinfo=mysql_fetch_row($respropertyinfo);
             $Featured_End_Date=$_POST['txtfeaturedenddate'];
             $Price=$_POST['txtprice'];
 
-             $result = mysql_query("SELECT MAX(property_id) FROM property");
-            $row1 = mysql_fetch_row($result);
+             $result = mysqli_query($con,"SELECT MAX(property_id) FROM property");
+            $row1 = mysqli_fetch_row($result);
             $property_id = $row1[0]+1;
 
             /*$query= "INSERT INTO property_info values('".$property_id."','".$Select_bedrooms."','".$Select_bathrooms."','".$Swimming_Pool."','".$Meals."','".$Internet."','".$Smoking."','".$Cable_TV."','".$Pet_Friendly."','".$Air_Contitioning."','".$Kitchen."','".$Restaurant."','".$Select_beds."','".$Select_accommodates."','".$Parking."','".$First_Aid_Avaliable."',
@@ -1057,15 +1057,15 @@ $rowpropertyinfo=mysql_fetch_row($respropertyinfo);
                         move_uploaded_file($temp,$path.$files);
                     }
 
-                    echo$query= "update  property set property_name='".$Property_Name."',street='".$Street."',city='".$City."',postal_code='".$Pincode."',star_rate='".$Rating."',
+                    $query= "update  property set property_name='".$Property_Name."',street='".$Street."',city='".$City."',postal_code='".$Pincode."',star_rate='".$Rating."',
                                                     state='".$Select_State."',country='".$Country."',image_path='".$path."',
                                                     description='".$Description."',how_to_reach='".$How_To_Reach."',property_type_id='".$Select_Property."',activation_flag='YES' where property_id='".$id."'";
                   
 
-                    $res=mysql_query($query);
+                    $res=mysqli_query($con,$query);
                     if($res)
                     {
-                            echo$query1= "update  property_info set bedrooms='".$Select_bedrooms."',bathrooms='".$Select_bathrooms."',pool='".$Swimming_Pool."',
+                            $query1= "update  property_info set bedrooms='".$Select_bedrooms."',bathrooms='".$Select_bathrooms."',pool='".$Swimming_Pool."',
                               meals='".$Meals."',internet_access='".$Internet."',smoking_allowd='".$Smoking."',television_access='".$Cable_TV."',
                               pet_friendly='".$Pet_Friendly."',air_condition='".$Air_Contitioning."',in_house_kitchen='".$Kitchen."',restaurant='".$Restaurant."',beds='".$Select_beds."',accommodates='".$Select_accommodates."',free_parking='".$Parking."',first_aid_available='".$First_Aid_Avaliable."',
                 entertainment='".$Entertainment."',other_amenities='".$Other_Amenities."',theme='".$Theme."',attractions='".$Attractions."',leisureActivities='".$Leisure."',general='".$General."',payment_facility='".$Payment_Facility."',
@@ -1074,7 +1074,7 @@ $rowpropertyinfo=mysql_fetch_row($respropertyinfo);
                 free_breakfast='".$Free_Breakfast."',Featured='".$Featured."',Featured_startDate='".$Featured_Start_Date."',
                                                         Featured_endDate='".$Featured_End_Date."', Price='".$Price."'   where     property_id='".$id."'";
 
-                        $res1=mysql_query($query1);
+                        $res1=mysqli_query($con,$query1);
                         if($res1)
                         {
                             echo '<script>alert("Data  successfully Update")</script>';

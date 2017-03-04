@@ -5,17 +5,16 @@
         $user_name=$_POST['username'];
         $pass=$_POST['password'];
         $query="select * from registration where user_name='".$user_name."'";
-        $q=mysql_query($query);
-        $row=mysql_fetch_row($q);
+        $q=mysqli_query($con, $query);
+        $row=mysqli_fetch_row($q);
+		 
         if($user_name=='' && $pass=='')
             {
-                $msg='Please Enter Your Correct Email Id & Password'; 
+		        $msg='Please Enter Your Correct Email Id & Password'; 
             }
             else
             {
-               
-                    echo$row[1];
-                        if($row[1]==$user_name && $row[2]==$pass && $row[9]=='admin')
+                         if($row[1]==$user_name && $row[2]==$pass && $row[9]=='admin')
                         {   
                             session_start();
                             
@@ -30,7 +29,7 @@
                 
         
             }
-            mysql_close();
+            mysqli_close();
     }
         
 ?>

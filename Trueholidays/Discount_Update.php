@@ -241,8 +241,8 @@
                         <!-- end row -->
                         <?php 
                             $query="select * from reservation  where reservation_id='".$id."'";
-                            $res=mysql_query($query);
-                            $row=mysql_fetch_row($res);
+                            $res=mysqli_query($con,$query);
+                            $row=mysqli_fetch_row($res);
                         ?>
                 <!-- end page title end breadcrumb -->
                   <form class="form-horizontal" role="form" action="Discount_Update.php?id=<?php echo $id;?>" method="POST" enctype="multipart/form-data">
@@ -259,8 +259,8 @@
                                                 <div class="col-md-6">
                                                 <?php
                                                 $customerinfo="select first_name,last_name from registration where user_id='".$row[2]."'";
-                                                $customerinfores=mysql_query($customerinfo);
-                                                $customerinforow=mysql_fetch_row($customerinfores);
+                                                $customerinfores=mysqli_query($con,$customerinfo);
+                                                $customerinforow=mysqli_fetch_row($customerinfores);
                                                 ?>
                                                     <input type="text" name="txtcustomername" class="form-control" value="<?php echo $customerinforow[0];?> <?php echo$customerinforow[1];?>" placeholder="" required="true" readonly>
                                                 </div>
@@ -270,8 +270,8 @@
                                                 <div class="col-md-6">
                                                 <?php
                                                $propertyinfo="select property_name from property where property_id='".$row[9]."'";
-                                                                $propertyinfores=mysql_query($propertyinfo);
-                                                                $propertyinforow=mysql_fetch_row($propertyinfores);
+                                                                $propertyinfores=mysqli_query($con,$propertyinfo);
+                                                                $propertyinforow=mysqli_fetch_row($propertyinfores);
                                                                     ?>
                                                     <input type="email" name="txtpropertydetails" class="form-control" value="<?php echo $propertyinforow[0];?>" placeholder="" required="true" readonly>
                                                 </div>
@@ -423,7 +423,7 @@
             $reservation_id=$_GET['id'];
 
             echo$query="insert into discount values('','".$Customer_Name."','".$Property_Details."','".$Check_In."','".$Check_Out."','".$Total_Cost."','".$Discount."','".$Final_Cost."','".$Submitted_Date."','".$reservation_id."')";
-            $res=mysql_query($query);
+            $res=mysqli_query($con,$query);
            if($res)
             {
                 echo '<script>alert("Data inserted successfully")</script>';

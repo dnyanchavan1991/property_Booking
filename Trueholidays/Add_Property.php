@@ -245,8 +245,8 @@
                                                     <option value="0">Select Property</option>
                                                         <?PHP
                                                             $query1="select * from property_type";
-                                                            $res1=mysql_query($query1);
-                                                            while ($row1=mysql_fetch_row($res1)) 
+                                                            $res1=mysqli_query($con,$query1);
+                                                            while ($row1=mysqli_fetch_row($res1)) 
                                                             {
                                                                  echo"<option value=".$row1[0].">".$row1[1]."</option>";
                                                             }
@@ -814,8 +814,8 @@
             $Featured_End_Date=$_POST['txtfeaturedenddate'];
             $price=$_POST['txtprice'];
 
-             $result = mysql_query("SELECT MAX(property_id) FROM property");
-            $row1 = mysql_fetch_row($result);
+             $result = mysqli_query($con,"SELECT MAX(property_id) FROM property");
+            $row1 = mysqli_fetch_row($result);
             $property_id = $row1[0]+1;
 
             /*$query= "INSERT INTO property_info values('".$property_id."','".$Select_bedrooms."','".$Select_bathrooms."','".$Swimming_Pool."','".$Meals."','".$Internet."','".$Smoking."','".$Cable_TV."','".$Pet_Friendly."','".$Air_Contitioning."','".$Kitchen."','".$Restaurant."','".$Select_beds."','".$Select_accommodates."','".$Parking."','".$First_Aid_Avaliable."',
@@ -855,7 +855,7 @@
                                                     '".$Description."','".$How_To_Reach."','".$Select_Property."','YES')";
                   
 
-                    $res=mysql_query($query);
+                    $res=mysqli_query($con,$query);
                     if($res)
                     {
                               $query1= "INSERT INTO property_info values('".$property_id."','".$Select_bedrooms."','".$Select_bathrooms."','".$Swimming_Pool."','".$Meals."','".$Internet."','".$Smoking."','".$Cable_TV."','".$Pet_Friendly."','".$Air_Contitioning."','".$Kitchen."','".$Restaurant."','".$Select_beds."','".$Select_accommodates."','".$Parking."','".$First_Aid_Avaliable."',
@@ -865,7 +865,7 @@
                 '".$Free_Breakfast."','".$Featured."','".$Featured_Start_Date."',
                                                         '".$Featured_End_Date."','".$price."')";
 
-                        $res1=mysql_query($query1);
+                        $res1=mysqli_query($con,$query1);
                         if($res1)
                         {
                             echo '<script>alert("Data inserted successfully")</script>';

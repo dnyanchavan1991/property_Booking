@@ -231,8 +231,8 @@
                         <!-- end row -->
                         <?php 
                             $query="select * from reservation  where user_id='".$id."'";
-                            $res=mysql_query($query);
-                            $row=mysql_fetch_row($res);
+                            $res=mysqli_query($con,$query);
+                            $row=mysqli_fetch_row($res);
                         ?>
                 <!-- end page title end breadcrumb -->
                   <form class="form-horizontal" role="form" action="Add_Owner_Info.php" method="POST" enctype="multipart/form-data">
@@ -249,8 +249,8 @@
                                                 <div class="col-md-6">
                                                 <?php
                                                 $customerinfo="select first_name,last_name from registration where user_id='".$row[2]."'";
-                                                $customerinfores=mysql_query($customerinfo);
-                                                $customerinforow=mysql_fetch_row($customerinfores)
+                                                $customerinfores=mysqli_query($con,$customerinfo);
+                                                $customerinforow=mysqli_fetch_row($customerinfores)
                                                 ?>
                                                     <input type="text" name="txtname" class="form-control" value="<?php echo $customerinforow[0] $customerinforow[1];?>" placeholder="" required="true" readonly>
                                                 </div>
@@ -390,8 +390,8 @@
             $Registration_Date=$_POST['txtregistrationdate'];
             $Mobile_No1=$_POST['txtmobile'];
             $Mobile_No2=$_POST['txtmobile2'];
-            $result = mysql_query("SELECT MAX(property_id) FROM property");
-            $row1 = mysql_fetch_row($result);
+            $result = mysqli_query($con,"SELECT MAX(property_id) FROM property");
+            $row1 = mysqli_fetch_row($result);
             $property_id = $row1[0];
 
            /* $query= "INSERT INTO property_owner_info values('','".$property_id."','".$Owner_Name."','".$Mobile_No1."','".$Mobile_No2."','".$Email."','".$Address."','".$Registration_Date."',
@@ -448,7 +448,7 @@
                                                 $query= "INSERT INTO property_owner_info values('','".$property_id."','".$Owner_Name."','".$Mobile_No1."','".$Mobile_No2."','".$Email."','".$Address."','".$Registration_Date."',
                                                         'yes','yes','".$targetIdProof."')";
                                                 
-                                                $res=mysql_query($query);
+                                                $res=mysqli_query($con,$query);
                                                 if($res)
                                                 {
                                                     echo '<script>alert("Data inserted successfully")</script>';

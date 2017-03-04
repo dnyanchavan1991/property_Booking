@@ -210,8 +210,8 @@
                                     <ul class="bxslider property-slider" >
                                         <?php 
                                         $query="select image_path from property where property_id='".$id."'";
-                                        $res=mysql_query($query);
-                                        $row=mysql_fetch_row($res);
+                                        $res=mysqli_query($con,$query);
+                                        $row=mysqli_fetch_row($res);
                                                 $directory = $row[0];
                                                 $images = glob($directory . "*");
 
@@ -226,8 +226,8 @@
                                         <div id="bx-pager" class="text-center hide-phone ">
                                             <?php  
                                                 $query1="select image_path from property where property_id='".$id."'";
-                                                $res1=mysql_query($query1);
-                                                $row1=mysql_fetch_row($res1);
+                                                $res1=mysqli_query($con,$query1);
+                                                $row1=mysqli_fetch_row($res1);
                                                 $directory1 = $row1[0];
                                                 $images1 = glob($directory1 . "*");
                                                  $c=0;
@@ -248,8 +248,8 @@
                                     <div class="m-t-30">
                                     <?php 
                                          $query="select * from property where property_id='".$id."'";
-                                        $res=mysql_query($query);
-                                        $row=mysql_fetch_row($res);
+                                        $res=mysqli_query($con,$query);
+                                        $row=mysqli_fetch_row($res);
 
                                     ?>
                                         <h3>Property Infomation</h3>
@@ -274,8 +274,8 @@
                                                 <ul class="list-unstyled proprerty-features card-box">
                                                 <?php 
                                                      $query="select * from property_info where property_id='".$id."'";
-                                                    $res=mysql_query($query);
-                                                    $row=mysql_fetch_row($res);
+                                                    $res=mysqli_query($con,$query);
+                                                    $row=mysqli_fetch_row($res);
 
                                                 echo'<div class="row">';
                                                     if($row[3]=="Yes")
@@ -443,8 +443,8 @@
                                         <hr>
                                         <?php 
                                          $queryowner="select * from property_owner_info where property_id='".$id."'";
-                                         $resowner=mysql_query($queryowner);
-                                         $rowowner=mysql_fetch_row($resowner);
+                                         $resowner=mysqli_query($con,$queryowner);
+                                         $rowowner=mysqli_fetch_row($resowner);
                                         ?>
                                         <div class="member-card">
                                             <div class="thumb-xl member-thumb m-b-10 center-block">
@@ -467,8 +467,8 @@
                                                  <p><center>Star Rating:
                                                  <?php 
                                          $queryownerrating="select * from property where property_id='".$id."'";
-                                         $resownerrating=mysql_query($queryownerrating);
-                                         $rowownerrating=mysql_fetch_row($resownerrating);
+                                         $resownerrating=mysqli_query($con,$queryownerrating);
+                                         $rowownerrating=mysqli_fetch_row($resownerrating);
                                          for($i=1; $i<=$rowownerrating[5]; $i++)
                                          {
                                             echo'<i class="fa fa-star text-warning"></i>';
@@ -578,8 +578,8 @@
                                                 <tbody>
                                                 <?php 
                                                     $query="select * from property_info where property_id='".$id."'";
-                                                    $res=mysql_query($query);
-                                                    $row=mysql_fetch_row($res);
+                                                    $res=mysqli_query($con,$query);
+                                                    $row=mysqli_fetch_row($res);
                                                     if($row[3]!=Null)
                                                     {
                                                         echo'<tr>
@@ -866,8 +866,8 @@
 </script>
 <?php 
 $query="select * from property_info where property_id='".$id."'";
-                                                    $res=mysql_query($query);
-                                                    $row=mysql_fetch_row($res);
+                                                    $res=mysqli_query($con,$query);
+                                                    $row=mysqli_fetch_row($res);
                                                    
 ?>
 <script>

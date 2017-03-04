@@ -121,7 +121,7 @@
 					<li class="dropdown active"> <a href="<?php echo base_url() ?>">Home</a>
 					</li>
 					<li> <a href="<?php echo base_url()?>index.php/Search/FeaturedSearch">Featured</a></li>
-					<li> <a href="<?php echo base_url()?>trueholidays">ADMIN</a></li>
+					<li> <a href="<?php echo base_url()?>Trueholidays">ADMIN</a></li>
 					<li class="dropdown">
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Quick Search
 							<span class="caret"></span></a>

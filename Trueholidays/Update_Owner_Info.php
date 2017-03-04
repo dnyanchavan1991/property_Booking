@@ -233,8 +233,8 @@
                 <!-- end page title end breadcrumb -->
                 <?php 
                   $queryowner="select * from property_owner_info where property_id='".$id."'";
-                                         $resowner=mysql_query($queryowner);
-                                         $rowowner=mysql_fetch_row($resowner);
+                                         $resowner=mysqli_query($con,$queryowner);
+                                         $rowowner=mysqli_fetch_row($resowner);
 
                 ?>
                   <form class="form-horizontal" role="form" action="Update_Owner_Info.php?id=<?php echo $id;?>" method="POST" enctype="multipart/form-data">
@@ -266,7 +266,7 @@
                                                     $results= glob($rowowner[10].$id.'*');
                                                         $filename = $results[0];
                                                 ?>
-                                                     <center><img src="<?php echo $filename;?>" height="100px" class="img-thumbnail" width="100px" alt="img not found"></center>
+                  <center><img src="<?php echo $filename;?>" height="100px" class="img-thumbnail" width="100px" alt="img not found"></center>
                                                      
                                                 </div>
                                             </div>
@@ -406,8 +406,8 @@
             $Mobile_No1=$_POST['txtmobile'];
             $Mobile_No2=$_POST['txtmobile2'];
             /*$property_id=$_GET['id'];*/
-           $result = mysql_query("SELECT * FROM property_owner_info where property_id='".$id."'");
-            $row1 = mysql_fetch_row($result);
+           $result = mysqli_query($con,"SELECT * FROM property_owner_info where property_id='".$id."'");
+            $row1 = mysqli_fetch_row($result);
             $property_id = $id;
              $owner_id = $row1[0];
              $fdata_mainImg = $_FILES['iddoc'];
@@ -424,7 +424,7 @@
                     registred_date='".$Registration_Date."',
                             email_me='yes',sms_me='yes', Owner_Profile='".$path."' where owner_id='".$owner_id."'";
                     
-                    $res=mysql_query($query);
+                    $res=mysqli_query($con,$query);
                     if($res)
                     {
                         echo '<script>alert("Data  successfully Updated")</script>';

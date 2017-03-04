@@ -386,8 +386,8 @@
             $Registration_Date=$_POST['txtregistrationdate'];
             $Mobile_No1=$_POST['txtmobile'];
             $Mobile_No2=$_POST['txtmobile2'];
-            $result = mysql_query("SELECT MAX(property_id) FROM property");
-            $row1 = mysql_fetch_row($result);
+            $result = mysqli_query($con,"SELECT MAX(property_id) FROM property");
+            $row1 = mysqli_fetch_row($result);
             $property_id = $row1[0];
 
            /* $query= "INSERT INTO property_owner_info values('','".$property_id."','".$Owner_Name."','".$Mobile_No1."','".$Mobile_No2."','".$Email."','".$Address."','".$Registration_Date."',
@@ -444,7 +444,7 @@
                                                 $query= "INSERT INTO property_owner_info values('','".$property_id."','".$Owner_Name."','".$Mobile_No1."','".$Mobile_No2."','".$Email."','".$Address."','".$Registration_Date."',
                                                         'yes','yes','".$targetIdProof."')";
                                                 
-                                                $res=mysql_query($query);
+                                                $res=mysqli_query($con,$query);
                                                 if($res)
                                                 {
                                                     echo '<script>alert("Data inserted successfully")</script>';

@@ -32,10 +32,10 @@ $query = sprintf("INSERT INTO markers " .
          mysql_real_escape_string($lng),
          mysql_real_escape_string($type));
 
-$result = mysql_query($query);
+$result = mysqli_query($con,$query);
 
 if (!$result) {
-  die('Invalid query: ' . mysql_error());
+  die('Invalid query: ' . mysqli_error());
 }
 
 ?>

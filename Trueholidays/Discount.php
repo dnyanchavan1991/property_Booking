@@ -231,29 +231,29 @@
                                         <tbody>
                                          <?php 
                                         $query="select * from reservation";
-                                        $res=mysql_query($query);
+                                        $res=mysqli_query($con,$query);
                                        $c=0;
-                                        while($row1=mysql_fetch_row($res))
+                                        while($row1=mysqli_fetch_row($res))
                                         {
                                             $c++;             
                                                 echo"<tr>
                                                     <td>$c</td>";
                                                      $customerinfo="select first_name,last_name from registration where user_id='".$row1[2]."'";
-                                                    $customerinfores=mysql_query($customerinfo);
-                                                    while ($customerinforow=mysql_fetch_row($customerinfores)) 
+                                                    $customerinfores=mysqli_query($con,$customerinfo);
+                                                    while ($customerinforow=mysqli_fetch_row($customerinfores)) 
                                                     {
                                                        echo"  <td>$customerinforow[0] $customerinforow[1]</td>";
                                                         $propertyinfo="select property_name from property where property_id='".$row1[9]."'";
-                                                        $propertyinfores=mysql_query($propertyinfo);
-                                                        while ($propertyinforow=mysql_fetch_row($propertyinfores)) 
+                                                        $propertyinfores=mysqli_query($con,$propertyinfo);
+                                                        while ($propertyinforow=mysqli_fetch_row($propertyinfores)) 
                                                         {
                                                         echo" <td>$propertyinforow[0]</td>
                                                          <td>$row1[3]</td>
                                                          <td>$row1[4]</td>
                                                          <td>$row1[8]</td>";
                                                                $discount="select Discount from discount where reservation_id='".$row1[0]."'";
-                                                                $discountres=mysql_query($discount);
-                                                                $discountrow=mysql_fetch_row($discountres);
+                                                                $discountres=mysqli_query($con,$discount);
+                                                                $discountrow=mysqli_fetch_row($discountres);
 
                                                                  if($discountrow[0]==Null)
                                                                  {
@@ -268,7 +268,7 @@
                                                                  {
                                                                      echo" <td><center>
                                                                     <a href='UpgradeDiscount_Update.php?id=$row1[0]'>
-                                                                        <button type='button' class='btn btn-success btn-xs btn-block waves-effect waves-light'> Upgread Discount
+                                                                        <button type='button' class='btn btn-success btn-xs btn-block waves-effect waves-light'> Adjust Discount
                                                                          </button>
                                                                     </a></center>
                                                                 </td>";
