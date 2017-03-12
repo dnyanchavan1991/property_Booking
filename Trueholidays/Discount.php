@@ -255,7 +255,7 @@
                                                                 $discountres=mysqli_query($con,$discount);
                                                                 $discountrow=mysqli_fetch_row($discountres);
 
-                                                                 if($discountrow[0]==Null)
+                                                                 if($discountrow[0]==Null || $discountrow[0]==0)
                                                                  {
                                                                     echo" <td><center>
                                                                     <a href='Discount_Update.php?id=$row1[0]'>
@@ -277,6 +277,7 @@
                                                           }
                                                      }
                                              echo" </tr>";
+
                                         }
                                         ?>
                                        

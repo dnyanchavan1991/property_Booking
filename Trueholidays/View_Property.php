@@ -311,8 +311,10 @@ if(isset($_GET['id']))
                                                                  <td>$row1[3]</td>
                                                                  <td>$row1[7]</td>
                                                                  <td>$row[6]</td>
-                                                                 <td>$row[3]</td>
-                                                                <td><center>
+                                                                 <td>$row[3]</td>";
+                                                                  if($row[12]=="YES")
+                                                                {
+                                                                echo"<td><center>
                                                                     <a href='Update_Property.php?id=$row[0]'>
                                                                         <button type='button' class='btn btn-info btn-md btn-block waves-effect waves-light'> 
                                                                         <i class='glyphicon glyphicon-edit'></i>
@@ -325,8 +327,7 @@ if(isset($_GET['id']))
                                                                         </button>
                                                                     </a></center>
                                                                 </td>";
-                                                                if($row[12]=="YES")
-                                                                {
+                                                               
                                                                      echo'<td><center>
                                                                     <a href="">
                                                                         <button type="button" id="status'.$row[0].'" style="background-color:Green" value="YES" onclick="change('.$row[0].')" class="btn btn-success  btn-md btn-block waves-effect waves-light"><i class="glyphicon glyphicon-thumbs-up"></i>
@@ -336,6 +337,19 @@ if(isset($_GET['id']))
                                                                 }
                                                                 else
                                                                 {
+                                                                    echo"<td><center>
+                                                                    
+                                                                        <button type='hidden' class='btn btn-info btn-md btn-block waves-effect waves-light' disabled > 
+                                                                        <i class='glyphicon glyphicon-edit' ></i>
+                                                                         </button>
+                                                                    </center>
+                                                                </td>
+                                                                <td><center>
+                                                                        <button type='hidden' class='btn btn-primary  btn-md btn-block waves-effect waves-light'
+                                                                        disabled> <i class='glyphicon glyphicon-th-large'></i>
+                                                                        </button>
+                                                                    </center>
+                                                                </td>";
                                                                      echo'<td><center>
                                                                     <a href="">
                                                                         <button type="button" id="status'.$row[0].'" value="NO" style="background-color:red" onclick="change('.$row[0].')" class="btn btn-danger  btn-md btn-block waves-effect waves-light"><i class="glyphicon glyphicon-thumbs-down"></i>
@@ -346,7 +360,7 @@ if(isset($_GET['id']))
                                                                 }
                                                                
                                                             echo"</tr>";
-                                            
+                                             
                                             
                                         }
                                         ?>

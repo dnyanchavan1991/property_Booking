@@ -431,7 +431,7 @@
                                         $newidproofname =$property_id.".".$upload_idp_exts;
                                        /* $targetPhoto = 'uploads/'.$newname;
                                         $targetResume = 'uploads/'.$newresumename;*/
-                                        $targetIdProof = 'Owner Profile/'.$newidproofname;
+                                        $targetIdProof = 'Owner Profile/';
                                         if (/*$_FILES["photo"]["error"] > 0 || $_FILES["resume"]["error"] > 0 ||*/ $_FILES["iddoc"]["error"]>0)
                                         {
                                             echo '<div class="alert alert-danger"><strong>Oh snap!</strong>&nbsp;Image too large. image size should be less than 2 MB.</div>';
@@ -440,7 +440,7 @@
                                         {
                                                 /*move_uploaded_file($_FILES["photo"]["tmp_name"],$targetPhoto);
                                                 move_uploaded_file($_FILES["resume"]["tmp_name"],$targetResume);*/
-                                                move_uploaded_file($_FILES["iddoc"]["tmp_name"],$targetIdProof);
+                                                move_uploaded_file($_FILES["iddoc"]["tmp_name"],$targetIdProof.$newidproofname);
                                                 $query= "INSERT INTO property_owner_info values('','".$property_id."','".$Owner_Name."','".$Mobile_No1."','".$Mobile_No2."','".$Email."','".$Address."','".$Registration_Date."',
                                                         'yes','yes','".$targetIdProof."')";
                                                 

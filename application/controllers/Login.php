@@ -1,5 +1,5 @@
 <?php
-class Login extends CI_Controller {
+/*class Login extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct();
@@ -52,3 +52,25 @@ class Login extends CI_Controller {
 	}
 	
 }
+*/
+
+   public function LoginCheck(){
+        if(isset($_POST['email']) && isset($_POST['password']))
+        {
+          if($_POST['email'] == 'admin' && $_POST['password'] == 'admin'){
+                redirect(site_url()."Trueholidays/Add_Property.php");
+          }else{
+              $this->load->model('PropertyModel');
+              $result = $this->PropertyModel->LoginCheck();
+              if(! $result){
+                  $this->session->set_flashdata('login_check', 'Wrong email or password, please try again.');
+                  $this->Login();
+
+              }else{
+                  redirect(base_url());
+                  //$this->index();
+              }
+          }
+        }
+
+        ?>

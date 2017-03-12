@@ -62,6 +62,7 @@
         <![endif]-->
 
         <script src="assets/js/modernizr.min.js"></script>
+        <script src="assets/js/jquery.min.js"></script>
         <script type="text/javascript">
             function checkdate(val)
             {
@@ -78,6 +79,24 @@
                         document.getElementById("datepicker-autoclose").value=val;
                     }
             }
+
+    $(document).ready(function(){
+   
+        $("select").change(function(){
+            $( "select option:selected").each(function(){
+                if($(this).attr("value")=="Yes"){
+                   
+                    $('#startdate').show(); 
+                    $('#enddate').show(); 
+                }
+                if($(this).attr("value")=="No"){
+                     $('#startdate').hide(); 
+                    $('#enddate').hide(); 
+                }
+            });
+        }).change();
+    });
+          
         </script>
     </head>
 
@@ -420,8 +439,8 @@
                                             <label for="message" class="col-md-3 col-md-offset-1 control-label">Map Location :</label>
                                              <div class="col-md-6">
                                               <div id="map" style='height: 200px;max-width:100%;'></div>
-                                               <input class="form-control" type="text" name="txtlatitude" id="latbox" value="<?php echo $rowpropertyinfo[23];?>" readonly>
-                                                <input class="form-control" type="text" name="txtlongitude" id="lngbox" value="<?php echo $rowpropertyinfo[24];?>" readonly>
+                                               <input class="form-control" type="hidden" name="txtlatitude" id="latbox" value="<?php echo $rowpropertyinfo[23];?>" readonly>
+                                                <input class="form-control" type="hidden" name="txtlongitude" id="lngbox" value="<?php echo $rowpropertyinfo[24];?>" readonly>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -795,13 +814,13 @@
                                                 </div>
                                             </div>
 
-                                            <div class="form-group">
+                                            <div class="form-group " id="startdate">
                                                  <label class="col-md-3 col-md-offset-1 control-label" for="example-email">Featured Start Date:</label>
                                                 <div class="col-md-6">
-                                                   <input type="text" name="txtfeaturedstartdate" value="<?php echo $rowpropertyinfo[27];?>" id="nowdate" class="form-control"  readonly>
+                                                   <input type="text" name="txtfeaturedstartdate" value="<?php date_default_timezone_set("Asia/Kolkata"); echo date("m/d/Y");?>" id="nowdate" class="form-control"  readonly>
                                                 </div>
                                             </div>
-                                             <div class="form-group">
+                                             <div class="form-group" id="enddate">
                                                  <label class="col-md-3 col-md-offset-1 control-label" for="example-email">Featured Start Date:</label>
                                                 <div class="col-md-6">
                                                     <div class="input-group">
@@ -910,7 +929,7 @@ $rowpropertyinfo=mysqli_fetch_row($respropertyinfo);
             var resizefunc = [];
         </script>
 <!-- jQuery  -->
-        <script src="assets/js/jquery.min.js"></script>
+        <!-- <script src="assets/js/jquery.min.js"></script> -->
         <script src="assets/js/bootstrap.min.js"></script>
         <script src="assets/js/detect.js"></script>
         <script src="assets/js/fastclick.js"></script>
@@ -1025,6 +1044,17 @@ $rowpropertyinfo=mysqli_fetch_row($respropertyinfo);
             $row1 = mysqli_fetch_row($result);
             $property_id = $row1[0]+1;
 
+            if($Featured=="Yes")
+            {
+            $Featured_Start_Date=$_POST['txtfeaturedstartdate'];
+            $Featured_End_Date=$_POST['txtfeaturedenddate'];
+            }
+            else
+            {
+                $Featured_Start_Date="";
+                $Featured_End_Date="";
+            }
+
             /*$query= "INSERT INTO property_info values('".$property_id."','".$Select_bedrooms."','".$Select_bathrooms."','".$Swimming_Pool."','".$Meals."','".$Internet."','".$Smoking."','".$Cable_TV."','".$Pet_Friendly."','".$Air_Contitioning."','".$Kitchen."','".$Restaurant."','".$Select_beds."','".$Select_accommodates."','".$Parking."','".$First_Aid_Avaliable."',
             '".$Entertainment."','".$Other_Amenities."','".$Theme."','".$Attractions."','".$Leisure."','".$General."','".$Payment_Facility."','".$latitude."','".$latitude."',
             '".$Free_Breakfast."','".$Featured."','".$Featured_Start_Date."'
@@ -1072,7 +1102,7 @@ $rowpropertyinfo=mysqli_fetch_row($respropertyinfo);
                 latitude='".$Latitude."',
                 longitude='".$Longitude."',
                 free_breakfast='".$Free_Breakfast."',Featured='".$Featured."',Featured_startDate='".$Featured_Start_Date."',
-                                                        Featured_endDate='".$Featured_End_Date."', Price='".$Price."'   where     property_id='".$id."'";
+                                                        Featured_endDate='".$Featured_End_Date."', property_price='".$Price."'   where     property_id='".$id."'";
 
                         $res1=mysqli_query($con,$query1);
                         if($res1)
@@ -1087,18 +1117,15 @@ $rowpropertyinfo=mysqli_fetch_row($respropertyinfo);
                     }
                     else
                     {
-                        echo '<script>alert("Data Update")</script>';
+                        echo '<script>alert("Data not Update")</script>';
                     }
  
 
                 }
 
             }
+             mysql_close();
 
         }
     
 ?>
-<!-- <iframe src="//www.google.com/maps/embed/v1/place?q=Harrods,Brompton%20Rd,%20UK
-      &zoom=17
-      &key=AIzaSyAJMhoRgsAn7Jv1QnrJuigVHmS2T53uxjg">
-  </iframe> -->

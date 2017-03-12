@@ -447,10 +447,14 @@
                                          $rowowner=mysqli_fetch_row($resowner);
                                         ?>
                                         <div class="member-card">
-                                            <div class="thumb-xl member-thumb m-b-10 center-block">
+                                            <div class="thumb-xl member-thumb  center-block">
                                            <?php if($rowowner[10]!=NULL)
                                             {
-                                                echo"<img src='$rowowner[10]' class='img-circle img-responsive img-thumbnail' alt='profile-image'>";
+                                                
+                                                    $results= glob($rowowner[10].$id.'*');
+                                                        $filename = $results[0];
+                                        
+                                                echo"<img src='$filename' class='img-circle img-thumbnail'  alt='Profile img Not Avaliable'> ";
                                             }
                                             else
                                             {
@@ -460,10 +464,10 @@
                                                 <!-- <img src="<?php echo$rowowner[10];?>" class="img-circle img-responsive img-thumbnail" alt="profile-image"> -->
                                                 <i class="mdi mdi-star-circle member-star text-success" title="Featublue Agent"></i>
                                             </div>
-                                            <br><br>
+                                            <br>
                                             <hr>
                                             <div class="">
-                                                <h4 class="m-b-5"><center><?php echo$rowowner[2];?></center></h4>
+                                               
                                                  <p><center>Star Rating:
                                                  <?php 
                                          $queryownerrating="select * from property where property_id='".$id."'";
@@ -483,6 +487,7 @@
                                                     <i class="fa fa-star text-warning"></i>
                                                      --></center>
                                                 </p>
+                                                 <h4 class="m-b-5"><center><?php echo$rowowner[2];?></center></h4>
                                             </div>
 
                                             <div class="row">

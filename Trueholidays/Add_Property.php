@@ -41,6 +41,7 @@
 
         <!-- Jquery filer css -->
         <link href="../plugins/jquery.filer/css/jquery.filer.css" rel="stylesheet" />
+
         <link href="../plugins/jquery.filer/css/themes/jquery.filer-dragdropbox-theme.css" rel="stylesheet" />
 
         <!-- App css -->
@@ -60,7 +61,12 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
 
-        <script src="assets/js/modernizr.min.js"></script>
+       
+         <script src="assets/js/jquery.min.js"></script> 
+
+       <script src="assets/js/modernizr.min.js"></script> 
+      
+ <!-- <script type="text/javascript" src="../plugins/autocomplete/jquery.mockjax.js"></script>  -->
         <script type="text/javascript">
             function checkdate(val)
             {
@@ -77,6 +83,65 @@
                         document.getElementById("datepicker-autoclose").value=val;
                     }
             }
+/*$(document).ready(function()
+{
+    $("#startdate").hide();
+    $("#enddate").hide();
+        function checkdate1(val)
+            {
+                alert(val);
+                if(val=="Yes")
+                {
+                    $("#startdate").show();
+                    $("#enddate").show();
+                }
+                else
+                {
+                     $("#startdate").hide();
+                    $("#enddate").hide();
+                }
+               
+            }
+
+});*/
+/*
+$(function() {
+    $('#startdate').hide(); 
+            $('#enddate').hide(); 
+    $('#checkdate1').change(function(){
+
+        if($('#Yes').val() == 'YesYes')
+         {
+
+            $('#startdate').show(); 
+            $('#enddate').show(); 
+        }
+         else if($('#No').val() == 'NoNo')
+         {
+             $('#startdate').hide(); 
+            $('#enddate').hide(); 
+        } 
+    });
+});*/
+
+$(document).ready(function(){
+    $('#startdate').hide(); 
+                    $('#enddate').hide(); 
+        $("select").change(function(){
+            $( "select option:selected").each(function(){
+                if($(this).attr("value")=="Yes"){
+                   
+                    $('#startdate').show(); 
+                    $('#enddate').show(); 
+                }
+                if($(this).attr("value")=="No"){
+                     $('#startdate').hide(); 
+                    $('#enddate').hide(); 
+                }
+            });
+        }).change();
+    });
+            
         </script>
     </head>
 
@@ -245,8 +310,8 @@
                                                     <option value="0">Select Property</option>
                                                         <?PHP
                                                             $query1="select * from property_type";
-                                                            $res1=mysqli_query($con,$query1);
-                                                            while ($row1=mysqli_fetch_row($res1)) 
+                                                            $res1=mysql_query($query1);
+                                                            while ($row1=mysql_fetch_row($res1)) 
                                                             {
                                                                  echo"<option value=".$row1[0].">".$row1[1]."</option>";
                                                             }
@@ -368,8 +433,8 @@
                                             <label for="message" class="col-md-3 col-md-offset-1 control-label">Map Location :</label>
                                              <div class="col-md-6">
                                               <div id="map" style='height: 200px;max-width:100%;'></div>
-                                               <input class="form-control" type="text" name="txtlatitude" id="latbox">
-                                                <input class="form-control" type="text" name="txtlongitude" id="lngbox">
+                                               <input class="form-control" type="hidden" name="txtlatitude" id="latbox" >
+                                                <input class="form-control" type="hidden" name="txtlongitude" id="lngbox" >
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -586,29 +651,32 @@
                                             <div class="form-group">
                                                  <label class="col-md-3 col-md-offset-1 control-label" for="example-email">Featured :</label>
                                                 <div class="col-md-6">
-                                                    <select class="selectpicker" data-style="btn-default" name="txtfeatured" >
+                                                    <select class="selectpicker" data-style="btn-default" id="checkdate1" name="txtfeatured" onchange="checkdate1(this.value)">
                                                     <option value="0">Select Featured</option>
-                                                        <option value='Yes'>YES</option>
-                                                        <option value='No'>NO</option>
+                                                        <option value='Yes' id="Yes">YES</option>
+                                                        <option value='No' id="No">NO</option>
                                                     </select>
                                                 </div>
                                             </div>
+                                            <div id="featureddate">
+                                                
+                                            </div>
 
-                                            <div class="form-group">
+                                        <div class="form-group" id="startdate">
                                                  <label class="col-md-3 col-md-offset-1 control-label" for="example-email">Featured Start Date:</label>
                                                 <div class="col-md-6">
                                                    <input type="text" name="txtfeaturedstartdate" value="<?php date_default_timezone_set("Asia/Kolkata"); echo date("m/d/Y");?>" id="nowdate" class="form-control" required="true" readonly>
                                                 </div>
                                             </div>
-                                             <div class="form-group">
+                                             <div class="form-group" id="enddate">
                                                  <label class="col-md-3 col-md-offset-1 control-label" for="example-email">Featured Start Date:</label>
                                                 <div class="col-md-6">
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" placeholder="mm/dd/yyyy" id="datepicker-autoclose" name="txtfeaturedenddate" onchange="checkdate(this.value);" required="true">
+                                                        <input type="text" class="form-control" placeholder="mm/dd/yyyy" id="datepicker-autoclose" name="txtfeaturedenddate" onchange="checkdate(this.value);" >
                                                         <span class="input-group-addon bg-custom b-0"><i class="mdi mdi-calendar text-white"></i></span>
-                                                    </div><!-- input-group -->
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            </div> 
                                             <div class="form-group">
                                                  <label class="col-md-3 col-md-offset-1 control-label" for="example-email">Price:</label>
                                                 <div class="col-md-6">
@@ -704,7 +772,10 @@
             var resizefunc = [];
         </script>
 <!-- jQuery  -->
-        <script src="assets/js/jquery.min.js"></script>
+ 
+  <!--  <script src="assets/js/modernizr.min.js"></script> -->
+        <script src="assets/js/jquery.min.js"></script>  
+        
         <script src="assets/js/bootstrap.min.js"></script>
         <script src="assets/js/detect.js"></script>
         <script src="assets/js/fastclick.js"></script>
@@ -723,7 +794,7 @@
         <script src="../plugins/bootstrap-touchspin/js/jquery.bootstrap-touchspin.min.js" type="text/javascript"></script>
         <script src="../plugins/bootstrap-maxlength/bootstrap-maxlength.min.js" type="text/javascript"></script>
 
-        <script type="text/javascript" src="../plugins/autocomplete/jquery.mockjax.js"></script>
+       <script type="text/javascript" src="../plugins/autocomplete/jquery.mockjax.js"></script> 
         <script type="text/javascript" src="../plugins/autocomplete/jquery.autocomplete.min.js"></script>
         <script type="text/javascript" src="../plugins/autocomplete/countries.js"></script>
         <script type="text/javascript" src="assets/pages/jquery.autocomplete.init.js"></script>
@@ -743,7 +814,7 @@
         <!-- App js -->
         <script src="assets/js/jquery.core.js"></script>
         <script src="assets/js/jquery.app.js"></script>
-        <!-- Google Map -->
+        <!-- Google Map 
          <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
         <script type="text/javascript" src="../plugins/gmaps/gmaps.js"></script>
           <!-- Bx slider js -->
@@ -810,12 +881,23 @@
             $Leisure=$_POST['txtleisure'];
             $General=$_POST['txtgeneral'];
             $Featured=$_POST['txtfeatured'];
-            $Featured_Start_Date=$_POST['txtfeaturedstartdate'];
+             $Featured_Start_Date=$_POST['txtfeaturedstartdate'];
             $Featured_End_Date=$_POST['txtfeaturedenddate'];
             $price=$_POST['txtprice'];
 
-             $result = mysqli_query($con,"SELECT MAX(property_id) FROM property");
-            $row1 = mysqli_fetch_row($result);
+            if($Featured=="Yes")
+            {
+            $Featured_Start_Date=$_POST['txtfeaturedstartdate'];
+            $Featured_End_Date=$_POST['txtfeaturedenddate'];
+            }
+            else
+            {
+                $Featured_Start_Date="";
+                $Featured_End_Date="";
+            }
+
+             $result = mysql_query("SELECT MAX(property_id) FROM property");
+            $row1 = mysql_fetch_row($result);
             $property_id = $row1[0]+1;
 
             /*$query= "INSERT INTO property_info values('".$property_id."','".$Select_bedrooms."','".$Select_bathrooms."','".$Swimming_Pool."','".$Meals."','".$Internet."','".$Smoking."','".$Cable_TV."','".$Pet_Friendly."','".$Air_Contitioning."','".$Kitchen."','".$Restaurant."','".$Select_beds."','".$Select_accommodates."','".$Parking."','".$First_Aid_Avaliable."',
@@ -825,7 +907,7 @@
            
             if ($_POST['txtselectproperty']=="0" && $_POST['txtselectstate']=="0" &&  $_POST['txtfeatured']==0) 
             {
-                echo "<script>alert('Please select Album');</script>";
+                echo "<script>alert('Please select field');</script>";
             }
             else
             {    
@@ -855,21 +937,21 @@
                                                     '".$Description."','".$How_To_Reach."','".$Select_Property."','YES')";
                   
 
-                    $res=mysqli_query($con,$query);
+                    $res=mysql_query($query);
                     if($res)
                     {
-                              $query1= "INSERT INTO property_info values('".$property_id."','".$Select_bedrooms."','".$Select_bathrooms."','".$Swimming_Pool."','".$Meals."','".$Internet."','".$Smoking."','".$Cable_TV."','".$Pet_Friendly."','".$Air_Contitioning."','".$Kitchen."','".$Restaurant."','".$Select_beds."','".$Select_accommodates."','".$Parking."','".$First_Aid_Avaliable."',
+                             echo $query1= "INSERT INTO property_info values('".$property_id."','".$Select_bedrooms."','".$Select_bathrooms."','".$Swimming_Pool."','".$Meals."','".$Internet."','".$Smoking."','".$Cable_TV."','".$Pet_Friendly."','".$Air_Contitioning."','".$Kitchen."','".$Restaurant."','".$Select_beds."','".$Select_accommodates."','".$Parking."','".$First_Aid_Avaliable."',
                 '".$Entertainment."','".$Other_Amenities."','".$Theme."','".$Attractions."','".$Leisure."','".$General."','".$Payment_Facility."',
                 '".$Latitude."',
                 '".$Longitude."',
                 '".$Free_Breakfast."','".$Featured."','".$Featured_Start_Date."',
                                                         '".$Featured_End_Date."','".$price."')";
 
-                        $res1=mysqli_query($con,$query1);
+                        $res1=mysql_query($query1);
                         if($res1)
                         {
                             echo '<script>alert("Data inserted successfully")</script>';
-                           echo'<script>window.location.href="Update_Owner_Info.php"</script>';
+                          echo'<script>window.location.href="Add_Owner_Info.php"</script>';
                         }
                         else
                         {
@@ -885,7 +967,7 @@
                 }
 
             }
-
+ mysql_close();
         }
     
 ?>
