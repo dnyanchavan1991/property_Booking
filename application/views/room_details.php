@@ -176,7 +176,7 @@ if(isset($this->session->userdata()['first_name']) && $this->session->userdata()
                                             <p><span id="remaining">160 characters remaining</span> <span id="messages">1 message(s)</span></p>
                                         </div>
                                         <div id="review-msg" style="padding:10px;color:green"></div>
-                                        <button type="submit" class="btn btn-primary"  style="float:left">Send</button>
+                                        <button type="submit" class="btn btn-primary"  style="float:left">Submit</button>
                                     </div>
                                 </form>
                             </div>
@@ -301,7 +301,7 @@ if(isset($this->session->userdata()['first_name']) && $this->session->userdata()
         $('#booknowbtn').on('click',function () {
             if(login_check_field == ''){
 //                alert('Please Login before Reservation')
-                window.location = "<?php echo base_url()?>/index.php/Index1/Login";
+                window.location = "<?php echo base_url()?>index.php/Index1/Login";
             }else{
                 $('#bookNow').modal('show');
             }
@@ -376,7 +376,7 @@ if(isset($this->session->userdata()['first_name']) && $this->session->userdata()
     $('#review_form').on('submit', function (e) {
         e.preventDefault();
         $.ajax({
-            url: '<?php echo base_url() ?>/index.php/Review/sendReview',
+            url: '<?php echo base_url() ?>index.php/Review/sendReview',
             type: 'POST',
             data: $('#review_form').serialize(),
             success: function(data) {
