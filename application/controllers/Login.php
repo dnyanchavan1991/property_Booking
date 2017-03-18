@@ -1,5 +1,5 @@
 <?php
-/*class Login extends CI_Controller {
+class Login extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct();
@@ -52,7 +52,7 @@
 	}
 	
 }
-*/
+
 
    public function LoginCheck(){
         if(isset($_POST['email']) && isset($_POST['password']))

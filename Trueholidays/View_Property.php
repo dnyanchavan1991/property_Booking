@@ -293,14 +293,14 @@ if(isset($_GET['id']))
                                         <tbody>
                                          <?php 
                                         $query="select * from property";
-                                        $res=mysqli_query($con,$query);
+                                        $res=mysql_query($query);
                                        $c=0;
-                                        while($row=mysqli_fetch_row($res))
+                                        while($row=mysql_fetch_row($res))
                                         {
                                             $c++;
                                          $query1="select * from property_owner_info where property_id='".$row[0]."'";
-                                                    $res1=mysqli_query($con,$query1);
-                                                    $row1=mysqli_fetch_row($res1);
+                                                    $res1=mysql_query($query1);
+                                                    $row1=mysql_fetch_row($res1);
                                                     
                                                         
                                                                         

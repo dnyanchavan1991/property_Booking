@@ -5,8 +5,8 @@
         $user_name=$_POST['username'];
         $pass=$_POST['password'];
         $query="select * from registration where user_name='".$user_name."'";
-        $q=mysqli_query($con, $query);
-        $row=mysqli_fetch_row($q);
+        $q=mysql_query( $query);
+        $row=mysql_fetch_row($q);
 		 
         if($user_name=='' && $pass=='')
             {
@@ -29,7 +29,7 @@
                 
         
             }
-            mysqli_close();
+            mysql_close();
     }
         
 ?>

@@ -303,7 +303,7 @@ $(document).ready(function(){
                                         <h3 ><center style="color: skyblue;">Mandatory</center></h3>
                                     </div>
                                     <hr>
-                                        <div class="form-group">
+                                            <div class="form-group">
                                                 <label class="col-md-3 col-md-offset-1 control-label">Select Property :</label>
                                                 <div class="col-md-6">
                                                     <select class="selectpicker"  data-live-search="true" data-size="2" data-style="btn-default" name="txtselectproperty">

@@ -155,6 +155,17 @@
                                     <li><a href="View_Property.php">View Property</a></li>
                                 </ul>
                             </li>
+                            <li class="has_sub">
+                                <a href="Discount.php" class="waves-effect"><i class="mdi mdi-view-dashboard"></i><span>Discount Mgmt </span> </a>
+                                
+                            </li>
+                            <li class="has_sub Active">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-view-dashboard"></i><span class="badge badge-success pull-right">2</span> <span></span>Daily Expensive Mng </span> </a>
+                                <ul class="list-unstyled">
+                                    <li ><a href="Add_Expensive.php">Add Expensive</a></li>
+                                    <li><a href="View_Expensive.php">View Expensive</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </div>
                     <!-- Sidebar -->
