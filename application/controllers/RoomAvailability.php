@@ -111,7 +111,9 @@ class RoomAvailability extends CI_Controller {
             }
             $this->session->set_userdata ( 'checkIn',$_POST['checkIn']);
             $this->session->set_userdata ( 'checkOut',$_POST['checkOut']);
-            $this->session->set_userdata ( 'guestCount',$_POST['room'] );
+            if($_POST['room']){
+                $this->session->set_userdata ( 'guestCount',$_POST['room'] );
+            }
             $this->session->set_userdata ( 'location',$_POST['location']);
             $this->session->set_userdata ( 'propertyType','0');
             $this->session->set_userdata ( 'featured', '');
@@ -168,7 +170,8 @@ class RoomAvailability extends CI_Controller {
         $this->pagination->initialize($config);
         $property_type = $this->PropertyModel->getPropertyTypeList();
         $roomAvailableInfo = $this->PropertyModel->checkRoomAvailabilty ($searchArray,$filterData,$this->session->userdata('sortFCriteria'),$this->session->userdata('sortBCriteria'),$config['per_page'], $page);
-        $this->load->view('quick_search.php',array('data' => $roomAvailableInfo,'count' => $config['total_rows'],'formData'=>$searchArray,'propertyTypes'=>$property_type));
+        $offer_count = count($this->PropertyModel->getOffersCount());
+        $this->load->view('quick_search.php',array('data' => $roomAvailableInfo,'count' => $config['total_rows'],'formData'=>$searchArray,'propertyTypes'=>$property_type,'offer_count'=>$offer_count));
 
     }
 
@@ -198,6 +201,7 @@ class RoomAvailability extends CI_Controller {
         $roomAvailableInfo = $this->PropertyModel->checkRoomAvailabilty ($searchArray, $this->session->userdata('filterData'), '', '');
 
         $count = count($this->PropertyModel->checkRoomAvailabiltyCount($searchArray,$this->session->userdata('filterData'),'',''));
-        $this->load->view('load_filters.php',array('data' => $roomAvailableInfo,'count' => $count,'formData'=>$searchArray,'filterData'=>$this->session->userdata('filterData')));
+        $offer_count = count($this->PropertyModel->getOffersCount());
+        $this->load->view('load_filters.php',array('data' => $roomAvailableInfo,'count' => $count,'formData'=>$searchArray,'filterData'=>$this->session->userdata('filterData'),'offer_count'=>$offer_count));
     }
 }

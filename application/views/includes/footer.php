@@ -4,9 +4,9 @@
         <div class="row">
             <div class="col-md-3 col-sm-3">
                 <h4>About Us</h4>
-                <p>Suspendisse erat mi, tincidunt sit amet massa quis, commodo fermentum diam. Sed nec dui nec nunc tempor interdum.<br>
-                    <br>
-                    Ut vulputate augue urna, ut porta dolor imperdiet a. Vestibulum nec leo eu magna aliquam ornare.</p>
+                <p>We offer the wide collection of the most popular providers of holiday rentals for our users. Whether for a big family holiday or a quiet getaway, Holidaybay strives to find the perfect holiday property for every occasion.
+                    <br><br>
+                    Holidaybay finds holiday homes, apartments, villas and cottages which are unique or not covered by other networks. Goal is to make WIN WIN situation for customers and holiday rental owners.</p>
             </div>
 
             <div class="col-md-3 col-sm-3">

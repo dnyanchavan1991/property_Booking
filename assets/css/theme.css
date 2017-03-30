@@ -2225,3 +2225,45 @@ border: 1px solid;
 .ui-datepicker{
 	z-index:999999!important;
 }
+ .offers-container{
+	 border:1px solid lightgrey;
+	 padding:10px;
+	 min-height:200px;
+	 margin-top:10px;
+ }
+ .offers-container .offers-description{
+	 padding-left:40px;padding-top:0!important;
+ }
+ .offers-container .offer-price{
+	 text-align: right;
+	 padding-top:60px;
+ }
+.offers-container .fa-star{
+	color:goldenrod!important;
+}
+.per-badge{
+	 background-color: red;
+	 width:50px;
+	 height:50px;
+	 border-radius: 50%;
+	 position:absolute;
+	 text-align:center;
+	 top:5px;
+	 left:5px;
+ }
+ .per-badge p{
+	color:#fff;
+ }
+@media (max-width: 767px) {
+	.offers-container .offers-description{
+		padding-left:0;padding-top:0!important;
+	}
+	.offers-container .offers-description h2{
+		font-size:19px;
+	}
+	.offers-container .offer-price{
+		text-align: left;
+		padding-left:0;
+		padding-top:5px;
+	}
+}

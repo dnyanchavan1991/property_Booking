@@ -679,7 +679,7 @@ border-top:2px solid #2A2E33;
 font-weight: 600;
 }
 .top-menu ul li.active a{
-background:#1E2329;
+background:#2A2E33;
 color:#fff;
 border-top:2px solid #FFD700;
 font-weight: 600;
@@ -718,7 +718,7 @@ border-top:2px solid #FFD700;
 }
 
 .room-availability {
-    /*background:#00CCFF;*/
+     background:#00CCFF; 
     font-family: "Roboto Slab",Arial,"Helvetica Neue",Helvetica,sans-serif;
 }
 .banner{

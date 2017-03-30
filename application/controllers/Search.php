@@ -43,7 +43,8 @@ class Search extends CI_Controller {
         $this->pagination->initialize($config);
         $property_type = $this->PropertyModel->getPropertyTypeList();
         $data['result'] = $this->PropertyModel->getQuickSearchData($config['per_page'], $page,$name);
-        $this->load->view('quick_search.php',array('data' => $data['result'],'count' => $config['total_rows'],'formData' => null,'propertyTypes'=>$property_type));
+        $offer_count = count($this->PropertyModel->getOffersCount());
+        $this->load->view('quick_search.php',array('data' => $data['result'],'count' => $config['total_rows'],'formData' => null,'propertyTypes'=>$property_type,'offer_count'=>$offer_count));
 
     }
 
@@ -81,8 +82,8 @@ class Search extends CI_Controller {
         $this->pagination->initialize($config);
         $property_type = $this->PropertyModel->getPropertyTypeList();
         $data['result'] = $this->PropertyModel->getFeaturedSearchData($config['per_page'], $page);
-        
-        $this->load->view('quick_search.php',array('data' => $data['result'],'count' => $config['total_rows'],'formData' => null,'propertyTypes'=>$property_type));
+        $offer_count = count($this->PropertyModel->getOffersCount());
+        $this->load->view('quick_search.php',array('data' => $data['result'],'count' => $config['total_rows'],'formData' => null,'propertyTypes'=>$property_type,'offer_count'=>$offer_count));
     }
 
 }

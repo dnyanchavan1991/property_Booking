@@ -176,11 +176,16 @@ if(isset($this->session->userdata()['first_name']) && $this->session->userdata()
                                             <p><span id="remaining">160 characters remaining</span> <span id="messages">1 message(s)</span></p>
                                         </div>
                                         <div id="review-msg" style="padding:10px;color:green"></div>
-                                        <button type="submit" class="btn btn-primary"  style="float:left">Submit</button>
+                                        <button type="submit" class="btn btn-primary"  style="float:left">Send</button>
                                     </div>
                                 </form>
                             </div>
                         </div>
+                    </div>
+                    <div class="col-sm-5 mt50" style="">
+                        <h2 class="lined-heading" style="margin-bottom: 10px;"><span>Calendar</span></h2>
+                            <div id="full_calendar">
+                            </div>
                     </div>
                 </div>
             </div>
@@ -291,9 +296,11 @@ if(isset($this->session->userdata()['first_name']) && $this->session->userdata()
 </div>
 </body>
 </html>
-<!--<script src="https://code.jquery.com/jquery-1.12.4.js"></script>-->
+
 <!--<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>-->
 <!--<script src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>-->
+<script type="text/javascript" src="<?php echo base_url() ?>assets/js/moment.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url() ?>assets/js/fullcalendar.min.js"></script>
 <script>
     $( function() {
         $( ".datepicker" ).datepicker();
@@ -301,7 +308,7 @@ if(isset($this->session->userdata()['first_name']) && $this->session->userdata()
         $('#booknowbtn').on('click',function () {
             if(login_check_field == ''){
 //                alert('Please Login before Reservation')
-                window.location = "<?php echo base_url()?>index.php/Index1/Login";
+                window.location = "<?php echo base_url()?>/index.php/Index1/Login";
             }else{
                 $('#bookNow').modal('show');
             }
@@ -376,7 +383,7 @@ if(isset($this->session->userdata()['first_name']) && $this->session->userdata()
     $('#review_form').on('submit', function (e) {
         e.preventDefault();
         $.ajax({
-            url: '<?php echo base_url() ?>index.php/Review/sendReview',
+            url: '<?php echo base_url() ?>/index.php/Review/sendReview',
             type: 'POST',
             data: $('#review_form').serialize(),
             success: function(data) {
@@ -422,6 +429,32 @@ if(isset($this->session->userdata()['first_name']) && $this->session->userdata()
                 }
             }
         });
+        $('#full_calendar').fullCalendar({
+            // put your options and callbacks here
+//            defaultDate: '2017-02-12',
+            navLinks: true, // can click day/week names to navigate views
+            editable: true,
+            eventLimit: true, // allow "more" link when too many events
+            draggable:false,
+            eventRender: function(event, element)
+            {
+                element.find('.fc-event-title').append("<br/>" + event.description);
+            },
+//            dayRender:function (date,cell) {
+//                cell.append('<div style="padding-top:30px;padding-left:5px;font-size:10px">' +
+//                    'Available : 4' +
+//                    '</div>');
+//            },
+            events: [
+                {
+                    title: 'Available Rooms : 5',
+                    description: 'long description',
+                    start: '2017-03-15',
+                    end: '2017-03-19'
+                }
+            ]
+        });
+
     });
 
 </script>

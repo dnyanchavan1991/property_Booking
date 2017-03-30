@@ -121,7 +121,6 @@
 					<li class="dropdown active"> <a href="<?php echo base_url() ?>">Home</a>
 					</li>
 					<li> <a href="<?php echo base_url()?>index.php/Search/FeaturedSearch">Featured</a></li>
-					<li> <a href="<?php echo base_url()?>Trueholidays">ADMIN</a></li>
 					<li class="dropdown">
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Quick Search
 							<span class="caret"></span></a>
@@ -129,6 +128,14 @@
 							<li><a href="<?php echo base_url()?>index.php/Search/QuickSearch/Maharashtra">Maharashtra</a></li>
 							<li><a href="<?php echo  base_url()?>index.php/Search/QuickSearch/Pradesh">Goa</a></li>
 						</ul>
+					</li>
+					<li>
+                        <?php if($offer_count){ ?>
+                            <div  class="col-sm-hidden" style="background-color: red;width:25px;height:25px;position:absolute;left:55px;top:12px;border-radius: 50%">
+                                <p style="padding-top:4px;text-align:center;color:#fff"><?php echo $offer_count;?></p>
+                            </div>
+                        <?php } ?>
+						<a href="<?php echo base_url()?>index.php/Offers/offerMenuLink">Offers</a>
 					</li>
                     <?php if(isset($this->session->userdata()['user_id'])){ ?>
                         <li> <a href="<?php echo  base_url()?>index.php/Index1/Logout">Logout</a></li>

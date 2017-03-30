@@ -1091,4 +1091,30 @@ class PropertyModel extends CI_Model {
         return $query->result();
 
     }
+
+    public function getOffers($limit=null,$offset=null){
+        $offers = 'dailyexpensies';
+        $propertyInfo = 'property_info';
+        $property = 'property';
+        $this->db->select ( "*" );
+        $this->db->from ( "$offers o" );
+        $this->db->join ( "$property p", "o.Property_Id = p.property_id");
+        $this->db->join("$propertyInfo pi","o.Property_Id = pi.property_id");
+        $this->db->where('o.Activition_Flag','YES');
+        $this->db->limit($limit,$offset);
+        $query = $this->db->get();
+        return $query->result();
+    }
+    public function getOffersCount(){
+        $offers = 'dailyexpensies';
+        $propertyInfo = 'property_info';
+        $property = 'property';
+        $this->db->select ( "*" );
+        $this->db->from ( "$offers o" );
+        $this->db->join ( "$property p", "o.Property_Id = p.property_id");
+        $this->db->join("$propertyInfo pi","o.Property_Id = pi.property_id");
+        $this->db->where('o.Activition_Flag','YES');
+        $query = $this->db->get();
+        return $query->result();
+    }
 }

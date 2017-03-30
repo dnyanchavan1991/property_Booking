@@ -1,4 +1,4 @@
-﻿    /* custom select */
+    /* custom select */
         .row {
 		float: right;
 		width: 20%;
@@ -82,4 +82,5 @@
         }
         
         form.style-1 .selected { background: #f2f2f2 !important; }  
+        
  
