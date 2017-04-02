@@ -480,6 +480,7 @@ class PropertyModel extends CI_Model {
     public function getPropertyDetail($propertyId) {
         $this->db->select ( 'property_id,property_name as propertyName,description,image_path as imagePath,concat(street,\',\',city,\',\',state,\',\',postal_code) as propertyAddress,how_to_reach as Direction, ' );
         $this->db->from('property');
+		$this->db->where ('activation_flag','YES');
         $this->db->where("property_id = $propertyId ");
         $query = $this->db->get();
         return $query->result();
@@ -489,8 +490,10 @@ class PropertyModel extends CI_Model {
         $this->db->from ( "property" );
         $this->db->join ( "property_info", "property.property_id = property_info.property_id" );
         $this->db->where("property_info.property_id = $propertyId");
+		$this->db->where ('activation_flag','YES');
         $query = $this->db->get();
         return $query->result();
+		 
     }
     public function getPropertyType($property_type) {
         $this->db->select ("property_type_name");
@@ -703,6 +706,7 @@ class PropertyModel extends CI_Model {
         $this->db->join ( "$auditRentTable auditRent", "auditRent.property_id=property.property_id" );
         $where = "start_date<= '$currentDate' AND end_date <='$currentDate'";
         $this->db->where ( $where );
+		$this->db->where ('activation_flag','YES');
         $this->db->order_by ( 'rent_id', 'desc' );
         $query = $this->db->get ();
         $lastMinDealData = $query->result ();
@@ -881,6 +885,7 @@ class PropertyModel extends CI_Model {
 
         $where = "(res.property_id is Null";
         $this->db->where ( $where );
+		$this->db->where ('activation_flag','YES');
         $where = "(check_out >= '$checkout' AND check_in >='$checkin')";
         $this->db->or_where ( $where );
         $where = "(check_out <= '$checkout' AND check_out <='$checkout'))";
@@ -921,6 +926,7 @@ class PropertyModel extends CI_Model {
         $this->db->select( '* ' );
         $this->db->from( " $propertyTable property " );
         $this->db->join( " $propertyInfoTable propertyInfo", "property.property_id = propertyInfo.property_id" );
+		$this->db->where ('activation_flag','YES');
         $query = $this->db->get ();
         return $query->result ();
     }
@@ -930,6 +936,7 @@ class PropertyModel extends CI_Model {
         $this->db->select( '* ' );
         $this->db->from( " $propertyTable property " );
         $this->db->join( " $propertyInfoTable propertyInfo", "property.property_id = propertyInfo.property_id" );
+		$this->db->where ('activation_flag','YES');
         $this->db->limit(5,1);
         $query = $this->db->get ();
         return $query->result ();
@@ -962,6 +969,7 @@ class PropertyModel extends CI_Model {
         $this->db->from(" $propertyTable property ");
         $this->db->join ( "$propertyInfo propertyInfo", "property.property_id = propertyInfo.property_id", "left" );
         $this->db->where( 'state', $name);
+		$this->db->where ('activation_flag','YES');
         $query = $this->db->get();
         return $query->result();
     }
@@ -999,6 +1007,7 @@ class PropertyModel extends CI_Model {
         $d = date("y-m-d");
         $where = " ( Featured_startDate <= '$d' and Featured_endDate >='$d' )";
         $this->db->where ( $where );
+		
         $this->db->order_by ( 'Featured_startDate Desc' );
         //$this->db->limit ( 6 );
         $query = $this->db->get();
@@ -1093,6 +1102,7 @@ class PropertyModel extends CI_Model {
     }
 
     public function getOffers($limit=null,$offset=null){
+		
         $offers = 'dailyexpensies';
         $propertyInfo = 'property_info';
         $property = 'property';
@@ -1103,10 +1113,28 @@ class PropertyModel extends CI_Model {
         $this->db->where('o.Activition_Flag','YES');
         $this->db->limit($limit,$offset);
         $query = $this->db->get();
-        return $query->result();
+        return $query->result(); 
+    }
+	public function getOffersForProperty($pid=null){
+		
+        $offers = 'dailyexpensies';
+        $propertyInfo = 'property_info';
+        $property = 'property';
+        $this->db->select ( "o.*" );
+        $this->db->from ( "$offers o" );
+        $this->db->join ( "$property p", "o.Property_Id = p.property_id");
+        $this->db->join("$propertyInfo pi","o.Property_Id = pi.property_id");
+        $this->db->where('o.Activition_Flag','YES');
+		$this->db->where('p.Property_Id',$pid);
+        //$this->db->limit($limit,$offset);
+        $query = $this->db->get();
+        return $query->result(); 
+		
+		 
     }
     public function getOffersCount(){
-        $offers = 'dailyexpensies';
+		//return "";
+         $offers = 'dailyexpensies';
         $propertyInfo = 'property_info';
         $property = 'property';
         $this->db->select ( "*" );
@@ -1115,6 +1143,6 @@ class PropertyModel extends CI_Model {
         $this->db->join("$propertyInfo pi","o.Property_Id = pi.property_id");
         $this->db->where('o.Activition_Flag','YES');
         $query = $this->db->get();
-        return $query->result();
+        return $query->result(); 
     }
 }

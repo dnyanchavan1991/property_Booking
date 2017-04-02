@@ -241,8 +241,8 @@
                         <!-- end row -->
                         <?php 
                             $query="select * from discount  where reservation_id='".$id."'";
-                            $res=mysql_query($query);
-                            $row=mysql_fetch_row($res);
+                            $res=mysqli_query($con, $query);
+                            $row=mysqli_fetch_row($res);
                         ?>
                 <!-- end page title end breadcrumb -->
                   <form class="form-horizontal" role="form" action="UpgradeDiscount_Update.php?id=<?php echo $id;?>" method="POST" enctype="multipart/form-data">
@@ -419,7 +419,7 @@
 
             $query="update  discount set Customer_Name='".$Customer_Name."',Property_Details='".$Property_Details."',Check_In='".$Check_In."',Check_Out='".$Check_Out."',Total_Cost='".$Total_Cost."',Discount='".$Discount."',Final_Cost='".$Final_Cost."',Submitted_Date='".$Submitted_Date."',
             reservation_id='".$reservation_id."' where Discount_Id='".$row[0]."'";
-            $res=mysql_query($query);
+            $res=mysqli_query($con, $query);
            if($res)
             {
                 echo '<script>alert("Data successfully update")</script>';
@@ -430,7 +430,7 @@
                 echo '<script>alert("Data  not Update")</script>';
             }
             
- mysql_close();
+ mysqli_close();
                    
         }
     

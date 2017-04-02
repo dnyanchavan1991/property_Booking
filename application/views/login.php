@@ -32,7 +32,7 @@
 <div class="search-popup" style="display:none;padding:10px;">
     <div class="row" style="z-index:2000">
         <div class="col-md-12">
-            <form class="form-inline reservation-horizontal clearfix" role="form" method="post" action="<?php echo base_url()?>/index.php/RoomAvailability/checkRoomAvailabilty" name="reservationform" id="reservationform">
+            <form class="form-inline reservation-horizontal clearfix" role="form" method="post" action="<?php echo base_url()?>index.php/RoomAvailability/checkRoomAvailabilty" name="reservationform" id="reservationform">
                 <div id="message"></div><!-- Error message display -->
                 <div class="row tp">
                     <div class="col-sm-3">

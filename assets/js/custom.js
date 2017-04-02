@@ -334,16 +334,26 @@ jQuery(document).ready(function () {
     // Reservation Form	
     //jQueryUI - Datepicker
     if (jQuery().datepicker) {
-        jQuery('#checkin,#checkin1').datepicker({
+        jQuery('#dob').datepicker({
+            showAnim: "drop",
+            dateFormat: "dd/mm/yy",
+			changeMonth: true,
+			changeYear: true
+        });
+		jQuery('#checkin,#checkin1').datepicker({
             showAnim: "drop",
             dateFormat: "dd/mm/yy",
             minDate: "-0D",
+			changeMonth: true,
+			changeYear: true
         });
 
         jQuery('#checkout,#checkout1').datepicker({
             showAnim: "drop",
             dateFormat: "dd/mm/yy",
             minDate: "-0D",
+			changeMonth: true,
+			changeYear: true,
             beforeShow: function () {
                 var a = jQuery("#checkin,#checkin1").datepicker('getDate');
                 if (a) return {

@@ -75,8 +75,13 @@ class Index1 extends CI_Controller {
 	    $propertyDetails = $this->PropertyModel->getPropertyDetail($id);
         $propertyInfoDetails = $this->PropertyModel->getPropertyInfoDetail($id);
         $property_review = $this->PropertyModel->getPropertyReview($id);
-        $offer_count = count($this->PropertyModel->getOffersCount());
-	    $this->load->view('room_details.php',array('propertyDetails'=>$propertyDetails[0],'propertyInfoDetails' => $propertyInfoDetails[0],'review' => $property_review,'offer_count'=>$offer_count));
+		$property_offer = $this->PropertyModel->getOffersForProperty($id);
+		  
+           $propertyOfferVal = count($property_offer) == 0? '' : $property_offer[0];
+	 
+		$offer_count = count($this->PropertyModel->getOffersCount());
+
+	     $this->load->view('room_details.php',array('propertyDetails'=>$propertyDetails[0],'propertyInfoDetails' => $propertyInfoDetails[0],'review' => $property_review,'offer_count'=>$offer_count, 		 'property_offer'=>$propertyOfferVal));
     }
 
     public function Login(){
@@ -88,11 +93,15 @@ class Index1 extends CI_Controller {
         $offer_count = count($this->PropertyModel->getOffersCount());
         $this->load->view('registration.php',array('offer_count'=>$offer_count));
     }
+	 
     public function LoginCheck(){
         if(isset($_POST['email']) && isset($_POST['password']))
         {
           if($_POST['email'] == 'admin' && $_POST['password'] == 'admin'){
-                redirect(site_url()."trueholidays/dashboard.php");
+			  $cryptKey  = 'qJB0rGtIn5UB1xG03efyCp';
+				$enc_userName =$_POST['email'];//base64_encode( mcrypt_encrypt( MCRYPT_RIJNDAEL_256, md5( $cryptKey ), $_POST['email'], MCRYPT_MODE_CBC, md5( md5( $cryptKey ) ) ) );
+				$enc_password = $_POST['password'];//base64_encode( mcrypt_encrypt( MCRYPT_RIJNDAEL_256, md5( $cryptKey ), $_POST['password'], MCRYPT_MODE_CBC, md5( md5( $cryptKey ) ) ) );
+                redirect(site_url()."Trueholidays/index.php?_uid=".$enc_userName."&_sid=".$enc_password);
           }else{
               $this->load->model('PropertyModel');
               $result = $this->PropertyModel->LoginCheck();

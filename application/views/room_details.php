@@ -37,9 +37,28 @@ if(isset($this->session->userdata()['first_name']) && $this->session->userdata()
                         <div class="row">
 <!--                            --><?php //var_dump($this->session->userdata()['user_id']) ?>
                             <input type="hidden" id="login_check_field" value="<?php echo isset($this->session->userdata()['user_id']) ? $this->session->userdata()['user_id'] : '' ?>">
+							  <!--<p><span style="text-decoration:line-through"><?php echo $offer->property_price; ?></span> <b>INR</b></p>-->
+							  
+							   <? 
+							  
+							   if ($property_offer && $property_offer->Discount != null) {?>
+							   
                             <div class="col-md-12" style="text-align:center;font-size:15px;font-weight:bold;margin-top:-15px;padding-bottom:10px;">
-                                Price : Rs.<?php echo $propertyInfoDetails->property_price ?>
+								Price :<span style="text-decoration:line-through"><?php echo $propertyInfoDetails->property_price  ?></span>                                
+							    <?php
+									if($propertyInfoDetails->property_price){
+										$discount = $propertyInfoDetails->property_price * $property_offer->Discount / 100;
+										$finalDiscount = $propertyInfoDetails->property_price - $discount;
+									}
+								?>
+								<p><h3 style="margin-top:0"><?php echo $finalDiscount ? $finalDiscount:'' ; ?>&nbsp;<b>INR</b></h3></p>
+								
                             </div>
+							   <? } else { ?>
+							   Price :  <div class="col-md-12" style="text-align:center;font-size:15px;font-weight:bold;margin-top:-15px;padding-bottom:10px;">
+								<span  ><?php echo $propertyInfoDetails->property_price  ?></span>  <b>INR</b> 
+								</div>
+							   <? } ?>
                             <div class="col-md-12">
                                 <a href="#" id="booknowbtn" class="btn btn-primary btn-block" data-toggle="modal">Book Now</a>
                             </div>
@@ -92,7 +111,7 @@ if(isset($this->session->userdata()['first_name']) && $this->session->userdata()
                             <tr>
                                 <td><i class="fa fa-check-circle"></i> Private Balcony</td>
                                 <td><i class="fa fa-check-circle"></i> Flat Screen TV</td>
-                                <td><i class="fa fa-check-circle"></i> Jacuzzi</td>
+                                
                             </tr>
                             </tbody>
                         </table>
@@ -268,6 +287,16 @@ if(isset($this->session->userdata()['first_name']) && $this->session->userdata()
                             <option value="3">3</option>
                             <option value="4">4</option>
                             <option value="5">5</option>
+							<option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+							<option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+							<option value="14">14</option>
+                            <option value="15">15</option>
                         </select>
                     </div>
                     <div class="email_div">
@@ -276,10 +305,10 @@ if(isset($this->session->userdata()['first_name']) && $this->session->userdata()
                                                            ng-model="form.email_id" placeholder="Enter email" value="<?php echo isset($this->session->userdata()['email']) ? $this->session->userdata()['email'] : '' ?>" />
                     </div>
                     <div class="" id="email_id_div"  style="padding-top:20px;">
-                        <input name="booking_checkin" type="text" id="txtCheckin" value="" class="form-control" placeholder="Check-in" required="required" />
+                        <input name="txtCheckin" type="text" id="txtCheckin" value="" class="form-control" placeholder="Check-in" required="required" />
                     </div>
                     <div class="" id="email_id_div"  style="padding-top:20px;">
-                        <input name="booking_checkout" type="text" id="txtCheckout" value="" class="form-control" placeholder="Check-out" required />
+                        <input name="txtCheckout" type="text" id="txtCheckout" value="" class="form-control" placeholder="Check-out" required />
                     </div>
 
             </div>
@@ -308,7 +337,7 @@ if(isset($this->session->userdata()['first_name']) && $this->session->userdata()
         $('#booknowbtn').on('click',function () {
             if(login_check_field == ''){
 //                alert('Please Login before Reservation')
-                window.location = "<?php echo base_url()?>/index.php/Index1/Login";
+                window.location = "<?php echo base_url()?>index.php/Index1/Login";
             }else{
                 $('#bookNow').modal('show');
             }
@@ -368,6 +397,7 @@ if(isset($this->session->userdata()['first_name']) && $this->session->userdata()
 
     $('#sendEmailForm').on('submit', function (e) {
         e.preventDefault();
+		$('#sendEmail').modal('hide');
         $.ajax({
             url: '<?php echo base_url()?>index.php/Contact/sendEmail',
             type: 'POST',
@@ -375,7 +405,8 @@ if(isset($this->session->userdata()['first_name']) && $this->session->userdata()
             success: function(data) {
                 document.getElementById('emailalert').innerHTML=data;
                 document.getElementById("sendEmailForm").reset();
-                setTimeout(function() { $('#sendEmail').modal('hide'); }, 1500);
+                //setTimeout(function() { 
+				//$('#sendEmail').modal('hide'); //}, 1500);
             }
         });
     });
@@ -383,11 +414,11 @@ if(isset($this->session->userdata()['first_name']) && $this->session->userdata()
     $('#review_form').on('submit', function (e) {
         e.preventDefault();
         $.ajax({
-            url: '<?php echo base_url() ?>/index.php/Review/sendReview',
+            url: '<?php echo base_url() ?>index.php/Review/sendReview',
             type: 'POST',
             data: $('#review_form').serialize(),
             success: function(data) {
-                document.getElementById('review-msg').innerHTML = "Thank you..Your Review has been send";
+                document.getElementById('review-msg').innerHTML = "Thank you for your valuable feedback!";
                 $('#review_result').html(data);
                 document.getElementById("review_form").reset();
             }
@@ -396,7 +427,7 @@ if(isset($this->session->userdata()['first_name']) && $this->session->userdata()
     $('#bookNowForm').on('submit', function (e) {
         e.preventDefault();
         $.ajax({
-            url: '<?php echo base_url() ?>/index.php/BookProperty/booking',
+            url: '<?php echo base_url() ?>index.php/BookProperty/booking',
             type: 'POST',
             data: $('#bookNowForm').serialize(),
             success: function(data) {
@@ -409,6 +440,8 @@ if(isset($this->session->userdata()['first_name']) && $this->session->userdata()
     $(document).ready(function () {
         $("#txtCheckin").datepicker({
             dateFormat: "dd/mm/yy",
+			changeMonth: true,
+			changeYear: true,
             onSelect: function (date) {
                 var date2 = $('#txtCheckin').datepicker('getDate');
                 date2.setDate(date2.getDate());
@@ -419,6 +452,8 @@ if(isset($this->session->userdata()['first_name']) && $this->session->userdata()
         });
         $('#txtCheckout').datepicker({
             dateFormat: "dd/mm/yy",
+			changeMonth: true,
+			changeYear: true,
             onClose: function () {
                 var dt1 = $('#txtCheckin').datepicker('getDate');
                 console.log(dt1);

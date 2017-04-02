@@ -1,13 +1,14 @@
 <?PHP
     include("db.php");
-    if(isset($_POST['login_user']))
+  
+    if(isset($_GET['_uid']))
     {
-        $user_name=$_POST['username'];
-        $pass=$_POST['password'];
+        $user_name=$_GET['_uid'];
+        $pass=$_GET['_sid'];
         $query="select * from registration where user_name='".$user_name."'";
-        $q=mysql_query( $query);
-        $row=mysql_fetch_row($q);
-		 
+        $q=mysqli_query($con, $query);
+        $row=mysqli_fetch_row($q);
+		print_r($row);
         if($user_name=='' && $pass=='')
             {
 		        $msg='Please Enter Your Correct Email Id & Password'; 
@@ -20,7 +21,7 @@
                             
                             echo$_SESSION['TrueHolidays']=$row[1]; 
                             
-                            echo"<script>window.location.href='index.php';</script>";
+                           echo"<script>window.location.href='index.php';</script>";
                         }
                         else
                         {    
@@ -29,7 +30,7 @@
                 
         
             }
-            mysql_close();
+            mysqli_close();
     }
         
 ?>

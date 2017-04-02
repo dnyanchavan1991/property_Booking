@@ -176,7 +176,7 @@
                             </select>
                         </div >
                         <div class="form-group">
-                            <input name="dob" type="text" id="checkin" value="" class="form-control" placeholder="DOB"/>
+                            <input name="dob" type="text" id="dob" value="" class="form-control" placeholder="DOB"/>
                         </div >
                         <div class="form-group">
                         <input type="text"

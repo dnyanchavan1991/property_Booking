@@ -26,7 +26,7 @@
        <!--  <link rel="shortcut icon" href="assets/images/favicon.ico"> -->
          <link rel="icon" href="sml.ico" type="image/x-icon">
         <!-- App title -->
-        <title>Training | Portal </title>
+        <title>Admin Portal </title>
 <!-- Date Picker Css -->
 <link href="../plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
         <!-- Google Map -->
@@ -310,8 +310,8 @@ $(document).ready(function(){
                                                     <option value="0">Select Property</option>
                                                         <?PHP
                                                             $query1="select * from property_type";
-                                                            $res1=mysql_query($query1);
-                                                            while ($row1=mysql_fetch_row($res1)) 
+                                                            $res1=mysqli_query($con, $query1);
+                                                            while ($row1=mysqli_fetch_row($res1)) 
                                                             {
                                                                  echo"<option value=".$row1[0].">".$row1[1]."</option>";
                                                             }
@@ -896,8 +896,8 @@ $(document).ready(function(){
                 $Featured_End_Date="";
             }
 
-             $result = mysql_query("SELECT MAX(property_id) FROM property");
-            $row1 = mysql_fetch_row($result);
+             $result = mysqli_query($con, "SELECT MAX(property_id) FROM property");
+            $row1 = mysqli_fetch_row($result);
             $property_id = $row1[0]+1;
 
             /*$query= "INSERT INTO property_info values('".$property_id."','".$Select_bedrooms."','".$Select_bathrooms."','".$Swimming_Pool."','".$Meals."','".$Internet."','".$Smoking."','".$Cable_TV."','".$Pet_Friendly."','".$Air_Contitioning."','".$Kitchen."','".$Restaurant."','".$Select_beds."','".$Select_accommodates."','".$Parking."','".$First_Aid_Avaliable."',
@@ -937,17 +937,17 @@ $(document).ready(function(){
                                                     '".$Description."','".$How_To_Reach."','".$Select_Property."','YES')";
                   
 
-                    $res=mysql_query($query);
+                    $res=mysqli_query($con, $query);
                     if($res)
                     {
-                             echo $query1= "INSERT INTO property_info values('".$property_id."','".$Select_bedrooms."','".$Select_bathrooms."','".$Swimming_Pool."','".$Meals."','".$Internet."','".$Smoking."','".$Cable_TV."','".$Pet_Friendly."','".$Air_Contitioning."','".$Kitchen."','".$Restaurant."','".$Select_beds."','".$Select_accommodates."','".$Parking."','".$First_Aid_Avaliable."',
+                             $query1= "INSERT INTO property_info values('".$property_id."','".$Select_bedrooms."','".$Select_bathrooms."','".$Swimming_Pool."','".$Meals."','".$Internet."','".$Smoking."','".$Cable_TV."','".$Pet_Friendly."','".$Air_Contitioning."','".$Kitchen."','".$Restaurant."','".$Select_beds."','".$Select_accommodates."','".$Parking."','".$First_Aid_Avaliable."',
                 '".$Entertainment."','".$Other_Amenities."','".$Theme."','".$Attractions."','".$Leisure."','".$General."','".$Payment_Facility."',
                 '".$Latitude."',
                 '".$Longitude."',
                 '".$Free_Breakfast."','".$Featured."','".$Featured_Start_Date."',
                                                         '".$Featured_End_Date."','".$price."')";
 
-                        $res1=mysql_query($query1);
+                        $res1=mysqli_query($con, $query1);
                         if($res1)
                         {
                             echo '<script>alert("Data inserted successfully")</script>';

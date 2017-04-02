@@ -1,19 +1,68 @@
 <?php
+ 
     include("db.php");
      ob_start();
     //error_reporting(0); 
     session_start();
-    if(isset( $_SESSION['TrueHolidays']))
+	
+	function decryptIt( $q ) {
+    $cryptKey  = 'qJB0rGtIn5UB1xG03efyCp';
+    $qDecoded      = rtrim( mcrypt_decrypt( MCRYPT_RIJNDAEL_256, md5( $cryptKey ), base64_decode( $q ), MCRYPT_MODE_CBC, md5( md5( $cryptKey ) ) ), "\0");
+    return( $qDecoded );
+	}
+ 
+ 
+	 if(isset($_GET['_uid']))
     {
-            
+		$cryptKey  = 'qJB0rGtIn5UB1xG03efyCp';
+		$qDecoded      = rtrim( mcrypt_decrypt( MCRYPT_RIJNDAEL_256, md5( $cryptKey ), base64_decode( $_GET['_uid'] ), MCRYPT_MODE_CBC, md5( md5( $cryptKey ) ) ), "\0");
+        $user_name= $_GET['_uid'];
+
+		$qDecoded      = rtrim( mcrypt_decrypt( MCRYPT_RIJNDAEL_256, md5( $cryptKey ), base64_decode( $_GET['_sid'] ), MCRYPT_MODE_CBC, md5( md5( $cryptKey ) ) ), "\0");
+		$pass=$_GET['_sid'];
+
+		
+        $query="select * from registration where user_name='".$user_name."'";
+        $q=mysqli_query($con, $query);
+        $row=mysqli_fetch_row($q);
+ 		// $_SESSION['TrueHolidays']= "admin";//$row[1]; 
+        if($user_name=='' && $pass=='')
+            {
+		        $msg='Please Enter Your Correct Email Id & Password'; 
+				
+            }
+            else
+            {
+                         if($row[1]==$user_name && $row[2]==$pass && $row[9]=='admin')
+                        {   
+                            //session_start();
+                            
+                            $_SESSION['TrueHolidays']=$row[1]; 
+                           
+						    // echo"<script>window.location.href='index.php';</script>";
+                        }
+                        else
+                        {    
+                            $msg='Please Enter Your Correct Password'; 
+	//						echo"<script>window.location.href='../index.php/Index1/Login';</script>";	
+                        }
+                
+        
+            }
+            mysqli_close();
+    }
+    /*if(isset( $_SESSION['TrueHolidays']))
+    {
+        echo "#40";    
     }
     else
     {
-        echo"<script>window.location.href='Login.php';</script>";
+		echo "#44";
+        //echo"<script>window.location.href='Login.php';</script>";
+		
         
-    }
+    }*/
 ?>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -26,7 +75,7 @@
        <!--  <link rel="shortcut icon" href="assets/images/favicon.ico"> -->
          <link rel="icon" href="sml.ico" type="image/x-icon">
         <!-- App title -->
-        <title>Training | Portal </title>
+        <title>Admin Portal </title>
 
         <!-- App css -->
         <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -66,7 +115,7 @@
 
                 <!-- LOGO -->
                 <div class="topbar-left">
-                    <a href="index.php" class="logo"><span>Ope<span>rand</span></span><i class="mdi mdi-cube"></i></a>
+                    <a href="index.php" class="logo"><span>HOLIDAYBAY</span><i class="mdi mdi-cube"></i></a>
                     <!-- Image logo -->
                     <!--<a href="index.html" class="logo">-->
                         <!--<span>-->

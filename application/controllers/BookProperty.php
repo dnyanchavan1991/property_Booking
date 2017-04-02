@@ -31,9 +31,10 @@ class BookProperty extends CI_Controller {
 		}
 	}
 	public function booking(){
-		$checkin = $_POST['booking_checkin'];
+		
+		$checkin = $_POST['txtCheckin'];
 		$checkin = str_replace ( '/', '-', $checkin );
-		$checkout = $_POST['booking_checkout'];
+		$checkout = $_POST['txtCheckout'];
 		$checkout = str_replace ( '/', '-', $checkout );
 		$checkin = date ( 'Y-m-d', strtotime ( $checkin ) );
 		$checkout = date ( 'Y-m-d', strtotime ( $checkout ) );
