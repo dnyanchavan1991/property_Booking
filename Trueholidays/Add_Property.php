@@ -512,16 +512,16 @@ $(document).ready(function(){
                                                 <label class="col-md-3 col-md-offset-1 control-label" for="example-email"></label>
                                                 <div class="col-md-3">
                                                     <div class="checkbox checkbox-primary m-b-15">
-                                                        <input id="chkbox1" type="checkbox" name="txtswimmingpool" value="YES">
-                                                        <label for="checkbox1">
+                                                        <input id="txtswimmingpool" type="checkbox" name="txtswimmingpool" value="YES">
+                                                        <label for="txtswimmingpool">
                                                             Swimming pool
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="checkbox checkbox-primary m-b-15">
-                                                        <input id="checkbox1" type="checkbox" name="txtinternet" value="YES" onclick="Pool();">
-                                                        <label for="checkbox1">
+                                                        <input id="txtinternet" type="checkbox" name="txtinternet" value="YES" onclick="Pool();">
+                                                        <label for="txtinternet">
                                                             Internet / WIFI
                                                         </label>
                                                     </div>
@@ -529,16 +529,16 @@ $(document).ready(function(){
                                                 <label class="col-md-3 col-md-offset-1 control-label" for="example-email"></label>
                                                 <div class="col-md-3">
                                                     <div class="checkbox checkbox-primary m-b-15">
-                                                        <input id="checkbox1" type="checkbox" name="txtsmokingallowed" value="YES">
-                                                        <label for="checkbox1">
+                                                        <input id="txtsmokingallowed" type="checkbox" name="txtsmokingallowed" value="YES">
+                                                        <label for="txtsmokingallowed">
                                                             Smoking Allowed
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="checkbox checkbox-primary m-b-15">
-                                                        <input id="checkbox1" type="checkbox" name="txtcabletv" value="YES">
-                                                        <label for="checkbox1">
+                                                        <input id="txtcabletv" type="checkbox" name="txtcabletv" value="YES">
+                                                        <label for="txtcabletv">
                                                             Cable TV  
                                                         </label>
                                                     </div>
@@ -546,16 +546,16 @@ $(document).ready(function(){
                                                 <label class="col-md-3 col-md-offset-1 control-label" for="example-email"></label>
                                                 <div class="col-md-3">
                                                     <div class="checkbox checkbox-primary m-b-15">
-                                                        <input id="checkbox1" type="checkbox" name="txtpetfriendly" value="YES">
-                                                        <label for="checkbox1">
+                                                        <input id="txtpetfriendly" type="checkbox" name="txtpetfriendly" value="YES">
+                                                        <label for="txtpetfriendly">
                                                             Pet friendly
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="checkbox checkbox-primary m-b-15">
-                                                        <input id="checkbox1" type="checkbox" name="txtairconditioning" value="YES">
-                                                        <label for="checkbox1">
+                                                        <input id="txtairconditioning" type="checkbox" name="txtairconditioning" value="YES">
+                                                        <label for="txtairconditioning">
                                                             Air Conditioning
                                                         </label>
                                                     </div>
@@ -563,16 +563,16 @@ $(document).ready(function(){
                                                 <label class="col-md-3 col-md-offset-1 control-label" for="example-email"></label>
                                                 <div class="col-md-3">
                                                     <div class="checkbox checkbox-primary m-b-15">
-                                                        <input id="checkbox1" type="checkbox" name="txtpaymentfacility" value="YES">
-                                                        <label for="checkbox1">
+                                                        <input id="txtpaymentfacility" type="checkbox" name="txtpaymentfacility" value="YES">
+                                                        <label for="txtpaymentfacility">
                                                            Payment Facility
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="checkbox checkbox-primary m-b-15">
-                                                        <input id="checkbox1" type="checkbox" name="txtkitchen" value="YES">
-                                                        <label for="checkbox1">
+                                                        <input id="txtkitchen" type="checkbox" name="txtkitchen" value="YES">
+                                                        <label for="txtkitchen">
                                                             In House Kitchen
                                                         </label>
                                                     </div>
@@ -580,16 +580,16 @@ $(document).ready(function(){
                                                 <label class="col-md-3 col-md-offset-1 control-label" for="example-email"></label>
                                                 <div class="col-md-3">
                                                     <div class="checkbox checkbox-primary m-b-15">
-                                                        <input id="checkbox1" type="checkbox" name="txtrestaurant" value="YES">
-                                                        <label for="checkbox1">
+                                                        <input id="txtrestaurant" type="checkbox" name="txtrestaurant" value="YES">
+                                                        <label for="txtrestaurant">
                                                            Restaurant
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="checkbox checkbox-primary m-b-15">
-                                                        <input id="checkbox1" type="checkbox" name="txtparking" value="YES">
-                                                        <label for="checkbox1">
+                                                        <input id="txtparking" type="checkbox" name="txtparking" value="YES">
+                                                        <label for="txtparking">
                                                             Free Parking
                                                         </label>
                                                     </div>
@@ -597,16 +597,16 @@ $(document).ready(function(){
                                                 <label class="col-md-3 col-md-offset-1 control-label" for="example-email"></label>
                                                 <div class="col-md-3">
                                                     <div class="checkbox checkbox-primary m-b-15">
-                                                        <input id="checkbox1" type="checkbox" name="txtfirstaidavaliable" value="YES">
-                                                        <label for="checkbox1">
+                                                        <input id="txtfirstaidavaliable" type="checkbox" name="txtfirstaidavaliable" value="YES">
+                                                        <label for="txtfirstaidavaliable">
                                                            First Aid Available
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="checkbox checkbox-primary m-b-15">
-                                                        <input id="checkbox1" type="checkbox" name="txtfreebreakfast" value="YES">
-                                                        <label for="checkbox1">
+                                                        <input id="txtfreebreakfast" type="checkbox" name="txtfreebreakfast" value="YES">
+                                                        <label for="txtfreebreakfast">
                                                            Free BreakFast
                                                         </label>
                                                     </div>

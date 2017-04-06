@@ -791,7 +791,6 @@ class PropertyModel extends CI_Model {
         $this->db->join ( " $propertyInfoTable propertyInfo", "property.property_id=propertyInfo.property_id" );
         $this->db->where ( 'activation_flag', 'YES');
         $this->db->where ( 'Featured', 'Yes');
-
         $d=date("y-m-d");
         $where = " ( Featured_startDate <= '$d' and Featured_endDate >='$d' )";
         $this->db->where ( $where );
@@ -937,7 +936,7 @@ class PropertyModel extends CI_Model {
         $this->db->from( " $propertyTable property " );
         $this->db->join( " $propertyInfoTable propertyInfo", "property.property_id = propertyInfo.property_id" );
 		$this->db->where ('activation_flag','YES');
-        $this->db->limit(5,1);
+        //$this->db->limit(5,1);
         $query = $this->db->get ();
         return $query->result ();
     }
@@ -1111,7 +1110,8 @@ class PropertyModel extends CI_Model {
         $this->db->join ( "$property p", "o.Property_Id = p.property_id");
         $this->db->join("$propertyInfo pi","o.Property_Id = pi.property_id");
         $this->db->where('o.Activition_Flag','YES');
-        $this->db->limit($limit,$offset);
+		$this->db->where('p.activation_flag','YES');
+        //$this->db->limit($limit,$offset);
         $query = $this->db->get();
         return $query->result(); 
     }
@@ -1125,6 +1125,7 @@ class PropertyModel extends CI_Model {
         $this->db->join ( "$property p", "o.Property_Id = p.property_id");
         $this->db->join("$propertyInfo pi","o.Property_Id = pi.property_id");
         $this->db->where('o.Activition_Flag','YES');
+		$this->db->where('p.activation_flag','YES');
 		$this->db->where('p.Property_Id',$pid);
         //$this->db->limit($limit,$offset);
         $query = $this->db->get();
@@ -1142,6 +1143,7 @@ class PropertyModel extends CI_Model {
         $this->db->join ( "$property p", "o.Property_Id = p.property_id");
         $this->db->join("$propertyInfo pi","o.Property_Id = pi.property_id");
         $this->db->where('o.Activition_Flag','YES');
+		$this->db->where('p.activation_flag','YES');
         $query = $this->db->get();
         return $query->result(); 
     }

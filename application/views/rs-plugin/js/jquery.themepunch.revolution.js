@@ -1422,7 +1422,7 @@
 
 
 
-				img.wrap('<div class="slotholder" style="width:100%;height:100%;"'+
+				img.wrap('<div class="slotholder" style="width:100%;height:125%;"'+
 						  'data-duration="'+img.data('duration')+'"'+
 						  'data-zoomstart="'+img.data("zoomstart")+'"'+
 						  'data-zoomend="'+img.data("zoomend")+'"'+

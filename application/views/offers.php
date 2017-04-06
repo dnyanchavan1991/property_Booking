@@ -34,7 +34,7 @@
                             <p style="padding-top:15px;color:#fff"><b>-<?php echo $offer->Discount; ?>%</b></p>
                         </div>
                         <a href="<?php echo base_url('/index.php/Index1/PropertyDetails/'.$offer->property_id)?>">
-                            <img src="<?php echo base_url().'Admin/'.$offer->image_path.'mainImage.jpg' ?>" style="width:100%;height:100%;"></a>
+                            <img src="<?php echo base_url().'Trueholidays/'.$offer->image_path.'mainImage.jpg' ?>" style="width:100%;height:100%;"></a>
                     </div>
                     <div class="col-sm-6  offers-description">
                         <h2> <a href="<?php echo base_url('/index.php/Index1/PropertyDetails/'.$offer->property_id) ?>"><?php echo $offer->property_name; ?> </a></h2>

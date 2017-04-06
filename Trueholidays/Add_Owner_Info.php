@@ -248,7 +248,7 @@
                                              <div class="form-group">
                                                 <label class="col-md-3 col-md-offset-1 control-label">Upload Gallary :</label>
                                                 <div class="col-md-6">
-                                                    <input type="file" name="iddoc" class="filestyle" data-size="sm" required="true">
+                                                    <input type="file" name="iddoc" class="filestyle" data-size="sm" >
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -280,7 +280,7 @@
                                             <div class="form-group">
                                                 <label class="col-md-3 col-md-offset-1 control-label" for="example-email">Alternative Tel/Mobile No. :</label>
                                                 <div class="col-md-6">
-                                                   <input type="text" placeholder="" name="txtmobile2" data-mask="999999" class="form-control" required="true" data-mask="9999999999">
+                                                   <input type="text" placeholder="" name="txtmobile2"  class="form-control"   data-mask="9999999999">
                                                 </div>
                                             </div>
                                              

@@ -39,7 +39,7 @@
 						<div class="col-sm-3">
 							<div class="form-group">
 								<label for="email" accesskey="E">Location</label>
-								<input name="location" type="text" id="location-mobile" value="" class="form-control location-mobile" placeholder="Please enter your Location"/>
+								<input name="location" type="text" id="location-mobile" value="" class="form-control location-mobile" placeholder="Where are you going?"/>
 							</div>
 						</div>
 						<div class="col-sm-2">
@@ -161,7 +161,7 @@
 <!--						--><?php //echo base_url().'images/slides'.$img.'mainImage.jpg' ?>
 						<li data-transition="fade" data-slotamount="7" data-masterspeed="1500">
 							<!-- Main Image -->
-							<img src="<?php echo base_url().'images/slides/'.$img.'mainImage.jpg' ?>" style="" alt="image not found" data-bgfit="cover"
+							<img src="<?php echo base_url().'Trueholidays/'.$img.'mainImage.jpg' ?>" style="" alt="image not found" data-bgfit="cover"
 <!--								 data-bgposition="left bottom" data-bgrepeat="no-repeat">-->
 							<!-- Layers -->
 							<!-- Layer 1 -->
@@ -302,7 +302,7 @@
 			?>
 			<div class="item">
 				<div class="col-sm-12 col-md-12 col-lg-6 feature-main">
-					<div class="room-thumb"><img src="<?php echo base_url().'Admin/'.$propertyTypes->image_path.'mainImage.jpg' ?>" alt="room 3"
+					<div class="room-thumb"><img src="<?php echo base_url().'Trueholidays/'.$propertyTypes->image_path.'mainImage.jpg' ?>" alt="room 3"
 												 class="img-responsive" data-rel="prettyPhoto[gallery2]"/>
 						<div class="mask">
 							<div class="main" style="background: #494949;">

@@ -23,8 +23,28 @@ if(isset($this->session->userdata()['first_name']) && $this->session->userdata()
         <section class="standard-slider room-slider">
             <div class="col-sm-12 col-md-8">
                 <div id="owl-standard" class="owl-carousel">
-                    <div class="item"> <a href="<?php echo $propertyDetails->imagePath ?>" data-rel="prettyPhoto[gallery1]"><img src="<?php echo base_url() ?>assets/img/holidays_img/4.jpg" alt="Image 2" class="img-responsive"></a> </div>
-                    <div class="item"> <a href="<?php echo base_url() ?>assets/img/holidays_img/3.jpg" data-rel="prettyPhoto[gallery1]"><img src="<?php echo base_url() ?>assets/img/holidays_img/3.jpg" alt="Image 2" class="img-responsive"></a> </div>
+                      <?php 
+					 // echo base_url();
+					
+					  //$imgPath = base_url()."Trueholidays/" .$propertyDetails->imagePath. "*";
+					  $imgPath = "../../Trueholidays/" .$propertyDetails->imagePath. "*.jpg";
+					  
+						 $images1 = glob("/home/trueholidays/public_html/Trueholidays/" .$propertyDetails->imagePath. "*");
+							 
+						// $c=0;
+								foreach($images1 as $image1)
+								{
+									///home/trueholidays/public_html/Trueholidays/Property gallery/1491238975/mainImage.jpg
+									$imgUrl = str_replace("/home/trueholidays/public_html","http://www.trueholidays.co.in",$image1);
+								//	 echo'<img src="'.$image1.'" height="100px" class="img-thumbnail" width="100px" alt="img not found">';
+								//}*/
+						?>
+					<div class="item"> <a href="<?php echo $imgUrl ?>" data-rel="prettyPhoto[gallery1]"><img src="<?php echo $imgUrl?>" alt="Image 2" class="img-responsive"></a> </div>
+                    
+					<?
+					}
+					
+					?>
                 </div>
             </div>
         </section>

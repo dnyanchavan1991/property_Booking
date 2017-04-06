@@ -278,6 +278,7 @@ if(isset($_GET['id']))
                                         <tr style="background-color: #494949; color: white;">
                                             <th>Sr. No</th>
                                             <th >Property Name</th>
+											<th >Property Id</th>
                                             <th>Owner Name </th>
                                             <th>contact No</th>
                                             <th>Reg Date</th>
@@ -307,6 +308,7 @@ if(isset($_GET['id']))
                                                             echo"<tr>
                                                                 <td>$c</td>
                                                                  <td>$row[1]</td>
+																 <td>$row[0]</td>
                                                                  <td>$row1[2]</td>
                                                                  <td>$row1[3]</td>
                                                                  <td>$row1[7]</td>
