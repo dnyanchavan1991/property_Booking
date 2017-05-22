@@ -1,5 +1,4 @@
 <?php
- 
     include("db.php");
      ob_start();
     //error_reporting(0); 
@@ -10,11 +9,10 @@
     $qDecoded      = rtrim( mcrypt_decrypt( MCRYPT_RIJNDAEL_256, md5( $cryptKey ), base64_decode( $q ), MCRYPT_MODE_CBC, md5( md5( $cryptKey ) ) ), "\0");
     return( $qDecoded );
 	}
- 
- 
+  
 	 if(isset($_GET['_uid']))
     {
-		$cryptKey  = 'qJB0rGtIn5UB1xG03efyCp';
+	 	$cryptKey  = 'qJB0rGtIn5UB1xG03efyCp';
 		$qDecoded      = rtrim( mcrypt_decrypt( MCRYPT_RIJNDAEL_256, md5( $cryptKey ), base64_decode( $_GET['_uid'] ), MCRYPT_MODE_CBC, md5( md5( $cryptKey ) ) ), "\0");
         $user_name= $_GET['_uid'];
 
@@ -32,25 +30,28 @@
 				
             }
             else
-            {
+            { 
+		 
                          if($row[1]==$user_name && $row[2]==$pass && $row[9]=='admin')
                         {   
                             //session_start();
-                            
-                            $_SESSION['TrueHolidays']=$row[1]; 
+									
+                           $_SESSION['TrueHolidays']=$row[1]; 
                            
 						    // echo"<script>window.location.href='index.php';</script>";
                         }
                         else
                         {    
-                            $msg='Please Enter Your Correct Password'; 
-	//						echo"<script>window.location.href='../index.php/Index1/Login';</script>";	
+				               $msg='Please Enter Your Correct Password'; 
+	 						echo"<script>window.location.href='../index.php/Index1/Login';</script>";	
                         }
                 
         
             }
             mysqli_close();
-    }
+    } else {
+		header('Location:../../');
+	}
     /*if(isset( $_SESSION['TrueHolidays']))
     {
         echo "#40";    
@@ -73,9 +74,9 @@
 
         <!-- App favicon -->
        <!--  <link rel="shortcut icon" href="assets/images/favicon.ico"> -->
-         <link rel="icon" href="sml.ico" type="image/x-icon">
+         <link rel="icon" href="hld.ico" type="image/x-icon">
         <!-- App title -->
-        <title>Admin Portal </title>
+        <title>HOLIDAYBAY | INDEX  </title>
 
         <!-- App css -->
         <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -192,27 +193,27 @@
                         </div>
 
                         <ul >
-                        	<li class="menu-title">Navigation</li>
+                            <li class="menu-title">Navigation</li>
 
                            <!--  <li class="has_sub">
                                 <a href="index.php" class="waves-effect"><i class="mdi mdi-view-dashboard"></i> Dashboard</a>
                             </li> -->
-                            <li class="has_sub">
-                                <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-view-dashboard"></i><span class="badge badge-success pull-right">2</span> <span></span>Property Mng </span> </a>
+                            <li class="has_sub Active">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-view-dashboard"></i> <span>Property Management </span> </a>
                                 <ul class="list-unstyled">
                                     <li><a href="Add_Property.php">Add Property</a></li>
-                                    <li><a href="View_Property.php">View Property</a></li>
+                                    <li class="Active"><a href="View_Property.php">View Property</a></li>
                                 </ul>
                             </li>
                             <li class="has_sub">
-                                <a href="Discount.php" class="waves-effect"><i class="mdi mdi-view-dashboard"></i><span>Discount Mgmt </span> </a>
+                                <a href="Discount.php" class="waves-effect"><i class="mdi mdi-view-dashboard"></i><span>Discount Management </span> </a>
                                 
                             </li>
                             <li class="has_sub Active">
-                                <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-view-dashboard"></i><span class="badge badge-success pull-right">2</span> <span></span>Daily Expensive Mng </span> </a>
+                                <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-view-dashboard"></i> <span>DoD Management </span> </a>
                                 <ul class="list-unstyled">
-                                    <li ><a href="Add_Expensive.php">Add Expensive</a></li>
-                                    <li><a href="View_Expensive.php">View Expensive</a></li>
+                                    <li ><a href="Add_Deals_Of_Day.php">Add Deals</a></li>
+                                    <li><a href="View_Deals_Of_Day.php">View Deals</a></li>
                                 </ul>
                             </li>
                         </ul>

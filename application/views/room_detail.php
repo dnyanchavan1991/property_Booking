@@ -6,7 +6,8 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>True Holidays</title>
+<link rel="icon" href="hld.ico" type="image/x-icon">
+<title>HOLIDAYBAY</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <link rel="shortcut icon" href="favicon.ico">
 
@@ -122,25 +123,44 @@ window.onscroll=testScroll
 <!-- Header -->
 <header>
   <!-- Navigation -->
-  <div class="navbar yamm navbar-default" id="sticky">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" data-toggle="collapse" data-target="#navbar-collapse-grid" class="navbar-toggle"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-        <a href="index.html" class="navbar-brand">
-        <!-- Logo -->
-        <div id="logo"> Logo</div>
-        </a> </div>
-      <div id="navbar-collapse-grid" class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-          <li class="dropdown active"> <a href="index.html">Home</a>
-          </li>
-          <li> <a href="gallery.html">Featured</a></li>
-          <li> <a href="gallery.html">Quick Search</a></li>
-          <li> <a href="#">Login</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
+ <div class="navbar yamm navbar-default">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" data-toggle="collapse" data-target="#navbar-collapse-grid" class="navbar-toggle"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+				<a href="<?php echo base_url() ?>" class="navbar-brand">
+					<!-- Logo -->
+					<div id="logo" style="margin-top: 8px;height: 60px !important;width: 180px !important;padding-top:0px"> <img id="default-logo" src="images/F3.jpg" alt="HOLIDAYBAY" style="height: 3.3em; width: 15em"><!--style="height:100%;width:100%"--> </div>
+				</a> </div>
+			<div id="navbar-collapse-grid" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav" style="font-weight: bold; margin-left: 5%;"> 
+					<li class="dropdown active"> <a href="<?php echo base_url() ?>">Home</a>
+					</li>
+					<li> <a href="<?php echo base_url()?>index.php/Search/FeaturedSearch">Featured</a></li>
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Quick Search
+							<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="<?php echo base_url()?>index.php/Search/QuickSearch/Maharashtra">Maharashtra</a></li>
+							<li><a href="<?php echo  base_url()?>index.php/Search/QuickSearch/Pradesh">Goa</a></li>
+						</ul>
+					</li>
+					<li>
+                        <?php if($offer_count){ ?>
+                            <div  class="col-sm-hidden" style="background-color: red;width:25px;height:25px;position:absolute;left:55px;top:12px;border-radius: 50%">
+                                <p style="padding-top:4px;text-align:center;color:#fff"><?php echo $offer_count;?></p>
+                            </div>
+                        <?php } ?>
+						<a href="<?php echo base_url()?>index.php/Offers/offerMenuLink">Offers</a>
+					</li>
+                    <?php if(isset($this->session->userdata()['user_id'])){ ?>
+                        <li> <a href="<?php echo  base_url()?>index.php/Index1/Logout">Logout</a></li>
+				    <?php }else{?>
+                        <li> <a href="<?php echo  base_url()?>index.php/Index1/Login">Login</a></li>
+                    <?php }?>
+                </ul>
+			</div>
+		</div>
+	</div>
 </header>
 
 <!-- Revolution Slider -->
@@ -154,7 +174,7 @@ window.onscroll=testScroll
           <img src="css/css/images/slides/3.jpg" style="opacity:0;" alt="image not found"  data-bgfit="cover" data-bgposition="left bottom" data-bgrepeat="no-repeat">
           <!-- Layers -->
           <!-- Layer 1 -->
-          <div class="caption sft revolution-starhotel bigtext"
+          <div class="caption sft revolution-HOLIDAYBAY bigtext"
           				data-x="505"
                         data-y="30"
                         data-speed="700"
@@ -162,7 +182,7 @@ window.onscroll=testScroll
                         data-easing="easeOutBack">
 						<span><i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i></span> A Five Star Hotel <span><i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i></span></div>
           <!-- Layer 2 -->
-          <div class="caption sft revolution-starhotel smalltext"
+          <div class="caption sft revolution-HOLIDAYBAY smalltext"
           				data-x="605"
                         data-y="105"
                         data-speed="800"
@@ -185,7 +205,7 @@ window.onscroll=testScroll
           <img src="css/css/images/slides/2.jpg"  alt="darkblurbg"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
           <!-- Layers -->
           <!-- Layer 1 -->
-          <div class="caption sft revolution-starhotel bigtext"
+          <div class="caption sft revolution-HOLIDAYBAY bigtext"
           				data-x="585"
                         data-y="30"
                         data-speed="700"
@@ -193,7 +213,7 @@ window.onscroll=testScroll
                         data-easing="easeOutBack">
 						<span><i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i></span> Double room <span><i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i></span></div>
           <!-- Layer 2 -->
-          <div class="caption sft revolution-starhotel smalltext"
+          <div class="caption sft revolution-HOLIDAYBAY smalltext"
           				data-x="682"
                         data-y="105"
                         data-speed="800"
@@ -344,7 +364,7 @@ window.onscroll=testScroll
         <br>
         <abbr title="Phone">Phone:</abbr> <a href="#"></a><br>
         <abbr title="Email">Email:</abbr> <a href="#"></a><br>
-        <abbr title="Website">Web:</abbr> <a href="http://www.trueholidays.co.in" target="_blank">www.trueholidays.co.in</a><br>
+        <abbr title="Website">Web:</abbr> <a href="https://www.holidaybay.com" target="_blank">www.holidaybay.com</a><br>
         </address>
       </div>
     </div>

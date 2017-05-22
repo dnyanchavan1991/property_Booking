@@ -1,5 +1,5 @@
 @charset "utf-8";
-/* Table of contents - Starhotel: Main Theme CSS by Slashdown
+/* Table of contents - HOLIDAYBAY: Main Theme CSS by Slashdown
 ====================================================  
 */
 /* Basic Styles 
@@ -167,7 +167,7 @@ h1 i, h2 i, h3 i, h4 i h5 i {
 	padding-right: 15px;
 }
 /* Fonts */
-body ,.ui-widget, .revolution-starhotel  {
+body ,.ui-widget, .revolution-HOLIDAYBAY  {
 	font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
 	font-size: 13px;
 }
@@ -1929,7 +1929,7 @@ border: 1px solid;
 	position: relative;
 	z-index: 0;
 }
-.revolution-slider .tp-caption.revolution-starhotel.bigtext {
+.revolution-slider .tp-caption.revolution-HOLIDAYBAY.bigtext {
 	position: absolute;
 	color: #fff;
 	text-shadow: none;
@@ -1945,14 +1945,14 @@ border: 1px solid;
 	padding-top: 1px;
 	text-shadow: 0px 3px 3px rgba(0,0,0, 0.3);
 }
-.revolution-slider .tp-caption.revolution-starhotel.bigtext span {
+.revolution-slider .tp-caption.revolution-HOLIDAYBAY.bigtext span {
 	letter-spacing: -3px;
 }
-.revolution-slider .tp-caption.revolution-starhotel.bigtext span i {
+.revolution-slider .tp-caption.revolution-HOLIDAYBAY.bigtext span i {
 	font-size: 0.5em;
 	vertical-align: middle;
 }
-.revolution-slider .tp-caption.revolution-starhotel.smalltext {
+.revolution-slider .tp-caption.revolution-HOLIDAYBAY.smalltext {
 	position: absolute;
 	color: #fff;
 	text-shadow: none;

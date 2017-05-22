@@ -100,7 +100,7 @@ class RoomAvailability extends CI_Controller {
         $checkIn = $request->checkInDate == '' ? $this->session->userdata ( 'checkIn' ) : $request->checkInDate;
         $checkOut = $request->checkOutDate == '' ? $this->session->userdata ( 'checkOut' ) : $request->checkOutDate;*/
 
-
+		//var_dump($_POST);
         if($_SERVER['REQUEST_METHOD'] === 'POST')
         {
             if(isset($_POST['changeFilter'])){
@@ -176,6 +176,7 @@ class RoomAvailability extends CI_Controller {
     }
 
     public function checkFilterRoomAvailabilty() {
+		//var_dump($_POST);
         $this->load->model ( 'PropertyModel' );
         $searchArray=array(
             'checkIn'=>$this->session->userdata ( 'checkIn' ),
@@ -200,8 +201,9 @@ class RoomAvailability extends CI_Controller {
         }
         $roomAvailableInfo = $this->PropertyModel->checkRoomAvailabilty ($searchArray, $this->session->userdata('filterData'), '', '');
 
-        $count = count($this->PropertyModel->checkRoomAvailabiltyCount($searchArray,$this->session->userdata('filterData'),'',''));
-        $offer_count = count($this->PropertyModel->getOffersCount());
+        //$count = count($this->PropertyModel->checkRoomAvailabiltyCount($searchArray,$this->session->userdata('filterData'),'',''));
+        $count = count($roomAvailableInfo);
+		$offer_count = count($this->PropertyModel->getOffersCount());
         $this->load->view('load_filters.php',array('data' => $roomAvailableInfo,'count' => $count,'formData'=>$searchArray,'filterData'=>$this->session->userdata('filterData'),'offer_count'=>$offer_count));
     }
 }

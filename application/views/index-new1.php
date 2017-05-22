@@ -2,9 +2,10 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Starhotel - SHARED ON THEMELOCK.COM</title>
+<link rel="icon" href="hld.ico" type="image/x-icon">
+<title>HOLIDAYBAY</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<link rel="shortcut icon" href="favicon.ico">
+
 
 <!-- Stylesheets -->
 <link rel="stylesheet" href="css/animate.css">
@@ -54,8 +55,8 @@
     <div class="row">
       <div class="col-xs-6">
         <div class="th-text pull-left">
-          <div class="th-item"> <a href="#"><i class="fa fa-phone"></i> 05-460789986</a> </div>
-          <div class="th-item"> <a href="#"><i class="fa fa-envelope"></i> MAIL@STARHOTEL.COM </a></div>
+          <div class="th-item"> <a href="#"><i class="fa fa-phone"></i> +91 8779549020</a> </div>
+          <div class="th-item"> <a href="#"><i class="fa fa-envelope"></i> travel@holidaybay.com </a></div>
         </div>
       </div>
       <div class="col-xs-6">
@@ -89,10 +90,11 @@
         <button type="button" data-toggle="collapse" data-target="#navbar-collapse-grid" class="navbar-toggle"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
         <a href="index.html" class="navbar-brand">         
         <!-- Logo -->
-        <div id="logo"> <img id="default-logo" src="images/logo.png" alt="Starhotel" style="height:44px;"> <img id="retina-logo" src="images/logo-retina.png" alt="Starhotel" style="height:44px;"> </div>
+					<div id="logo" style="height: 100px !important;width: 100px !important;padding-top:0px"> 
+					<img id="default-logo" src="images/F3.jpg" alt="HOLIDAYBAY"style="height: 3.3em; width: 15em" ><!--style="height:100%;width:100%"--> </div>
         </a> </div>
       <div id="navbar-collapse-grid" class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav"    style="font-weight: bold; margin-left: 5%;">
           <li class="dropdown active"> <a href="index.html">Home</a>
           </li>
           <li> <a href="gallery.html">Featured</a></li>
@@ -128,7 +130,7 @@
           <img src="images/slides/3.jpg" style="opacity:0;" alt="image not found"  data-bgfit="cover" data-bgposition="left bottom" data-bgrepeat="no-repeat"> 
           <!-- Layers -->           
           <!-- Layer 1 -->
-          <div class="caption sft revolution-starhotel bigtext"  
+          <div class="caption sft revolution-HOLIDAYBAY bigtext"  
           				data-x="505" 
                         data-y="30" 
                         data-speed="700" 
@@ -136,7 +138,7 @@
                         data-easing="easeOutBack"> 
 						<span><i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i></span> A Five Star Hotel <span><i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i></span></div>
           <!-- Layer 2 -->
-          <div class="caption sft revolution-starhotel smalltext"  
+          <div class="caption sft revolution-HOLIDAYBAY smalltext"  
           				data-x="605" 
                         data-y="105" 
                         data-speed="800" 
@@ -159,7 +161,7 @@
           <img src="images/slides/2.jpg"  alt="darkblurbg"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat"> 
           <!-- Layers -->           
           <!-- Layer 1 -->
-          <div class="caption sft revolution-starhotel bigtext"  
+          <div class="caption sft revolution-HOLIDAYBAY bigtext"  
           				data-x="585" 
                         data-y="30" 
                         data-speed="700" 
@@ -167,7 +169,7 @@
                         data-easing="easeOutBack"> 
 						<span><i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i></span> Double room <span><i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i></span></div>
           <!-- Layer 2 -->
-          <div class="caption sft revolution-starhotel smalltext"  
+          <div class="caption sft revolution-HOLIDAYBAY smalltext"  
           				data-x="682" 
                         data-y="105" 
                         data-speed="800" 

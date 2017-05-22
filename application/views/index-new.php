@@ -11,8 +11,8 @@
 		<div class="row">
 			<div class="col-xs-6">
 				<div class="th-text pull-left">
-					<div class="th-item"> <a href="#"><i class="fa fa-phone"></i> 05-460789986</a> </div>
-					<div class="th-item"> <a href="#"><i class="fa fa-envelope"></i> MAIL@STARHOTEL.COM </a></div>
+					<div class="th-item"> <a href="#"><i class="fa fa-phone"></i> +91 8779549020</a> </div>
+					<div class="th-item"> <a href="#"><i class="fa fa-envelope"></i> travel@holidaybay.com </a></div>
 				</div>
 			</div>
 			<!--<div class="col-xs-6">
@@ -114,10 +114,10 @@
 				<button type="button" data-toggle="collapse" data-target="#navbar-collapse-grid" class="navbar-toggle"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
 				<a href="<?php echo base_url() ?>" class="navbar-brand">
 					<!-- Logo -->
-					<div id="logo"> <img id="default-logo" src="images/F3.jpg" alt="Starhotel" style="height:44px;"> <img id="retina-logo" src="images/logo-retina.png" alt="Starhotel" style="height:44px;"> </div>
+					<div id="logo" style="margin-top: 8px;height: 60px !important;width: 180px !important;padding-top:0px"> <img id="default-logo" src="images/F3.jpg" alt="HOLIDAYBAY" style="height: 3.3em; width: 15em"><!--style="height:100%;width:100%"--> </div>
 				</a> </div>
 			<div id="navbar-collapse-grid" class="navbar-collapse collapse">
-				<ul class="nav navbar-nav">
+				<ul class="nav navbar-nav" style="font-weight: bold; margin-left: 5%;"> 
 					<li class="dropdown active"> <a href="<?php echo base_url() ?>">Home</a>
 					</li>
 					<li> <a href="<?php echo base_url()?>index.php/Search/FeaturedSearch">Featured</a></li>
@@ -161,30 +161,31 @@
 <!--						--><?php //echo base_url().'images/slides'.$img.'mainImage.jpg' ?>
 						<li data-transition="fade" data-slotamount="7" data-masterspeed="1500">
 							<!-- Main Image -->
-							<img src="<?php echo base_url().'Trueholidays/'.$img.'mainImage.jpg' ?>" style="" alt="image not found" data-bgfit="cover"
+							<img src="<?php echo base_url().'Trueholidays/'.$img.'mainImage.jpg' ?>" style="" alt="image not found" data-bgfit="cover">
 <!--								 data-bgposition="left bottom" data-bgrepeat="no-repeat">-->
 							<!-- Layers -->
 							<!-- Layer 1 -->
-							<div class="caption sft revolution-starhotel bigtext"
+							<div class="caption sft revolution-HOLIDAYBAY bigtext"
 								 data-x="505"
 								 data-y="30"
 								 data-speed="700"
 								 data-start="1700"
 								 data-easing="easeOutBack">
-								<span><i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i
+								<!--<span><i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i
 										class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i
-										class="fa fa-star-o"></i> </span> <?php echo $sliderImage->property_name ?> <span> <i
+										class="fa fa-star-o"></i> </span>  <?php //echo $sliderImage->property_name ?> 
+										 <span> <i
 										class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i
 										class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i
-										class="fa fa-star-o"></i></span></div>
+										class="fa fa-star-o"></i></span>--></div>
 							<!-- Layer 2 -->
-							<div class="caption sft revolution-starhotel smalltext"
+							<!--<div class="caption sft revolution-HOLIDAYBAY smalltext"
 								 data-x="605"
 								 data-y="105"
 								 data-speed="800"
 								 data-start="1700"
 								 data-easing="easeOutBack">
-								<span>And we like to keep it that way!</span></div>
+								<span>And we like to keep it that way!</span></div>-->
 							<!-- Layer 3 -->
 							<div class="caption sft"
 								 data-x="775"
@@ -193,7 +194,7 @@
 								 data-start="1900"
 								 data-easing="easeOutBack">
 								<a href="<?php echo base_url('/index.php/Index1/PropertyDetails/'.$sliderImage->property_id.'') ?>" class="button btn btn-purple btn-lg">
-									See rooms
+									<?php echo $sliderImage->property_name ?><!--See rooms-->
 								</a>
 							</div>
 						</li>

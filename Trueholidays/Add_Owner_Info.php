@@ -9,7 +9,7 @@
     }
     else
     {
-        echo"<script>window.location.href='Login.php';</script>";
+        echo"<script>window.location.href='../index.php/Index1/Login';</script>";	
         
     }
 ?>
@@ -24,9 +24,9 @@
 
         <!-- App favicon -->
        <!--  <link rel="shortcut icon" href="assets/images/favicon.ico"> -->
-         <link rel="icon" href="sml.ico" type="image/x-icon">
+         <link rel="icon" href="hld.ico" type="image/x-icon">
         <!-- App title -->
-        <title>Training | Portal </title>
+        <title>HOLIDAYBAY | ADD OWNER INFO </title>
 <!-- Date Picker Css -->
 <link href="../plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
         <!-- Google Map -->
@@ -105,7 +105,7 @@
 
                 <!-- LOGO -->
                 <div class="topbar-left">
-                    <a href="index.php" class="logo"><span>True<span>Holidays</span></span><i class="mdi mdi-cube"></i></a>
+                    <a href="index.php" class="logo"><span>HOLIDAYBAY</span><i class="mdi mdi-cube"></i></a>
                     <!-- Image logo -->
                     <!--<a href="index.html" class="logo">-->
                         <!--<span>-->
@@ -187,16 +187,23 @@
                            <!--  <li class="has_sub">
                                 <a href="index.php" class="waves-effect"><i class="mdi mdi-view-dashboard"></i> Dashboard</a>
                             </li> -->
-                            <li class="has_sub">
-                                <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-view-dashboard"></i><span class="badge badge-success pull-right">2</span> <span></span>Property Mng </span> </a>
+                            <li class="has_sub Active">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-view-dashboard"></i> <span>Property Management </span> </a>
                                 <ul class="list-unstyled">
                                     <li><a href="Add_Property.php">Add Property</a></li>
-                                    <li><a href="View_Property.php">View Property</a></li>
+                                    <li class="Active"><a href="View_Property.php">View Property</a></li>
                                 </ul>
                             </li>
                             <li class="has_sub">
-                                <a href="Discount.php" class="waves-effect"><i class="mdi mdi-view-dashboard"></i><span>Discount Mgmt </span> </a>
+                                <a href="Discount.php" class="waves-effect"><i class="mdi mdi-view-dashboard"></i><span>Discount Management </span> </a>
                                 
+                            </li>
+                            <li class="has_sub Active">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-view-dashboard"></i> <span>DoD Management </span> </a>
+                                <ul class="list-unstyled">
+                                    <li ><a href="Add_Deals_Of_Day.php">Add Deals</a></li>
+                                    <li><a href="View_Deals_Of_Day.php">View Deals</a></li>
+                                </ul>
                             </li>
                         </ul>
                     </div>
@@ -221,7 +228,7 @@
                         <div class="row">
 							<div class="col-xs-12">
 								<div class="page-title-box">
-                                    <h4 class="page-title">Add Property </h4>
+                                    <h4 class="page-title">Add Property Owner's Information </h4>
                                         
                                     <div class="clearfix"></div>
                                 </div>
@@ -236,7 +243,7 @@
                             <div class="card-box">
                                 <div class="row">
                                     <div class="row">
-                                        <h3 ><center style="color: skyblue;"> Property Owner Info</center></h3>
+                                       <!-- <h3 ><center style="color: skyblue;"> Property Owner Info</center></h3>-->
                                     </div>
                                     <hr>
                                             <div class="form-group">
@@ -246,9 +253,9 @@
                                                 </div>
                                             </div>
                                              <div class="form-group">
-                                                <label class="col-md-3 col-md-offset-1 control-label">Upload Gallary :</label>
+                                                <label class="col-md-3 col-md-offset-1 control-label">Upload Profile :</label>
                                                 <div class="col-md-6">
-                                                    <input type="file" name="iddoc" class="filestyle" data-size="sm" >
+                                                    <input type="file" name="iddoc" class="filestyle" data-size="sm" required="true">
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -280,7 +287,7 @@
                                             <div class="form-group">
                                                 <label class="col-md-3 col-md-offset-1 control-label" for="example-email">Alternative Tel/Mobile No. :</label>
                                                 <div class="col-md-6">
-                                                   <input type="text" placeholder="" name="txtmobile2"  class="form-control"   data-mask="9999999999">
+                                                   <input type="number" placeholder="" name="txtmobile2" class="form-control" required="true" >
                                                 </div>
                                             </div>
                                              
@@ -383,17 +390,22 @@
             $Owner_Name=$_POST['txtname'];
             $Email=$_POST['txtemail'];
             $Address=$_POST['txtaddress'];
-            $Registration_Date=$_POST['txtregistrationdate'];
+            $Registration_Date1=$_POST['txtregistrationdate'];
+
+
+          $timestamp = strtotime(str_replace('/', '-', $Registration_Date1));
+$mysql_date = date('Y-m-d', $timestamp);
+
             $Mobile_No1=$_POST['txtmobile'];
             $Mobile_No2=$_POST['txtmobile2'];
-            $result = mysqli_query($con,"SELECT MAX(property_id) FROM property");
+            $result = mysqli_query($con, "SELECT MAX(property_id) FROM property");
             $row1 = mysqli_fetch_row($result);
             $property_id = $row1[0];
 
            /* $query= "INSERT INTO property_owner_info values('','".$property_id."','".$Owner_Name."','".$Mobile_No1."','".$Mobile_No2."','".$Email."','".$Address."','".$Registration_Date."',
             'yes','yes')";
 
-            $res1=mysql_query($query);
+            $res1=mysqli_query($query);
             if($res1)
             {
                 echo '<script>alert("Property Save successfully")</script>';
@@ -405,8 +417,8 @@
             }*/
 
 
-                               /* $result = mysql_query("SELECT MAX(Gallery_Id) FROM gallery");
-                                $row1 = mysql_fetch_row($result);
+                               /* $result = mysqli_query("SELECT MAX(Gallery_Id) FROM gallery");
+                                $row1 = mysqli_fetch_row($result);
                                 $highest_id = $row1[0]+1;
 */
                                 //------PHOTO UPLOADING-------
@@ -441,10 +453,10 @@
                                                 /*move_uploaded_file($_FILES["photo"]["tmp_name"],$targetPhoto);
                                                 move_uploaded_file($_FILES["resume"]["tmp_name"],$targetResume);*/
                                                 move_uploaded_file($_FILES["iddoc"]["tmp_name"],$targetIdProof.$newidproofname);
-                                                $query= "INSERT INTO property_owner_info values('','".$property_id."','".$Owner_Name."','".$Mobile_No1."','".$Mobile_No2."','".$Email."','".$Address."','".$Registration_Date."',
+                                                $query= "INSERT INTO property_owner_info values('','".$property_id."','".$Owner_Name."','".$Mobile_No1."','".$Mobile_No2."','".$Email."','".$Address."','".$mysql_date."',
                                                         'yes','yes','".$targetIdProof."')";
                                                 
-                                                $res=mysqli_query($con,$query);
+                                                $res=mysqli_query($con, $query);
                                                 if($res)
                                                 {
                                                     echo '<script>alert("Data inserted successfully")</script>';
@@ -462,7 +474,7 @@
                                     }
                             }//-----PHOTO UPLOADING ENDS-------
 
-
+            mysqli_close();
                    
         }
     

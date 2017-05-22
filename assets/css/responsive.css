@@ -1,5 +1,5 @@
 @charset "utf-8";
-/* Table of contents - Starhotel:Responsive CSS by Slashdown
+/* Table of contents - HOLIDAYBAY:Responsive CSS by Slashdown
 ====================================================  
 */
 
@@ -375,7 +375,7 @@ margin-top: -17px;
  display: block;
 }
  header #logo #default-logo {
- display: none;
+/* display: none;*/
 }
 /* Background patterns */
 .pattern-1 {

@@ -44,7 +44,7 @@ class PropertyModel extends CI_Model {
         $this->db->join ( "$propertyTable property ", "propertyInfo.property_id=property.property_id" );
 
         //	$where = "(city  like '%$destination%' or state like '%$destination%')";
-        $where = " CONCAT(TRIM(city), ', ', TRIM(state),', ',TRIM(country)) LIKE '%$destination%' ";
+        $where = " (CONCAT(TRIM(city), ', ', TRIM(state),', ',TRIM(country)) LIKE '%$destination%' OR CONCAT(TRIM(street), ', ', TRIM(state),', ',TRIM(country)) LIKE '%$destination%') ";
 
         $this->db->where ( $where );
         $this->db->where ('activation_flag','YES');
@@ -139,7 +139,7 @@ class PropertyModel extends CI_Model {
 
                 $bathroomWhere = "(";
                 foreach ( $filterData['selectedBathroomList'] as $bathroomList ) {
-                    if($bathroomList == "5+")
+                    if($bathroomList == "5")
                         $bathroomWhere = 	$bathroomWhere. "propertyInfo.bathrooms >= 5";
                     else
                         $bathroomWhere = 	$bathroomWhere. "propertyInfo.bathrooms = " . $bathroomList;
@@ -151,6 +151,7 @@ class PropertyModel extends CI_Model {
 
                     $i ++;
                 } // echo $where;
+				//var_dump($bathroomWhere);
                 $this->db->where ( $bathroomWhere );
             }
             /*	if ($filterData->propertyNameList [0]->name != null) {
@@ -268,7 +269,7 @@ class PropertyModel extends CI_Model {
         $this->db->join ( "$propertyTable property ", "propertyInfo.property_id=property.property_id" );
 
         //	$where = "(city  like '%$destination%' or state like '%$destination%')";
-        $where = " CONCAT(TRIM(city), ', ', TRIM(state),', ',TRIM(country)) LIKE '%$destination%' ";
+        $where = " (CONCAT(TRIM(city), ', ', TRIM(state),', ',TRIM(country)) LIKE '%$destination%') OR (CONCAT(TRIM(street), ', ', TRIM(state),', ',TRIM(country)) LIKE '%$destination%') ";
 
         $this->db->where ( $where );
         $this->db->where ('activation_flag','YES');
@@ -363,7 +364,7 @@ class PropertyModel extends CI_Model {
 
                 $bathroomWhere = "(";
                 foreach ( $filterData['selectedBathroomList'] as $bathroomList ) {
-                    if($bathroomList == "5+")
+                    if($bathroomList == "5")
                         $bathroomWhere = 	$bathroomWhere. "propertyInfo.bathrooms >= 5";
                     else
                         $bathroomWhere = 	$bathroomWhere. "propertyInfo.bathrooms = " . $bathroomList;
@@ -988,7 +989,7 @@ class PropertyModel extends CI_Model {
     	$this->db->group_by ( array (
     			"property.property_id"
     	) );
-    	$this->db->limit($limit,$offset);
+    	//$this->db->limit($limit,$offset);
     	$roomAvailableInfo = $this->db->get ();
     	$roomAvailableInfoResult = $roomAvailableInfo->result ();
     	return ($roomAvailableInfoResult);
@@ -1003,7 +1004,7 @@ class PropertyModel extends CI_Model {
         $this->db->join( " $propertyInfoTable propertyInfo", "property.property_id = propertyInfo.property_id" );
         $this->db->where( 'activation_flag', 'YES');
         $this->db->where( 'Featured', 'Yes');
-        $d = date("y-m-d");
+        $d = date("m/d/Y");
         $where = " ( Featured_startDate <= '$d' and Featured_endDate >='$d' )";
         $this->db->where ( $where );
 		
@@ -1022,14 +1023,16 @@ class PropertyModel extends CI_Model {
         $this->db->from ( "$propertyInfo propertyInfo " );
         $this->db->join ( "$propertyTable property ", "propertyInfo.property_id=property.property_id" );
         $this->db->where ('activation_flag','YES');
-		$d = date("y-m-d");
+		$d = date("m/d/Y");
         $where = " ( Featured_startDate <= '$d' and Featured_endDate >='$d' )";
+		//var_dump($d);
+		//var_dump($where);
 		$this->db->where ( $where );        
         $this->db->order_by ( 'Featured_startDate Desc' );
         $this->db->group_by ( array (
             "property.property_id"
         ) );
-        $this->db->limit($limit,$offset);
+        //$this->db->limit($limit,$offset);
         $roomAvailableInfo = $this->db->get ();
         $roomAvailableInfoResult = $roomAvailableInfo->result ();
         return ($roomAvailableInfoResult);

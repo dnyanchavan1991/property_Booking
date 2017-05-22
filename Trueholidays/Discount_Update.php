@@ -9,7 +9,7 @@
     }
     else
     {
-        echo"<script>window.location.href='Login.php';</script>";
+        echo"<script>window.location.href='../index.php/Index1/Login';</script>";	
         
     }
     $id=$_GET['id'];
@@ -25,9 +25,9 @@
 
         <!-- App favicon -->
        <!--  <link rel="shortcut icon" href="assets/images/favicon.ico"> -->
-         <link rel="icon" href="sml.ico" type="image/x-icon">
+         <link rel="icon" href="hld.ico" type="image/x-icon">
         <!-- App title -->
-        <title>Training | Portal </title>
+        <title>HOLIDAYBAY | DISCOUNT UPDATE </title>
 <!-- Date Picker Css -->
 <link href="../plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
         <!-- Google Map -->
@@ -63,6 +63,11 @@
 
         <script src="assets/js/modernizr.min.js"></script>
         <script type="text/javascript">
+
+        $(document).ready(function(){
+            var getdate="2017-04-04 03:04:44";
+            
+        });
             function checkdate(val)
             {
                 //alert(val);
@@ -88,6 +93,8 @@
                     var grandtotal=parseFloat(Totalcost1-(val*Totalcost1/100));
                     document.getElementById('finalcost').value=Math.round(grandtotal);
                 }
+
+
         </script>
     </head>
 
@@ -116,7 +123,7 @@
 
                 <!-- LOGO -->
                 <div class="topbar-left">
-                    <a href="index.php" class="logo"><span>True<span>Holidays</span></span><i class="mdi mdi-cube"></i></a>
+                    <a href="index.php" class="logo"><span>HOLIDAYBAY</span><i class="mdi mdi-cube"></i></a>
                     <!-- Image logo -->
                     <!--<a href="index.html" class="logo">-->
                         <!--<span>-->
@@ -192,22 +199,29 @@
                             </ul>
                         </div>
 
-                        <ul >
+                       <ul >
                             <li class="menu-title">Navigation</li>
 
                            <!--  <li class="has_sub">
                                 <a href="index.php" class="waves-effect"><i class="mdi mdi-view-dashboard"></i> Dashboard</a>
                             </li> -->
-                            <li class="has_sub">
-                                <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-view-dashboard"></i><span class="badge badge-success pull-right">2</span> <span></span>Property Mng </span> </a>
+                            <li class="has_sub Active">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-view-dashboard"></i> <span>Property Management </span> </a>
                                 <ul class="list-unstyled">
                                     <li><a href="Add_Property.php">Add Property</a></li>
-                                    <li><a href="View_Property.php">View Property</a></li>
+                                    <li class="Active"><a href="View_Property.php">View Property</a></li>
                                 </ul>
                             </li>
                             <li class="has_sub">
-                                <a href="Discount.php" class="waves-effect"><i class="mdi mdi-view-dashboard"></i><span>Discount Mgmt </span> </a>
+                                <a href="Discount.php" class="waves-effect"><i class="mdi mdi-view-dashboard"></i><span>Discount Management </span> </a>
                                 
+                            </li>
+                            <li class="has_sub Active">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-view-dashboard"></i> <span>DoD Management </span> </a>
+                                <ul class="list-unstyled">
+                                    <li ><a href="Add_Deals_Of_Day.php">Add Deals</a></li>
+                                    <li><a href="View_Deals_Of_Day.php">View Deals</a></li>
+                                </ul>
                             </li>
                         </ul>
                     </div>
@@ -259,7 +273,7 @@
                                                 <div class="col-md-6">
                                                 <?php
                                                 $customerinfo="select first_name,last_name from registration where user_id='".$row[2]."'";
-                                                $customerinfores=mysqli_query($con, $customerinfo);
+                                                $customerinfores=mysqli_query($con,$customerinfo);
                                                 $customerinforow=mysqli_fetch_row($customerinfores);
                                                 ?>
                                                     <input type="text" name="txtcustomername" class="form-control" value="<?php echo $customerinforow[0];?> <?php echo$customerinforow[1];?>" placeholder="" required="true" readonly>
@@ -270,8 +284,8 @@
                                                 <div class="col-md-6">
                                                 <?php
                                                $propertyinfo="select property_name from property where property_id='".$row[9]."'";
-                                                                $propertyinfores=mysql_query($propertyinfo);
-                                                                $propertyinforow=mysql_fetch_row($propertyinfores);
+                                                                $propertyinfores=mysqli_query($con,$propertyinfo);
+                                                                $propertyinforow=mysqli_fetch_row($propertyinfores);
                                                                     ?>
                                                     <input type="email" name="txtpropertydetails" class="form-control" value="<?php echo $propertyinforow[0];?>" placeholder="" required="true" readonly>
                                                 </div>

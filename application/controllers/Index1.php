@@ -1,4 +1,4 @@
-<?php
+	<?php
 class Index1 extends CI_Controller {
 	function __construct()
 	{
@@ -97,7 +97,7 @@ class Index1 extends CI_Controller {
     public function LoginCheck(){
         if(isset($_POST['email']) && isset($_POST['password']))
         {
-          if($_POST['email'] == 'admin' && $_POST['password'] == 'admin'){
+          if($_POST['email'] == 'admin' && $_POST['password'] == 'P@ssw0rd'){
 			  $cryptKey  = 'qJB0rGtIn5UB1xG03efyCp';
 				$enc_userName =$_POST['email'];//base64_encode( mcrypt_encrypt( MCRYPT_RIJNDAEL_256, md5( $cryptKey ), $_POST['email'], MCRYPT_MODE_CBC, md5( md5( $cryptKey ) ) ) );
 				$enc_password = $_POST['password'];//base64_encode( mcrypt_encrypt( MCRYPT_RIJNDAEL_256, md5( $cryptKey ), $_POST['password'], MCRYPT_MODE_CBC, md5( md5( $cryptKey ) ) ) );

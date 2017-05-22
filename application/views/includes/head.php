@@ -1,8 +1,9 @@
 <head>
     <meta charset="utf-8">
-    <title>Starhotel - SHARED ON THEMELOCK.COM</title>
+	<link rel="shortcut icon" href="<?php echo base_url() ?>assets/images/hld.ico" >
+    <title>HOLIDAYBAY</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="shortcut icon" href="favicon.ico">
+     
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/animate.css">

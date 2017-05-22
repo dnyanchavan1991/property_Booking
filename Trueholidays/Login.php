@@ -8,7 +8,7 @@
         $query="select * from registration where user_name='".$user_name."'";
         $q=mysqli_query($con, $query);
         $row=mysqli_fetch_row($q);
-		print_r($row);
+		 
         if($user_name=='' && $pass=='')
             {
 		        $msg='Please Enter Your Correct Email Id & Password'; 
@@ -21,7 +21,7 @@
                             
                             echo$_SESSION['TrueHolidays']=$row[1]; 
                             
-                           echo"<script>window.location.href='index.php';</script>";
+                            echo"<script>window.location.href='index.php';</script>";
                         }
                         else
                         {    

@@ -4,9 +4,16 @@
         <div class="row">
             <div class="col-md-3 col-sm-3">
                 <h4>About Us</h4>
-                <p>We offer the wide collection of the most popular providers of holiday rentals for our users. Whether for a big family holiday or a quiet getaway, Holidaybay strives to find the perfect holiday property for every occasion.
+                <p>We offer the wide collection of the most popular providers of holiday rentals for our users.
+
+Whether for a big family holiday or a quiet getaway, Holidaybay strives to find the perfect
+
+holiday property for every occasion. Holidaybay finds holiday homes, apartments, villas and
+
+cottages which are carefully evaluated, worth for price customers pay.
                     <br><br>
-                    Holidaybay finds holiday homes, apartments, villas and cottages which are unique or not covered by other networks. Goal is to make WIN WIN situation for customers and holiday rental owners.</p>
+                    Holidaybay team strives to find best prices on vacation rentals for our customers.</p>
+					<br/>Customers can get in touch with operators directly.
             </div>
 
             <div class="col-md-3 col-sm-3">
@@ -24,10 +31,13 @@
                     <br>
                     <abbr title="Phone">Phone:</abbr> <a href="#"></a><br>
                     <abbr title="Email">Email:</abbr> <a href="#"></a><br>
-                    <abbr title="Website">Web:</abbr> <a href="http://www.trueholidays.co.in" target="_blank">www.holidaybay.com</a><br>
+                    <abbr title="Website">Web:</abbr> <a href="https://www.holidaybay.com" target="_blank">www.holidaybay.com</a><br>
                 </address>
             </div>
         </div>
+		<div class="row">
+		Please read <a href=''>Terms & Conditions</a> and <a href=''>Privacy Policy</a>
+		</div>
     </div>
     <div class="footer-bottom">
         <div class="container">

@@ -34,8 +34,8 @@
                             <div class="form-group">
                                 <label for="room">Property Type</label>
 
-                                <select class="form-control" name="room" id="room">
-                                    <option selected="selected" disabled="disabled" value="0">Property types</option>
+                                <select class="form-control" name="propertyType" id="propertyType">
+                                    <option selected="selected" value="1">Property types</option>
                                     <?php
                                     foreach($propertyTypes as $propertyType){
                                         echo'<option value='.$propertyType->propertyTypeId.'>'.$propertyType->propertyTypeName.'</option>';
@@ -65,7 +65,7 @@
 
 
                                     <select class="form-control" name="room" id="room">
-                                        <option selected="selected" disabled="disabled">1</option>
+                                        <option selected="selected" >1</option>
                                         <option value="Single">2</option>
                                         <option value="Double">3</option>
                                         <option value="Deluxe">4</option>
@@ -261,7 +261,7 @@
             <!-- Room -->
             <?php foreach($data as $result){ ?>
                 <div class="col-sm-4">
-                    <div class="room-thumb"> <img src="<?php echo base_url().'Admin/'.$result->image_path.'mainImage.jpg' ?>" alt="room 1" class="img-responsive" />
+                    <div class="room-thumb"> <img src="<?php echo base_url().'Trueholidays/'.$result->image_path.'mainImage.jpg' ?>" alt="room 1" class="img-responsive" />
                         <div class="mask">
                             <div class="main">
                                 <h5><?php echo $result->property_name ?></h5><!--,<h10><?php /*echo $result->propertyAddress*/?></h10> -->

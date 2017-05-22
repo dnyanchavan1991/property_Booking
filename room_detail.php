@@ -307,7 +307,7 @@ window.onscroll=testScroll
         <br>
         <abbr title="Phone">Phone:</abbr> <a href="#"></a><br>
         <abbr title="Email">Email:</abbr> <a href="#"></a><br>
-        <abbr title="Website">Web:</abbr> <a href="http://www.trueholidays.co.in" target="_blank">www.trueholidays.co.in</a><br>
+        <abbr title="Website">Web:</abbr> <a href="https://www.holidaybay.com" target="_blank">www.holidaybay.com</a><br>
         </address>
       </div>
     </div>

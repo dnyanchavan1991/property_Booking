@@ -3,13 +3,14 @@
      ob_start();
     //error_reporting(0); 
     session_start();
+	
     if(isset( $_SESSION['TrueHolidays']))
     {
             
     }
     else
     {
-        echo"<script>window.location.href='Login.php';</script>";
+       echo"<script>window.location.href='../index.php/Index1/Login';</script>";	
         
     }
 ?>
@@ -24,9 +25,9 @@
 
         <!-- App favicon -->
        <!--  <link rel="shortcut icon" href="assets/images/favicon.ico"> -->
-         <link rel="icon" href="sml.ico" type="image/x-icon">
+         <link rel="icon" href="hld.ico" type="image/x-icon">
         <!-- App title -->
-        <title>Admin Portal </title>
+        <title>HOLIDAYBAY | ADD PROPERTY </title>
 <!-- Date Picker Css -->
 <link href="../plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
         <!-- Google Map -->
@@ -170,7 +171,7 @@ $(document).ready(function(){
 
                 <!-- LOGO -->
                 <div class="topbar-left">
-                    <a href="index.php" class="logo"><span>True<span>Holidays</span></span><i class="mdi mdi-cube"></i></a>
+                    <a href="index.php" class="logo"><span>HOLIDAYBAY</span><i class="mdi mdi-cube"></i></a>
                     <!-- Image logo -->
                     <!--<a href="index.html" class="logo">-->
                         <!--<span>-->
@@ -246,21 +247,29 @@ $(document).ready(function(){
                             </ul>
                         </div>
 
-                        <ul >
+                       <ul >
                             <li class="menu-title">Navigation</li>
 
                            <!--  <li class="has_sub">
                                 <a href="index.php" class="waves-effect"><i class="mdi mdi-view-dashboard"></i> Dashboard</a>
                             </li> -->
-                            <li class="has_sub">
-                                <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-view-dashboard"></i><span class="badge badge-success pull-right">2</span> <span></span>Property Mng </span> </a>
+                            <li class="has_sub Active">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-view-dashboard"></i> <span>Property Management </span> </a>
                                 <ul class="list-unstyled">
                                     <li><a href="Add_Property.php">Add Property</a></li>
-                                    <li><a href="View_Property.php">View Property</a></li>
+                                    <li class="Active"><a href="View_Property.php">View Property</a></li>
                                 </ul>
                             </li>
                             <li class="has_sub">
-                                <a href="Discount.php" class="waves-effect"><i class="mdi mdi-view-dashboard"></i><span>Discount Mgmt </span> </a>
+                                <a href="Discount.php" class="waves-effect"><i class="mdi mdi-view-dashboard"></i><span>Discount Management </span> </a>
+                                
+                            </li>
+                            <li class="has_sub Active">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-view-dashboard"></i> <span>DoD Management </span> </a>
+                                <ul class="list-unstyled">
+                                    <li ><a href="Add_Deals_Of_Day.php">Add Deals</a></li>
+                                    <li><a href="View_Deals_Of_Day.php">View Deals</a></li>
+                                </ul>
                             </li>
                         </ul>
                     </div>
@@ -306,7 +315,7 @@ $(document).ready(function(){
                                             <div class="form-group">
                                                 <label class="col-md-3 col-md-offset-1 control-label">Select Property :</label>
                                                 <div class="col-md-6">
-                                                    <select class="selectpicker"  data-live-search="true" data-size="2" data-style="btn-default" name="txtselectproperty">
+                                                    <select class="selectpicker"  data-live-search="true" data-size="5" data-style="btn-default" name="txtselectproperty">
                                                     <option value="0">Select Property</option>
                                                         <?PHP
                                                             $query1="select * from property_type";
@@ -341,7 +350,7 @@ $(document).ready(function(){
                                               <div class="form-group">
                                                 <label class="col-md-3 col-md-offset-1 control-label">Select State :</label>
                                                 <div class="col-md-6">
-                                                    <select class="selectpicker" data-live-search="true" data-size="3" data-style="btn-default" name="txtselectstate">
+                                                    <select class="selectpicker" data-live-search="true" data-size="5" data-style="btn-default" name="txtselectstate">
                                                     <option value="0">Select Select</option>
                                                         <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
                                                         <option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -406,7 +415,7 @@ $(document).ready(function(){
                                                <label class="col-md-3 col-md-offset-1 control-label">Upload Gallery :</label>
                                                 <div class="col-md-6">
                                                         <input type="file" name="gallery[]" class="filestyle"
-                                                           multiple="multiple" data-size="sm" required="true">
+                                                           multiple="multiple" data-size="sm" >
                                                 </div>
                                             </div>
                                            <div class="form-group">
@@ -447,7 +456,7 @@ $(document).ready(function(){
                                             <div class="form-group">
                                                 <label class="col-md-3 col-md-offset-1 control-label">Bedrooms :</label>
                                                 <div class="col-md-6">
-                                                    <select class="selectpicker"  data-live-search="true" data-size="2" data-style="btn-default" name="txtselectbedrooms">
+                                                    <select class="selectpicker"  data-live-search="true" data-size="5" data-style="btn-default" name="txtselectbedrooms">
                                                     <option value="0">Select No Of Bedrooms</option>
                                                       <?php 
                                                         for($bedrooms=1; $bedrooms<=10; $bedrooms++)
@@ -461,7 +470,7 @@ $(document).ready(function(){
                                             <div class="form-group">
                                                 <label class="col-md-3 col-md-offset-1 control-label">Beds :</label>
                                                 <div class="col-md-6">
-                                                    <select class="selectpicker"  data-live-search="true" data-size="2" data-style="btn-default" name="txtselectbeds">
+                                                    <select class="selectpicker"  data-live-search="true" data-size="5" data-style="btn-default" name="txtselectbeds">
                                                     <option value="0">Select No Of Beds</option>
                                                       <?php 
                                                         for($beds=1; $beds<=15; $beds++)
@@ -475,7 +484,7 @@ $(document).ready(function(){
                                             <div class="form-group">
                                                 <label class="col-md-3 col-md-offset-1 control-label">Bathrooms :</label>
                                                 <div class="col-md-6">
-                                                    <select class="selectpicker"  data-live-search="true" data-size="2" data-style="btn-default" name="txtselectbathrooms">
+                                                    <select class="selectpicker"  data-live-search="true" data-size="5" data-style="btn-default" name="txtselectbathrooms">
                                                     <option value="0">Select No Of Bathrooms</option>
                                                                <?php 
                                                                     for($bathrooms=1; $bathrooms<=10; $bathrooms++)
@@ -489,7 +498,7 @@ $(document).ready(function(){
                                             <div class="form-group">
                                                 <label class="col-md-3 col-md-offset-1 control-label">Accommodates :</label>
                                                 <div class="col-md-6">
-                                                    <select class="selectpicker"  data-live-search="true" data-size="2" data-style="btn-default" name="txtselectaccommodates">
+                                                    <select class="selectpicker"  data-live-search="true" data-size="5" data-style="btn-default" name="txtselectaccommodates">
                                                     <option value="0">Select Accommodates</option>
                                                     <?php 
                                                         for($i=1; $i<=25; $i++)
@@ -512,16 +521,16 @@ $(document).ready(function(){
                                                 <label class="col-md-3 col-md-offset-1 control-label" for="example-email"></label>
                                                 <div class="col-md-3">
                                                     <div class="checkbox checkbox-primary m-b-15">
-                                                        <input id="txtswimmingpool" type="checkbox" name="txtswimmingpool" value="YES">
-                                                        <label for="txtswimmingpool">
+                                                        <input id="chkbox1" type="checkbox" name="txtswimmingpool" value="YES">
+                                                        <label for="chkbox1">
                                                             Swimming pool
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="checkbox checkbox-primary m-b-15">
-                                                        <input id="txtinternet" type="checkbox" name="txtinternet" value="YES" onclick="Pool();">
-                                                        <label for="txtinternet">
+                                                        <input id="checkbox2" type="checkbox" name="txtinternet" value="YES" onclick="Pool();">
+                                                        <label for="checkbox2">
                                                             Internet / WIFI
                                                         </label>
                                                     </div>
@@ -529,16 +538,16 @@ $(document).ready(function(){
                                                 <label class="col-md-3 col-md-offset-1 control-label" for="example-email"></label>
                                                 <div class="col-md-3">
                                                     <div class="checkbox checkbox-primary m-b-15">
-                                                        <input id="txtsmokingallowed" type="checkbox" name="txtsmokingallowed" value="YES">
-                                                        <label for="txtsmokingallowed">
+                                                        <input id="checkbox3" type="checkbox" name="txtsmokingallowed" value="YES">
+                                                        <label for="checkbox3">
                                                             Smoking Allowed
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="checkbox checkbox-primary m-b-15">
-                                                        <input id="txtcabletv" type="checkbox" name="txtcabletv" value="YES">
-                                                        <label for="txtcabletv">
+                                                        <input id="checkbox4" type="checkbox" name="txtcabletv" value="YES">
+                                                        <label for="checkbox4">
                                                             Cable TV  
                                                         </label>
                                                     </div>
@@ -546,16 +555,16 @@ $(document).ready(function(){
                                                 <label class="col-md-3 col-md-offset-1 control-label" for="example-email"></label>
                                                 <div class="col-md-3">
                                                     <div class="checkbox checkbox-primary m-b-15">
-                                                        <input id="txtpetfriendly" type="checkbox" name="txtpetfriendly" value="YES">
-                                                        <label for="txtpetfriendly">
+                                                        <input id="checkbox5" type="checkbox" name="txtpetfriendly" value="YES">
+                                                        <label for="checkbox5">
                                                             Pet friendly
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="checkbox checkbox-primary m-b-15">
-                                                        <input id="txtairconditioning" type="checkbox" name="txtairconditioning" value="YES">
-                                                        <label for="txtairconditioning">
+                                                        <input id="checkbox6" type="checkbox" name="txtairconditioning" value="YES">
+                                                        <label for="checkbox6">
                                                             Air Conditioning
                                                         </label>
                                                     </div>
@@ -563,16 +572,16 @@ $(document).ready(function(){
                                                 <label class="col-md-3 col-md-offset-1 control-label" for="example-email"></label>
                                                 <div class="col-md-3">
                                                     <div class="checkbox checkbox-primary m-b-15">
-                                                        <input id="txtpaymentfacility" type="checkbox" name="txtpaymentfacility" value="YES">
-                                                        <label for="txtpaymentfacility">
+                                                        <input id="checkbox7" type="checkbox" name="txtpaymentfacility" value="YES">
+                                                        <label for="checkbox7">
                                                            Payment Facility
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="checkbox checkbox-primary m-b-15">
-                                                        <input id="txtkitchen" type="checkbox" name="txtkitchen" value="YES">
-                                                        <label for="txtkitchen">
+                                                        <input id="checkbox8" type="checkbox" name="txtkitchen" value="YES">
+                                                        <label for="checkbox8">
                                                             In House Kitchen
                                                         </label>
                                                     </div>
@@ -580,16 +589,16 @@ $(document).ready(function(){
                                                 <label class="col-md-3 col-md-offset-1 control-label" for="example-email"></label>
                                                 <div class="col-md-3">
                                                     <div class="checkbox checkbox-primary m-b-15">
-                                                        <input id="txtrestaurant" type="checkbox" name="txtrestaurant" value="YES">
-                                                        <label for="txtrestaurant">
+                                                        <input id="checkbox9" type="checkbox" name="txtrestaurant" value="YES">
+                                                        <label for="checkbox9">
                                                            Restaurant
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="checkbox checkbox-primary m-b-15">
-                                                        <input id="txtparking" type="checkbox" name="txtparking" value="YES">
-                                                        <label for="txtparking">
+                                                        <input id="checkbox10" type="checkbox" name="txtparking" value="YES">
+                                                        <label for="checkbox10">
                                                             Free Parking
                                                         </label>
                                                     </div>
@@ -597,16 +606,16 @@ $(document).ready(function(){
                                                 <label class="col-md-3 col-md-offset-1 control-label" for="example-email"></label>
                                                 <div class="col-md-3">
                                                     <div class="checkbox checkbox-primary m-b-15">
-                                                        <input id="txtfirstaidavaliable" type="checkbox" name="txtfirstaidavaliable" value="YES">
-                                                        <label for="txtfirstaidavaliable">
+                                                        <input id="checkbox11" type="checkbox" name="txtfirstaidavaliable" value="YES">
+                                                        <label for="checkbox11">
                                                            First Aid Available
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="checkbox checkbox-primary m-b-15">
-                                                        <input id="txtfreebreakfast" type="checkbox" name="txtfreebreakfast" value="YES">
-                                                        <label for="txtfreebreakfast">
+                                                        <input id="checkbox12" type="checkbox" name="txtfreebreakfast" value="YES">
+                                                        <label for="checkbox12">
                                                            Free BreakFast
                                                         </label>
                                                     </div>
@@ -667,8 +676,11 @@ $(document).ready(function(){
                                                 <div class="col-md-6">
                                                    <input type="text" name="txtfeaturedstartdate" value="<?php date_default_timezone_set("Asia/Kolkata"); echo date("m/d/Y");?>" id="nowdate" class="form-control" required="true" readonly>
                                                 </div>
+
+
+
                                             </div>
-                                             <div class="form-group" id="enddate">
+                                            <div class="form-group" id="enddate">
                                                  <label class="col-md-3 col-md-offset-1 control-label" for="example-email">Featured Start Date:</label>
                                                 <div class="col-md-6">
                                                     <div class="input-group">
@@ -896,9 +908,10 @@ $(document).ready(function(){
                 $Featured_End_Date="";
             }
 
-             $result = mysqli_query($con, "SELECT MAX(property_id) FROM property");
+             $result = mysqli_query($con,"SELECT MAX(property_id) FROM property");
             $row1 = mysqli_fetch_row($result);
             $property_id = $row1[0]+1;
+			//var_dump($property_id);
 
             /*$query= "INSERT INTO property_info values('".$property_id."','".$Select_bedrooms."','".$Select_bathrooms."','".$Swimming_Pool."','".$Meals."','".$Internet."','".$Smoking."','".$Cable_TV."','".$Pet_Friendly."','".$Air_Contitioning."','".$Kitchen."','".$Restaurant."','".$Select_beds."','".$Select_accommodates."','".$Parking."','".$First_Aid_Avaliable."',
             '".$Entertainment."','".$Other_Amenities."','".$Theme."','".$Attractions."','".$Leisure."','".$General."','".$Payment_Facility."','".$latitude."','".$latitude."',
@@ -937,17 +950,19 @@ $(document).ready(function(){
                                                     '".$Description."','".$How_To_Reach."','".$Select_Property."','YES')";
                   
 
-                    $res=mysqli_query($con, $query);
+                    $res=mysqli_query($con , $query);
+					//var_dump($res);
                     if($res)
                     {
-                             $query1= "INSERT INTO property_info values('".$property_id."','".$Select_bedrooms."','".$Select_bathrooms."','".$Swimming_Pool."','".$Meals."','".$Internet."','".$Smoking."','".$Cable_TV."','".$Pet_Friendly."','".$Air_Contitioning."','".$Kitchen."','".$Restaurant."','".$Select_beds."','".$Select_accommodates."','".$Parking."','".$First_Aid_Avaliable."',
-                '".$Entertainment."','".$Other_Amenities."','".$Theme."','".$Attractions."','".$Leisure."','".$General."','".$Payment_Facility."',
+                              $query1= "INSERT INTO property_info values('".$property_id."','".$Select_bedrooms."','".$Select_bathrooms."','".$Swimming_Pool."','".$Meals."','".$Internet."','".$Smoking."','".$Cable_TV."','".$Pet_Friendly."','".$Air_Contitioning."','".$Kitchen."','".$Restaurant."','".$Select_beds."','".$Select_accommodates."','".$Parking."','".$First_Aid_Avaliable."',
+                '".str_replace("'","",$Entertainment)."','".str_replace("'","",$Other_Amenities)."','".str_replace("'","",$Theme)."','".str_replace("'","",$Attractions)."','".str_replace("'","",$Leisure)."','".str_replace("'","",$General)."','".$Payment_Facility."',
                 '".$Latitude."',
                 '".$Longitude."',
                 '".$Free_Breakfast."','".$Featured."','".$Featured_Start_Date."',
                                                         '".$Featured_End_Date."','".$price."')";
 
-                        $res1=mysqli_query($con, $query1);
+                        var_dump($query1);
+						$res1=mysqli_query($con, $query1);
                         if($res1)
                         {
                             echo '<script>alert("Data inserted successfully")</script>';
@@ -955,19 +970,19 @@ $(document).ready(function(){
                         }
                         else
                         {
-                            echo '<script>alert("Data  not inserted")</script>';
+                            echo '<script>alert("Data  not inserted Property Info")</script>';
                         }
                     }
                     else
                     {
-                        echo '<script>alert("Data  not inserted")</script>';
+                        echo '<script>alert("Data  not inserted Property")</script>';
                     }
  
 
                 }
 
             }
- mysql_close();
+ mysqli_close();
         }
     
 ?>

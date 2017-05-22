@@ -1,4 +1,4 @@
-// StarHotel Javascripts
+// HOLIDAYBAY Javascripts
 jQuery(document).ready(function () {
     "use strict";
 

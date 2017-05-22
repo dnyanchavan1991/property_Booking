@@ -49,7 +49,7 @@ class Offers extends CI_Controller
         }
         $this->pagination->initialize($config);
         $offers = $this->PropertyModel->getOffers($config['per_page'], $page);
-//        var_dump($offers);
+       // var_dump($offers);
         $this->load->view('offers.php',array('offers'=>$offers,'offer_count'=>$config['total_rows']));
     }
 

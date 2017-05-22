@@ -29,13 +29,14 @@ if(isset($this->session->userdata()['first_name']) && $this->session->userdata()
 					  //$imgPath = base_url()."Trueholidays/" .$propertyDetails->imagePath. "*";
 					  $imgPath = "../../Trueholidays/" .$propertyDetails->imagePath. "*.jpg";
 					  
-						 $images1 = glob("/home/trueholidays/public_html/Trueholidays/" .$propertyDetails->imagePath. "*");
+						 $images1 = glob("/home/kuldeepjadhav/public_html/Trueholidays/" .$propertyDetails->imagePath. "*");
 							 
 						// $c=0;
 								foreach($images1 as $image1)
 								{
 									///home/trueholidays/public_html/Trueholidays/Property gallery/1491238975/mainImage.jpg
-									$imgUrl = str_replace("/home/trueholidays/public_html","http://www.trueholidays.co.in",$image1);
+									$imgUrl = str_replace("/home/kuldeepjadhav/public_html","https://www.holidaybay.com",$image1);
+									//var_dump($imgUrl);
 								//	 echo'<img src="'.$image1.'" height="100px" class="img-thumbnail" width="100px" alt="img not found">';
 								//}*/
 						?>
@@ -175,10 +176,10 @@ if(isset($this->session->userdata()['first_name']) && $this->session->userdata()
                         <div class="tab-content">
                             <div class="tab-pane fade in active" id="overview">
                                <p><h3><?php echo $propertyDetails->propertyName ?></h3></p>
-                                <p><?php echo $propertyDetails->description ?></p>
+                                <p><?php echo nl2br($propertyDetails->description) ?></p>
                             </div>
-                            <div class="tab-pane fade" id="facilities"><?php echo $propertyDetails->propertyAddress ?></div>
-                            <div class="tab-pane fade" id="extra"><?php echo $propertyDetails->Direction ?></div>
+                            <div class="tab-pane fade" id="facilities"><?php echo nl2br($propertyDetails->propertyAddress) ?></div>
+                            <div class="tab-pane fade" id="extra"><?php echo nl2br($propertyDetails->Direction) ?></div>
                             <div class="tab-pane fade" id="review">
                                 <form method="post" id="review_form">
                                     <input type="hidden" name="property_id" value="<?php echo $propertyDetails->property_id ?>">

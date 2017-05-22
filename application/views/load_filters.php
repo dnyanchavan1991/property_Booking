@@ -12,7 +12,7 @@
             <!-- Room -->
             <?php foreach($data as $result){ ?>
                 <div class="col-sm-4">
-                    <div class="room-thumb"> <img src="<?php echo base_url().'Admin/'.$result->image_path.'mainImage.jpg' ?>" alt="room 1" class="img-responsive" />
+                    <div class="room-thumb"> <img src="<?php echo base_url().'Trueholidays/'.$result->image_path.'mainImage.jpg' ?>" alt="room 1" class="img-responsive" />
                         <div class="mask">
                             <div class="main">
                                 <h5><?php echo $result->property_name ?></h5>

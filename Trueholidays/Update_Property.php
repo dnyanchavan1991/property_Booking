@@ -9,7 +9,7 @@
     }
     else
     {
-        echo"<script>window.location.href='Login.php';</script>";
+        echo"<script>window.location.href='../index.php/Index1/Login';</script>";	
         
     }
     $id=$_GET['id'];
@@ -25,9 +25,9 @@
 
         <!-- App favicon -->
        <!--  <link rel="shortcut icon" href="assets/images/favicon.ico"> -->
-         <link rel="icon" href="sml.ico" type="image/x-icon">
+         <link rel="icon" href="hld.ico" type="image/x-icon">
         <!-- App title -->
-        <title>Training | Portal </title>
+        <title>HOLIDAYBAY | UPDATE PROPERTY</title>
 <!-- Date Picker Css -->
 <link href="../plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
         <!-- Google Map -->
@@ -125,7 +125,7 @@
 
                 <!-- LOGO -->
                 <div class="topbar-left">
-                    <a href="index.php" class="logo"><span>True<span>Holidays</span></span><i class="mdi mdi-cube"></i></a>
+                    <a href="index.php" class="logo"><span>HOLIDAYBAY</span><i class="mdi mdi-cube"></i></a>
                     <!-- Image logo -->
                     <!--<a href="index.html" class="logo">-->
                         <!--<span>-->
@@ -207,16 +207,23 @@
                            <!--  <li class="has_sub">
                                 <a href="index.php" class="waves-effect"><i class="mdi mdi-view-dashboard"></i> Dashboard</a>
                             </li> -->
-                            <li class="has_sub">
-                                <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-view-dashboard"></i><span class="badge badge-success pull-right">2</span> <span></span>Property Mng </span> </a>
+                            <li class="has_sub Active">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-view-dashboard"></i> <span>Property Management </span> </a>
                                 <ul class="list-unstyled">
                                     <li><a href="Add_Property.php">Add Property</a></li>
-                                    <li><a href="View_Property.php">View Property</a></li>
+                                    <li class="Active"><a href="View_Property.php">View Property</a></li>
                                 </ul>
                             </li>
                             <li class="has_sub">
-                                <a href="Discount.php" class="waves-effect"><i class="mdi mdi-view-dashboard"></i><span>Discount Mgmt </span> </a>
+                                <a href="Discount.php" class="waves-effect"><i class="mdi mdi-view-dashboard"></i><span>Discount Management </span> </a>
                                 
+                            </li>
+                            <li class="has_sub Active">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-view-dashboard"></i> <span>DoD Management </span> </a>
+                                <ul class="list-unstyled">
+                                    <li ><a href="Add_Deals_Of_Day.php">Add Deals</a></li>
+                                    <li><a href="View_Deals_Of_Day.php">View Deals</a></li>
+                                </ul>
                             </li>
                         </ul>
                     </div>
@@ -241,7 +248,7 @@
                         <div class="row">
 							<div class="col-xs-12">
 								<div class="page-title-box">
-                                    <h4 class="page-title">Add Property </h4>
+                                    <h4 class="page-title">Update Property </h4>
                                         
                                     <div class="clearfix"></div>
                                 </div>
@@ -267,7 +274,7 @@
                                         <div class="form-group">
                                                 <label class="col-md-3 col-md-offset-1 control-label">Select Property :</label>
                                                 <div class="col-md-6">
-                                                    <select class="selectpicker"  data-live-search="true" data-size="2" data-style="btn-default" name="txtselectproperty">
+                                                    <select class="selectpicker"  data-live-search="true" data-size="5" data-style="btn-default" name="txtselectproperty">
                                                     <option value="0">Select Property</option>
                                                         <?PHP
                                                             $query11="select * from property_type  where property_type_id='".$row[11]."'";
@@ -1087,7 +1094,7 @@ $rowpropertyinfo=mysqli_fetch_row($respropertyinfo);
                         move_uploaded_file($temp,$path.$files);
                     }
 
-                    $query= "update  property set property_name='".$Property_Name."',street='".$Street."',city='".$City."',postal_code='".$Pincode."',star_rate='".$Rating."',
+                      $query= "update  property set property_name='".$Property_Name."',street='".$Street."',city='".$City."',postal_code='".$Pincode."',star_rate='".$Rating."',
                                                     state='".$Select_State."',country='".$Country."',image_path='".$path."',
                                                     description='".$Description."',how_to_reach='".$How_To_Reach."',property_type_id='".$Select_Property."',activation_flag='YES' where property_id='".$id."'";
                   
@@ -1095,10 +1102,10 @@ $rowpropertyinfo=mysqli_fetch_row($respropertyinfo);
                     $res=mysqli_query($con,$query);
                     if($res)
                     {
-                            $query1= "update  property_info set bedrooms='".$Select_bedrooms."',bathrooms='".$Select_bathrooms."',pool='".$Swimming_Pool."',
+                          $query1= "update  property_info set bedrooms='".$Select_bedrooms."',bathrooms='".$Select_bathrooms."',pool='".$Swimming_Pool."',
                               meals='".$Meals."',internet_access='".$Internet."',smoking_allowd='".$Smoking."',television_access='".$Cable_TV."',
                               pet_friendly='".$Pet_Friendly."',air_condition='".$Air_Contitioning."',in_house_kitchen='".$Kitchen."',restaurant='".$Restaurant."',beds='".$Select_beds."',accommodates='".$Select_accommodates."',free_parking='".$Parking."',first_aid_available='".$First_Aid_Avaliable."',
-                entertainment='".$Entertainment."',other_amenities='".$Other_Amenities."',theme='".$Theme."',attractions='".$Attractions."',leisureActivities='".$Leisure."',general='".$General."',payment_facility='".$Payment_Facility."',
+                entertainment='".str_replace("'","",$Entertainment)."',other_amenities='".str_replace("'","",$Other_Amenities)."',theme='".str_replace("'","",$Theme)."',attractions='".str_replace("'","",$Attractions)."',leisureActivities='".str_replace("'","",$Leisure)."',general='".str_replace("'","",$General)."',payment_facility='".$Payment_Facility."',
                 latitude='".$Latitude."',
                 longitude='".$Longitude."',
                 free_breakfast='".$Free_Breakfast."',Featured='".$Featured."',Featured_startDate='".$Featured_Start_Date."',
@@ -1108,16 +1115,16 @@ $rowpropertyinfo=mysqli_fetch_row($respropertyinfo);
                         if($res1)
                         {
                             echo '<script>alert("Data  successfully Update")</script>';
-                          echo'<script>window.location.href="Update_Owner_Info.php?id='.$id.'"</script>';
+                           echo'<script>window.location.href="Update_Owner_Info.php?id='.$id.'"</script>';
                         }
                         else
                         {
-                            echo '<script>alert("Data  not Update")</script>';
+                            echo '<script>alert("Data  not Update for Property Info")</script>';
                         }
                     }
                     else
                     {
-                        echo '<script>alert("Data not Update")</script>';
+                        echo '<script>alert("Data not Update for Property")</script>';
                     }
  
 

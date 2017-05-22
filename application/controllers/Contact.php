@@ -64,7 +64,7 @@ class Contact extends CI_Controller {
 //            $phone1= '9404920014';
             $this->sendSMS($method,$data,$phone1,$message);
 
-            $message1="Your Enquiry has been sent to property owner for Property '" . $propertyOwnerInfo[0]->propertyName . "' Thanks for using our services-TrueHolidays.co.in";
+            $message1="Your Enquiry has been sent to property owner for Property '" . $propertyOwnerInfo[0]->propertyName . "' Thanks for using our services - Team Holidaybay";
             $this->sendSMS($method,$data,$phone,$message1);
 //            redirect(base_url().'/index.php/Index1/PropertyDetails/'.$propertyId);
 		}
@@ -115,7 +115,7 @@ class Contact extends CI_Controller {
 	
 		//echo "Inside sendMail function ";
 		 //Email information
-		  $admin_email = "admin@trueholidays.co.in";
+		  $admin_email = "travel@holidaybay.com";
 		  $email = $recepient;
 		  $subject1 = $subject;
 		  $comment =$message;

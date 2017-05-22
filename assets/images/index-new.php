@@ -13,7 +13,7 @@
 			<div class="col-xs-6">
 				<div class="th-text pull-left">
 					<div class="th-item"> <a href="#"><i class="fa fa-phone"></i> 05-460789986</a> </div>
-					<div class="th-item"> <a href="#"><i class="fa fa-envelope"></i> MAIL@STARHOTEL.COM </a></div>
+					<div class="th-item"> <a href="#"><i class="fa fa-envelope"></i> travel@holidaybay.com </a></div>
 				</div>
 			</div>
 			<!--<div class="col-xs-6">
@@ -117,7 +117,7 @@
 				<button type="button" data-toggle="collapse" data-target="#navbar-collapse-grid" class="navbar-toggle"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
 				<a href="<?php echo base_url() ?>" class="navbar-brand">
 					<!-- Logo -->
-					<div id="logo"> <img id="default-logo" src="images/logo.png" alt="Starhotel" style="height:44px;"> <img id="retina-logo" src="images/logo-retina.png" alt="Starhotel" style="height:44px;"> </div>
+					<div id="logo"> <img id="default-logo" src="images/logo.png" alt="HOLIDAYBAY" style="height:44px;"> <img id="retina-logo" src="images/logo-retina.png" alt="HOLIDAYBAY" style="height:44px;"> </div>
 				</a> </div>
 			<div id="navbar-collapse-grid" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
@@ -153,7 +153,7 @@
 					<img src="images/slides/3.jpg" style="opacity:0;" alt="image not found"  data-bgfit="cover" data-bgposition="left bottom" data-bgrepeat="no-repeat">
 					<!-- Layers -->
 					<!-- Layer 1 -->
-					<div class="caption sft revolution-starhotel bigtext"
+					<div class="caption sft revolution-HOLIDAYBAY bigtext"
 						 data-x="505"
 						 data-y="30"
 						 data-speed="700"
@@ -161,7 +161,7 @@
 						 data-easing="easeOutBack">
 						<span><i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i></span> A Five Star Hotel <span><i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i></span></div>
 					<!-- Layer 2 -->
-					<div class="caption sft revolution-starhotel smalltext"
+					<div class="caption sft revolution-HOLIDAYBAY smalltext"
 						 data-x="605"
 						 data-y="105"
 						 data-speed="800"
@@ -184,7 +184,7 @@
 					<img src="images/slides/2.jpg"  alt="darkblurbg"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
 					<!-- Layers -->
 					<!-- Layer 1 -->
-					<div class="caption sft revolution-starhotel bigtext"
+					<div class="caption sft revolution-HOLIDAYBAY bigtext"
 						 data-x="585"
 						 data-y="30"
 						 data-speed="700"
@@ -192,7 +192,7 @@
 						 data-easing="easeOutBack">
 						<span><i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i></span> Double room <span><i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i></span></div>
 					<!-- Layer 2 -->
-					<div class="caption sft revolution-starhotel smalltext"
+					<div class="caption sft revolution-HOLIDAYBAY smalltext"
 						 data-x="682"
 						 data-y="105"
 						 data-speed="800"
